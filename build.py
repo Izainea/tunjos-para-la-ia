@@ -87,7 +87,17 @@ def render_md(paths: list[Path], slug_map: dict[str, str] | None = None) -> str:
     parts = []
     for p in paths:
         MD.reset()
-        html = MD.convert(p.read_text(encoding="utf-8"))
+        texto = p.read_text(encoding="utf-8")
+        # Dentro de bloques HTML (lede, glosas, figuras) Python-Markdown no procesa markdown:
+        # se convierten a mano los enlaces y las cursivas de esas líneas.
+        def en_html(linea: str) -> str:
+            if not linea.lstrip().startswith(("<p", "<aside", "<figcaption", "<figure")):
+                return linea
+            linea = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', linea)
+            linea = re.sub(r"(?<![\w*])\*([^*\n]+?)\*(?![\w*])", r"<em>\1</em>", linea)
+            return linea
+        texto = "\n".join(en_html(l) for l in texto.splitlines())
+        html = MD.convert(texto)
         html = html.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
         html = html.replace("<h1>", f'<h1 id="{p.stem}">', 1)
         html = re.sub(r'(?<!href=")(?<!">)(?<!src=")(https?://[^\s<]+?)(?=[\s<]|\.$|\.<)', r'<a href="\1">\1</a>', html)
