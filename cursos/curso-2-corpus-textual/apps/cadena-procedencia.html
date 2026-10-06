@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cadena de procedencia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+h2{font-family:var(--display);font-weight:700;font-size:1rem;margin:0 0 .3rem}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* propios de esta app */
+.layout{display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:.8rem}
+@media (max-width:700px){.layout{grid-template-columns:1fr}}
+.diagrama svg{width:100%;height:auto;display:block;max-width:22rem;margin:0 auto}
+.nodo{cursor:pointer}
+.nodo rect{fill:var(--surface);stroke:var(--rule);stroke-width:1.2;transition:stroke .15s}
+.nodo:hover rect{stroke:var(--muted)}
+.nodo.sel rect{stroke:var(--c-app);stroke-width:2}
+.nodo.omit rect{stroke:var(--c-fil);stroke-dasharray:6 4}
+.nodo.omit text.t{fill:var(--c-fil);text-decoration:line-through}
+.nodo text.t{font-family:var(--text);font-size:13px;fill:var(--ink)}
+.nodo text.n{font-family:var(--mono);font-size:10px;fill:var(--muted);letter-spacing:.06em}
+.flecha{stroke:var(--muted);stroke-width:1.4;fill:none}
+.flecha.rota{stroke:var(--c-fil);stroke-dasharray:5 4}
+.final rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.4}
+.final.rota rect{stroke:var(--c-fil)}
+.final text.t{font-family:var(--text);font-size:13px;fill:var(--ink)}
+ul{margin:.3rem 0 .3rem 1.1rem;padding:0;font-size:.92rem}
+li{margin:.2rem 0}
+.guarda li{color:var(--ink)}
+.rompe li{color:var(--c-fil)}
+.veredicto{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:.2rem 0}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 2 · Semana 1</span>
+  <h1>Cadena de procedencia</h1>
+  <p>Siga un documento desde la fuente hasta la cita del informe. Toque un eslabón para ver qué guarda; omítalo para ver qué pregunta deja de poder responderse al final.</p>
+
+  <div class="layout">
+    <div class="card diagrama">
+      <svg id="svg" viewBox="0 0 340 560" role="img" aria-label="Cadena vertical de seis eslabones, de la fuente a la unidad citada, que termina en la afirmación del informe. Cada eslabón puede omitirse."></svg>
+    </div>
+    <div>
+      <div class="card" id="panel">
+        <span class="k" id="p-k">Eslabón</span>
+        <h2 id="p-titulo">Toque un eslabón</h2>
+        <p id="p-desc"></p>
+        <span class="k">Qué guarda</span>
+        <ul class="guarda" id="p-guarda"></ul>
+        <span class="k">Si se omite</span>
+        <ul class="rompe" id="p-rompe"></ul>
+        <div class="row"><button id="btn-omit" aria-pressed="false">omitir este eslabón</button><button id="btn-reset">restituir todos</button></div>
+      </div>
+      <div class="card">
+        <span class="k">La cita final</span>
+        <p id="cita" style="color:var(--ink);font-family:var(--mono);font-size:.85rem"></p>
+        <div class="veredicto" id="veredicto"></div>
+        <ul class="rompe" id="lista-rota"></ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la procedencia no es un campo sino una cadena, y cada eslabón que se omite convierte una pregunta con respuesta en una pregunta sin ella. El catálogo de la semana 4 es la forma de guardar la cadena entera.</p>
+<script>
+  var ESLABONES = [
+    {id:'fuente', n:'1 · FUENTE', t:'Fuente', desc:'El periódico, el archivo, el portal o la entidad de donde sale el documento.',
+     guarda:['Nombre de la fuente y dirección exacta','Condiciones de acceso y términos de uso','Lo que hace falta para evaluar autenticidad y credibilidad'],
+     rompe:['No se sabe de dónde salió el texto: no se puede volver a tomar','No se puede evaluar si el documento es lo que dice ser','La frase "según la prensa de la época" queda sin respaldo']},
+    {id:'captura', n:'2 · CAPTURA', t:'Captura', desc:'La descarga o la copia: el momento en que el documento pasa de la fuente al proyecto.',
+     guarda:['Fecha y hora de la toma','Método: programa, visor, copia manual','Bitácora con el resultado de cada petición'],
+     rompe:['No se sabe cuándo se tomó: si la fuente cambió después, no se puede fechar la versión','No se puede repetir la recolección','Una diferencia entre dos ejecuciones no se puede explicar']},
+    {id:'crudo', n:'3 · CRUDO + HASH', t:'Archivo crudo con hash', desc:'El archivo tal como llegó, intacto, con su huella SHA-256.',
+     guarda:['Los bytes originales, sin edición','La huella que prueba que no cambió','El punto al que siempre se puede volver'],
+     rompe:['No se puede probar que el texto analizado es el que se tomó','Si una limpieza salió mal, no hay a dónde volver','Un duplicado no se puede detectar con certeza']},
+    {id:'catalogo', n:'4 · CATÁLOGO', t:'Registro en el catálogo', desc:'La fila con identificador, fecha del documento, escena, derechos y criterio de inclusión.',
+     guarda:['Identificador propio y estable','Fecha del documento y escena de producción','Régimen de derechos y criterio por el que entró'],
+     rompe:['La pieza no se puede citar con un identificador','No se sabe si se puede publicar o citar','Nadie puede decir por qué está en el corpus']},
+    {id:'limpio', n:'5 · LIMPIEZA', t:'Texto limpio con tabla de pérdidas', desc:'La copia en UTF-8 sin lo ajeno al texto, y el registro de cada cosa que se quitó.',
+     guarda:['Qué se quitó y por qué, operación por operación','Qué pregunta ya no responde el texto limpio','El porcentaje de error de OCR estimado'],
+     rompe:['Un lector no sabe si una ausencia es del documento o de la limpieza','Una palabra rara puede ser OCR o puede ser dato, y no hay cómo saberlo','La limpieza no se puede rehacer con otro criterio']},
+    {id:'unidad', n:'6 · UNIDAD', t:'Unidad con posición', desc:'El fragmento segmentado, con el identificador de la pieza y su posición dentro de ella.',
+     guarda:['A qué pieza pertenece el fragmento','En qué posición está: oración 12, párrafo 3','Lo que una cita necesita para localizarse'],
+     rompe:['La cita dice "en alguna parte del documento"','Una concordancia no se puede volver a encontrar','Dos lectores no pueden hablar del mismo fragmento']}
+  ];
+  var omit = {};
+  var sel = null;
+  var svg = document.getElementById('svg');
+  var NS = 'http://www.w3.org/2000/svg';
+
+  function el(tag, attrs, text){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function dibujar(){
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var y = 10, h = 54, gap = 26, w = 260, x = 40;
+    var roto = false;
+    ESLABONES.forEach(function(es, i){
+      var g = el('g', {'class':'nodo' + (sel === es.id ? ' sel' : '') + (omit[es.id] ? ' omit' : ''), 'data-id': es.id, tabindex:'0', role:'button', 'aria-label': es.t});
+      g.appendChild(el('rect', {x:x, y:y, width:w, height:h, rx:4}));
+      g.appendChild(el('text', {x:x+12, y:y+20, 'class':'n'}, es.n));
+      g.appendChild(el('text', {x:x+12, y:y+40, 'class':'t'}, es.t));
+      g.addEventListener('click', function(){ seleccionar(es.id); });
+      g.addEventListener('keydown', function(ev){ if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); seleccionar(es.id); } });
+      svg.appendChild(g);
+      if (omit[es.id]) roto = true;
+      var y2 = y + h;
+      var p = el('path', {'class':'flecha' + (roto ? ' rota' : ''), d:'M' + (x+w/2) + ' ' + y2 + ' L' + (x+w/2) + ' ' + (y2+gap-4)});
+      svg.appendChild(p);
+      svg.appendChild(el('path', {'class':'flecha' + (roto ? ' rota' : ''), d:'M' + (x+w/2-5) + ' ' + (y2+gap-10) + ' L' + (x+w/2) + ' ' + (y2+gap-3) + ' L' + (x+w/2+5) + ' ' + (y2+gap-10)}));
+      y = y2 + gap;
+    });
+    var gf = el('g', {'class':'final' + (roto ? ' rota' : '')});
+    gf.appendChild(el('rect', {x:x, y:y, width:w, height:h, rx:4}));
+    gf.appendChild(el('text', {x:x+12, y:y+20, 'class':'n'}, '7 · INFORME'));
+    gf.appendChild(el('text', {x:x+12, y:y+40, 'class':'t'}, 'Afirmación con cita'));
+    svg.appendChild(gf);
+  }
+
+  function seleccionar(id){
+    sel = id;
+    var es = ESLABONES.filter(function(e){ return e.id === id; })[0];
+    document.getElementById('p-k').textContent = es.n;
+    document.getElementById('p-titulo').textContent = es.t;
+    document.getElementById('p-desc').textContent = es.desc;
+    llenar('p-guarda', es.guarda);
+    llenar('p-rompe', es.rompe);
+    var b = document.getElementById('btn-omit');
+    b.setAttribute('aria-pressed', omit[id] ? 'true' : 'false');
+    b.textContent = omit[id] ? 'restituir este eslabón' : 'omitir este eslabón';
+    dibujar();
+    veredicto();
+  }
+
+  function llenar(id, items){
+    var ul = document.getElementById(id);
+    ul.innerHTML = '';
+    items.forEach(function(s){ var li = document.createElement('li'); li.textContent = s; ul.appendChild(li); });
+  }
+
+  function veredicto(){
+    var rotos = ESLABONES.filter(function(e){ return omit[e.id]; });
+    var cita = document.getElementById('cita');
+    var v = document.getElementById('veredicto');
+    var partes = [];
+    partes.push(omit.catalogo ? '[sin id]' : 'P-0003');
+    partes.push(omit.unidad ? 'en alguna parte' : 'oración 12');
+    partes.push(omit.fuente ? 'fuente desconocida' : 'El Tiempo');
+    partes.push(omit.captura ? 'tomado no se sabe cuándo' : 'tomado 2027-03-14');
+    partes.push(omit.crudo ? 'sin huella' : 'sha256 9f86d0…');
+    cita.textContent = '"…se reunió la junta en el salón de sesiones…" (' + partes.join(' · ') + ')';
+    if (rotos.length === 0) {
+      v.textContent = 'La cita se puede reconstruir: cada pregunta tiene respuesta.';
+      v.className = 'veredicto ok';
+      llenar('lista-rota', []);
+    } else {
+      v.textContent = 'La cita no se puede reconstruir. Preguntas sin respuesta:';
+      v.className = 'veredicto no';
+      var items = [];
+      rotos.forEach(function(e){ items.push(e.t + ': ' + e.rompe[0].toLowerCase()); });
+      llenar('lista-rota', items);
+    }
+  }
+
+  document.getElementById('btn-omit').addEventListener('click', function(){
+    if (!sel) return;
+    omit[sel] = !omit[sel];
+    seleccionar(sel);
+  });
+  document.getElementById('btn-reset').addEventListener('click', function(){
+    omit = {};
+    if (sel) seleccionar(sel); else { dibujar(); veredicto(); }
+  });
+
+  dibujar();
+  veredicto();
+  seleccionar('fuente');
+</script>
+</body>
+</html>

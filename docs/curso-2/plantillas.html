@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 2 · Plantillas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Plantillas de los productos del curso." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-2/plantillas.html" />
+    <meta property="og:title" content="Curso 2 · Plantillas" />
+    <meta property="og:description" content="Plantillas de los productos del curso." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-2/plantillas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 2</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html" class="is-active">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 2 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Plantillas</h1>
+          <p class="desc">Plantillas de los productos del curso.</p>
+        </div>
+<article class="prose">
+<h1 id="catalogo-maestro">Catálogo maestro</h1>
+<p><strong>Estudiante:</strong>
+<strong>Proyecto:</strong>
+<strong>Archivo:</strong> <code>catalogo.csv</code>, generado por <code>cuadernos/02-catalogo.ipynb</code>
+<strong>Fecha de la última regeneración:</strong></p>
+<h2>Para qué sirve este documento</h2>
+<p>El catálogo es la tabla que sabe, de cada pieza del corpus, lo que hace falta para reconstruirla, citarla y defenderla. Lo genera el cuaderno, no se edita a mano; las decisiones a mano van en <code>decisiones.csv</code>, que el cuaderno lee y une por <code>id</code>. Este documento describe el esquema, da un ejemplo y lista las reglas de integridad.</p>
+<h2>Esquema</h2>
+<p>Los campos obligatorios no pueden estar vacíos en ninguna fila. Un proyecto puede añadir columnas; no puede quitar las obligatorias ni cambiar sus nombres, para que los catálogos de distintos proyectos se puedan comparar y para que los cursos siguientes del programa los reciban sin traducción.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Obligatorio</th>
+<th>Formato</th>
+<th>Qué responde</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Sí</td>
+<td>Prefijo de una letra, guion, cuatro dígitos. Propio, estable, opaco</td>
+<td>Cuál pieza es, sin depender de la fuente</td>
+<td><code>P-0042</code></td>
+</tr>
+<tr>
+<td><code>titulo</code></td>
+<td>Sí</td>
+<td>Texto. Si la pieza no tiene título, las primeras ocho palabras</td>
+<td>Cómo se nombra</td>
+<td><code>Sesión de la junta de ayer</code></td>
+</tr>
+<tr>
+<td><code>autor</code></td>
+<td>No</td>
+<td>Texto o vacío. "Anónimo" cuando la fuente lo dice</td>
+<td>Quién firma</td>
+<td><code>Anónimo</code></td>
+</tr>
+<tr>
+<td><code>fuente</code></td>
+<td>Sí</td>
+<td>Nombre de la fuente tal como aparece en el protocolo</td>
+<td>De dónde salió</td>
+<td><code>Hemeroteca digital BNC</code></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>Sí</td>
+<td>Dirección completa de donde se tomó, o ruta del soporte físico</td>
+<td>Dónde está el original</td>
+<td><code><a href="https://…/1910/03/02/p3">https://…/1910/03/02/p3</a></code></td>
+</tr>
+<tr>
+<td><code>fecha_documento</code></td>
+<td>Sí</td>
+<td>ISO 8601: <code>AAAA-MM-DD</code>. Si solo se conoce el año, <code>AAAA</code>; si el mes, <code>AAAA-MM</code></td>
+<td>Cuándo fue producida</td>
+<td><code>1910-03-02</code></td>
+</tr>
+<tr>
+<td><code>fecha_descarga</code></td>
+<td>Sí</td>
+<td>ISO 8601 con hora: <code>AAAA-MM-DDThh:mm</code></td>
+<td>Cuándo fue tomada</td>
+<td><code>2027-03-14T18:22</code></td>
+</tr>
+<tr>
+<td><code>escena</code></td>
+<td>Sí</td>
+<td>Productor, género y situación, separados por punto y coma</td>
+<td>Quién la produjo y en qué situación</td>
+<td><code>El Tiempo; nota; página 3, sección local</code></td>
+</tr>
+<tr>
+<td><code>derechos</code></td>
+<td>Sí</td>
+<td>Uno de: <code>dominio_publico</code>, <code>norma_oficial</code>, <code>licencia_abierta</code>, <code>uso_academico_con_cita</code>, <code>restringido</code></td>
+<td>Bajo qué régimen se usa</td>
+<td><code>dominio_publico</code></td>
+</tr>
+<tr>
+<td><code>criterio_inclusion</code></td>
+<td>Sí</td>
+<td>Número del criterio del protocolo. Si la pieza fue excluida, <code>E</code> más el número</td>
+<td>Por qué está aquí</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>hash_sha256</code></td>
+<td>Sí</td>
+<td>64 caracteres hexadecimales del archivo en <code>ruta_crudo</code></td>
+<td>Es el mismo archivo que se tomó</td>
+<td><code>9f86d08…</code></td>
+</tr>
+<tr>
+<td><code>ruta_crudo</code></td>
+<td>Sí</td>
+<td>Ruta relativa al archivo intacto</td>
+<td>Dónde está lo que llegó</td>
+<td><code>crudo/P-0042.html</code></td>
+</tr>
+<tr>
+<td><code>ruta_limpio</code></td>
+<td>No</td>
+<td>Ruta relativa al archivo limpio en UTF-8</td>
+<td>Dónde está lo que se analiza</td>
+<td><code>limpio/P-0042.txt</code></td>
+</tr>
+<tr>
+<td><code>notas</code></td>
+<td>No</td>
+<td>Texto libre: duplicados, error de OCR estimado, dudas</td>
+<td>Lo que no cabe en otra columna</td>
+<td><code>Duplicado exacto de P-0017; excluido</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Columnas opcionales frecuentes que un proyecto puede añadir: <code>propuesta_modelo</code> (lo que un modelo propuso para <code>escena</code> o <code>criterio_inclusion</code>, al lado del valor decidido), <code>error_ocr</code> (porcentaje estimado sobre cien palabras), <code>unidad</code> (unidad de segmentación aplicada).</p>
+<h2>Ejemplo</h2>
+<p>Tres filas de un catálogo sobre el caso demostrativo del curso. Las direcciones son ilustrativas.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>id</th>
+<th>titulo</th>
+<th>autor</th>
+<th>fuente</th>
+<th>url</th>
+<th>fecha_documento</th>
+<th>fecha_descarga</th>
+<th>escena</th>
+<th>derechos</th>
+<th>criterio_inclusion</th>
+<th>hash_sha256</th>
+<th>ruta_crudo</th>
+<th>ruta_limpio</th>
+<th>notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-0001</td>
+<td>Sesión de la junta de ayer</td>
+<td>Anónimo</td>
+<td>Hemeroteca digital BNC</td>
+<td><a href="https://…/1910/03/02/p3">https://…/1910/03/02/p3</a></td>
+<td>1910-03-02</td>
+<td>2027-03-14T18:22</td>
+<td>El Tiempo; nota; página 3, sección local</td>
+<td>dominio_publico</td>
+<td>2</td>
+<td>9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08</td>
+<td>crudo/P-0001.html</td>
+<td>limpio/P-0001.txt</td>
+<td>error_ocr 4 % sobre 100 palabras</td>
+</tr>
+<tr>
+<td>N-0001</td>
+<td>Ley 23 de 1982</td>
+<td>Congreso de Colombia</td>
+<td>Secretaría del Senado</td>
+<td><a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html">http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html</a></td>
+<td>1982-01-28</td>
+<td>2027-03-14T18:40</td>
+<td>Congreso; ley; texto consolidado</td>
+<td>norma_oficial</td>
+<td>4</td>
+<td>2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae</td>
+<td>crudo/N-0001.html</td>
+<td>limpio/N-0001.txt</td>
+<td></td>
+</tr>
+<tr>
+<td>P-0002</td>
+<td>Sesión de la junta de ayer</td>
+<td>Anónimo</td>
+<td>Hemeroteca digital BNC</td>
+<td><a href="https://…/1910/03/02/p3-bis">https://…/1910/03/02/p3-bis</a></td>
+<td>1910-03-02</td>
+<td>2027-03-14T18:23</td>
+<td>El Tiempo; nota; página 3, sección local</td>
+<td>dominio_publico</td>
+<td>E1</td>
+<td>9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08</td>
+<td>crudo/P-0002.html</td>
+<td></td>
+<td>Duplicado exacto de P-0001; excluido; conserva id</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Reglas de integridad</h2>
+<p>El cuaderno las aplica en una función que se ejecuta cada vez que el catálogo se regenera. Una fila que falla cualquiera de las cinco se lista; un catálogo con filas que fallan no entra al análisis.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Regla</th>
+<th>Qué comprueba</th>
+<th>Qué se rompe si falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ningún campo obligatorio vacío</td>
+<td>Una pregunta de la cadena de procedencia sin respuesta</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fechas en formato ISO; <code>fecha_descarga</code> posterior a <code>fecha_documento</code></td>
+<td>La pieza no se puede situar en el tiempo</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>hash_sha256</code> igual al hash recalculado del archivo en <code>ruta_crudo</code></td>
+<td>No se sabe si el archivo es el que se tomó</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ningún <code>id</code> repetido</td>
+<td>Dos piezas se citan igual</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>criterio_inclusion</code> existe en el protocolo</td>
+<td>La pieza entró sin razón escrita</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Tabla de decisiones a mano</h2>
+<p><code>decisiones.csv</code> tiene las columnas <code>id</code>, <code>escena</code>, <code>derechos</code>, <code>criterio_inclusion</code>, <code>notas</code>, <code>fecha_decision</code>, <code>propuesta_modelo</code>. El cuaderno la une al catálogo por <code>id</code>. Así las decisiones que ningún programa puede tomar quedan en un archivo con fecha que el programa lee, y el catálogo sigue siendo regenerable.</p>
+<h2>Cómo se cita una pieza</h2>
+<p>En el informe, cada cita lleva el <code>id</code> y la posición en la tabla de unidades: <code>(P-0001, oración 12)</code>. Un lector va del <code>id</code> al catálogo, del catálogo a <code>ruta_crudo</code>, y del hash a la certeza de que lee lo mismo.</p>
+<hr />
+<h1 id="protocolo-de-corpus">Protocolo de corpus</h1>
+<p><strong>Estudiante:</strong>
+<strong>Proyecto (una frase):</strong>
+<strong>Pregunta de investigación que el corpus debe poder responder:</strong>
+<strong>Versión:</strong> protocolo (semana 3) / informe de corpus (semana 8)
+<strong>Modelos de lenguaje usados y para qué:</strong></p>
+<h2>Para qué sirve este documento</h2>
+<p>El protocolo es la decisión de qué es el corpus, escrita antes de recolectarlo, de modo que otra persona pueda ejecutarla. En la semana 8 se amplía con las secciones del informe de corpus. Todo lo que diga aquí debe poder cotejarse con el catálogo y con los cuadernos.</p>
+<h2>1. Delimitación</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Entra</th>
+<th>Queda afuera</th>
+<th>Por qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo de documento</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Periodo</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Productores o fuentes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Asunto o criterio temático</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Lengua y variedad</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Unidad de análisis</strong> (documento, párrafo, oración, artículo, otro) y por qué:</p>
+<p><strong>Qué cambiaría del corpus si una dimensión se moviera</strong> (por ejemplo, si el periodo empezara cinco años antes):</p>
+<h2>2. Criterios de inclusión y exclusión</h2>
+<p>Numere los criterios. El catálogo usará estos números en la columna <code>criterio_inclusion</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Criterio de inclusión</th>
+<th>Cómo se verifica en una pieza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Criterio de exclusión</th>
+<th>Cómo se verifica en una pieza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E2</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>3. Fuentes</h2>
+<p>Una fila por fuente. "Forma de entrega" es descarga directa, interfaz de programación, buscador, visor o navegación.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Dirección</th>
+<th>Forma de entrega</th>
+<th>robots.txt y términos permiten</th>
+<th>Ritmo de petición</th>
+<th>Régimen de derechos</th>
+<th>Método de recolección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Evaluación de las fuentes con los criterios de Valles</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Autenticidad</th>
+<th>Credibilidad</th>
+<th>Representatividad</th>
+<th>Interpretabilidad</th>
+<th>Fuente más débil en…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Para cada criterio, escriba qué sabe, qué no sabe y qué haría para saberlo. "Alta" o "baja" sin razón no es una evaluación.</p>
+<h2>5. Lo que no se descarga</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Por qué no</th>
+<th>Alternativa (solicitud de acceso, recolección manual con registro, muestra, exclusión)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. Derechos y datos personales</h2>
+<p><strong>Régimen de derechos por fuente</strong> (dominio público, norma oficial, licencia abierta, uso académico con cita, acceso restringido):</p>
+<p><strong>¿Hay piezas con datos personales de personas vivas?</strong> Si sí, qué base tiene el proyecto para tratarlos, cómo se guardan, cuándo se eliminan. Si no se puede responder, se excluyen.</p>
+<p><strong>Qué se podrá publicar del corpus terminado</strong> (catálogo, textos, cuadernos) y qué no:</p>
+<h2>7. Plan de recolección</h2>
+<p><strong>Lista de lo que se va a pedir, revisada a mano</strong> (adjuntar como archivo):</p>
+<p><strong>Cuaderno de recolección</strong> (nombre del archivo y fecha de la primera ejecución):</p>
+<p><strong>Cómo se detectará que la fuente cambió entre dos ejecuciones:</strong></p>
+<h2>8. Muestreo y saturación</h2>
+<p><strong>¿El corpus es exhaustivo dentro de la delimitación o es una muestra?</strong> Si es muestra, con qué regla se eligen las piezas y cuándo se deja de recolectar.</p>
+<h2>Solo en el informe de corpus (semana 8)</h2>
+<h3>9. Declaración de datos</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta y documento donde consta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Razón de la curaduría: por qué estos textos y no otros</td>
+<td></td>
+</tr>
+<tr>
+<td>Variedad de lengua</td>
+<td></td>
+</tr>
+<tr>
+<td>Productores y situación de producción</td>
+<td></td>
+</tr>
+<tr>
+<td>Características del texto: género, extensión, periodo</td>
+<td></td>
+</tr>
+<tr>
+<td>Procedencia y derechos</td>
+<td></td>
+</tr>
+<tr>
+<td>Quién construyó el corpus y desde qué posición</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>10. Los números del catálogo</h3>
+<p>Pegue aquí las tablas que produce el cuaderno: piezas por fuente, por periodo, por régimen de derechos, por criterio de inclusión. Cada tabla con el nombre del cuaderno y la celda que la produce.</p>
+<h3>11. Limpieza y pérdidas</h3>
+<p>Tabla de pérdidas de la semana 5 y porcentaje de error de OCR por fuente, con la muestra sobre la que se estimó.</p>
+<h3>12. Primera lectura computacional</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Instrumento</th>
+<th>Qué produce</th>
+<th>Qué sugiere</th>
+<th>Qué líneas se leyeron para decirlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>13. Auditoría de la lectura asistida</h3>
+<p><strong>Instrucción (versión y archivo):</strong>
+<strong>Muestra (tamaño y cómo se eligió):</strong>
+<strong>Proporción de acuerdo:</strong>
+<strong>Kappa:</strong>
+<strong>Tipología de desacuerdos</strong> (cuántos de cada tipo):
+<strong>Decisión</strong> (aceptar con tasa declarada, corregir y repetir, rechazar) <strong>y razón:</strong></p>
+<h3>14. Lo que queda abierto</h3>
+<p>Fuentes que no se pudieron recolectar y por qué. Pérdidas de la limpieza que podrían importar para otras preguntas. Categorías que fallaron en la auditoría. Qué parte del corpus no se leyó. Qué documento ausente cambiaría más el corpus si entrara.</p>
+<h3>15. Cómo reconstruir este corpus</h3>
+<p>Instrucciones para otra persona: qué instalar (<code>requirements.txt</code>), en qué orden ejecutar los cuadernos, qué debería obtener y cómo comprobarlo (hash del catálogo).</p>
+<h2>Declaración</h2>
+<p>Declaro que la delimitación, los criterios y las decisiones de este protocolo son míos. Donde usé un modelo de lenguaje lo he indicado, y respondo por la frontera del corpus que aquí propongo.</p>
+<p>Firma y fecha:</p>
+<hr />
+<h1 id="registro-de-frontera-corpus">Registro de frontera del corpus</h1>
+<p><strong>Estudiante:</strong>
+<strong>Proyecto:</strong>
+<strong>Modelos usados, versiones y fechas:</strong>
+<strong>Instrucciones versionadas (archivos):</strong>
+<strong>Registro de llamadas (archivo <code>.jsonl</code> con fecha, modelo, instrucción y respuesta):</strong></p>
+<h2>Para qué sirve este registro</h2>
+<p>No es un informe de uso de IA. Es la evidencia de que usted sabe, operación por operación, dónde terminó la máquina y dónde empezó usted en la construcción de su corpus. Un registro bien hecho permite que otra persona reconstruya qué parte del corpus es salida de un sistema y qué parte es decisión suya, por la que responde. Se llena a lo largo del curso y se entrega completo con el informe de la semana 8.</p>
+<h2>Operaciones del curso con la máquina</h2>
+<p>Una fila por operación. Si una operación tuvo varias iteraciones, una fila por iteración. La columna "tipo de inferencia" usa las categorías del curso 1 del programa: D (deductiva: se sigue por forma), I (inductiva: generaliza sobre lo que hay), A (abductiva: introduce una hipótesis o categoría nueva).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Operación</th>
+<th>Qué propuso el modelo (literal o resumen fiel)</th>
+<th>Tipo de inferencia</th>
+<th>Qué decidí (aceptar, corregir, rechazar, reformular)</th>
+<th>Criterio de mi decisión</th>
+<th>¿Quién responde si está mal?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Lista de tipos de documento y fuentes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Corrección de errores de Python</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Función de descarga</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Valores de <code>escena</code> y <code>criterio_inclusion</code> para diez piezas</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Expresiones regulares de limpieza</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Corrección de OCR en un fragmento</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Palabras para dominios léxicos</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Interpretación de una lista de colocaciones</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Etiquetas sobre la muestra auditada</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Borrador de la declaración de datos</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>La auditoría de la semana 7 en detalle</h2>
+<p><strong>Instrucción (versión):</strong>
+<strong>Muestra (tamaño y regla de selección):</strong>
+<strong>Proporción de acuerdo:</strong>
+<strong>Kappa:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tipo de desacuerdo</th>
+<th>Cuántos</th>
+<th>Ejemplo (id de la unidad)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El modelo generalizó desde su entrenamiento algo que aquí significa otra cosa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>El modelo forzó una categoría cuando ninguna aplicaba</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>El modelo ignoró un contexto local que yo conozco</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>El modelo leyó literalmente una ironía o una fórmula</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Yo me equivoqué</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Otro</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decisión</strong> (aceptar con tasa declarada, corregir la instrucción y repetir, rechazar) <strong>y razón:</strong></p>
+<p><strong>Si acepté, qué categorías quedan marcadas como problemáticas en el informe:</strong></p>
+<h2>Lo que no se le pidió al modelo</h2>
+<p>Confirme que ninguna de estas dos cosas ocurrió y, si ocurrió, explique cómo se corrigió:</p>
+<ul>
+<li>Decidir qué unidades entran al corpus.</li>
+<li>Producir un texto que luego se citó como fuente.</li>
+</ul>
+<h2>Los casos difíciles</h2>
+<p>Señale al menos una operación en que la distinción entre lo que propuso el modelo y lo que decidió usted fue difícil de trazar. Explique por qué. Esos casos son los más valiosos del registro.</p>
+<h2>Aceptaciones acríticas</h2>
+<p>Revise el registro y marque las operaciones en que aceptó la propuesta del modelo sin un criterio que pueda nombrar. No las borre: anótelas. Diga qué habría hecho falta para que la aceptación fuera una decisión.</p>
+<h2>Balance</h2>
+<p><strong>Operaciones que la máquina podría haber verificado sola</strong> (por ejemplo, el hash, las reglas de integridad):</p>
+<p><strong>Operaciones que exigieron mi conocimiento del tema, del periodo o de las fuentes:</strong></p>
+<p><strong>Operaciones por las que respondo yo y nadie más:</strong></p>
+<p><strong>Dónde está la frontera en la construcción de este corpus, en una frase:</strong></p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="bibliografia.html">← Bibliografía</a><a href="practicas.html">Prácticas →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

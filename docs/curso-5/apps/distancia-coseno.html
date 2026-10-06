@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Distancia y similitud entre dos frases</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+textarea{width:100%;min-height:3.6rem;resize:vertical}
+.lbl{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.big{font-family:var(--mono);font-size:1.6rem;color:var(--ink)}
+.comun{color:var(--accent);font-weight:700}
+#lectura{color:var(--ink)}
+#ang{width:100%;max-width:16rem;height:auto;display:block}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 5 · Semana 1</span>
+  <h1>Distancia y similitud entre dos frases</h1>
+  <p>Escriba dos frases cortas. La app las convierte en bolsas de palabras, calcula el coseno entre los dos vectores y muestra por qué se parecen o no. Después pruebe los pares preparados: cada uno muestra algo que la medida no captura.</p>
+
+  <div class="card">
+    <div class="grid">
+      <div><span class="lbl">Frase A</span><textarea id="a" aria-label="Frase A">El arriendo subió el doble en tres años</textarea></div>
+      <div><span class="lbl">Frase B</span><textarea id="b" aria-label="Frase B">El arriendo subió y nos mudamos a otro barrio</textarea></div>
+    </div>
+    <div class="row" style="margin-top:.5rem">
+      <label class="lbl"><input type="checkbox" id="stop" checked /> quitar palabras vacías (el, de, en, y…)</label>
+      <span class="lbl">pares preparados:</span>
+      <button data-p="orden">orden</button><button data-p="negacion">negación</button><button data-p="sinonimos">sinónimos</button><button data-p="polisemia">polisemia</button><button data-p="longitud">longitud</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <span class="lbl">coseno</span>
+        <div class="big" id="cos">0,00</div>
+        <svg id="ang" viewBox="0 0 220 130" role="img" aria-label="Ángulo entre los dos vectores"></svg>
+      </div>
+      <div style="overflow-x:auto"><table id="tabla"></table></div>
+    </div>
+    <p id="lectura"></p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: una medida de similitud afirma algo muy preciso (aquí, que dos frases comparten palabras en proporciones parecidas) y nada más. Todo lo que la medida no ve (orden, negación, sinónimos, sentido en contexto) sigue estando en el texto y le corresponde a usted. Los embeddings de la semana 2 ven más que la bolsa de palabras, pero también tienen un "nada más".</p>
+<script>
+  const STOP = new Set("el la los las de del en un una unos unas y o a que es por con para no se mi su sus al lo le les me te nos como más muy ya hay son fue era está están este esta ese esa".split(" "));
+  const PARES = {
+    orden: ["La junta de vecinos presionó a la alcaldía", "La alcaldía presionó a la junta de vecinos"],
+    negacion: ["El subsidio alcanza para la cuota inicial", "El subsidio no alcanza para la cuota inicial"],
+    sinonimos: ["El arriendo subió el doble", "La renta se duplicó"],
+    polisemia: ["Cerraron la planta de la fábrica", "La planta del patio se secó"],
+    longitud: ["Robaron el celular en la parada", "Robaron el celular en la parada del bus de la avenida mientras la gente esperaba bajo la lluvia una tarde de mayo"],
+  };
+  function tokens(s){
+    s = s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    let t = s.match(/[a-zñ]+/g) || [];
+    if (document.getElementById('stop').checked) t = t.filter(w => !STOP.has(w));
+    return t;
+  }
+  function bolsa(t){ const b = {}; t.forEach(w => b[w] = (b[w] || 0) + 1); return b; }
+  const f2 = v => v.toFixed(2).replace('.', ',');
+
+  function calcular(){
+    const A = bolsa(tokens(document.getElementById('a').value)), B = bolsa(tokens(document.getElementById('b').value));
+    const vocab = Array.from(new Set(Object.keys(A).concat(Object.keys(B)))).sort();
+    let dot = 0, na = 0, nb = 0;
+    vocab.forEach(w => { const x = A[w] || 0, y = B[w] || 0; dot += x * y; na += x * x; nb += y * y; });
+    const cos = (na && nb) ? dot / Math.sqrt(na * nb) : 0;
+    document.getElementById('cos').textContent = f2(cos);
+    let h = '<tr><th>Palabra</th><th>A</th><th>B</th><th>A·B</th></tr>';
+    vocab.forEach(w => { const x = A[w] || 0, y = B[w] || 0; h += `<tr${x && y ? ' class="comun"' : ''}><td>${w}</td><td>${x}</td><td>${y}</td><td>${x * y}</td></tr>`; });
+    h += `<tr><th>suma</th><th>‖A‖²=${na}</th><th>‖B‖²=${nb}</th><th>${dot}</th></tr>`;
+    document.getElementById('tabla').innerHTML = h;
+    const ang = Math.acos(Math.max(-1, Math.min(1, cos)));
+    const x2 = 20 + 150 * Math.cos(ang), y2 = 110 - 150 * Math.sin(ang);
+    document.getElementById('ang').innerHTML = `<line x1="20" y1="110" x2="190" y2="110" stroke="var(--c-app)" stroke-width="2.5"/><text x="150" y="124" style="fill:var(--c-app)">A</text>
+      <line x1="20" y1="110" x2="${Math.max(20, x2)}" y2="${y2}" stroke="var(--c-doc)" stroke-width="2.5"/><text x="${Math.max(20, x2) + 4}" y="${y2 - 4}" style="fill:var(--c-doc)">B</text>
+      <path d="M50 110 A30 30 0 0 0 ${20 + 30 * Math.cos(ang)} ${110 - 30 * Math.sin(ang)}" fill="none" stroke="var(--muted)"/><text x="56" y="100">${Math.round(ang * 180 / Math.PI)}°</text>`;
+    const comunes = vocab.filter(w => A[w] && B[w]);
+    let l = `Coseno ${f2(cos)}: el producto de las dos bolsas es ${dot}, dividido por el producto de sus longitudes. `;
+    l += comunes.length ? `Lo que las acerca son ${comunes.length === 1 ? 'la palabra' : 'las palabras'} ${comunes.map(w => '«' + w + '»').join(', ')}. ` : `No comparten ninguna palabra: para esta medida son ortogonales, aunque signifiquen lo mismo. `;
+    l += `Lo que la medida no mira: el orden de las palabras, la negación, los sinónimos y el sentido de cada palabra en su contexto.`;
+    document.getElementById('lectura').textContent = l;
+  }
+  const notas = {
+    orden: "Mismas palabras, mismo coseno, sentido opuesto: la bolsa de palabras no sabe quién presiona a quién.",
+    negacion: "Un «no» de más deja el coseno casi en 1. Para la medida, afirmar y negar lo mismo es casi lo mismo.",
+    sinonimos: "Dicen lo mismo y el coseno es 0. La medida cuenta formas, no significados; un embedding entrenado sí acercaría estas frases.",
+    polisemia: "«Planta» cuenta como la misma palabra en los dos usos. La coincidencia es del diccionario, no del sentido.",
+    longitud: "La frase larga contiene a la corta, pero el coseno baja porque la longitud diluye lo común. La medida premia la proporción, no la inclusión.",
+  };
+  document.querySelectorAll('button[data-p]').forEach(b => b.addEventListener('click', () => {
+    const p = PARES[b.dataset.p]; document.getElementById('a').value = p[0]; document.getElementById('b').value = p[1];
+    document.querySelectorAll('button[data-p]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    calcular(); document.getElementById('lectura').textContent += ' ' + notas[b.dataset.p];
+  }));
+  ['a', 'b'].forEach(id => document.getElementById(id).addEventListener('input', calcular));
+  document.getElementById('stop').addEventListener('change', calcular);
+  calcular();
+</script>
+</body>
+</html>

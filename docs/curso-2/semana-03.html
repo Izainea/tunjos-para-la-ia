@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 2 · Semana 3 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Cómo se recolecta un corpus de modo que otro pueda repetir la recolección y obtener lo mismo, sin tomar lo que no se puede tomar?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-2/semana-03.html" />
+    <meta property="og:title" content="Curso 2 · Semana 3" />
+    <meta property="og:description" content="¿Cómo se recolecta un corpus de modo que otro pueda repetir la recolección y obtener lo mismo, sin tomar lo que no se puede tomar?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-2/semana-03.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 2</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub is-active">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 2 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 3. Recolección legal y reproducible</h1>
+          <p class="desc">¿Cómo se recolecta un corpus de modo que otro pueda repetir la recolección y obtener lo mismo, sin tomar lo que no se puede tomar?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>¿Cómo se recolecta un corpus de modo que otro pueda repetir la recolección y obtener lo mismo, sin tomar lo que no se puede tomar?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Con un cuaderno que lee archivos y una delimitación escrita, el estudiante está listo para la operación que más se automatiza y que más se malentiende: traer los documentos desde la fuente. La automatización que el curso enseña no sirve para descargar más, sirve para descargar igual. Un programa de recolección es la forma ejecutable del protocolo: dice de dónde, con qué criterio, a qué ritmo y qué no. Otro investigador lo corre y obtiene el mismo corpus o una diferencia que el programa mismo detecta. Esta semana cierra el primer producto, el protocolo de corpus, porque solo ahora el estudiante sabe lo suficiente sobre sus fuentes para escribir cómo va a recolectarlas.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Las fuentes se distinguen por cómo entregan sus documentos, y esa distinción decide el programa. Los repositorios de acceso abierto y las bibliotecas digitales ofrecen descarga directa de archivos; las hemerotecas digitales, como la de la Biblioteca Nacional de Colombia, ofrecen visores y a veces descarga por número; los portales de datos abiertos como datos.gov.co ofrecen conjuntos de datos en CSV y una interfaz de programación; muchos sitios de entidades públicas ofrecen solo páginas web que hay que leer con un programa.<sup class="mark">a</sup> El protocolo de corpus registra, para cada fuente, cuál de estas formas usa, porque de ella dependen el método, el ritmo y los derechos.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Una interfaz de programación de aplicaciones, o API, es una dirección a la que un programa pide datos y recibe una respuesta estructurada, casi siempre en formato JSON. Es la forma de recolección más limpia porque la fuente misma la diseñó para eso; datos.gov.co la ofrece para todos sus conjuntos.</aside>
+
+<ol start="2">
+<li>
+<p>La descarga es un criterio escrito, no una aspiradora. El programa que recolecta recibe la lista de lo que el protocolo dice que entra (un rango de fechas, un periódico, una categoría de norma, una consulta en el buscador) y trae exactamente eso. Lo que se trae de más "por si acaso" no es corpus: es carpeta, y vuelve a plantear el problema de la semana 1. El curso enseña a escribir primero la lista de lo que se va a pedir, revisarla a mano, y solo después ejecutar la descarga.</p>
+</li>
+<li>
+<p>Descargar de un sitio es entrar en una relación con quien lo mantiene, y esa relación tiene reglas escritas. El archivo <code>robots.txt</code> de cada sitio dice qué partes acepta que los programas visiten; el documento RFC 9309 de 2022 fija su formato. Los términos de uso dicen qué se puede hacer con lo descargado. Y la cortesía técnica tiene forma concreta: identificarse en cada petición con un nombre y un correo, esperar entre peticiones, no repetir lo que ya se tiene, y detenerse ante un error en lugar de insistir.<sup class="mark">b</sup> Un programa que ignora esto puede tumbar un servidor pequeño de un archivo regional, y ese es un daño que el investigador causa.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Un segundo de espera entre peticiones es un ritmo razonable para la mayoría de sitios públicos; mil documentos tardan diecisiete minutos. La prisa por descargar en menos no tiene justificación en investigación.</aside>
+
+<ol start="4">
+<li>
+<p>Hay cosas que no se descargan, y la lista se escribe en el protocolo. No se descargan documentos con datos personales de personas vivas cuando el proyecto no tiene cómo tratarlos conforme a la Ley 1581 de 2012; no se descarga lo que los términos del sitio prohíben reproducir; no se descarga lo que está detrás de una suscripción o una credencial de acceso ajena; no se descarga lo que el protocolo no incluyó. Para cada uno de estos casos el curso ofrece una alternativa legítima: pedir el conjunto por solicitud de acceso a la información bajo la Ley 1712 de 2014, recolectar a mano con registro, o trabajar con una muestra que sí se puede tomar.</p>
+</li>
+<li>
+<p>El archivo crudo es intocable. Lo que llega de la fuente se guarda tal como llegó, en una carpeta <code>crudo</code> que no se edita nunca, con tres datos que lo acompañan desde ese instante: la dirección de donde vino, la fecha y hora de la descarga, y una huella criptográfica del contenido.<sup class="mark">c</sup> Todo lo que el curso hace después (limpiar, segmentar, normalizar) produce copias en otras carpetas. Si algo sale mal en cualquier paso, siempre se puede volver al crudo y repetir.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">c</span> La huella, o hash, es una cadena corta calculada a partir del contenido completo del archivo. Dos archivos idénticos tienen la misma huella; un solo carácter distinto produce una huella distinta. El curso usa SHA-256, disponible en la biblioteca estándar de Python. La semana 4 la usa para detectar duplicados.</aside>
+
+<ol start="6">
+<li>Reproducible quiere decir que el cuaderno de recolección, ejecutado por otra persona en otra máquina, produce el mismo corpus o explica la diferencia. Las fuentes cambian: una nota se corrige, un conjunto de datos se actualiza, una página desaparece. El hash detecta el cambio; la bitácora de descarga, que registra cada petición con su resultado, permite decir qué cambió y cuándo. Reproducible no es inmutable: es trazable.</li>
+</ol>
+<figure class="wide">
+<svg viewBox="0 0 680 290" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Cadena de recolección: el protocolo produce una lista de lo que se pide; el programa hace peticiones identificadas y con pausa a la fuente, respetando robots.txt; cada respuesta se guarda intacta en la carpeta crudo con URL, fecha y hash, y cada petición se anota en la bitácora de descarga. Un cuadro aparte lista lo que no se descarga.">
+<style>.w3k{font-family:var(--mono);font-size:10px;letter-spacing:.05em;fill:var(--muted)} .w3t{font-family:var(--text);font-size:12px;fill:var(--ink)} .w3s{font-family:var(--text);font-size:11px;fill:var(--muted)} .w3f{fill:var(--surface);stroke:var(--rule);stroke-width:1} .w3a{fill:none;stroke:var(--muted);stroke-width:1.3} .w3c{font-family:var(--mono);font-size:10.5px;fill:var(--c-app)} .w3n{fill:none;stroke:var(--c-fil);stroke-width:1.2;stroke-dasharray:5 4} .w3r{font-family:var(--mono);font-size:10px;fill:var(--c-fil)}</style>
+<rect x="16" y="30" width="140" height="64" rx="3" class="w3f"/><text x="24" y="48" class="w3k">PROTOCOLO</text><text x="24" y="68" class="w3t">lista de lo que se pide</text><text x="24" y="84" class="w3s">revisada a mano</text>
+<path class="w3a" d="M156 62 L196 62"/><path class="w3a" d="M190 57 L197 62 L190 67"/>
+<rect x="198" y="30" width="150" height="64" rx="3" class="w3f"/><text x="206" y="48" class="w3k">PROGRAMA</text><text x="206" y="68" class="w3t">petición identificada</text><text x="206" y="84" class="w3s">pausa de 1 s · robots.txt</text>
+<path class="w3a" d="M348 62 L388 62"/><path class="w3a" d="M382 57 L389 62 L382 67"/>
+<rect x="390" y="30" width="110" height="64" rx="3" class="w3f"/><text x="398" y="48" class="w3k">FUENTE</text><text x="398" y="68" class="w3t">responde</text><text x="398" y="84" class="w3s">o rechaza</text>
+<path class="w3a" d="M445 94 L445 130"/><path class="w3a" d="M440 124 L445 131 L450 124"/>
+<rect x="340" y="132" width="220" height="80" rx="3" class="w3f"/><text x="348" y="150" class="w3k">CRUDO (no se edita)</text><text x="348" y="170" class="w3c">url · fecha_descarga · sha256</text><text x="348" y="188" class="w3t">el archivo tal como llegó</text><text x="348" y="204" class="w3s">todo lo demás es copia</text>
+<path class="w3a" d="M273 94 L273 160 L338 160"/><path class="w3a" d="M332 155 L339 160 L332 165"/>
+<rect x="110" y="132" width="150" height="80" rx="3" class="w3f"/><text x="118" y="150" class="w3k">BITÁCORA</text><text x="118" y="170" class="w3t">una fila por petición</text><text x="118" y="188" class="w3s">qué, cuándo, resultado,</text><text x="118" y="204" class="w3s">hash o error</text>
+<path class="w3a" d="M273 94 L273 160 L262 160"/>
+<rect x="16" y="226" width="544" height="50" rx="3" class="w3n"/>
+<text x="26" y="246" class="w3r">NO SE DESCARGA</text>
+<text x="26" y="264" class="w3s">datos personales sin tratamiento previsto · lo que los términos prohíben · lo que está tras una credencial ajena · lo que el protocolo no incluyó</text>
+<text x="580" y="160" class="w3s" transform="rotate(90 580 160)">trazable</text>
+</svg>
+<figcaption><b>Figura 3.</b> La recolección reproducible. Lo que hay que ver es que el archivo crudo nace con su dirección, su fecha y su huella, y que la lista de lo que no se descarga es parte del programa, no una nota al margen.</figcaption>
+</figure>
+
+<p>La diferencia entre las dos formas de descargar no está en la herramienta sino en qué se escribe antes.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Descargar como aspiradora</th>
+<th>Descargar como criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Se trae todo lo que el sitio deja traer</td>
+<td>Se trae lo que la lista revisada a mano dice</td>
+</tr>
+<tr>
+<td>El criterio de inclusión se aplica después, sobre la carpeta</td>
+<td>El criterio de inclusión está en la lista, antes de pedir</td>
+</tr>
+<tr>
+<td>No hay bitácora: lo que hay es lo que hay</td>
+<td>Cada petición tiene fila, fecha, resultado y hash</td>
+</tr>
+<tr>
+<td>Lo que no se debía tomar ya está tomado</td>
+<td>Lo que no se toma está escrito y tiene alternativa</td>
+</tr>
+<tr>
+<td><em>Otro no puede repetirlo ni saber qué falta</em></td>
+<td><em>Otro lo repite y explica la diferencia</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="7">
+<li>El protocolo de corpus se entrega esta semana porque reúne lo aprendido en las tres primeras: la delimitación y los criterios de Valles de la semana 1, el registro con campos de la semana 2, y las fuentes, el método y los límites de recolección de esta. Es un documento de dos a cuatro páginas, con la plantilla de <code>plantillas/protocolo-de-corpus.md</code>, que otro investigador podría leer y ejecutar. El cuaderno de recolección, que se escribe en el taller, es su anexo.</li>
+</ol>
+<h2>IA y exigencia</h2>
+<p>El modelo puede escribir la primera versión de una función de descarga, y esta semana se le pide eso: a partir de la descripción de una fuente, proponer el código que pide un documento, espera, lo guarda en <code>crudo</code> y anota la bitácora. El estudiante lee ese código línea por línea antes de ejecutarlo, verifica que respeta la pausa, que se identifica y que no toca nada fuera de la lista, y anota en el cuaderno qué corrigió. Lo que debe poder defender sin la máquina es la lista de lo que pidió y la lista de lo que no: ninguna de las dos la puede escribir el modelo.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Congreso de Colombia. Ley 1712 de 2014, Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional. Títulos I y II. <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1712_2014.html">http://www.secretariasenado.gov.co/senado/basedoc/ley_1712_2014.html</a></li>
+<li>Congreso de Colombia. Ley 1581 de 2012, protección de datos personales. Títulos I a III. <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html">http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html</a></li>
+<li>Koster, M., Illyes, G., Zeller, H. y Sassman, L. (2022). <em>Robots Exclusion Protocol</em>. RFC 9309. Internet Engineering Task Force. Secciones 1 y 2. <a href="https://www.rfc-editor.org/rfc/rfc9309">https://www.rfc-editor.org/rfc/rfc9309</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Congreso de Colombia. Ley 23 de 1982, sobre derechos de autor. Arts. 1 a 45. <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html">http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html</a></li>
+<li>Reitz, K. y colaboradores. <em>Requests: HTTP for Humans</em>. Documentación. <a href="https://requests.readthedocs.io/">https://requests.readthedocs.io/</a></li>
+<li>Richardson, L. <em>Beautiful Soup Documentation</em>. <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></li>
+<li>Gobierno de Colombia. Portal de datos abiertos. <a href="https://www.datos.gov.co/">https://www.datos.gov.co/</a></li>
+<li><em>The Programming Historian en español</em>. Lección "Descargar páginas web con Python". <a href="https://programminghistorian.org/es/">https://programminghistorian.org/es/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>La Ley 1712 parte del principio de que la información pública es pública por defecto y que la reserva es la excepción que la entidad debe justificar. Eso cambia la posición del investigador: puede pedir. <em>¿Qué conjunto de documentos de su proyecto podría pedir por solicitud de acceso en lugar de descargarlo pieza por pieza?</em></li>
+<li>La Ley 1581 define dato personal, dato sensible y tratamiento, y hace responsable a quien recolecta. Léala pensando en el archivo <code>crudo</code>: guardar ya es tratar. <em>¿Qué piezas de su corpus contienen datos personales, y tiene el proyecto una base para tratarlos?</em></li>
+<li>El RFC 9309 es corto y técnico. Lo que interesa es su lógica: el sitio declara, el programa obedece, y lo que no está declarado no está permitido por omisión sino sujeto a juicio. <em>Abra el <code>robots.txt</code> de una de sus fuentes. ¿Qué dice sobre lo que usted quiere descargar?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Primera recolección reproducible sobre el caso demostrativo y luego sobre una fuente propia. Guía completa en <code>practicas/practica-03-recoleccion-reproducible.md</code>; bloques en <code>practicas/cuaderno-apoyo.md</code>, sección "Semana 3".</p>
+<ol>
+<li>Leer el <code>robots.txt</code> de datos.gov.co y de la Secretaría del Senado y anotar qué permiten.</li>
+<li>Pedir un conjunto de datos de datos.gov.co por su interfaz de programación, guardarlo en <code>crudo</code> con su dirección, fecha y hash, y anotar la bitácora.</li>
+<li>Pedir una norma de la Secretaría del Senado como página web, con identificación y pausa, y guardarla intacta.</li>
+<li>Repetir con una fuente propia, sobre una lista de no más de diez piezas revisada a mano.</li>
+<li>Cerrar el cuaderno, reiniciar y ejecutar todo. Comparar los hash de la segunda ejecución con los de la primera.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Forma de entrega</th>
+<th>robots.txt permite</th>
+<th>Ritmo</th>
+<th>Qué no se toma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>datos.gov.co</td>
+<td>Interfaz de programación y CSV</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Secretaría del Senado</td>
+<td>Páginas web</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fuente propia 1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10 min</td>
+<td>Retoma tres fichas de delimitación y pregunta cómo entregan sus fuentes</td>
+<td>Clasifica sus fuentes por forma de entrega</td>
+<td>Fichas de la semana 1</td>
+</tr>
+<tr>
+<td>10 a 30 min</td>
+<td>Expone las formas de entrega y la descarga como criterio escrito</td>
+<td>Escribe la lista de lo que pediría a una fuente</td>
+<td></td>
+</tr>
+<tr>
+<td>30 a 45 min</td>
+<td>Lee en vivo dos <code>robots.txt</code> y los términos de un sitio; expone la cortesía técnica</td>
+<td>Abre el <code>robots.txt</code> de una fuente propia</td>
+<td>Navegador</td>
+</tr>
+<tr>
+<td>45 a 60 min</td>
+<td>Expone lo que no se descarga y las alternativas; el crudo intocable y el hash</td>
+<td>Marca en su ficha lo que no puede tomar</td>
+<td>Figura 3</td>
+</tr>
+<tr>
+<td>60 a 70 min</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>70 a 110 min</td>
+<td>Ejecuta la recolección del caso y acompaña la propia</td>
+<td>Escribe y corre el cuaderno de recolección</td>
+<td>practica-03</td>
+</tr>
+<tr>
+<td>110 a 120 min</td>
+<td>Cierra con la comparación de hash entre dos ejecuciones</td>
+<td>Anota diferencias si las hubo</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: la red del aula bloquea peticiones o el sitio responde con error; tener los archivos del caso descargados de antemano en una carpeta compartida para que el taller continúe. El segundo fallo es el estudiante que quiere descargar todo un sitio "ya que está"; devolverlo a la lista revisada a mano. El tercero es el código propuesto por el modelo sin pausa ni identificación: pedir que se lea en voz alta antes de ejecutar, siempre.</p>
+<h2>Entrega</h2>
+<p>Protocolo de corpus, con la plantilla de <code>plantillas/protocolo-de-corpus.md</code> y el cuaderno de recolección como anexo. Se evalúa que la delimitación esté argumentada con los cuatro criterios, que las exclusiones estén escritas, que cada fuente tenga forma de entrega, régimen de derechos y método de recolección, y que la lista de lo que no se descarga exista. Un protocolo que dice "se descargará todo lo disponible" no está en nivel Básico.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer el capítulo 3 de Gibbs (2012) sobre preparación de datos y el artículo de Wilkinson y coautores (2016) sobre los principios FAIR. Tener en <code>crudo</code> al menos veinte piezas del corpus propio, con bitácora de descarga. Revisar el esquema de campos del registro de la semana 2: la semana 4 lo convierte en el catálogo maestro.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-02.html">← Semana 2. Python mínimo para humanidades</a><a href="semana-04.html">Semana 4. El catálogo maestro →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

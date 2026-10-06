@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 5 · Semana 6 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Si un modelo de temas dice que el corpus habla de veinte cosas y muestra las palabras de cada una, ¿quién decidió que son veinte, y qué es un tema antes de que alguien lo nombre?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-06.html" />
+    <meta property="og:title" content="Curso 5 · Semana 6" />
+    <meta property="og:description" content="Si un modelo de temas dice que el corpus habla de veinte cosas y muestra las palabras de cada una, ¿quién decidió que son veinte, y qué es un tema antes de que alguien lo nombre?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-06.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 5</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub is-active">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 5 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 6. Modelado de temas y lectura distante</h1>
+          <p class="desc">Si un modelo de temas dice que el corpus habla de veinte cosas y muestra las palabras de cada una, ¿quién decidió que son veinte, y qué es un tema antes de que alguien lo nombre?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Si un modelo de temas dice que el corpus habla de veinte cosas y muestra las palabras de cada una, ¿quién decidió que son veinte, y qué es un tema antes de que alguien lo nombre?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">El modelado de temas es el método computacional que más se parece a leer, y por eso es el que más fácilmente se confunde con leer. Produce listas de palabras que parecen asuntos y proporciones que parecen énfasis, y lo hace sobre miles de documentos que nadie va a leer completos. Moretti llamó lectura distante a ese modo de conocer un corpus por sus formas y no por sus páginas, y Arnold y Tilton lo extendieron a las imágenes. Esta semana presenta el modelo de temas por lo que es, una mezcla de distribuciones ajustada a un número de temas fijado de antemano, y presenta la lectura distante por lo que gana y por lo que pierde. La tesis del curso vuelve con otra cara: los temas son sugerencias, y el nombre que se les da es una abducción de quien los lee.</p>
+
+<p>La semana supone el corpus en una fila por documento y lo aprendido en la semana 3 sobre estabilidad: un tema, como un grupo, es un candidato hasta que sobrevive.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Un modelo de temas describe cada documento como una mezcla de temas y cada tema como una distribución sobre palabras. En la asignación latente de Dirichlet (Blei, Ng y Jordan, 2003; Blei, 2012) el número de temas K es un dato de entrada, la representación es la bolsa de palabras y el ajuste busca las K distribuciones que mejor explican los conteos. El modelo no sabe qué es un tema: sabe que ciertas palabras tienden a aparecer juntas y agrupa esa tendencia. Lo que sale es, para cada tema, una lista de palabras ordenadas por probabilidad, y para cada documento, una proporción de cada tema<sup class="mark">a</sup>.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> "Latente" quiere decir que los temas no se observan: se postulan como variables ocultas que explicarían las palabras observadas. "Dirichlet" es la distribución que gobierna cómo se reparten los temas en cada documento y las palabras en cada tema.</aside>
+
+<ol start="2">
+<li>
+<p>Nombrar un tema es una abducción. La lista "arriendo, desalojo, inmobiliaria, familias, cuadra" sugiere un nombre, y el nombre que se elija es una hipótesis sobre por qué esas palabras van juntas. DiMaggio, Nag y Blei (2013) proponen validar un tema de tres formas: que sea interpretable al leer sus palabras, que sea coherente al leer los documentos donde pesa más, y que se comporte como se espera frente a variables externas, por ejemplo el tiempo. Las tres pruebas las hace el investigador; el modelo solo produce las listas.</p>
+</li>
+<li>
+<p>K y la semilla cambian los temas, y la prueba de estabilidad se aplica igual que en la semana 3. Con K igual a diez, "vivienda" es un tema; con K igual a treinta se parte en "arriendo", "desalojo" y "autoconstrucción"; con otra semilla las palabras se redistribuyen. El taller pide dos valores de K y dos semillas, y la tabla de qué temas aparecen en las cuatro corridas con las mismas palabras principales. Los que aparecen son candidatos; los demás se reportan como dependientes del parámetro. Un tema no es un código del curso 4: el código lo asignó alguien leyendo; el tema lo produjo un ajuste contando. Los dos pueden dialogar, y el diálogo es más fecundo cuando no coinciden.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Código (curso 4)</th>
+<th>Tema (modelo de temas)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lo asignó alguien leyendo el fragmento</td>
+<td>Lo produjo un ajuste contando palabras</td>
+</tr>
+<tr>
+<td>Tiene definición, reglas de inclusión y ejemplos</td>
+<td>Tiene una lista de palabras ordenadas por probabilidad</td>
+</tr>
+<tr>
+<td>Un fragmento lo tiene o no lo tiene</td>
+<td>Un documento lo tiene en cierta proporción</td>
+</tr>
+<tr>
+<td>Cambia cuando cambia el libro de códigos</td>
+<td>Cambia cuando cambia K o la semilla</td>
+</tr>
+<tr>
+<td><em>Es una lectura con nombre</em></td>
+<td><em>Es una sugerencia sin nombre</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li>
+<p>La lectura distante es un programa, no un método. Moretti (2015) propuso en "Conjeturas sobre la literatura mundial" que para conocer la literatura del mundo hay que renunciar a leerla y estudiar en cambio sus formas a gran escala: gráficos de producción, mapas de circulación, árboles de géneros. Lo que se gana es un objeto que la lectura cercana no puede ver, la forma de un sistema; lo que se pierde es el texto. Da (2019) revisó decenas de estudios de literatura computacional y encontró resultados que no sobrevivían a reanalizar los datos. La crítica no invalida el programa: muestra que la lectura distante necesita, más que ninguna otra, la prueba de estabilidad que el curso enseña.</p>
+</li>
+<li>
+<p>La visión distante hace con imágenes lo que la lectura distante con textos, y encuentra un problema propio. Arnold y Tilton (2019) señalan que un texto ya viene codificado en palabras y una imagen no: para contarla hay que anotarla primero, y la anotación, hecha por una red neuronal o por una persona, es una interpretación. Un modelo que etiqueta "multitud", "bandera", "noche" en mil fotografías ya decidió qué hay que ver<sup class="mark">b</sup>. El estudiante que trabaja con imágenes modela temas sobre esas etiquetas o sobre las descripciones densas del curso 3, y declara en el registro que su corpus de entrada es una anotación.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Arnold y Tilton usan "distant viewing" en paralelo deliberado con Moretti. Su punto es que el "código" de la imagen, lo que la convierte en dato, no está en la imagen sino en el sistema de anotación, y que ese sistema debe ser explícito.</aside>
+
+<ol start="6">
+<li>Los temas se entregan como sugerencias, con sus condiciones. Un informe que dice "el corpus se organiza en doce temas" afirma más de lo que el método sostiene. Uno que dice "con K igual a doce y esta representación, estos siete temas aparecen de forma estable con estas palabras, y los leemos así por estas razones; los otros cinco dependen del parámetro" afirma lo que puede sostener. La diferencia entre las dos frases es la diferencia entre un infortunio y una aserción.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 250" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="A la izquierda, cuatro documentos como barras apiladas de tres temas en proporciones distintas. A la derecha, los tres temas como listas de palabras ordenadas por probabilidad, sin nombre; un rótulo indica que el nombre lo pone quien lee. Debajo, la nota de que K igual a tres fue una decisión.">
+    <style>.t6{font-family:var(--text);font-size:12px;fill:var(--ink)} .s6{font-family:var(--text);font-size:11px;fill:var(--muted)} .m6{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--muted)} .mf6{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--c-fil)} .bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .A{fill:var(--c-app)} .B{fill:var(--c-doc)} .C{fill:var(--c-blog)}</style>
+    <text x="10" y="18" class="m6">DOCUMENTOS COMO MEZCLAS</text>
+    <g transform="translate(10 30)">
+      <text x="0" y="22" class="s6">doc 1</text><rect x="46" y="10" width="120" height="16" class="A"/><rect x="166" y="10" width="40" height="16" class="B"/><rect x="206" y="10" width="24" height="16" class="C"/>
+      <text x="0" y="52" class="s6">doc 2</text><rect x="46" y="40" width="30" height="16" class="A"/><rect x="76" y="40" width="130" height="16" class="B"/><rect x="206" y="40" width="24" height="16" class="C"/>
+      <text x="0" y="82" class="s6">doc 3</text><rect x="46" y="70" width="60" height="16" class="A"/><rect x="106" y="70" width="50" height="16" class="B"/><rect x="156" y="70" width="74" height="16" class="C"/>
+      <text x="0" y="112" class="s6">doc 4</text><rect x="46" y="100" width="20" height="16" class="A"/><rect x="66" y="100" width="20" height="16" class="B"/><rect x="86" y="100" width="144" height="16" class="C"/>
+      <text x="46" y="140" class="s6">0 %</text><text x="214" y="140" class="s6">100 %</text>
+    </g>
+    <text x="290" y="18" class="m6">TEMAS COMO LISTAS DE PALABRAS</text>
+    <rect x="290" y="30" width="120" height="120" rx="3" class="bx"/><rect x="290" y="30" width="120" height="6" class="A"/>
+    <text x="298" y="54" class="t6">arriendo</text><text x="298" y="70" class="t6">desalojo</text><text x="298" y="86" class="t6">inmobiliaria</text><text x="298" y="102" class="t6">familias</text><text x="298" y="118" class="s6">cuadra · depósito …</text>
+    <rect x="420" y="30" width="120" height="120" rx="3" class="bx"/><rect x="420" y="30" width="120" height="6" class="B"/>
+    <text x="428" y="54" class="t6">bus</text><text x="428" y="70" class="t6">estación</text><text x="428" y="86" class="t6">trancón</text><text x="428" y="102" class="t6">pasaje</text><text x="428" y="118" class="s6">ciclorruta · andén …</text>
+    <rect x="550" y="30" width="120" height="120" rx="3" class="bx"/><rect x="550" y="30" width="120" height="6" class="C"/>
+    <text x="558" y="54" class="t6">fiesta</text><text x="558" y="70" class="t6">parque</text><text x="558" y="86" class="t6">calle</text><text x="558" y="102" class="t6">vecinos</text><text x="558" y="118" class="s6">música · reja …</text>
+    <text x="290" y="172" class="mf6">SIN NOMBRE: EL NOMBRE LO PONE QUIEN LEE, Y ES UNA HIPÓTESIS</text>
+    <text x="290" y="192" class="s6">¿"fiesta, parque, calle, vecinos, reja" es cultura barrial, conflicto por el espacio, o dos temas que K = 3 obligó a fundir?</text>
+    <text x="10" y="232" class="m6">K = 3 FUE UNA DECISIÓN DE ENTRADA · CON K = 5 LA TERCERA LISTA SE PARTE</text>
+  </svg>
+  <figcaption><b>Figura 6.</b> Documentos como mezclas y temas como listas. El modelo entrega proporciones y palabras; el nombre de cada tema, y la decisión de si la tercera lista es uno o dos asuntos, son del lector.</figcaption>
+</figure>
+
+<h2>IA y exigencia</h2>
+<p>Se le pide a un modelo de lenguaje que proponga un nombre para cada tema a partir de sus veinte palabras principales y de tres documentos representativos, y que escriba el código de las corridas con dos K y dos semillas. El estudiante debe poder defender sin el modelo qué temas sobrevivieron a las cuatro corridas, qué nombre adoptó para cada uno y qué documentos de alto peso contradicen ese nombre, y qué diferencia hay entre esos temas y los códigos que él o el curso 4 asignaron leyendo. Los nombres propuestos por el modelo son hipótesis del modelo, y el registro dice cuáles se adoptaron y por qué.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Blei, D. M. (2012). "Probabilistic Topic Models". <em>Communications of the ACM</em> 55(4), 77-84. <a href="https://doi.org/10.1145/2133806.2133826">https://doi.org/10.1145/2133806.2133826</a></li>
+<li>Moretti, F. (2015). <em>Lectura distante</em>. Fondo de Cultura Económica. "Conjeturas sobre la literatura mundial". Edición original: <em>Distant Reading</em>, Verso, 2013.</li>
+<li>Arnold, T. y Tilton, L. (2019). "Distant Viewing: Analyzing Large Visual Corpora". <em>Digital Scholarship in the Humanities</em> 34(Supplement 1), i3-i16. <a href="https://doi.org/10.1093/llc/fqz013">https://doi.org/10.1093/llc/fqz013</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Blei, D. M., Ng, A. Y. y Jordan, M. I. (2003). "Latent Dirichlet Allocation". <em>Journal of Machine Learning Research</em> 3, 993-1022. <a href="https://jmlr.org/papers/v3/blei03a.html">https://jmlr.org/papers/v3/blei03a.html</a></li>
+<li>DiMaggio, P., Nag, M. y Blei, D. (2013). "Exploiting Affinities between Topic Modeling and the Sociological Perspective on Culture". <em>Poetics</em> 41(6), 570-606. <a href="https://doi.org/10.1016/j.poetic.2013.08.004">https://doi.org/10.1016/j.poetic.2013.08.004</a></li>
+<li>Grimmer, J., Roberts, M. E. y Stewart, B. M. (2022). <em>Text as Data</em>. Princeton University Press. Cap. 13, sobre modelos de temas.</li>
+<li>Da, N. Z. (2019). "The Computational Case against Computational Literary Studies". <em>Critical Inquiry</em> 45(3), 601-639. <a href="https://doi.org/10.1086/702594">https://doi.org/10.1086/702594</a></li>
+<li>Underwood, T. (2019). <em>Distant Horizons: Digital Evidence and Literary Change</em>. University of Chicago Press.</li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Blei describe el modelo como una historia generativa: primero se eligen proporciones de temas, luego palabras de cada tema. <em>¿Qué supone esa historia sobre cómo se escribió un documento de su corpus? ¿Es un supuesto razonable para entrevistas, para noticias, para descripciones de imágenes?</em></li>
+<li>Moretti dice que la lectura distante es una condición de conocimiento y que la distancia "no es un obstáculo sino una forma específica de conocimiento". <em>¿Qué sabe usted de su corpus solo porque no lo ha leído entero? ¿Qué deja de saber?</em></li>
+<li>Arnold y Tilton sostienen que las imágenes necesitan un código explícito antes de poder contarse. <em>Si su corpus es visual, ¿cuál es ese código en su caso, y quién lo escribió? Si es textual, ¿hay alguna anotación previa que esté haciendo el mismo trabajo sin declararse?</em></li>
+<li>Da encuentra que muchos resultados de la literatura computacional no sobreviven a cambiar los parámetros. <em>Lea sus críticas como una lista de pruebas de estabilidad. ¿Cuáles ya hace el curso y cuál le falta?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Sobre el corpus propio, con el bloque de la semana 6 del cuaderno de apoyo:</p>
+<ol>
+<li>Ajuste un modelo de temas con dos valores de K, uno bajo y uno alto para el tamaño del corpus, y dos semillas cada uno. Guarde las veinte palabras principales de cada tema y los cinco documentos de mayor peso.</li>
+<li>Empareje los temas entre las cuatro corridas por las palabras que comparten. Llene la tabla:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tema estable (palabras principales)</th>
+<th>Aparece en las 4 corridas</th>
+<th>Nombre propuesto por mí</th>
+<th>Nombre propuesto por el modelo de lenguaje</th>
+<th>Documentos de alto peso que contradicen el nombre</th>
+<th>Código del curso 4 más cercano, si lo hay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="3">
+<li>Grafique la proporción de un tema estable a lo largo del tiempo, con la serie de la semana 5. ¿Se comporta como esperaba? Esa es la tercera prueba de DiMaggio, Nag y Blei.</li>
+<li>Escriba dos frases sobre los temas de su corpus: una que afirme más de lo que el método sostiene y otra que afirme lo que puede sostener. Guarde las dos.</li>
+</ol>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10</td>
+<td>Apertura</td>
+<td>Muestra tres listas de palabras de un tema y pide nombres; anota la variedad</td>
+<td>Propone un nombre y lo defiende en una frase</td>
+<td>Tablero</td>
+</tr>
+<tr>
+<td>10 a 35</td>
+<td>Lectura</td>
+<td>Explica la historia generativa de Blei sobre la pizarra; discute Moretti y Arnold y Tilton</td>
+<td>Responde la guía</td>
+<td>Lecturas centrales</td>
+</tr>
+<tr>
+<td>35 a 55</td>
+<td>Mecanismo</td>
+<td>Corre el bloque del cuaderno sobre el conjunto de ejercicio con K igual a 3 y a 6 y compara en vivo</td>
+<td>Empareja temas entre las dos corridas</td>
+<td>Cuaderno, semana 6</td>
+</tr>
+<tr>
+<td>55 a 65</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>65 a 105</td>
+<td>Taller</td>
+<td>Acompaña las cuatro corridas sobre corpus propios</td>
+<td>Llena la tabla de temas estables</td>
+<td>Cuaderno, semana 6</td>
+</tr>
+<tr>
+<td>105 a 120</td>
+<td>Cierre</td>
+<td>Pide las dos frases, la que afirma de más y la que afirma lo que puede</td>
+<td>Lee sus dos frases</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: el ajuste de temas sobre un corpus pequeño produce listas de palabras sin sentido y el estudiante culpa al método; explicar que el modelo necesita cientos de documentos y que con menos la bolsa de palabras y el agrupamiento de la semana 3 son más honestos. Segundo fallo: los nombres del modelo de lenguaje son tan convincentes que la tabla se llena sin leer documentos; exigir la columna de documentos que contradicen el nombre antes que la del nombre. Tercero: la discusión sobre Moretti se vuelve un debate sobre si "hay que leer"; devolverla a qué sabe el estudiante de su corpus a cada distancia.</p>
+<h2>Bitácora</h2>
+<p>Registre las cuatro corridas, la tabla de temas estables, la serie del tema elegido y las dos frases. Añada una línea sobre qué tema le sorprendió y por qué: ese tema es candidato a hecho sorprendente para la ficha de hipótesis de la semana 8.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Tufte (2001), capítulos 2 y 4, y Drucker (2011). Reunir en una carpeta todas las vistas producidas hasta ahora: la nube de puntos, los grupos, el grafo con sus tres umbrales, la serie con sus ventanas, los temas. La semana 7 las convierte en un tablero, y para eso cada una necesita saber qué afirma.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-05.html">← Semana 5. Tiempo: ventanas, tendencias, rupturas</a><a href="semana-07.html">Semana 7. Visualización que no engaña →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

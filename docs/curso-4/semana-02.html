@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 4 · Semana 2 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Si una metodología cualitativa dice qué hacer en cada fase, ¿qué parte de lo que dice puede verificar una máquina sobre su propio trabajo, y qué parte exige a alguien que responda?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-4/semana-02.html" />
+    <meta property="og:title" content="Curso 4 · Semana 2" />
+    <meta property="og:description" content="Si una metodología cualitativa dice qué hacer en cada fase, ¿qué parte de lo que dice puede verificar una máquina sobre su propio trabajo, y qué parte exige a alguien que responda?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-4/semana-02.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 4</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub is-active">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 4 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 2. Cuatro tipos de enunciado metodológico</h1>
+          <p class="desc">Si una metodología cualitativa dice qué hacer en cada fase, ¿qué parte de lo que dice puede verificar una máquina sobre su propio trabajo, y qué parte exige a alguien que responda?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Si una metodología cualitativa dice qué hacer en cada fase, ¿qué parte de lo que dice puede verificar una máquina sobre su propio trabajo, y qué parte exige a alguien que responda?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">La semana pasada mostró que cada tradición responde cuatro preguntas: de dónde salen los códigos, cuándo están bien, cuándo se termina, quién responde. Esta semana las convierte en instrumento. La tesis doctoral del docente (Zainea, 2026) propone que todo manual de método está hecho de cuatro tipos de enunciado, y que la diferencia entre ellos no es de estilo sino de tipo lógico: unos pueden comprobarse con el registro del proceso y otros solo con la posición de quien lo ejecutó. Esa distinción es la frontera del curso, y a partir de hoy cada fase del análisis se examina con ella.</p>
+
+<p>Lo que esta semana enseña no es una teoría más sobre la máquina. Es una manera de leer los manuales de Strauss y Corbin, de Charmaz, de Krippendorff y de Braun y Clarke que los convierte en listas de verificación. El estudiante sale con una lista para una fase de su propio análisis, y en las semanas siguientes construye las demás.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Un manual de método es un texto normativo, y sus normas son de cuatro clases. La regla de generación prescribe qué hacer: "codifique línea por línea", "compare cada incidente con los anteriores", "asigne a cada unidad una sola categoría". El criterio de validez establece cuándo se hizo bien: "el código debe ganarse su lugar en los datos", "dos codificadores deben coincidir", "el tema debe ser coherente con sus extractos". La condición de terminación fija cuándo detenerse: "hasta la saturación", "hasta codificar la muestra", "hasta que los temas cuenten una historia". La condición de imputación determina quién responde por el resultado, y suele estar implícita en la firma. La tesis (Zainea, 2026) sostiene que los cuatro tipos aparecen en toda metodología cualitativa, aunque los manuales no los separen, y que separarlos es la primera operación para gobernar un modelo.<sup class="mark">a</sup></li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> La separación es una lectura del docente, no doctrina de los autores citados. Strauss y Corbin, por ejemplo, mezclan en una misma página la operación, su criterio y la condición de paso a la fase siguiente. La tesis no corrige a los autores: los ordena para un uso que ellos no previeron.</aside>
+
+<ol start="2">
+<li>
+<p>Un modelo de lenguaje puede seguir una regla de generación con una consistencia que ningún codificador humano sostiene en cien fragmentos. Eso es lo que lo hace útil. La pregunta de la semana no es si puede seguir reglas, sino si puede comprobar que las siguió bien, y la respuesta depende del tipo de criterio. La tesis propone una prueba: un criterio de validez es operacionalizable en la medida en que alguien que no ejecutó el proceso pueda determinar, solo con el registro, si el paso fue correcto. Si el registro basta, el criterio recae sobre el proceso. Si hace falta saber quién lo hizo y desde dónde, recae sobre la posición del agente.</p>
+</li>
+<li>
+<p>De esa prueba salen tres regiones. Los criterios de registro pueden ser satisfechos por un sistema artificial, porque su verificación es una inspección del rastro: trazabilidad (cada código lleva a sus fragmentos), suficiencia (hay fragmentos bastantes para sostenerlo), adecuación de nivel (el código no salta del dato a la teoría sin pasos intermedios), admisibilidad abductiva (la hipótesis que el código encierra es verificable) y fuerza probatoria (se declara cuánto pesa la evidencia). Los criterios de relación exigen instancias realmente independientes: contraste externo con otra fuente, otro codificador u otra teoría, y resistencia a la refutación mediante búsqueda de casos negativos. Los criterios de posición no pueden ser satisfechos por un sistema artificial en razón de su tipo: reflexividad (quién soy yo para ver esto así), recepción (qué le hace este análisis a la comunidad cuyo material interpreta) y exclusión (qué deja fuera la precomprensión desde la que se codifica).</p>
+</li>
+<li>
+<p>Las regiones no son una lista inventada: salen de leer con la prueba anterior las fuentes metodológicas que el curso usa. Lincoln y Guba (1985) formulan cuatro criterios de rigor para la investigación naturalista, credibilidad, transferibilidad, dependibilidad y confirmabilidad, y para cada uno proponen técnicas: compromiso prolongado, triangulación, revisión por pares, análisis de casos negativos, verificación con los participantes, descripción densa, y un registro de auditoría que permita a un tercero seguir cada decisión.<sup class="mark">b</sup> La prueba de la tesis clasifica esas técnicas: el registro de auditoría y la descripción densa son de registro; la triangulación y el análisis de casos negativos, de relación; la verificación con los participantes y la reflexividad, de posición.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Lincoln y Guba proponen sus criterios como paralelos de los criterios convencionales: credibilidad en lugar de validez interna, transferibilidad en lugar de validez externa, dependibilidad en lugar de fiabilidad, confirmabilidad en lugar de objetividad. El paralelo es útil para ver qué cambia cuando se abandona la idea de una realidad única que el análisis refleja.</aside>
+
+<ol start="5">
+<li>
+<p>Denzin (1970) introduce la triangulación como contraste entre fuentes de datos, entre investigadores, entre teorías y entre métodos. La idea original es que lo que resiste a más de un ángulo es más creíble. Leída con la prueba, la triangulación es un criterio de relación: solo vale si las instancias que se contrastan son independientes. Eso tiene una consecuencia inmediata para el trabajo con modelos. Codificar con dos instrucciones distintas al mismo modelo no es triangular entre investigadores; es pedirle dos veces lo mismo a la misma prefiguración. Codificar con dos familias de modelos distintas se acerca más; codificar con un modelo y con un investigador que conoce el campo es lo que Denzin tenía en mente.</p>
+</li>
+<li>
+<p>Lo que el modelo puede verificar sobre su propio trabajo queda ahora delimitado. Puede comprobar que cada código lleva a fragmentos literales, que ningún fragmento quedó sin código cuando la regla lo exigía, que el nivel de abstracción no saltó, que la definición de un código no contradice la de otro. Puede ejecutar una búsqueda de casos negativos si se le pide, aunque no puede decidir si el caso encontrado refuta la categoría. No puede saber desde dónde codifica ni qué excluye: su prefiguración es su corpus de entrenamiento, y esa prefiguración es ajena al material que interpreta. Es lo que <em>Agencia sin imputación</em> llama infortunio de prefiguración, y en codificación tiene un nombre propio desde 1992: forzamiento. La semana 4 lo trata.</p>
+</li>
+<li>
+<p>La condición de imputación cierra la lista y es la única que no admite verificación de ningún tipo: no se comprueba, se asume. Un libro de códigos es una aserción en el sentido de Austin (1982): quien lo presenta se compromete a sostenerlo ante quien le pida razones. El modelo produce el libro con la forma de esa aserción y sin poder asumir el compromiso. Por eso cada lista de verificación del curso termina con la misma fila: quién responde por esta fase, y qué registro necesita para poder hacerlo.</p>
+</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 330" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Matriz de tres fases de la teoría fundamentada (codificación abierta, axial, selectiva) por cuatro tipos de enunciado metodológico (regla de generación, criterio de validez, condición de terminación, condición de imputación). Las celdas de regla y de criterios de registro están marcadas como verificables con el registro; la terminación como decisión del investigador con apoyo del registro; la imputación como no verificable: se asume. Una línea discontinua roja separa lo que la máquina puede comprobar de lo que exige un sujeto.">
+    <style>.h{font-family:var(--display);font-weight:700;font-size:12.5px;fill:var(--ink)} .c{font-family:var(--text);font-size:11px;fill:var(--ink)} .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;fill:var(--muted)} .ln{stroke:var(--rule);stroke-width:1} .fr{stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:6 5;fill:none} .ok{fill:var(--c-inv)} .mid{fill:var(--accent)} .no{fill:var(--c-fil)} .kf{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;fill:var(--c-fil)}</style>
+    <text x="170" y="20" class="h">Codificación abierta</text>
+    <text x="350" y="20" class="h">Codificación axial</text>
+    <text x="530" y="20" class="h">Codificación selectiva</text>
+    <path class="ln" d="M0 30 L680 30"/>
+    <text x="0" y="52" class="k">REGLA DE</text><text x="0" y="64" class="k">GENERACIÓN</text>
+    <text x="170" y="52" class="c">fragmentar, nombrar,</text><text x="170" y="66" class="c">comparar incidente a incidente</text>
+    <text x="350" y="52" class="c">relacionar categorías:</text><text x="350" y="66" class="c">condiciones, acciones, efectos</text>
+    <text x="530" y="52" class="c">integrar en torno a</text><text x="530" y="66" class="c">una categoría central</text>
+    <circle cx="660" cy="58" r="5" class="ok"/>
+    <path class="ln" d="M0 80 L680 80"/>
+    <text x="0" y="102" class="k">CRITERIO DE</text><text x="0" y="114" class="k">VALIDEZ</text>
+    <text x="170" y="102" class="c">cada código ancla en fragmentos;</text><text x="170" y="116" class="c">emerge, no se fuerza</text>
+    <text x="350" y="102" class="c">cada relación tiene</text><text x="350" y="116" class="c">fragmentos que la sostienen</text>
+    <text x="530" y="102" class="c">la central explica</text><text x="530" y="116" class="c">la variación del corpus</text>
+    <circle cx="660" cy="100" r="5" class="ok"/><circle cx="660" cy="116" r="5" class="no"/>
+    <path class="ln" d="M0 130 L680 130"/>
+    <text x="0" y="152" class="k">CONDICIÓN DE</text><text x="0" y="164" class="k">TERMINACIÓN</text>
+    <text x="170" y="152" class="c">no aparecen códigos nuevos</text><text x="170" y="166" class="c">en material nuevo</text>
+    <text x="350" y="152" class="c">las categorías tienen</text><text x="350" y="166" class="c">propiedades y dimensiones</text>
+    <text x="530" y="152" class="c">saturación teórica:</text><text x="530" y="166" class="c">nada nuevo altera la central</text>
+    <circle cx="660" cy="158" r="5" class="mid"/>
+    <path class="ln" d="M0 180 L680 180"/>
+    <text x="0" y="202" class="k">CONDICIÓN DE</text><text x="0" y="214" class="k">IMPUTACIÓN</text>
+    <text x="170" y="202" class="c">quien firma el libro</text><text x="170" y="216" class="c">de códigos abierto</text>
+    <text x="350" y="202" class="c">quien sostiene</text><text x="350" y="216" class="c">cada relación</text>
+    <text x="530" y="202" class="c">quien afirma</text><text x="530" y="216" class="c">la teoría</text>
+    <circle cx="660" cy="208" r="5" class="no"/>
+    <path class="ln" d="M0 230 L680 230"/>
+    <path class="fr" d="M0 246 L680 246"/>
+    <text x="680" y="262" text-anchor="end" class="kf">FRONTERA</text>
+    <circle cx="8" cy="282" r="5" class="ok"/><text x="20" y="286" class="c">verificable con el registro del proceso</text>
+    <circle cx="8" cy="302" r="5" class="mid"/><text x="20" y="306" class="c">decisión del investigador apoyada en el registro</text>
+    <circle cx="8" cy="322" r="5" class="no"/><text x="20" y="326" class="c">recae sobre la posición de quien responde: no se verifica, se asume</text>
+  </svg>
+  <figcaption><b>Figura 2.</b> Los cuatro tipos de enunciado metodológico por fase, sobre la teoría fundamentada de Strauss y Corbin. Lo que hay que ver: la regla y parte del criterio se comprueban con el registro; la terminación se decide; la imputación se asume. El criterio de "emerge, no se fuerza" cruza la frontera: su mitad de anclaje es de registro, su mitad de origen es de posición.</figcaption>
+</figure>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que lea un capítulo de método (el que corresponda a la tradición elegida) y extraiga de él los enunciados normativos, clasificados en los cuatro tipos. El estudiante debe poder defender sin el modelo la clasificación de cada enunciado y, sobre todo, debe poder decir para cada criterio de validez si pasa la prueba del registro: si alguien que no ejecutó el proceso podría comprobarlo solo con el rastro. El modelo clasifica rápido y se equivoca en la prueba de manera sistemática: tiende a declarar verificable todo lo que puede describir.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Zainea, C. I. (2026). <em>Agencia sin imputación. Hermenéutica, pragmática y la validación epistémica del discurso artificial</em>. Secciones sobre los tres sentidos de validación y sobre la prótesis hermenéutica. <a href="https://izainea.github.io/escritos/agencia-sin-imputacion.pdf.">https://izainea.github.io/escritos/agencia-sin-imputacion.pdf.</a> La tipología de criterios por regiones se desarrolla en la tesis doctoral en curso del docente; el curso la presenta en la sesión.</li>
+<li>Lincoln, Y. S. y Guba, E. G. (1985). <em>Naturalistic Inquiry</em>. Beverly Hills: Sage. Cap. 11, "Establishing trustworthiness".</li>
+<li>Denzin, N. K. (1970). <em>The Research Act: A Theoretical Introduction to Sociological Methods</em>. Chicago: Aldine. Capítulo sobre triangulación.</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Zainea, C. I. (2026). "La prótesis hermenéutica". <a href="https://izainea.github.io/blog/protesis-hermeneutica/">https://izainea.github.io/blog/protesis-hermeneutica/</a></li>
+<li>Austin, J. L. (1982). <em>Cómo hacer cosas con palabras</em>. Barcelona: Paidós. Conferencias I y II.</li>
+<li>Strauss, A. y Corbin, J. (2002). <em>Bases de la investigación cualitativa. Técnicas y procedimientos para desarrollar la teoría fundamentada</em>. Medellín: Universidad de Antioquia. Cap. 16, sobre criterios de evaluación.</li>
+<li>Dunivin, Z. O. (2025). "Scaling hermeneutics: A guide to qualitative coding with LLMs for reflexive content analysis". <em>EPJ Data Science</em> 14, 28. <a href="https://doi.org/10.1140/epjds/s13688-025-00548-8">https://doi.org/10.1140/epjds/s13688-025-00548-8</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>En Zainea, localice los tres sentidos de validación: corrección del resultado, justificación del proceso, imputación. El curso sostiene que la codificación asistida se ha evaluado casi solo en el primero. <em>¿Cuál de los tres sentidos satisface un modelo cuyos códigos coinciden con los de un experto en el 90 % de los fragmentos?</em></li>
+<li>Lincoln y Guba describen el registro de auditoría como la técnica que permite a un tercero reconstruir cada decisión. Fíjese en qué tipos de documentos lo componen. <em>¿Cuáles de esos documentos podría producir un modelo sobre su propio trabajo y cuáles no, por construcción?</em></li>
+<li>Denzin distingue cuatro tipos de triangulación. <em>Codificar el mismo corpus con el mismo modelo y dos instrucciones distintas, ¿es triangulación de alguno de los cuatro tipos? Si no lo es, ¿qué le falta?</em></li>
+<li>Dunivin propone una guía para codificar con modelos desde una posición reflexiva. <em>¿Dónde pone la reflexividad: en el modelo, en las instrucciones o en el investigador?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Cada estudiante toma la fase de su análisis que va a ejecutar primero (en casi todos los casos, la codificación abierta o la generación de códigos iniciales) y escribe su lista de verificación con la plantilla:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tipo de enunciado</th>
+<th>Enunciado tal como lo dice el manual (cita y página)</th>
+<th>Mi formulación operativa</th>
+<th>¿Pasa la prueba del registro? (sí / parcial / no)</th>
+<th>Quién lo comprueba (modelo / yo / otro)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regla de generación</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Criterio de validez 1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Criterio de validez 2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Condición de terminación</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Condición de imputación</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>La columna decisiva es la cuarta. Un criterio que pasa la prueba es un criterio que el estudiante puede pedirle al modelo que compruebe sobre su propio output. Un criterio que no la pasa es trabajo del estudiante, y hay que presupuestarlo como tal.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué hace el docente</th>
+<th>Qué hace el estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10 min</td>
+<td>Retoma las fichas de la semana 1 y la reconstrucción de la regla que siguió el modelo</td>
+<td>Lee en voz alta su regla reconstruida</td>
+<td>Bitácora semana 1</td>
+</tr>
+<tr>
+<td>10 a 35 min</td>
+<td>Expone los cuatro tipos y la prueba del registro, con la figura 2</td>
+<td>Clasifica en el momento tres enunciados de su manual</td>
+<td>Figura 2, manual de la tradición elegida</td>
+</tr>
+<tr>
+<td>35 a 60 min</td>
+<td>Discute Lincoln y Guba y Denzin con la guía</td>
+<td>Argumenta si la doble instrucción al mismo modelo triangula</td>
+<td>Guía de lectura</td>
+</tr>
+<tr>
+<td>60 a 105 min</td>
+<td>Taller: lista de verificación de la primera fase</td>
+<td>Escribe la lista, con citas del manual</td>
+<td>Plantilla del taller</td>
+</tr>
+<tr>
+<td>105 a 120 min</td>
+<td>Revisa dos listas en público y anuncia la práctica 3</td>
+<td>Corrige su lista</td>
+<td>Práctica 3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que el estudiante escribe reglas de generación en la fila de criterios de validez ("codificar línea por línea" no dice cuándo se hizo bien); pedir que cada criterio se pueda formular como pregunta de sí o no sobre un código ya puesto. Suele fallar que todo se declara "parcial" en la prueba del registro; obligar a decidir con un ejemplo. Y conviene anticipar la objeción de que las regiones son una tesis del docente y no un consenso: lo son, y el curso las usa como instrumento, no como dogma.</p>
+<h2>Bitácora</h2>
+<p>La lista de verificación completa, con citas del manual, y una reflexión: qué criterio de su tradición le resultó más difícil de clasificar y por qué. Anote además qué le pidió al modelo esta semana y en qué se equivocó al clasificar.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Strauss y Corbin (2002), capítulos 5 y 8, y Saldaña (2021), capítulo 1. Preparar el corpus completo en un archivo de texto plano, un fragmento por párrafo, numerado, sin datos personales. Leer la guía de la práctica 3 antes de la sesión. Es la primera semana de codificación real: reservar tiempo.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-01.html">← Semana 1. Tres tradiciones de codificación y lo que exigen</a><a href="semana-03.html">Semana 3. Codificación abierta asistida →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

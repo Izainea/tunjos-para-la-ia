@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 6 · Prácticas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-6/practicas.html" />
+    <meta property="og:title" content="Curso 6 · Prácticas" />
+    <meta property="og:description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-6/practicas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 6</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html" class="is-active">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 6 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Prácticas</h1>
+          <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
+        </div>
+<article class="prose">
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo: hacer las prácticas por programa</h1>
+<p>Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y con hojas de cálculo. Este cuaderno es para quien quiera dejar instrucciones, outputs, expectativas y decisiones en archivos, repetir la codificación con varios modelos, y calcular el acuerdo cuando quiera reportarlo. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. El cuaderno del curso 1 explica la preparación del entorno y la función base; aquí se repite lo mínimo.</p>
+<h2>Preparación</h2>
+<p>Instale Python 3.11 o superior y, en una terminal:</p>
+<pre><code>pip install openai python-dotenv pandas
+</code></pre>
+<p>Cree un archivo <code>.env</code> con la clave del proveedor que use. La biblioteca <code>openai</code> sirve para cualquier proveedor compatible con su interfaz; cambie <code>base_url</code> según el caso. Para la triangulación entre familias conviene tener dos claves de proveedores distintos; varios ofrecen cuota gratuita.</p>
+<pre><code>API_KEY=su_clave
+BASE_URL=<a href="https://api.openai.com/v1">https://api.openai.com/v1</a>
+MODEL=nombre_del_modelo
+</code></pre>
+<h2>Función base con registro</h2>
+<p>Cada llamada queda en un archivo con fecha, modelo e instrucción literal. Ese archivo es el anexo que piden las plantillas.</p>
+<pre><code class="language-python">import os, json, datetime
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv(&quot;API_KEY&quot;), base_url=os.getenv(&quot;BASE_URL&quot;))
+MODEL = os.getenv(&quot;MODEL&quot;)
+
+def preguntar(prompt, etiqueta, registro=&quot;registro.jsonl&quot;):
+    r = client.chat.completions.create(
+        model=MODEL,
+        messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}],
+        temperature=0.2,
+    )
+    texto = r.choices[0].message.content
+    with open(registro, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({
+            &quot;fecha&quot;: datetime.datetime.now().isoformat(),
+            &quot;modelo&quot;: MODEL,
+            &quot;etiqueta&quot;: etiqueta,
+            &quot;prompt&quot;: prompt,
+            &quot;respuesta&quot;: texto,
+        }, ensure_ascii=False) + &quot;\n&quot;)
+    return texto
+</code></pre>
+<h2>Semana 3. Declarar la expectativa antes de correr</h2>
+<p>La expectativa se escribe en un archivo con hora antes de la primera llamada. Lo que importa es que quede fechada.</p>
+<pre><code class="language-python">def declarar_expectativa(condicion, expectativa, archivo=&quot;expectativas.jsonl&quot;):
+    with open(archivo, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({
+            &quot;fecha&quot;: datetime.datetime.now().isoformat(),
+            &quot;condicion&quot;: condicion,
+            &quot;expectativa&quot;: expectativa,
+        }, ensure_ascii=False) + &quot;\n&quot;)
+
+declarar_expectativa(&quot;con libro de códigos&quot;,
+    &quot;coincidencia alta: el modelo aplica mi regla; mide consistencia, no es pata&quot;)
+declarar_expectativa(&quot;sin libro de códigos, otra familia&quot;,
+    &quot;divergencia en los fragmentos 4, 7 y 9, donde la categoría exige contexto local&quot;)
+</code></pre>
+<h2>Semana 3. Las dos condiciones</h2>
+<pre><code class="language-python">fragmentos = open(&quot;fragmentos.txt&quot;, encoding=&quot;utf-8&quot;).read()
+libro = open(&quot;libro-de-codigos.txt&quot;, encoding=&quot;utf-8&quot;).read()
+pregunta = &quot;¿Cómo narran los entrevistados su relación con las instituciones locales?&quot;
+
+p_con = f&quot;&quot;&quot;Libro de códigos:\n{libro}\n\nFragmentos:\n{fragmentos}\n
+Asigna a cada fragmento uno o más códigos del libro. Para cada asignación cita
+la frase exacta, di por qué ese código y no el más cercano, y marca si dudaste.
+No inventes códigos; si ninguno aplica escribe &quot;ninguno&quot; y explica.&quot;&quot;&quot;
+con_libro = preguntar(p_con, &quot;semana3-con-libro&quot;)
+
+p_sin = f&quot;&quot;&quot;Pregunta de investigación: {pregunta}\n\nFragmentos:\n{fragmentos}\n
+Propón códigos para cada fragmento. Para cada código: nombre breve, definición
+en una frase, la frase exacta que lo sustenta, y qué supuesto das por sentado.&quot;&quot;&quot;
+sin_libro = preguntar(p_sin, &quot;semana3-sin-libro&quot;)
+</code></pre>
+<p>Para la segunda condición con otra familia, cambie <code>MODEL</code> y <code>BASE_URL</code> en <code>.env</code> o cree un segundo cliente.</p>
+<h2>Semana 3. Calcular el acuerdo, y qué hacer con él</h2>
+<p>Si quiere reportar el acuerdo de la condición con libro de códigos, el curso pide que lo reporte como consistencia y no como validez. Con una tabla <code>codificacion.csv</code> de columnas <code>fragmento</code>, <code>codigo_mio</code>, <code>codigo_modelo</code>:</p>
+<pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv(&quot;codificacion.csv&quot;)
+acuerdo = (df[&quot;codigo_mio&quot;] == df[&quot;codigo_modelo&quot;]).mean()
+print(f&quot;Acuerdo observado: {acuerdo:.1%}&quot;)
+</code></pre>
+<p>Para un kappa de Cohen, <code>pip install scikit-learn</code> y:</p>
+<pre><code class="language-python">from sklearn.metrics import cohen_kappa_score
+print(&quot;Kappa:&quot;, round(cohen_kappa_score(df[&quot;codigo_mio&quot;], df[&quot;codigo_modelo&quot;]), 2))
+</code></pre>
+<p>Lo que se escribe en la matriz no es la cifra sino la frase: "el modelo aplica mi libro de códigos con un acuerdo de 0,81; mide consistencia; no cuenta como pata". Una cifra sin esa frase es el salto de la semana 1.</p>
+<h2>Semana 4. Candidatos de hipótesis con supuesto explícito</h2>
+<pre><code class="language-python">patron = &quot;Los fragmentos que mencionan 'la alcaldía' nunca mencionan 'la policía', y al revés.&quot;
+p = f&quot;&quot;&quot;Patrón observado: {patron}\n
+Propón dos hipótesis distintas e incompatibles que lo explicarían. Para cada una:
+(1) el hecho que explica, (2) una observación que la distinguiría de la otra,
+(3) el supuesto que das por sentado al proponerla.&quot;&quot;&quot;
+print(preguntar(p, &quot;semana4-candidatos&quot;))
+</code></pre>
+<p>El punto 3 es el que llena la columna "desde qué trasfondo es plausible" de la ficha.</p>
+<h2>Semana 7. Marcadores de autoridad</h2>
+<p>Un conteo sencillo sobre el propio borrador. La lista es la de la práctica; amplíela con los marcadores de su campo.</p>
+<pre><code class="language-python">import re
+
+MARCADORES = [
+    &quot;los datos muestran&quot;, &quot;el análisis revela&quot;, &quot;es evidente que&quot;, &quot;se observa que&quot;,
+    &quot;los resultados indican&quot;, &quot;resulta claro&quot;, &quot;como puede apreciarse&quot;,
+    &quot;la evidencia sugiere&quot;, &quot;se concluye que&quot;, &quot;queda demostrado&quot;,
+]
+
+texto = open(&quot;borrador.txt&quot;, encoding=&quot;utf-8&quot;).read().lower()
+for m in MARCADORES:
+    n = len(re.findall(re.escape(m), texto))
+    if n:
+        print(f&quot;{m}: {n}&quot;)
+</code></pre>
+<p>El programa no reescribe nada. Marca dónde hay que ponerse a escribir.</p>
+<h2>Nota sobre costos y privacidad</h2>
+<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y revise las condiciones de uso de datos del proveedor antes de enviar nada: la plantilla de declaración pregunta si las revisó. El curso 7 del programa trata estos problemas en detalle.</p>
+<hr />
+<h1 id="practica-03-triangulacion-con-modelo">Práctica 3. Triangulación con un modelo como segundo codificador</h1>
+<p>Duración estimada: 3 horas, de las cuales 1 en la sesión sincrónica.
+Requisitos: acceso a un modelo de lenguaje de uso gratuito en su versión web (cualquiera sirve) y, si es posible, a un segundo modelo de otra familia; diez fragmentos propios ya codificados; el libro de códigos con que se codificaron; la plantilla <code>plantillas/matriz-de-triangulacion.md</code>.
+No requiere programar. El cuaderno <code>cuaderno-apoyo.md</code> indica cómo hacer lo mismo por programa y cómo calcular el acuerdo si se quiere reportar.</p>
+<h2>Objetivo</h2>
+<p>Hacer codificar diez fragmentos propios por un modelo en dos condiciones, con y sin libro de códigos, declarar antes de correr qué se espera, comparar con la codificación propia, y llenar una fila de la matriz de triangulación por condición, diciendo cuál mide consistencia y cuál cuenta como pata.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Elija diez fragmentos de su material que ya tengan codificación suya o de su equipo. Que sean de distinta dificultad: tres claros, cuatro medios, tres en que usted dudó. Sin datos personales de terceros; si el material es sensible, use una muestra anonimizada.</li>
+<li>Prepare dos archivos de texto. El primero, los diez fragmentos numerados, sin códigos. El segundo, el libro de códigos: nombre, definición en una o dos frases y un ejemplo por código.</li>
+<li>Escriba, con fecha y hora, su expectativa para cada condición: en la condición con libro de códigos espero coincidencia alta porque aplica mi regla; en la condición sin libro de códigos espero divergencia en los fragmentos difíciles porque mis categorías vienen de un trasfondo que el modelo no tiene; o lo que usted espere. Esta expectativa se entrega con la matriz y no puede cambiarse después.</li>
+<li>Llene el encabezado de la plantilla y las instancias que ya tiene, aparte del modelo.</li>
+</ol>
+<h2>Durante la sesión: tres rondas</h2>
+<h3>Ronda 1. Con libro de códigos</h3>
+<p>Dele al modelo el libro de códigos y los diez fragmentos. Use una instrucción que le exija citar y justificar. Ejemplo:</p>
+<pre><code>Aquí hay un libro de códigos con definiciones y ejemplos, y diez fragmentos
+de entrevista numerados. Asigna a cada fragmento uno o más códigos del libro.
+Para cada asignación: cita la frase exacta que la sustenta, di por qué ese
+código y no el más cercano del libro, y marca si dudaste. No inventes códigos
+nuevos; si ningún código aplica, escribe &quot;ninguno&quot; y explica por qué.
+</code></pre>
+<p>Copie el output completo al anexo. Compare fragmento por fragmento con su codificación: coincide, difiere, el modelo no asignó. Anote el conteo. Esta fila de la matriz se marca como consistencia: mide cuán bien el modelo aplica su regla, no si la regla es buena.</p>
+<h3>Ronda 2. Sin libro de códigos</h3>
+<p>Abra una conversación nueva, en lo posible con un modelo de otra familia. Dele los diez fragmentos y la pregunta de investigación, nada más. Ejemplo:</p>
+<pre><code>Aquí hay diez fragmentos de entrevista numerados y la pregunta de investigación:
+[pregunta]. Propón códigos para cada fragmento a partir de lo que dice. Para
+cada código: nombre breve, definición en una frase, la frase exacta que lo
+sustenta, y qué supuesto das por sentado al nombrarlo así.
+</code></pre>
+<p>Copie el output al anexo. Compare con su codificación por sentido y no por nombre: un código del modelo converge con uno suyo si recortan el mismo fragmento con la misma razón, aunque el nombre cambie. Anote convergencia, divergencia o silencio por hallazgo. Esta fila puede contar como pata si el modelo es de otra familia que cualquier otro usado en el proyecto y la expectativa se declaró antes.</p>
+<h3>Ronda 3. Las divergencias</h3>
+<p>Tome cada divergencia de la ronda 2 y, antes de decidir si el modelo se equivocó, responda por escrito: qué trasfondo distinto produjo la divergencia. Tres preguntas de apoyo:</p>
+<ul>
+<li>¿El modelo nombró con una categoría más general que la mía? Entonces lo que diverge es el nivel, y la pregunta es si mi nivel está justificado por el material o por mi marco.</li>
+<li>¿El modelo nombró algo que yo no vi? Entonces hay que volver al fragmento y decidir si lo que vio está ahí o lo trajo de su corpus.</li>
+<li>¿El modelo no nombró algo que para mí es obvio? Entonces lo obvio puede ser de mi pertenencia, y hay que decir si la categoría exige pertenecer para verse.</li>
+</ul>
+<p>Las divergencias que se explican por prefiguración se registran en la matriz con esa explicación. Las que, después de volver al fragmento, resultan error del modelo, se registran como error, con la frase del fragmento que lo muestra.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Complete la matriz con las demás instancias que tenga: otras fuentes, otro método, otra teoría, otro investigador si lo hubo. Marque convergencia, divergencia o silencio por hallazgo y escriba la nota de cada celda.</li>
+<li>Lea la matriz por columnas y asigne estatuto a cada hallazgo. Los de una sola pata se marcan como conjetura.</li>
+<li>Lea la matriz por filas y responda si alguna instancia nunca diverge, y por qué.</li>
+<li>Entregue la matriz con el anexo de instrucciones, outputs literales y expectativas fechadas.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>Que la condición de independencia de cada fila esté declarada y sea correcta, que la expectativa esté fechada antes de correr, que las divergencias tengan explicación por prefiguración y no solo por error, y que los hallazgos de una sola pata estén marcados. No se evalúa el acuerdo: una ronda con bajo acuerdo bien explicada vale más que una con acuerdo alto que se presenta como validación.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes intercambian fragmentos y libros de códigos y cada uno codifica el material del otro antes de ver la codificación original. Esa fila sí es de investigadores independientes. Compararla con la fila del modelo bajo la misma condición es el mejor material de discusión: suele mostrar que el par humano diverge donde el modelo converge, y al revés.</p>
+<hr />
+<h1 id="practica-07-reescritura-de-informe">Práctica 7. Reescritura de un informe generado hasta convertirlo en aserciones propias</h1>
+<p>Duración estimada: 3 horas, de las cuales 1 en la sesión sincrónica.
+Requisitos: un informe o borrador propio en el que un modelo haya redactado al menos un párrafo, o un párrafo de hallazgos que se le pide al modelo al empezar; la matriz de triangulación entregada en la semana 5; las plantillas <code>plantillas/declaracion-de-uso-de-ia.md</code> e <code>plantillas/informe-analitico.md</code>; la mini app <code>apps/asercion-sin-aserente.html</code> para calibrar.
+No requiere programar.</p>
+<h2>Objetivo</h2>
+<p>Convertir cada frase de un párrafo generado en una aserción con sujeto, base, criterio, alcance y procedencia, separar las frases que no se pueden firmar, y redactar la declaración de uso de IA del párrafo.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Si no tiene un párrafo generado, pídale al modelo uno a partir de su matriz. Ejemplo:</li>
+</ol>
+<pre><code>Esta es mi matriz de triangulación: [pegar la lectura por columnas]. Redacta
+un párrafo de hallazgos de unas 200 palabras, en el registro de un artículo
+de ciencias sociales, que presente los tres hallazgos principales.
+</code></pre>
+<ol start="2">
+<li>Guarde el párrafo literal en el anexo. No lo corrija todavía.</li>
+<li>Pídale al modelo, en la misma conversación, que justifique cada afirmación del párrafo. Guarde esa justificación también. La va a necesitar para ver qué forma tiene una justificación sin aserente.</li>
+</ol>
+<h2>Durante la sesión: cuatro pasos</h2>
+<h3>Paso 1. Marcar</h3>
+<p>Resalte en el párrafo todos los marcadores de autoridad que atribuyen la afirmación a algo que no puede afirmar: "los datos muestran", "el análisis revela", "es evidente que", "se observa que", "los resultados indican", "resulta claro", "como puede apreciarse", "la evidencia sugiere", "se concluye que". Cuente cuántos hay. La mini app lo hace sobre un párrafo de ejemplo y sirve para calibrar el ojo.</p>
+<h3>Paso 2. Desarmar</h3>
+<p>Una fila por frase del párrafo, en la tabla de la semana:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frase original</th>
+<th>Marcador</th>
+<th>Verificado (sí, no, cómo)</th>
+<th>Criterio</th>
+<th>Aserente y alcance</th>
+<th>Procedencia</th>
+<th>Frase reescrita o retirada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Para cada frase, responda en orden:</p>
+<ul>
+<li>Verificar. ¿Hay en la frase un dato, una cifra, una cita, una referencia? ¿Lo comprobó contra el material o la fuente? Si no puede comprobarlo ahora, anote "no" y siga; la frase no se firma hasta que se compruebe.</li>
+<li>Criterio. ¿Sobre qué patas de la matriz se sostiene lo afirmado? ¿Qué prueba pasó, de qué tipo? ¿Por qué esta categoría o lectura y no otra? Si la matriz no lo sostiene, anótelo.</li>
+<li>Aserente y alcance. ¿Quién afirma esto? ¿Desde qué trasfondo? ¿A qué material, período o contexto se limita? Escriba la frase con sujeto en primera persona y alcance explícito.</li>
+<li>Procedencia. ¿La frase es output aceptado tal cual, output corregido, output rechazado y reemplazado, o propia? Anótelo con una palabra.</li>
+</ul>
+<h3>Paso 3. Reescribir o retirar</h3>
+<p>Escriba la frase nueva. Una frase reescrita tiene esta forma, con variaciones: "Sostengo que X, porque A y B convergen y la prueba C pasó; el modelo propuso X y lo acepté por D; lo afirmo para el material E". Es más larga que la original porque ahora tiene a alguien detrás.</p>
+<p>Si al intentar la reescritura descubre que no puede sostener la frase, no la mejore: retírela y anote por qué. Las frases retiradas van a la sección 4 del informe, "Lo que cayó y lo que se retiró". Son el resultado esperado de la práctica y se evalúan.</p>
+<h3>Paso 4. Declarar</h3>
+<p>Con la plantilla de declaración de uso de IA, llene al menos las secciones 2, 3 y 7 para este párrafo: qué se pidió, qué produjo, qué se aceptó, corrigió y rechazó, con qué criterio, y la tabla de procedencia de cada hallazgo. Adjunte las instrucciones literales.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Compare la justificación que el modelo dio en el paso previo con las columnas de criterio que usted llenó. Anote qué tenía la justificación del modelo: conectores, forma de argumento, referencias a "los datos". Anote qué le faltaba: patas, prueba, alguien que responda. Esa comparación va a la bitácora.</li>
+<li>Extienda la reescritura al resto del borrador del informe. No hace falta que todo el informe pase por la tabla, pero sí todo párrafo de hallazgos.</li>
+<li>Entregue el borrador del informe con la sección de validación en el estado en que esté y la declaración de uso de IA. Se devuelve con observaciones antes de la entrega final.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>En el borrador no se califica. En el informe final se evalúa que ningún hallazgo conserve marcadores sin aserente, que cada reescritura haya añadido base y criterio y no solo sujeto, que las frases retiradas estén en la sección 4 con razón, y que la declaración diga qué fue de quién. Una reescritura que cambia "los datos muestran" por "considero que" sin añadir nada se devuelve.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes intercambian párrafos reescritos y cada uno intenta formular, para cada frase del otro, la pregunta que un jurado haría. Las frases que no resisten la pregunta vuelven a la tabla. Es un ensayo de la semana 8.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="plantillas.html">← Plantillas</a><a href="apps.html">Mini apps →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

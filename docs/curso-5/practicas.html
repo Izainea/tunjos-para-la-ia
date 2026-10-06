@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 5 · Prácticas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-5/practicas.html" />
+    <meta property="og:title" content="Curso 5 · Prácticas" />
+    <meta property="og:description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-5/practicas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 5</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html" class="is-active">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 5 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Prácticas</h1>
+          <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
+        </div>
+<article class="prose">
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo: los métodos del curso en Python</h1>
+<p>Este cuaderno acompaña las ocho semanas. Está escrito para que lo use alguien con nociones básicas de Python, copiando bloque a bloque; cada bloque viene precedido de lo que hace y de la decisión que exige. Los parámetros aparecen como variables con nombre al comienzo de cada bloque para que moverlos sea una línea y no una búsqueda. Todo lo que se calcula aquí se registra con su entorno y su semilla, porque la reproducibilidad es la mitad de la frontera.</p>
+<h2>Preparación</h2>
+<p>Instale Python 3.10 o superior y, en una terminal, las bibliotecas del curso. La primera vez que se cargue un modelo de embeddings se descargará de internet; después queda en el computador.</p>
+<pre><code>pip install pandas numpy scipy scikit-learn sentence-transformers umap-learn networkx matplotlib plotly ruptures
+</code></pre>
+<p>El corpus se espera como una tabla <code>corpus.csv</code> con una fila por documento y las columnas <code>id</code>, <code>fecha</code> (en formato AAAA-MM-DD) y <code>texto</code>. Para imágenes, la columna <code>ruta</code> con la ubicación del archivo en vez de <code>texto</code>. Si tiene códigos por documento, una columna <code>codigos</code> con los códigos separados por punto y coma.</p>
+<pre><code class="language-python">import json, datetime, platform
+import importlib.metadata as md
+import numpy as np
+import pandas as pd
+
+corpus = pd.read_csv(&quot;corpus.csv&quot;)
+textos = corpus[&quot;texto&quot;].fillna(&quot;&quot;).astype(str).tolist()
+print(len(textos), &quot;documentos&quot;)
+</code></pre>
+<h2>Registro de entorno</h2>
+<p>Un resultado es reproducible si se sabe con qué se calculó. Este bloque escribe un archivo con la versión de Python, de cada biblioteca, el modelo usado y la semilla. Córralo cada vez que produzca un resultado que vaya a una entrega, y adjunte el archivo.</p>
+<pre><code class="language-python">def registrar_entorno(archivo=&quot;entorno.json&quot;, modelo=None, semilla=None, nota=&quot;&quot;):
+    paquetes = [&quot;pandas&quot;, &quot;numpy&quot;, &quot;scipy&quot;, &quot;scikit-learn&quot;, &quot;sentence-transformers&quot;,
+                &quot;umap-learn&quot;, &quot;networkx&quot;, &quot;matplotlib&quot;, &quot;plotly&quot;, &quot;ruptures&quot;]
+    versiones = {}
+    for p in paquetes:
+        try:
+            versiones[p] = md.version(p)
+        except md.PackageNotFoundError:
+            versiones[p] = &quot;no instalado&quot;
+    info = {&quot;fecha&quot;: datetime.datetime.now().isoformat(), &quot;python&quot;: platform.python_version(),
+            &quot;paquetes&quot;: versiones, &quot;modelo&quot;: modelo, &quot;semilla&quot;: semilla, &quot;nota&quot;: nota}
+    with open(archivo, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+        json.dump(info, f, ensure_ascii=False, indent=2)
+    return info
+
+registrar_entorno(nota=&quot;prueba de instalación&quot;)
+</code></pre>
+<h2>Semana 1. Bolsa de palabras y coseno</h2>
+<p>La bolsa de palabras cuenta palabras y olvida el orden. TF-IDF es la misma bolsa con un peso que castiga las palabras que aparecen en casi todos los documentos. El coseno entre dos filas dice cuánto se parecen sus proporciones de palabras, y nada más. Este bloque calcula la matriz de similitud y muestra, para un par, qué palabras lo acercan.</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+STOP = [&quot;el&quot;, &quot;la&quot;, &quot;los&quot;, &quot;las&quot;, &quot;de&quot;, &quot;del&quot;, &quot;en&quot;, &quot;un&quot;, &quot;una&quot;, &quot;y&quot;, &quot;o&quot;, &quot;a&quot;, &quot;que&quot;,
+        &quot;es&quot;, &quot;por&quot;, &quot;con&quot;, &quot;para&quot;, &quot;no&quot;, &quot;se&quot;, &quot;su&quot;, &quot;sus&quot;, &quot;al&quot;, &quot;lo&quot;, &quot;le&quot;, &quot;más&quot;, &quot;como&quot;]
+
+vec = TfidfVectorizer(lowercase=True, strip_accents=&quot;unicode&quot;, stop_words=STOP, min_df=1)
+X = vec.fit_transform(textos)
+S_bolsa = cosine_similarity(X)
+palabras = np.array(vec.get_feature_names_out())
+
+def explicar_par(i, j):
+    a, b = X[i].toarray()[0], X[j].toarray()[0]
+    comunes = palabras[(a &gt; 0) &amp; (b &gt; 0)]
+    print(f&quot;coseno({i}, {j}) = {S_bolsa[i, j]:.2f}&quot;)
+    print(&quot;palabras comunes:&quot;, &quot;, &quot;.join(comunes) if len(comunes) else &quot;ninguna&quot;)
+
+explicar_par(0, 1)
+</code></pre>
+<p>Para la ficha de la semana 1, busque un par con coseno alto que no le parezca parecido y uno con coseno bajo que sí. El bloque siguiente lista los pares extremos.</p>
+<pre><code class="language-python">n = len(textos)
+pares = [(S_bolsa[i, j], i, j) for i in range(n) for j in range(i + 1, n)]
+pares.sort(reverse=True)
+print(&quot;cinco pares más parecidos para la medida:&quot;)
+for s, i, j in pares[:5]:
+    print(f&quot;  {s:.2f}  [{i}] {textos[i][:60]}  |  [{j}] {textos[j][:60]}&quot;)
+</code></pre>
+<h2>Semana 2. Embeddings y vecinos</h2>
+<p>Un embedding es un vector aprendido por un modelo entrenado en otro corpus. El bloque usa un modelo multilingüe de Sentence-BERT de descarga libre; el nombre del modelo es la primera decisión que se registra. Los vectores se normalizan para que el producto punto sea el coseno.</p>
+<pre><code class="language-python">from sentence_transformers import SentenceTransformer
+
+MODELO = &quot;paraphrase-multilingual-MiniLM-L12-v2&quot;   # decisión: qué modelo, y por tanto qué precomprensión
+modelo = SentenceTransformer(MODELO)
+E = modelo.encode(textos, normalize_embeddings=True, show_progress_bar=True)
+np.save(&quot;embeddings.npy&quot;, E)
+print(E.shape)   # (documentos, dimensiones)
+registrar_entorno(modelo=MODELO, nota=&quot;embeddings de texto&quot;)
+</code></pre>
+<p>Para un corpus visual, el mismo procedimiento con CLIP sobre las imágenes. El modelo acerca imágenes a descripciones en inglés, y esa es su precomprensión.</p>
+<pre><code class="language-python">from PIL import Image
+
+MODELO = &quot;clip-ViT-B-32&quot;
+modelo = SentenceTransformer(MODELO)
+imagenes = [Image.open(r).convert(&quot;RGB&quot;) for r in corpus[&quot;ruta&quot;]]
+E = modelo.encode(imagenes, normalize_embeddings=True, show_progress_bar=True, batch_size=16)
+np.save(&quot;embeddings.npy&quot;, E)
+registrar_entorno(modelo=MODELO, nota=&quot;embeddings de imagen&quot;)
+</code></pre>
+<p>La primera prueba de sentido es leer vecinos. Para cada documento que conozca, los cinco más cercanos por coseno. Si los vecinos tienen sentido, el espacio conserva algo que importa; si comparten solo longitud o género, conserva otra cosa.</p>
+<pre><code class="language-python">S = E @ E.T
+
+def vecinos(i, n=5):
+    orden = np.argsort(-S[i])
+    return [(int(j), float(S[i, j])) for j in orden if j != i][:n]
+
+for i in [0, 1, 2]:          # cambie por los índices de documentos que conozca bien
+    print(f&quot;\n[{i}] {textos[i][:90]}&quot;)
+    for j, s in vecinos(i):
+        print(f&quot;   {s:.2f}  [{j}] {textos[j][:90]}&quot;)
+</code></pre>
+<p>Para ver el espacio hay que proyectarlo, y la proyección es otro instrumento con parámetros. PCA es lineal y conserva varianza; UMAP conserva vecindades locales y deforma las distancias grandes. Las dos se guardan con sus parámetros en el título.</p>
+<pre><code class="language-python">from sklearn.decomposition import PCA
+import umap
+import plotly.express as px
+
+SEMILLA = 0
+N_VECINOS, MIN_DIST = 15, 0.1    # decisiones de UMAP: cambiarlas cambia la figura
+
+P2 = PCA(n_components=2, random_state=SEMILLA).fit_transform(E)
+U2 = umap.UMAP(n_neighbors=N_VECINOS, min_dist=MIN_DIST, random_state=SEMILLA).fit_transform(E)
+
+etiquetas = [t[:80] for t in textos]
+px.scatter(x=P2[:, 0], y=P2[:, 1], hover_name=etiquetas,
+           title=&quot;PCA, 2 componentes&quot;).write_html(&quot;nube_pca.html&quot;)
+px.scatter(x=U2[:, 0], y=U2[:, 1], hover_name=etiquetas,
+           title=f&quot;UMAP · n_neighbors={N_VECINOS} · min_dist={MIN_DIST} · semilla {SEMILLA}&quot;).write_html(&quot;nube_umap.html&quot;)
+</code></pre>
+<h2>Semana 3. Agrupamiento y prueba de estabilidad</h2>
+<p>k-means produce la mejor partición en k grupos, para el k que se le pide y la semilla con que empieza. El bloque corre k de 2 a 10 con cinco semillas y guarda todo, porque la prueba de estabilidad necesita todas las corridas. La silueta y la inercia ayudan a descartar valores absurdos de k; no deciden entre dos razonables.</p>
+<pre><code class="language-python">from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score, adjusted_rand_score
+
+E = np.load(&quot;embeddings.npy&quot;)
+KS, SEMILLAS = range(2, 11), range(5)
+
+corridas = {}
+for k in KS:
+    for s in SEMILLAS:
+        km = KMeans(n_clusters=k, n_init=10, random_state=s).fit(E)
+        corridas[(k, s)] = (km.labels_, km.inertia_)
+
+resumen = pd.DataFrame({
+    &quot;k&quot;: list(KS),
+    &quot;silueta&quot;: [silhouette_score(E, corridas[(k, 0)][0]) for k in KS],
+    &quot;inercia&quot;: [corridas[(k, 0)][1] for k in KS],
+})
+print(resumen.round(3))
+</code></pre>
+<p>El dendrograma del agrupamiento jerárquico muestra que el número de grupos es una altura de corte. Mírelo antes de elegir k.</p>
+<pre><code class="language-python">from scipy.cluster.hierarchy import linkage, dendrogram
+import matplotlib.pyplot as plt
+
+Z = linkage(E, method=&quot;ward&quot;)
+plt.figure(figsize=(10, 4))
+dendrogram(Z, no_labels=True)
+plt.title(&quot;Agrupamiento jerárquico (Ward) sobre embeddings&quot;)
+plt.savefig(&quot;dendrograma.png&quot;, dpi=150, bbox_inches=&quot;tight&quot;)
+</code></pre>
+<p>La prueba de estabilidad compara cada grupo de la corrida de referencia con la mejor coincidencia en otra corrida, por el índice de Jaccard. Se hace contra las otras semillas, contra k menos uno y k más uno, y contra otra representación. El índice de Rand ajustado compara particiones completas.</p>
+<pre><code class="language-python">K_ELEGIDO = 4                 # decisión: anótela con su razón en la ficha
+ref = corridas[(K_ELEGIDO, 0)][0]
+
+def grupos(labels):
+    return [set(np.where(labels == g)[0]) for g in np.unique(labels)]
+
+def jaccard(a, b):
+    return len(a &amp; b) / len(a | b)
+
+def supervivencia(labels_ref, labels_otro):
+    H = grupos(labels_otro)
+    return [max(jaccard(g, h) for h in H) for g in grupos(labels_ref)]
+
+por_semilla = np.mean([supervivencia(ref, corridas[(K_ELEGIDO, s)][0]) for s in range(1, 5)], axis=0)
+k_menos = supervivencia(ref, corridas[(K_ELEGIDO - 1, 0)][0])
+k_mas = supervivencia(ref, corridas[(K_ELEGIDO + 1, 0)][0])
+
+# otra representación: TF-IDF sobre los mismos documentos
+X_tfidf = TfidfVectorizer(strip_accents=&quot;unicode&quot;, stop_words=STOP, min_df=2).fit_transform(textos)
+otra = KMeans(n_clusters=K_ELEGIDO, n_init=10, random_state=0).fit(X_tfidf).labels_
+otra_rep = supervivencia(ref, otra)
+
+tabla = pd.DataFrame({
+    &quot;grupo&quot;: range(K_ELEGIDO), &quot;tamaño&quot;: np.bincount(ref),
+    &quot;jaccard_semilla&quot;: por_semilla, &quot;jaccard_k_menos&quot;: k_menos,
+    &quot;jaccard_k_mas&quot;: k_mas, &quot;jaccard_otra_rep&quot;: otra_rep,
+})
+print(tabla.round(2))
+print(&quot;Rand ajustado, semilla 0 frente a 1:&quot;, round(adjusted_rand_score(ref, corridas[(K_ELEGIDO, 1)][0]), 3))
+print(&quot;Rand ajustado, embeddings frente a TF-IDF:&quot;, round(adjusted_rand_score(ref, otra), 3))
+registrar_entorno(semilla=0, nota=f&quot;k-means k={K_ELEGIDO}&quot;)
+</code></pre>
+<p>Leer un grupo es mirar sus miembros más cercanos al centro y los más lejanos. Esos ocho textos son el material para proponer un nombre y para pedirle uno a un modelo de lenguaje.</p>
+<pre><code class="language-python">for g in range(K_ELEGIDO):
+    idx = np.where(ref == g)[0]
+    centro = E[idx].mean(axis=0)
+    orden = np.argsort(-(E[idx] @ centro))
+    print(f&quot;\n=== grupo {g} · {len(idx)} miembros ===&quot;)
+    print(&quot;más cerca del centro:&quot;)
+    for i in idx[orden[:5]]:
+        print(&quot;   &quot;, textos[i][:100])
+    print(&quot;más lejos del centro (candidatos a contraejemplo):&quot;)
+    for i in idx[orden[-3:]]:
+        print(&quot;   &quot;, textos[i][:100])
+</code></pre>
+<h2>Semana 4. Grafo de coocurrencia</h2>
+<p>El grafo se construye desde una tabla de unidades con sus códigos. La unidad es la primera decisión; el umbral de peso, la segunda. El bloque cuenta cuántas unidades comparte cada par de códigos y construye el grafo para un umbral dado.</p>
+<pre><code class="language-python">import networkx as nx
+from itertools import combinations
+from collections import Counter
+
+unidades = pd.read_csv(&quot;unidades.csv&quot;)     # columnas: id, fecha, codigos (separados por ;)
+pesos = Counter()
+for cods in unidades[&quot;codigos&quot;].fillna(&quot;&quot;).astype(str):
+    lista = sorted({c.strip() for c in cods.split(&quot;;&quot;) if c.strip()})
+    for a, b in combinations(lista, 2):
+        pesos[(a, b)] += 1
+todos = {c for par in pesos for c in par}
+
+def grafo(umbral):
+    G = nx.Graph()
+    G.add_nodes_from(todos)
+    for (a, b), w in pesos.items():
+        if w &gt;= umbral:
+            G.add_edge(a, b, weight=w)
+    return G
+</code></pre>
+<p>Las medidas se calculan sobre el grafo filtrado, y por eso cada número lleva su umbral. Las comunidades se calculan con dos algoritmos para ver dónde coinciden.</p>
+<pre><code class="language-python">UMBRALES = [1, 3, 6]     # decisión: el mínimo, uno medio, uno alto; ajuste a su corpus
+
+for u in UMBRALES:
+    G = grafo(u)
+    conectados = [n for n in G if G.degree(n) &gt; 0]
+    H = G.subgraph(conectados)
+    fuerza = dict(H.degree(weight=&quot;weight&quot;))
+    inter = nx.betweenness_centrality(H)
+    louvain = nx.community.louvain_communities(H, weight=&quot;weight&quot;, seed=0)
+    voraz = nx.community.greedy_modularity_communities(H, weight=&quot;weight&quot;)
+    puentes = sorted(inter, key=inter.get, reverse=True)[:5]
+    print(f&quot;\numbral ≥ {u}: {H.number_of_edges()} aristas · {nx.number_connected_components(H)} componentes · &quot;
+          f&quot;{len(louvain)} comunidades (Lovaina) · {len(voraz)} (voraz) · {len(todos) - len(conectados)} aislados&quot;)
+    print(&quot;  puentes por intermediación:&quot;, puentes)
+    print(&quot;  nodos más fuertes:&quot;, sorted(fuerza, key=fuerza.get, reverse=True)[:5])
+    for i, c in enumerate(louvain):
+        print(f&quot;  comunidad {i + 1}:&quot;, sorted(c))
+</code></pre>
+<p>El dibujo es un instrumento más. Dos semillas del algoritmo de disposición dan dos imágenes del mismo grafo; se guardan ambas y se declara cuál se usa.</p>
+<pre><code class="language-python">U = 3
+G = grafo(U).subgraph([n for n in grafo(U) if grafo(U).degree(n) &gt; 0])
+fuerza = dict(G.degree(weight=&quot;weight&quot;))
+for semilla in [0, 1]:
+    pos = nx.spring_layout(G, weight=&quot;weight&quot;, seed=semilla)
+    plt.figure(figsize=(9, 7))
+    nx.draw(G, pos, with_labels=True, font_size=8,
+            node_size=[30 * fuerza[n] for n in G],
+            width=[0.4 * G[a][b][&quot;weight&quot;] for a, b in G.edges()])
+    plt.title(f&quot;umbral ≥ {U} · disposición por fuerzas · semilla {semilla}&quot;)
+    plt.savefig(f&quot;grafo_u{U}_s{semilla}.png&quot;, dpi=150, bbox_inches=&quot;tight&quot;)
+</code></pre>
+<p>Quitar un nodo y recalcular muestra si la estructura depende de él.</p>
+<pre><code class="language-python">QUITAR = &quot;escriba aquí el código que sospecha&quot;
+if QUITAR in G:
+    G2 = G.copy(); G2.remove_node(QUITAR)
+    print(&quot;sin&quot;, QUITAR, &quot;-&gt;&quot;, nx.number_connected_components(G2), &quot;componentes,&quot;,
+          len(nx.community.louvain_communities(G2, weight=&quot;weight&quot;, seed=0)), &quot;comunidades&quot;)
+</code></pre>
+<h2>Semana 5. Serie del corpus, ventanas y rupturas</h2>
+<p>La serie cuenta, por periodo, la proporción de documentos que contienen un código. Se normaliza por el tamaño del corpus en el periodo porque el conteo crudo cuenta la recolección, no el fenómeno. El periodo es la primera decisión; la ventana de suavizado, la segunda.</p>
+<pre><code class="language-python">CODIGO = &quot;desalojo&quot;            # decisión: qué se cuenta
+PERIODO = &quot;MS&quot;                 # decisión: &quot;MS&quot; mensual, &quot;QS&quot; trimestral, &quot;YS&quot; anual
+
+corpus[&quot;fecha&quot;] = pd.to_datetime(corpus[&quot;fecha&quot;], errors=&quot;coerce&quot;)
+corpus[&quot;tiene&quot;] = corpus[&quot;texto&quot;].str.contains(CODIGO, case=False, na=False)
+# si tiene columna de códigos, use en cambio:
+# corpus[&quot;tiene&quot;] = corpus[&quot;codigos&quot;].fillna(&quot;&quot;).str.split(&quot;;&quot;).apply(lambda l: CODIGO in [c.strip() for c in l])
+
+serie = (corpus.dropna(subset=[&quot;fecha&quot;]).set_index(&quot;fecha&quot;)
+         .resample(PERIODO).agg(total=(&quot;tiene&quot;, &quot;size&quot;), con_codigo=(&quot;tiene&quot;, &quot;sum&quot;)))
+serie[&quot;proporcion&quot;] = (serie[&quot;con_codigo&quot;] / serie[&quot;total&quot;]).fillna(0)
+
+VENTANAS = [1, 3, 9]
+for w in VENTANAS:
+    serie[f&quot;suave_{w}&quot;] = serie[&quot;proporcion&quot;].rolling(w, center=True, min_periods=1).mean()
+print(serie.tail())
+</code></pre>
+<p>La ruptura por diferencia de medias marca el periodo donde más cambia el promedio entre los <code>w</code> periodos anteriores y los <code>w</code> siguientes. Es el método de la mini app. PELT busca varias rupturas con una penalización por cada una; la penalización cumple el papel de la ventana.</p>
+<pre><code class="language-python">import ruptures as rpt
+
+def ruptura(valores, w):
+    v = np.asarray(valores, dtype=float)
+    mejor, donde = -1.0, None
+    for t in range(w, len(v) - w + 1):
+        d = abs(v[t:t + w].mean() - v[t - w:t].mean())
+        if d &gt; mejor:
+            mejor, donde = d, t
+    return donde, mejor
+
+for w in VENTANAS:
+    t, salto = ruptura(serie[&quot;proporcion&quot;], w)
+    print(f&quot;ventana {w}: ruptura en {serie.index[t].date()} (salto {salto:.3f})&quot;)
+
+senal = serie[&quot;proporcion&quot;].to_numpy()
+senal = (senal - senal.mean()) / (senal.std() or 1)       # estandarizada para que la penalización tenga escala
+algo = rpt.Pelt(model=&quot;l2&quot;).fit(senal)
+for pen in [1, 3, 10]:
+    puntos = algo.predict(pen=pen)[:-1]
+    print(f&quot;PELT pen={pen}:&quot;, [str(serie.index[p].date()) for p in puntos])
+</code></pre>
+<p>La gráfica lleva la serie y, debajo, el tamaño del corpus por periodo, porque un lector debe poder ver si la ruptura coincide con un cambio en la recolección.</p>
+<pre><code class="language-python">fig, (a1, a2) = plt.subplots(2, 1, figsize=(10, 6), sharex=True, height_ratios=[3, 1])
+a1.plot(serie.index, serie[&quot;proporcion&quot;], color=&quot;gray&quot;, lw=0.8, label=&quot;cruda&quot;)
+for w in VENTANAS:
+    a1.plot(serie.index, serie[f&quot;suave_{w}&quot;], lw=1.6, label=f&quot;ventana {w}&quot;)
+a1.set_ylabel(f&quot;proporción con «{CODIGO}»&quot;); a1.legend()
+a2.bar(serie.index, serie[&quot;total&quot;], width=20, color=&quot;gray&quot;); a2.set_ylabel(&quot;documentos&quot;)
+plt.savefig(&quot;serie.png&quot;, dpi=150, bbox_inches=&quot;tight&quot;)
+</code></pre>
+<h2>Semana 6. Modelado de temas</h2>
+<p>La asignación latente de Dirichlet describe cada documento como mezcla de K temas y cada tema como distribución sobre palabras. K es una decisión de entrada y la semilla cambia el resultado. El bloque corre dos K y dos semillas y guarda las veinte palabras principales de cada tema.</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+
+KS_TEMAS, SEMILLAS_TEMAS = [8, 20], [0, 1]       # decisiones: un K bajo y uno alto para su corpus
+
+cv = CountVectorizer(strip_accents=&quot;unicode&quot;, stop_words=STOP, min_df=3, max_df=0.9)
+C = cv.fit_transform(textos)
+vocab = cv.get_feature_names_out()
+
+temas = {}
+for K in KS_TEMAS:
+    for s in SEMILLAS_TEMAS:
+        lda = LatentDirichletAllocation(n_components=K, random_state=s, learning_method=&quot;batch&quot;).fit(C)
+        theta = lda.transform(C)                      # proporción de cada tema en cada documento
+        listas = [list(vocab[np.argsort(-fila)[:20]]) for fila in lda.components_]
+        temas[(K, s)] = {&quot;listas&quot;: listas, &quot;theta&quot;: theta}
+        print(f&quot;\n=== K={K} · semilla {s} ===&quot;)
+        for i, l in enumerate(listas):
+            print(f&quot;  tema {i}:&quot;, &quot;, &quot;.join(l[:10]))
+</code></pre>
+<p>Un tema es candidato si aparece, con las mismas palabras principales, en las cuatro corridas. El bloque empareja cada tema de la corrida de referencia con el más parecido de cada otra corrida por Jaccard sobre las veinte palabras.</p>
+<pre><code class="language-python">REF = (KS_TEMAS[0], 0)
+for otra in [c for c in temas if c != REF]:
+    print(f&quot;\nreferencia {REF} frente a {otra}:&quot;)
+    for i, la in enumerate(temas[REF][&quot;listas&quot;]):
+        js = [jaccard(set(la), set(lb)) for lb in temas[otra][&quot;listas&quot;]]
+        j = int(np.argmax(js))
+        print(f&quot;  tema {i} ~ tema {j} (Jaccard {js[j]:.2f}): {', '.join(la[:6])}&quot;)
+</code></pre>
+<p>Para leer un tema se miran sus documentos de mayor peso, no solo sus palabras. Esos documentos son también los contraejemplos posibles del nombre que se proponga.</p>
+<pre><code class="language-python">TEMA = 0
+theta = temas[REF][&quot;theta&quot;]
+for i in np.argsort(-theta[:, TEMA])[:5]:
+    print(f&quot;{theta[i, TEMA]:.2f}  {textos[i][:120]}&quot;)
+</code></pre>
+<h2>Semana 7. Un panel honesto</h2>
+<p>Un panel declara la pregunta, la escala, los parámetros, la prueba de estabilidad, lo que afirma y, separada, la lectura. El bloque construye un panel con Plotly a partir de la serie anual; el eje empieza en cero y el pie lleva las seis casillas. Repita el patrón para cada vista del tablero.</p>
+<pre><code class="language-python">import plotly.graph_objects as go
+
+anual = (corpus.dropna(subset=[&quot;fecha&quot;]).set_index(&quot;fecha&quot;)
+         .resample(&quot;YS&quot;).agg(total=(&quot;tiene&quot;, &quot;size&quot;), con_codigo=(&quot;tiene&quot;, &quot;sum&quot;)))
+anual[&quot;pct&quot;] = 100 * anual[&quot;con_codigo&quot;] / anual[&quot;total&quot;]
+
+PREGUNTA = f&quot;¿Crece la proporción de documentos que mencionan «{CODIGO}»?&quot;
+PARAMETROS = &quot;agregación anual · sin suavizado · la tendencia se mantiene con agregación trimestral&quot;
+AFIRMA = f&quot;la proporción pasa de {anual['pct'].iloc[0]:.0f} % a {anual['pct'].iloc[-1]:.0f} %&quot;
+LECTURA = &quot;escriba aquí su lectura, separada de lo que la vista afirma&quot;
+
+fig = go.Figure(go.Bar(x=anual.index.year, y=anual[&quot;pct&quot;], marker_color=&quot;#2B55B8&quot;,
+                       text=anual[&quot;total&quot;], textposition=&quot;outside&quot;))
+fig.update_layout(
+    title=PREGUNTA, yaxis=dict(range=[0, max(20, anual[&quot;pct&quot;].max() * 1.2)], title=&quot;% de documentos del año&quot;),
+    xaxis=dict(title=&quot;año (n de documentos sobre cada barra)&quot;), margin=dict(b=160),
+    annotations=[dict(xref=&quot;paper&quot;, yref=&quot;paper&quot;, x=0, y=-0.32, showarrow=False, align=&quot;left&quot;,
+                      text=f&quot;&lt;b&gt;Parámetros y estabilidad:&lt;/b&gt; {PARAMETROS}&lt;br&gt;&quot;
+                           f&quot;&lt;b&gt;Lo que la vista afirma:&lt;/b&gt; {AFIRMA}&lt;br&gt;&quot;
+                           f&quot;&lt;b&gt;Lectura del investigador:&lt;/b&gt; {LECTURA}&quot;)])
+fig.write_html(&quot;panel_serie.html&quot;)
+</code></pre>
+<p>El tablero reúne los paneles en una sola página. Este bloque escribe un archivo que incrusta los paneles guardados; no necesita servidor.</p>
+<pre><code class="language-python">PANELES = [&quot;nube_umap.html&quot;, &quot;grafo_u3_s0.png&quot;, &quot;panel_serie.html&quot;]   # añada los suyos
+
+partes = []
+for p in PANELES:
+    if p.endswith(&quot;.html&quot;):
+        partes.append(f'&lt;iframe src=&quot;{p}&quot; style=&quot;width:100%;height:560px;border:0&quot;&gt;&lt;/iframe&gt;')
+    else:
+        partes.append(f'&lt;img src=&quot;{p}&quot; style=&quot;max-width:100%&quot;&gt;')
+html = &quot;&lt;!doctype html&gt;&lt;meta charset='utf-8'&gt;&lt;title&gt;Tablero&lt;/title&gt;&quot; + &quot;\n&quot;.join(partes)
+with open(&quot;tablero.html&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    f.write(html)
+</code></pre>
+<h2>Nota sobre costos y privacidad</h2>
+<p>Todas las bibliotecas del cuaderno son abiertas y corren en el computador propio; los modelos de embeddings se descargan una vez. No suba a ningún servicio material con datos personales de terceros. Si su corpus es sensible, haga la práctica con una muestra anonimizada. El curso 7 del programa trata estos problemas en detalle.</p>
+<hr />
+<h1 id="practica-03-representacion-y-agrupamiento">Práctica 3. Representación y agrupamiento con prueba de estabilidad</h1>
+<p>Duración estimada: 5 horas, de las cuales 1 en la sesión sincrónica de la semana 3 y el resto repartido entre las semanas 2 y 3.
+Requisitos: el corpus propio en una tabla con una fila por documento (columnas <code>id</code>, <code>fecha</code>, <code>texto</code>; para imágenes, <code>ruta</code> en vez de <code>texto</code>), el cuaderno <code>cuaderno-apoyo.md</code> con el entorno instalado, y la plantilla <code>plantillas/ficha-de-patron.md</code>.
+Quien no programe puede hacer la práctica con la mini app de embeddings sobre el conjunto de ejercicio y con una hoja de cálculo para la tabla de estabilidad; en ese caso la representación no es la del corpus propio y la ficha lo declara.</p>
+<h2>Objetivo</h2>
+<p>Representar el corpus propio como vectores con una representación declarada, agruparlo con k-means y con agrupamiento jerárquico, someter cada grupo a tres pruebas de estabilidad y leer los que sobreviven como candidatos a categoría, con sus contraejemplos.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Escriba en la sección 0 de la ficha lo que espera encontrar. Hágalo antes de calcular nada; es la parte de la práctica que no se puede repetir.</li>
+<li>Calcule los vectores del corpus con el bloque de la semana 2 del cuaderno. Registre el modelo, la versión y la dimensión en la sección 1 de la ficha. Si el corpus es visual, use el bloque de CLIP; si no puede correr modelos, use TF-IDF y declárelo.</li>
+<li>Lea los vecinos de diez documentos que conozca bien y llene la tabla de vecinos. Busque al menos un choque entre lo que el modelo acerca y lo que su corpus junta.</li>
+<li>Calcule una segunda representación (TF-IDF si la primera fue embeddings, o un segundo modelo de embeddings). Guárdela: es la tercera prueba de estabilidad.</li>
+</ol>
+<h2>Durante la sesión: tres rondas</h2>
+<h3>Ronda 1. Agrupar varias veces</h3>
+<p>Corra k-means para k de 2 a 10 con cinco semillas cada uno, con el bloque de la semana 3 del cuaderno. Grafique la silueta y la inercia por k, y dibuje el dendrograma del agrupamiento jerárquico. Mire las tres cosas y elija dos valores de k razonables. Anote por qué los eligió; "porque la silueta es máxima" es una razón del método, y "porque mi pregunta distingue entre cuatro tipos de discurso" es una razón de la pregunta. Las dos valen, y la ficha pide cuál fue.</p>
+<h3>Ronda 2. Probar la estabilidad</h3>
+<p>Para cada uno de los dos valores de k, con la semilla 0 como referencia, calcule para cada grupo:</p>
+<ul>
+<li>el Jaccard medio contra la mejor coincidencia en las otras cuatro semillas;</li>
+<li>el Jaccard contra la mejor coincidencia con k menos uno y con k más uno;</li>
+<li>el Jaccard contra la mejor coincidencia en la segunda representación.</li>
+</ul>
+<p>Calcule también el índice de Rand ajustado entre particiones completas. Llene la sección 3 de la ficha. Un grupo es candidato si pasa las tres pruebas con los umbrales que el grupo fije en la sesión; el curso sugiere 0,8 para la semilla y 0,6 para las otras dos, y acepta otros umbrales si se declaran.</p>
+<h3>Ronda 3. Leer los candidatos</h3>
+<p>Para cada candidato, liste los cinco miembros más cercanos al centro y los tres más lejanos. Léalos. Proponga un nombre. Pídale a un modelo de lenguaje que proponga otro a partir de los mismos ocho miembros, y registre el prompt. Llene la sección 4 de la ficha con los miembros que el nombre explica y los que no. Decida: adopta, corrige o rechaza cada nombre, con razones que no repitan lo que dijo el modelo.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Compare la sección 0 con lo que sobrevivió. Escriba qué coincidió, qué no y qué le sorprendió.</li>
+<li>Escriba lo que dicen los grupos que no sobrevivieron: ¿dependen de la semilla, de k o de la representación? ¿Qué le enseña eso sobre su corpus o sobre el instrumento?</li>
+<li>Corra el bloque de registro de entorno del cuaderno y adjunte el archivo que produce. Entregue la ficha con el código o los pasos en anexo.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La justificación de la representación, la prueba de estabilidad completa, el reporte honesto de lo que no sobrevivió, y la lectura de cada candidato con sus contraejemplos. Una ficha con dos candidatos bien probados y tres grupos reportados como inestables vale más que una con cinco grupos limpios y una sola corrida.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes con corpus parecidos intercambian vectores y corren la prueba de estabilidad sobre el corpus del otro. Las diferencias en los candidatos que cada uno declara son el mejor material de discusión: muestran cuánto de la lectura viene del corpus y cuánto de quien lee.</p>
+<hr />
+<h1 id="practica-05-grafo-de-coocurrencia">Práctica 5. Grafo de coocurrencia con lectura interpretativa</h1>
+<p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica de la semana 4 y media en la de la semana 5.
+Requisitos: una tabla de unidades del corpus propio con una columna de códigos, actores o etiquetas separados por punto y coma (columnas <code>id</code>, <code>fecha</code>, <code>codigos</code>), el cuaderno <code>cuaderno-apoyo.md</code> y la plantilla <code>plantillas/lectura-de-grafo.md</code>.
+Quien no programe puede hacer la práctica con la mini app de grafo sobre el conjunto de ejercicio y con una hoja de cálculo para la tabla de umbrales; la lectura, en ese caso, se hace sobre el grafo de ejercicio y la plantilla lo declara.</p>
+<h2>Objetivo</h2>
+<p>Construir el grafo de coocurrencia del corpus propio con una unidad declarada, calcular sus medidas por lo que miden, mostrar qué cambia con tres umbrales y dos algoritmos de comunidades, y escribir una lectura que distinga lo que la red muestra de lo que el investigador propone, con el apoyo de cada propuesta nombrado.</p>
+<h2>Antes de la sesión de la semana 4</h2>
+<ol>
+<li>Decida la unidad de coocurrencia. Si tiene el libro de códigos del curso 4, la unidad es el documento o el segmento codificado. Si tiene actores en noticias, la unidad es la noticia. Si tiene etiquetas de imágenes, la unidad es la imagen. Si no tiene nada de esto, use los grupos de la semana 3 como códigos y los documentos como unidades. Escriba la decisión y su razón en la sección 1 de la plantilla.</li>
+<li>Construya la tabla de unidades. Cada fila, una unidad; en la columna <code>codigos</code>, los códigos presentes separados por punto y coma. Sin datos personales de terceros.</li>
+</ol>
+<h2>Durante la sesión de la semana 4: tres rondas</h2>
+<h3>Ronda 1. Construir y medir</h3>
+<p>Con el bloque de la semana 4 del cuaderno, construya el grafo ponderado con umbral uno: una arista entre dos códigos por cada unidad que comparten, con peso igual al número de unidades. Calcule grado, fuerza e intermediación. Antes de mirar los números, escriba en la sección 2 qué mide cada una en una frase suya. Luego anote los cinco nodos más altos en cada medida y encuentre dos medidas que ordenen los nodos de forma distinta.</p>
+<h3>Ronda 2. Mover el umbral</h3>
+<p>Repita con un umbral medio y uno alto. Los valores dependen del corpus: el medio suele estar donde el grafo deja de ser una maraña, y el alto donde empiezan a aparecer aislados. Para cada umbral, calcule comunidades con el algoritmo de Lovaina y con el de modularidad voraz, cuente componentes y aislados, y liste los puentes. Llene la sección 3. Marque lo que se mantiene en los tres umbrales y en los dos algoritmos.</p>
+<h3>Ronda 3. Dibujar dos veces</h3>
+<p>Dibuje el grafo del umbral medio con dos semillas distintas del algoritmo de disposición. Guarde ambas imágenes. Mire qué nodo "parece central" en cada una y compruebe si lo es por alguna medida. Llene la sección 5 con la advertencia al lector.</p>
+<h2>Entre las dos sesiones</h2>
+<ol>
+<li>Lea los candidatos: cada comunidad y cada puente que se mantuvo. Para cada uno, escriba en la sección 4 lo que la red muestra, sin interpretar, y luego lo que usted propone que significa.</li>
+<li>Nombre el apoyo de cada propuesta: qué documentos del corpus la sostienen, qué teoría de su campo la leería, o ninguno todavía. "Ninguno todavía" es una respuesta válida y se escribe.</li>
+<li>Pídale a un modelo de lenguaje una lectura alternativa de un puente, con el prompt registrado, y escríbala en la columna correspondiente con lo que decidiría entre las dos.</li>
+<li>Quite un nodo del grafo, el que más sospeche que sostiene la estructura, y vuelva a calcular comunidades. Anote qué pasó.</li>
+</ol>
+<h2>Durante la sesión de la semana 5: revisión en parejas</h2>
+<p>Cada estudiante lee la lectura de grafo de otro durante quince minutos con una sola instrucción: encontrar al menos una afirmación de la sección 4 que la red no sostiene, o un apoyo que no es tal. El autor corrige o defiende por escrito. No encontrar nada es la excepción, no la cortesía.</p>
+<h2>Después de la sesión</h2>
+<p>Llene la sección 6, la frontera: qué calculó la máquina y cualquiera puede reproducir, qué leyó usted, qué propuso el modelo de lenguaje y qué hizo con ello. Adjunte el archivo de entorno y el código o los pasos. Entregue.</p>
+<h2>Qué se evalúa</h2>
+<p>La construcción declarada, las medidas con lo que miden, la tabla de tres umbrales, la lectura con su apoyo nombrado y el dibujo con su advertencia. Una lectura que dice "ninguno todavía" en tres de cinco apoyos y lo discute vale más que una que inventa un apoyo para cada puente.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes construyen el grafo del mismo corpus con unidades distintas, el documento y el párrafo, y comparan comunidades y puentes. Lo que cambia con la unidad es la mejor demostración de que el grafo es una hipótesis relacional.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="plantillas.html">← Plantillas</a><a href="apps.html">Mini apps →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

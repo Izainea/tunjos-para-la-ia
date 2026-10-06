@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Constructor de matriz de riesgos y derechos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.f{display:grid;grid-template-columns:1fr;gap:.45rem}
+.f label{display:flex;flex-direction:column;gap:.15rem;font-size:.85rem;color:var(--muted)}
+.f input,.f select,.f textarea{width:100%}
+.f textarea{min-height:2.6rem;resize:vertical}
+.list .it{border-top:1px solid var(--rule);padding:.5rem 0;font-size:.9rem;color:var(--ink)}
+.list .it .k{display:block}
+.list .it .m{color:var(--muted)}
+.list .it .p-alta{color:var(--c-fil)} .list .it .p-media{color:var(--c-doc)} .list .it .p-baja{color:var(--c-inv)}
+.warn{color:var(--c-fil);font-size:.85rem}
+#out{width:100%;min-height:10rem;font-family:var(--mono);font-size:.78rem}
+.wrap{overflow-x:auto}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 7 · Semana 3</span>
+  <h1>Constructor de matriz de riesgos y derechos</h1>
+  <p>Una fila por tipo de pieza de su corpus. Para cada una: qué derechos pesan, qué daño puede causar su uso, a quién, con qué probabilidad, qué mitigación adopta y qué uso decide. Al final, exporte la matriz como texto y péguela en la plantilla.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="k">Nueva fila</span>
+      <div class="f">
+        <label>Tipo de pieza <input id="tipo" placeholder="p. ej. entrevistas con víctimas, fotografías de prensa, publicaciones en una red social"></label>
+        <label>Derechos que pesan (autor, datos personales, sensibles, términos de plataforma) <input id="derechos" placeholder="p. ej. datos sensibles (Ley 1581, art. 5); autor del medio (Ley 23, art. 31)"></label>
+        <label>Daño posible (con verbo) <textarea id="dano" placeholder="p. ej. reidentificar a una persona al cruzar el relato con prensa"></textarea></label>
+        <label>A quién (grupo o persona) <input id="quien" placeholder="p. ej. la persona entrevistada y su familia"></label>
+        <label>Probabilidad <select id="prob"><option value="baja">baja</option><option value="media" selected>media</option><option value="alta">alta</option></select></label>
+        <label>Mitigación <textarea id="mit" placeholder="p. ej. seudonimizar y generalizar lugar y fecha antes de cualquier consulta"></textarea></label>
+        <label>Uso que decido <select id="uso"><option value="citar">citar</option><option value="describir" selected>describir</option><option value="exhibir con reserva">exhibir con reserva</option><option value="no usar">no usar</option></select></label>
+      </div>
+      <div class="row" style="margin-top:.6rem">
+        <button type="button" class="primary" id="add">añadir fila</button>
+        <button type="button" id="ejemplo">cargar ejemplo</button>
+        <button type="button" id="clear">vaciar</button>
+      </div>
+      <div class="warn" id="warn"></div>
+    </div>
+    <div class="card">
+      <span class="k">Matriz (<span id="n">0</span> filas)</span>
+      <div class="list" id="list"></div>
+      <div class="note" id="check"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="k">Exportar como texto (tabla markdown para la plantilla)</span>
+    <div class="row" style="margin:.4rem 0">
+      <button type="button" id="export">generar texto</button>
+      <button type="button" id="copy">copiar</button>
+      <span class="note" id="copied"></span>
+    </div>
+    <textarea id="out" readonly></textarea>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: una matriz no elimina el riesgo; lo pone a nombre de alguien. La regla de llenado es que ninguna celda de daño diga "ninguno".</p>
+<script>
+(function(){
+  var rows=[];
+  var ids=['tipo','derechos','dano','quien','prob','mit','uso'];
+  var EJEMPLO=[
+    {tipo:'Relatos de entrevista con familiares de personas desaparecidas',derechos:'Datos sensibles: condición de víctima, salud, creencias (Ley 1581, arts. 5 y 6). Finalidad: se dieron a una entidad para la búsqueda, no para investigación externa',dano:'Reidentificar a la persona o a su familia al cruzar lugar, fecha y hecho con prensa; exponer a quien dio el relato a represalias',quien:'La persona que relató, su familia, la comunidad de la vereda',prob:'alta',mit:'No sale ningún relato hacia un servicio externo sin seudonimizar nombres y generalizar lugar y fecha; la tabla de correspondencia queda en la entidad; se trabaja sobre descripciones cuando el relato identifica por el hecho',uso:'describir'},
+    {tipo:'Fotografías de prensa de los años ochenta y noventa',derechos:'Derecho de autor del medio y del fotógrafo (Ley 23, art. 31); personas identificables, algunas fallecidas, otras no',dano:'Reproducir rostros de personas vivas en contextos de violencia; reproducir la obra entera sin autorización',quien:'Las personas fotografiadas y sus familias; el fotógrafo o el medio',prob:'media',mit:'Descripción densa para el análisis; exhibición solo en baja resolución, sin rostros, donde el argumento lo exige, con fuente y autor',uso:'exhibir con reserva'},
+    {tipo:'Publicaciones en una red social sobre un hecho local',derechos:'Dato personal público pero no abierto (Decreto 1377, art. 3); términos de uso de la plataforma sobre recolección',dano:'Que una cita textual lleve a la persona que publicó; recolección automatizada contra los términos',quien:'Quien publicó y las personas mencionadas',prob:'media',mit:'Recolección a mano; parafraseo con verificación; nunca cita textual con nombre de usuario',uso:'describir'}
+  ];
+  function val(id){ return document.getElementById(id).value.trim(); }
+  function setv(id,v){ document.getElementById(id).value=v; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function render(){
+    document.getElementById('n').textContent=rows.length;
+    var h='';
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i];
+      h+='<div class="it"><span class="k">'+(i+1)+' · '+esc(r.tipo)+' · <span class="p-'+r.prob+'">'+r.prob+'</span> · '+esc(r.uso)+'</span>';
+      h+='<div><b>Derechos:</b> '+esc(r.derechos)+'</div>';
+      h+='<div><b>Daño:</b> '+esc(r.dano)+' <span class="m">a</span> '+esc(r.quien)+'</div>';
+      h+='<div><b>Mitigación:</b> '+esc(r.mit)+'</div>';
+      h+='<div class="row" style="margin-top:.3rem"><button type="button" data-del="'+i+'">quitar</button></div></div>';
+    }
+    document.getElementById('list').innerHTML=h||'<p>Sin filas todavía.</p>';
+    var alta=0, generic=0;
+    for(var j=0;j<rows.length;j++){ if(rows[j].prob==='alta') alta++; if(/^(ninguno|ninguna|no hay|n\/a)/i.test(rows[j].dano)) generic++; }
+    var c=[];
+    if(rows.length && !alta) c.push('Ninguna fila tiene probabilidad alta: justifique en la plantilla por qué, o revise el optimismo.');
+    if(generic) c.push(generic+' fila(s) con daño "ninguno": la regla del curso es que esa celda nunca quede así.');
+    if(rows.length>=3 && !c.length) c.push('La matriz tiene al menos tres tipos, un daño alto y ningún daño vacío. Intercámbiela con un par y busque el daño que falta.');
+    document.getElementById('check').textContent=c.join(' ');
+  }
+
+  document.getElementById('add').addEventListener('click',function(){
+    var r={}; for(var i=0;i<ids.length;i++) r[ids[i]]=val(ids[i]);
+    var w=[];
+    if(!r.tipo) w.push('falta el tipo de pieza');
+    if(!r.dano) w.push('falta el daño');
+    if(!r.quien) w.push('falta a quién');
+    if(/^(ninguno|ninguna|no hay|n\/a)/i.test(r.dano)) w.push('el daño no puede ser "ninguno": imagine al lector menos benévolo y a la persona menos protegida');
+    document.getElementById('warn').textContent=w.join(' · ');
+    if(w.length) return;
+    rows.push(r);
+    for(var k=0;k<ids.length;k++){ if(ids[k]!=='prob' && ids[k]!=='uso') setv(ids[k],''); }
+    render();
+  });
+  document.getElementById('list').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-del]');
+    if(!b) return;
+    rows.splice(Number(b.getAttribute('data-del')),1);
+    render();
+  });
+  document.getElementById('ejemplo').addEventListener('click',function(){
+    rows=EJEMPLO.map(function(r){ var o={}; for(var k in r){ if(r.hasOwnProperty(k)) o[k]=r[k]; } return o; });
+    render();
+  });
+  document.getElementById('clear').addEventListener('click',function(){ rows=[]; render(); document.getElementById('out').value=''; });
+
+  function toText(){
+    var lines=['| Nº | Tipo de pieza | Derechos que pesan | Daño posible | A quién | Probabilidad | Mitigación | Uso que decido |','|---|---|---|---|---|---|---|---|'];
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i];
+      var cell=function(s){ return String(s).replace(/\|/g,'/').replace(/\n/g,' '); };
+      lines.push('| '+(i+1)+' | '+cell(r.tipo)+' | '+cell(r.derechos)+' | '+cell(r.dano)+' | '+cell(r.quien)+' | '+r.prob+' | '+cell(r.mit)+' | '+r.uso+' |');
+    }
+    lines.push('');
+    lines.push('Generado con la mini app del curso 7, semana 3. Fecha: '+new Date().toISOString().slice(0,10)+'.');
+    return lines.join('\n');
+  }
+  document.getElementById('export').addEventListener('click',function(){ document.getElementById('out').value=toText(); document.getElementById('copied').textContent=''; });
+  document.getElementById('copy').addEventListener('click',function(){
+    var ta=document.getElementById('out');
+    if(!ta.value) ta.value=toText();
+    ta.select();
+    var ok=false;
+    try{ ok=document.execCommand('copy'); }catch(e){ ok=false; }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(ta.value).then(function(){ document.getElementById('copied').textContent='copiado'; },function(){ document.getElementById('copied').textContent=ok?'copiado':'seleccione y copie a mano'; }); }
+    else { document.getElementById('copied').textContent=ok?'copiado':'seleccione y copie a mano'; }
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 6 · Semana 7 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Cuando un párrafo dice que &quot;los datos muestran&quot; o que &quot;el análisis revela&quot;, ¿quién afirma? ¿Y qué tiene que pasar para que un output se convierta en una aserción por la que alguien responde?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-6/semana-07.html" />
+    <meta property="og:title" content="Curso 6 · Semana 7" />
+    <meta property="og:description" content="Cuando un párrafo dice que &quot;los datos muestran&quot; o que &quot;el análisis revela&quot;, ¿quién afirma? ¿Y qué tiene que pasar para que un output se convierta en una aserción por la que alguien responde?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-6/semana-07.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 6</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub is-active">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 6 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 7. Escribir hallazgos: de output a aserción</h1>
+          <p class="desc">Cuando un párrafo dice que "los datos muestran" o que "el análisis revela", ¿quién afirma? ¿Y qué tiene que pasar para que un output se convierta en una aserción por la que alguien responde?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Cuando un párrafo dice que "los datos muestran" o que "el análisis revela", ¿quién afirma? ¿Y qué tiene que pasar para que un output se convierta en una aserción por la que alguien responde?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">El curso ha validado, triangulado, elegido hipótesis, interpretado y trazado el mapa. Queda escribir, y escribir es donde todo lo anterior se pierde o se conserva. El output de un modelo llega con la forma de la aserción fundamentada: oraciones declarativas, conectores de inferencia, un registro impersonal que suena a ciencia. El curso 1 llamó a eso infortunio de autoridad epistémica: la forma de la aserción sin ningún agente que pueda redimir sus pretensiones. Esta semana muestra que el infortunio se hereda. Quien transcribe el output a su informe, con sus "los datos muestran" y sus "es evidente que", hereda una aserción sin aserente y la firma sin ocupar el lugar del que afirma. Escribir hallazgos es la operación inversa: convertir cada output en una aserción con sujeto, base, criterio y responsable, y declarar, en un documento que un jurado pueda leer, qué fue de quién.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Austin empezó distinguiendo enunciados constatativos, que describen y son verdaderos o falsos, de performativos, que hacen algo y son afortunados o infortunados, y terminó por mostrar que la distinción no se sostiene: toda aserción es también un acto, con fuerza, que levanta un compromiso de quien la hace.<sup class="mark">a</sup> Afirmar que p es comprometerse a tener razones para p, a responder si se pide, a retractarse si falla. Esa es la condición que el output de un modelo tiene en la forma y no en el fondo, y que el párrafo transcrito conserva en la forma sin que nadie la asuma en el fondo. La primera operación de la semana es leer el propio informe preguntando, frase por frase, quién afirma.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Las conferencias I y II de <i>Cómo hacer cosas con palabras</i> presentan la distinción entre constatativo y performativo y la doctrina de los infortunios. Las últimas conferencias la abandonan a favor de la teoría general de los actos de habla: locutivo, ilocutivo y perlocutivo. El curso usa el punto de llegada: aseverar es un acto ilocutivo con condiciones de fortuna.</aside>
+
+<ol start="2">
+<li>Habermas da el inventario de lo que una aserción compromete. Todo acto de habla serio levanta pretensiones de validez, verdad sobre lo dicho, rectitud sobre la relación en que se dice y veracidad sobre quien lo dice, que el hablante está obligado a redimir discursivamente si se le interpela.<sup class="mark">b</sup> La validez no es propiedad del contenido sino de la capacidad de sostenerlo con razones. Cuando se le pide a un modelo que justifique, produce una nueva cadena de tokens con la morfología de una justificación. Cuando se le pide a un investigador que justifique un párrafo que transcribió, puede pasar lo mismo, y ese es el infortunio heredado: no que el párrafo sea falso, sino que quien lo firma no está en posición de redimirlo. La escritura de hallazgos consiste en ponerse en esa posición antes de firmar.</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> En el capítulo III del tomo I de <i>Teoría de la acción comunicativa</i> (1987), Habermas desarrolla las tres pretensiones y la idea de que el entendimiento se logra cuando el oyente acepta la oferta del hablante de redimirlas si hace falta. Redimir no es tener razón: es poder dar razones ante quien las pide.</aside>
+
+<ol start="3">
+<li>
+<p>La forma del infortunio en la escritura es reconocible por sus marcadores. "Los datos muestran", "el análisis revela", "es evidente que", "se observa que", "los resultados indican", "resulta claro", "como puede apreciarse": todos atribuyen la afirmación a algo que no puede afirmar, los datos, el análisis, la evidencia, y dejan vacío el lugar del aserente. La literatura reciente nombra el fenómeno en el modelo como aserción sin aserente: la función asertórica persiste sin autoridad asertórica (Massaguer Gómez, 2026). El curso lo lleva a la escritura del investigador, donde los marcadores tienen una ventaja perversa: suenan a objetividad. La mini app de la semana los resalta en un párrafo y pide reescribirlo en primera persona con criterio explícito.</p>
+</li>
+<li>
+<p>Convertir un output en aserción tiene cuatro pasos, y cada uno añade algo que el output no traía. El primero es verificar lo verificable: el dato, la cita, la cifra, la referencia; es el primer sentido de validación, y es lo que el modelo no puede garantizar de sí mismo. El segundo es nombrar el criterio: por qué esta categoría y no otra, sobre qué patas se sostiene, qué prueba pasó; es el segundo sentido, y viene del protocolo y de la matriz. El tercero es poner el aserente: quién afirma, desde qué trasfondo, con qué alcance; es el tercer sentido. El cuarto es declarar la procedencia: qué de la frase viene de un output, qué se aceptó, corrigió o rechazó. Al final del cuarto paso la frase ya no es "los datos muestran que X" sino "sostengo que X, porque A, B y C convergen; el modelo propuso X como candidato y yo lo acepté por D; respondo por ello con el alcance E".</p>
+</li>
+<li>
+<p>La declaración de uso de IA es el documento en que los cuatro pasos quedan a la vista para un lector externo. No es un descargo ni una lista de herramientas. Dice, para cada fase del trabajo en que intervino un modelo: qué modelo y versión, con qué instrucciones, adjuntas literalmente; qué produjo; qué se aceptó, qué se corrigió, qué se rechazó y con qué criterio; dónde estuvo la frontera; y quién responde por cada hallazgo. Los comités de ética editorial han convergido en el mismo punto desde otra dirección: el Committee on Publication Ethics y las principales revistas excluyen a los modelos de la autoría porque no pueden asumir responsabilidad por el trabajo, y exigen declarar su uso.<sup class="mark">c</sup> Floridi (2026) lo formula como principio: no detección sino <em>answerability</em>. La plantilla del curso convierte el principio en formato.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">c</span> El Committee on Publication Ethics (COPE) publicó en 2023 una posición sobre autoría y herramientas de IA, y la revista <i>Nature</i> fijó ese mismo año sus reglas de uso. Ambas coinciden en que una herramienta no puede ser autora porque no puede responder por el contenido, y en que su uso debe documentarse en el manuscrito.</aside>
+
+<ol start="6">
+<li>
+<p>El informe analítico que el curso entrega tiene una sección de validación explícita, y esa sección no es un apéndice metodológico. Dice, hallazgo por hallazgo, en qué sentido está validado y con qué criterio: cuáles son hallazgos sostenidos por varias patas con prueba pasada, cuáles son conjeturas admisibles sin compromiso, y cuáles se descartaron. Incluye el mapa mimético de la semana 6 como declaración de dónde estuvo la máquina y dónde el investigador, y la declaración de uso de IA como anexo con los prompts literales. Un lector que no haya hecho el curso debe poder, con esa sección, decidir qué parte del informe acepta, qué parte verifica y qué parte le pregunta al autor.</p>
+</li>
+<li>
+<p>La reescritura que la práctica de hoy ejecuta no es un ejercicio de estilo. Pasar de "los datos muestran" a "sostengo que" cambia quién queda comprometido, y el estudiante lo siente al escribirlo: hay frases que no puede reescribir en primera persona porque no las puede sostener, y esas frases son el hallazgo de la práctica. Lo que no se puede firmar se quita o se declara como output no validado. El informe queda más corto y más defendible, y la semana 8 lo pone a prueba.</p>
+</li>
+</ol>
+<figure class="wide">
+<svg viewBox="0 0 700 230" style="width:100%;max-width:44rem;height:auto;display:block" role="img" aria-label="Cuatro pasos de izquierda a derecha: output con forma de aserción; verificar lo verificable, sentido 1; nombrar el criterio, sentido 2; poner el aserente, sentido 3; declarar la procedencia. Al final, una aserción con sujeto, base, criterio y responsable. Debajo, la frase antes y después.">
+<style>.o-h{font-family:var(--display);font-weight:700;font-size:13px;fill:var(--ink)} .o-d{font-family:var(--text);font-size:11.5px;fill:var(--muted)} .o-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .o-kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .o-ki{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-inv)} .o-bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .o-out{fill:var(--c-fil);opacity:.18} .o-as{fill:var(--c-inv);opacity:.2} .o-ln{stroke:var(--muted);stroke-width:1.3;fill:none} .o-ah{fill:var(--muted)} .o-q{font-family:var(--text);font-style:italic;font-size:12px;fill:var(--ink)}</style>
+<defs><marker id="o-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="o-ah"/></marker></defs>
+<rect x="10" y="40" width="110" height="80" rx="3" class="o-out"/>
+<rect x="10" y="40" width="110" height="80" rx="3" class="o-bx" fill="none"/>
+<text x="65" y="64" text-anchor="middle" class="o-h">output</text>
+<text x="65" y="84" text-anchor="middle" class="o-d">forma de aserción</text>
+<text x="65" y="100" text-anchor="middle" class="o-d">sin aserente</text>
+<path class="o-ln" d="M120 80 L140 80" marker-end="url(#o-ah)"/>
+<rect x="145" y="40" width="110" height="80" rx="3" class="o-bx"/>
+<text x="200" y="30" text-anchor="middle" class="o-k">SENTIDO 1</text>
+<text x="200" y="64" text-anchor="middle" class="o-h">verificar</text>
+<text x="200" y="84" text-anchor="middle" class="o-d">dato, cita, cifra,</text>
+<text x="200" y="100" text-anchor="middle" class="o-d">referencia</text>
+<path class="o-ln" d="M255 80 L275 80" marker-end="url(#o-ah)"/>
+<rect x="280" y="40" width="110" height="80" rx="3" class="o-bx"/>
+<text x="335" y="30" text-anchor="middle" class="o-k">SENTIDO 2</text>
+<text x="335" y="64" text-anchor="middle" class="o-h">criterio</text>
+<text x="335" y="84" text-anchor="middle" class="o-d">patas, prueba,</text>
+<text x="335" y="100" text-anchor="middle" class="o-d">por qué esta y no otra</text>
+<path class="o-ln" d="M390 80 L410 80" marker-end="url(#o-ah)"/>
+<rect x="415" y="40" width="110" height="80" rx="3" class="o-bx"/>
+<text x="470" y="30" text-anchor="middle" class="o-k">SENTIDO 3</text>
+<text x="470" y="64" text-anchor="middle" class="o-h">aserente</text>
+<text x="470" y="84" text-anchor="middle" class="o-d">quién, desde dónde,</text>
+<text x="470" y="100" text-anchor="middle" class="o-d">con qué alcance</text>
+<path class="o-ln" d="M525 80 L545 80" marker-end="url(#o-ah)"/>
+<rect x="550" y="40" width="140" height="80" rx="3" class="o-as"/>
+<rect x="550" y="40" width="140" height="80" rx="3" class="o-bx" fill="none"/>
+<text x="620" y="30" text-anchor="middle" class="o-ki">PROCEDENCIA DECLARADA</text>
+<text x="620" y="64" text-anchor="middle" class="o-h">aserción</text>
+<text x="620" y="84" text-anchor="middle" class="o-d">sujeto, base, criterio,</text>
+<text x="620" y="100" text-anchor="middle" class="o-d">responsable</text>
+<text x="20" y="160" class="o-kf">ANTES</text>
+<text x="80" y="160" class="o-q">"Los datos muestran que la desconfianza institucional organiza el corpus."</text>
+<text x="20" y="192" class="o-ki">DESPUÉS</text>
+<text x="80" y="192" class="o-q">"Sostengo que la desconfianza institucional organiza el corpus: converge en</text>
+<text x="80" y="210" class="o-q">entrevistas y prensa, pasó la prueba de aro; el modelo la propuso y yo respondo."</text>
+</svg>
+<figcaption><b>Figura 7.</b> De output a aserción. Lo que hay que ver es que cada paso añade algo que el output no traía, y que la frase final es más larga porque ahora tiene a alguien detrás.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/asercion-sin-aserente.html" title="Detector de aserción sin aserente: resalte los marcadores de autoridad de un párrafo y reescríbalo en primera persona con su criterio" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que redacte un párrafo de hallazgos a partir de la matriz de triangulación del estudiante, y que luego lo justifique. El estudiante debe poder marcar cada marcador de autoridad sin aserente, reescribir el párrafo con los cuatro pasos, identificar qué frases no puede firmar, y redactar la declaración de uso de IA de ese párrafo con los prompts literales. Debe poder explicar por qué la justificación que el modelo dio no lo pone a él en posición de redimir nada.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Austin, J. L. (1982). <em>Cómo hacer cosas con palabras</em>. Barcelona: Paidós. Conferencias I y II; releer XI y XII.</li>
+<li>Habermas, J. (1987). <em>Teoría de la acción comunicativa</em>, tomo I. Madrid: Taurus. Capítulo III, sobre pretensiones de validez.</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Massaguer Gómez, G. (2026). "Assertion, Accountability, and Large Language Models". <em>Philosophy &amp; Technology</em> 39(3), 123. <a href="https://doi.org/10.1007/s13347-026-01136-y">https://doi.org/10.1007/s13347-026-01136-y</a></li>
+<li>Floridi, L. (2026). "AI and the Future of Publishing: Not Detection, but Answerability". <em>Philosophy &amp; Technology</em> 39(3), 129. <a href="https://doi.org/10.1007/s13347-026-01148-8">https://doi.org/10.1007/s13347-026-01148-8</a></li>
+<li>Committee on Publication Ethics (2023). "Authorship and AI Tools". Declaración de posición. <a href="https://publicationethics.org/">https://publicationethics.org/</a></li>
+<li>Hicks, M. T., Humphries, J. y Slater, J. (2024). "ChatGPT is bullshit". <em>Ethics and Information Technology</em> 26, 38. <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a></li>
+<li>Zainea, C. I. (2026). "Los modelos de lenguaje no alucinan: cometen infortunios". <a href="https://izainea.github.io/blog/alucinacion-o-infortunio/">https://izainea.github.io/blog/alucinacion-o-infortunio/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Austin termina por disolver la distinción entre constatativo y performativo. <em>Si aseverar es un acto con condiciones de fortuna, ¿cuáles son las condiciones de fortuna de un párrafo de hallazgos, y cuál de ellas falla cuando el párrafo se transcribe de un output?</em></li>
+<li>Habermas distingue verdad, rectitud y veracidad. <em>En un informe de investigación, ¿qué pretensión levanta "los datos muestran", y cuál de las tres no puede redimirse si el autor no sabe por qué los datos muestran eso?</em></li>
+<li>Massaguer Gómez sostiene que el análisis de la aserción no distingue outputs fiables de no fiables. <em>¿Es esa una limitación de su análisis o la razón por la que la fiabilidad no resuelve el problema del aserente?</em></li>
+<li>Floridi propone sustituir la detección de IA por la exigencia de responder. <em>¿Qué tendría que contener una declaración de uso para que un lector pudiera interpelar al autor, y qué le falta a las declaraciones que usted ha visto?</em></li>
+</ul>
+<h2>Taller de la segunda hora: práctica guiada</h2>
+<p>Guía completa en <code>practicas/practica-07-reescritura-de-informe.md</code>. En resumen: el estudiante toma el informe que trajo, resalta los marcadores de autoridad, reescribe cada frase con los cuatro pasos, separa lo que no puede firmar, y redacta la declaración de uso de IA con la plantilla <code>plantillas/declaracion-de-uso-de-ia.md</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frase original</th>
+<th>Marcador</th>
+<th>Verificado (sí, no, cómo)</th>
+<th>Criterio</th>
+<th>Aserente y alcance</th>
+<th>Procedencia (output aceptado, corregido, rechazado, propio)</th>
+<th>Frase reescrita o retirada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10 min</td>
+<td>Recoge los mapas miméticos y sus puntos de truncamiento</td>
+<td>Dice en una frase dónde se trunca el suyo</td>
+<td>Bitácoras</td>
+</tr>
+<tr>
+<td>10 a 30 min</td>
+<td>Expone Austin y Habermas sobre un párrafo generado, leído frase por frase</td>
+<td>Marca quién afirma en cada frase</td>
+<td>Párrafo de ejemplo</td>
+</tr>
+<tr>
+<td>30 a 50 min</td>
+<td>Expone los cuatro pasos y la declaración de uso con la figura 7</td>
+<td>Reescribe una frase en voz alta</td>
+<td>Figura 7, app</td>
+</tr>
+<tr>
+<td>50 a 60 min</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>60 a 105 min</td>
+<td>Acompaña la práctica de reescritura</td>
+<td>Reescribe su informe y redacta la declaración</td>
+<td>Guía, plantillas</td>
+</tr>
+<tr>
+<td>105 a 120 min</td>
+<td>Recoge las frases que nadie pudo firmar y fija el formato de la defensa</td>
+<td>Anota qué retiró y por qué</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: la reescritura cambia "los datos muestran" por "considero que" y no añade base ni criterio, de modo que la frase gana sujeto y pierde contenido; exigir los cuatro pasos. Segundo fallo: la declaración de uso se escribe como lista de herramientas, "se usó X para Y", sin el qué se aceptó, corrigió o rechazó; devolverla. Tercero: el estudiante se avergüenza de las frases que no puede firmar y las borra en silencio; insistir en que retirarlas con razón es el resultado esperado y se evalúa.</p>
+<h2>Entrega</h2>
+<p>Borrador del informe analítico con la sección de validación y la declaración de uso de IA, para comentarios antes de la entrega final. No se califica; se devuelve con observaciones en la semana.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer <em>Sí mismo como otro</em>, los estudios sobre imputación, y Vallor, capítulo 4. Preparar la presentación de diez minutos con el formato de la semana 8. La entrega final del informe es al terminar la sesión.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-06.html">← Semana 6. La triple mímesis como mapa del trabajo</a><a href="semana-08.html">Semana 8. Defensa ante pares →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

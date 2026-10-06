@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>La misma cifra en dos vistas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.v svg{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--rule);border-radius:4px}
+.afirma{font-size:.9rem;color:var(--ink);margin:.3rem 0 0}
+.t{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 5 · Semana 7</span>
+  <h1>La misma cifra en dos vistas</h1>
+  <p>Documentos por año en que aparece un código, de 2019 a 2024. A la izquierda, una vista que empuja una conclusión; a la derecha, la misma cifra con una decisión distinta. Debajo de cada una, lo que la vista afirma.</p>
+
+  <div class="card">
+    <div class="row">
+      <span class="t">truco:</span>
+      <button data-t="eje" aria-pressed="true">eje recortado</button>
+      <button data-t="acum">acumulado</button>
+      <button data-t="color">color que ordena</button>
+      <button data-t="dos">dos ejes</button>
+    </div>
+    <div class="grid" style="margin-top:.6rem">
+      <div class="v"><span class="t no">la que empuja</span><svg id="izq" viewBox="0 0 340 230" role="img" aria-label="Vista que exagera"></svg><p class="afirma" id="ai"></p></div>
+      <div class="v"><span class="t ok">la que declara</span><svg id="der" viewBox="0 0 340 230" role="img" aria-label="Vista honesta"></svg><p class="afirma" id="ad"></p></div>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: una vista no es neutral; cada decisión de escala, agregación y color es una afirmación sobre el dato. Un tablero para investigar declara esas decisiones; un tablero para vender las esconde. Los valores son de ejercicio.</p>
+<script>
+  const A = [2019, 2020, 2021, 2022, 2023, 2024];
+  const V = [141, 152, 149, 171, 183, 190];
+  const V2 = [88, 91, 95, 97, 99, 103];  // segunda serie para el truco de dos ejes
+  let truco = 'eje';
+  const L = 46, R = 14, T = 18, B = 30, W = 340, H = 230;
+  function barras(vals, ymin, ymax, cols, ejeDer){
+    const X = i => L + (W - L - R) * (i + .15) / vals.length, bw = (W - L - R) / vals.length * .7;
+    const Y = v => T + (H - T - B) * (1 - (v - ymin) / (ymax - ymin));
+    let s = '';
+    const paso = (ymax - ymin) <= 60 ? 10 : 50;
+    for (let v = ymin; v <= ymax + .01; v += paso){ s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)"/><text x="${L - 5}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`; }
+    if (ymin > 0) s += `<path d="M${L - 2} ${Y(ymin) - 8} l4 -4 l-4 -4 l4 -4" fill="none" stroke="var(--c-fil)" stroke-width="2"/>`;
+    vals.forEach((v, i) => { s += `<rect x="${X(i)}" y="${Y(v)}" width="${bw}" height="${Y(ymin) - Y(v)}" fill="${cols ? cols[i] : 'var(--c-app)'}"/><text x="${X(i) + bw / 2}" y="${H - 12}" text-anchor="middle">${A[i]}</text>`; });
+    return s;
+  }
+  function lineas(vals, ymin, ymax, col, lado){
+    const X = i => L + (W - L - R) * (i + .5) / vals.length;
+    const Y = v => T + (H - T - B) * (1 - (v - ymin) / (ymax - ymin));
+    let s = `<path d="${vals.map((v, i) => (i ? 'L' : 'M') + X(i) + ' ' + Y(v)).join(' ')}" fill="none" stroke="${col}" stroke-width="2.5"/>`;
+    vals.forEach((v, i) => { s += `<circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="${col}"/>`; });
+    const paso = (ymax - ymin) <= 30 ? 5 : 50;
+    for (let v = ymin; v <= ymax + .01; v += paso){ s += `<text x="${lado === 'der' ? W - R + 2 : L - 5}" y="${Y(v) + 4}" text-anchor="${lado === 'der' ? 'start' : 'end'}" style="fill:${col}">${v}</text>`; }
+    if (lado !== 'der') vals.forEach((v, i) => { s += `<text x="${X(i)}" y="${H - 12}" text-anchor="middle">${A[i]}</text>`; });
+    return s;
+  }
+  const acum = V.reduce((a, v) => a.concat([(a.length ? a[a.length - 1] : 0) + v]), []);
+  function dibujar(){
+    const izq = document.getElementById('izq'), der = document.getElementById('der');
+    let ai = '', ad = '';
+    if (truco === 'eje'){
+      izq.innerHTML = barras(V, 130, 200); der.innerHTML = barras(V, 0, 200);
+      ai = 'Afirma: el código se disparó; 2024 es más de seis veces 2019. Lo hace recortando el eje en 130.';
+      ad = 'Afirma: el código creció un 35 % en seis años, de 141 a 190 documentos. El eje empieza en cero.';
+    } else if (truco === 'acum'){
+      izq.innerHTML = barras(acum, 0, 1000); der.innerHTML = barras(V, 0, 200);
+      ai = 'Afirma: crecimiento continuo y sin retrocesos. Lo hace acumulando: una suma nunca baja, aunque 2021 cayó frente a 2020.';
+      ad = 'Afirma: la cifra anual subió, bajó en 2021 y volvió a subir. Se ve el año que retrocede.';
+    } else if (truco === 'color'){
+      const cols = ['var(--rule)', 'var(--rule)', 'var(--rule)', 'var(--c-doc)', 'var(--c-fil)', 'var(--c-fil)'];
+      izq.innerHTML = barras(V, 0, 200, cols); der.innerHTML = barras(V, 0, 200);
+      ai = 'Afirma: desde 2022 hay una alerta. Lo hace coloreando de rojo lo que quiere que se mire; el color no viene del dato.';
+      ad = 'Afirma: seis valores anuales de la misma variable, con el mismo color porque son la misma cosa.';
+    } else {
+      izq.innerHTML = lineas(V, 130, 200, 'var(--c-app)', 'izq') + lineas(V2, 85, 105, 'var(--c-doc)', 'der');
+      der.innerHTML = lineas(V, 0, 200, 'var(--c-app)', 'izq') + lineas(V2, 0, 200, 'var(--c-doc)', 'der');
+      ai = 'Afirma: las dos series van juntas, casi se tocan. Lo hace con dos ejes distintos, cada uno ajustado para que las líneas coincidan.';
+      ad = 'Afirma: una serie está cerca de 190 y la otra de 100; ambas crecen poco. Con el mismo eje, la coincidencia desaparece.';
+    }
+    document.getElementById('ai').textContent = ai; document.getElementById('ad').textContent = ad;
+  }
+  document.querySelectorAll('button[data-t]').forEach(b => b.addEventListener('click', () => { truco = b.dataset.t; document.querySelectorAll('button[data-t]').forEach(x => x.setAttribute('aria-pressed', x === b)); dibujar(); }));
+  dibujar();
+</script>
+</body>
+</html>

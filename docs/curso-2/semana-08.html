@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 2 · Semana 8 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Qué tiene que contener la documentación de un corpus para que otro investigador lo reconstruya, lo cuestione y, si quiere, lo corrija?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-2/semana-08.html" />
+    <meta property="og:title" content="Curso 2 · Semana 8" />
+    <meta property="og:description" content="¿Qué tiene que contener la documentación de un corpus para que otro investigador lo reconstruya, lo cuestione y, si quiere, lo corrija?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-2/semana-08.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 2</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub is-active">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 2 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 8. El corpus como aserción</h1>
+          <p class="desc">¿Qué tiene que contener la documentación de un corpus para que otro investigador lo reconstruya, lo cuestione y, si quiere, lo corrija?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>¿Qué tiene que contener la documentación de un corpus para que otro investigador lo reconstruya, lo cuestione y, si quiere, lo corrija?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">El curso termina donde empezó, con la tesis de que un corpus es una decisión documentada, y la lleva a su consecuencia: una decisión documentada es una aserción. Cuando el estudiante entrega su informe está afirmando algo ante una comunidad: que estos documentos, delimitados así, recolectados así, limpiados así y leídos así, son el material sobre el que va a sostener lo que diga después. Esa afirmación tiene los tres sentidos de validación que el programa distingue. Es correcta si el catálogo pasa sus reglas y los hash coinciden. Está justificada si el proceso se puede seguir paso a paso en el cuaderno. Y es imputable si alguien la firma y responde por la frontera que trazó. La máquina puede ayudar con los dos primeros sentidos; el tercero es del estudiante, y la presentación ante pares de esta sesión es su forma práctica.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>
+<p>Un corpus es una aserción con la forma "esto es lo que hay sobre X, delimitado así", y como toda aserción levanta pretensiones que alguien tiene que poder defender. Las tres preguntas que un par le hará al estudiante son las tres que el programa llama sentidos de validación. ¿Es correcto? Los hash coinciden, las fechas son válidas, no hay duplicados: eso lo verifica el cuaderno. ¿Está justificado? Cada decisión tiene su celda de explicación y su pérdida anotada: eso lo muestra el cuaderno. ¿Quién responde? De eso no hay celda posible; hay una persona que presenta y contesta.</p>
+</li>
+<li>
+<p>Reconstruir quiere decir que otra persona, con la documentación y sin hablar con el autor, obtiene el mismo corpus o explica la diferencia. El curso fija una estructura de carpeta para eso: un <code>README</code> que dice la pregunta, la frontera y cómo ejecutar; el protocolo; el catálogo; los cuadernos de recolección, catálogo, limpieza y lectura; las carpetas <code>crudo</code> y <code>limpio</code> cuando los derechos lo permiten, o solo el catálogo y el cuaderno de recolección cuando no; el registro de frontera; y un archivo que lista las versiones de Python y de las bibliotecas usadas.<sup class="mark">a</sup> La estructura no es burocracia: es el orden en que un lector va a buscar las respuestas.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> El archivo se llama por convención <code>requirements.txt</code> y lo produce el comando <code>pip freeze</code>. Sin él, un cuaderno que hoy corre puede dejar de correr en dos años porque una biblioteca cambió. Es la parte más barata de la reproducibilidad y la que más se olvida.</aside>
+
+<ol start="3">
+<li>
+<p>La declaración de datos es la forma que Bender y Friedman (2018) propusieron para documentar un conjunto de textos en procesamiento de lenguaje, y el curso la adapta al corpus de humanidades. Pide escribir la razón de la curaduría, es decir, por qué estos textos y no otros; la variedad de lengua, que en un corpus colombiano de prensa histórica no es un detalle; quiénes produjeron los textos y en qué situación; las características del texto, como género, extensión y periodo; y la procedencia, con sus derechos. Cada pregunta de la declaración tiene su respuesta en algún documento del curso: el protocolo, el catálogo o la tabla de pérdidas. La declaración las reúne en dos páginas al principio del informe.</p>
+</li>
+<li>
+<p>Qué se publica lo decide el régimen de derechos de cada pieza, registrado en el catálogo desde la semana 4. El catálogo mismo se publica siempre, porque los metadatos de un documento no son el documento. Los textos de dominio público y las normas oficiales se publican con el corpus. Los textos bajo derechos de autor no se publican, pero el cuaderno de recolección sí, de modo que otro pueda volver a tomarlos de la fuente. Los textos con datos personales no se publican ni se conservan más allá de lo que el proyecto necesita, y el informe dice cómo se trataron.<sup class="mark">b</sup> La licencia del corpus publicado se declara en el <code>README</code>; el curso recomienda una licencia abierta para el catálogo y los cuadernos.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> El curso 7 del programa trata estos problemas con detalle, incluidos los corpus de relatos sensibles. Aquí basta con que el informe tenga una sección que diga, pieza por pieza o por grupo, qué se publica, qué no y por qué.</aside>
+
+<ol start="5">
+<li>Lo que queda abierto se declara abierto, y eso distingue un informe de corpus de una nota de método. El informe dice qué fuentes no se pudieron recolectar y por qué; qué porcentaje de error de OCR tiene cada fuente y sobre qué muestra se estimó; qué pérdidas de la limpieza podrían importar para preguntas distintas de la del proyecto; qué tasa de acuerdo tuvo la lectura asistida y qué categorías fallaron; y qué parte del corpus no se leyó. Un informe que no tiene esta sección está afirmando más de lo que sabe, y un par lo va a notar.</li>
+</ol>
+<figure class="wide">
+<svg viewBox="0 0 680 300" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Las capas de documentación de un corpus reconstruible, de arriba abajo: README con pregunta y frontera; protocolo; catálogo maestro; cuadernos de recolección, catálogo, limpieza y lectura; carpetas crudo y limpio según derechos; registro de frontera; requirements. A la derecha, otro investigador con tres preguntas: ¿es correcto?, ¿está justificado?, ¿quién responde? Cada pregunta apunta a las capas que la contestan; la tercera apunta a una persona.">
+<style>.w8k{font-family:var(--mono);font-size:10px;letter-spacing:.05em;fill:var(--muted)} .w8t{font-family:var(--text);font-size:12px;fill:var(--ink)} .w8s{font-family:var(--text);font-size:11px;fill:var(--muted)} .w8f{fill:var(--surface);stroke:var(--rule);stroke-width:1} .w8a{fill:none;stroke:var(--muted);stroke-width:1.2} .w8q{font-family:var(--text);font-style:italic;font-size:12px;fill:var(--ink)} .w8p{fill:none;stroke:var(--c-fil);stroke-width:1.4} .w8g{stroke:var(--c-inv)}</style>
+<text x="16" y="20" class="w8t">Carpeta del corpus entregado</text>
+<rect x="16" y="32" width="300" height="24" rx="3" class="w8f"/><text x="24" y="48" class="w8k">README · pregunta, frontera, cómo ejecutar, licencia</text>
+<rect x="16" y="60" width="300" height="24" rx="3" class="w8f"/><text x="24" y="76" class="w8k">protocolo-de-corpus.md</text>
+<rect x="16" y="88" width="300" height="24" rx="3" class="w8f"/><text x="24" y="104" class="w8k">catalogo.csv · 14 campos, reglas de integridad</text>
+<rect x="16" y="116" width="300" height="24" rx="3" class="w8f"/><text x="24" y="132" class="w8k">cuadernos/ · recoleccion, catalogo, limpieza, lectura</text>
+<rect x="16" y="144" width="300" height="24" rx="3" class="w8f"/><text x="24" y="160" class="w8k">crudo/ · limpio/ · según derechos</text>
+<rect x="16" y="172" width="300" height="24" rx="3" class="w8f"/><text x="24" y="188" class="w8k">registro-de-frontera.md · instruccion_v*.md</text>
+<rect x="16" y="200" width="300" height="24" rx="3" class="w8f"/><text x="24" y="216" class="w8k">requirements.txt · versiones</text>
+<rect x="16" y="228" width="300" height="24" rx="3" class="w8f"/><text x="24" y="244" class="w8k">informe-de-corpus.md · declaración de datos, lo abierto</text>
+<text x="400" y="20" class="w8t">Otro investigador pregunta</text>
+<text x="400" y="52" class="w8q">¿Es correcto?</text>
+<path class="w8a" d="M396 48 L330 100"/><path class="w8a" d="M396 48 L330 212"/>
+<text x="400" y="120" class="w8q">¿Está justificado?</text>
+<path class="w8a" d="M396 116 L330 72"/><path class="w8a" d="M396 116 L330 128"/><path class="w8a" d="M396 116 L330 184"/><path class="w8a" d="M396 116 L330 240"/>
+<text x="400" y="200" class="w8q">¿Quién responde?</text>
+<path class="w8p" d="M396 196 L330 184"/>
+<circle cx="560" cy="196" r="14" class="w8p"/><path class="w8p" d="M546 230 C 546 212 574 212 574 230"/>
+<text x="560" y="256" text-anchor="middle" class="w8s">una persona,</text><text x="560" y="270" text-anchor="middle" class="w8s">no una celda</text>
+<path class="w8p" d="M520 196 L544 196"/>
+<text x="16" y="284" class="w8s">Las dos primeras preguntas se responden con archivos. La tercera, presentando.</text>
+</svg>
+<figcaption><b>Figura 8.</b> El corpus como aserción reconstruible. Lo que hay que ver es que cada pregunta de un par apunta a una capa de la documentación, y que la pregunta por quién responde no apunta a ninguna.</figcaption>
+</figure>
+
+<ol start="6">
+<li>La presentación es la forma práctica de la imputación, y por eso tiene un formato fijo de ocho minutos. El proyecto en una frase. La frontera del corpus: qué entra, qué queda afuera y por qué. Los números del catálogo: piezas por fuente, por periodo, por régimen. Una pérdida de la limpieza que podría importar. Una lectura computacional con las líneas que la respaldan. La decisión de la auditoría con su tasa y su razón. Y lo que queda abierto. Los pares hacen dos preguntas, y una de ellas es obligatoria: "¿Qué documento que quedó afuera cambiaría más su corpus si entrara?"</li>
+</ol>
+<p>Un informe de corpus no es una nota de método, y la diferencia se ve en lo que cada uno permite hacer a un lector.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Nota de método</th>
+<th>Informe de corpus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dice qué fuentes se consultaron</td>
+<td>Dice qué entra, qué queda afuera y por qué, pieza por pieza</td>
+</tr>
+<tr>
+<td>Describe el proceso en pasado</td>
+<td>Entrega el cuaderno que lo ejecuta de nuevo</td>
+</tr>
+<tr>
+<td>Menciona que se usó IA</td>
+<td>Reporta la tasa de acuerdo, los desacuerdos y la decisión</td>
+</tr>
+<tr>
+<td>Omite los límites o los deja para la discusión</td>
+<td>Declara lo abierto como sección propia</td>
+</tr>
+<tr>
+<td><em>Se lee</em></td>
+<td><em>Se ejecuta, se cuestiona y se corrige</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="7">
+<li>Lo que sigue del curso es el uso del corpus. El catálogo y el cuaderno son el documento de entrada del curso 4 del programa, donde el corpus se codifica con el modelo como codificador auxiliar bajo el mismo procedimiento de auditoría, y del curso 5, donde se le aplican métodos computacionales que exigen un corpus con procedencia para que sus patrones puedan interpretarse. El corpus que se entrega hoy no es un resultado: es la condición para que los resultados de después puedan defenderse.</li>
+</ol>
+<h2>IA y exigencia</h2>
+<p>El modelo puede redactar el borrador de la declaración de datos a partir del protocolo y del catálogo, y se le pide eso: una primera versión que el estudiante corrige frase por frase contra sus documentos, marcando lo que el modelo afirmó sin base. También puede revisar el <code>README</code> como si fuera un lector que intenta ejecutar el cuaderno, y señalar qué instrucción falta. Lo que debe poder defender sin la máquina es todo el informe, porque lo va a presentar, y en particular la sección de lo que queda abierto: ahí no hay nada que un modelo pueda saber por él.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Bender, E. M. y Friedman, B. (2018). "Data Statements for Natural Language Processing: Toward Mitigating System Bias and Enabling Better Science". <em>Transactions of the Association for Computational Linguistics</em> 6, 587-604. <a href="https://aclanthology.org/Q18-1041/">https://aclanthology.org/Q18-1041/</a></li>
+<li>Zainea, C. I. (2026). <em>Agencia sin imputación. Hermenéutica, pragmática y la validación epistémica del discurso artificial</em>. Sección sobre la prótesis hermenéutica. <a href="https://izainea.github.io/escritos/agencia-sin-imputacion.pdf">https://izainea.github.io/escritos/agencia-sin-imputacion.pdf</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Gebru, T. et al. (2021). "Datasheets for Datasets". <em>Communications of the ACM</em> 64(12), 86-92. <a href="https://arxiv.org/abs/1803.09010">https://arxiv.org/abs/1803.09010</a></li>
+<li>Wilkinson, M. D. et al. (2016). "The FAIR Guiding Principles for scientific data management and stewardship". <em>Scientific Data</em> 3, 160018. <a href="https://doi.org/10.1038/sdata.2016.18">https://doi.org/10.1038/sdata.2016.18</a></li>
+<li>Nguyen, D. et al. (2020). "How We Do Things With Words: Analyzing Text as Social and Cultural Data". <em>Frontiers in Artificial Intelligence</em> 3, 62. Sección sobre validación y reporte. <a href="https://doi.org/10.3389/frai.2020.00062">https://doi.org/10.3389/frai.2020.00062</a></li>
+<li>Zainea, C. I. (2026). "La prótesis hermenéutica". <a href="https://izainea.github.io/blog/protesis-hermeneutica/">https://izainea.github.io/blog/protesis-hermeneutica/</a></li>
+<li>Python Packaging Authority. <em>pip freeze</em>. <a href="https://pip.pypa.io/en/stable/cli/pip_freeze/">https://pip.pypa.io/en/stable/cli/pip_freeze/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Bender y Friedman escriben para quienes entrenan sistemas, y su preocupación es el sesgo que un conjunto de textos transmite a un modelo. La misma ficha, leída por un historiador, describe la posición desde la que se tomó el corpus. <em>¿Qué respuesta de su declaración de datos cambiaría más la lectura que otro haría de sus resultados?</em></li>
+<li>La sección sobre la prótesis hermenéutica dice que con andamiaje cada salida incluye su procedencia, sus límites declarados y las condiciones bajo las cuales debería rechazarse. Léala como una descripción de su carpeta. <em>¿Dónde están, en su entrega, las condiciones bajo las cuales su corpus debería rechazarse?</em></li>
+<li>Nguyen y sus coautores cierran con recomendaciones para reportar análisis de texto. Compárelas con la plantilla del informe. <em>¿Qué recomendación de ellos no está en su informe, y por qué?</em></li>
+</ul>
+<h2>Taller: presentaciones y cierre</h2>
+<p>Formato de presentación, ocho minutos y dos preguntas de pares:</p>
+<ol>
+<li>El proyecto en una frase.</li>
+<li>La frontera del corpus: qué entra, qué queda afuera, por qué.</li>
+<li>Los números del catálogo.</li>
+<li>Una pérdida de la limpieza que podría importar.</li>
+<li>Una lectura computacional con sus líneas.</li>
+<li>La decisión de la auditoría, con tasa y razón.</li>
+<li>Lo que queda abierto.</li>
+</ol>
+<p>Pregunta obligatoria de los pares: ¿qué documento que quedó afuera cambiaría más su corpus si entrara?</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10 min</td>
+<td>Recapitula el curso en una página: decisión, programa, catálogo, pérdida, instrumento, auditoría, aserción</td>
+<td>Anota qué semana le cambió más el corpus</td>
+<td></td>
+</tr>
+<tr>
+<td>10 a 25 min</td>
+<td>Expone los tres sentidos de validación aplicados al corpus y la figura 8</td>
+<td>Marca en su carpeta qué archivo responde cada pregunta</td>
+<td>Figura 8</td>
+</tr>
+<tr>
+<td>25 a 60 min</td>
+<td>Modera cuatro presentaciones</td>
+<td>Presenta o pregunta</td>
+<td>Informes</td>
+</tr>
+<tr>
+<td>60 a 70 min</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>70 a 110 min</td>
+<td>Modera cuatro presentaciones más</td>
+<td>Presenta o pregunta</td>
+<td>Informes</td>
+</tr>
+<tr>
+<td>110 a 120 min</td>
+<td>Cierra: qué reciben los cursos 4 y 5 de lo que se entregó hoy</td>
+<td>Anota una tarea pendiente de su corpus</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: el estudiante presenta resultados de lectura en lugar del corpus, y hay que devolverlo a la frontera y a los números. El segundo fallo es saltarse la sección de lo abierto por pudor; la pregunta obligatoria de los pares la fuerza. El tercero es el tiempo: con más de doce estudiantes hacen falta dos sesiones o presentaciones en paralelo con el docente rotando.</p>
+<h2>Entrega final</h2>
+<p>Informe de corpus, con la plantilla de la sección correspondiente de <code>plantillas/protocolo-de-corpus.md</code> y la declaración de datos, acompañado de la carpeta completa del corpus: protocolo, catálogo, cuadernos, <code>crudo</code> y <code>limpio</code> según derechos, registro de frontera, <code>requirements.txt</code>. Se entrega con la bitácora completa. Rúbrica en <code>evaluacion.md</code>.</p>
+<h2>Después del curso</h2>
+<p>La ruta Texto del programa continúa con el curso 4, codificación asistida, y la ruta Computacional con el curso 5, métodos computacionales para el sentido. Los dos reciben el catálogo maestro y el cuaderno como documento de entrada. El curso 6 vuelve sobre la validación de lo que se diga a partir de este corpus, y el curso 7 sobre los derechos y la exterioridad que aquí solo se registraron.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-07.html">← Semana 7. Lectura asistida y registro de frontera</a><a href="evaluacion.html">Evaluación →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

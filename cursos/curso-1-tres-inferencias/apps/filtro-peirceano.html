@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Filtro peirceano</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+label{display:block;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+input[type=text],textarea{width:100%}
+textarea{min-height:3.2rem;resize:vertical}
+.crit{border-top:1px solid var(--rule);padding-top:.4rem;margin-top:.5rem}
+.crit .q{color:var(--ink);font-size:.9rem;margin:0}
+.esc{display:flex;gap:.3rem;flex-wrap:wrap;margin:.3rem 0}
+.esc button{padding:.2rem .6rem}
+.hip h3{font-family:var(--display);font-size:1rem;margin:.2rem 0}
+.resumen{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:.4rem}
+.export{width:100%;min-height:14rem;font-family:var(--mono);font-size:.8rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 1 · Semana 6</span>
+  <h1>Filtro peirceano</h1>
+  <p>Ficha interactiva para tres hipótesis sobre un mismo hecho sorprendente. Cada criterio pide una razón escrita y una marca. La app no decide: muestra dónde chocan los criterios y le pide a usted la decisión en primera persona. Al final exporta la ficha como texto para la bitácora o la plantilla.</p>
+
+  <div class="card">
+    <p class="k">El hecho sorprendente</p>
+    <label for="hecho">Qué observó</label>
+    <textarea id="hecho" placeholder="Las cinco entrevistas sin el código temor físico son todas de personas que llegaron al barrio después de 2019."></textarea>
+    <label for="esperaba">Qué esperaba y por qué le sorprende</label>
+    <textarea id="esperaba" placeholder="Esperaba que el temor se repartiera sin relación con la fecha de llegada."></textarea>
+  </div>
+
+  <div id="hips"></div>
+
+  <div class="card">
+    <p class="k">Decisión</p>
+    <label for="persigo">Persigo la hipótesis</label>
+    <select id="persigo"><option value="">elegir</option><option value="1">H1</option><option value="2">H2</option><option value="3">H3</option></select>
+    <label for="porque">Porque (en primera persona, aunque la hipótesis la haya escrito el modelo)</label>
+    <textarea id="porque"></textarea>
+    <label for="costo">Qué costo asumo y qué dato nuevo necesito</label>
+    <textarea id="costo"></textarea>
+    <p class="resumen" id="tension"></p>
+    <div class="row" style="margin-top:.6rem">
+      <button class="primary" id="exportar">Exportar como texto</button>
+      <button id="copiar">Copiar al portapapeles</button>
+      <button id="limpiar">Limpiar</button>
+    </div>
+    <textarea class="export" id="salida" style="display:none;margin-top:.6rem" readonly></textarea>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: rara vez una hipótesis gana en los cuatro criterios. La decisión no la toma el filtro; la toma quien va a pagar el costo de probarla.</p>
+<script>
+  var CRIT = [
+    {id: "explica", n: "Explica el hecho", q: "Si fuera verdad, ¿el hecho sorprendente sería natural?"},
+    {id: "verificable", n: "Es verificable", q: "¿Qué observación la confirmaría o la refutaría? ¿Está a su alcance?"},
+    {id: "economia", n: "Es económica", q: "¿Cuánto cuesta probarla, cuánto rinde si acierta, deja abiertas otras vías?"},
+    {id: "plausible", n: "Es plausible en su trasfondo", q: "¿Encaja con lo que ya sabe su campo, o lo contradice de un modo que vale la pena?"}
+  ];
+  var ESC = [["0", "no"], ["1", "parcial"], ["2", "sí"]];
+  var marcas = {};
+
+  function render() {
+    var html = "";
+    for (var h = 1; h <= 3; h++) {
+      html += '<div class="card hip"><h3>H' + h + '</h3>' +
+        '<label for="h' + h + '">Hipótesis</label><input type="text" id="h' + h + '" />' +
+        '<label for="o' + h + '">Origen</label><select id="o' + h + '"><option value="propia">propia</option><option value="modelo">modelo</option></select>';
+      for (var c = 0; c < CRIT.length; c++) {
+        var k = CRIT[c];
+        html += '<div class="crit"><p class="q"><b>' + k.n + '.</b> ' + k.q + '</p><div class="esc">';
+        for (var e = 0; e < ESC.length; e++) {
+          html += '<button data-h="' + h + '" data-c="' + k.id + '" data-v="' + ESC[e][0] + '" aria-pressed="false">' + ESC[e][1] + '</button>';
+        }
+        html += '</div><textarea id="r' + h + k.id + '" placeholder="Razón, no sí o no."></textarea></div>';
+      }
+      html += '</div>';
+    }
+    document.getElementById("hips").innerHTML = html;
+    var bs = document.querySelectorAll(".esc button");
+    for (var b = 0; b < bs.length; b++) { bs[b].addEventListener("click", marcar); }
+  }
+
+  function marcar(e) {
+    var b = e.currentTarget;
+    var h = b.getAttribute("data-h"), c = b.getAttribute("data-c"), v = b.getAttribute("data-v");
+    marcas[h + c] = v;
+    var fila = b.parentNode.querySelectorAll("button");
+    for (var i = 0; i < fila.length; i++) { fila[i].setAttribute("aria-pressed", fila[i].getAttribute("data-v") === v ? "true" : "false"); }
+    tension();
+  }
+
+  function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+
+  function tension() {
+    var lineas = [];
+    for (var h = 1; h <= 3; h++) {
+      var gana = [], pierde = [];
+      for (var c = 0; c < CRIT.length; c++) {
+        var m = marcas[h + CRIT[c].id];
+        if (m === "2") { gana.push(CRIT[c].n.toLowerCase()); }
+        if (m === "0") { pierde.push(CRIT[c].n.toLowerCase()); }
+      }
+      if (gana.length || pierde.length) {
+        lineas.push("H" + h + ": gana en " + (gana.length ? gana.join(", ") : "ninguno") + "; pierde en " + (pierde.length ? pierde.join(", ") : "ninguno") + ".");
+      }
+    }
+    var todas = lineas.length === 3 && lineas.every(function (l) { return l.indexOf("pierde en ninguno") >= 0; });
+    document.getElementById("tension").textContent = lineas.join(" ") + (todas ? " Ninguna pierde en nada: revise si está aplicando los criterios con razones o con intuición." : "");
+  }
+
+  function exportar() {
+    var ESCN = {"0": "no", "1": "parcial", "2": "sí"};
+    var out = "FICHA DE HIPÓTESIS CON FILTRO PEIRCEANO\n\n";
+    out += "Hecho sorprendente: " + val("hecho") + "\n";
+    out += "Qué esperaba: " + val("esperaba") + "\n\n";
+    for (var h = 1; h <= 3; h++) {
+      out += "H" + h + " (" + val("o" + h) + "): " + val("h" + h) + "\n";
+      for (var c = 0; c < CRIT.length; c++) {
+        var k = CRIT[c];
+        var m = marcas[h + k.id];
+        out += "  " + k.n + ": " + (m === undefined ? "sin marcar" : ESCN[m]) + ". " + val("r" + h + k.id) + "\n";
+      }
+      out += "\n";
+    }
+    out += "Tensiones: " + document.getElementById("tension").textContent + "\n\n";
+    out += "Decisión: persigo " + (val("persigo") ? "H" + val("persigo") : "(sin elegir)") + "\n";
+    out += "Porque: " + val("porque") + "\n";
+    out += "Costo y dato nuevo: " + val("costo") + "\n";
+    var s = document.getElementById("salida");
+    s.style.display = "block";
+    s.value = out;
+    return out;
+  }
+
+  document.getElementById("exportar").addEventListener("click", exportar);
+  document.getElementById("copiar").addEventListener("click", function () {
+    var out = exportar();
+    try { navigator.clipboard.writeText(out); } catch (e) { document.getElementById("salida").select(); }
+  });
+  document.getElementById("limpiar").addEventListener("click", function () {
+    marcas = {};
+    var campos = document.querySelectorAll("input, textarea, select");
+    for (var i = 0; i < campos.length; i++) { if (campos[i].tagName === "SELECT") { campos[i].selectedIndex = 0; } else { campos[i].value = ""; } }
+    document.getElementById("salida").style.display = "none";
+    document.getElementById("tension").textContent = "";
+    render();
+  });
+  render();
+</script>
+</body>
+</html>

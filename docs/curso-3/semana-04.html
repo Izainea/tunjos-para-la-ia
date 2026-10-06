@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 3 · Semana 4 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Qué le pide un investigador a un modelo multimodal cuando le pide que describa una imagen, y qué recibe a cambio?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-3/semana-04.html" />
+    <meta property="og:title" content="Curso 3 · Semana 4" />
+    <meta property="og:description" content="¿Qué le pide un investigador a un modelo multimodal cuando le pide que describa una imagen, y qué recibe a cambio?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-3/semana-04.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 3</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub is-active">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 3 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 4. Descripción densa con modelos multimodales</h1>
+          <p class="desc">¿Qué le pide un investigador a un modelo multimodal cuando le pide que describa una imagen, y qué recibe a cambio?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>¿Qué le pide un investigador a un modelo multimodal cuando le pide que describa una imagen, y qué recibe a cambio?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Con el catálogo construido y la gramática en la mano, el curso entra en la delegación. Un modelo multimodal recibe una imagen y un texto y devuelve un texto; pedirle una descripción es la operación más simple que admite y la más útil para un corpus grande. Produce, en segundos y por cada imagen, un párrafo que enumera objetos, personas, colores, disposición y, si se le pide, atmósfera y posible contexto. Lo hace con una fluidez que parece observación experta. Esta semana enseña a pedir esa descripción por capas, para que cada frase caiga en una celda conocida de la plantilla, y a conocer los costos y los límites de la operación. Smits y Wevers (2022) dan el marco: los modelos de visión no son ventanas sino instrumentos ópticos con agencia propia, y lo que ven depende de los conjuntos de datos con que fueron construidos.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Un modelo multimodal es un modelo de lenguaje que acepta imágenes como parte de la entrada. La imagen se convierte en una secuencia de fragmentos que el modelo trata como si fueran palabras, y la salida es texto generado por el mismo mecanismo de predicción que el curso 1 del programa describe. Eso tiene una consecuencia directa: la descripción no es un registro de lo que el modelo "vio" sino el texto más probable dado la imagen y el prompt, en el género de las descripciones de imagen con que fue entrenado. Ese género incluye textos alternativos, pies de foto, cartelas de museo y leyendas de bancos de imágenes, en su mayoría en inglés y sobre objetos del norte global.<sup class="mark">a</sup></li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Smits y Wevers (2022) analizan seis conjuntos de datos de referencia de visión por computador (Caltech 101 y 256, PASCAL VOC, ImageNet, MS COCO, Open Images) y muestran que las categorías con que un modelo aprende a ver son decisiones históricas de quien armó el conjunto. Un modelo entrenado con ellos "ve" esas categorías.</aside>
+
+<ol start="2">
+<li>
+<p>La descripción densa es la que cubre la imagen con afirmaciones localizadas, no un resumen. El término viene de la visión por computador (describir regiones, no la imagen entera) y el curso lo usa en un sentido cercano al de Geertz: una descripción que registra lo suficiente para que otro pueda interpretar. En la práctica, densa quiere decir que enumera, localiza y califica: qué hay, dónde en el cuadro, de qué tamaño relativo, en qué relación con lo demás. Un modelo produce esa densidad con facilidad; lo que no produce con facilidad es la distinción entre lo que ve y lo que supone.</p>
+</li>
+<li>
+<p>El prompt por capas pide la descripción en el orden de la plantilla y prohíbe mezclar. Primero la denotación de la narrativa interna: personas, objetos, lugar, disposición, texto visible, sin interpretar. Segundo, los índices materiales visibles: tipo de imagen (fotografía, grabado, captura de pantalla), señales de época (grano, color, formato), marcas de agua o de recorte. Tercero, y por separado, lo que el modelo supone: época probable, lugar probable, género, función, con el grado de confianza y la razón. Cuarto, lo que el modelo declara no poder saber. La separación es lo que hace auditable el resultado: una frase de la tercera capa que aparezca en la primera es un infortunio detectable.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prompt plano ("describe esta imagen en detalle")</th>
+<th>Prompt por capas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Un párrafo fluido que mezcla lo que ve con lo que supone.</td>
+<td>Cuatro bloques en orden: denotación, índices, suposiciones, lo que no sabe.</td>
+</tr>
+<tr>
+<td>La suposición llega con el tono de la observación.</td>
+<td>La suposición llega etiquetada, con confianza y razón.</td>
+</tr>
+<tr>
+<td>Más agradable de leer; imposible de auditar frase por frase.</td>
+<td>Menos fluido; cada frase cae en una celda de la ficha.</td>
+</tr>
+<tr>
+<td>El modelo elige qué contar.</td>
+<td>El investigador fija qué debe contarse y en qué orden.</td>
+</tr>
+<tr>
+<td><em>Produce una descripción.</em></td>
+<td><em>Produce una descripción auditable, que es otra cosa.</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li>
+<p>El caso demostrativo usó un prompt estructurado por las tres capas de Banks sobre lotes de imágenes elegidos por muestreo teórico, como entrada de un pipeline de teoría fundamentada (microanálisis, codificación abierta, axial, evaluación de saturación). Las salidas se convirtieron en la materia prima del descubrimiento de categorías que la semana 6 retoma. En la sesión el docente muestra salidas reales de ese pipeline y lo que se espera encontrar en cualquier corpus local: detalle abundante en lo que el género de las leyendas nombra bien (vestuario, vehículos, objetos) y poco o ninguno en lo que solo un lector situado reconoce (una fachada de barrio, una estética que una telenovela hizo legible, un gesto de duelo popular). Eso no se corrige con un prompt más largo: es el límite de la precomprensión del modelo, y es el tema de la semana 5.</p>
+</li>
+<li>
+<p>Los costos son de tres tipos y hay que presupuestarlos antes de empezar. El costo monetario depende del proveedor, del tamaño de la imagen y de la longitud de la salida; con cuotas gratuitas, 20 imágenes se describen sin pagar y 1.800 exigen un plan o varios días. El costo de tiempo es el de revisar: una descripción de 200 palabras por imagen son 360.000 palabras para el corpus del caso, que nadie lee enteras, y por eso la auditoría es por muestra. El costo ético es el envío de la imagen a un servidor ajeno: el curso lo evita con material sensible hasta tener el protocolo de la semana 7, y recomienda modelos locales cuando el corpus lo exige.<sup class="mark">b</sup></p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Un modelo local corre en el computador del investigador sin enviar nada a un servidor. Los hay de visión de uso gratuito, con menor calidad de descripción y mayor control. La decisión entre calidad y control es del investigador y debe quedar en el registro de frontera.</aside>
+
+<ol start="6">
+<li>Los límites conocidos conviene listarlos antes de verlos. El modelo tiende a completar: si ve tres figuras parcialmente ocultas, describe cuatro. Tiende a nombrar: si ve un uniforme, le asigna un cuerpo armado aunque no pueda saberlo. Tiende a la escena típica: una mesa con botellas se vuelve "celebración". Lee el texto visible con buena tasa y lo interpreta con mala. Y no ve lo que no está en su género: una foto de un cadáver cubierto puede describirse como "una persona descansando". Ninguno de estos límites es una alucinación; cada uno es el texto más probable para quien no participa de la forma de vida que produjo la imagen.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 270" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Esquema del prompt por capas. A la izquierda la imagen entra al modelo con cuatro instrucciones en orden: denotación de la narrativa interna, índices materiales visibles, suposiciones con confianza y razón, y lo que no puede saber. A la derecha, las cuatro salidas caen en cuatro celdas separadas de la ficha; una flecha roja marca el infortunio típico: una suposición que aparece en la capa de denotación.">
+    <style>.bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .t{font-family:var(--text);font-size:12.5px;fill:var(--ink)} .s{font-family:var(--text);font-size:11px;fill:var(--muted)} .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--muted)} .kf{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;fill:var(--c-fil)} .ar{stroke:var(--muted);stroke-width:1.3;fill:none} .ah{fill:var(--muted)} .bad{stroke:var(--c-fil);stroke-width:1.6;fill:none;stroke-dasharray:5 4} .bh{fill:var(--c-fil)}</style>
+    <defs><marker id="s4-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="ah"/></marker><marker id="s4-bh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="bh"/></marker></defs>
+    <rect x="10" y="30" width="110" height="80" rx="3" class="bx"/><text x="20" y="48" class="k">ENTRADA</text><text x="20" y="70" class="t">imagen</text><text x="20" y="88" class="t">+ prompt</text>
+    <path class="ar" d="M120 70 L150 70" marker-end="url(#s4-ah)"/>
+    <rect x="150" y="10" width="230" height="250" rx="3" class="bx"/><text x="160" y="28" class="k">PROMPT POR CAPAS · en este orden</text>
+    <text x="160" y="58" class="t">1. Denotación interna</text><text x="160" y="74" class="s">qué hay, dónde, texto visible; sin interpretar</text>
+    <text x="160" y="104" class="t">2. Índices materiales</text><text x="160" y="120" class="s">tipo de imagen, grano, color, marcas, recorte</text>
+    <text x="160" y="150" class="t">3. Suposiciones</text><text x="160" y="166" class="s">época, lugar, género; confianza y razón</text>
+    <text x="160" y="196" class="t">4. Lo que no puede saber</text><text x="160" y="212" class="s">declarado, no omitido</text>
+    <text x="160" y="244" class="s">Separar capas es lo que hace auditable la salida.</text>
+    <path class="ar" d="M380 54 L440 54" marker-end="url(#s4-ah)"/><path class="ar" d="M380 100 L440 100" marker-end="url(#s4-ah)"/><path class="ar" d="M380 146 L440 146" marker-end="url(#s4-ah)"/><path class="ar" d="M380 192 L440 192" marker-end="url(#s4-ah)"/>
+    <rect x="440" y="36" width="230" height="36" rx="3" class="bx"/><text x="450" y="58" class="t">Celda: narrativa interna · denotación</text>
+    <rect x="440" y="82" width="230" height="36" rx="3" class="bx"/><text x="450" y="104" class="t">Celda: materialidad · índices</text>
+    <rect x="440" y="128" width="230" height="36" rx="3" class="bx"/><text x="450" y="150" class="t">Celda: connotación · hipótesis del modelo</text>
+    <rect x="440" y="174" width="230" height="36" rx="3" class="bx"/><text x="450" y="196" class="t">Celda: pendiente para el investigador</text>
+    <path class="bad" d="M560 128 C 600 110 600 90 560 72" marker-end="url(#s4-bh)"/>
+    <text x="450" y="238" class="kf">INFORTUNIO TÍPICO</text><text x="450" y="254" class="s">una suposición aparece como denotación</text>
+  </svg>
+  <figcaption><b>Figura 4.</b> El prompt por capas y las celdas en que cae cada salida. Hay que ver la flecha punteada: el error que la auditoría de la semana 5 busca es una afirmación de la capa 3 escrita en el tono de la capa 1.</figcaption>
+</figure>
+
+<ol start="7">
+<li>La práctica de esta semana compara dos prompts sobre las mismas 20 imágenes. El primero pide "describe esta imagen en detalle"; el segundo es el prompt por capas de la guía. El estudiante guarda las dos salidas por imagen con fecha, modelo y prompt literal, y en la bitácora anota qué cambió. Lo que suele cambiar no es la cantidad de detalle sino su clasificación: el prompt plano mezcla; el prompt por capas obliga al modelo a declarar sus suposiciones, y declararlas es lo que permite rechazarlas.</li>
+</ol>
+<h2>IA y exigencia</h2>
+<p>Se le pide al modelo que describa 20 imágenes con dos prompts y que, en el segundo, separe lo que ve de lo que supone. Se le exige al estudiante que pueda explicar, sin el modelo, por qué el orden de las capas importa, qué género de texto está imitando el modelo cuando describe, y cuánto costó, en dinero, tiempo y exposición de material, describir sus 20 imágenes, extrapolado a su corpus completo.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Smits, T. y Wevers, M. (2022). "The agency of computer vision models as optical instruments". <em>Visual Communication</em>, 21(2), 329-349. <a href="https://doi.org/10.1177/1470357221992097">https://doi.org/10.1177/1470357221992097</a></li>
+<li>Guía de la práctica 2: <code>practicas/practica-02-descripcion-y-auditoria.md</code>.</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Arnold, T. y Tilton, L. (2023). <em>Distant Viewing: Computational Exploration of Digital Images</em>. Cambridge, MA: MIT Press. Cap. 1. Acceso abierto: <a href="https://doi.org/10.7551/mitpress/14046.001.0001">https://doi.org/10.7551/mitpress/14046.001.0001</a></li>
+<li>Manovich, L. (2020). <em>Cultural Analytics</em>. Cambridge, MA: MIT Press. Cap. 1.</li>
+<li>Zainea, C. I. (2026). "Los modelos de lenguaje no alucinan: cometen infortunios". <a href="https://izainea.github.io/blog/alucinacion-o-infortunio/">https://izainea.github.io/blog/alucinacion-o-infortunio/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Smits y Wevers leen los conjuntos de datos de referencia como instrumentos ópticos con agencia, siguiendo a Latour y a Crary. <em>¿Qué categorías del conjunto con que se entrenó el modelo que usted usa coinciden con las de su corpus, y cuáles de las suyas no existen allí?</em></li>
+<li>Los autores muestran que la categoría "persona" en esos conjuntos está desigualmente poblada por región y por género. <em>¿Qué espera que haga el modelo con las personas de su corpus que no se parecen a las del conjunto?</em></li>
+<li>Arnold y Tilton (2023) insisten en que toda anotación automática es una interpretación codificada en el modelo, no una medición. <em>¿Cuál de las cuatro capas de su prompt se parece más a una medición, y por qué incluso esa no lo es?</em></li>
+<li>En la entrada sobre infortunios, el error del modelo se describe como un acto con la forma de una aserción fundamentada sin sus condiciones. <em>¿Qué forma tiene una descripción de imagen "fundamentada", y cuál de sus condiciones no puede cumplir el modelo por construcción?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Práctica 2, primera parte. Guía completa en <code>practicas/practica-02-descripcion-y-auditoria.md</code>. En resumen:</p>
+<ol>
+<li>Para cada una de las 20 imágenes, obtener la descripción con el prompt plano y con el prompt por capas. Guardar modelo, fecha, prompt literal y salida.</li>
+<li>Elegir tres imágenes y, en la tabla, anotar para cada capa de la salida estructurada cuántas afirmaciones contiene y cuántas de ellas usted habría escrito igual.</li>
+<li>Anotar el costo: tokens o llamadas usadas, tiempo de ejecución, tiempo de lectura de las 40 salidas.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Imagen</th>
+<th>Afirmaciones en capa 1</th>
+<th>De ellas, escritas igual por mí</th>
+<th>Suposiciones en capa 3</th>
+<th>De ellas, que yo rechazaría</th>
+<th>Algo que el modelo declaró no saber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Variante para grupos. Dos estudiantes describen las mismas cinco imágenes con el mismo prompt por capas en dos modelos distintos y comparan la capa de suposiciones. Las suposiciones en que los modelos coinciden no son por eso más ciertas; son más probables en el género, y conviene anotar la diferencia.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Qué hace el docente</th>
+<th>Qué hace el estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 15</td>
+<td>Apertura</td>
+<td>Muestra dos descripciones del caso (sin la imagen) y pide adivinar cuál usó el prompt por capas</td>
+<td>Distingue por la estructura, no por el contenido</td>
+<td>Dos salidas del caso</td>
+</tr>
+<tr>
+<td>15 a 35</td>
+<td>Mecanismo</td>
+<td>Expone qué es un modelo multimodal y qué género imita, con Smits y Wevers</td>
+<td>Nombra qué textos de su campo se parecen a las salidas</td>
+<td>Pizarra</td>
+</tr>
+<tr>
+<td>35 a 50</td>
+<td>Prompt</td>
+<td>Recorre la figura 4 y el prompt de la guía</td>
+<td>Adapta el prompt a su corpus en dos frases</td>
+<td>Figura 4, guía</td>
+</tr>
+<tr>
+<td>50 a 60</td>
+<td>Costos</td>
+<td>Presupuesta en vivo el corpus del caso</td>
+<td>Presupuesta el suyo</td>
+<td>Calculadora</td>
+</tr>
+<tr>
+<td>60 a 105</td>
+<td>Práctica 2</td>
+<td>Acompaña; resuelve acceso al modelo</td>
+<td>Describe 20 imágenes con dos prompts</td>
+<td>Guía, cuaderno o interfaz web</td>
+</tr>
+<tr>
+<td>105 a 115</td>
+<td>Puesta en común</td>
+<td>Pide un caso de suposición escrita como denotación</td>
+<td>Lee el suyo</td>
+<td>Salidas</td>
+</tr>
+<tr>
+<td>115 a 120</td>
+<td>Cierre</td>
+<td>Anuncia la auditoría de la semana 5</td>
+<td>Elige 15 descripciones para auditar</td>
+<td>Syllabus</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que los estudiantes envíen imágenes con personas identificables; revisar la selección antes de empezar. Suele fallar que la cuota gratuita se agote en la sesión; tener dos proveedores alternativos y la opción local probada. Y suele fallar que la comparación de prompts se lea como "el segundo es mejor"; insistir en que el segundo es más auditable, que es otra cosa.</p>
+<h2>Bitácora</h2>
+<p>Registre las 40 salidas con sus metadatos, en el formato que después usará para todo el corpus, la tabla de las tres imágenes, el presupuesto extrapolado al corpus completo y una lista de las suposiciones del modelo que usted no habría hecho. Añada una pregunta abierta sobre lo que el modelo no vio.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Pouget et al. (2024), al menos las secciones 1, 3 y 6, y Schneider et al. (2025), secciones 1 y 5. Tener elegidas 15 descripciones por capas de la práctica para auditarlas con la tabla de tres columnas de la semana 5.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-03.html">← Semana 3. Semiótica para describir</a><a href="semana-05.html">Semana 5. Auditoría de la descripción →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

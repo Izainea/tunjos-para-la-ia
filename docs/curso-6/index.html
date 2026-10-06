@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 6 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-6/index.html" />
+    <meta property="og:title" content="Curso 6" />
+    <meta property="og:description" content="Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-6/index.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html" class="is-active">Curso 6</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 6 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Validación e interpretación: el investigador refigura</h1>
+          <p class="desc">Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?</p>
+        </div>
+<article class="prose">
+<h1 id="README">Curso 6. Validación e interpretación: el investigador refigura</h1>
+<p>Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Sexto curso del programa <a href="../index.html">Tunjos para la IA</a>, capa de Juicio. Continúa el curso 1: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.</p>
+<p><strong>Pregunta del curso.</strong> Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?</p>
+<p><strong>Respuesta que el curso construye.</strong> Validar tiene tres sentidos: comprobar la corrección del resultado, justificar el proceso que lo produjo, y que alguien responda por lo afirmado. La mayoría de los errores de la investigación asistida por modelos vienen de confundirlos: se presenta una tasa de acierto como si fuera validez, o un acuerdo entre codificadores como si fuera verdad. Los criterios de rigor de la tradición cualitativa, los de Lincoln y Guba, la triangulación de Denzin y la reflexividad, se releen aquí como criterios para gobernar lo que un modelo produjo, separando los que puede satisfacer el registro del proceso de los que exigen a alguien en posición de responder. Interpretar es refigurar, en el sentido de Ricœur: devolver lo configurado a un mundo y a un sujeto que se lo apropia. Y escribir hallazgos es convertir outputs en aserciones propias, defendibles ante pares, con una declaración de uso de IA que diga qué fue de quién.</p>
+<h2>Contenido</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carpeta</th>
+<th>Qué hay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="index.html">programa/</a></td>
+<td>Syllabus, guía de cada una de las ocho semanas, evaluación y bibliografía con enlaces</td>
+</tr>
+<tr>
+<td><a href="plantillas.html">plantillas/</a></td>
+<td>Plantillas de los productos: protocolo de validación, matriz de triangulación, declaración de uso de IA, informe analítico</td>
+</tr>
+<tr>
+<td><a href="practicas.html">practicas/</a></td>
+<td>Guías de las dos prácticas con modelos de lenguaje y un cuaderno de apoyo opcional</td>
+</tr>
+<tr>
+<td><a href="apps.html">apps/</a></td>
+<td>Mini apps que acompañan las semanas: clasificador de sentidos de validación, constructor de matriz de triangulación, detector de aserción sin aserente, arco de la triple mímesis</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Productos del estudiante</h2>
+<ol>
+<li><strong>Protocolo de validación</strong> del propio proyecto (semana 3): para cada fase del trabajo, qué sentido de validación está en juego, qué criterio lo gobierna, y si ese criterio recae sobre el registro, sobre la relación entre instancias independientes o sobre la posición de quien responde.</li>
+<li><strong>Matriz de triangulación y ficha de hipótesis</strong> sobre material propio (semana 5): qué hallazgos convergen entre fuentes, métodos, investigadores y teorías, cuáles se sostienen sobre una sola pata, y qué hipótesis interpretativa decide perseguir el estudiante con los criterios de Peirce.</li>
+<li><strong>Informe analítico</strong> con sección de validación, declaración de uso de IA y declaración de responsabilidad (semana 8), presentado y defendido ante pares.</li>
+</ol>
+<h2>Requisitos</h2>
+<p>Haber cursado el curso 1 o conocer la distinción entre deducción, inducción y abducción. Tener material propio ya configurado: códigos, categorías, patrones o descripciones producidos en los cursos 2 a 5 o en el propio proyecto, con o sin máquina. No requiere programación.</p>
+<h2>Página del curso</h2>
+<p><a href="https://izainea.github.io/tunjos-para-la-ia/curso-6/">izainea.github.io/tunjos-para-la-ia/curso-6/</a></p>
+<hr />
+<h1 id="syllabus">Syllabus</h1>
+<h2>Datos generales</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td>Validación e interpretación: el investigador refigura</td>
+</tr>
+<tr>
+<td>Programa</td>
+<td>Tunjos para la IA, curso 6 de 7. Capa de Juicio</td>
+</tr>
+<tr>
+<td>Créditos</td>
+<td>2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas en 8 sesiones de 2 horas, 80 autónomas)</td>
+</tr>
+<tr>
+<td>Modalidad</td>
+<td>Híbrida: sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado. La modalidad virtual es solo alternativa</td>
+</tr>
+<tr>
+<td>Docente</td>
+<td>Carlos Isaac Zainea Maya</td>
+</tr>
+<tr>
+<td>Prerrequisitos</td>
+<td>Curso 1 del programa o familiaridad con la distinción entre deducción, inducción y abducción. Material propio ya configurado (códigos, categorías, patrones, descripciones). No requiere programación</td>
+</tr>
+<tr>
+<td>Público</td>
+<td>Egresados y estudiantes de posgrado en ciencias sociales y humanidades, profesionales que investigan o producen informes con apoyo de modelos de lenguaje, directores y jurados de tesis que deben evaluar trabajos hechos con modelos</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Problema que atiende</h2>
+<p>Los cursos de oficio del programa enseñan a construir corpus, a codificar con la máquina y a aplicar métodos computacionales. Al final de ese trabajo el investigador tiene algo configurado: códigos, categorías, patrones, descripciones de imágenes, redes. Lo que no tiene todavía es un hallazgo. Entre lo configurado y el hallazgo hay un trabajo que la literatura sobre inteligencia artificial en investigación cualitativa suele reducir a una medida: el acuerdo entre el modelo y codificadores humanos. Pero el acuerdo mide consistencia, no validez (McDonald, Schoenebeck y Forte, 2019), y cuando las categorías salieron del propio modelo no hay contra qué medirlo. El resultado es visible en los informes que circulan: tasas de acierto presentadas como validez, categorías que nadie puede defender, párrafos en que "los datos muestran" lo que ningún autor está en posición de sostener. Este curso enseña el trabajo que falta: validar en tres sentidos distintos, con criterios que la tradición cualitativa articuló durante un siglo, y escribir el hallazgo como aserción propia.</p>
+<h2>Competencias</h2>
+<p>Al terminar el curso el estudiante puede:</p>
+<ol>
+<li><strong>Distinguir</strong> los tres sentidos de validación (corrección del resultado, justificación del proceso, imputación) y diagnosticar, en trabajos propios y ajenos, las confusiones entre rendimiento y validez.</li>
+<li><strong>Aplicar</strong> los criterios de rigor de la investigación cualitativa (Lincoln y Guba, Denzin, reflexividad) a un proceso de configuración asistido por modelos, separando los criterios que el registro del proceso satisface de los que exigen un investigador que responda.</li>
+<li><strong>Interpretar</strong> material textual y visual configurado con máquina: elegir qué hipótesis perseguir con los criterios de Peirce y refigurar lo configurado con herramientas de la semiótica, el análisis multimodal y la teoría del encuadre.</li>
+<li><strong>Escribir y defender</strong> hallazgos como aserciones propias ante pares, con una declaración de uso de IA que diga qué hizo la máquina, qué decidió el investigador y quién responde.</li>
+</ol>
+<h2>Resultados de aprendizaje y evidencias</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Competencia</th>
+<th>Evidencia verificable</th>
+<th>Semana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 y 2</td>
+<td>Protocolo de validación del propio proyecto: tres sentidos y criterios por fase</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2 y 3</td>
+<td>Matriz de triangulación y ficha de hipótesis sobre material propio</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3 y 4</td>
+<td>Informe analítico con sección de validación, declaración de uso de IA y de responsabilidad</td>
+<td>8</td>
+</tr>
+<tr>
+<td>1 a 4</td>
+<td>Presentación y defensa ante pares; bitácora semanal</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Programa por semanas</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Tema</th>
+<th>Lectura central</th>
+<th>Actividad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="semana-01.html">1</a></td>
+<td>Tres sentidos de validación. Por qué rendimiento no es validez. El acuerdo entre codificadores como ejemplo de confusión</td>
+<td>Zainea (2026), tres sentidos. McDonald, Schoenebeck y Forte (2019)</td>
+<td>Clasificar afirmaciones de validación del propio proyecto</td>
+</tr>
+<tr>
+<td><a href="semana-02.html">2</a></td>
+<td>Los criterios de rigor cualitativo, releídos: Lincoln y Guba, Denzin, reflexividad. Qué puede satisfacer una máquina y qué exige al investigador</td>
+<td>Lincoln y Guba (1985), cap. 11</td>
+<td>Borrador del protocolo de validación</td>
+</tr>
+<tr>
+<td><a href="semana-03.html">3</a></td>
+<td>Triangulación con y sin modelo. El modelo como segundo codificador y sus límites. El supuesto de independencia</td>
+<td>Denzin (1970), triangulación. Flick (2004), cap. sobre triangulación</td>
+<td>Práctica guiada y entrega del protocolo de validación</td>
+</tr>
+<tr>
+<td><a href="semana-04.html">4</a></td>
+<td>Abducción aplicada: elegir qué hipótesis perseguir con los criterios de Peirce sobre patrones y códigos propios</td>
+<td>Peirce (1903). Timmermans y Tavory (2012)</td>
+<td>Ficha de hipótesis sobre material propio</td>
+</tr>
+<tr>
+<td><a href="semana-05.html">5</a></td>
+<td>Interpretar lo visual y lo discursivo: Peirce, Barthes, Kress y van Leeuwen, Entman</td>
+<td>Entman (1993). Kress y van Leeuwen (2006), cap. 1</td>
+<td>Entrega de la matriz de triangulación y la ficha de hipótesis</td>
+</tr>
+<tr>
+<td><a href="semana-06.html">6</a></td>
+<td>La triple mímesis como mapa del trabajo. Dónde estuvo la máquina y dónde el investigador. Prefiguración ajena</td>
+<td>Ricœur (1995), cap. 3. Zainea (2026), agencia sin imputación</td>
+<td>Mapa mimético del propio proyecto</td>
+</tr>
+<tr>
+<td><a href="semana-07.html">7</a></td>
+<td>Escribir hallazgos: de output a aserción. El infortunio de autoridad epistémica en la propia escritura. Declaración de uso de IA</td>
+<td>Austin (1982), conf. I y II. Habermas (1987), cap. III</td>
+<td>Práctica guiada de reescritura y borrador del informe</td>
+</tr>
+<tr>
+<td><a href="semana-08.html">8</a></td>
+<td>Defensa ante pares: presentación con sección de validación explícita</td>
+<td>Ricœur (1996). Vallor (2024), cap. 4</td>
+<td>Entrega final y defensa</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Metodología</h2>
+<p>El curso se enseña con el método que enseña. El estudiante llega con material configurado, propio, con o sin máquina, y durante ocho semanas lo valida, lo interpreta y lo escribe como hallazgo. Cada semana tiene tres momentos.</p>
+<ul>
+<li><strong>Lectura guiada</strong> (asincrónica, 4 a 5 horas). Un texto central con guía de lectura y una lectura complementaria opcional.</li>
+<li><strong>Sesión sincrónica</strong> (2 horas, presencial con participación remota). La primera hora discute la lectura a partir de un caso: un informe real, una matriz de triangulación, un párrafo con marcadores de autoridad. La segunda es taller sobre el propio material.</li>
+<li><strong>Bitácora</strong> (asincrónica, 3 a 4 horas). El estudiante registra el ejercicio de la semana, lo que propuso la máquina cuando la hubo, lo que decidió él y con qué criterio. Las bitácoras alimentan los tres productos.</li>
+</ul>
+<p>Las prácticas con modelos de lenguaje usan modelos de acceso gratuito. Las mini apps del curso corren en el navegador, sin red, y sirven para ver el mecanismo que el texto describe.</p>
+<h2>Evaluación</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>Peso</th>
+<th>Criterio principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Informe analítico con sección de validación y declaraciones</td>
+<td>40 %</td>
+<td>Cada hallazgo es una aserción propia, con su base, su criterio de validación y su autor; la declaración de uso de IA dice qué fue de quién</td>
+</tr>
+<tr>
+<td>Matriz de triangulación y ficha de hipótesis</td>
+<td>25 %</td>
+<td>Los hallazgos sostenidos por una sola pata están marcados; la hipótesis elegida se justifica con los cuatro criterios y en primera persona</td>
+</tr>
+<tr>
+<td>Protocolo de validación</td>
+<td>20 %</td>
+<td>Cada fase tiene su sentido de validación y su criterio, y la frontera entre registro y posición está argumentada</td>
+</tr>
+<tr>
+<td>Bitácora semanal</td>
+<td>15 %</td>
+<td>Continuidad y honestidad, incluidas las dudas y los cambios de opinión</td>
+</tr>
+</tbody>
+</table></div>
+<p>La rúbrica detallada está en <a href="evaluacion.html">evaluacion.md</a>. Se aprueba con el nivel Logrado en el informe analítico y en la matriz de triangulación, y con 3,5 sobre 5,0 de promedio ponderado.</p>
+<h2>Articulación</h2>
+<p>Es el cierre de las rutas Fundamentos (1, 6), Texto (1, 2, 4, 6) e Imagen (1, 3, 4, 6) del programa. Recibe el material configurado en los cursos 2 a 5 y entrega el hallazgo escrito y defendido. Se articula con seminarios de tesis, cursos de metodología cualitativa y de análisis del discurso de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que no suelen cubrir: criterios de validación para un trabajo en que parte de la configuración la hizo una máquina, y un formato de declaración de uso de IA que un jurado puede leer.</p>
+<h2>Política de uso de modelos de lenguaje</h2>
+<p>Se usan en todas las semanas, de forma declarada. Cada entrega incluye qué modelo se usó, para qué, qué se aceptó, qué se corrigió y qué se rechazó, y qué parte del resultado es decisión del estudiante. Un uso no declarado se trata como infortunio de autoridad epistémica: el estudiante presenta como propio algo por lo que no puede responder, y la entrega se devuelve para que escriba la declaración que faltaba. El curso promueve el uso de modelos y exige comprender y defender todo el trabajo.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><span></span><a href="semana-01.html">Semana 1. Tres sentidos de validación →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simulador de codificación</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Estilos propios de esta app */
+h2{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:1.2rem 0 .3rem}
+h3{font-family:var(--display);font-weight:700;font-size:.95rem;margin:.6rem 0 .2rem}
+.paso{display:none}
+.paso.visible{display:block}
+button:disabled{opacity:.45;cursor:default}
+button:disabled:hover{border-color:var(--rule)}
+.codigos{margin:0;padding:0;list-style:none}
+.codigos li{padding:.25rem 0;border-bottom:1px solid var(--rule);font-size:.92rem}
+.codigos li:last-child{border-bottom:none}
+.cid{font-family:var(--mono);font-size:.78rem;color:var(--accent);margin-right:.4rem}
+.frag{font-style:italic;margin:.2rem 0 .5rem;color:var(--ink)}
+.num{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.05em}
+select{max-width:100%}
+.tabla{overflow-x:auto}
+.ind{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem;margin:.6rem 0}
+.ind .v{font-family:var(--mono);font-size:1.4rem;color:var(--ink)}
+.ind .l{font-size:.8rem;color:var(--muted)}
+.formula{font-family:var(--mono);font-size:.82rem;color:var(--muted);margin:.4rem 0}
+.destacado{border-left:3px solid var(--accent);padding:.4rem .8rem;margin:.8rem 0;color:var(--ink);font-size:.95rem}
+.criterio{margin-top:.6rem;padding:.5rem .8rem;border:1px dashed var(--rule);border-radius:4px;font-size:.92rem}
+.criterio .k{display:block;margin-bottom:.2rem}
+textarea{width:100%;min-height:3.5rem;resize:vertical}
+textarea.registro{min-height:14rem;font-family:var(--mono);font-size:.78rem}
+.nuevo{font-family:var(--mono);font-size:.72rem;color:var(--c-doc);letter-spacing:.05em;text-transform:uppercase}
+.modelo-nota{font-size:.88rem;color:var(--muted);margin:.2rem 0 .5rem}
+.vs{font-size:.92rem;margin:.2rem 0}
+.oculto{display:none}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 4 · Semana 3</span>
+  <h1>Simulador de codificación: el modelo propone, usted decide</h1>
+  <p>Codifique doce fragmentos con la lista de códigos, compare con los códigos que propuso un modelo y decida, desacuerdo por desacuerdo, quién tiene razón y con qué criterio.</p>
+
+  <!-- Paso 1 -->
+  <div id="paso1" class="paso visible">
+    <h2>Paso 1. Codifique los doce fragmentos</h2>
+    <div class="card">
+      <span class="k">Libro de códigos preliminar</span>
+      <ul class="codigos" id="lista-codigos"></ul>
+      <p class="note">Si ningún código recoge lo que el fragmento afirma, elija "falta un código".</p>
+    </div>
+    <div id="fragmentos"></div>
+    <div class="row">
+      <button id="btn-comparar" class="primary" disabled>Comparar con el modelo</button>
+      <span class="num" id="progreso">0 de 12 codificados</span>
+    </div>
+  </div>
+
+  <!-- Paso 2 -->
+  <div id="paso2" class="paso">
+    <h2>Paso 2. Comparación con el modelo</h2>
+    <div class="card">
+      <div class="tabla">
+        <table>
+          <thead><tr><th>Fragmento</th><th>Su código</th><th>Código del modelo</th><th>Acuerdo</th></tr></thead>
+          <tbody id="tabla-comparacion"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <span class="k">Indicadores de acuerdo</span>
+      <div class="ind">
+        <div><div class="v" id="v-acuerdo"></div><div class="l">acuerdo simple</div></div>
+        <div><div class="v" id="v-kappa"></div><div class="l">kappa de Cohen</div></div>
+        <div><div class="v" id="v-cats"></div><div class="l">categorías observadas</div></div>
+      </div>
+      <div class="formula" id="formula"></div>
+      <p class="note" id="nota-cats"></p>
+      <div class="destacado">El acuerdo mide consistencia entre dos codificadores. No dice cuál de los dos tiene razón ni si los dos están equivocados.</div>
+    </div>
+  </div>
+
+  <!-- Paso 3 -->
+  <div id="paso3" class="paso">
+    <h2>Paso 3. Los desacuerdos, uno a uno</h2>
+    <p id="intro-desacuerdos"></p>
+    <div id="desacuerdos"></div>
+  </div>
+
+  <!-- Paso 4 -->
+  <div id="paso4" class="paso">
+    <h2>Paso 4. Registro de frontera</h2>
+    <div class="card">
+      <p>El registro reúne, por fragmento, su código, el del modelo, su decisión y el criterio que escribió. Cópielo a su plantilla.</p>
+      <div class="row">
+        <button id="btn-registro" class="primary">Copiar registro</button>
+        <button id="btn-reiniciar">Volver a empezar</button>
+      </div>
+      <textarea id="registro" class="registro oculto" readonly></textarea>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: el porcentaje y el kappa miden cuánto coinciden dos codificadores; cada desacuerdo es un dato sobre el libro de códigos, y la decisión sobre cada uno, con su criterio, es suya.</p>
+<script>
+(function(){
+  'use strict';
+
+  // ---------- Datos ----------
+  var CODIGOS = [
+    {id:'C1', nombre:'confianza en el vendedor', def:'Incluye relaciones sostenidas del comprador con un vendedor concreto, garantías informales y reclamos que se resuelven sin trámite.'},
+    {id:'C2', nombre:'precio frente al supermercado', def:'Incluye comparaciones explícitas de precio entre el mercado y el supermercado, en cualquier dirección.'},
+    {id:'C3', nombre:'frescura y origen del producto', def:'Incluye menciones a la duración, la calidad, la procedencia del producto o el conocimiento de quién lo produce.'},
+    {id:'C4', nombre:'encuentro vecinal', def:'Incluye el mercado como lugar de reunión entre vecinos, conversación y reconocimiento mutuo.'},
+    {id:'C5', nombre:'horario y acceso', def:'Incluye restricciones de horario, transporte, parqueo o distancia para llegar al mercado y comprar.'},
+    {id:'C6', nombre:'desconfianza institucional', def:'Incluye atribuciones de incumplimiento, abandono o mala fe a entidades públicas.'},
+    {id:'C7', nombre:'trabajo familiar', def:'Incluye la participación de miembros de la familia en la producción, el transporte o la venta.'},
+    {id:'C8', nombre:'incertidumbre sobre la continuidad', def:'Incluye dudas sobre si el mercado seguirá funcionando: permisos, uso del lote, inversiones que se aplazan.'}
+  ];
+  var NUEVO_USUARIO = 'NUEVO';           // "falta un código" (categoría del estudiante)
+  var NUEVO_MODELO  = 'MODELO_NUEVO';    // código propuesto por el modelo fuera de la lista
+
+  var FRAGMENTOS = [
+    {n:1, texto:'Yo le compro a la misma señora desde hace años. Si el tomate viene malo me lo cambia sin preguntar. En el supermercado uno ni sabe a quién reclamarle.',
+     modelo:'C1', nota:'El modelo se apoyó en “desde hace años” y “me lo cambia sin preguntar”.',
+     criterio:'El fragmento describe una relación sostenida con una persona; el código C1 nombra eso sin añadir nada.'},
+    {n:2, texto:'Los sábados vengo más por ver gente que por comprar. Uno se encuentra con los del edificio, con la del segundo piso, y se queda hablando.',
+     modelo:'C4', nota:'El modelo se apoyó en “ver gente” y “se queda hablando”.',
+     criterio:'El hablante subordina la compra al encuentro; C4 recoge lo que el fragmento afirma.'},
+    {n:3, texto:'El precio es parecido al del supermercado, a veces más caro. Pero uno sabe de dónde viene la papa, quién la sembró.',
+     modelo:'C2', nota:'El modelo se apoyó en la palabra “precio” y en la comparación con el supermercado.',
+     criterio:'El “pero” marca lo que el hablante afirma: el origen pesa más que el precio. Un código debe recoger lo que el fragmento sostiene, no la palabra que repite. C3 es defendible; C2 también, si el libro de códigos decide que todo fragmento que compara precios lleva C2. Lo que no puede faltar es la regla escrita.', revisar:true},
+    {n:4, texto:'Nos dijeron que el permiso de la alcaldía se vence en diciembre y nadie sabe si lo renuevan. Uno trabaja con esa angustia.',
+     modelo:'C6', nota:'El modelo asoció “alcaldía” y “nadie sabe” con desconfianza en la institución.',
+     criterio:'El fragmento habla de no saber, no de no creer. La desconfianza atribuye mala fe o incumplimiento; aquí no hay tal atribución. C8 describe; C6 interpreta de más.', revisar:true},
+    {n:5, texto:'Mi hijo me ayuda a descargar a las cuatro de la mañana y mi mamá pela el maíz. Esto es de todos en la casa.',
+     modelo:'C7', nota:'El modelo se apoyó en “mi hijo”, “mi mamá” y “de todos en la casa”.',
+     criterio:'C7 nombra lo que el fragmento dice.'},
+    {n:6, texto:'Cuando vino la gente de la alcaldía a hacer el censo, tomaron fotos y no volvieron. Ya ni les creo.',
+     modelo:'C6', nota:'El modelo se apoyó en “ya ni les creo”.',
+     criterio:'Hay atribución explícita de incumplimiento y pérdida de crédito: C6.'},
+    {n:7, texto:'A las siete ya no queda nada bueno. Si uno trabaja entre semana, el sábado temprano es la única opción, y muchos no pueden.',
+     modelo:'C5', nota:'El modelo se apoyó en las horas y en “la única opción”.',
+     criterio:'C5 nombra la restricción de horario que el fragmento describe.'},
+    {n:8, texto:'Aquí nos ayudamos. Si a uno le falta cambio, el de al lado presta. Si llueve, entre todos tapamos los puestos.',
+     modelo:NUEVO_MODELO, modeloNombre:'resiliencia comunitaria',
+     nota:'El modelo no encontró un código en la lista y propuso uno propio, tomado del vocabulario de la literatura sobre comunidades.',
+     criterio:'Tiene razón el modelo en que falta un código y no la tiene en el nombre. El fragmento habla de prestar cambio y tapar puestos entre vendedores: “ayuda mutua entre puestos” nombra eso. “Resiliencia comunitaria” viene de fuera del fragmento. Quien decide la ampliación del libro de códigos es usted, y queda registrada.', revisar:true},
+    {n:9, texto:'La lechuga de aquí dura una semana en la nevera. La del supermercado se pone negra en dos días y además cuesta lo mismo.',
+     modelo:'C2', nota:'El modelo se apoyó en “cuesta lo mismo” y en la comparación con el supermercado.',
+     criterio:'El fragmento compara duración, y el precio aparece como refuerzo. C3 recoge lo central. Si se codifica con varios códigos por fragmento, C3 y C2; con uno solo, C3.', revisar:true},
+    {n:10, texto:'Yo vendría más seguido si hubiera parqueadero o si el bus parara más cerca. Con las bolsas es imposible.',
+     modelo:'C5', nota:'El modelo se apoyó en “parqueadero”, “bus” y “más cerca”.',
+     criterio:'C5 incluye acceso físico según la definición del libro de códigos.'},
+    {n:11, texto:'Dicen que van a poner un centro comercial donde está el lote. Entonces uno no sabe si invertir en una carpa nueva o esperar.',
+     modelo:'C8', nota:'El modelo se apoyó en “no sabe si invertir” y “esperar”.',
+     criterio:'C8 nombra la incertidumbre que el fragmento describe.'},
+    {n:12, texto:'Le fío a la vecina del tercero porque sé dónde vive y porque su mamá me compraba. Eso no lo hace ningún supermercado.',
+     modelo:'C4', nota:'El modelo se apoyó en “vecina” y “su mamá me compraba”.',
+     criterio:'La confianza aquí va del vendedor al comprador, y C1 se definió en la dirección contraria. El desacuerdo muestra que la definición de C1 es estrecha. La decisión no es elegir entre C1 y C4, sino corregir la definición (“confianza mutua”) y registrarlo.', revisar:true}
+  ];
+
+  var OPCIONES_DECISION = [
+    {id:'yo', texto:'Yo'},
+    {id:'modelo', texto:'El modelo'},
+    {id:'ninguno', texto:'Ninguno: falta un código o hay que corregir una definición'},
+    {id:'ambos', texto:'Los dos: el fragmento admite ambos y hace falta una regla'}
+  ];
+
+  // ---------- Estado ----------
+  var estado = {
+    usuario: {},      // n -> id de categoría ('C1'.. 'C8' o NUEVO_USUARIO)
+    decision: {},     // n -> id de decisión
+    criterio: {}      // n -> texto del estudiante
+  };
+
+  // ---------- Utilidades ----------
+  function $(id){ return document.getElementById(id); }
+  function el(tag, cls, html){
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function fmt(x, d){
+    return x.toFixed(d).replace('.', ',');
+  }
+  function codigoPorId(id){
+    for (var i = 0; i < CODIGOS.length; i++) if (CODIGOS[i].id === id) return CODIGOS[i];
+    return null;
+  }
+  function nombreCategoria(id, frag){
+    if (id === NUEVO_USUARIO) return 'falta un código';
+    if (id === NUEVO_MODELO) return (frag && frag.modeloNombre ? frag.modeloNombre : 'código nuevo') + ' (código nuevo, fuera de la lista)';
+    var c = codigoPorId(id);
+    return c ? c.id + ' ' + c.nombre : id;
+  }
+  function nombreCorto(id, frag){
+    if (id === NUEVO_USUARIO) return 'falta un código';
+    if (id === NUEVO_MODELO) return (frag && frag.modeloNombre ? frag.modeloNombre : 'código nuevo') + ' (nuevo)';
+    return id;
+  }
+  function mostrarPaso(id){
+    $(id).className = 'paso visible';
+  }
+  function ocultarPaso(id){
+    $(id).className = 'paso';
+  }
+
+  // ---------- Kappa ----------
+  // Devuelve {po, pe, kappa (o null si 1 - pe = 0), categorias, acuerdos, n}
+  function calcularKappa(pares){
+    var n = pares.length;
+    var cats = {};
+    var cuentaA = {}, cuentaB = {};
+    var acuerdos = 0;
+    var i;
+    for (i = 0; i < n; i++){
+      var a = pares[i][0], b = pares[i][1];
+      cats[a] = true; cats[b] = true;
+      cuentaA[a] = (cuentaA[a] || 0) + 1;
+      cuentaB[b] = (cuentaB[b] || 0) + 1;
+      if (a === b) acuerdos++;
+    }
+    var po = acuerdos / n;
+    var pe = 0;
+    var lista = [];
+    for (var k in cats){
+      if (cats.hasOwnProperty(k)){
+        lista.push(k);
+        pe += ((cuentaA[k] || 0) / n) * ((cuentaB[k] || 0) / n);
+      }
+    }
+    var kappa = (1 - pe) === 0 ? null : (po - pe) / (1 - pe);
+    return {po:po, pe:pe, kappa:kappa, categorias:lista, acuerdos:acuerdos, n:n};
+  }
+
+  // ---------- Paso 1 ----------
+  function construirPaso1(){
+    var ul = $('lista-codigos');
+    ul.innerHTML = '';
+    for (var i = 0; i < CODIGOS.length; i++){
+      var c = CODIGOS[i];
+      ul.appendChild(el('li', null, '<span class="cid">' + c.id + '</span><strong>' + esc(c.nombre) + '</strong>. ' + esc(c.def)));
+    }
+    var cont = $('fragmentos');
+    cont.innerHTML = '';
+    for (var j = 0; j < FRAGMENTOS.length; j++){
+      var f = FRAGMENTOS[j];
+      var card = el('div', 'card');
+      card.appendChild(el('span', 'num', 'Fragmento ' + f.n));
+      card.appendChild(el('div', 'frag', '“' + esc(f.texto) + '”'));
+      var sel = document.createElement('select');
+      sel.setAttribute('data-n', f.n);
+      sel.setAttribute('aria-label', 'Código para el fragmento ' + f.n);
+      var op = document.createElement('option');
+      op.value = ''; op.textContent = 'sin codificar';
+      sel.appendChild(op);
+      for (var k = 0; k < CODIGOS.length; k++){
+        var o = document.createElement('option');
+        o.value = CODIGOS[k].id;
+        o.textContent = CODIGOS[k].id + ' ' + CODIGOS[k].nombre;
+        sel.appendChild(o);
+      }
+      var on = document.createElement('option');
+      on.value = NUEVO_USUARIO; on.textContent = 'falta un código';
+      sel.appendChild(on);
+      sel.addEventListener('change', alCambiarSelect);
+      card.appendChild(sel);
+      cont.appendChild(card);
+    }
+    actualizarProgreso();
+  }
+
+  function alCambiarSelect(e){
+    var n = parseInt(e.target.getAttribute('data-n'), 10);
+    var v = e.target.value;
+    if (v === '') delete estado.usuario[n]; else estado.usuario[n] = v;
+    actualizarProgreso();
+  }
+
+  function actualizarProgreso(){
+    var c = 0;
+    for (var i = 0; i < FRAGMENTOS.length; i++) if (estado.usuario[FRAGMENTOS[i].n]) c++;
+    $('progreso').textContent = c + ' de ' + FRAGMENTOS.length + ' codificados';
+    $('btn-comparar').disabled = (c < FRAGMENTOS.length);
+  }
+
+  // ---------- Paso 2 ----------
+  function construirPaso2(){
+    var tb = $('tabla-comparacion');
+    tb.innerHTML = '';
+    var pares = [];
+    for (var i = 0; i < FRAGMENTOS.length; i++){
+      var f = FRAGMENTOS[i];
+      var u = estado.usuario[f.n];
+      var m = f.modelo;
+      var acuerdo = (u === m);
+      pares.push([u, m]);
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + f.n + '</td><td>' + esc(nombreCorto(u, f)) + '</td><td>' + esc(nombreCorto(m, f)) + '</td>' +
+        '<td class="' + (acuerdo ? 'ok' : 'no') + '">' + (acuerdo ? 'acuerdo' : 'desacuerdo') + '</td>';
+      tb.appendChild(tr);
+    }
+    var r = calcularKappa(pares);
+    $('v-acuerdo').textContent = fmt(r.po * 100, 1) + ' %';
+    $('v-kappa').textContent = r.kappa === null ? 'no definido' : fmt(r.kappa, 2);
+    $('v-cats').textContent = String(r.categorias.length);
+    $('formula').textContent = 'kappa = (po - pe) / (1 - pe) = (' + fmt(r.po, 3) + ' - ' + fmt(r.pe, 3) + ') / (1 - ' + fmt(r.pe, 3) + ')' +
+      (r.kappa === null ? ' no está definido porque 1 - pe = 0' : ' = ' + fmt(r.kappa, 2));
+    var nombres = [];
+    for (var k = 0; k < r.categorias.length; k++){
+      var id = r.categorias[k];
+      if (id === NUEVO_USUARIO) nombres.push('falta un código');
+      else if (id === NUEVO_MODELO) nombres.push('código nuevo del modelo');
+      else nombres.push(id);
+    }
+    $('nota-cats').textContent = 'Categorías observadas (unión de los códigos usados por usted y por el modelo): ' + nombres.join(', ') + '. El kappa corrige el acuerdo simple por el acuerdo que se esperaría al azar con esas frecuencias.';
+    return r;
+  }
+
+  // ---------- Paso 3 ----------
+  function construirPaso3(){
+    var cont = $('desacuerdos');
+    cont.innerHTML = '';
+    estado.decision = {};
+    estado.criterio = {};
+    var desac = [];
+    for (var i = 0; i < FRAGMENTOS.length; i++){
+      var f = FRAGMENTOS[i];
+      if (estado.usuario[f.n] !== f.modelo) desac.push(f);
+    }
+    if (desac.length === 0){
+      $('intro-desacuerdos').textContent = 'No hay desacuerdos. Eso no garantiza que ambos acertaron: los siguientes son casos que conviene revisar aunque haya acuerdo.';
+      for (var j = 0; j < FRAGMENTOS.length; j++){
+        if (FRAGMENTOS[j].revisar) cont.appendChild(tarjetaRevision(FRAGMENTOS[j]));
+      }
+      return;
+    }
+    $('intro-desacuerdos').textContent = 'Hay ' + desac.length + (desac.length === 1 ? ' desacuerdo' : ' desacuerdos') + '. Para cada uno, decida quién tiene razón y escriba el criterio en una frase.';
+    for (var k = 0; k < desac.length; k++) cont.appendChild(tarjetaDesacuerdo(desac[k]));
+  }
+
+  function tarjetaRevision(f){
+    var card = el('div', 'card');
+    card.appendChild(el('span', 'num', 'Fragmento ' + f.n + ' (acuerdo)'));
+    card.appendChild(el('div', 'frag', '“' + esc(f.texto) + '”'));
+    card.appendChild(el('div', 'vs', 'usted: <strong>' + esc(nombreCategoria(estado.usuario[f.n], f)) + '</strong> · el modelo: <strong>' + esc(nombreCategoria(f.modelo, f)) + '</strong>'));
+    var cr = el('div', 'criterio', '<span class="k">Criterio del docente</span>' + esc(f.criterio));
+    card.appendChild(cr);
+    return card;
+  }
+
+  function tarjetaDesacuerdo(f){
+    var card = el('div', 'card');
+    card.appendChild(el('span', 'num', 'Fragmento ' + f.n));
+    card.appendChild(el('div', 'frag', '“' + esc(f.texto) + '”'));
+    card.appendChild(el('div', 'vs', 'usted: <strong>' + esc(nombreCategoria(estado.usuario[f.n], f)) + '</strong>'));
+    var lm = el('div', 'vs', 'el modelo: <strong>' + esc(nombreCategoria(f.modelo, f)) + '</strong>');
+    card.appendChild(lm);
+    card.appendChild(el('div', 'modelo-nota', esc(f.nota)));
+    card.appendChild(el('div', null, '<strong>¿Quién tiene razón y con qué criterio?</strong>'));
+    var fila = el('div', 'row');
+    fila.style.margin = '.4rem 0';
+    var zona = el('div', 'oculto');
+    var cr = el('div', 'criterio', '<span class="k">Criterio del docente</span>' + esc(f.criterio));
+    zona.appendChild(cr);
+    var lab = el('label', null, '<span class="k" style="display:block;margin:.6rem 0 .2rem">Escriba su criterio en una frase (va al registro de frontera)</span>');
+    var ta = document.createElement('textarea');
+    ta.setAttribute('data-n', f.n);
+    ta.addEventListener('input', function(e){
+      estado.criterio[parseInt(e.target.getAttribute('data-n'), 10)] = e.target.value;
+    });
+    lab.appendChild(ta);
+    zona.appendChild(lab);
+    var botones = [];
+    for (var i = 0; i < OPCIONES_DECISION.length; i++){
+      (function(op){
+        var b = el('button', null, esc(op.texto));
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function(){
+          for (var j = 0; j < botones.length; j++) botones[j].setAttribute('aria-pressed', 'false');
+          b.setAttribute('aria-pressed', 'true');
+          estado.decision[f.n] = op.id;
+          zona.className = '';
+        });
+        botones.push(b);
+        fila.appendChild(b);
+      })(OPCIONES_DECISION[i]);
+    }
+    card.appendChild(fila);
+    card.appendChild(zona);
+    return card;
+  }
+
+  // ---------- Paso 4 ----------
+  function textoDecision(id){
+    for (var i = 0; i < OPCIONES_DECISION.length; i++) if (OPCIONES_DECISION[i].id === id) return OPCIONES_DECISION[i].texto;
+    return '';
+  }
+  function limpiarCelda(s){
+    return String(s || '').replace(/\|/g, '/').replace(/\s*\n+\s*/g, ' ').trim();
+  }
+  function construirRegistro(r){
+    var lineas = [];
+    lineas.push('## Registro de frontera: codificación asistida');
+    lineas.push('');
+    lineas.push('Acuerdo simple: ' + fmt(r.po * 100, 1) + ' %. Kappa de Cohen: ' + (r.kappa === null ? 'no definido' : fmt(r.kappa, 2)) + ' (po = ' + fmt(r.po, 3) + ', pe = ' + fmt(r.pe, 3) + ', ' + r.categorias.length + ' categorías observadas).');
+    lineas.push('');
+    lineas.push('| fragmento | mi código | código del modelo | quién tiene razón | criterio |');
+    lineas.push('|---|---|---|---|---|');
+    for (var i = 0; i < FRAGMENTOS.length; i++){
+      var f = FRAGMENTOS[i];
+      var u = estado.usuario[f.n];
+      var acuerdo = (u === f.modelo);
+      var quien = acuerdo ? 'acuerdo' : (estado.decision[f.n] ? textoDecision(estado.decision[f.n]) : 'sin decidir');
+      var crit = acuerdo ? '' : (estado.criterio[f.n] || '');
+      lineas.push('| ' + f.n + ' | ' + limpiarCelda(nombreCorto(u, f)) + ' | ' + limpiarCelda(nombreCorto(f.modelo, f)) + ' | ' + limpiarCelda(quien) + ' | ' + limpiarCelda(crit) + ' |');
+    }
+    return lineas.join('\n');
+  }
+
+  // ---------- Flujo ----------
+  var resultado = null;
+
+  $('btn-comparar').addEventListener('click', function(){
+    resultado = construirPaso2();
+    construirPaso3();
+    $('registro').className = 'registro oculto';
+    $('registro').value = '';
+    mostrarPaso('paso2');
+    mostrarPaso('paso3');
+    mostrarPaso('paso4');
+    $('paso2').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  $('btn-registro').addEventListener('click', function(){
+    if (!resultado) return;
+    var ta = $('registro');
+    ta.value = construirRegistro(resultado);
+    ta.className = 'registro';
+    ta.focus();
+    ta.select();
+  });
+
+  $('btn-reiniciar').addEventListener('click', function(){
+    estado.usuario = {}; estado.decision = {}; estado.criterio = {};
+    resultado = null;
+    ocultarPaso('paso2'); ocultarPaso('paso3'); ocultarPaso('paso4');
+    construirPaso1();
+    window.scrollTo(0, 0);
+  });
+
+  construirPaso1();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Detector de aserción sin aserente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Propios de esta app */
+.parr{font-family:var(--display);font-size:1rem;line-height:1.55;color:var(--ink);margin:.4rem 0}
+mark.m{background:transparent;color:var(--c-fil);border-bottom:2px solid var(--c-fil);padding:0 .1rem}
+mark.yo{background:transparent;color:var(--c-inv);border-bottom:2px solid var(--c-inv);padding:0 .1rem}
+mark.cr{background:transparent;color:var(--c-app);border-bottom:2px dotted var(--c-app);padding:0 .1rem}
+textarea{width:100%;min-height:9rem;line-height:1.5;font-family:var(--display)}
+.chk{display:flex;gap:.6rem;align-items:flex-start;margin:.35rem 0;font-size:.92rem;color:var(--ink)}
+.chk .s{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;min-width:4.2rem;padding-top:.15rem}
+.cnt{font-family:var(--mono);font-size:.8rem;margin-right:1rem}
+.leyenda span{margin-right:1rem;font-size:.82rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 6 · Semana 7</span>
+  <h1>Detector de aserción sin aserente</h1>
+  <p>Un párrafo con marcadores de autoridad que atribuyen la afirmación a algo que no puede afirmar. Resalte los marcadores, reescriba el párrafo en primera persona con su base y su criterio, y compare. Lo que debería notar: la reescritura es más larga porque ahora tiene a alguien detrás, y hay frases que no se pueden reescribir porque no se pueden sostener.</p>
+
+  <div class="card">
+    <div class="row">
+      <span class="k">Párrafo de partida</span>
+      <select id="sel" aria-label="Elegir párrafo de ejemplo">
+        <option value="0">Informe de entrevistas (texto)</option>
+        <option value="1">Informe de corpus visual</option>
+        <option value="2">Resumen de literatura</option>
+      </select>
+      <button id="resaltar" class="primary">Resaltar marcadores</button>
+    </div>
+    <div class="parr" id="orig"></div>
+    <div class="row"><span class="cnt" id="cntOrig"></span></div>
+  </div>
+
+  <div class="card">
+    <span class="k">Su reescritura</span>
+    <p>Cada frase con sujeto, base, criterio, alcance y procedencia. Lo que no pueda firmar, retírelo y escriba entre corchetes por qué.</p>
+    <textarea id="re" aria-label="Reescritura del párrafo" placeholder="Sostengo que ... porque ... ; el modelo propuso ... y lo acepté por ... ; lo afirmo para ..."></textarea>
+    <div class="row" style="margin-top:.5rem">
+      <button id="comparar" class="primary">Comparar</button>
+      <button id="limpiar">Limpiar</button>
+    </div>
+  </div>
+
+  <div class="card" id="res" hidden>
+    <span class="k">Comparación</span>
+    <div class="leyenda"><span><mark class="m">marcador sin aserente</mark></span><span><mark class="yo">aserente</mark></span><span><mark class="cr">base, criterio, alcance, procedencia</mark></span></div>
+    <div class="parr" id="reMarcado"></div>
+    <div class="row"><span class="cnt" id="cntRe"></span></div>
+    <div id="lista"></div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: "los datos muestran" deja vacío el lugar del que afirma; "sostengo que" lo ocupa, pero solo cuenta si la frase trae la base, el criterio y el alcance que permiten a otro pedir razones.</p>
+<script>
+  var PARRAFOS = [
+    "Los datos muestran que la desconfianza institucional organiza el conjunto de las entrevistas. El análisis revela que los participantes asocian de manera sistemática a la alcaldía con el abandono y a la policía con el miedo. Es evidente que estas dos categorías son centrales para comprender la experiencia de los habitantes. Como puede apreciarse, los resultados indican una ruptura del vínculo entre la comunidad y el Estado local, y se concluye que esa ruptura explica la baja participación en los programas sociales.",
+    "El análisis de las 1.800 imágenes revela una estética recurrente centrada en el exceso, la religiosidad y la ostentación. Se observa que los retratos privilegian el ángulo bajo y la mirada directa, lo que resulta claro en más del 60 % del corpus. La evidencia sugiere que esta estética funciona como afirmación de poder frente al Estado. Queda demostrado que las categorías de lujo, muerte y devoción estructuran el imaginario visual del narcotráfico colombiano.",
+    "La literatura reciente muestra un consenso creciente sobre la insuficiencia de la metáfora de la alucinación. Es evidente que los enfoques pragmáticos ofrecen una alternativa más productiva. Los estudios indican que el acuerdo entre codificadores no equivale a validez, y se concluye que la investigación cualitativa asistida por modelos requiere nuevos criterios. Como puede apreciarse, el campo converge hacia una epistemología de la validación."
+  ];
+  var MARCADORES = [
+    "los datos muestran", "la literatura reciente muestra", "el análisis revela", "el análisis de las [^ ]+ imágenes revela",
+    "es evidente que", "se observa que", "los resultados indican", "los estudios indican", "resulta claro",
+    "como puede apreciarse", "la evidencia sugiere", "se concluye que", "queda demostrado", "demuestra que",
+    "es claro que", "cabe destacar que", "se evidencia", "los hallazgos muestran", "el modelo encontró"
+  ];
+  var ASERENTE = ["sostengo", "afirmo", "propongo", "interpreto", "leo ", "mi lectura", "respondo", "considero", "concluyo", "yo ", "decidí", "acepté", "rechacé", "corregí", "a mi juicio", "desde mi"];
+  var CRITERIO = ["porque", "converge", "convergen", "diverge", "pata", "patas", "prueba", "aro", "pistola humeante", "el modelo propuso", "el modelo lo propuso", "lo acepté", "lo corregí", "lo rechacé", "con el alcance", "para el material", "para las ", "limitado a", "solo en", "en las entrevistas", "en la prensa", "en el corpus", "según el registro", "fragmento", "no puedo sostener", "retiro", "retirada"];
+
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function marcar(texto, lista, clase){
+    var html = esc(texto); var n = 0;
+    lista.forEach(function(m){
+      var re = new RegExp("(" + m + ")", "gi");
+      html = html.replace(re, function(x){ n++; return "<mark class='" + clase + "'>" + x + "</mark>"; });
+    });
+    return {html: html, n: n};
+  }
+  var elOrig = document.getElementById('orig'), elSel = document.getElementById('sel');
+  function cargar(){
+    elOrig.textContent = PARRAFOS[Number(elSel.value)];
+    document.getElementById('cntOrig').textContent = "";
+    document.getElementById('res').hidden = true;
+  }
+  elSel.addEventListener('change', cargar);
+  document.getElementById('resaltar').addEventListener('click', function(){
+    var r = marcar(PARRAFOS[Number(elSel.value)], MARCADORES, "m");
+    elOrig.innerHTML = r.html;
+    document.getElementById('cntOrig').textContent = r.n + " marcador" + (r.n===1?"":"es") + " de autoridad sin aserente. Cada uno atribuye la afirmación a los datos, al análisis o a la evidencia, que no pueden afirmar.";
+  });
+  document.getElementById('limpiar').addEventListener('click', function(){ document.getElementById('re').value = ""; document.getElementById('res').hidden = true; });
+  document.getElementById('comparar').addEventListener('click', function(){
+    var txt = document.getElementById('re').value.trim();
+    var res = document.getElementById('res'); res.hidden = false;
+    if (!txt){ document.getElementById('reMarcado').textContent = "Escriba primero la reescritura."; document.getElementById('cntRe').textContent = ""; document.getElementById('lista').innerHTML = ""; return; }
+    var r1 = marcar(txt, MARCADORES, "m");
+    var html = r1.html;
+    var n2 = 0, n3 = 0;
+    ASERENTE.forEach(function(m){ var re = new RegExp("(" + m + ")", "gi"); html = html.replace(re, function(x){ n2++; return "<mark class='yo'>" + x + "</mark>"; }); });
+    CRITERIO.forEach(function(m){ var re = new RegExp("(" + m + ")", "gi"); html = html.replace(re, function(x){ n3++; return "<mark class='cr'>" + x + "</mark>"; }); });
+    document.getElementById('reMarcado').innerHTML = html;
+    var orig = PARRAFOS[Number(elSel.value)];
+    var lo = orig.split(/\s+/).length, lr = txt.split(/\s+/).length;
+    document.getElementById('cntRe').textContent = r1.n + " marcador" + (r1.n===1?"":"es") + " sin aserente · " + n2 + " marca" + (n2===1?"":"s") + " de aserente · " + n3 + " marca" + (n3===1?"":"s") + " de base, criterio, alcance o procedencia · " + lr + " palabras frente a " + lo + " del original.";
+    var L = document.getElementById('lista'); L.innerHTML = "";
+    function chk(ok, s, txt){ var d = document.createElement('div'); d.className = "chk"; d.innerHTML = "<span class='s " + (ok?"ok":"no") + "'>" + (ok?"sí":"falta") + "</span><span>" + txt + "</span>"; L.appendChild(d); }
+    chk(r1.n === 0, "", "Sin marcadores de autoridad sin aserente. " + (r1.n ? "Quedan " + r1.n + ": cada uno deja vacío el lugar del que afirma." : ""));
+    chk(n2 > 0, "", "Hay aserente: alguien afirma en primera persona. " + (n2 ? "" : "Pruebe con 'sostengo que', 'interpreto', 'acepté'."));
+    var tieneBase = /porque|converge|pata|prueba|en las entrevistas|en la prensa|en el corpus|según el registro|fragmento/i.test(txt);
+    chk(tieneBase, "", "Hay base y criterio: sobre qué patas se sostiene, qué prueba pasó, por qué esta categoría y no otra. " + (tieneBase ? "" : "Sin base, 'sostengo que' solo cambia el sujeto y no añade contenido."));
+    var tieneAlcance = /alcance|para el material|para las |limitado a|solo en|en este corpus|de 2024|de 20\d\d/i.test(txt);
+    chk(tieneAlcance, "", "Hay alcance: a qué material, período o contexto se limita. " + (tieneAlcance ? "" : "Sin alcance, la aserción promete más de lo que puede responder."));
+    var tieneProc = /el modelo propuso|el modelo lo propuso|lo acepté|lo corregí|lo rechacé|propio|propia/i.test(txt);
+    chk(tieneProc, "", "Hay procedencia: qué vino de un output y qué se hizo con ello. " + (tieneProc ? "" : "Diga si el modelo lo propuso y si usted lo aceptó, corrigió o rechazó."));
+    var tieneRetiro = /\[|retiro|retirada|no puedo sostener/i.test(txt);
+    chk(tieneRetiro, "", "Hay al menos una frase retirada con razón. " + (tieneRetiro ? "Es el resultado esperado de la práctica." : "Si pudo firmar todo el párrafo original, revise de nuevo: suele haber una frase que nadie puede sostener."));
+    chk(lr > lo, "", "La reescritura es más larga que el original. " + (lr > lo ? "" : "Suele serlo: cada aserción trae base, criterio, alcance y procedencia que el output no traía."));
+  });
+  cargar();
+</script>
+</body>
+</html>

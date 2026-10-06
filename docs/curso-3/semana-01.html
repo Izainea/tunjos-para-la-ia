@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 3 · Semana 1 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Qué convierte una imagen encontrada en un museo, en un periódico o en una red social en un documento de investigación, y quién decide que lo sea?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-3/semana-01.html" />
+    <meta property="og:title" content="Curso 3 · Semana 1" />
+    <meta property="og:description" content="¿Qué convierte una imagen encontrada en un museo, en un periódico o en una red social en un documento de investigación, y quién decide que lo sea?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-3/semana-01.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 3</a>
+          <a href="semana-01.html" class="sub is-active">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 3 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 1. La imagen como documento</h1>
+          <p class="desc">¿Qué convierte una imagen encontrada en un museo, en un periódico o en una red social en un documento de investigación, y quién decide que lo sea?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>¿Qué convierte una imagen encontrada en un museo, en un periódico o en una red social en un documento de investigación, y quién decide que lo sea?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">El curso empieza por una observación incómoda: la imagen que el investigador encuentra ya ha sido vista, seleccionada, recortada y rotulada por otros antes de que él la vea. El museo la curó, el periódico la editó, la plataforma la ordenó con un algoritmo. Lo que llega al investigador no es una imagen sino una imagen más un dispositivo, y confundir las dos es el primer error del trabajo visual. Esta semana da los nombres para separarlas, siguiendo la plantilla de Banks (2010) y los sitios de producción, de la imagen y de la audiencia que Rose (2016) distingue, y plantea desde el primer día la pregunta ética que el curso no abandona: no toda imagen que se puede descargar se puede mostrar.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Una imagen no es un dato hasta que alguien la cataloga. El caso demostrativo del curso es un corpus de unas 1.800 imágenes de cultura visual relacionada con el narcotráfico en Colombia, del siglo XIX a 2025, reunidas por el docente desde museos, prensa, archivos y plataformas. Antes del catálogo eran carpetas con nombres de archivo numerados y, para una minoría (141 de 1.830 filas, el 7,7 %), una línea de texto alternativo heredada de la página de origen, en inglés, escrita por alguien que describía para un lector ciego o para un buscador. Esa línea es la primera descripción ajena del corpus, y ya decide qué se ve; las demás imágenes no tenían ninguna.<sup class="mark">a</sup></li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> En el catálogo maestro del caso, el campo <code>descripcion</code> proviene del atributo <code>alt</code> de la página fuente y solo existe para los periodos 1900 a 1930 y 1940 a 1970. Es una descripción hecha con otro propósito, por otra persona, en otra lengua. Conservarla es parte de la procedencia; usarla como si fuera propia es un infortunio.</aside>
+
+<ol start="2">
+<li>
+<p>Banks propone leer toda imagen en tres capas. La narrativa interna es lo que la imagen muestra: quién, qué, dónde, en qué disposición. La narrativa externa es el contexto social de su producción, circulación y consumo: quién la hizo, para quién, por qué está donde está. La materialidad es el objeto: la fotografía de papel, el grabado, el archivo JPEG de 236 por 350 píxeles que un sitio sirve como miniatura. Las tres capas se describen por separado porque se validan por separado: la primera mirando, la segunda investigando, la tercera midiendo.</p>
+</li>
+<li>
+<p>Las tres escenas en que el investigador encuentra imágenes imponen tres dispositivos distintos. En el museo, la curaduría decide qué entra a la colección, con qué cartela y con qué reproducción se publica en línea. En la prensa, el editor elige la foto, el pie y el recorte, y la hemeroteca digital decide la resolución. En la plataforma, un algoritmo de recomendación y las etiquetas de los usuarios ordenan lo que aparece primero. Rose (2016) llama a esto el sitio de producción, el sitio de la imagen y el sitio de la audiencia, y pide que cada análisis diga en cuál está parado.<sup class="mark">b</sup></p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Gillian Rose, geógrafa cultural, distingue en <em>Visual Methodologies</em> (4.ª ed., Sage, 2016) tres sitios (producción, imagen, audiencia) y tres modalidades (tecnológica, composicional, social) en que una imagen produce sentido. La matriz de nueve celdas es una buena lista de verificación para la narrativa externa.</aside>
+
+<ol start="4">
+<li>
+<p>La materialidad digital tiene medidas y las medidas son procedencia. Un archivo de 236 por 350 píxeles bajado de una galería de miniaturas no es la imagen del museo: es una reducción que un sistema de gestión de contenidos produjo para una vista de tarjeta. En el caso demostrativo, una decena de imágenes de una misma página fuente comparten exactamente esas dimensiones, y varias no son del tema sino banderas de navegación del sitio que el pipeline bajó sin distinguir. La materialidad delata al dispositivo. Por eso el catálogo de la semana 2 registra ancho, alto, extensión y URL de la imagen, no solo de la página.</p>
+</li>
+<li>
+<p>La imagen sensible exige una decisión antes de la descripción. El corpus del caso incluye cadáveres, personas detenidas, menores, víctimas identificables y retratos de personas vivas que no consintieron circular en un corpus académico. Sontag (2003) y Azoulay (2008) recuerdan que mirar el dolor ajeno es una relación con obligaciones, no un acto neutro. El curso no resuelve esto en la semana 1, pero fija una regla desde hoy: ninguna imagen con personas identificables sale del disco del estudiante hacia un modelo o hacia una presentación sin pasar por el protocolo de exhibición de la semana 7.</p>
+</li>
+<li>
+<p>Derechos y uso legítimo son parte del catálogo, no un anexo. Cada imagen tiene un titular, una licencia o una ausencia de licencia, y un uso que la ley permite para fines de investigación y cita. En Colombia, la Ley 23 de 1982 y la Decisión Andina 351 de 1993 contemplan excepciones para cita y enseñanza; en el derecho estadounidense, el uso legítimo. El curso no es un curso de derecho: enseña a registrar, en una columna, lo que se sabe de los derechos de cada imagen y lo que no se sabe, y a no confundir "lo bajé" con "lo puedo publicar".</p>
+</li>
+<li>
+<p>Lo que la semana deja planteado es la frontera del curso. Describir una imagen es hacer afirmaciones sobre ella, y cada afirmación tiene un autor: la cartela del museo, el texto alternativo, el investigador o, desde la semana 4, un modelo multimodal. El trabajo del curso es que al final cada afirmación del corpus tenga su autor declarado. Esa es la versión visual de la frontera que el curso 1 del programa llama registro de frontera.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Imagen encontrada</th>
+<th>Imagen como documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Un archivo en una carpeta, con el nombre que le puso el sitio.</td>
+<td>Una fila en un catálogo, con identificador, fuente y página fuente.</td>
+</tr>
+<tr>
+<td>Un texto alternativo o un pie que alguien escribió para otro fin.</td>
+<td>Una descripción heredada con su origen declarado, y una descripción propia aparte.</td>
+</tr>
+<tr>
+<td>Lo que se ve y lo que el dispositivo dejó ver, fundidos.</td>
+<td>Narrativa interna, narrativa externa y materialidad, separadas.</td>
+</tr>
+<tr>
+<td>Se puede mostrar porque se pudo bajar.</td>
+<td>Se muestra, se reduce, se describe o se guarda, según una decisión escrita.</td>
+</tr>
+<tr>
+<td><em>Sin autor: nadie responde por lo que se dice de ella.</em></td>
+<td><em>Cada afirmación tiene autor: la fuente, el modelo o el investigador.</em></td>
+</tr>
+</tbody>
+</table></div>
+<figure class="wide">
+  <svg viewBox="0 0 680 300" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Tres capas concéntricas de una imagen según Banks: en el centro la narrativa interna (lo que la imagen muestra), alrededor la narrativa externa (quién la hizo, para quién, dónde circula) y en el borde la materialidad (soporte, dimensiones, formato). A la derecha, para cada capa, cómo se valida: mirando, investigando, midiendo.">
+    <style>.bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .t{font-family:var(--text);font-size:13px;fill:var(--ink)} .s{font-family:var(--text);font-size:11.5px;fill:var(--muted)} .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .ka{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-app)} .ki{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-inv)} .r1{fill:none;stroke:var(--c-inv);stroke-width:1.6} .r2{fill:none;stroke:var(--c-app);stroke-width:1.6;stroke-dasharray:5 4} .r3{fill:none;stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:2 4} .ln{stroke:var(--muted);stroke-width:1;fill:none}</style>
+    <rect x="20" y="20" width="300" height="260" rx="3" class="r3"/>
+    <rect x="50" y="50" width="240" height="200" rx="3" class="r2"/>
+    <rect x="90" y="90" width="160" height="120" rx="3" class="r1"/>
+    <text x="170" y="140" text-anchor="middle" class="t">Narrativa interna</text>
+    <text x="170" y="158" text-anchor="middle" class="s">quién, qué, dónde,</text>
+    <text x="170" y="172" text-anchor="middle" class="s">en qué disposición</text>
+    <text x="170" y="72" text-anchor="middle" class="ka">NARRATIVA EXTERNA</text>
+    <text x="170" y="236" text-anchor="middle" class="s">quién la hizo, para quién, dónde circula</text>
+    <text x="170" y="40" text-anchor="middle" class="kf">MATERIALIDAD</text>
+    <text x="170" y="268" text-anchor="middle" class="s">soporte · 236 × 350 px · .jpg · miniatura</text>
+    <path class="ln" d="M250 150 L360 150"/>
+    <path class="ln" d="M290 100 L360 100"/>
+    <path class="ln" d="M320 50 L360 50"/>
+    <text x="372" y="54" class="kf">SE VALIDA MIDIENDO</text>
+    <text x="372" y="70" class="s">dimensiones, formato, hash, URL de la imagen</text>
+    <text x="372" y="104" class="ka">SE VALIDA INVESTIGANDO</text>
+    <text x="372" y="120" class="s">página fuente, cartela, fecha, titular, licencia</text>
+    <text x="372" y="154" class="ki">SE VALIDA MIRANDO</text>
+    <text x="372" y="170" class="s">y es lo único que un modelo multimodal</text>
+    <text x="372" y="184" class="s">puede intentar sin salir de la imagen</text>
+    <text x="372" y="226" class="k">LA DESCRIPCIÓN DEL MODELO</text>
+    <text x="372" y="242" class="s">cubre la capa interna; las otras dos</text>
+    <text x="372" y="256" class="s">las pone el catálogo o el investigador.</text>
+  </svg>
+  <figcaption><b>Figura 1.</b> Las tres capas de Banks y cómo se valida cada una. Hay que ver que el modelo multimodal solo entra en la capa interior; las otras dos son procedencia, y la procedencia no se mira: se registra.</figcaption>
+</figure>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana no se le pide nada a un modelo multimodal: se le pide al estudiante que mire primero. La exigencia es que llegue a la semana 4, cuando el modelo empiece a describir, con tres imágenes de su proyecto leídas por capas con sus propias palabras, de modo que tenga con qué comparar. Sin esa lectura previa, la descripción del modelo no se audita: se acepta.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Banks, M. (2010). <em>Los datos visuales en investigación cualitativa</em>. Madrid: Morata. Caps. 1 ("Lo visual en la investigación social") y 2 ("Métodos visuales e investigación de campo"). Original: <em>Using Visual Data in Qualitative Research</em>, Sage, 2007.</li>
+<li>Rose, G. (2016). <em>Visual Methodologies: An Introduction to Researching with Visual Materials</em> (4.ª ed.). Londres: Sage. Cap. 2, "Towards a critical visual methodology".</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Sontag, S. (2003). <em>Ante el dolor de los demás</em>. Madrid: Alfaguara. Original: <em>Regarding the Pain of Others</em>, Farrar, Straus and Giroux, 2003.</li>
+<li>Azoulay, A. (2008). <em>The Civil Contract of Photography</em>. Nueva York: Zone Books. Introducción.</li>
+<li>Zainea, C. I. (2026). "La prótesis hermenéutica". <a href="https://izainea.github.io/blog/protesis-hermeneutica/">https://izainea.github.io/blog/protesis-hermeneutica/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Banks distingue narrativa interna y narrativa externa y advierte que la mayoría de los análisis visuales en ciencias sociales se quedan en la primera. Tome una imagen de su proyecto y escriba en dos columnas lo que pertenece a cada narrativa. <em>¿Qué parte de la narrativa externa puede averiguar desde su escritorio y qué parte exige ir a la fuente?</em></li>
+<li>Rose propone una matriz de sitios y modalidades, y dice que ningún método cubre todas las celdas. Ubique su proyecto en la matriz. <em>¿En qué sitio está parado su análisis, y qué celda está dejando vacía sin haberlo decidido?</em></li>
+<li>Sontag sostiene que la fotografía del sufrimiento convierte al espectador en alguien que debe decidir qué hacer con lo que vio. <em>¿Qué imágenes de su corpus le imponen una decisión de ese tipo, y la ha tomado ya?</em></li>
+<li>En el caso demostrativo, el campo de descripción proviene de textos alternativos escritos para otro fin. <em>¿Qué textos ajenos acompañan a las imágenes de su proyecto y para quién fueron escritos?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Cada estudiante trae tres imágenes de su proyecto, una por escena si es posible (museo o archivo, prensa, plataforma). Para cada una llena la ficha de la semana, sin consultar ningún modelo.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Imagen</th>
+<th>Escena y dispositivo</th>
+<th>Narrativa interna (tres frases)</th>
+<th>Narrativa externa (qué sé, qué no sé)</th>
+<th>Materialidad (formato, dimensiones, origen del archivo)</th>
+<th>¿Sensible? ¿Derechos conocidos?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Después, en parejas, cada estudiante lee la narrativa interna del otro sin ver la imagen e intenta dibujarla en un esquema. Las diferencias entre el esquema y la imagen son la medida de lo que la descripción no dijo. Se anotan.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Qué hace el docente</th>
+<th>Qué hace el estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10</td>
+<td>Apertura</td>
+<td>Muestra una miniatura de 236 por 350 píxeles del caso y pregunta qué es</td>
+<td>Propone qué muestra la imagen y de dónde salió</td>
+<td>Una miniatura del caso, sin personas</td>
+</tr>
+<tr>
+<td>10 a 30</td>
+<td>Capas</td>
+<td>Expone las tres capas de Banks con la figura 1 sobre dos imágenes del caso</td>
+<td>Separa en voz alta lo que pertenece a cada capa</td>
+<td>Figura 1</td>
+</tr>
+<tr>
+<td>30 a 45</td>
+<td>Escenas</td>
+<td>Contrasta museo, prensa y plataforma con un ejemplo de cada una</td>
+<td>Ubica sus propias fuentes en una de las tres escenas</td>
+<td>Pizarra</td>
+</tr>
+<tr>
+<td>45 a 60</td>
+<td>Ética y derechos</td>
+<td>Plantea la regla de la imagen sensible y la columna de derechos</td>
+<td>Marca cuáles de sus tres imágenes son sensibles</td>
+<td>Syllabus, política de uso</td>
+</tr>
+<tr>
+<td>60 a 95</td>
+<td>Taller</td>
+<td>Acompaña el llenado de la ficha y revisa narrativas internas</td>
+<td>Llena la ficha de tres imágenes</td>
+<td>Tabla del taller</td>
+</tr>
+<tr>
+<td>95 a 115</td>
+<td>Esquema ciego</td>
+<td>Organiza las parejas</td>
+<td>Dibuja la imagen del par a partir de su descripción</td>
+<td>Papel</td>
+</tr>
+<tr>
+<td>115 a 120</td>
+<td>Cierre</td>
+<td>Anuncia la práctica 1 y lo que hay que instalar</td>
+<td>Anota qué le faltó a su descripción</td>
+<td>Guía de la práctica 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que los estudiantes traigan imágenes sin saber de qué página las bajaron; pedir desde la inscripción que guarden la URL de la página, no solo el archivo. Suele fallar que la narrativa interna se escriba ya interpretada ("una escena de violencia") en lugar de descrita ("dos hombres de pie, uno con un arma larga, frente a un muro de ladrillo"); corregirlo en la sesión, porque es el hábito que la auditoría de la semana 5 necesita. Y suele fallar que el esquema ciego se tome como juego: es el primer ejercicio de validación del curso.</p>
+<h2>Bitácora</h2>
+<p>Registre las tres fichas y el resultado del esquema ciego: qué dibujó su par y qué faltó en su descripción para que lo dibujara bien. Añada la lista de fuentes de su proyecto con la escena y el dispositivo de cada una, y una pregunta abierta.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Arnold y Tilton (2019) y la guía de la práctica 1 en <code>practicas/practica-01-catalogo-reproducible.md</code>. Instalar Python 3.11 o superior si va a usar el cuaderno de apoyo; si no, tener una hoja de cálculo lista. Reunir en una carpeta al menos 20 imágenes del proyecto con la URL de cada página fuente en un archivo de texto.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="index.html">← Corpus visual: del archivo a la imagen descrita</a><a href="semana-02.html">Semana 2. Recolección y catálogo →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Los silogismos de Peirce</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.sil{display:grid;grid-template-columns:5.5rem 1fr;gap:.3rem .8rem;align-items:baseline;margin:.6rem 0}
+.sil .et{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sil .pr{color:var(--ink)}
+.sil .con{color:var(--ink);font-weight:700;border-top:1px solid var(--ink);padding-top:.3rem}
+.sil .con.d{color:var(--c-inv)} .sil .con.i{color:var(--c-app)} .sil .con.a{color:var(--c-fil)}
+.expl{border-left:3px solid var(--rule);padding:.4rem .7rem;margin-top:.5rem;color:var(--ink);font-size:.92rem}
+.expl.d{border-left-color:var(--c-inv)} .expl.i{border-left-color:var(--c-app)} .expl.a{border-left-color:var(--c-fil)}
+label{display:block;font-size:.85rem;color:var(--muted);margin-top:.4rem}
+input[type=text]{width:100%}
+svg{width:100%;max-width:22rem;height:auto;display:block;margin:.4rem auto}
+.tri{fill:none;stroke:var(--rule);stroke-width:1.2}
+.nodo circle{fill:var(--surface);stroke:var(--muted);stroke-width:1.2}
+.nodo text{fill:var(--ink);font-size:11px;text-anchor:middle}
+.nodo.con circle{stroke-width:2.4}
+.nodo.con.d circle{stroke:var(--c-inv)} .nodo.con.i circle{stroke:var(--c-app)} .nodo.con.a circle{stroke:var(--c-fil)}
+.flecha{fill:none;stroke:var(--ink);stroke-width:1.6}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 1 · Semana 4</span>
+  <h1>El silogismo girado tres veces</h1>
+  <p>Peirce (1878) toma un solo silogismo, el de las habichuelas, y lo gira: según cuál de sus tres proposiciones sea la conclusión, la inferencia es deducción, inducción o hipótesis. Pulse cada botón y vea qué se concluye a partir de qué. Luego escriba su propio ejemplo y compruebe que también gira.</p>
+
+  <div class="card">
+    <div class="row" id="botones">
+      <button data-m="d" aria-pressed="true">Deducción</button>
+      <button data-m="i" aria-pressed="false">Inducción</button>
+      <button data-m="a" aria-pressed="false">Hipótesis (abducción)</button>
+    </div>
+    <div class="grid" style="align-items:center">
+      <div>
+        <div class="sil" id="sil"></div>
+        <div class="expl" id="expl"></div>
+      </div>
+      <svg viewBox="0 0 310 240" role="img" aria-label="Triángulo con regla, caso y resultado; la flecha señala cuál proposición es la conclusión" id="dibujo">
+        <path class="tri" d="M155 44 L44 196 L266 196 Z"/>
+        <g class="nodo" id="nR" transform="translate(155 44)"><circle r="34"/><text y="4">regla</text></g>
+        <g class="nodo" id="nC" transform="translate(44 196)"><circle r="34"/><text y="4">caso</text></g>
+        <g class="nodo" id="nS" transform="translate(266 196)"><circle r="34"/><text y="4">resultado</text></g>
+        <path class="flecha" id="f1" d=""/>
+        <path class="flecha" id="f2" d=""/>
+        <text x="155" y="236" text-anchor="middle" id="pie"></text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="k">Su propio ejemplo</p>
+    <p>Escriba las tres proposiciones de su proyecto y los botones de arriba las girarán. Si no logra escribir las tres, anote qué falta: casi siempre es la regla.</p>
+    <label for="eR">Regla (todos los ... son ...)</label>
+    <input type="text" id="eR" placeholder="Todas las habichuelas de esta bolsa son blancas." />
+    <label for="eC">Caso (estos ... son de ...)</label>
+    <input type="text" id="eC" placeholder="Estas habichuelas son de esta bolsa." />
+    <label for="eS">Resultado (estos ... son ...)</label>
+    <input type="text" id="eS" placeholder="Estas habichuelas son blancas." />
+    <div class="row" style="margin-top:.6rem">
+      <button class="primary" id="usar">Usar mi ejemplo</button>
+      <button id="volver">Volver a las habichuelas</button>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la deducción y la inducción solo reordenan lo que ya estaba. La hipótesis es la única que introduce algo nuevo, el caso, y por eso su validez no está ni en la forma ni en la frecuencia.</p>
+<script>
+  var BASE = {
+    R: "Todas las habichuelas de esta bolsa son blancas.",
+    C: "Estas habichuelas son de esta bolsa.",
+    S: "Estas habichuelas son blancas."
+  };
+  var props = {R: BASE.R, C: BASE.C, S: BASE.S};
+  var modo = "d";
+
+  var MODOS = {
+    d: {nombre: "Deducción", premisas: ["R", "C"], conclusion: "S",
+        expl: "De la regla y el caso se sigue el resultado. La conclusión ya estaba contenida en las premisas: si acepta las dos, no puede rechazar la tercera. Vale por su forma, y cualquiera puede comprobarla sin saber qué es una habichuela.",
+        pie: "regla + caso → resultado"},
+    i: {nombre: "Inducción", premisas: ["C", "S"], conclusion: "R",
+        expl: "Del caso y el resultado se infiere la regla. Unas habichuelas de la bolsa resultaron blancas; se generaliza a toda la bolsa. No es necesaria: la siguiente habichuela puede ser negra. Vale por sus tasas a largo plazo.",
+        pie: "caso + resultado → regla"},
+    a: {nombre: "Hipótesis", premisas: ["R", "S"], conclusion: "C",
+        expl: "De la regla y el resultado se conjetura el caso. Sobre la mesa hay habichuelas blancas; al lado, una bolsa de habichuelas blancas; se sospecha que las de la mesa salieron de la bolsa. Es la única de las tres que introduce una idea nueva, y la única que no vale ni por forma ni por frecuencia: vale si alguien la pone a prueba.",
+        pie: "regla + resultado → caso"}
+  };
+  var ET = {R: "Regla", C: "Caso", S: "Resultado"};
+  var POS = {R: [155, 44], C: [44, 196], S: [266, 196]};
+
+  function flecha(desde, hasta) {
+    var a = POS[desde], b = POS[hasta];
+    var dx = b[0] - a[0], dy = b[1] - a[1];
+    var L = Math.sqrt(dx * dx + dy * dy);
+    var ux = dx / L, uy = dy / L;
+    var x1 = a[0] + ux * 38, y1 = a[1] + uy * 38;
+    var x2 = b[0] - ux * 42, y2 = b[1] - uy * 42;
+    var px = -uy * 5, py = ux * 5;
+    return "M" + x1 + " " + y1 + " L" + x2 + " " + y2 +
+      " M" + (x2 - ux * 8 + px) + " " + (y2 - uy * 8 + py) + " L" + x2 + " " + y2 +
+      " L" + (x2 - ux * 8 - px) + " " + (y2 - uy * 8 - py);
+  }
+
+  function pintar() {
+    var m = MODOS[modo];
+    var html = "";
+    for (var i = 0; i < m.premisas.length; i++) {
+      var p = m.premisas[i];
+      html += '<span class="et">' + ET[p] + '</span><span class="pr">' + props[p] + '</span>';
+    }
+    html += '<span class="et">' + ET[m.conclusion] + '</span><span class="con ' + modo + '">∴ ' + props[m.conclusion] + '</span>';
+    document.getElementById("sil").innerHTML = html;
+    var ex = document.getElementById("expl");
+    ex.className = "expl " + modo;
+    ex.innerHTML = "<b>" + m.nombre + ".</b> " + m.expl;
+    var ids = {R: "nR", C: "nC", S: "nS"};
+    for (var k in ids) {
+      document.getElementById(ids[k]).setAttribute("class", "nodo" + (k === m.conclusion ? " con " + modo : ""));
+    }
+    document.getElementById("f1").setAttribute("d", flecha(m.premisas[0], m.conclusion));
+    document.getElementById("f2").setAttribute("d", flecha(m.premisas[1], m.conclusion));
+    document.getElementById("pie").textContent = m.pie;
+    var bs = document.querySelectorAll("#botones button");
+    for (var j = 0; j < bs.length; j++) {
+      bs[j].setAttribute("aria-pressed", bs[j].getAttribute("data-m") === modo ? "true" : "false");
+    }
+  }
+
+  var botones = document.querySelectorAll("#botones button");
+  for (var b = 0; b < botones.length; b++) {
+    botones[b].addEventListener("click", function (e) {
+      modo = e.currentTarget.getAttribute("data-m");
+      pintar();
+    });
+  }
+  document.getElementById("usar").addEventListener("click", function () {
+    var r = document.getElementById("eR").value.trim();
+    var c = document.getElementById("eC").value.trim();
+    var s = document.getElementById("eS").value.trim();
+    props = {R: r || BASE.R, C: c || BASE.C, S: s || BASE.S};
+    pintar();
+  });
+  document.getElementById("volver").addEventListener("click", function () {
+    props = {R: BASE.R, C: BASE.C, S: BASE.S};
+    pintar();
+  });
+  pintar();
+</script>
+</body>
+</html>

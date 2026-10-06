@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nube de puntos y número de grupos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+input[type=range]{width:12rem;padding:0}
+.lbl{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.big{font-family:var(--mono);font-size:1.1rem;color:var(--ink)}
+#nube{width:100%;max-width:40rem;height:auto;display:block;background:var(--surface);border:1px solid var(--rule);border-radius:4px}
+#nube circle{cursor:pointer}
+#sel{min-height:2.4rem;font-size:.95rem;color:var(--ink)}
+.bar{height:.45rem;background:var(--rule);border-radius:2px;overflow:hidden;min-width:5rem}
+.bar i{display:block;height:100%;background:var(--accent)}
+td .bar{margin-top:.3rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 5 · Semanas 2 y 3</span>
+  <h1>Nube de puntos y número de grupos</h1>
+  <p>Sesenta fragmentos breves proyectados en dos dimensiones. Mueva <em>k</em> y cambie la semilla: los grupos que k-means encuentra cambian con los parámetros. La pregunta es cuál de ellos sobrevive.</p>
+
+  <div class="card">
+    <div class="row">
+      <span class="lbl">k =</span><span class="big" id="kval">4</span>
+      <input type="range" id="k" min="2" max="8" value="4" aria-label="Número de grupos k" />
+      <span class="lbl">semilla</span>
+      <span id="semillas" class="row"></span>
+      <label class="lbl"><input type="checkbox" id="origen" /> mostrar tema de origen (anillo)</label>
+    </div>
+    <svg id="nube" viewBox="0 0 600 520" role="img" aria-label="Nube de sesenta puntos coloreados por el grupo que k-means les asigna"></svg>
+    <div id="sel" class="note">Pase el cursor o toque un punto para leer el fragmento.</div>
+  </div>
+
+  <div class="card">
+    <span class="k">Qué sobrevive</span>
+    <div style="overflow-x:auto"><table id="tabla"></table></div>
+    <p class="note" id="veredicto"></p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: un grupo que se mantiene al cambiar la semilla y al mover k uno arriba o abajo es un candidato a categoría. Un grupo que aparece con un k y se disuelve con el siguiente es, hasta nueva prueba, un corte del método. Las coordenadas de esta nube se prepararon para el ejercicio: imitan una proyección de embeddings, no provienen de un modelo.</p>
+<script>
+  const DATA = [{"id": 1, "g": "m", "t": "El bus se demora más de cuarenta minutos en la mañana", "x": -0.425, "y": 0.591}, {"id": 2, "g": "m", "t": "Caminar al trabajo es más rápido que esperar el bus", "x": -0.671, "y": 0.243}, {"id": 3, "g": "m", "t": "La ciclorruta termina en una avenida sin semáforo", "x": -0.49, "y": 0.657}, {"id": 4, "g": "m", "t": "El transporte público sube de precio cada enero", "x": -0.482, "y": 0.201}, {"id": 5, "g": "m", "t": "Los andenes están rotos y no se puede caminar con coche", "x": -0.667, "y": 0.376}, {"id": 6, "g": "m", "t": "La estación queda a media hora a pie de mi casa", "x": -0.398, "y": -0.018}, {"id": 7, "g": "m", "t": "Salgo a las cinco para llegar a las ocho al trabajo", "x": -0.602, "y": 0.349}, {"id": 8, "g": "m", "t": "Las bicicletas compartidas no llegan a mi barrio", "x": -0.518, "y": 0.268}, {"id": 9, "g": "m", "t": "El trancón de la tarde dura hasta las nueve de la noche", "x": -0.545, "y": 0.427}, {"id": 10, "g": "m", "t": "Tomo dos buses y un colectivo para ir a estudiar", "x": -0.288, "y": 0.376}, {"id": 11, "g": "m", "t": "La avenida nueva partió el barrio en dos", "x": 0.123, "y": -0.078}, {"id": 12, "g": "m", "t": "El pasaje del bus vale casi lo mismo que el almuerzo", "x": -0.41, "y": 0.41}, {"id": 13, "g": "m", "t": "Cerraron la ruta de bus que pasaba por la escuela", "x": -0.53, "y": -0.019}, {"id": 14, "g": "m", "t": "En bicicleta llego en veinte minutos al centro", "x": -0.404, "y": 0.334}, {"id": 15, "g": "m", "t": "El metro todavía es una promesa de campaña", "x": -0.384, "y": 0.624}, {"id": 16, "g": "v", "t": "El arriendo subió el doble en tres años", "x": 0.88, "y": -0.101}, {"id": 17, "g": "v", "t": "Nos mudamos porque el dueño vendió la casa", "x": 0.426, "y": -0.301}, {"id": 18, "g": "v", "t": "Los apartamentos nuevos nadie del barrio los puede pagar", "x": 0.518, "y": -0.206}, {"id": 19, "g": "v", "t": "Compartimos la casa con otra familia para pagar el arriendo", "x": 0.637, "y": -0.319}, {"id": 20, "g": "v", "t": "El subsidio de vivienda no alcanza para la cuota inicial", "x": 0.698, "y": -0.447}, {"id": 21, "g": "v", "t": "Las torres nuevas tapan el sol del parque", "x": 0.597, "y": 0.02}, {"id": 22, "g": "v", "t": "La casa de mis abuelos ahora es un edificio de oficinas", "x": 0.952, "y": -0.426}, {"id": 23, "g": "v", "t": "Pagamos arriendo por una pieza sin ventana", "x": 0.628, "y": -0.631}, {"id": 24, "g": "v", "t": "El barrio cambió de nombre cuando llegaron los edificios", "x": 0.394, "y": -0.486}, {"id": 25, "g": "v", "t": "Desalojaron a tres familias de la cuadra en un mes", "x": 0.751, "y": -0.233}, {"id": 26, "g": "v", "t": "El agua llega solo de noche en la parte alta del barrio", "x": 0.67, "y": -0.455}, {"id": 27, "g": "v", "t": "Construyeron la casa ellos mismos durante diez años", "x": 0.916, "y": -0.515}, {"id": 28, "g": "v", "t": "La inmobiliaria pide tres meses de depósito por la casa", "x": 0.491, "y": -0.278}, {"id": 29, "g": "v", "t": "Vivimos lejos porque cerca no hay casa que podamos pagar", "x": 0.469, "y": -0.312}, {"id": 30, "g": "v", "t": "El edificio tiene portería pero la calle no tiene alumbrado", "x": 0.189, "y": -0.393}, {"id": 31, "g": "s", "t": "De noche no salgo porque la calle está oscura", "x": -0.35, "y": -0.408}, {"id": 32, "g": "s", "t": "Robaron el celular a mi hija en la parada del bus", "x": -0.541, "y": -0.297}, {"id": 33, "g": "s", "t": "La policía pasa pero no se baja del carro", "x": -0.606, "y": -0.415}, {"id": 34, "g": "s", "t": "Los vecinos armaron un grupo de chat para avisarse de los robos", "x": -0.672, "y": -0.503}, {"id": 35, "g": "s", "t": "Cerraron el parque con reja después de los atracos", "x": 0.087, "y": 0.171}, {"id": 36, "g": "s", "t": "Tengo miedo de caminar sola desde la estación", "x": -0.603, "y": -0.064}, {"id": 37, "g": "s", "t": "Pusieron cámaras pero nadie las revisa", "x": -0.379, "y": -0.331}, {"id": 38, "g": "s", "t": "Los muchachos de la esquina no son el problema, dicen los vecinos", "x": -0.632, "y": -0.121}, {"id": 39, "g": "s", "t": "Después del robo dejé de usar la bicicleta", "x": -0.554, "y": 0.08}, {"id": 40, "g": "s", "t": "En la cuadra se conocen todos y eso da tranquilidad", "x": -0.446, "y": -0.35}, {"id": 41, "g": "s", "t": "El alumbrado nuevo cambió la sensación de la calle", "x": -0.151, "y": -0.302}, {"id": 42, "g": "s", "t": "Nos dijeron que denunciar el robo no sirve de nada", "x": -0.394, "y": -0.573}, {"id": 43, "g": "s", "t": "El miedo se siente más en el bus que en la calle", "x": -0.54, "y": -0.143}, {"id": 44, "g": "s", "t": "La reja del conjunto separa a los de adentro de los de afuera", "x": -0.096, "y": -0.66}, {"id": 45, "g": "s", "t": "Caminamos en grupo hasta la estación por miedo", "x": -0.711, "y": 0.129}, {"id": 46, "g": "c", "t": "La fiesta del barrio se hace en la calle desde hace treinta años", "x": 0.758, "y": 0.469}, {"id": 47, "g": "c", "t": "El grupo de danza ensaya en el salón comunal los sábados", "x": 0.688, "y": 0.395}, {"id": 48, "g": "c", "t": "Cerraron la calle para el festival y nadie se quejó", "x": 0.464, "y": 0.605}, {"id": 49, "g": "c", "t": "La biblioteca del parque es el único lugar con internet", "x": 0.618, "y": 0.453}, {"id": 50, "g": "c", "t": "Los murales cuentan la historia de la cuadra", "x": 0.812, "y": 0.642}, {"id": 51, "g": "c", "t": "La música de la fiesta se oye hasta la estación", "x": 0.015, "y": 0.348}, {"id": 52, "g": "c", "t": "El mercado campesino llega cada domingo a la plaza", "x": 0.577, "y": 0.475}, {"id": 53, "g": "c", "t": "Los jóvenes graban videos de baile en el parque", "x": 0.543, "y": 0.652}, {"id": 54, "g": "c", "t": "La casa de la cultura queda en un edificio prestado", "x": 0.464, "y": 0.567}, {"id": 55, "g": "c", "t": "El teatro comunitario presentó una obra sobre el desalojo", "x": 0.659, "y": 0.115}, {"id": 56, "g": "c", "t": "La fiesta termina temprano por los vecinos del conjunto nuevo", "x": 0.793, "y": -0.073}, {"id": 57, "g": "c", "t": "El parque de noche se llena de gente cuando hay cine", "x": 0.545, "y": 0.337}, {"id": 58, "g": "c", "t": "La radio comunitaria transmite desde la plaza del mercado", "x": 0.544, "y": 0.924}, {"id": 59, "g": "c", "t": "El festival de la bicicleta cierra la avenida un domingo al año", "x": -0.143, "y": 0.427}, {"id": 60, "g": "c", "t": "Cuando hay fiesta la calle oscura se vuelve segura", "x": 0.126, "y": 0.061}];
+  const TEMAS = {m:"movilidad", v:"vivienda", s:"seguridad", c:"cultura"};
+  const COL = ["var(--accent)","var(--c-app)","var(--c-blog)","var(--c-doc)","var(--c-fil)","var(--c-inv)","var(--muted)","var(--ink)"];
+
+  // Generador determinista (mulberry32) para que la misma semilla dé el mismo resultado.
+  function rng(seed){ let a = seed >>> 0; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function d2(p, q){ const dx = p.x - q.x, dy = p.y - q.y; return dx*dx + dy*dy; }
+
+  function kmeans(pts, k, seed){
+    const r = rng(seed * 7919 + k);
+    // k-means++
+    const cent = [pts[Math.floor(r()*pts.length)]].map(p => ({x:p.x, y:p.y}));
+    while (cent.length < k){
+      const d = pts.map(p => Math.min.apply(null, cent.map(c => d2(p,c))));
+      const tot = d.reduce((a,b)=>a+b,0);
+      let u = r()*tot, i = 0;
+      while (u > d[i] && i < d.length-1){ u -= d[i]; i++; }
+      cent.push({x:pts[i].x, y:pts[i].y});
+    }
+    let asg = new Array(pts.length).fill(-1);
+    for (let it = 0; it < 60; it++){
+      let cambio = false;
+      pts.forEach((p, i) => {
+        let best = 0, bd = Infinity;
+        cent.forEach((c, j) => { const d = d2(p,c); if (d < bd){ bd = d; best = j; } });
+        if (asg[i] !== best){ asg[i] = best; cambio = true; }
+      });
+      cent.forEach((c, j) => {
+        const m = pts.filter((p,i) => asg[i] === j);
+        if (m.length){ c.x = m.reduce((a,p)=>a+p.x,0)/m.length; c.y = m.reduce((a,p)=>a+p.y,0)/m.length; }
+      });
+      if (!cambio) break;
+    }
+    return {asg, cent};
+  }
+  function grupos(asg, k){ const g = []; for (let j = 0; j < k; j++) g.push(new Set()); asg.forEach((a,i) => g[a].add(i)); return g; }
+  function jaccard(A, B){ let inter = 0; A.forEach(x => { if (B.has(x)) inter++; }); const uni = A.size + B.size - inter; return uni ? inter/uni : 0; }
+  function mejor(A, otros){ return Math.max.apply(null, otros.map(B => jaccard(A,B))); }
+
+  const SEMILLAS = [1,2,3,4,5];
+  let k = 4, seed = 1, hover = -1;
+  const svg = document.getElementById('nube');
+  const sx = x => 300 + x*270, sy = y => 260 - y*240;
+
+  function dibujar(res){
+    let s = '';
+    DATA.forEach((p, i) => {
+      const c = COL[res.asg[i]];
+      if (document.getElementById('origen').checked){
+        const oc = {m:"var(--c-app)", v:"var(--c-doc)", s:"var(--c-fil)", c:"var(--c-blog)"}[p.g];
+        s += `<circle cx="${sx(p.x)}" cy="${sy(p.y)}" r="10" fill="none" stroke="${oc}" stroke-width="1.5" opacity=".7"/>`;
+      }
+      s += `<circle data-i="${i}" cx="${sx(p.x)}" cy="${sy(p.y)}" r="${hover===i?9:6}" fill="${c}" stroke="var(--surface)" stroke-width="1.2"/>`;
+    });
+    res.cent.forEach((c, j) => { s += `<path d="M${sx(c.x)-7} ${sy(c.y)-7} L${sx(c.x)+7} ${sy(c.y)+7} M${sx(c.x)-7} ${sy(c.y)+7} L${sx(c.x)+7} ${sy(c.y)-7}" stroke="${COL[j]}" stroke-width="2.5"/>`; s += `<text x="${sx(c.x)+10}" y="${sy(c.y)-8}">G${j+1}</text>`; });
+    s += `<text x="12" y="508">× centro del grupo · anillo = tema con que se escribió el fragmento</text>`;
+    svg.innerHTML = s;
+  }
+
+  function tabla(res){
+    const G = grupos(res.asg, k);
+    const otrasSem = SEMILLAS.filter(s => s !== seed).map(s => grupos(kmeans(DATA, k, s).asg, k));
+    const kMenos = k > 2 ? grupos(kmeans(DATA, k-1, seed).asg, k-1) : null;
+    const kMas = k < 8 ? grupos(kmeans(DATA, k+1, seed).asg, k+1) : null;
+    let h = '<tr><th>Grupo</th><th>Tamaño</th><th>Tres fragmentos</th><th>Sobrevive a cambiar la semilla</th><th>Sobrevive a k−1 y k+1</th></tr>';
+    let estables = 0;
+    G.forEach((g, j) => {
+      const ids = Array.from(g);
+      const ej = ids.slice(0,3).map(i => '«' + DATA[i].t + '»').join('<br>');
+      const sem = otrasSem.reduce((a,o) => a + mejor(g, o), 0) / otrasSem.length;
+      const vk = [kMenos, kMas].filter(Boolean).map(o => mejor(g,o));
+      const kk = vk.length ? vk.reduce((a,b)=>a+b,0)/vk.length : 0;
+      if (sem >= .8 && kk >= .6) estables++;
+      const f = v => (Math.round(v*100)/100).toFixed(2).replace('.', ',');
+      h += `<tr><td><span style="color:${COL[j]}">●</span> G${j+1}</td><td>${g.size}</td><td style="font-size:.85rem">${ej}</td>
+        <td><span class="${sem>=.8?'ok':'no'}">${f(sem)}</span><div class="bar"><i style="width:${sem*100}%"></i></div></td>
+        <td><span class="${kk>=.6?'ok':'no'}">${f(kk)}</span><div class="bar"><i style="width:${kk*100}%"></i></div></td></tr>`;
+    });
+    document.getElementById('tabla').innerHTML = h;
+    document.getElementById('veredicto').textContent = `Con k = ${k} y esta semilla, ${estables} de ${k} grupos superan ambas pruebas (semilla ≥ 0,80; k vecino ≥ 0,60). El índice es la mejor coincidencia de Jaccard del grupo con los grupos de la otra corrida. ¿Los grupos que no sobreviven dicen algo del corpus o algo del método?`;
+  }
+
+  function correr(){ const res = kmeans(DATA, k, seed); dibujar(res); tabla(res); }
+  document.getElementById('k').addEventListener('input', e => { k = +e.target.value; document.getElementById('kval').textContent = k; correr(); });
+  document.getElementById('origen').addEventListener('change', correr);
+  const sem = document.getElementById('semillas');
+  SEMILLAS.forEach(s => { const b = document.createElement('button'); b.textContent = s; b.setAttribute('aria-pressed', s===seed); b.addEventListener('click', () => { seed = s; sem.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', +x.textContent===seed)); correr(); }); sem.appendChild(b); });
+  svg.addEventListener('mousemove', e => { const c = e.target.closest('circle[data-i]'); if (!c) return; const i = +c.dataset.i; if (i !== hover){ hover = i; document.getElementById('sel').innerHTML = `«${DATA[i].t}» <span class="lbl">· escrito como ${TEMAS[DATA[i].g]}</span>`; correr(); } });
+  svg.addEventListener('click', e => { const c = e.target.closest('circle[data-i]'); if (!c) return; hover = +c.dataset.i; document.getElementById('sel').innerHTML = `«${DATA[hover].t}» <span class="lbl">· escrito como ${TEMAS[DATA[hover].g]}</span>`; correr(); });
+  correr();
+</script>
+</body>
+</html>

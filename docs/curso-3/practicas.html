@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 3 · Prácticas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-3/practicas.html" />
+    <meta property="og:title" content="Curso 3 · Prácticas" />
+    <meta property="og:description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-3/practicas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 3</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html" class="is-active">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 3 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Prácticas</h1>
+          <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
+        </div>
+<article class="prose">
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo: hacer las prácticas por programa</h1>
+<p>Opcional. Todo el curso se puede hacer con una hoja de cálculo, el navegador y la interfaz web de un modelo. Este cuaderno es para quien quiera que la recolección, el hash, el catálogo y las descripciones queden en archivos y se puedan repetir. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. Cada bloque se explica antes de mostrarse.</p>
+<h2>Preparación</h2>
+<p>Instale Python 3.11 o superior y, en una terminal:</p>
+<pre><code>pip install requests pillow imagehash pandas python-dotenv openai
+</code></pre>
+<p>Cree una carpeta de trabajo con esta estructura:</p>
+<pre><code>mi-corpus/
+  paginas.csv        lista de páginas fuente (la escribe usted antes de descargar)
+  img/               imágenes descargadas
+  descartadas/       lo que no es del tema
+  catalogo.csv       el catálogo
+  descripciones.jsonl
+  .env               la clave del modelo; nunca va en el código ni en el repositorio
+</code></pre>
+<p><code>paginas.csv</code> tiene cuatro columnas: <code>fuente</code>, <code>escena</code>, <code>url</code>, <code>periodo</code>. Una fila por página.</p>
+<h2>Comprobar robots</h2>
+<p>Antes de descargar nada, el programa pregunta al sitio si permite visitar la ruta. La biblioteca estándar trae un lector de <code>robots.txt</code>. Si el archivo no existe, la función devuelve permitido; anótelo igual, porque "no dijo que no" no es "dijo que sí".</p>
+<pre><code class="language-python">from urllib import robotparser
+from urllib.parse import urlparse
+
+AGENTE = &quot;corpus-visual-curso3 (contacto: su-correo@ejemplo.org)&quot;
+
+def permitido(url):
+    &quot;&quot;&quot;True si robots.txt del sitio permite que AGENTE visite la url.&quot;&quot;&quot;
+    base = &quot;{0.scheme}://{0.netloc}&quot;.format(urlparse(url))
+    rp = robotparser.RobotFileParser()
+    rp.set_url(base + &quot;/robots.txt&quot;)
+    try:
+        rp.read()
+    except Exception:
+        return True  # sin robots.txt: permitido, y se anota
+    return rp.can_fetch(AGENTE, url)
+</code></pre>
+<h2>Descargar una página</h2>
+<p>Explicación. El bloque pide la página, busca todas las etiquetas de imagen, resuelve la URL de cada una, la descarga con una pausa entre peticiones, lee las dimensiones con Pillow y escribe una fila por imagen con la URL de la imagen, la URL de la página, el texto alternativo y las medidas. Se identifica con el agente y espera dos segundos entre imágenes. No filtra: el filtrado es un paso aparte y registrado.</p>
+<pre><code class="language-python">import csv, os, re, time
+import requests
+from io import BytesIO
+from urllib.parse import urljoin
+from PIL import Image
+
+def descargar_pagina(url, fuente, escena, periodo, carpeta=&quot;img&quot;, catalogo=&quot;catalogo.csv&quot;, pausa=2.0):
+    if not permitido(url):
+        print(&quot;robots.txt no permite:&quot;, url)
+        return
+    os.makedirs(carpeta, exist_ok=True)
+    html = requests.get(url, headers={&quot;User-Agent&quot;: AGENTE}, timeout=30).text
+    etiquetas = re.findall(r'&lt;img[^&gt;]+&gt;', html, flags=re.I)
+    nuevo = not os.path.exists(catalogo)
+    with open(catalogo, &quot;a&quot;, newline=&quot;&quot;, encoding=&quot;utf-8&quot;) as f:
+        w = csv.writer(f)
+        if nuevo:
+            w.writerow([&quot;id&quot;, &quot;periodo&quot;, &quot;fuente&quot;, &quot;pagina_fuente&quot;, &quot;url_imagen&quot;, &quot;ancho&quot;, &quot;alto&quot;,
+                        &quot;extension&quot;, &quot;descripcion_heredada&quot;, &quot;origen_descripcion&quot;, &quot;derechos&quot;,
+                        &quot;escena&quot;, &quot;ruta_local&quot;, &quot;grupo_duplicados&quot;, &quot;canonica&quot;, &quot;sensible&quot;])
+        n = sum(1 for _ in open(catalogo, encoding=&quot;utf-8&quot;)) - 1
+        for et in etiquetas:
+            src = re.search(r'src=&quot;([^&quot;]+)&quot;', et)
+            if not src:
+                continue
+            url_img = urljoin(url, src.group(1))
+            alt = re.search(r'alt=&quot;([^&quot;]*)&quot;', et)
+            alt = alt.group(1) if alt else &quot;&quot;
+            try:
+                r = requests.get(url_img, headers={&quot;User-Agent&quot;: AGENTE}, timeout=30)
+                im = Image.open(BytesIO(r.content))
+            except Exception as e:
+                print(&quot;no se pudo:&quot;, url_img, e)
+                continue
+            n += 1
+            ext = (im.format or &quot;jpg&quot;).lower()
+            ruta = os.path.join(carpeta, f&quot;{n:04d}.{ext}&quot;)
+            with open(ruta, &quot;wb&quot;) as g:
+                g.write(r.content)
+            w.writerow([n, periodo, fuente, url, url_img, im.width, im.height, &quot;.&quot; + ext,
+                        alt, &quot;alt&quot; if alt else &quot;ninguna&quot;, &quot;&quot;, escena, ruta, &quot;&quot;, &quot;&quot;, &quot;&quot;])
+            time.sleep(pausa)
+</code></pre>
+<p>Para recorrer la lista:</p>
+<pre><code class="language-python">import pandas as pd
+paginas = pd.read_csv(&quot;paginas.csv&quot;)
+for _, p in paginas.iterrows():
+    descargar_pagina(p[&quot;url&quot;], p[&quot;fuente&quot;], p[&quot;escena&quot;], p[&quot;periodo&quot;])
+</code></pre>
+<h2>Filtrar lo que no es del tema</h2>
+<p>Explicación. El filtrado se hace mirando, pero el programa ayuda a encontrar candidatos: dimensiones muy pequeñas, dimensiones repetidas muchas veces en la misma página, nombres de archivo con "logo", "icon" o "banner". El bloque solo lista candidatos; usted decide y mueve.</p>
+<pre><code class="language-python">cat = pd.read_csv(&quot;catalogo.csv&quot;)
+cat[&quot;dims&quot;] = cat[&quot;ancho&quot;].astype(str) + &quot;x&quot; + cat[&quot;alto&quot;].astype(str)
+repetidas = cat.groupby([&quot;pagina_fuente&quot;, &quot;dims&quot;]).size()
+candidatas = cat[(cat[&quot;ancho&quot;] &lt; 150) | (cat[&quot;alto&quot;] &lt; 150) |
+                 cat[&quot;url_imagen&quot;].str.contains(&quot;logo|icon|banner|sprite&quot;, case=False, na=False)]
+print(repetidas[repetidas &gt; 5])
+print(candidatas[[&quot;id&quot;, &quot;url_imagen&quot;, &quot;dims&quot;]])
+</code></pre>
+<h2>Hash perceptual</h2>
+<p>Explicación. <code>imagehash.dhash</code> reduce cada imagen a 9 por 8 píxeles en gris y anota si cada píxel es más claro que el siguiente de su fila: 64 bits. La distancia entre dos hashes es el número de bits distintos. El bloque calcula el hash de cada imagen del catálogo, compara todos los pares y lista los que quedan bajo el umbral. Mire con cuidado los pares entre 8 y 14: ahí se decide.</p>
+<pre><code class="language-python">import imagehash
+from itertools import combinations
+
+UMBRAL = 10
+cat = pd.read_csv(&quot;catalogo.csv&quot;)
+hashes = {}
+for _, fila in cat.iterrows():
+    try:
+        hashes[fila[&quot;id&quot;]] = imagehash.dhash(Image.open(fila[&quot;ruta_local&quot;]))
+    except Exception as e:
+        print(&quot;sin hash:&quot;, fila[&quot;id&quot;], e)
+
+pares = []
+for a, b in combinations(hashes, 2):
+    d = hashes[a] - hashes[b]
+    if d &lt;= UMBRAL + 4:
+        pares.append((a, b, d, &quot;bajo umbral&quot; if d &lt;= UMBRAL else &quot;en el límite&quot;))
+pares.sort(key=lambda t: t[2])
+for p in pares:
+    print(p)
+</code></pre>
+<p>Para asignar grupos, una pasada simple: cada par bajo el umbral une a los dos ids en el mismo grupo.</p>
+<pre><code class="language-python">grupo = {}
+siguiente = 1
+for a, b, d, _ in pares:
+    if d &gt; UMBRAL:
+        continue
+    ga, gb = grupo.get(a), grupo.get(b)
+    if ga and gb:
+        for k, v in grupo.items():
+            if v == gb:
+                grupo[k] = ga
+    elif ga:
+        grupo[b] = ga
+    elif gb:
+        grupo[a] = gb
+    else:
+        grupo[a] = grupo[b] = f&quot;G{siguiente}&quot;
+        siguiente += 1
+cat[&quot;grupo_duplicados&quot;] = cat[&quot;id&quot;].map(grupo).fillna(&quot;&quot;)
+cat.to_csv(&quot;catalogo.csv&quot;, index=False)
+</code></pre>
+<p>El ejemplar canónico lo elige usted en la columna <code>canonica</code>, con la razón en la plantilla.</p>
+<h2>Validar</h2>
+<p>Explicación. Dos comprobaciones: cada fila tiene archivo, cada archivo tiene fila. El bloque imprime las discrepancias y no corrige nada solo.</p>
+<pre><code class="language-python">import glob
+cat = pd.read_csv(&quot;catalogo.csv&quot;)
+en_disco = set(glob.glob(&quot;img/*&quot;))
+en_catalogo = set(cat[&quot;ruta_local&quot;].astype(str))
+print(&quot;filas sin archivo:&quot;, sorted(en_catalogo - en_disco))
+print(&quot;archivos sin fila:&quot;, sorted(en_disco - en_catalogo))
+print(&quot;filas:&quot;, len(cat), &quot;archivos:&quot;, len(en_disco))
+</code></pre>
+<h2>Describir con un modelo multimodal (bloque opcional)</h2>
+<p>Explicación. El bloque envía una imagen y el prompt por capas a un modelo compatible con la interfaz de <code>openai</code>, y guarda prompt, salida y metadatos en <code>descripciones.jsonl</code>. La clave está en <code>.env</code> y se lee con <code>python-dotenv</code>; nunca se escribe en el código ni se sube a un repositorio. Antes de correrlo sobre una imagen, compruebe en el catálogo que no está marcada como sensible. Varios proveedores ofrecen cuota gratuita; cambie <code>BASE_URL</code> y <code>MODEL</code> según el suyo.</p>
+<p>Contenido de <code>.env</code>:</p>
+<pre><code>API_KEY=su_clave
+BASE_URL=<a href="https://api.openai.com/v1">https://api.openai.com/v1</a>
+MODEL=nombre_del_modelo_con_vision
+</code></pre>
+<pre><code class="language-python">import os, json, base64, datetime
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv(&quot;API_KEY&quot;), base_url=os.getenv(&quot;BASE_URL&quot;))
+MODEL = os.getenv(&quot;MODEL&quot;)
+
+PROMPT_CAPAS = open(&quot;prompt_capas.txt&quot;, encoding=&quot;utf-8&quot;).read()  # el de la práctica 2
+
+def describir(id_imagen, ruta, prompt=PROMPT_CAPAS, registro=&quot;descripciones.jsonl&quot;):
+    &quot;&quot;&quot;Envía la imagen y el prompt; guarda todo con fecha. Devuelve el texto.&quot;&quot;&quot;
+    with open(ruta, &quot;rb&quot;) as f:
+        b64 = base64.b64encode(f.read()).decode()
+    ext = ruta.rsplit(&quot;.&quot;, 1)[-1].lower().replace(&quot;jpg&quot;, &quot;jpeg&quot;)
+    r = client.chat.completions.create(
+        model=MODEL,
+        temperature=0.2,
+        messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [
+            {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: prompt},
+            {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: f&quot;data:image/{ext};base64,{b64}&quot;}},
+        ]}],
+    )
+    texto = r.choices[0].message.content
+    uso = getattr(r, &quot;usage&quot;, None)
+    with open(registro, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({
+            &quot;id&quot;: id_imagen, &quot;ruta&quot;: ruta, &quot;fecha&quot;: datetime.datetime.now().isoformat(),
+            &quot;modelo&quot;: MODEL, &quot;prompt&quot;: prompt, &quot;respuesta&quot;: texto,
+            &quot;tokens&quot;: getattr(uso, &quot;total_tokens&quot;, None),
+        }, ensure_ascii=False) + &quot;\n&quot;)
+    return texto
+</code></pre>
+<p>Para la muestra de 20:</p>
+<pre><code class="language-python">cat = pd.read_csv(&quot;catalogo.csv&quot;)
+muestra = cat[(cat[&quot;sensible&quot;] != &quot;sí&quot;)].head(20)
+for _, fila in muestra.iterrows():
+    print(fila[&quot;id&quot;]); print(describir(fila[&quot;id&quot;], fila[&quot;ruta_local&quot;])); print(&quot;=====&quot;)
+</code></pre>
+<h2>Separar las capas de la salida</h2>
+<p>Explicación. Si el modelo respetó los títulos del prompt, el bloque corta la salida en cuatro columnas para la tabla de la semana 6.</p>
+<pre><code class="language-python">import re
+TITULOS = [(&quot;denotacion&quot;, &quot;DENOTACIÓN&quot;), (&quot;indices&quot;, &quot;ÍNDICES MATERIALES&quot;),
+           (&quot;suposiciones&quot;, &quot;SUPOSICIONES&quot;), (&quot;no_sabe&quot;, &quot;LO QUE NO PUEDES SABER&quot;)]
+
+def capas(texto):
+    &quot;&quot;&quot;Corta la salida en cuatro capas por sus títulos; vacío si falta un título.&quot;&quot;&quot;
+    out = {}
+    for i, (clave, titulo) in enumerate(TITULOS):
+        inicio = texto.find(titulo)
+        if inicio &lt; 0:
+            out[clave] = &quot;&quot;
+            continue
+        fin = len(texto)
+        for _, t2 in TITULOS[i + 1:]:
+            j = texto.find(t2, inicio + len(titulo))
+            if j &gt;= 0:
+                fin = min(fin, j)
+        out[clave] = texto[inicio + len(titulo):fin].strip(&quot; .:\n&quot;)
+    return out
+
+desc = pd.read_json(&quot;descripciones.jsonl&quot;, lines=True)
+tabla = pd.DataFrame([{&quot;id&quot;: d[&quot;id&quot;], **capas(d[&quot;respuesta&quot;])} for _, d in desc.iterrows()])
+tabla.to_csv(&quot;descripciones_por_capas.csv&quot;, index=False)
+</code></pre>
+<p>Si el modelo no respetó los títulos, la separación falla y se anota: es un dato sobre el modelo.</p>
+<h2>Registro de frontera por programa</h2>
+<p>Mantenga un archivo con sus decisiones, una por afirmación, código o grupo de exhibición:</p>
+<pre><code class="language-python">def decidir(tipo, id_imagen, propuesta, decision, criterio, responde, archivo=&quot;frontera.jsonl&quot;):
+    with open(archivo, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({&quot;tipo&quot;: tipo, &quot;id&quot;: id_imagen, &quot;propuso_el_modelo&quot;: propuesta,
+                            &quot;decidi&quot;: decision, &quot;criterio&quot;: criterio, &quot;responde&quot;: responde},
+                           ensure_ascii=False) + &quot;\n&quot;)
+
+decidir(&quot;descripcion&quot;, 17, &quot;cuatro personas de pie frente a un muro&quot;,
+        &quot;corregir: son tres; la cuarta es una sombra&quot;,
+        &quot;miré la imagen a tamaño completo&quot;, &quot;yo&quot;)
+</code></pre>
+<p>Al final, <code>frontera.jsonl</code> se convierte en las tablas de la plantilla:</p>
+<pre><code class="language-python">pd.read_json(&quot;frontera.jsonl&quot;, lines=True).to_csv(&quot;registro-de-frontera-visual.csv&quot;, index=False)
+</code></pre>
+<h2>Nota sobre costos y privacidad</h2>
+<p>Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. El curso 7 del programa trata estos problemas en detalle.</p>
+<hr />
+<h1 id="practica-01-catalogo-reproducible">Práctica 1. Catálogo reproducible con deduplicación perceptual</h1>
+<p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica de la semana 2.
+Requisitos: una lista de páginas fuente del proyecto propio, una carpeta de trabajo y la plantilla <code>plantillas/catalogo-visual.md</code>. Para la vía por programa, Python 3.11 o superior con <code>requests</code>, <code>Pillow</code>, <code>imagehash</code> y <code>pandas</code> (ver <code>cuaderno-apoyo.md</code>). Para la vía manual, una hoja de cálculo y la mini app de deduplicación.
+No requiere programar: cada paso tiene una vía manual.</p>
+<h2>Objetivo</h2>
+<p>Construir el primer catálogo de 20 imágenes del corpus propio con las diez columnas de procedencia, detectar duplicados por hash perceptual con un umbral declarado, y validar la integridad entre catálogo y disco en ambas direcciones.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Escriba la pregunta con la que reúne el corpus. Una frase. Va en la cabecera de la plantilla y se escribe antes de descargar, porque después ya no es la misma.</li>
+<li>Haga la lista de páginas fuente: al menos cinco páginas de al menos dos escenas distintas (museo o archivo, prensa, plataforma). Una fila por página en la primera tabla de la plantilla.</li>
+<li>Para cada sitio, abra <code><a href="https://&lt;sitio&gt;/robots.txt">https://&lt;sitio&gt;/robots.txt</a></code> en el navegador y anote si la ruta que va a visitar está permitida. Si el archivo no existe, anótelo. Si está prohibida, no la use y anote por qué.</li>
+<li>Si va por programa, instale las bibliotecas y pruebe que el bloque "comprobar robots" del cuaderno corre.</li>
+</ol>
+<h2>Durante la sesión: cuatro pasos</h2>
+<h3>Paso 1. Descargar con registro</h3>
+<p>Vía manual. Para cada imagen que quiera incorporar, guarde el archivo con un nombre numerado (<code>0001.jpg</code>, <code>0002.jpg</code>) y anote en la hoja de cálculo la URL de la imagen (clic derecho, copiar dirección de la imagen), la URL de la página, la fecha y el texto alternativo o pie si lo hay. Las dimensiones se obtienen de las propiedades del archivo.</p>
+<p>Vía por programa. Use el bloque "descargar una página" del cuaderno. Descarga las imágenes de una página respetando <code>robots.txt</code>, con pausa entre peticiones y un agente identificado, y escribe una fila por imagen con URL, página, dimensiones y texto alternativo.</p>
+<p>En las dos vías, no filtre todavía: descargue todo lo que la página ofrezca como imagen. El filtrado es el paso siguiente y debe quedar registrado.</p>
+<h3>Paso 2. Filtrar lo que no es del tema</h3>
+<p>Mire las imágenes descargadas y marque las que no pertenecen al corpus: logotipos, banderas de navegación, íconos, miniaturas de otras secciones. En el caso demostrativo, una fracción visible de lo descargado era de ese tipo, con dimensiones repetidas (236 por 350 píxeles) que las delataban antes de abrirlas. Anote el criterio de descarte en la plantilla. No borre los archivos: muévalos a una carpeta <code>descartadas/</code>.</p>
+<h3>Paso 3. Deduplicar por hash perceptual</h3>
+<p>Vía por programa. El bloque "hash perceptual" del cuaderno calcula el dHash de cada imagen y la distancia de Hamming entre todos los pares. Fije el umbral en 10 para empezar y mire los pares con distancia entre 8 y 14: ahí está la decisión.</p>
+<p>Vía manual. Con la mini app <code>apps/dedup-perceptual.html</code> vea cómo se calcula el hash y qué hace el umbral. Luego, en su carpeta, busque a ojo los pares sospechosos (misma escena, distinto recorte o brillo) y anótelos como grupo. Es menos preciso y se declara así.</p>
+<p>Para cada grupo, elija el ejemplar canónico y diga por qué: mayor resolución, procedencia más clara, sin recorte. Los demás se conservan con el campo <code>canonica = no</code>.</p>
+<h3>Paso 4. Validar la integridad</h3>
+<p>Confronte el catálogo con la carpeta en ambas direcciones. Vía por programa: bloque "validar". Vía manual: cuente los archivos de la carpeta, cuente las filas, y compare nombre por nombre. Anote cada discrepancia y qué hizo con ella. Dé la cifra del corpus con su historia: cuántas bajó, cuántas descartó, cuántos grupos, cuántas quedan.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Amplíe el catálogo a 40 imágenes como mínimo siguiendo los mismos cuatro pasos. Es la entrega de la semana 3.</li>
+<li>Consulte la página fuente de al menos la mitad de las imágenes para llenar la columna de derechos. "Desconocido" solo vale después de mirar.</li>
+<li>Marque en la columna <code>sensible</code> todas las imágenes con personas identificables, menores o muerte. Es la entrada del protocolo de la semana 7.</li>
+<li>Escriba la declaración: qué hizo un programa, qué hizo un asistente de código si lo usó, qué hizo usted, qué no pudo descargar.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La trazabilidad, no el tamaño. Un catálogo de 40 imágenes en que cada fila tiene fuente, página, derechos consultados y grupo de duplicados vale más que uno de 400 con columnas vacías. La cifra del corpus debe poder defenderse con la validación.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes descargan desde la misma lista de páginas con procedimientos distintos (uno manual, uno por programa) y comparan catálogos. Las filas que uno tiene y el otro no son el mejor material de discusión sobre reproducibilidad.</p>
+<hr />
+<h1 id="practica-02-descripcion-y-auditoria">Práctica 2. Descripción por capas con un modelo multimodal y auditoría de una muestra</h1>
+<p>Duración estimada: 5 horas, repartidas entre las sesiones de las semanas 4 y 5 y el trabajo autónomo.
+Requisitos: 20 imágenes del catálogo que se puedan enviar a un modelo (públicas, de dominio público o sin personas identificables); acceso a un modelo multimodal de uso gratuito en su versión web, o el cuaderno de apoyo con la clave en <code>.env</code>; la plantilla <code>plantillas/ficha-semiotica.md</code>, sección "auditoría".
+No requiere programar.</p>
+<h2>Objetivo</h2>
+<p>Obtener descripciones de 20 imágenes con dos prompts, uno plano y uno por capas; guardar cada salida con sus metadatos; auditar una muestra de 15 descripciones por capas con la tabla de tres columnas; y escribir el resumen del sesgo del modelo sobre el corpus propio.</p>
+<h2>Antes de la sesión de la semana 4</h2>
+<ol>
+<li>Elija las 20 imágenes. Compruebe en el catálogo que ninguna está marcada como sensible. Si su corpus entero es sensible, use para esta práctica una muestra de imágenes públicas del mismo tema o de un tema vecino, y dígalo.</li>
+<li>Para tres de las 20, escriba su lectura propia: diez afirmaciones etiquetadas como en el taller de la semana 3. Guárdela sin mostrarla al modelo.</li>
+<li>Abra una cuenta en un servicio con modelo multimodal gratuito, o configure el <code>.env</code> del cuaderno. Pruebe con una imagen.</li>
+</ol>
+<h2>Primera parte (semana 4): describir</h2>
+<h3>Prompt plano</h3>
+<pre><code>Describe esta imagen en detalle.
+</code></pre>
+<h3>Prompt por capas</h3>
+<pre><code>Describe esta imagen en cuatro partes separadas, con estos títulos exactos y en este orden.
+
+1. DENOTACIÓN. Solo lo que se ve: personas (cuántas, dónde en el cuadro, postura, vestimenta), objetos, lugar, disposición, texto visible transcrito literal. Sin interpretar, sin adjetivos de valor, sin nombrar instituciones ni lugares que no estén escritos en la imagen.
+
+2. ÍNDICES MATERIALES. Tipo de imagen (fotografía, grabado, captura de pantalla, ilustración), señales de época o de proceso (grano, color, desenfoque, compresión), marcas de agua, bordes, recortes, interfaz visible.
+
+3. SUPOSICIONES. Lo que supones y no ves: época probable, lugar probable, género de la imagen, función, qué está pasando. Para cada suposición, di en qué te basas y tu grado de confianza (alta, media, baja).
+
+4. LO QUE NO PUEDES SABER. Lista lo que un lector local o el contexto de la fuente sabrían y tú no puedes inferir de la imagen.
+
+Responde en español.
+</code></pre>
+<p>Adapte el prompt a su corpus en dos frases como máximo (por ejemplo, pida transcribir texto en una lengua específica). No añada en el prompt información sobre la imagen: el modelo debe describir sin pistas.</p>
+<h3>Registro de cada salida</h3>
+<p>Por imagen y por prompt, guarde: id de la imagen, modelo y versión, fecha y hora, prompt literal, salida literal, y lo que pueda del costo (tokens, llamadas, tiempo). Vía manual: una fila por salida en una hoja de cálculo, con la salida pegada. Vía por programa: el bloque "describir" del cuaderno lo hace y escribe <code>descripciones.jsonl</code>.</p>
+<h3>Comparar los dos prompts</h3>
+<p>Para las tres imágenes con lectura propia, llene la tabla de la semana 4: afirmaciones en la capa de denotación, cuántas habría escrito usted igual, suposiciones declaradas, cuántas rechazaría, qué declaró el modelo no saber. Anote en la bitácora qué cambió entre prompts: no la cantidad de detalle sino su clasificación.</p>
+<h3>Presupuesto</h3>
+<p>Con el costo de las 40 salidas, extrapole al corpus completo: dinero, tiempo de ejecución, tiempo de lectura. Decida y escriba qué parte del corpus describirá con el presupuesto que tiene.</p>
+<h2>Segunda parte (semana 5): auditar</h2>
+<h3>Diseñar la muestra</h3>
+<p>Quince descripciones por capas, estratificadas por escena o periodo (cinco por estrato si hay tres estratos), incluyendo a propósito las imágenes que usted considera más locales. Escriba el criterio antes de auditar.</p>
+<h3>El orden obligatorio</h3>
+<p>Para cada imagen de la muestra: primero mire la imagen y escriba tres frases propias; después lea la descripción del modelo. Nunca al revés. La auditoría hecha leyendo primero es una aprobación.</p>
+<h3>La tabla de tres columnas</h3>
+<p>Una fila por afirmación del modelo. Las cuatro columnas de destino:</p>
+<ul>
+<li>No está: el modelo lo afirma y la imagen no lo muestra.</li>
+<li>No describe: la imagen lo muestra y el modelo no lo dice (se añade como fila con la afirmación que falta).</li>
+<li>Contexto local: está en la imagen, el modelo lo describe en parte o mal, y solo se juzga sabiendo del lugar, el periodo o la comunidad. Diga qué contexto haría falta.</li>
+<li>Aceptada: está y el modelo lo dice bien.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Imagen</th>
+<th>Afirmación del modelo</th>
+<th>Capa en que la puso</th>
+<th>Columna</th>
+<th>Qué sé yo que el modelo no</th>
+<th>Cómo lo sé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Cifras y resumen</h3>
+<p>Cuente las afirmaciones por columna sobre el total auditado. Declare que son cifras sobre la muestra, no tasas del corpus. Escriba el resumen del sesgo en un párrafo: qué tipo de cosas afirma el modelo sin base, qué tipo de cosas calla, qué tipo de cosas describe sin entender, con un ejemplo de cada una tomado de su corpus. Ese párrafo acompaña a todas las descripciones del corpus desde ahora.</p>
+<h3>Variante: dos modelos o dos lenguas</h3>
+<p>Si tiene acceso a dos modelos, o repite con el prompt en inglés, audite cinco imágenes con ambos y compare la tercera columna. Ananthram et al. (2025) encuentran que la lengua del prompt cambia el sesgo sin eliminarlo; compruebe si pasa en su corpus.</p>
+<h2>Después de la sesión de la semana 5</h2>
+<ol>
+<li>Describa con el prompt por capas la parte del corpus que el presupuesto permitió, por programa o a mano, y consolide todo en una tabla con una fila por imagen y una columna por capa.</li>
+<li>Adjunte a la tabla el resumen del sesgo y las cifras de la muestra.</li>
+<li>Marque en el registro de frontera visual las afirmaciones que aceptó sin poder decir cómo lo sabía.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La precisión de la auditoría, no la calidad de la descripción. Una descripción mediocre auditada afirmación por afirmación vale más que una brillante aprobada en bloque. La tercera columna se evalúa por si nombra el contexto que falta, no por su tamaño.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="plantillas.html">← Plantillas</a><a href="apps.html">Mini apps →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

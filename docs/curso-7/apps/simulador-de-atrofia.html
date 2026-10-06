@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simulador de atrofia del juicio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.ph{display:grid;grid-template-columns:7.5rem 1fr 3rem;gap:.5rem;align-items:center;margin:.3rem 0;font-size:.9rem}
+.ph label{font-family:var(--display);font-weight:700;color:var(--ink)}
+.ph input[type=range]{width:100%;padding:0;border:0;background:transparent}
+.ph output{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:right}
+.chk{display:flex;flex-direction:column;gap:.35rem;font-size:.92rem;color:var(--ink)}
+.chk label{display:flex;gap:.5rem;align-items:flex-start}
+.chk input{margin-top:.25rem}
+.sel{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;font-size:.92rem;color:var(--ink);margin-top:.4rem}
+.leg{display:flex;flex-wrap:wrap;gap:.7rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin:.3rem 0}
+.leg i{display:inline-block;width:14px;height:3px;margin-right:.3rem;vertical-align:middle}
+.res{font-size:.92rem;color:var(--ink)}
+.rules{font-size:.88rem;color:var(--muted);margin:.3rem 0 0 1.1rem;padding:0}
+.rules li{margin:.2rem 0}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 7 · Semana 6</span>
+  <h1>Simulador de atrofia del juicio</h1>
+  <p>Fije cuánto delega en el modelo en cada fase de su flujo y vea, con reglas simples y explícitas, cómo cambia su capacidad de validar en doce meses. Active andamiajes y observe qué la sostiene. Las curvas ilustran reglas, no datos.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="k">Cuánto delego en cada fase (0 a 100)</span>
+      <div id="phases"></div>
+      <div class="sel"><span>Experiencia previa a mano:</span>
+        <select id="exp"><option value="0">ninguna</option><option value="1" selected>alguna</option><option value="2">mucha</option></select>
+      </div>
+    </div>
+    <div class="card">
+      <span class="k">Andamiajes</span>
+      <div class="chk" id="scaf">
+        <label><input type="checkbox" data-s="muestra"> Ejecuto a mano una muestra en cada ciclo (al menos el 20 % de cada fase)</label>
+        <label><input type="checkbox" data-s="antes"> Escribo mi lectura antes de ver la del modelo en las piezas que la auditoría marcó</label>
+        <label><input type="checkbox" data-s="rechazos"> Registro cada rechazo o corrección con su razón</label>
+        <label><input type="checkbox" data-s="pares"> Revisión entre pares sin modelo, una vez por ciclo</label>
+      </div>
+      <div class="sel"><span>Fase que nunca delego:</span>
+        <select id="never"><option value="">ninguna</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="leg" id="leg"></div>
+    <div id="chart"></div>
+    <div class="res" id="res"></div>
+  </div>
+
+  <details>
+    <summary class="k" style="cursor:pointer">Las reglas del simulador</summary>
+    <div class="card">
+      <ul class="rules">
+        <li>Cada fase tiene una capacidad de validar entre 0 y 1. Empieza en 0,45, 0,65 o 0,85 según la experiencia previa a mano.</li>
+        <li>Cada mes, la capacidad sube en proporción a lo que el investigador ejecuta (1 menos la delegación) y al margen que le falta: 0,08 × ejecución × (1 − capacidad).</li>
+        <li>Cada mes, la capacidad baja en proporción a lo que delega y a lo que ya tiene: 0,07 × delegación × capacidad. Sin experiencia previa, la caída se multiplica por 1,5.</li>
+        <li>Muestra a mano: la ejecución nunca baja de 0,2 en ninguna fase.</li>
+        <li>Lectura propia antes: la caída se multiplica por 0,6 en leer, describir e interpretar.</li>
+        <li>Registro de rechazos: la caída se multiplica por 0,75 en todas las fases.</li>
+        <li>Pares sin modelo: la capacidad sube 0,015 adicionales cada mes.</li>
+        <li>Fase nunca delegada: su delegación se fija en 0 aunque el deslizador diga otra cosa.</li>
+      </ul>
+      <p class="note">Las reglas son del curso y no de un estudio empírico. Están a la vista para que usted las objete en la bitácora.</p>
+    </div>
+  </details>
+
+  <p class="note">Qué se lleva de aquí: delegar una operación se recupera volviéndola a hacer; delegar una capacidad se pierde con el tiempo si nada la ejercita. El andamiaje es lo que el investigador sigue haciendo a mano.</p>
+<script>
+(function(){
+  var PH=[['leer','Leer',60],['describir','Describir',70],['codificar','Codificar',80],['categorizar','Categorizar',60],['interpretar','Interpretar',30],['escribir','Escribir',50]];
+  var COL=['var(--c-fil)','var(--c-doc)','var(--c-app)','var(--c-blog)','var(--c-inv)','var(--accent)'];
+  var phases=document.getElementById('phases');
+  var never=document.getElementById('never');
+  var h='';
+  for(var i=0;i<PH.length;i++){
+    h+='<div class="ph"><label for="r-'+PH[i][0]+'">'+PH[i][1]+'</label><input type="range" id="r-'+PH[i][0]+'" min="0" max="100" step="5" value="'+PH[i][2]+'" data-i="'+i+'"><output id="o-'+PH[i][0]+'">'+PH[i][2]+'</output></div>';
+    var o=document.createElement('option'); o.value=String(i); o.textContent=PH[i][1]; never.appendChild(o);
+  }
+  phases.innerHTML=h;
+  var leg=document.getElementById('leg');
+  var lh='';
+  for(var j=0;j<PH.length;j++){ lh+='<span><i style="background:'+COL[j]+'"></i>'+PH[j][1]+'</span>'; }
+  leg.innerHTML=lh;
+
+  function state(){
+    var d=[];
+    for(var i=0;i<PH.length;i++){ d.push(Number(document.getElementById('r-'+PH[i][0]).value)/100); }
+    var s={};
+    var boxes=document.querySelectorAll('#scaf input');
+    for(var b=0;b<boxes.length;b++){ s[boxes[b].getAttribute('data-s')]=boxes[b].checked; }
+    var nv=never.value===''?-1:Number(never.value);
+    if(nv>=0) d[nv]=0;
+    return {d:d,s:s,exp:Number(document.getElementById('exp').value),never:nv};
+  }
+
+  function simulate(st){
+    var start=[0.45,0.65,0.85][st.exp];
+    var novice=st.exp===0?1.5:1;
+    var series=[];
+    for(var i=0;i<PH.length;i++){
+      var c=start, arr=[c];
+      for(var m=1;m<=12;m++){
+        var del=st.d[i];
+        var exec=1-del;
+        if(st.s.muestra && exec<0.2) exec=0.2;
+        var decay=0.07*del*c*novice;
+        if(st.s.antes && (i===0||i===1||i===4)) decay*=0.6;
+        if(st.s.rechazos) decay*=0.75;
+        var gain=0.08*exec*(1-c);
+        if(st.s.pares) gain+=0.015;
+        c=c+gain-decay;
+        if(c>1) c=1; if(c<0) c=0;
+        arr.push(c);
+      }
+      series.push(arr);
+    }
+    return series;
+  }
+
+  function draw(series){
+    var W=640,H=260,L=44,R=12,T=14,B=34;
+    var x=function(m){return L+(W-L-R)*m/12;};
+    var y=function(v){return T+(H-T-B)*(1-v);};
+    var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;display:block" role="img" aria-label="Capacidad de validar por fase a lo largo de doce meses según las reglas del simulador">';
+    s+='<path d="M'+L+' '+T+' L'+L+' '+(H-B)+' L'+(W-R)+' '+(H-B)+'" stroke="var(--muted)" stroke-width="1.2" fill="none"/>';
+    for(var g=0;g<=4;g++){ var v=g/4; s+='<path d="M'+L+' '+y(v)+' L'+(W-R)+' '+y(v)+'" stroke="var(--rule)" stroke-width="1" fill="none"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v.toFixed(2).replace('.',',')+'</text>'; }
+    for(var m=0;m<=12;m+=3){ s+='<text x="'+x(m)+'" y="'+(H-B+16)+'" text-anchor="'+(m===0?'start':(m===12?'end':'middle'))+'">mes '+m+'</text>'; }
+    for(var i=0;i<series.length;i++){
+      var d='';
+      for(var m2=0;m2<=12;m2++){ d+=(m2===0?'M':'L')+x(m2).toFixed(1)+' '+y(series[i][m2]).toFixed(1)+' '; }
+      s+='<path d="'+d+'" stroke="'+COL[i]+'" stroke-width="2" fill="none"/>';
+    }
+    s+='</svg>';
+    document.getElementById('chart').innerHTML=s;
+  }
+
+  function summarize(series,st){
+    var worst=-1, wv=2, lost=[];
+    for(var i=0;i<series.length;i++){
+      var end=series[i][12], ini=series[i][0];
+      if(end<wv){wv=end;worst=i;}
+      if(end<ini-0.15) lost.push(PH[i][1].toLowerCase());
+    }
+    var h='<p><b>A los doce meses</b>, la fase con menos capacidad de validar es <b>'+PH[worst][1].toLowerCase()+'</b> ('+wv.toFixed(2).replace('.',',')+').';
+    if(lost.length){ h+=' Pierden más de 0,15 respecto del inicio: '+lost.join(', ')+'.'; } else { h+=' Ninguna fase pierde más de 0,15 respecto del inicio.'; }
+    h+='</p>';
+    var on=[]; for(var k in st.s){ if(st.s[k]) on.push(k); }
+    if(!on.length && st.never<0){ h+='<p>Sin andamiajes. Lo que ve es la curva que la objeción de Vallor describe: cuanto más se delega, menos se puede validar lo delegado, y nada lo compensa.</p>'; }
+    else { h+='<p>Andamiajes activos: '+(on.length?on.join(', '):'ninguno')+(st.never>=0?'; fase nunca delegada: '+PH[st.never][1].toLowerCase():'')+'. Pregunta para la bitácora: qué cuesta cada uno en tiempo y en personas, y quién lo paga.</p>'; }
+    document.getElementById('res').innerHTML=h;
+  }
+
+  function update(){
+    for(var i=0;i<PH.length;i++){ document.getElementById('o-'+PH[i][0]).textContent=document.getElementById('r-'+PH[i][0]).value; }
+    var st=state();
+    var series=simulate(st);
+    draw(series);
+    summarize(series,st);
+  }
+  document.body.addEventListener('input',update);
+  document.body.addEventListener('change',update);
+  update();
+})();
+</script>
+</body>
+</html>

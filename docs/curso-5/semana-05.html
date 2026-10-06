@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 5 · Semana 5 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Cuando una serie del corpus muestra que un tema &quot;emerge&quot; en cierto mes, ¿qué afirma esa fecha, y cuánto se mueve si se cambia el ancho de la ventana?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-05.html" />
+    <meta property="og:title" content="Curso 5 · Semana 5" />
+    <meta property="og:description" content="Cuando una serie del corpus muestra que un tema &quot;emerge&quot; en cierto mes, ¿qué afirma esa fecha, y cuánto se mueve si se cambia el ancho de la ventana?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-05.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 5</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub is-active">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 5 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 5. Tiempo: ventanas, tendencias, rupturas</h1>
+          <p class="desc">Cuando una serie del corpus muestra que un tema "emerge" en cierto mes, ¿qué afirma esa fecha, y cuánto se mueve si se cambia el ancho de la ventana?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Cuando una serie del corpus muestra que un tema "emerge" en cierto mes, ¿qué afirma esa fecha, y cuánto se mueve si se cambia el ancho de la ventana?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">La frase "a partir de 2022 el tema aparece con fuerza" se escribe con facilidad y se sostiene con dificultad. Para escribirla hay que haber decidido qué se cuenta por periodo, cómo se normaliza ese conteo frente al tamaño del corpus en cada periodo, con qué ventana se suaviza la serie y con qué criterio se llama ruptura a un cambio. Cada una de esas decisiones mueve la fecha. Esta semana construye la serie temporal del corpus propio y muestra, con la mini app y con el cuaderno, que la emergencia de un fenómeno no es un dato de la serie sino una lectura de la serie bajo una ventana. Lo que el curso pide no es renunciar a la frase sino escribirla con sus condiciones. Además, es la semana de entrega del grafo con su lectura.</p>
+
+<p>La semana supone el corpus propio fechado y, de la semana 4, un grafo con su tabla de tres umbrales.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Una serie del corpus es un conteo por periodo, y el periodo es una decisión. Contar documentos por mes o por trimestre, por año o por semana, cambia lo que se ve: una serie semanal es ruido, una anual pierde todo lo que dura menos de un año. Y el conteo crudo engaña cuando el corpus crece: si en 2023 hay el doble de documentos que en 2019, todo tema parece crecer. Por eso se cuenta la proporción de documentos del periodo que contienen el código, no el número<sup class="mark">a</sup>, y se reporta el tamaño del corpus por periodo junto a la serie.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Conteo crudo por periodo</th>
+<th>Proporción por periodo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"En 2023 hubo 310 documentos con el código"</td>
+<td>"En 2023 el 14 % de los documentos tenía el código"</td>
+</tr>
+<tr>
+<td>Sube cuando el corpus crece, aunque el tema no</td>
+<td>Sube solo si el tema gana terreno dentro del corpus</td>
+</tr>
+<tr>
+<td>Responde por la recolección</td>
+<td>Responde por el fenómeno, con la recolección declarada al lado</td>
+</tr>
+<tr>
+<td>Fácil de leer y fácil de confundir</td>
+<td>Exige mostrar el tamaño del corpus por periodo</td>
+</tr>
+<tr>
+<td><em>Se reporta como control</em></td>
+<td><em>Se lee como serie</em></td>
+</tr>
+</tbody>
+</table></div>
+<aside class="glosa"><span class="mark">a</span> Normalizar: dividir el conteo del código en el periodo por el total de documentos del periodo. Una serie normalizada responde "qué fracción del corpus habla de esto"; una cruda responde "cuántos documentos hay", que suele ser una pregunta sobre la recolección, no sobre el fenómeno.</aside>
+
+<ol start="2">
+<li>
+<p>Suavizar es decidir qué es ruido. El promedio móvil reemplaza cada valor por el promedio de una ventana alrededor; con ventana de un mes se ve todo, con ventana de doce se ve solo lo que dura un año. No hay ventana correcta: hay ventanas que corresponden a la escala temporal de la pregunta. Si la pregunta es sobre una campaña de dos meses, una ventana de doce la borra; si es sobre un cambio de década, una ventana de un mes la esconde entre picos.</p>
+</li>
+<li>
+<p>Una ruptura es el output de un método de detección, con sus parámetros. El método más simple compara el promedio de los meses anteriores a un punto con el de los posteriores y marca el punto donde la diferencia es mayor; es el que usa la mini app. Los métodos de detección de puntos de cambio, como PELT (Killick, Fearnhead y Eckley, 2012), buscan varias rupturas a la vez con una penalización por cada una; el método de ráfagas de Kleinberg (2003) modela la serie como un autómata que entra y sale de estados de actividad. Los tres dan fechas distintas sobre la misma serie, y las tres fechas se mueven con la ventana<sup class="mark">b</sup>. La tabla de la mini app lo muestra: con ventanas cortas la ruptura cae en un pico de tres meses, con ventanas medias en un cambio de nivel, con ventanas largas en el inicio de una tendencia.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> PELT: algoritmo que encuentra el conjunto de puntos de cambio que minimiza un costo de ajuste más una penalización por cada ruptura. Subir la penalización reduce el número de rupturas; es el equivalente, en este método, de agrandar la ventana. La biblioteca `ruptures` de Python lo implementa.</aside>
+
+<ol start="4">
+<li>
+<p>"Emerge" es una palabra que esconde una ventana. Un fenómeno emerge cuando su serie pasa de un nivel a otro de forma que el método usado, con la ventana usada, lo marca. Grimmer, Roberts y Stewart (2022, cap. 2) insisten en que la medida de un concepto en texto debe validarse contra la pregunta, y la fecha de emergencia es una medida como cualquier otra. La práctica de la semana pide la fecha con tres ventanas y, si se mueve más de lo que la pregunta tolera, reportar el rango y no un mes.</p>
+</li>
+<li>
+<p>Las trampas de la serie son trampas del corpus. Un salto en 2016 puede ser el año en que el archivo empezó a digitalizar más; una caída en diciembre puede ser que el periódico no circula en vacaciones; un pico puede ser un solo documento largo que menciona el código cien veces. Antes de leer una ruptura hay que mirar la composición del corpus en los periodos que la rodean. Esa revisión no la hace el método y es, en el registro de frontera, un paso del investigador.</p>
+</li>
+<li>
+<p>Leer una serie es configurar una trama, y la trama no viene en la serie. Con la triple mímesis de <em>Tiempo y narración</em> (Ricœur, 1995), la serie es material prefigurado; el investigador que dice "primero fue así, luego ocurrió esto y desde entonces aquello" está configurando, Mímesis II, y la configuración exige un relato que la serie no contiene. Un modelo de lenguaje puede proponer ese relato con una fluidez que tienta; el curso pide que el relato se escriba con la ventana declarada y con la lista de lo que la serie no puede decir.</p>
+</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 240" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="La misma serie mensual dibujada dos veces. Arriba, suavizada con ventana de dos meses: el marcador de ruptura cae en un pico breve. Abajo, suavizada con ventana de nueve meses: el pico desaparece y el marcador cae en un cambio de nivel posterior. Un rótulo dice que la fecha de emergencia depende de la ventana.">
+    <style>.m5{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--muted)} .mf5{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--c-fil)} .bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .ln{fill:none;stroke:var(--accent);stroke-width:2.2} .raw{fill:none;stroke:var(--muted);stroke-width:1;stroke-opacity:.5} .rp{stroke:var(--c-fil);stroke-width:1.8;stroke-dasharray:5 4} .ax{stroke:var(--rule);stroke-width:1}</style>
+    <rect x="10" y="22" width="660" height="92" rx="3" class="bx"/>
+    <text x="18" y="16" class="m5">VENTANA 2 MESES</text>
+    <line x1="30" y1="100" x2="660" y2="100" class="ax"/>
+    <path class="raw" d="M30 80 L55 84 L80 78 L105 86 L130 82 L155 88 L180 84 L205 90 L230 60 L245 40 L260 44 L275 70 L300 88 L325 92 L350 86 L375 70 L400 62 L425 66 L450 60 L475 64 L500 58 L525 62 L550 56 L575 60 L600 54 L625 58 L650 52"/>
+    <path class="ln" d="M30 82 L80 82 L130 84 L180 86 L210 80 L235 52 L255 42 L280 62 L310 88 L350 88 L390 66 L450 62 L520 60 L590 57 L650 54"/>
+    <line x1="238" y1="30" x2="238" y2="100" class="rp"/>
+    <text x="244" y="40" class="mf5">RUPTURA: DIC 2020</text>
+    <rect x="10" y="134" width="660" height="92" rx="3" class="bx"/>
+    <text x="18" y="128" class="m5">VENTANA 9 MESES</text>
+    <line x1="30" y1="212" x2="660" y2="212" class="ax"/>
+    <path class="raw" d="M30 192 L55 196 L80 190 L105 198 L130 194 L155 200 L180 196 L205 202 L230 172 L245 152 L260 156 L275 182 L300 200 L325 204 L350 198 L375 182 L400 174 L425 178 L450 172 L475 176 L500 170 L525 174 L550 168 L575 172 L600 166 L625 170 L650 164"/>
+    <path class="ln" d="M30 194 L100 195 L170 194 L230 186 L280 184 L330 188 L380 180 L430 174 L490 172 L550 169 L610 167 L650 165"/>
+    <line x1="392" y1="142" x2="392" y2="212" class="rp"/>
+    <text x="398" y="152" class="mf5">RUPTURA: MAY 2022</text>
+    <text x="30" y="238" class="m5">MISMA SERIE · DOS VENTANAS · DOS FECHAS DE EMERGENCIA</text>
+  </svg>
+  <figcaption><b>Figura 5.</b> La misma serie con dos ventanas. Con ventana corta el método marca un pico de tres meses; con ventana larga el pico desaparece y el método marca un cambio de nivel año y medio después. Ninguna de las dos fechas es falsa; ninguna es "la" fecha.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/serie-ventana.html" title="Serie temporal del corpus con ventana móvil y marcador de ruptura" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Se le pide a un modelo de lenguaje el código para construir la serie normalizada y para correr dos métodos de detección de rupturas a partir del cuaderno, y después se le pide un relato de la serie en un párrafo. El estudiante debe poder defender sin el modelo el periodo y la normalización elegidos, la fecha de ruptura con tres ventanas y su rango, y qué de la composición del corpus revisó antes de aceptar la ruptura. El relato del modelo se registra como configuración propuesta por la máquina, y el estudiante marca en él cada frase que la serie no sostiene.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Kleinberg, J. (2003). "Bursty and Hierarchical Structure in Streams". <em>Data Mining and Knowledge Discovery</em> 7(4), 373-397. Secciones 1 y 2. <a href="https://doi.org/10.1023/A:1024940629314">https://doi.org/10.1023/A:1024940629314</a></li>
+<li>Grimmer, J., Roberts, M. E. y Stewart, B. M. (2022). <em>Text as Data</em>. Princeton University Press. Cap. 2, sobre investigación social y análisis de texto.</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Killick, R., Fearnhead, P. y Eckley, I. A. (2012). "Optimal Detection of Changepoints With a Linear Computational Cost". <em>Journal of the American Statistical Association</em> 107(500), 1590-1598. <a href="https://doi.org/10.1080/01621459.2012.737745">https://doi.org/10.1080/01621459.2012.737745</a></li>
+<li>Truong, C., Oudre, L. y Vayatis, N. (2020). "Selective Review of Offline Change Point Detection Methods". <em>Signal Processing</em> 167, 107299. <a href="https://doi.org/10.1016/j.sigpro.2019.107299">https://doi.org/10.1016/j.sigpro.2019.107299</a></li>
+<li>Ricœur, P. (1995). <em>Tiempo y narración I</em>. Siglo XXI. Cap. 3, "Tiempo y narración: la triple mímesis".</li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Kleinberg modela una ráfaga como un cambio de estado en un autómata, con un parámetro que controla cuánto cuesta cambiar de estado. <em>¿Qué pasa con las ráfagas detectadas si ese costo sube? ¿Cuál es el equivalente de ese parámetro en el promedio móvil?</em></li>
+<li>Grimmer, Roberts y Stewart distinguen descubrir, medir e inferir como tareas con validaciones distintas. <em>La fecha de emergencia de un tema, ¿es un descubrimiento, una medida o una inferencia? ¿Qué validación le corresponde?</em></li>
+<li>Ricœur describe la configuración como el acto de hacer de una sucesión una trama. <em>Tome la serie de su corpus y escriba su trama en tres frases. Luego subraye lo que la serie no puede sostener por sí sola.</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Primera parte, sobre la serie del corpus propio, con el bloque de la semana 5 del cuaderno de apoyo:</p>
+<ol>
+<li>Construya la serie mensual o trimestral de un código o de un grupo de la semana 3, normalizada por el tamaño del corpus en el periodo. Grafique la serie y, debajo, el tamaño del corpus por periodo.</li>
+<li>Suavice con tres ventanas y detecte la ruptura con el método de diferencia de medias y con PELT. Llene la tabla:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ventana</th>
+<th>Ruptura (diferencia de medias)</th>
+<th>Ruptura (PELT)</th>
+<th>¿La composición del corpus cambia alrededor?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="3">
+<li>Escriba la fecha o el rango de emergencia con sus condiciones, en una frase que pueda ir en un informe.</li>
+</ol>
+<p>Segunda parte: terminar la lectura del grafo sobre la plantilla <code>plantillas/lectura-de-grafo.md</code> con la tabla de tres umbrales de la semana anterior.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10</td>
+<td>Apertura</td>
+<td>Lee en voz alta una frase de informe con "emerge" y pregunta qué ventana la sostiene</td>
+<td>Anota la escala temporal de su pregunta</td>
+<td>Tablero</td>
+</tr>
+<tr>
+<td>10 a 30</td>
+<td>Lectura</td>
+<td>Explica ráfagas y puntos de cambio por lo que detectan; discute la guía</td>
+<td>Responde con su serie en mente</td>
+<td>Lecturas centrales</td>
+</tr>
+<tr>
+<td>30 a 50</td>
+<td>Mecanismo</td>
+<td>Mueve la ventana de la mini app de 1 a 12 y lee la tabla de rupturas</td>
+<td>Predice dónde caerá la ruptura con ventana 9</td>
+<td>App de serie</td>
+</tr>
+<tr>
+<td>50 a 60</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>60 a 95</td>
+<td>Taller</td>
+<td>Acompaña la serie normalizada y las tres ventanas sobre corpus propios</td>
+<td>Llena la tabla y escribe la frase de emergencia</td>
+<td>Cuaderno, semana 5</td>
+</tr>
+<tr>
+<td>95 a 115</td>
+<td>Entrega</td>
+<td>Revisa lecturas de grafo en parejas: cada uno lee la del otro y marca una afirmación que el grafo no sostiene</td>
+<td>Corrige la lectura de grafo</td>
+<td>Plantilla de lectura de grafo</td>
+</tr>
+<tr>
+<td>115 a 120</td>
+<td>Cierre</td>
+<td>Recoge rangos de emergencia</td>
+<td>Nombra su rango</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: el corpus tiene fechas incompletas o en formatos mezclados y la mitad del taller se va en limpiarlas; pedir las fechas limpias desde la semana anterior. Segundo fallo: la serie cruda y la normalizada cuentan historias opuestas y el estudiante elige la que le conviene; exigir las dos en la bitácora. Tercero: la revisión en parejas de la lectura de grafo se vuelve cortesía; dar la instrucción de que cada revisor debe encontrar al menos una afirmación sin sostén, y que no encontrarla es la excepción.</p>
+<h2>Entrega</h2>
+<p>Grafo de coocurrencia con lectura interpretativa, sobre la plantilla <code>plantillas/lectura-de-grafo.md</code>, con la tabla de tres umbrales, las dos imágenes del grafo y el código o los pasos en anexo. Se evalúa que la lectura distinga lo que la red muestra de lo que el investigador propone, que declare qué cambia con el umbral, y que cada puente leído tenga su apoyo nombrado: corpus, teoría o ninguno todavía. Rúbrica en <code>evaluacion.md</code>.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Blei (2012) completo, Moretti (2015), "Conjeturas sobre la literatura mundial", y Arnold y Tilton (2019). Llegar con el corpus en la forma de la semana 1, una fila por documento, para modelar temas. Quien trabaja con imágenes llega con las descripciones densas del curso 3 o con las etiquetas de CLIP del cuaderno.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-04.html">← Semana 4. Redes: el grafo como hipótesis relacional</a><a href="semana-06.html">Semana 6. Modelado de temas y lectura distante →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

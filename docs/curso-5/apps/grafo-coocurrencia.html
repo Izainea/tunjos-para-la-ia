@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grafo de coocurrencia de códigos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+input[type=range]{width:12rem;padding:0}
+.lbl{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.big{font-family:var(--mono);font-size:1.1rem;color:var(--ink)}
+#g{width:100%;max-width:40rem;height:auto;display:block;background:var(--surface);border:1px solid var(--rule);border-radius:4px}
+#g circle{cursor:pointer}
+#g text.n{fill:var(--ink);font-size:10px;pointer-events:none}
+#panel p{color:var(--ink)}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 5 · Semana 4</span>
+  <h1>Grafo de coocurrencia de códigos</h1>
+  <p>Veinticinco códigos de un análisis cualitativo, unidos cuando aparecen en el mismo documento. Suba el umbral de peso y mire qué conexiones desaparecen, qué comunidades se separan y qué nodo deja de ser puente. Toque un nodo para leer su panel.</p>
+
+  <div class="card">
+    <div class="row">
+      <span class="lbl">umbral de peso ≥</span><span class="big" id="uval">2</span>
+      <input type="range" id="u" min="1" max="10" value="2" aria-label="Umbral de peso de las aristas" />
+      <button id="comm" aria-pressed="true">colorear por comunidad</button>
+      <button id="reubicar">reubicar</button>
+    </div>
+    <svg id="g" viewBox="0 0 600 460" role="img" aria-label="Grafo de veinticinco códigos con aristas ponderadas por coocurrencia"></svg>
+    <div class="row" style="margin-top:.4rem"><span class="lbl" id="resumen"></span></div>
+  </div>
+
+  <div class="card" id="panel">
+    <span class="k">Nodo seleccionado</span>
+    <p class="note" id="pnodo">Ningún nodo seleccionado.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: el grafo no es el corpus, es una hipótesis sobre sus relaciones. Cada umbral produce un grafo distinto y cada comunidad es una partición del método. Lo que sobrevive a varios umbrales merece una lectura; lo que aparece solo en uno merece una nota en el registro de frontera. Los datos de este grafo se prepararon para el ejercicio.</p>
+<script>
+  const RAW = {"nodes": [{"id": "arriendo", "n": 10, "g": "A"}, {"id": "desalojo", "n": 11, "g": "A"}, {"id": "inmobiliaria", "n": 9, "g": "A"}, {"id": "subsidio", "n": 11, "g": "A"}, {"id": "autoconstrucción", "n": 12, "g": "A"}, {"id": "hacinamiento", "n": 8, "g": "A"}, {"id": "gentrificación", "n": 26, "g": "A"}, {"id": "transporte público", "n": 22, "g": "B"}, {"id": "trancón", "n": 18, "g": "B"}, {"id": "ciclorruta", "n": 14, "g": "B"}, {"id": "andenes", "n": 11, "g": "B"}, {"id": "distancia al trabajo", "n": 23, "g": "B"}, {"id": "tarifa", "n": 16, "g": "B"}, {"id": "miedo", "n": 20, "g": "C"}, {"id": "robo", "n": 15, "g": "C"}, {"id": "alumbrado", "n": 24, "g": "C"}, {"id": "policía", "n": 11, "g": "C"}, {"id": "rejas", "n": 17, "g": "C"}, {"id": "vecinos organizados", "n": 13, "g": "C"}, {"id": "fiesta barrial", "n": 33, "g": "D"}, {"id": "salón comunal", "n": 14, "g": "D"}, {"id": "murales", "n": 8, "g": "D"}, {"id": "mercado campesino", "n": 12, "g": "D"}, {"id": "parque", "n": 24, "g": "D"}, {"id": "memoria del barrio", "n": 23, "g": "D"}], "edges": [{"s": "alumbrado", "t": "andenes", "w": 1}, {"s": "alumbrado", "t": "distancia al trabajo", "w": 1}, {"s": "alumbrado", "t": "fiesta barrial", "w": 13}, {"s": "alumbrado", "t": "memoria del barrio", "w": 1}, {"s": "alumbrado", "t": "mercado campesino", "w": 1}, {"s": "alumbrado", "t": "miedo", "w": 6}, {"s": "alumbrado", "t": "parque", "w": 12}, {"s": "alumbrado", "t": "policía", "w": 2}, {"s": "alumbrado", "t": "rejas", "w": 5}, {"s": "alumbrado", "t": "robo", "w": 7}, {"s": "alumbrado", "t": "salón comunal", "w": 1}, {"s": "alumbrado", "t": "subsidio", "w": 1}, {"s": "alumbrado", "t": "transporte público", "w": 1}, {"s": "alumbrado", "t": "vecinos organizados", "w": 7}, {"s": "andenes", "t": "ciclorruta", "w": 5}, {"s": "andenes", "t": "distancia al trabajo", "w": 3}, {"s": "andenes", "t": "memoria del barrio", "w": 1}, {"s": "andenes", "t": "murales", "w": 1}, {"s": "andenes", "t": "policía", "w": 1}, {"s": "andenes", "t": "rejas", "w": 2}, {"s": "andenes", "t": "salón comunal", "w": 1}, {"s": "andenes", "t": "tarifa", "w": 5}, {"s": "andenes", "t": "trancón", "w": 7}, {"s": "andenes", "t": "transporte público", "w": 4}, {"s": "arriendo", "t": "autoconstrucción", "w": 5}, {"s": "arriendo", "t": "desalojo", "w": 3}, {"s": "arriendo", "t": "fiesta barrial", "w": 1}, {"s": "arriendo", "t": "gentrificación", "w": 4}, {"s": "arriendo", "t": "hacinamiento", "w": 2}, {"s": "arriendo", "t": "inmobiliaria", "w": 1}, {"s": "arriendo", "t": "memoria del barrio", "w": 1}, {"s": "arriendo", "t": "murales", "w": 1}, {"s": "arriendo", "t": "policía", "w": 2}, {"s": "arriendo", "t": "subsidio", "w": 3}, {"s": "autoconstrucción", "t": "desalojo", "w": 2}, {"s": "autoconstrucción", "t": "fiesta barrial", "w": 3}, {"s": "autoconstrucción", "t": "gentrificación", "w": 4}, {"s": "autoconstrucción", "t": "hacinamiento", "w": 3}, {"s": "autoconstrucción", "t": "inmobiliaria", "w": 4}, {"s": "autoconstrucción", "t": "memoria del barrio", "w": 1}, {"s": "autoconstrucción", "t": "parque", "w": 1}, {"s": "autoconstrucción", "t": "policía", "w": 1}, {"s": "autoconstrucción", "t": "salón comunal", "w": 1}, {"s": "autoconstrucción", "t": "subsidio", "w": 5}, {"s": "ciclorruta", "t": "distancia al trabajo", "w": 7}, {"s": "ciclorruta", "t": "murales", "w": 1}, {"s": "ciclorruta", "t": "parque", "w": 1}, {"s": "ciclorruta", "t": "rejas", "w": 1}, {"s": "ciclorruta", "t": "robo", "w": 2}, {"s": "ciclorruta", "t": "salón comunal", "w": 1}, {"s": "ciclorruta", "t": "tarifa", "w": 7}, {"s": "ciclorruta", "t": "trancón", "w": 10}, {"s": "ciclorruta", "t": "transporte público", "w": 1}, {"s": "ciclorruta", "t": "vecinos organizados", "w": 1}, {"s": "desalojo", "t": "distancia al trabajo", "w": 1}, {"s": "desalojo", "t": "fiesta barrial", "w": 1}, {"s": "desalojo", "t": "gentrificación", "w": 5}, {"s": "desalojo", "t": "hacinamiento", "w": 1}, {"s": "desalojo", "t": "inmobiliaria", "w": 2}, {"s": "desalojo", "t": "miedo", "w": 1}, {"s": "desalojo", "t": "policía", "w": 1}, {"s": "desalojo", "t": "salón comunal", "w": 1}, {"s": "desalojo", "t": "subsidio", "w": 3}, {"s": "desalojo", "t": "vecinos organizados", "w": 1}, {"s": "distancia al trabajo", "t": "fiesta barrial", "w": 1}, {"s": "distancia al trabajo", "t": "gentrificación", "w": 1}, {"s": "distancia al trabajo", "t": "mercado campesino", "w": 1}, {"s": "distancia al trabajo", "t": "miedo", "w": 9}, {"s": "distancia al trabajo", "t": "parque", "w": 2}, {"s": "distancia al trabajo", "t": "policía", "w": 1}, {"s": "distancia al trabajo", "t": "rejas", "w": 2}, {"s": "distancia al trabajo", "t": "robo", "w": 2}, {"s": "distancia al trabajo", "t": "salón comunal", "w": 2}, {"s": "distancia al trabajo", "t": "tarifa", "w": 7}, {"s": "distancia al trabajo", "t": "trancón", "w": 7}, {"s": "distancia al trabajo", "t": "transporte público", "w": 12}, {"s": "fiesta barrial", "t": "gentrificación", "w": 8}, {"s": "fiesta barrial", "t": "hacinamiento", "w": 2}, {"s": "fiesta barrial", "t": "inmobiliaria", "w": 1}, {"s": "fiesta barrial", "t": "memoria del barrio", "w": 15}, {"s": "fiesta barrial", "t": "mercado campesino", "w": 6}, {"s": "fiesta barrial", "t": "miedo", "w": 1}, {"s": "fiesta barrial", "t": "murales", "w": 3}, {"s": "fiesta barrial", "t": "parque", "w": 18}, {"s": "fiesta barrial", "t": "policía", "w": 1}, {"s": "fiesta barrial", "t": "rejas", "w": 1}, {"s": "fiesta barrial", "t": "robo", "w": 1}, {"s": "fiesta barrial", "t": "salón comunal", "w": 8}, {"s": "fiesta barrial", "t": "subsidio", "w": 1}, {"s": "gentrificación", "t": "hacinamiento", "w": 3}, {"s": "gentrificación", "t": "inmobiliaria", "w": 4}, {"s": "gentrificación", "t": "memoria del barrio", "w": 9}, {"s": "gentrificación", "t": "mercado campesino", "w": 1}, {"s": "gentrificación", "t": "miedo", "w": 1}, {"s": "gentrificación", "t": "murales", "w": 1}, {"s": "gentrificación", "t": "policía", "w": 1}, {"s": "gentrificación", "t": "rejas", "w": 7}, {"s": "gentrificación", "t": "robo", "w": 1}, {"s": "gentrificación", "t": "salón comunal", "w": 2}, {"s": "gentrificación", "t": "subsidio", "w": 3}, {"s": "gentrificación", "t": "transporte público", "w": 1}, {"s": "gentrificación", "t": "vecinos organizados", "w": 1}, {"s": "hacinamiento", "t": "inmobiliaria", "w": 3}, {"s": "hacinamiento", "t": "memoria del barrio", "w": 2}, {"s": "hacinamiento", "t": "mercado campesino", "w": 1}, {"s": "hacinamiento", "t": "murales", "w": 2}, {"s": "hacinamiento", "t": "parque", "w": 1}, {"s": "hacinamiento", "t": "salón comunal", "w": 1}, {"s": "hacinamiento", "t": "tarifa", "w": 1}, {"s": "hacinamiento", "t": "transporte público", "w": 1}, {"s": "inmobiliaria", "t": "mercado campesino", "w": 1}, {"s": "inmobiliaria", "t": "murales", "w": 1}, {"s": "inmobiliaria", "t": "parque", "w": 1}, {"s": "inmobiliaria", "t": "salón comunal", "w": 1}, {"s": "inmobiliaria", "t": "subsidio", "w": 3}, {"s": "inmobiliaria", "t": "tarifa", "w": 1}, {"s": "memoria del barrio", "t": "mercado campesino", "w": 7}, {"s": "memoria del barrio", "t": "miedo", "w": 2}, {"s": "memoria del barrio", "t": "murales", "w": 5}, {"s": "memoria del barrio", "t": "parque", "w": 8}, {"s": "memoria del barrio", "t": "policía", "w": 1}, {"s": "memoria del barrio", "t": "rejas", "w": 1}, {"s": "memoria del barrio", "t": "robo", "w": 1}, {"s": "memoria del barrio", "t": "salón comunal", "w": 8}, {"s": "memoria del barrio", "t": "trancón", "w": 1}, {"s": "memoria del barrio", "t": "transporte público", "w": 1}, {"s": "mercado campesino", "t": "murales", "w": 4}, {"s": "mercado campesino", "t": "parque", "w": 5}, {"s": "mercado campesino", "t": "policía", "w": 1}, {"s": "mercado campesino", "t": "robo", "w": 1}, {"s": "mercado campesino", "t": "salón comunal", "w": 6}, {"s": "mercado campesino", "t": "tarifa", "w": 2}, {"s": "mercado campesino", "t": "trancón", "w": 1}, {"s": "mercado campesino", "t": "transporte público", "w": 2}, {"s": "miedo", "t": "parque", "w": 1}, {"s": "miedo", "t": "policía", "w": 2}, {"s": "miedo", "t": "rejas", "w": 6}, {"s": "miedo", "t": "robo", "w": 6}, {"s": "miedo", "t": "transporte público", "w": 9}, {"s": "miedo", "t": "vecinos organizados", "w": 5}, {"s": "murales", "t": "parque", "w": 3}, {"s": "murales", "t": "policía", "w": 1}, {"s": "murales", "t": "salón comunal", "w": 4}, {"s": "murales", "t": "tarifa", "w": 1}, {"s": "murales", "t": "transporte público", "w": 1}, {"s": "parque", "t": "robo", "w": 1}, {"s": "parque", "t": "salón comunal", "w": 7}, {"s": "parque", "t": "tarifa", "w": 1}, {"s": "parque", "t": "trancón", "w": 2}, {"s": "parque", "t": "transporte público", "w": 1}, {"s": "policía", "t": "rejas", "w": 2}, {"s": "policía", "t": "robo", "w": 3}, {"s": "policía", "t": "salón comunal", "w": 1}, {"s": "policía", "t": "tarifa", "w": 2}, {"s": "policía", "t": "transporte público", "w": 1}, {"s": "policía", "t": "vecinos organizados", "w": 3}, {"s": "rejas", "t": "robo", "w": 5}, {"s": "rejas", "t": "subsidio", "w": 1}, {"s": "rejas", "t": "tarifa", "w": 1}, {"s": "rejas", "t": "trancón", "w": 1}, {"s": "rejas", "t": "transporte público", "w": 2}, {"s": "rejas", "t": "vecinos organizados", "w": 4}, {"s": "robo", "t": "subsidio", "w": 1}, {"s": "robo", "t": "vecinos organizados", "w": 7}, {"s": "salón comunal", "t": "trancón", "w": 1}, {"s": "subsidio", "t": "trancón", "w": 1}, {"s": "subsidio", "t": "transporte público", "w": 1}, {"s": "subsidio", "t": "vecinos organizados", "w": 1}, {"s": "tarifa", "t": "trancón", "w": 8}, {"s": "tarifa", "t": "transporte público", "w": 8}, {"s": "trancón", "t": "transporte público", "w": 7}]};
+  const COL = ["var(--accent)","var(--c-app)","var(--c-blog)","var(--c-doc)","var(--c-fil)","var(--c-inv)","var(--muted)"];
+  const TEMAS = {A:"vivienda", B:"movilidad", C:"seguridad", D:"cultura"};
+  const N = RAW.nodes.map((n, i) => Object.assign({i}, n));
+  const idx = {}; N.forEach(n => idx[n.id] = n.i);
+  const W = 600, H = 460;
+  let umbral = 2, porComunidad = true, sel = -1;
+  function rng(seed){ let a = seed >>> 0; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+  function aristas(){ return RAW.edges.filter(e => e.w >= umbral).map(e => ({s: idx[e.s], t: idx[e.t], w: e.w})); }
+
+  // Disposición por fuerzas, sin dependencias: repulsión entre todos, atracción por aristas (más fuerte a mayor peso), gravedad al centro.
+  function layout(E, semilla){
+    const r = rng(semilla);
+    N.forEach(n => { n.x = W/2 + (r()-.5)*300; n.y = H/2 + (r()-.5)*220; });
+    const maxw = Math.max.apply(null, E.map(e => e.w).concat([1]));
+    for (let it = 0; it < 400; it++){
+      const T = 1 - it/400;
+      const fx = new Array(N.length).fill(0), fy = new Array(N.length).fill(0);
+      for (let i = 0; i < N.length; i++) for (let j = i+1; j < N.length; j++){
+        let dx = N[j].x - N[i].x, dy = N[j].y - N[i].y; let d = Math.sqrt(dx*dx+dy*dy) + .01;
+        const f = 7000 / (d*d); fx[i] -= f*dx/d; fy[i] -= f*dy/d; fx[j] += f*dx/d; fy[j] += f*dy/d;
+      }
+      E.forEach(e => {
+        let dx = N[e.t].x - N[e.s].x, dy = N[e.t].y - N[e.s].y; let d = Math.sqrt(dx*dx+dy*dy) + .01;
+        const f = (d - 95) * 0.02 * (0.4 + e.w/maxw); fx[e.s] += f*dx/d; fy[e.s] += f*dy/d; fx[e.t] -= f*dx/d; fy[e.t] -= f*dy/d;
+      });
+      N.forEach((n, i) => {
+        fx[i] += (W/2 - n.x) * 0.012; fy[i] += (H/2 - n.y) * 0.012;
+        n.x += Math.max(-8, Math.min(8, fx[i]*T*2)); n.y += Math.max(-8, Math.min(8, fy[i]*T*2));
+        n.x = Math.max(50, Math.min(W-50, n.x)); n.y = Math.max(22, Math.min(H-34, n.y));
+      });
+    }
+  }
+
+  // Propagación de etiquetas ponderada, con orden fijo: cada nodo toma la etiqueta de mayor peso entre sus vecinos.
+  function comunidades(E){
+    const lab = N.map(n => n.i);
+    const vec = N.map(() => []);
+    E.forEach(e => { vec[e.s].push([e.t, e.w]); vec[e.t].push([e.s, e.w]); });
+    for (let it = 0; it < 30; it++){
+      let cambio = false;
+      N.forEach(n => {
+        if (!vec[n.i].length) return;
+        const tot = {}; vec[n.i].forEach(([j,w]) => { tot[lab[j]] = (tot[lab[j]]||0) + w; });
+        let best = lab[n.i], bw = -1;
+        Object.keys(tot).map(Number).sort((a,b)=>a-b).forEach(l => { if (tot[l] > bw){ bw = tot[l]; best = l; } });
+        if (best !== lab[n.i]){ lab[n.i] = best; cambio = true; }
+      });
+      if (!cambio) break;
+    }
+    const map = {}; let c = 0; return lab.map(l => { if (map[l] === undefined) map[l] = c++; return map[l]; });
+  }
+
+  // Intermediación (Brandes) sobre el grafo filtrado, sin pesos.
+  function intermediacion(E){
+    const adj = N.map(() => []); E.forEach(e => { adj[e.s].push(e.t); adj[e.t].push(e.s); });
+    const CB = new Array(N.length).fill(0);
+    for (let s = 0; s < N.length; s++){
+      const S = [], P = N.map(() => []), sig = new Array(N.length).fill(0), d = new Array(N.length).fill(-1);
+      sig[s] = 1; d[s] = 0; const Q = [s];
+      while (Q.length){ const v = Q.shift(); S.push(v); adj[v].forEach(w => { if (d[w] < 0){ Q.push(w); d[w] = d[v]+1; } if (d[w] === d[v]+1){ sig[w] += sig[v]; P[w].push(v); } }); }
+      const delta = new Array(N.length).fill(0);
+      while (S.length){ const w = S.pop(); P[w].forEach(v => { delta[v] += sig[v]/sig[w]*(1+delta[w]); }); if (w !== s) CB[w] += delta[w]; }
+    }
+    return CB.map(x => x/2);
+  }
+
+  function dibujar(){
+    const E = aristas();
+    const com = comunidades(E);
+    const grado = N.map(() => 0), fuerza = N.map(() => 0);
+    E.forEach(e => { grado[e.s]++; grado[e.t]++; fuerza[e.s] += e.w; fuerza[e.t] += e.w; });
+    const cb = intermediacion(E);
+    const maxw = Math.max.apply(null, E.map(e => e.w).concat([1]));
+    let s = '';
+    E.forEach(e => { const act = (sel === e.s || sel === e.t); s += `<line x1="${N[e.s].x}" y1="${N[e.s].y}" x2="${N[e.t].x}" y2="${N[e.t].y}" stroke="${act?'var(--accent)':'var(--muted)'}" stroke-opacity="${act?.95:.35}" stroke-width="${0.6 + 4*e.w/maxw}"/>`; });
+    N.forEach(n => {
+      const r = 5 + Math.sqrt(n.n)*1.6;
+      const col = porComunidad ? COL[com[n.i] % COL.length] : {A:"var(--c-doc)",B:"var(--c-app)",C:"var(--c-fil)",D:"var(--c-blog)"}[n.g];
+      const aislado = grado[n.i] === 0;
+      s += `<circle data-i="${n.i}" cx="${n.x}" cy="${n.y}" r="${r}" fill="${aislado?'var(--surface)':col}" stroke="${sel===n.i?'var(--ink)':col}" stroke-width="${sel===n.i?3:1.2}" opacity="${aislado?.6:1}"/>`;
+      s += `<text class="n" x="${n.x}" y="${n.y + r + 11}" text-anchor="middle">${n.id}</text>`;
+    });
+    document.getElementById('g').innerHTML = s;
+    const ncom = new Set(com.filter((c,i) => grado[i] > 0)).size;
+    const aisl = grado.filter(g => g === 0).length;
+    document.getElementById('resumen').textContent = `${E.length} aristas de ${RAW.edges.length} · ${ncom} comunidades entre nodos conectados · ${aisl} nodos aislados`;
+    panel(E, com, grado, fuerza, cb);
+  }
+
+  function panel(E, com, grado, fuerza, cb){
+    const p = document.getElementById('pnodo');
+    if (sel < 0){ p.className = 'note'; p.textContent = 'Ningún nodo seleccionado. Toque un nodo del grafo.'; return; }
+    const n = N[sel];
+    const vec = E.filter(e => e.s === sel || e.t === sel).map(e => ({j: e.s === sel ? e.t : e.s, w: e.w})).sort((a,b) => b.w - a.w);
+    const maxcb = Math.max.apply(null, cb.concat([0.001]));
+    const f = v => v.toFixed(1).replace('.', ',');
+    const comp = vec.filter(v => com[v.j] !== com[sel]).length;
+    let h = `<b>${n.id}</b> <span class="lbl">· aparece en ${n.n} documentos · codificado dentro del tema ${TEMAS[n.g]}</span><br>`;
+    h += `Con umbral ≥ ${umbral}: grado ${grado[sel]} (vecinos distintos), fuerza ${fuerza[sel]} (suma de pesos), intermediación ${f(cb[sel])} de ${f(maxcb)} máxima en este grafo. Comunidad ${com[sel]+1}.<br>`;
+    if (!vec.length) h += `Queda aislado: ninguna de sus coocurrencias alcanza el umbral. Baje el umbral para ver con qué se asocia.`;
+    else {
+      h += `Vecinos más fuertes: ` + vec.slice(0,5).map(v => `${N[v.j].id} (${v.w})`).join(', ') + `.<br>`;
+      if (comp) h += `<span class="ac">${comp} de sus ${vec.length} vecinos están en otra comunidad: este nodo trabaja como puente.</span> `;
+      if (cb[sel] >= .6*maxcb && grado[sel] <= 4) h += `<span class="no">Alta intermediación con pocos vecinos: su posición depende de pocas aristas y puede desaparecer al subir el umbral.</span>`;
+      else if (cb[sel] >= .6*maxcb) h += `<span class="ok">Alta intermediación con muchos vecinos: los caminos cortos entre comunidades pasan por aquí.</span>`;
+    }
+    p.className = ''; p.innerHTML = h;
+  }
+
+  let semilla = 5;
+  function todo(){ layout(aristas(), semilla); dibujar(); }
+  document.getElementById('u').addEventListener('input', e => { umbral = +e.target.value; document.getElementById('uval').textContent = umbral; dibujar(); });
+  document.getElementById('comm').addEventListener('click', e => { porComunidad = !porComunidad; e.target.setAttribute('aria-pressed', porComunidad); e.target.textContent = porComunidad ? 'colorear por comunidad' : 'colorear por tema de origen'; dibujar(); });
+  document.getElementById('reubicar').addEventListener('click', () => { semilla++; todo(); });
+  document.getElementById('g').addEventListener('click', e => { const c = e.target.closest('circle[data-i]'); sel = c ? +c.dataset.i : -1; dibujar(); });
+  todo();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verificador de pasos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.enun{color:var(--ink);padding:.5rem .8rem;border-left:3px solid var(--accent);margin:.5rem 0;font-size:.95rem}
+.paso{display:grid;grid-template-columns:2rem 1fr;gap:.5rem;padding:.5rem 0;border-bottom:1px solid var(--rule)}
+.paso:last-child{border-bottom:none}
+.paso .n{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:.15rem}
+.paso .t{color:var(--ink);margin:0 0 .35rem}
+.fb{display:none;margin-top:.4rem;font-size:.9rem;color:var(--ink)}
+.fb.show{display:block}
+.eti{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;padding:.1rem .5rem;border-radius:999px;border:1px solid var(--rule);margin-right:.3rem}
+.eti.pos{border-color:var(--c-inv);color:var(--c-inv)} .eti.neg{border-color:var(--c-fil);color:var(--c-fil)}
+.res{display:none}
+.res.show{display:block}
+.table-wrap{overflow-x:auto}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 1 · Semanas 2 y 7</span>
+  <h1>Verificador de pasos</h1>
+  <p>Un modelo resolvió un problema paso a paso y llegó a la respuesta correcta. Marque cada paso como válido o inválido sin mirar la conclusión. Después compare su marca con dos etiquetas distintas: la validez del paso y la etiqueta que daría un verificador que premia los pasos por llevar a la respuesta correcta.</p>
+
+  <div class="row">
+    <button id="c0" aria-pressed="true">Cadena 1 · conteo</button>
+    <button id="c1" aria-pressed="false">Cadena 2 · silogismo</button>
+  </div>
+
+  <div class="card">
+    <p class="k">Problema</p>
+    <div class="enun" id="enun"></div>
+    <p class="k">Cadena del modelo</p>
+    <div id="pasos"></div>
+  </div>
+
+  <div class="row" style="margin:.6rem 0">
+    <button class="primary" id="revisar">Comparar con las dos etiquetas</button>
+    <button id="reiniciar">Borrar mis marcas</button>
+    <span class="note" id="progreso"></span>
+  </div>
+
+  <div class="card res" id="res">
+    <p class="k">Resultado</p>
+    <p id="conclusion" style="color:var(--ink)"></p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Paso</th><th>Su marca</th><th>Validez del paso</th><th>Etiqueta por resultado</th></tr></thead>
+      <tbody id="tabla"></tbody>
+    </table>
+    </div>
+    <p id="moraleja" style="color:var(--ink);margin-top:.6rem"></p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: un verificador que etiqueta pasos por la probabilidad de llegar a la respuesta mide rendimiento, no validez. El criterio es extrínseco (depende de conocer la respuesta), local (vale donde hay respuesta única) y estadístico (es una probabilidad, no una norma).</p>
+<script>
+  var CADENAS = [
+    {
+      enun: "Un investigador entrevistó a 12 personas. 8 mencionaron la palabra miedo. De esas 8, 5 también mencionaron policía. Otras 2 personas mencionaron policía sin mencionar miedo. ¿Cuántas personas no mencionaron ninguna de las dos palabras?",
+      respuesta: "2 personas",
+      pasos: [
+        {t: "En total hay 12 personas entrevistadas.", v: true, por: "Repite un dato del enunciado. Se sigue trivialmente."},
+        {t: "8 mencionaron miedo y de ellas 5 también policía; luego 3 mencionaron solo miedo.", v: true, por: "8 menos 5 es 3. Se sigue de las premisas por aritmética."},
+        {t: "2 mencionaron policía sin miedo; entonces en total mencionaron policía 2 + 3 = 5 personas.", v: false, por: "Suma las 2 de policía sin miedo con las 3 de solo miedo, que no mencionaron policía. El total correcto de quienes mencionaron policía es 2 + 5 = 7. El paso es inválido, pero la cadena no lo vuelve a usar."},
+        {t: "Mencionaron al menos una palabra las 8 de miedo más las 2 de policía sin miedo: 10 personas.", v: true, por: "Las 8 de miedo ya incluyen a las 5 que dijeron ambas; sumar las 2 que solo dijeron policía da 10. Correcto y no depende del paso 3."},
+        {t: "Por tanto 12 menos 10 son 2 personas que no mencionaron ninguna.", v: true, por: "Se sigue de los pasos 1 y 4."}
+      ]
+    },
+    {
+      enun: "El corpus de un proyecto está formado por entrevistas tomadas de un repositorio institucional. Se sabe que algunas entrevistas del repositorio mencionan miedo. ¿Hay entrevistas del corpus que mencionan miedo?",
+      respuesta: "Sí: la entrevista 7 del corpus menciona miedo",
+      pasos: [
+        {t: "Todos los textos del corpus son entrevistas del repositorio.", v: true, por: "Premisa dada por el enunciado."},
+        {t: "Algunas entrevistas del repositorio mencionan miedo.", v: true, por: "Premisa dada por el enunciado."},
+        {t: "Luego algunos textos del corpus mencionan miedo.", v: false, por: "No se sigue. Que todo el corpus esté en el repositorio y que algo del repositorio mencione miedo no garantiza que ese algo esté en el corpus. Las entrevistas con miedo podrían estar todas fuera del corpus. La forma es inválida aunque la conclusión resulte verdadera."},
+        {t: "En efecto, la entrevista 7 del corpus contiene la frase: tenía miedo de salir de noche.", v: true, por: "Verificación directa sobre el material. Es lo que de verdad sostiene la respuesta, no el paso 3."},
+        {t: "Respuesta: sí, hay entrevistas del corpus que mencionan miedo.", v: true, por: "Se sigue del paso 4 por sí solo."}
+      ]
+    }
+  ];
+  var actual = 0;
+  var marcas = {};
+
+  function pintar() {
+    var c = CADENAS[actual];
+    document.getElementById("enun").textContent = c.enun;
+    var html = "";
+    for (var i = 0; i < c.pasos.length; i++) {
+      html += '<div class="paso"><span class="n">' + (i + 1) + '</span><div>' +
+        '<p class="t">' + c.pasos[i].t + '</p>' +
+        '<div class="row">' +
+        '<button data-i="' + i + '" data-v="1" aria-pressed="false">válido</button>' +
+        '<button data-i="' + i + '" data-v="0" aria-pressed="false">inválido</button>' +
+        '</div><div class="fb" id="fb' + i + '"></div></div></div>';
+    }
+    document.getElementById("pasos").innerHTML = html;
+    var bs = document.querySelectorAll("#pasos button");
+    for (var b = 0; b < bs.length; b++) { bs[b].addEventListener("click", marcar); }
+    document.getElementById("c0").setAttribute("aria-pressed", actual === 0 ? "true" : "false");
+    document.getElementById("c1").setAttribute("aria-pressed", actual === 1 ? "true" : "false");
+    document.getElementById("res").className = "card res";
+    progreso();
+  }
+
+  function marcar(e) {
+    var i = e.currentTarget.getAttribute("data-i");
+    var v = e.currentTarget.getAttribute("data-v") === "1";
+    marcas[i] = v;
+    var fila = e.currentTarget.parentNode.querySelectorAll("button");
+    for (var k = 0; k < fila.length; k++) {
+      fila[k].setAttribute("aria-pressed", (fila[k].getAttribute("data-v") === "1") === v ? "true" : "false");
+    }
+    progreso();
+  }
+
+  function progreso() {
+    document.getElementById("progreso").textContent = Object.keys(marcas).length + " de " + CADENAS[actual].pasos.length + " pasos marcados";
+  }
+
+  function revisar() {
+    var c = CADENAS[actual];
+    var filas = "";
+    var invalidos = 0, aciertos = 0, marcados = 0;
+    for (var i = 0; i < c.pasos.length; i++) {
+      var p = c.pasos[i];
+      var m = marcas[i];
+      if (m !== undefined) { marcados++; if (m === p.v) { aciertos++; } }
+      if (!p.v) { invalidos++; }
+      var suya = m === undefined ? "sin marcar" : (m ? "válido" : "inválido");
+      filas += "<tr><td>" + (i + 1) + "</td><td>" + suya + "</td>" +
+        '<td><span class="eti ' + (p.v ? "pos" : "neg") + '">' + (p.v ? "válido" : "inválido") + "</span></td>" +
+        '<td><span class="eti pos">positivo</span></td></tr>';
+      var fb = document.getElementById("fb" + i);
+      fb.className = "fb show";
+      fb.innerHTML = '<span class="eti ' + (p.v ? "pos" : "neg") + '">' + (p.v ? "válido" : "inválido") + '</span>' + p.por;
+    }
+    document.getElementById("tabla").innerHTML = filas;
+    document.getElementById("conclusion").textContent = "La respuesta del modelo fue correcta: " + c.respuesta + ". Usted acertó " + aciertos + " de " + marcados + " marcas.";
+    document.getElementById("moraleja").innerHTML = "Un verificador entrenado como en Lightman et al. (2023) etiqueta los pasos según la probabilidad de alcanzar la respuesta correcta. Como esta cadena llegó a la respuesta, los " + c.pasos.length + " pasos reciben etiqueta positiva, incluido el paso inválido. La columna de validez y la columna de etiqueta por resultado coinciden en " + (c.pasos.length - invalidos) + " pasos y difieren en " + invalidos + ". Esa diferencia es lo que el estudiante vio con sus manos en la semana 2 y lo que la semana 7 nombra: el criterio del modelo es extrínseco, local y estadístico.";
+    document.getElementById("res").className = "card res show";
+    document.getElementById("res").scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  document.getElementById("c0").addEventListener("click", function () { actual = 0; marcas = {}; pintar(); });
+  document.getElementById("c1").addEventListener("click", function () { actual = 1; marcas = {}; pintar(); });
+  document.getElementById("revisar").addEventListener("click", revisar);
+  document.getElementById("reiniciar").addEventListener("click", function () { marcas = {}; pintar(); });
+  pintar();
+</script>
+</body>
+</html>

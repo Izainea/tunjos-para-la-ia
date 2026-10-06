@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 6 · Semana 1 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Cuando alguien dice que un resultado está validado, ¿qué está diciendo exactamente: que es correcto, que el proceso fue correcto, o que alguien responde por él?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-6/semana-01.html" />
+    <meta property="og:title" content="Curso 6 · Semana 1" />
+    <meta property="og:description" content="Cuando alguien dice que un resultado está validado, ¿qué está diciendo exactamente: que es correcto, que el proceso fue correcto, o que alguien responde por él?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-6/semana-01.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 6</a>
+          <a href="semana-01.html" class="sub is-active">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 6 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 1. Tres sentidos de validación</h1>
+          <p class="desc">Cuando alguien dice que un resultado está validado, ¿qué está diciendo exactamente: que es correcto, que el proceso fue correcto, o que alguien responde por él?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Cuando alguien dice que un resultado está validado, ¿qué está diciendo exactamente: que es correcto, que el proceso fue correcto, o que alguien responde por él?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">El curso 1 terminó con una conclusión de diseño: la máquina configura sin poder validar ni responder por lo configurado, y lo que le falta se construye desde afuera. Este curso empieza en ese afuera. El estudiante llega con material ya configurado, códigos, categorías, patrones, descripciones de imágenes, producidos en los cursos anteriores o en su propio proyecto, y la pregunta ya no es qué inferencia hizo cada quien sino qué significa dar ese material por bueno. La primera semana desarma la palabra "validar", porque en ella conviven tres cosas distintas que la literatura sobre inteligencia artificial en investigación confunde de manera sistemática. Nombrarlas por separado es el primer instrumento del curso y la condición de todos los demás.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>
+<p>El caso de apertura es un informe real, anonimizado, que presenta como validada una categorización hecha con un modelo porque "el modelo coincidió con el codificador humano en el 92 % de los fragmentos". La sesión empieza por preguntar qué se validó ahí. La respuesta corta es que se midió algo, una tasa de coincidencia, y se dio por validado otra cosa, la categorización. El resto de la sesión explica por qué ese salto es el error típico del campo y no un descuido de un autor.</p>
+</li>
+<li>
+<p>Validar tiene tres sentidos que no coinciden. En el primero, validar es comprobar la corrección del resultado: que lo afirmado sea verdadero, cosa que puede medirse sin atender al proceso, y que es lo que mide la ingeniería con sus tasas de acierto. En el segundo, validar es establecer que el proceso que condujo al resultado fue correcto, con independencia de que el resultado lo sea: es lo que exigen los criterios metodológicos. En el tercero, validar es que alguien pueda responder por lo afirmado, sostenerlo ante una comunidad y dar las razones que lo respaldan. El anteproyecto doctoral del docente (Zainea, 2026) sostiene que los cinco debates filosóficos sobre los modelos de lenguaje son variaciones de este tercer problema, y que el campo lo ha oscurecido al confundir los tres sentidos.<sup class="mark">a</sup></p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> El tercer sentido tiene tres nombres en la bibliografía del curso. Habermas lo llama redimir discursivamente una pretensión de validez; Floridi (2026), <i>answerability</i>, la posición de responder por lo que se afirma; en Ricœur remite a la imputabilidad. Son la misma exigencia vista desde la pragmática, la filosofía de la información y la hermenéutica.</aside>
+
+<ol start="3">
+<li>
+<p>Rendimiento no es validez. Un sistema puede acertar el 95 % de las veces y ser epistémicamente ingobernable, porque sus aciertos y sus errores proceden del mismo mecanismo y nada en su interior permite distinguirlos. La distinción no es de grado sino de categoría: el rendimiento mide aciertos; la validez, en su segundo y tercer sentido, mide la posibilidad de dar razones por un paso y de que alguien las sostenga. El curso 1 llamó a esto infortunio de autoridad epistémica, en el sentido de Austin (1982): el output tiene la forma de la aserción fundamentada sin que ningún agente pueda redimir sus pretensiones. Esta semana lo vuelve criterio: cada vez que un informe presenta una cifra de rendimiento como validación, hay que preguntar en cuál de los tres sentidos.</p>
+</li>
+<li>
+<p>El acuerdo entre codificadores es el ejemplo más limpio de la confusión. La tradición del análisis de contenido midió la fiabilidad de una codificación por la coincidencia entre codificadores independientes, con coeficientes como el kappa de Cohen o el alfa de Krippendorff.<sup class="mark">b</sup> McDonald, Schoenebeck y Forte (2019) revisaron cómo se usa esa medida en la investigación cualitativa y concluyeron que el acuerdo mide consistencia, no validez: dos codificadores pueden coincidir en una categoría equivocada, y en muchos diseños cualitativos el desacuerdo es un dato, no un ruido. Cuando el segundo codificador es un modelo, se añade un problema más, que el anteproyecto señala como vacío del campo: si las categorías emergieron del propio modelo, no hay contra qué medir el acuerdo. La cifra del 92 % del caso de apertura es un dato del primer sentido que se presentó como validación del segundo y se usó como si resolviera el tercero.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> El kappa de Cohen (1960) corrige el acuerdo observado entre dos codificadores por el acuerdo esperado al azar. El alfa de Krippendorff generaliza la idea a más codificadores y a datos faltantes. Ninguno de los dos dice nada sobre si la categoría es la adecuada; solo sobre si se aplica igual.</aside>
+
+<ol start="5">
+<li>Los tres sentidos se distribuyen de manera desigual entre máquina e investigador, y esa distribución es la tesis del curso. La ingeniería de los modelos ha progresado en el primer sentido; en el segundo, solo en dominios cerrados, donde un verificador externo conoce la respuesta de antemano; en el tercero no puede progresar por construcción, porque responder exige un agente que pueda ser tenido por autor de lo afirmado. El problema de este curso empieza donde no existe tal verificador: en la investigación social y humanística, donde no hay respuesta terminal contra la cual medir, y donde la validación del segundo sentido se articuló durante un siglo con la del tercero.<sup class="mark">c</sup> La tradición cualitativa contiene los recursos; las semanas 2 y 3 los extraen.</li>
+</ol>
+<aside class="glosa"><span class="mark">c</span> Un dominio es cerrado, en el sentido del curso, cuando existe un verificador externo al sistema que conoce la respuesta correcta: una demostración que un comprobador formal valida, un programa que pasa sus pruebas. En esos dominios los modelos de recompensa por proceso, vistos en la semana 7 del curso 1, etiquetan cada paso por la probabilidad de alcanzar esa respuesta. Un corpus de entrevistas no tiene respuesta terminal; por eso el criterio no se transfiere.</aside>
+
+<ol start="6">
+<li>
+<p>Los tres sentidos organizan también los tres productos del curso. El protocolo de validación de la semana 3 dice, para cada fase del proyecto, qué sentido está en juego y qué criterio lo gobierna. La matriz de triangulación de la semana 5 trabaja el segundo sentido en su región más exigente, la de las instancias independientes. El informe analítico de la semana 8 es el lugar del tercero: cada hallazgo lleva su aserente, y la declaración de uso de IA dice qué fue de quién. Nada de eso se entiende sin la distinción de hoy.</p>
+</li>
+<li>
+<p>La frase que organiza el curso es que el investigador refigura. En la triple mímesis de <em>Tiempo y narración</em> (Ricœur, 1995), configurar es organizar en trama lo disperso, y refigurar es devolver lo configurado a un mundo y a un lector que se lo apropia. La máquina configura con competencia; el investigador refigura, y refigurar incluye validar en los tres sentidos y responder. Esta semana solo nombra el mapa; la semana 6 lo recorre entero.</p>
+</li>
+</ol>
+<figure class="wide">
+<svg viewBox="0 0 680 230" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Tres sentidos de validación: corrección del resultado, justificación del proceso, imputación. La máquina progresa en el primero, en el segundo solo en dominios cerrados, en el tercero no puede por construcción. La flecha del informe típico salta del primero al tercero.">
+<style>.v-h{font-family:var(--display);font-weight:700;font-size:15px;fill:var(--ink)} .v-d{font-family:var(--text);font-size:12px;fill:var(--muted)} .v-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .v-kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .v-bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .v-ok{fill:var(--c-inv)} .v-mid{fill:var(--accent)} .v-no{fill:var(--c-fil)} .v-ar{stroke:var(--c-fil);stroke-width:1.6;fill:none;stroke-dasharray:6 5}</style>
+<rect x="10" y="40" width="200" height="120" rx="3" class="v-bx"/>
+<text x="24" y="62" class="v-k">SENTIDO 1</text>
+<text x="24" y="84" class="v-h">Corrección</text>
+<text x="24" y="104" class="v-d">Lo afirmado es verdadero.</text>
+<text x="24" y="120" class="v-d">Se mide: tasa de acierto, kappa.</text>
+<circle cx="190" cy="58" r="5" class="v-ok"/>
+<text x="24" y="148" class="v-d">La máquina progresa.</text>
+<rect x="240" y="40" width="200" height="120" rx="3" class="v-bx"/>
+<text x="254" y="62" class="v-k">SENTIDO 2</text>
+<text x="254" y="84" class="v-h">Justificación</text>
+<text x="254" y="104" class="v-d">Cada paso siguió un criterio</text>
+<text x="254" y="120" class="v-d">que otro puede comprobar.</text>
+<circle cx="420" cy="58" r="5" class="v-mid"/>
+<text x="254" y="148" class="v-d">Solo en dominios cerrados.</text>
+<rect x="470" y="40" width="200" height="120" rx="3" class="v-bx"/>
+<text x="484" y="62" class="v-k">SENTIDO 3</text>
+<text x="484" y="84" class="v-h">Imputación</text>
+<text x="484" y="104" class="v-d">Alguien responde por lo</text>
+<text x="484" y="120" class="v-d">afirmado ante una comunidad.</text>
+<circle cx="650" cy="58" r="5" class="v-no"/>
+<text x="484" y="148" class="v-d">No puede, por construcción.</text>
+<path class="v-ar" d="M110 170 C 110 215 570 215 570 170"/>
+<text x="340" y="222" text-anchor="middle" class="v-kf">EL SALTO DEL INFORME TÍPICO: "ACERTÓ EL 92 %", LUEGO "ESTÁ VALIDADO"</text>
+<text x="340" y="24" text-anchor="middle" class="v-k">VALIDAR</text>
+</svg>
+<figcaption><b>Figura 1.</b> Los tres sentidos de validación y lo que la máquina puede en cada uno. Lo que hay que ver es el salto punteado: una cifra del primer sentido presentada como si cerrara el tercero.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/sentidos-de-validacion.html" title="Clasificador de sentidos de validación: asigne cada afirmación a un sentido y lea por qué se confunden" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que produzca afirmaciones de validación sobre el material del estudiante: que diga por qué una categorización suya es buena, qué tan confiable es, qué la respalda. El estudiante debe poder clasificar cada afirmación del modelo en uno de los tres sentidos sin ayuda, y decir cuáles de ellas el modelo no está en posición de hacer. La exigencia no es desconfiar del modelo sino saber qué clase de cosa dijo.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Zainea, C. I. (2026). <em>Agencia sin imputación. Hermenéutica, pragmática y la validación epistémica del discurso artificial</em>. Secciones sobre los tres sentidos de validación y sobre rendimiento y validez. <a href="https://izainea.github.io/escritos/agencia-sin-imputacion.pdf">https://izainea.github.io/escritos/agencia-sin-imputacion.pdf</a></li>
+<li>McDonald, N., Schoenebeck, S. y Forte, A. (2019). "Reliability and Inter-rater Reliability in Qualitative Research: Norms and Guidelines for CSCW and HCI Practice". <em>Proceedings of the ACM on Human-Computer Interaction</em> 3(CSCW), artículo 72. <a href="https://doi.org/10.1145/3359174">https://doi.org/10.1145/3359174</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Zainea, C. I. (2026). "Los modelos de lenguaje no alucinan: cometen infortunios". <a href="https://izainea.github.io/blog/alucinacion-o-infortunio/">https://izainea.github.io/blog/alucinacion-o-infortunio/</a></li>
+<li>Floridi, L. (2023). "AI as Agency Without Intelligence: On ChatGPT, Large Language Models, and Other Generative Models". <em>Philosophy &amp; Technology</em> 36, 15. <a href="https://doi.org/10.1007/s13347-023-00621-y">https://doi.org/10.1007/s13347-023-00621-y</a></li>
+<li>Krippendorff, K. (2004). "Reliability in Content Analysis: Some Common Misconceptions and Recommendations". <em>Human Communication Research</em> 30(3), 411-433. <a href="https://doi.org/10.1111/j.1468-2958.2004.tb00738.x">https://doi.org/10.1111/j.1468-2958.2004.tb00738.x</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Zainea distingue los tres sentidos y afirma que la ingeniería progresa en el primero, en el segundo solo en dominios cerrados y en el tercero no puede. La afirmación sobre el segundo sentido es la más discutible, porque un registro de proceso parece algo que una máquina puede producir. <em>¿Qué añade "dominio cerrado" a la idea de justificar un proceso, y qué pasa con esa justificación cuando no hay respuesta terminal conocida?</em></li>
+<li>McDonald, Schoenebeck y Forte muestran que en muchos diseños cualitativos no se calcula acuerdo entre codificadores, y que eso no es una carencia sino una decisión coherente con el método. <em>¿En qué diseños el desacuerdo es un dato y no un ruido, y qué ocurre con ese dato cuando el segundo codificador es un modelo que no puede explicar por qué discrepó?</em></li>
+<li>Krippendorff insiste en que la fiabilidad es condición necesaria y no suficiente de la validez. <em>Si eso ya se sabía en 2004 para codificadores humanos, ¿por qué la llegada de los modelos volvió a confundir las dos cosas?</em></li>
+<li>En la entrada sobre infortunios, el docente sostiene que el 95 % correcto se produce por las mismas razones estadísticas que el 5 % incorrecto. <em>¿Es esa una afirmación sobre el modelo o sobre lo que el modelo puede decir de sí mismo? ¿Cambia algo para la validación?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Cada estudiante trae tres afirmaciones de validación tomadas de su propio material: una escrita por él en un informe o bitácora anterior, una producida por un modelo cuando se le pidió evaluar su propio trabajo, y una tomada de un artículo de su campo que use modelos de lenguaje. Llena para cada una la ficha de la semana.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Afirmación (literal)</th>
+<th>Quién la hace</th>
+<th>Sentido que invoca (1, 2, 3)</th>
+<th>Sentido que en realidad satisface</th>
+<th>Qué haría falta para satisfacer el sentido que invoca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Tres ejemplos de afirmaciones que suelen aparecer, para calibrar: "la categoría 'desconfianza institucional' fue consistente en el 88 % de los fragmentos" invoca el sentido 2 y satisface el 1; "el modelo siguió el protocolo de codificación abierta, axial y selectiva" invoca el 2 y lo satisface solo si existe el registro de cada paso; "sostengo que la desconfianza institucional organiza el corpus" invoca el 3 y lo satisface si quien lo escribe puede dar razones ante quien se lo pregunte.</p>
+<p>Después, en parejas, cada uno clasifica las afirmaciones del otro sin ver su columna. Las discrepancias son el material de la discusión final. La mini app de la semana sirve para calibrar antes de empezar: tiene afirmaciones reales del tipo "el modelo acertó el 92 %", "el proceso siguió el protocolo", "yo respondo por esta categoría", y explica las confusiones típicas.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 15 min</td>
+<td>Presenta el caso de apertura y pregunta qué se validó</td>
+<td>Responde por escrito en una frase antes de discutir</td>
+<td>Informe anonimizado</td>
+</tr>
+<tr>
+<td>15 a 40 min</td>
+<td>Expone los tres sentidos y la distinción entre rendimiento y validez</td>
+<td>Toma nota de un ejemplo propio por cada sentido</td>
+<td>Figura 1</td>
+</tr>
+<tr>
+<td>40 a 60 min</td>
+<td>Discute McDonald, Schoenebeck y Forte a partir de la guía de lectura</td>
+<td>Defiende en qué diseños el desacuerdo es un dato</td>
+<td>Lectura central</td>
+</tr>
+<tr>
+<td>60 a 70 min</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>70 a 85 min</td>
+<td>Presenta la mini app y hace dos ejemplos con el grupo</td>
+<td>Clasifica cinco afirmaciones en la app</td>
+<td>apps/sentidos-de-validacion.html</td>
+</tr>
+<tr>
+<td>85 a 110 min</td>
+<td>Acompaña el taller por parejas</td>
+<td>Llena la ficha y cruza clasificaciones</td>
+<td>Ficha de la semana</td>
+</tr>
+<tr>
+<td>110 a 120 min</td>
+<td>Cierra con las discrepancias más frecuentes y anuncia la semana 2</td>
+<td>Anota la pregunta que le quedó abierta</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: los estudiantes clasifican por quién habla y no por qué se afirma, de modo que todo lo que dice el investigador queda en el sentido 3 y todo lo que dice el modelo en el sentido 1; conviene mostrar una afirmación del investigador que es puro rendimiento ("codifiqué 300 fragmentos") y una del modelo con forma de imputación ("confío en esta categoría") que no puede satisfacer. Segundo fallo: tomar la distinción como jerarquía, como si el sentido 3 fuera el único serio; el sentido 1 es imprescindible donde hay respuesta contra la cual medir, y el curso no lo desprecia. Tercero: la discusión sobre el kappa se va a la fórmula; no importa la fórmula sino qué mide.</p>
+<h2>Bitácora</h2>
+<p>Registre las tres afirmaciones con su ficha, la clasificación de su pareja y las discrepancias. Añada una pregunta que le haya quedado abierta. Esta bitácora es la primera página del protocolo de validación que entregará en la semana 3.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Lincoln y Guba (1985), capítulo 11, "Establishing Trustworthiness", y la entrada del docente sobre la prótesis hermenéutica. Traer la lista de fases de su propio proyecto, de la recolección a la escritura, con una línea por fase que diga si en esa fase intervino un modelo y para qué.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="index.html">← Validación e interpretación: el investigador refigura</a><a href="semana-02.html">Semana 2. Los criterios de rigor cualitativo, releídos →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

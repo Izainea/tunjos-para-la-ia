@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Árbol de decisión sobre derechos y cuidado</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.q{font-family:var(--display);font-weight:700;color:var(--ink);margin:.2rem 0 .5rem}
+.opts{display:flex;flex-direction:column;gap:.4rem}
+.opts button{text-align:left;border-radius:4px;font-family:var(--text);font-size:.92rem;letter-spacing:0;padding:.5rem .7rem;white-space:normal}
+.trail{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin:.3rem 0}
+.res{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:.2rem 0 .4rem}
+.res.citar{color:var(--c-inv)} .res.describir{color:var(--c-app)} .res.exhibir{color:var(--c-doc)} .res.nousar{color:var(--c-fil)}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;margin:.5rem 0}
+.scale div{border:1px solid var(--rule);border-radius:4px;padding:.3rem .4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:center}
+.scale div.on{border-color:var(--ink);color:var(--ink);background:var(--bg)}
+ul.reasons{margin:.3rem 0 .3rem 1.1rem;padding:0;font-size:.92rem;color:var(--ink)}
+ul.reasons li{margin:.25rem 0}
+ul.reasons .k{display:block;text-transform:none;letter-spacing:.02em}
+details{margin:.6rem 0}
+summary{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;color:var(--muted)}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 7 · Semana 2</span>
+  <h1>Árbol de decisión sobre derechos y cuidado</h1>
+  <p>Responda las preguntas sobre una pieza de su material. La app le dice qué puede hacer con ella (citar, describir, exhibir con reserva, no usar) y por qué, con la norma o la razón que sostiene cada paso.</p>
+
+  <div class="card">
+    <div class="scale" id="scale">
+      <div data-l="citar">Citar</div><div data-l="describir">Describir</div><div data-l="exhibir">Exhibir con reserva</div><div data-l="nousar">No usar</div>
+    </div>
+    <div id="trail" class="trail"></div>
+    <div id="panel"></div>
+    <div class="row" style="margin-top:.6rem">
+      <button type="button" id="back">volver</button>
+      <button type="button" id="restart">otra pieza</button>
+    </div>
+  </div>
+
+  <details>
+    <summary>Las reglas que aplica la app</summary>
+    <div class="card">
+      <ul class="reasons">
+        <li>Datos sensibles sin autorización y sin posibilidad de suprimir la identidad: no usar (Ley 1581 de 2012, arts. 5 y 6).</li>
+        <li>Finalidad original que excluye este uso, sin autorización nueva: no usar (Ley 1581, art. 4, principio de finalidad).</li>
+        <li>Recolección automatizada contra los términos de la plataforma: no usar tal como está recogida; volver a recoger a mano o con la interfaz oficial.</li>
+        <li>Personas identificables sin autorización: como máximo describir, porque la cita textual lleva a la persona (Fiesler y Proferes, 2018).</li>
+        <li>Violencia o personas vulnerables: describir; exhibir con reserva solo si el argumento no se sostiene sin la pieza, en baja resolución y sin rostros (Banks, 2010; Warr et al., 2016).</li>
+        <li>Obra con autor y sin personas: citar el fragmento necesario con fuente y autor (Ley 23 de 1982, art. 31); reproducir entera no es citar.</li>
+        <li>Dominio público o licencia abierta, sin personas: uso pleno, siempre con la fuente.</li>
+      </ul>
+    </div>
+  </details>
+
+  <p class="note">Qué se lleva de aquí: la ley dice cuándo un uso es lícito; usted decide cuándo es defendible ante la persona que aparece en la pieza. La app solo recorre lo primero.</p>
+<script>
+(function(){
+  var panel=document.getElementById('panel');
+  var trail=document.getElementById('trail');
+  var scale=document.getElementById('scale');
+  var ans={};
+  var hist=[];
+
+  var Q={
+    origen:{text:'¿De dónde viene la pieza?',opts:[
+      ['obra','Obra publicada con autor (libro, artículo, prensa, fotografía de prensa, video)'],
+      ['propia','Material que produje yo con participantes (entrevista, grupo, fotografía propia de personas)'],
+      ['plataforma','Publicación en una plataforma (red social, foro, video, comentario)'],
+      ['institucional','Documento o archivo institucional o público (acta, informe, expediente, archivo histórico)'],
+      ['abierta','Obra en dominio público o con licencia abierta explícita']]},
+    personas:{text:'¿Se refiere a personas naturales identificables o determinables, aunque no tenga nombres?',opts:[
+      ['no','No'],
+      ['si','Sí, pero sin datos sensibles'],
+      ['sensible','Sí, con datos sensibles: salud, origen étnico, opinión política, creencias, vida sexual, biometría, condición de víctima']]},
+    auth:{text:'¿Tiene autorización del titular para este uso?',opts:[
+      ['si','Sí, previa, expresa e informada para este uso'],
+      ['suprimir','No, pero puedo suprimir la identidad sin destruir el dato'],
+      ['no','No, y la identidad no se puede suprimir sin destruir el dato']]},
+    violencia:{text:'¿Muestra o relata violencia, o a personas en situación de vulnerabilidad?',opts:[
+      ['si','Sí'],['no','No']]},
+    recoleccion:{text:'¿Cómo se recogió de la plataforma?',opts:[
+      ['manual','A mano, o con la interfaz oficial de la plataforma y dentro de sus condiciones'],
+      ['auto','De forma automatizada, sin autorización de la plataforma'],
+      ['nose','No sé qué permiten los términos de uso']]},
+    finalidad:{text:'¿La finalidad con que se produjo la pieza admite este uso?',opts:[
+      ['si','Sí: se produjo para circular o el uso cabe en lo que se dijo al producirla'],
+      ['no','No: se produjo para otra cosa que excluye este uso (un testimonio con reserva, un documento confidencial)'],
+      ['nose','No lo sé']]},
+    argumento:{text:'¿Su argumento se sostiene sin reproducir la pieza, trabajando sobre una descripción densa de ella?',opts:[
+      ['si','Sí'],['no','No: el lector necesita ver o leer la pieza misma']]}
+  };
+
+  function next(){
+    if(!ans.origen) return 'origen';
+    if(!ans.personas) return 'personas';
+    if(ans.personas!=='no' && !ans.auth) return 'auth';
+    if(!ans.violencia) return 'violencia';
+    if(ans.origen==='plataforma' && !ans.recoleccion) return 'recoleccion';
+    if(!ans.finalidad) return 'finalidad';
+    if(!ans.argumento) return 'argumento';
+    return null;
+  }
+
+  function decide(){
+    var level=0; // 0 citar, 1 describir, 2 exhibir, 3 no usar
+    var reasons=[];
+    var label=['citar','describir','exhibir','nousar'];
+    function cap(l,txt,norm){ if(l>level){level=l;} reasons.push([txt,norm]); }
+    function stop(txt,norm){ level=3; reasons.push([txt,norm]); }
+
+    if(ans.personas==='sensible' && ans.auth==='no'){
+      stop('Contiene datos sensibles, no hay autorización y la identidad no puede suprimirse. El tratamiento está prohibido salvo las excepciones de la ley, y ninguna aplica.','Ley 1581 de 2012, arts. 5 y 6');
+    }
+    if(ans.finalidad==='no' && ans.auth!=='si'){
+      stop('La pieza se produjo con una finalidad que excluye este uso y no hay autorización nueva. El principio de finalidad limita el tratamiento a lo que se dijo al recoger el dato.','Ley 1581 de 2012, art. 4');
+    }
+    if(ans.origen==='plataforma' && ans.recoleccion==='auto'){
+      stop('Se recogió de forma automatizada contra los términos de la plataforma. Tal como está recogida no puede usarse; hay que volver a recogerla a mano o con la interfaz oficial.','Términos de uso de la plataforma, que son un contrato');
+    }
+    if(level<3){
+      if(ans.personas==='sensible' && ans.auth==='suprimir'){
+        cap(1,'Contiene datos sensibles sin autorización, pero la identidad puede suprimirse. Se trabaja sobre la pieza anonimizada y la anonimización se documenta como una transformación del dato, con lo que se perdió.','Ley 1581 de 2012, art. 6, literal sobre fines históricos, estadísticos o científicos');
+      }
+      if(ans.personas==='si' && ans.auth!=='si'){
+        cap(1,'Se refiere a personas sin autorización para este uso. Una cita textual se puede buscar y lleva a la persona; describir y parafrasear con verificación es el máximo.','Fiesler y Proferes (2018); Ley 1581 de 2012, art. 3');
+      }
+      if(ans.personas==='si' && ans.auth==='suprimir'){
+        cap(1,'La identidad se suprime y la tabla de correspondencia, si la hay, queda bajo su responsabilidad.','Decreto 1377 de 2013');
+      }
+      if(ans.personas!=='no' && ans.auth==='si'){
+        reasons.push(['Hay autorización previa, expresa e informada. Verifique que cubra el envío a un servicio de modelos; si no lo cubre, ese paso exige anonimización.','Ley 1581 de 2012, art. 9']);
+      }
+      if(ans.origen==='plataforma' && ans.recoleccion==='nose'){
+        cap(1,'No sabe qué permiten los términos de uso. Hasta leerlos, asuma que prohíben la recolección automatizada y no cite de forma textual.','Términos de uso de la plataforma');
+      }
+      if(ans.finalidad==='nose'){
+        cap(1,'No sabe con qué finalidad se produjo la pieza. Escriba en una línea para qué se recogió antes de usarla; mientras tanto, describir es el máximo.','Ley 1581 de 2012, art. 4');
+      }
+      if(ans.violencia==='si'){
+        if(ans.argumento==='no'){
+          cap(2,'Muestra violencia o personas vulnerables y el argumento no se sostiene sin la pieza. Puede exhibirse con reserva: baja resolución, sin rostros ni datos identificables, y solo en el punto del texto que la exige.','Banks (2010), cap. 7; Warr et al. (2016)');
+        }else{
+          cap(1,'Muestra violencia o personas vulnerables y el argumento se sostiene con una descripción. Describir en lugar de exhibir: la imagen es una relación entre quien la hizo, quien aparece y quien mira, y exhibirla interviene en esa relación.','Banks (2010), cap. 7');
+        }
+      }
+      if(level===0){
+        if(ans.origen==='obra'){
+          reasons.push(['Obra con autor y sin personas afectadas. Puede citar el fragmento necesario, al servicio de un análisis propio, con mención de fuente y autor. Reproducirla entera o en tantos fragmentos seguidos que equivalgan a la obra no es citar.','Ley 23 de 1982, art. 31']);
+          if(ans.argumento==='no'){ reasons.push(['Si el lector necesita ver la pieza entera (una imagen, un cartel), la cita gráfica debe ser proporcionada al análisis; para más que eso, pida autorización al titular.','Ley 23 de 1982, arts. 31 y 32']); }
+        }else if(ans.origen==='abierta'){
+          reasons.push(['Dominio público o licencia abierta, sin personas afectadas. Uso pleno, con la fuente y las condiciones de la licencia.','Licencia de la obra']);
+        }else if(ans.origen==='propia'){
+          reasons.push(['Material propio con autorización. Puede citar con el seudónimo o la forma de atribución acordada con los participantes.','Acuerdo de consentimiento']);
+        }else if(ans.origen==='institucional'){
+          reasons.push(['Documento público sin personas afectadas. Puede citar con la referencia del archivo o la entidad.','Ley 1712 de 2014, acceso a la información pública']);
+        }else{
+          reasons.push(['Publicación en plataforma, sin personas afectadas, recogida dentro de las condiciones. Puede citar con la fuente; verifique que la cita no identifique a terceros mencionados.','Ley 23 de 1982, art. 31']);
+        }
+      }
+    }
+    return {level:level,label:label[level],reasons:reasons};
+  }
+
+  var titles={citar:'Puede citar',describir:'Describir, sin citar ni exhibir',exhibir:'Exhibir con reserva',nousar:'No usar'};
+  var subs={citar:'Reproduzca el fragmento necesario al servicio de su análisis, con fuente y autor. También puede describir.',
+    describir:'Trabaje sobre una descripción densa que otro lector pueda contrastar con la pieza. La pieza misma no circula ni se cita de forma textual.',
+    exhibir:'Reproduzca solo en baja resolución, sin rostros ni datos identificables, y solo donde el argumento lo exige. Describa el resto.',
+    nousar:'Tal como está, la pieza no entra en el análisis ni sale hacia un modelo. Las razones dicen qué tendría que cambiar.'};
+
+  function render(){
+    var q=next();
+    var names={origen:'origen',personas:'personas',auth:'autorización',violencia:'violencia',recoleccion:'recolección',finalidad:'finalidad',argumento:'argumento'};
+    var parts=[];
+    for(var k in ans){ if(ans.hasOwnProperty(k)) parts.push(names[k]+': '+ans[k]); }
+    trail.textContent=parts.length?parts.join(' · '):'';
+    var nodes=scale.querySelectorAll('div');
+    for(var i=0;i<nodes.length;i++) nodes[i].classList.remove('on');
+    if(q){
+      var d=Q[q];
+      var h='<div class="q">'+d.text+'</div><div class="opts">';
+      for(var j=0;j<d.opts.length;j++){ h+='<button type="button" data-q="'+q+'" data-v="'+d.opts[j][0]+'">'+d.opts[j][1]+'</button>'; }
+      h+='</div>';
+      panel.innerHTML=h;
+    }else{
+      var r=decide();
+      for(var m=0;m<nodes.length;m++){ if(nodes[m].getAttribute('data-l')===r.label) nodes[m].classList.add('on'); }
+      var h2='<div class="res '+r.label+'">'+titles[r.label]+'</div><p>'+subs[r.label]+'</p><ul class="reasons">';
+      for(var n=0;n<r.reasons.length;n++){ h2+='<li>'+r.reasons[n][0]+'<span class="k">'+r.reasons[n][1]+'</span></li>'; }
+      h2+='</ul><p class="note">Copie el resultado y las razones a la columna "norma o razón que lo sostiene" de la tabla del taller. Luego decida si está de acuerdo: la app aplica reglas, no juicio.</p>';
+      panel.innerHTML=h2;
+    }
+  }
+
+  panel.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-q]');
+    if(!b) return;
+    hist.push(b.getAttribute('data-q'));
+    ans[b.getAttribute('data-q')]=b.getAttribute('data-v');
+    render();
+  });
+  document.getElementById('back').addEventListener('click',function(){
+    var k=hist.pop();
+    if(k){ delete ans[k]; render(); }
+  });
+  document.getElementById('restart').addEventListener('click',function(){ ans={}; hist=[]; render(); });
+  render();
+})();
+</script>
+</body>
+</html>

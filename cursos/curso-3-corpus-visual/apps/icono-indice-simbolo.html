@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ícono, índice, símbolo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.signo{display:grid;grid-template-columns:minmax(8rem,14rem) 1fr;gap:1rem;align-items:start}
+@media (max-width:480px){.signo{grid-template-columns:1fr}}
+.signo svg{width:100%;height:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+.lectura{color:var(--ink);font-size:1rem;margin:.2rem 0 .6rem}
+.fb{margin-top:.6rem;color:var(--ink);font-size:.95rem}
+.fb .k{display:block;margin-bottom:.2rem}
+.prog{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 3 · Semana 3</span>
+  <h1>Ícono, índice, símbolo</h1>
+  <p>Cada signo viene con una lectura: en qué aspecto se está leyendo. Elija el modo peirceano que sostiene esa lectura y reciba la explicación. En varios casos dos respuestas son defendibles; lo que cuenta es la razón.</p>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <span class="prog" id="prog"></span>
+      <div class="row"><button id="prev">anterior</button><button id="next">siguiente</button></div>
+    </div>
+    <div class="signo" id="signo"></div>
+    <p class="lectura" id="lectura"></p>
+    <div class="row" id="opciones">
+      <button data-m="icono">ícono · semejanza</button>
+      <button data-m="indice">índice · conexión real</button>
+      <button data-m="simbolo">símbolo · convención</button>
+    </div>
+    <div class="fb" id="fb" aria-live="polite"></div>
+  </div>
+
+  <div class="card">
+    <span class="k">Balance</span>
+    <p id="balance">Sin respuestas todavía.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: el modo no está en el signo sino en la relación que se está leyendo. Un modelo multimodal lee bien los íconos, a veces los índices y, de los símbolos, solo los de las convenciones que conoce.</p>
+<script>
+  var S = 'fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round';
+  var signos = [
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Dibujo a línea de un rostro junto a una silueta de persona"><g style="' + S + '"><circle cx="50" cy="50" r="22"/><circle cx="43" cy="46" r="2" fill="var(--ink)"/><circle cx="57" cy="46" r="2" fill="var(--ink)"/><path d="M42 60 Q50 66 58 60"/><path d="M28 100 Q50 75 72 100"/><circle cx="120" cy="40" r="10"/><path d="M108 90 Q120 60 132 90"/></g><text x="92" y="112">la persona</text></svg>',
+      lectura: 'Un retrato a lápiz, leído como representación de esa persona.',
+      ok: ['icono'],
+      exp: 'Ícono. El dibujo significa a la persona porque se le parece. Peirce: el ícono "exhibe las mismas cualidades" que su objeto. No hay conexión física (no fue producido por ella) ni convención (cualquiera que la conozca lo reconoce sin acuerdo previo).'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Huella de pie en la arena"><path d="M0 95 Q80 80 160 95 L160 120 L0 120 Z" fill="var(--rule)"/><g fill="var(--c-app)"><ellipse cx="80" cy="78" rx="16" ry="9"/><ellipse cx="66" cy="66" rx="4.5" ry="3.5"/><ellipse cx="75" cy="63" rx="4" ry="3.5"/><ellipse cx="84" cy="63" rx="3.5" ry="3"/><ellipse cx="92" cy="66" rx="3" ry="2.5"/></g></svg>',
+      lectura: 'Una huella en la arena, leída como señal de que alguien pasó por ahí.',
+      ok: ['indice'],
+      exp: 'Índice. La huella está conectada físicamente con el pie que la produjo; señala sin parecerse a la persona ni depender de un acuerdo. Peirce usa la veleta y el humo con la misma lógica. Si la leyera como "forma de un pie", sería ícono del pie; la lectura propuesta es la del paso.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Bandera en un mástil"><g style="' + S + '"><path d="M40 20 L40 105"/></g><path d="M40 20 L120 20 L108 42 L120 64 L40 64 Z" fill="var(--c-fil)"/></svg>',
+      lectura: 'Una bandera, leída como la institución que representa.',
+      ok: ['simbolo'],
+      exp: 'Símbolo. La bandera significa la institución por hábito o convención: no se le parece ni fue producida por ella. Quien no conoce la convención ve una tela de color. Es el caso en que un modelo multimodal acierta solo si la convención estaba en su entrenamiento.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Casa con chimenea y humo"><g style="' + S + '"><path d="M40 100 L40 60 L80 32 L120 60 L120 100 Z"/><path d="M100 46 L100 36 L110 36 L110 53"/><path d="M104 30 Q96 20 106 12 Q116 4 108 -2" stroke="var(--muted)"/><path d="M112 28 Q104 18 114 10" stroke="var(--muted)"/></g></svg>',
+      lectura: 'Humo sobre una chimenea, leído como "hay fuego adentro".',
+      ok: ['indice'],
+      exp: 'Índice. El humo es efecto del fuego; la lectura se sostiene por esa conexión causal, no por semejanza ni por convención. Es el ejemplo de Peirce. Un modelo puede describir "humo" (ícono reconocido) sin inferir el fuego, o inferirlo como suposición: en la auditoría, esa inferencia va en la capa de suposiciones.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Mapa esquemático con calles y un punto"><g style="' + S + '" stroke="var(--muted)"><path d="M10 40 L150 40"/><path d="M10 80 L150 80"/><path d="M50 10 L50 110"/><path d="M110 10 L110 110"/></g><circle cx="80" cy="60" r="6" fill="var(--c-fil)"/><text x="90" y="64">aquí</text></svg>',
+      lectura: 'Un plano de calles, leído como la disposición del barrio.',
+      ok: ['icono'],
+      exp: 'Ícono, del tipo que Peirce llama diagrama: no se parece en las cualidades sensibles sino en las relaciones entre partes. Las calles del plano guardan entre sí las relaciones de las calles reales. El punto rojo y la palabra "aquí" son, además, un índice (señala) y un símbolo (una palabra): un mapa real mezcla los tres.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Veleta con flecha apuntando a la derecha"><g style="' + S + '"><path d="M80 110 L80 50"/><path d="M50 50 L110 50"/><path d="M100 42 L112 50 L100 58"/><path d="M80 30 L80 40"/><path d="M80 60 L80 70"/></g><text x="86" y="26">N</text><text x="86" y="82">S</text></svg>',
+      lectura: 'Una veleta, leída como "el viento sopla hacia la derecha".',
+      ok: ['indice'],
+      exp: 'Índice. La veleta gira porque el viento la empuja: hay conexión física entre el signo y su objeto. La flecha tiene además una forma convencional (símbolo) que dice hacia dónde mirar, pero la lectura propuesta es la de la dirección del viento, y esa se sostiene por el índice.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="La palabra PAZ escrita en una pared"><rect x="10" y="20" width="140" height="80" fill="var(--rule)"/><text x="80" y="72" text-anchor="middle" style="font-size:34px;font-family:var(--display);font-weight:700;fill:var(--ink)">PAZ</text></svg>',
+      lectura: 'La palabra "PAZ" escrita en una pared, leída como lo que la palabra significa.',
+      ok: ['simbolo'],
+      exp: 'Símbolo. Una palabra significa por convención de una lengua. Peirce la pone como ejemplo de símbolo puro. Que esté pintada en una pared añade un índice (alguien estuvo ahí con pintura), pero la lectura del sentido de la palabra es simbólica. Un modelo transcribe la palabra con buena tasa y la interpreta con la convención de su entrenamiento.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Fotografía enmarcada de una persona frente a un edificio"><rect x="20" y="10" width="120" height="100" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><rect x="30" y="20" width="100" height="80" fill="var(--rule)"/><rect x="70" y="30" width="50" height="60" fill="var(--muted)" opacity=".5"/><circle cx="55" cy="60" r="8" fill="var(--ink)"/><path d="M45 100 Q55 72 65 100" fill="var(--ink)"/></svg>',
+      lectura: 'Una fotografía de una persona frente a un edificio, leída como prueba de que estuvo ahí.',
+      ok: ['indice', 'icono'],
+      exp: 'Índice, en la lectura propuesta: la fotografía fue producida por la luz que rebotó en la persona y el edificio, y por eso vale como prueba. Peirce dice que la fotografía es ícono (se parece) e índice (fue causada) a la vez; "prueba de que estuvo ahí" apela al segundo aspecto. Una imagen generada por un modelo conserva el ícono y pierde este índice.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Señal circular roja con barra horizontal blanca"><circle cx="80" cy="60" r="40" fill="var(--c-fil)"/><rect x="50" y="54" width="60" height="12" fill="var(--surface)"/></svg>',
+      lectura: 'Una señal circular roja con una barra blanca, leída como "prohibido el paso".',
+      ok: ['simbolo'],
+      exp: 'Símbolo. Nada en el círculo rojo se parece a una prohibición ni fue causado por ella; significa por una convención de tránsito que hay que haber aprendido. Las convenciones de tránsito están bien representadas en los datos de entrenamiento de los modelos; otras convenciones locales, no.'
+    },
+    {
+      svg: '<svg viewBox="0 0 160 120" role="img" aria-label="Altar con velas y una imagen pequeña"><rect x="30" y="70" width="100" height="30" fill="var(--rule)"/><rect x="65" y="40" width="30" height="30" fill="var(--surface)" stroke="var(--ink)"/><circle cx="80" cy="52" r="5" fill="var(--muted)"/><g fill="var(--accent)"><rect x="42" y="52" width="6" height="18"/><rect x="112" y="52" width="6" height="18"/></g><g fill="var(--c-doc)"><ellipse cx="45" cy="50" rx="2.5" ry="4"/><ellipse cx="115" cy="50" rx="2.5" ry="4"/></g></svg>',
+      lectura: 'Velas encendidas ante una imagen pequeña, leídas como "alguien reza a ese santo".',
+      ok: ['simbolo', 'indice'],
+      exp: 'Símbolo, con un índice debajo. Que haya velas encendidas es índice de que alguien las encendió hace poco. Que eso signifique devoción a ese santo en particular es convención de una comunidad: hay que saber quién es la figura y qué se le pide. Es el tipo de signo que cae en la tercera columna de la auditoría: está en la imagen y solo se lee con contexto local.'
+    }
+  ];
+  var i = 0, resp = {};
+  var el = { signo: document.getElementById('signo'), lectura: document.getElementById('lectura'), fb: document.getElementById('fb'), prog: document.getElementById('prog'), bal: document.getElementById('balance') };
+  var botones = Array.prototype.slice.call(document.querySelectorAll('#opciones button'));
+  var nombres = { icono: 'ícono', indice: 'índice', simbolo: 'símbolo' };
+  function pintar() {
+    var s = signos[i];
+    el.signo.innerHTML = s.svg + '<div><span class="k">Signo ' + (i + 1) + ' de ' + signos.length + '</span></div>';
+    el.lectura.textContent = s.lectura;
+    el.prog.textContent = Object.keys(resp).length + ' respondidos';
+    botones.forEach(function (b) { b.setAttribute('aria-pressed', String(resp[i] === b.dataset.m)); });
+    el.fb.innerHTML = resp[i] ? feedback(s, resp[i]) : '';
+  }
+  function feedback(s, m) {
+    var principal = s.ok[0] === m, defendible = s.ok.indexOf(m) > 0;
+    var cab = principal ? '<span class="k ok">Es la lectura principal</span>' : defendible ? '<span class="k ac">Defendible en otro aspecto</span>' : '<span class="k no">No en esta lectura</span>';
+    var extra = principal ? '' : defendible ? ' Usted leyó el signo en otro aspecto; diga cuál, porque eso es exactamente lo que la ficha semiótica pide.' : ' Usted eligió ' + nombres[m] + '. Pregúntese: ¿la relación que sostiene la lectura propuesta es de semejanza, de conexión real o de convención?';
+    return cab + s.exp + extra;
+  }
+  function balance() {
+    var n = 0, p = 0, d = 0;
+    Object.keys(resp).forEach(function (k) { n++; var s = signos[k]; if (s.ok[0] === resp[k]) p++; else if (s.ok.indexOf(resp[k]) > 0) d++; });
+    if (!n) { el.bal.textContent = 'Sin respuestas todavía.'; return; }
+    el.bal.textContent = n + ' respondidos: ' + p + ' en la lectura principal, ' + d + ' defendibles en otro aspecto, ' + (n - p - d) + ' por revisar. ' + (n === signos.length ? 'Lo que importa no es la cuenta sino si puede decir, para cada uno, en qué aspecto lo leyó.' : '');
+  }
+  botones.forEach(function (b) { b.addEventListener('click', function () { resp[i] = b.dataset.m; pintar(); balance(); }); });
+  document.getElementById('prev').addEventListener('click', function () { i = (i - 1 + signos.length) % signos.length; pintar(); });
+  document.getElementById('next').addEventListener('click', function () { i = (i + 1) % signos.length; pintar(); });
+  pintar();
+</script>
+</body>
+</html>

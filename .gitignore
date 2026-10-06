@@ -1,0 +1,16 @@
+# entornos y cachés
+.venv/
+__pycache__/
+*.pyc
+.env
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+~$*
+
+# propuestas a convocatorias concretas y plantillas de terceros: solo en local
+**/propuestas/
+plantillas-externas/
+herramientas/capturas/
+*.docx
+*.xlsx

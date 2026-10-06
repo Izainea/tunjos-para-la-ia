@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 5 · Semana 3 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Si k-means con k igual a cuatro encuentra cuatro grupos y con k igual a cinco encuentra cinco, ¿cuántos grupos hay en el corpus?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-03.html" />
+    <meta property="og:title" content="Curso 5 · Semana 3" />
+    <meta property="og:description" content="Si k-means con k igual a cuatro encuentra cuatro grupos y con k igual a cinco encuentra cinco, ¿cuántos grupos hay en el corpus?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-03.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 5</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub is-active">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 5 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 3. Agrupamiento: el número de grupos como decisión</h1>
+          <p class="desc">Si k-means con k igual a cuatro encuentra cuatro grupos y con k igual a cinco encuentra cinco, ¿cuántos grupos hay en el corpus?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Si k-means con k igual a cuatro encuentra cuatro grupos y con k igual a cinco encuentra cinco, ¿cuántos grupos hay en el corpus?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">La respuesta honesta a la pregunta de la semana es que la pregunta está mal hecha. Un algoritmo de agrupamiento no descubre cuántos grupos hay: produce la mejor partición en el número de grupos que se le pidió, y la produce siempre, incluso sobre ruido. Es un inductor de enorme alcance que no elige entre hipótesis. Por eso la semana no enseña a "encontrar el k correcto" sino algo más útil y más exigente: a tratar cada grupo como un candidato, a someterlo a pruebas que el método no hace solo, y a decidir, con razones que se puedan escribir, cuáles de esos candidatos merecen el nombre de categoría. Es la primera entrega del curso y el primer lugar donde el estudiante firma una lectura.</p>
+
+<p>La semana supone los vectores del corpus propio calculados en la semana 2, con el modelo o la representación declarados.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Agrupar es inducir una partición a partir de distancias. k-means<sup class="mark">a</sup> elige k centros, asigna cada punto al centro más cercano, mueve cada centro al promedio de sus puntos y repite hasta que nada cambia. El resultado depende de k, que es un dato de entrada, y de los centros iniciales, que son aleatorios. Dos corridas con distinta semilla pueden dar particiones distintas sobre los mismos vectores. Nada de esto es un defecto del algoritmo: es lo que el algoritmo es.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> k-means minimiza la suma de distancias al cuadrado entre cada punto y el centro de su grupo. Encuentra un mínimo local, no el global; por eso se corre varias veces con semillas distintas y se conserva la mejor. Fue formulado por Lloyd en 1957 y publicado en 1982.</aside>
+
+<ol start="2">
+<li>
+<p>El agrupamiento jerárquico hace visible que el número de grupos es una altura de corte. En vez de fijar k, une los dos puntos más cercanos, luego los dos grupos más cercanos, y así hasta que todo es un solo grupo; el resultado es un árbol, el dendrograma, y cortar el árbol a distintas alturas da distintos números de grupos. Mirar el dendrograma del corpus propio enseña más que cualquier criterio numérico: se ve si hay alturas en que el árbol se parte con claridad o si las ramas se separan de forma continua, sin ningún corte que se imponga.</p>
+</li>
+<li>
+<p>Los criterios para elegir k son criterios del método, no de la pregunta. El coeficiente de silueta (Rousseeuw, 1987) mide cuánto más cerca está cada punto de su grupo que del grupo vecino; el método del codo mira dónde deja de bajar la inercia. Ambos sirven para descartar valores absurdos de k y ninguno decide entre un k de cuatro y uno de cinco cuando los dos son razonables. Grimmer, Roberts y Stewart (2022, cap. 12) lo dicen sin rodeos: el agrupamiento es una herramienta de descubrimiento, y la elección final la hace quien va a usar los grupos, con la pregunta en mente.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Criterio del método</th>
+<th>Criterio de la pregunta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"La silueta es máxima en k = 2"</td>
+<td>"Mi pregunta distingue cuatro tipos de discurso"</td>
+</tr>
+<tr>
+<td>Mide la geometría de la partición</td>
+<td>Mide si los grupos sirven para lo que se van a usar</td>
+</tr>
+<tr>
+<td>Descarta valores absurdos de k</td>
+<td>Elige entre los razonables</td>
+</tr>
+<tr>
+<td>Lo calcula cualquiera</td>
+<td>Lo sostiene quien conoce el corpus</td>
+</tr>
+<tr>
+<td><em>Necesario y no suficiente</em></td>
+<td><em>Decide, y se escribe en la ficha con su razón</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li>La prueba de estabilidad es lo que el curso añade al procedimiento habitual. Un grupo es un candidato a categoría si sobrevive a tres movimientos: cambiar la semilla, mover k uno arriba y uno abajo, y cambiar la representación, de embeddings a TF-IDF o entre dos modelos. Para medir la supervivencia se compara cada grupo con los grupos de la otra corrida por el índice de Jaccard<sup class="mark">b</sup>, y la partición entera por el índice de Rand ajustado (Hubert y Arabie, 1985). Un grupo con Jaccard alto en los tres movimientos describe algo del corpus; un grupo que se disuelve al cambiar la semilla describe la semilla.</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Jaccard entre dos conjuntos: el tamaño de la intersección dividido por el tamaño de la unión. Vale 1 si son el mismo conjunto y 0 si no comparten nada. La mini app lo calcula para cada grupo contra la mejor coincidencia de la otra corrida.</aside>
+
+<ol start="5">
+<li>
+<p>Un grupo se convierte en categoría cuando alguien lo lee y se compromete con la lectura. Leer un grupo es mirar sus miembros, sus bordes y sus miembros mal ubicados, y proponer un nombre que los explique; ese nombre es una hipótesis. Timmermans y Tavory (2012) describen el análisis cualitativo como abducción: lo sorprendente exige una explicación, y la explicación la propone quien tiene trasfondo para sorprenderse. Un grupo estable es un hecho sorprendente solo para quien esperaba otra cosa. Sin esa expectativa, todos los grupos son igual de interesantes, es decir, ninguno lo es. La ficha de patrón de la plantilla pide, por eso, qué esperaba el estudiante antes de agrupar.</p>
+</li>
+<li>
+<p>El producto de la semana es la representación y el agrupamiento del corpus propio con prueba de estabilidad. No se evalúa que los grupos sean "correctos", porque no hay con qué compararlos. Se evalúa que la representación esté justificada, que los grupos presentados como categorías hayan sobrevivido a los tres movimientos, que los que no sobrevivieron estén reportados y no escondidos, y que la lectura de cada categoría diga qué miembros la contradicen. Un informe que presenta cinco grupos limpios sin mencionar la semilla ni k es, en términos del curso 1, un infortunio: tiene la forma de un hallazgo sin las condiciones que lo fundamentan.</p>
+</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 260" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Los mismos veinte puntos agrupados dos veces: a la izquierda con k igual a 3, a la derecha con k igual a 4. Dos de los grupos coinciden en ambos; el tercero de la izquierda se parte en dos a la derecha. Un rótulo marca los grupos que sobreviven y el que no.">
+    <style>.m3{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--muted)} .mk{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--c-inv)} .mf3{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--c-fil)} .bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .A{fill:var(--c-app)} .B{fill:var(--c-doc)} .C{fill:var(--c-blog)} .D{fill:var(--c-fil)}</style>
+    <rect x="10" y="26" width="320" height="200" rx="3" class="bx"/>
+    <text x="20" y="18" class="m3">k = 3 · semilla 1</text>
+    <rect x="350" y="26" width="320" height="200" rx="3" class="bx"/>
+    <text x="360" y="18" class="m3">k = 4 · semilla 1</text>
+    <g>
+      <circle cx="60" cy="70" r="5" class="A"/><circle cx="80" cy="90" r="5" class="A"/><circle cx="50" cy="105" r="5" class="A"/><circle cx="95" cy="65" r="5" class="A"/><circle cx="72" cy="120" r="5" class="A"/><circle cx="105" cy="100" r="5" class="A"/>
+      <circle cx="250" cy="70" r="5" class="B"/><circle cx="275" cy="85" r="5" class="B"/><circle cx="240" cy="100" r="5" class="B"/><circle cx="290" cy="60" r="5" class="B"/><circle cx="265" cy="115" r="5" class="B"/>
+      <circle cx="120" cy="180" r="5" class="C"/><circle cx="145" cy="195" r="5" class="C"/><circle cx="110" cy="205" r="5" class="C"/><circle cx="160" cy="170" r="5" class="C"/><circle cx="200" cy="185" r="5" class="C"/><circle cx="225" cy="200" r="5" class="C"/><circle cx="215" cy="165" r="5" class="C"/><circle cx="240" cy="180" r="5" class="C"/><circle cx="180" cy="205" r="5" class="C"/>
+    </g>
+    <g transform="translate(340 0)">
+      <circle cx="60" cy="70" r="5" class="A"/><circle cx="80" cy="90" r="5" class="A"/><circle cx="50" cy="105" r="5" class="A"/><circle cx="95" cy="65" r="5" class="A"/><circle cx="72" cy="120" r="5" class="A"/><circle cx="105" cy="100" r="5" class="A"/>
+      <circle cx="250" cy="70" r="5" class="B"/><circle cx="275" cy="85" r="5" class="B"/><circle cx="240" cy="100" r="5" class="B"/><circle cx="290" cy="60" r="5" class="B"/><circle cx="265" cy="115" r="5" class="B"/>
+      <circle cx="120" cy="180" r="5" class="C"/><circle cx="145" cy="195" r="5" class="C"/><circle cx="110" cy="205" r="5" class="C"/><circle cx="160" cy="170" r="5" class="C"/>
+      <circle cx="200" cy="185" r="5" class="D"/><circle cx="225" cy="200" r="5" class="D"/><circle cx="215" cy="165" r="5" class="D"/><circle cx="240" cy="180" r="5" class="D"/><circle cx="180" cy="205" r="5" class="D"/>
+    </g>
+    <text x="20" y="246" class="mk">AZUL Y OCRE SOBREVIVEN: JACCARD 1,0 ENTRE LAS DOS CORRIDAS</text>
+    <text x="360" y="246" class="mf3">EL GRUPO INFERIOR SE PARTE: ¿DOS CATEGORÍAS O UN CORTE DE K?</text>
+  </svg>
+  <figcaption><b>Figura 3.</b> El mismo dato con dos k. Dos grupos son los mismos en ambas corridas; el tercero se divide al pasar de tres a cuatro. La división no es un hallazgo ni un error: es una pregunta que solo la lectura de sus miembros puede responder.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/embeddings-y-k.html" title="Nube de puntos de embeddings con agrupamiento k-means y deslizador de k" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Se le pide a un modelo de lenguaje que proponga un nombre para cada grupo a partir de diez miembros, y que escriba el código de la prueba de estabilidad a partir del cuaderno. El estudiante debe poder defender sin el modelo por qué eligió el k que presenta, qué grupos sobrevivieron a los tres movimientos y cuáles no, y por qué adopta o rechaza cada nombre propuesto, citando miembros del grupo que el nombre explica y miembros que no. Un nombre adoptado sin leer los miembros es una aserción sin fundamento, y el registro de frontera debe decirlo.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Grimmer, J., Roberts, M. E. y Stewart, B. M. (2022). <em>Text as Data: A New Framework for Machine Learning and the Social Sciences</em>. Princeton University Press. Cap. 12, sobre agrupamiento, y cap. 10, sobre principios del descubrimiento.</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Rousseeuw, P. J. (1987). "Silhouettes: A Graphical Aid to the Interpretation and Validation of Cluster Analysis". <em>Journal of Computational and Applied Mathematics</em> 20, 53-65. <a href="https://doi.org/10.1016/0377-0427(87)90125-7">https://doi.org/10.1016/0377-0427(87)90125-7</a></li>
+<li>Hubert, L. y Arabie, P. (1985). "Comparing Partitions". <em>Journal of Classification</em> 2, 193-218. <a href="https://doi.org/10.1007/BF01908075">https://doi.org/10.1007/BF01908075</a></li>
+<li>Timmermans, S. y Tavory, I. (2012). "Theory Construction in Qualitative Research: From Grounded Theory to Abductive Analysis". <em>Sociological Theory</em> 30(3), 167-186. <a href="https://doi.org/10.1177/0735275112457914">https://doi.org/10.1177/0735275112457914</a></li>
+<li>Peirce, C. S. (1903). "El pragmatismo como lógica de la abducción". Traducción del Grupo de Estudios Peirceanos, Universidad de Navarra. <a href="https://www.unav.es/gep/PragmatismoLogicaAbduccion.html">https://www.unav.es/gep/PragmatismoLogicaAbduccion.html</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Grimmer, Roberts y Stewart insisten en que los métodos de descubrimiento no producen conclusiones sino conceptos que después hay que medir y validar por separado. <em>¿En qué momento de su proyecto un grupo dejaría de ser un descubrimiento y pasaría a ser una medida? ¿Qué tendría que haber hecho entre los dos momentos?</em></li>
+<li>Rousseeuw propone la silueta como ayuda gráfica, no como veredicto. <em>Si la silueta prefiere k igual a dos y su lectura prefiere k igual a cinco, ¿quién tiene razón, y qué significa aquí "tener razón"?</em></li>
+<li>Timmermans y Tavory sostienen que el investigador necesita trasfondo teórico para que algo lo sorprenda. <em>¿Qué esperaba encontrar en su corpus antes de agrupar? Escríbalo antes de correr el algoritmo; después ya no podrá.</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Sobre los vectores del corpus propio, con el bloque de la semana 3 del cuaderno de apoyo o con la mini app si el corpus es pequeño:</p>
+<ol>
+<li>Escriba en una línea qué grupos espera encontrar. Guárdela.</li>
+<li>Corra k-means para k de 2 a 10 con cinco semillas cada uno. Grafique la silueta y la inercia por k. Dibuje el dendrograma del agrupamiento jerárquico.</li>
+<li>Elija dos valores de k razonables. Para cada grupo de cada uno, calcule el Jaccard contra la mejor coincidencia con las otras semillas, con k más uno y k menos uno, y con la otra representación.</li>
+<li>Llene la tabla de la ficha de patrón:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Grupo</th>
+<th>Tamaño</th>
+<th>Jaccard semilla</th>
+<th>Jaccard k±1</th>
+<th>Jaccard otra representación</th>
+<th>Miembros que lo contradicen</th>
+<th>Nombre propuesto</th>
+<th>¿Categoría o corte?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="5">
+<li>Compare lo que esperaba con lo que sobrevivió. La diferencia es el hecho sorprendente de la semana 8.</li>
+</ol>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10</td>
+<td>Apertura</td>
+<td>Muestra dos informes con distinto número de grupos sobre el mismo corpus y pregunta cuál está bien</td>
+<td>Escribe su expectativa de grupos antes de agrupar</td>
+<td>Tablero</td>
+</tr>
+<tr>
+<td>10 a 30</td>
+<td>Lectura</td>
+<td>Discute el capítulo de agrupamiento y la idea de descubrimiento frente a medida</td>
+<td>Responde la guía</td>
+<td>Lectura central</td>
+</tr>
+<tr>
+<td>30 a 55</td>
+<td>Mecanismo</td>
+<td>Mueve k y la semilla en la mini app; lee la tabla de supervivencia; muestra un grupo que se disuelve</td>
+<td>Predice qué grupo sobrevivirá antes de mover k</td>
+<td>App de embeddings</td>
+</tr>
+<tr>
+<td>55 a 65</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>65 a 105</td>
+<td>Taller</td>
+<td>Acompaña la corrida con varias semillas y la prueba de estabilidad sobre corpus propios</td>
+<td>Llena la tabla de la ficha de patrón</td>
+<td>Cuaderno, semana 3</td>
+</tr>
+<tr>
+<td>105 a 120</td>
+<td>Cierre</td>
+<td>Pide a tres estudiantes el grupo que más le sorprendió y por qué</td>
+<td>Nombra un grupo estable y uno que no lo fue</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: el estudiante corre k-means una vez, obtiene grupos bonitos y no quiere volver a correrlo; exigir las cinco semillas antes de cualquier lectura. Segundo fallo: la prueba de estabilidad sale mal en todos los grupos y el estudiante concluye que el corpus "no tiene estructura"; discutir que eso también es un resultado, y uno que se puede reportar y que a menudo señala un problema de representación. Tercero: los nombres propuestos por el modelo de lenguaje son tan plausibles que nadie lee los miembros; pedir, para cada nombre, los tres miembros que peor encajan.</p>
+<h2>Entrega</h2>
+<p>Representación y agrupamiento del corpus propio con prueba de estabilidad, sobre la plantilla <code>plantillas/ficha-de-patron.md</code>, con el código o los pasos usados en anexo. Se evalúa la justificación de la representación, la prueba de estabilidad completa, el reporte honesto de los grupos que no sobrevivieron y la lectura de cada categoría con sus contraejemplos. Rúbrica en <code>evaluacion.md</code>.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Newman (2018), capítulos 6 y 7, por lo que miden las medidas y no por sus fórmulas, y Barabási (2016), capítulo 2, de acceso abierto. Llegar con una lista de pares del corpus propio que puedan ser aristas: códigos que coinciden en un documento, actores que aparecen en la misma noticia, etiquetas que acompañan la misma imagen. Quien hizo el curso 4 trae su libro de códigos.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-02.html">← Semana 2. Embeddings de texto e imagen</a><a href="semana-04.html">Semana 4. Redes: el grafo como hipótesis relacional →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

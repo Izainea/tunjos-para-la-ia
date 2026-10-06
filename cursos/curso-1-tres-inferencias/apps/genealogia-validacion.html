@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Genealogía de la validación</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+h2{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:.2rem 0 .3rem}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+#grafo{width:100%;height:auto;display:block}
+.nodo{cursor:pointer}
+.nodo rect{fill:var(--surface);stroke:var(--muted);stroke-width:1.4}
+.nodo text{fill:var(--ink);font-size:10.5px;text-anchor:middle;pointer-events:none}
+.nodo .anio{fill:var(--muted);font-size:9px}
+.nodo.sel rect{stroke:var(--accent);stroke-width:3}
+.nodo.vecino rect{stroke:var(--ink);stroke-width:2}
+.arista{fill:none;stroke-width:1.6;opacity:.9}
+.arista.continua{stroke:var(--muted)}
+.arista.refuta{stroke:var(--c-fil);stroke-dasharray:6 4}
+.arista.limita{stroke:var(--c-doc)}
+.arista.funda{stroke:var(--c-inv);stroke-width:2.2}
+.arista.apagada{opacity:.12}
+.lane{fill:var(--muted);font-size:10px;letter-spacing:.08em}
+.lane-line{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.leg{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-right:.6rem}
+.leg i{display:inline-block;width:1.4rem;height:0;border-top:2px solid var(--muted)}
+.leg.refuta i{border-top-color:var(--c-fil);border-top-style:dashed}
+.leg.limita i{border-top-color:var(--c-doc)}
+.leg.funda i{border-top-color:var(--c-inv);border-top-width:3px}
+#panel p{color:var(--ink)}
+#panel ul{margin:.3rem 0 0;padding-left:1.1rem;font-size:.9rem}
+#panel li{margin:.15rem 0}
+.sentidos{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin:.5rem 0}
+.sentidos div{border:1px solid var(--rule);border-radius:4px;padding:.4rem .5rem;font-size:.82rem;color:var(--muted)}
+.sentidos div b{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.2rem}
+.sentidos div.si{border-color:var(--accent)}
+@media (max-width:480px){.sentidos{grid-template-columns:1fr}}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 1 · Semana 6</span>
+  <h1>Genealogía de la validación</h1>
+  <p>Doce autores en dos carriles. Arriba, la línea que identificó validez con corrección formal y encontró sus propios límites. Abajo, el giro que situó la validez en prácticas, actos y comunidades. Pulse un nodo para leer qué aporta y con cuál de los tres sentidos de validación se relaciona. Las aristas dicen cómo se relacionan los autores.</p>
+
+  <div class="card">
+    <div class="row" style="margin-bottom:.4rem">
+      <span class="leg continua"><i></i>continúa</span>
+      <span class="leg refuta"><i></i>refuta</span>
+      <span class="leg limita"><i></i>limita</span>
+      <span class="leg funda"><i></i>funda</span>
+    </div>
+    <svg id="grafo" viewBox="0 0 780 400" role="img" aria-label="Grafo de doce autores con aristas tipadas: continúa, refuta, limita y funda"></svg>
+  </div>
+
+  <div class="card" id="panel">
+    <p class="k" id="pk">Seleccione un nodo</p>
+    <h2 id="pn">Doce autores, tres sentidos de validación</h2>
+    <p id="pt">Corrección del resultado, justificación del proceso e imputación son los tres sentidos que el curso distingue desde la semana 1. Cada autor del grafo aportó a uno o dos de ellos, o mostró que uno no bastaba.</p>
+    <div class="sentidos" id="ps">
+      <div><b>Corrección</b>el resultado es verdadero o correcto</div>
+      <div><b>Justificación</b>el proceso que lo produjo puede exhibirse y evaluarse</div>
+      <div><b>Imputación</b>alguien responde por él ante otros</div>
+    </div>
+    <ul id="pl"></ul>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la validación como corrección formal es un proyecto de 1879 a 1931 que terminó en sus propios teoremas; lo que vino después no la abandonó, la situó. Peirce está debajo de los dos carriles.</p>
+<script>
+  var NODOS = [
+    {id: "aristoteles", n: "Aristóteles", a: "s. IV a. C.", x: 72, y: 200,
+     que: "Formula el silogismo: una inferencia es válida por su forma, no por su contenido. Si cambian los términos y la forma se conserva, la conclusión sigue siendo necesaria. Es el punto de partida de los dos carriles: Frege lo formaliza, Peirce lo gira.",
+     s: [1, 0, 0], sem: "Semana 2 y semana 4"},
+    {id: "peirce", n: "Peirce", a: "1878 · 1903", x: 215, y: 335,
+     que: "Toma el silogismo y lo gira tres veces: deducción, inducción e hipótesis. La abducción es la única inferencia que introduce ideas nuevas, y vale porque alguien se compromete a probarla bajo criterios de economía. La verdad es lo que una comunidad ilimitada de investigación acabaría por aceptar. Está debajo de Habermas y de la hermenéutica de Ricœur.",
+     s: [0, 1, 1], sem: "Semana 4 y semana 6"},
+    {id: "frege", n: "Frege", a: "1879 · 1892", x: 215, y: 110,
+     que: "Inventa la lógica moderna con la Conceptografía y distingue sentido de referencia. El pensamiento puede escribirse sin ambigüedad y la validez se comprueba sobre la escritura. Funda el proyecto de identificar validación con corrección formal.",
+     s: [1, 1, 0], sem: "Semana 2"},
+    {id: "russell", n: "Russell", a: "1901 · 1918", x: 345, y: 60,
+     que: "Descubre la paradoja del conjunto de todos los conjuntos que no se contienen a sí mismos, primera grieta en el sistema de Frege. Con Whitehead intenta reconstruir la matemática desde la lógica. El atomismo lógico: el mundo como hechos y el lenguaje como su espejo.",
+     s: [1, 1, 0], sem: "Semana 2 y semana 5"},
+    {id: "hilbert", n: "Hilbert", a: "1900 · 1928", x: 345, y: 200,
+     que: "Programa formalista: demostrar que la matemática es completa, consistente y decidible por medios finitarios. Después de Frege y Russell era un sueño razonable. Gödel y Turing lo responden en negativo.",
+     s: [1, 1, 0], sem: "Semana 5"},
+    {id: "wittgenstein1", n: "Wittgenstein I", a: "1921", x: 480, y: 60,
+     que: "El Tractatus: las proposiciones son figuras de hechos; las tautologías no dicen nada del mundo y por eso son válidas; de lo que no se puede hablar hay que callar. Lleva el proyecto formal a su límite y marca el precio de la validez formal: no informa.",
+     s: [1, 0, 0], sem: "Semana 2"},
+    {id: "viena", n: "Círculo de Viena", a: "1929", x: 625, y: 60,
+     que: "Criterio de verificación: una proposición significa lo que la verificaría. La filosofía como análisis lógico del lenguaje de la ciencia. Deja fuera lo que no se verifica, y ese resto vuelve con el segundo Wittgenstein.",
+     s: [1, 1, 0], sem: "Semana 2"},
+    {id: "godel", n: "Gödel", a: "1931", x: 480, y: 200,
+     que: "Todo sistema formal consistente que exprese la aritmética tiene verdades que no demuestra, y no puede demostrar su propia consistencia. No dice que la matemática sea inconsistente ni nada sobre mentes. Para el curso: la validación en el segundo y tercer sentido es externa al sistema.",
+     s: [0, 1, 0], sem: "Semana 5"},
+    {id: "turing", n: "Turing", a: "1936 · 1950", x: 625, y: 200,
+     que: "No existe procedimiento general que decida si un programa termina. La máquina de Turing nace de un resultado negativo. En 1950 responde por anticipado al argumento gödeliano contra las máquinas: también la mente humana se equivoca y no puede certificar su consistencia.",
+     s: [0, 1, 0], sem: "Semana 5"},
+    {id: "wittgenstein2", n: "Wittgenstein II", a: "1953", x: 480, y: 335,
+     que: "Las Investigaciones: el significado es el uso dentro de juegos de lenguaje y formas de vida. Ninguna regla fija su propia aplicación (§ 201); lo que resuelve la paradoja es una práctica, no otra regla. Refuta el Tractatus y el criterio de verificación.",
+     s: [0, 1, 1], sem: "Semana 6"},
+    {id: "austin", n: "Austin", a: "1955 · 1962", x: 600, y: 335,
+     que: "Decir es hacer. Un acto de habla puede fallar sin ser falso: el infortunio es un acto que tiene la forma pero no cumple las condiciones convencionales. El curso extiende la idea: el modelo comete infortunios de autoridad epistémica.",
+     s: [0, 1, 1], sem: "Semana 1 y semana 6"},
+    {id: "habermas", n: "Habermas", a: "1968 · 1981", x: 718, y: 335,
+     que: "Toda aserción seria levanta pretensiones de validez que el hablante debe poder sostener ante otros. Producir una justificación no es tener la morfología de una justificación. Lee a Peirce como fundador de la idea de comunidad de investigación.",
+     s: [0, 1, 1], sem: "Semana 6"}
+  ];
+  var ARISTAS = [
+    {s: "aristoteles", t: "frege", k: "continua", d: "Frege formaliza la validez por la forma que Aristóteles había descrito."},
+    {s: "aristoteles", t: "peirce", k: "continua", d: "Peirce toma el silogismo aristotélico y lo gira tres veces."},
+    {s: "frege", t: "russell", k: "continua", d: "Russell continúa el logicismo de Frege en Principia Mathematica."},
+    {s: "russell", t: "frege", k: "limita", d: "La paradoja de Russell muestra que el sistema de Frege es inconsistente."},
+    {s: "frege", t: "hilbert", k: "continua", d: "Hilbert hereda la idea de que la matemática puede escribirse en un sistema formal."},
+    {s: "russell", t: "wittgenstein1", k: "continua", d: "El Tractatus parte del atomismo lógico de Russell."},
+    {s: "wittgenstein1", t: "viena", k: "continua", d: "El Círculo lee el Tractatus como su programa."},
+    {s: "hilbert", t: "godel", k: "continua", d: "Gödel trabaja dentro del problema que Hilbert planteó."},
+    {s: "godel", t: "hilbert", k: "limita", d: "Los teoremas de incompletitud cierran el programa de Hilbert en su forma original."},
+    {s: "godel", t: "turing", k: "continua", d: "Turing traslada la incompletitud al problema de la decisión."},
+    {s: "turing", t: "hilbert", k: "limita", d: "No hay procedimiento general de decisión: el tercer punto de Hilbert cae."},
+    {s: "wittgenstein2", t: "wittgenstein1", k: "refuta", d: "El segundo Wittgenstein abandona la teoría figurativa del primero."},
+    {s: "wittgenstein2", t: "viena", k: "refuta", d: "El significado como uso desplaza el criterio de verificación."},
+    {s: "wittgenstein2", t: "austin", k: "continua", d: "Austin lleva el uso al acto: decir es hacer bajo condiciones."},
+    {s: "austin", t: "habermas", k: "continua", d: "Habermas convierte las condiciones de felicidad en pretensiones de validez."},
+    {s: "peirce", t: "habermas", k: "funda", c: 70, d: "La comunidad ilimitada de investigación de Peirce es la raíz de la validez discursiva de Habermas."},
+    {s: "peirce", t: "wittgenstein2", k: "funda", d: "La validez situada en una práctica que alguien sostiene está ya en el pragmatismo de Peirce."}
+  ];
+  var SENT = ["Corrección", "Justificación", "Imputación"];
+  var DESC = ["el resultado es verdadero o correcto", "el proceso que lo produjo puede exhibirse y evaluarse", "alguien responde por él ante otros"];
+  var byId = {};
+  NODOS.forEach(function (n) { byId[n.id] = n; });
+
+  var svg = d3.select("#grafo");
+  svg.append("defs").selectAll("marker").data(["continua", "refuta", "limita", "funda"]).enter()
+    .append("marker").attr("id", function (d) { return "m-" + d; })
+    .attr("viewBox", "0 0 10 10").attr("refX", 9).attr("refY", 5).attr("markerWidth", 7).attr("markerHeight", 7).attr("orient", "auto")
+    .append("path").attr("d", "M0 1L9 5L0 9z")
+    .attr("fill", function (d) { return d === "refuta" ? "var(--c-fil)" : d === "limita" ? "var(--c-doc)" : d === "funda" ? "var(--c-inv)" : "var(--muted)"; });
+
+  svg.append("line").attr("class", "lane-line").attr("x1", 20).attr("y1", 262).attr("x2", 770).attr("y2", 262);
+  svg.append("text").attr("class", "lane").attr("x", 20).attr("y", 24).text("VALIDEZ COMO FORMA");
+  svg.append("text").attr("class", "lane").attr("x", 20).attr("y", 290).text("VALIDEZ COMO PRÁCTICA");
+
+  var W = 104, H = 46;
+  function borde(ux, uy) {
+    var tx = Math.abs(ux) > 1e-6 ? (W / 2) / Math.abs(ux) : 1e9;
+    var ty = Math.abs(uy) > 1e-6 ? (H / 2) / Math.abs(uy) : 1e9;
+    return Math.min(tx, ty);
+  }
+  function ruta(a) {
+    var s = byId[a.s], t = byId[a.t];
+    var dx = t.x - s.x, dy = t.y - s.y, L = Math.sqrt(dx * dx + dy * dy);
+    var ux = dx / L, uy = dy / L;
+    var r = borde(ux, uy);
+    var x1 = s.x + ux * r, y1 = s.y + uy * r, x2 = t.x - ux * (r + 3), y2 = t.y - uy * (r + 3);
+    var inversa = ARISTAS.some(function (b) { return b.s === a.t && b.t === a.s; });
+    if (!inversa && !a.c) { return "M" + x1 + " " + y1 + " L" + x2 + " " + y2; }
+    var off = a.c || 22;
+    var mx = (x1 + x2) / 2 - uy * off, my = (y1 + y2) / 2 + ux * off;
+    return "M" + x1 + " " + y1 + " Q" + mx + " " + my + " " + x2 + " " + y2;
+  }
+
+  var aristas = svg.append("g").selectAll("path").data(ARISTAS).enter().append("path")
+    .attr("class", function (d) { return "arista " + d.k; })
+    .attr("d", ruta)
+    .attr("marker-end", function (d) { return "url(#m-" + d.k + ")"; });
+  aristas.append("title").text(function (d) { return byId[d.s].n + " " + d.k + " a " + byId[d.t].n + ". " + d.d; });
+
+  var nodos = svg.append("g").selectAll("g").data(NODOS).enter().append("g")
+    .attr("class", "nodo").attr("tabindex", 0).attr("role", "button")
+    .attr("aria-label", function (d) { return d.n; })
+    .attr("transform", function (d) { return "translate(" + d.x + " " + d.y + ")"; });
+  nodos.append("rect").attr("x", -W / 2).attr("y", -H / 2).attr("width", W).attr("height", H).attr("rx", 6);
+  nodos.append("text").attr("y", -2).text(function (d) { return d.n; });
+  nodos.append("text").attr("class", "anio").attr("y", 12).text(function (d) { return d.a; });
+
+  function seleccionar(d) {
+    nodos.attr("class", function (n) {
+      if (n.id === d.id) { return "nodo sel"; }
+      var vecino = ARISTAS.some(function (a) { return (a.s === d.id && a.t === n.id) || (a.t === d.id && a.s === n.id); });
+      return vecino ? "nodo vecino" : "nodo";
+    });
+    aristas.attr("class", function (a) { return "arista " + a.k + ((a.s === d.id || a.t === d.id) ? "" : " apagada"); });
+    document.getElementById("pk").textContent = d.a + " · " + d.sem;
+    document.getElementById("pn").textContent = d.n;
+    document.getElementById("pt").textContent = d.que;
+    var ps = "";
+    for (var i = 0; i < 3; i++) {
+      ps += '<div class="' + (d.s[i] ? "si" : "") + '"><b>' + SENT[i] + '</b>' + DESC[i] + (d.s[i] ? "" : " (no es su aporte)") + "</div>";
+    }
+    document.getElementById("ps").innerHTML = ps;
+    var li = "";
+    ARISTAS.forEach(function (a) {
+      if (a.s === d.id) { li += "<li><b>" + a.k + "</b> a " + byId[a.t].n + ": " + a.d + "</li>"; }
+      else if (a.t === d.id) { li += "<li>" + byId[a.s].n + " <b>lo " + (a.k === "continua" ? "continúa" : a.k) + "</b>: " + a.d + "</li>"; }
+    });
+    document.getElementById("pl").innerHTML = li;
+  }
+
+  nodos.on("click", function (ev, d) { seleccionar(d); });
+  nodos.on("keydown", function (ev, d) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); seleccionar(d); } });
+</script>
+</body>
+</html>

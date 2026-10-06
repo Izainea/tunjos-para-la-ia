@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 7 · Semana 6 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Si delego en un modelo la lectura, la codificación o la síntesis, ¿qué le pasa con el tiempo a mi capacidad de validar lo que el modelo produce?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-7/semana-06.html" />
+    <meta property="og:title" content="Curso 7 · Semana 6" />
+    <meta property="og:description" content="Si delego en un modelo la lectura, la codificación o la síntesis, ¿qué le pasa con el tiempo a mi capacidad de validar lo que el modelo produce?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-7/semana-06.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 7</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub is-active">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 7 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 6. Atrofia del juicio y diseño del andamiaje</h1>
+          <p class="desc">Si delego en un modelo la lectura, la codificación o la síntesis, ¿qué le pasa con el tiempo a mi capacidad de validar lo que el modelo produce?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Si delego en un modelo la lectura, la codificación o la síntesis, ¿qué le pasa con el tiempo a mi capacidad de validar lo que el modelo produce?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">El programa entero descansa en que el investigador valida lo que la máquina configura. Esta semana toma en serio la objeción más fuerte contra ese diseño: validar es una capacidad que se ejercita, y quien delega la configuración deja de ejercitarla. Vallor (2024) la formula para el pensamiento en general; el curso la formula para el flujo de investigación. Si en seis meses de trabajo con un modelo el investigador ya no puede leer un relato sin pedir antes un resumen, ni reconocer una categoría impuesta porque dejó de escribir categorías propias, entonces la frontera entre máquina e investigador existe en el papel y no en la práctica. La semana examina qué debe cumplir un flujo para no atrofiar lo que pretende asistir, con un simulador que hace visible el mecanismo y con las virtudes epistémicas que el andamiaje debe cultivar.</p>
+
+<p>De la semana 5 se necesita el perfil de exclusiones: dónde el modelo no puede sustituir al lector situado. De la semana 1, la distinción entre lo que el modelo produce y lo que el investigador afirma.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>La objeción tiene una forma precisa y conviene darle su mejor versión antes de responderla. Vallor (2024) describe la IA generativa como un espejo: devuelve, reorganizado, lo que la humanidad ya escribió, y quien se mira en él tiende a confundir el reflejo con pensamiento. El capítulo sobre los pensamientos que los civilizados conservan recoge una idea de Whitehead, que la civilización avanza al aumentar el número de operaciones que se pueden hacer sin pensar, y la invierte: hay operaciones que no deben dejar de pensarse porque son las que sostienen la capacidad de juzgar<sup class="mark">a</sup>. Delegar la lectura no es como delegar la suma. Leer es lo que entrena a reconocer una lectura mala.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Vallor, S. (2024). *The AI Mirror: How to Reclaim Our Humanity in an Age of Machine Thinking*. Oxford University Press. El capítulo 4 es "The Thoughts the Civilized Keep"; el 6, "AI and the Bootstrapping Problem", trata cómo se adquieren las virtudes que la IA puede erosionar.</aside>
+
+<ol start="2">
+<li>
+<p>En el marco del programa la objeción es una amenaza directa a la prótesis hermenéutica. El docente la reconoce en el anteproyecto doctoral como la objeción que el capítulo sobre la prótesis debe responder: una prótesis mal diseñada atrofia la capacidad que pretende compensar (Zainea, 2026). La respuesta no niega la objeción; la convierte en una condición de diseño. Un andamiaje no se evalúa solo por lo que produce sino por lo que deja en quien lo usa después de seis meses. Esa segunda medida casi nunca se toma, y el simulador de la semana la hace visible con reglas simples y explícitas.</p>
+</li>
+<li>
+<p>El simulador parte de un flujo en fases (leer, describir, codificar, categorizar, interpretar, escribir) y de un deslizador por fase que fija cuánto se delega. Sus reglas están a la vista y son discutibles: la capacidad de validar en una fase crece cuando el investigador la ejecuta y decae cuando la delega; delegar una fase sin haberla ejercitado antes decae más rápido; y tres andamiajes la preservan: ejecutar una muestra a mano en cada ciclo, comparar la propia lectura con la del modelo antes de ver la del modelo, y registrar cada rechazo con su razón. El simulador no predice nada sobre una persona real. Muestra cómo cambian las curvas al mover los deslizadores, y la discusión es sobre las reglas, no sobre las curvas<sup class="mark">b</sup>.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Las reglas del simulador son del curso y no provienen de un estudio empírico. Se escriben explícitas para que el estudiante pueda objetarlas, cambiarlas y decir en la bitácora con cuál no está de acuerdo. Un simulador con reglas ocultas sería, en este curso, una contradicción.</aside>
+
+<iframe class="app" src="apps/simulador-de-atrofia.html" title="Simulador de atrofia: cuánto se delega en cada fase y qué andamiajes preservan la capacidad de validar" loading="lazy"></iframe>
+
+<ol start="4">
+<li>Feenberg (2012) da el vocabulario para decir qué es un andamiaje. Distingue la instrumentalización primaria, la operación técnica en abstracto, de la secundaria, el encastre de esa operación en un contexto de práctica con sus valores y sus controles. Un modelo desplegado tal como viene opera en la capa primaria; el andamiaje es instrumentalización secundaria: las mediaciones que devuelven la operación a un contexto en que alguien la valida y responde por ella<sup class="mark">c</sup>. La consecuencia para esta semana es que el andamiaje no es una lista de controles sobre el modelo sino una forma de organizar el trabajo del investigador, y por eso incluye lo que el investigador sigue haciendo a mano.</li>
+</ol>
+<aside class="glosa"><span class="mark">c</span> Feenberg, A. (2012). *Transformar la tecnología. Una nueva visita a la teoría crítica*. Bernal: Universidad Nacional de Quilmes. Traducción de *Transforming Technology* (Oxford, 2002). El capítulo 7 expone la teoría de la instrumentalización.</aside>
+
+<ol start="5">
+<li>Qué debe cumplir un flujo para no atrofiar lo que asiste se puede decir en cinco condiciones, y la figura las dibuja. Hay una muestra que el investigador ejecuta a mano en cada ciclo, elegida con el perfil de exclusiones de la semana 5. La lectura propia se escribe antes de ver la del modelo, en las piezas donde la auditoría mostró imposición. Cada rechazo o corrección se registra con su razón, porque el registro de rechazos es la evidencia de que el juicio sigue operando. Hay una revisión entre pares que no usa el modelo. Y hay una fase, al menos una, que no se delega nunca, elegida por el investigador y declarada en el protocolo.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 280" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Dos curvas de capacidad de validar a lo largo del tiempo. Sin andamiaje, la curva cae a medida que se delega. Con andamiaje, se mantiene. Cinco andamiajes marcados sobre la curva que se mantiene: muestra a mano, lectura propia antes, registro de rechazos, revisión entre pares sin modelo, una fase nunca delegada.">
+    <style>.f6-h{font-family:var(--display);font-weight:700;font-size:13px;fill:var(--ink)} .f6-d{font-family:var(--text);font-size:11px;fill:var(--muted)} .f6-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .f6-ax{stroke:var(--muted);stroke-width:1.2;fill:none} .f6-ok{stroke:var(--c-inv);stroke-width:2.2;fill:none} .f6-no{stroke:var(--c-fil);stroke-width:2.2;fill:none;stroke-dasharray:6 4} .f6-pt{fill:var(--c-inv)} .f6-ki{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-inv)} .f6-kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)}</style>
+    <path class="f6-ax" d="M50 30 L50 220 L650 220"/>
+    <text x="40" y="36" text-anchor="end" class="f6-k">ALTA</text>
+    <text x="40" y="222" text-anchor="end" class="f6-k">BAJA</text>
+    <text x="60" y="240" class="f6-k">MES 0</text>
+    <text x="650" y="240" text-anchor="end" class="f6-k">MES 12</text>
+    <text x="350" y="262" text-anchor="middle" class="f6-d">Capacidad del investigador para validar lo que el modelo produce</text>
+    <path class="f6-no" d="M50 60 C 200 70 350 150 650 200"/>
+    <text x="520" y="212" class="f6-kf">SIN ANDAMIAJE</text>
+    <path class="f6-ok" d="M50 60 C 200 68 350 62 650 56"/>
+    <text x="560" y="48" class="f6-ki">CON ANDAMIAJE</text>
+    <circle cx="150" cy="65" r="5" class="f6-pt"/>
+    <text x="150" y="88" text-anchor="middle" class="f6-d">muestra a mano</text>
+    <circle cx="270" cy="64" r="5" class="f6-pt"/>
+    <text x="270" y="88" text-anchor="middle" class="f6-d">lectura propia antes</text>
+    <circle cx="390" cy="61" r="5" class="f6-pt"/>
+    <text x="390" y="88" text-anchor="middle" class="f6-d">registro de rechazos</text>
+    <circle cx="510" cy="58" r="5" class="f6-pt"/>
+    <text x="510" y="88" text-anchor="middle" class="f6-d">pares sin modelo</text>
+    <circle cx="600" cy="57" r="5" class="f6-pt"/>
+    <text x="600" y="110" text-anchor="middle" class="f6-d">una fase nunca</text>
+    <text x="600" y="124" text-anchor="middle" class="f6-d">delegada</text>
+  </svg>
+  <figcaption><b>Figura 6.</b> El andamiaje que no atrofia. La curva punteada es la que la objeción de Vallor describe; la continua es la que las cinco condiciones intentan sostener. Las curvas ilustran las reglas del simulador, no datos.</figcaption>
+</figure>
+
+<ol start="6">
+<li>
+<p>Las virtudes epistémicas son la otra cara de las condiciones. Vallor (2016, 2024) sostiene que las virtudes no se instalan sino que se cultivan con la práctica, y que la IA plantea un problema de arranque: para usarla bien hacen falta virtudes que solo se adquieren haciendo lo que la IA hace por uno. El curso trabaja tres, y cada una tiene una práctica que la ejercita. Apertura a la refutación: buscar en cada ciclo el caso que contradice la categoría aceptada. Reflexividad: escribir qué espera encontrar antes de encontrarlo. Tolerancia a la incertidumbre: dejar abierto en el informe lo que la auditoría no pudo medir, en lugar de cerrarlo con la lectura del modelo.</p>
+</li>
+<li>
+<p>Hay una tensión que la semana no resuelve y que el estudiante debe llevar al protocolo. Las cinco condiciones cuestan tiempo, y el tiempo es lo que el modelo prometía ahorrar. Un andamiaje que exige ejecutar a mano una muestra en cada ciclo reduce la ganancia de delegar. La decisión sobre cuánto cuesta preservar el juicio y quién lo paga no es técnica: es una decisión de gobernanza, y la semana 7 la pone donde corresponde.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Delegar una operación</th>
+<th>Delegar una capacidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Se recupera cuando se necesita: se vuelve a hacer a mano</td>
+<td>Se pierde con el tiempo: lo que no se ejercita decae</td>
+</tr>
+<tr>
+<td>El resultado se verifica mirando el resultado</td>
+<td>El resultado solo se verifica si la capacidad sigue viva</td>
+</tr>
+<tr>
+<td>Ejemplo: contar palabras, ordenar fechas</td>
+<td>Ejemplo: leer un relato, reconocer una categoría impuesta</td>
+</tr>
+<tr>
+<td>El andamiaje registra</td>
+<td>El andamiaje conserva una muestra a mano y una fase nunca delegada</td>
+</tr>
+<tr>
+<td><em>Riesgo: error</em></td>
+<td><em>Riesgo: no poder ver el error</em></td>
+</tr>
+</tbody>
+</table></div>
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que proponga un andamiaje para el flujo del estudiante. El estudiante debe poder, sin el modelo, decir cuál de las cinco condiciones el modelo omitió o convirtió en un control sobre sí mismo en lugar de una práctica del investigador, y qué fase decidió no delegar nunca y por qué.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Vallor, S. (2024). <em>The AI Mirror: How to Reclaim Our Humanity in an Age of Machine Thinking</em>. Oxford University Press. Capítulos 4 y 6.</li>
+<li>Feenberg, A. (2012). <em>Transformar la tecnología. Una nueva visita a la teoría crítica</em>. Bernal: Universidad Nacional de Quilmes. Capítulo 7.</li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Vallor, S. (2016). <em>Technology and the Virtues: A Philosophical Guide to a Future Worth Wanting</em>. Oxford University Press. Capítulo 6, sobre las virtudes tecnomorales.</li>
+<li>Zainea, C. I. (2026). "La prótesis hermenéutica". <a href="https://izainea.github.io/blog/protesis-hermeneutica/">https://izainea.github.io/blog/protesis-hermeneutica/</a></li>
+<li>Smart, P., Clowes, R. y Clark, A. (2025). "ChatGPT, extended: Large language models and the extended mind". <em>Synthese</em> 205(6), 242. <a href="https://doi.org/10.1007/s11229-025-05046-y">https://doi.org/10.1007/s11229-025-05046-y</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Vallor invierte la frase de Whitehead sobre las operaciones que se hacen sin pensar. <em>¿Cuáles son, en su flujo, las operaciones que no deben dejar de pensarse, y cómo lo sabe?</em></li>
+<li>Vallor describe un problema de arranque: las virtudes para usar bien la IA se adquieren haciendo lo que la IA hace por uno. <em>¿Qué pasa con un estudiante que empieza a investigar ya con modelos? ¿Qué debería hacer a mano antes de delegar, y durante cuánto tiempo?</em></li>
+<li>Feenberg distingue las dos instrumentalizaciones. <em>¿Qué controles de su flujo actual son primarios (sobre el modelo) y cuáles secundarios (sobre la práctica)? ¿Cuáles faltan?</em></li>
+<li>Smart, Clowes y Clark discuten en qué condiciones un modelo forma parte de la mente extendida de quien lo usa. <em>Si forma parte, ¿la atrofia es una pérdida o una redistribución? ¿Qué cambia para la imputación?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Cada estudiante trae su flujo en fases con una estimación de cuánto delega. En el simulador fija los deslizadores en esa estimación, observa las curvas, y luego activa andamiajes hasta que la curva se sostiene. Registra en la tabla qué cambió y qué cuesta.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Cuánto delego hoy (0 a 100)</th>
+<th>Qué le pasa a mi capacidad en el simulador</th>
+<th>Andamiaje que la sostiene</th>
+<th>Qué cuesta ese andamiaje (tiempo, personas)</th>
+<th>¿Fase nunca delegada?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leer</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Describir</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Codificar</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Categorizar</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Interpretar</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Escribir</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Después, cada estudiante escribe la regla del simulador con la que no está de acuerdo y por qué. Esa objeción va a la bitácora y se discute en los últimos minutos.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 20 min</td>
+<td>Expone la objeción de Vallor en su mejor versión</td>
+<td>Dice si la ha sentido en su propio trabajo</td>
+<td>Lectura central</td>
+</tr>
+<tr>
+<td>20 a 35 min</td>
+<td>Presenta la instrumentalización secundaria con Feenberg</td>
+<td>Clasifica dos controles de su flujo</td>
+<td>Lectura central</td>
+</tr>
+<tr>
+<td>35 a 50 min</td>
+<td>Explica las reglas del simulador y la Figura 6</td>
+<td>Anota la regla que le parece más dudosa</td>
+<td>Mini app, Figura 6</td>
+</tr>
+<tr>
+<td>50 a 60 min</td>
+<td>Presenta las tres virtudes y sus prácticas</td>
+<td>Elige la que menos ejercita</td>
+<td>Contenido 6</td>
+</tr>
+<tr>
+<td>60 a 95 min</td>
+<td>Acompaña el taller con el simulador</td>
+<td>Fija deslizadores, activa andamiajes, llena la tabla</td>
+<td>Mini app, tabla</td>
+</tr>
+<tr>
+<td>95 a 115 min</td>
+<td>Recoge las objeciones a las reglas</td>
+<td>Expone su objeción</td>
+<td>Bitácora</td>
+</tr>
+<tr>
+<td>115 a 120 min</td>
+<td>Enlaza con la gobernanza de la semana 7</td>
+<td>Anota quién pagaría el andamiaje en su caso</td>
+<td>Contenido 7</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que el simulador se tome como predicción; repetir que son reglas del curso, explícitas y discutibles. Suele fallar que la fase nunca delegada sea "interpretar" en todos los casos, por defecto; pedir que se justifique con el perfil de exclusiones de la semana 5. Y conviene no dejar que el costo del andamiaje se minimice: la tensión del punto 7 es real y el protocolo tiene que asumirla.</p>
+<h2>Bitácora</h2>
+<p>Registre la tabla de fases, la objeción a una regla del simulador y la fase que decidió no delegar nunca con su razón. Anote el modelo usado y qué propuso como andamiaje.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer el documento CONPES 4144 de 2025 (resumen ejecutivo y el objetivo sobre ética y gobernanza), la Sentencia T-067 de 2025 (síntesis de la decisión) y la Directiva Conjunta 007 de 2025. Traer la matriz de riesgos, el perfil de exclusiones y la tabla de fases: son los insumos del protocolo preliminar.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-05.html">← Semana 5. Auditar la exterioridad</a><a href="semana-07.html">Semana 7. Gobernanza →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

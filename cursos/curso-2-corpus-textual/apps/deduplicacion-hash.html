@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deduplicación por hash</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* propios de esta app */
+.txt{font-family:var(--mono);font-size:.78rem;white-space:pre-wrap;color:var(--ink);word-break:break-word}
+.hash{font-family:var(--mono);font-size:.78rem}
+.grupo{display:inline-block;min-width:1.4rem;text-align:center;border-radius:999px;font-family:var(--mono);font-size:.72rem;padding:.05rem .4rem;border:1px solid var(--rule);color:var(--muted)}
+.grupo.dup{border-color:var(--c-fil);color:var(--c-fil)}
+.decision{font-family:var(--mono);font-size:.78rem}
+.decision label{display:inline-flex;align-items:center;gap:.3rem;margin-right:.6rem}
+input[type=range]{width:9rem;padding:0}
+.pares li{margin:.25rem 0;font-size:.9rem}
+.cifra{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+td.id{font-family:var(--mono);font-size:.78rem;white-space:nowrap}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 2 · Semana 4</span>
+  <h1>Deduplicación por hash</h1>
+  <p>Ocho textos de un corpus, algunos idénticos, algunos casi. El hash exacto solo agrupa los idénticos byte a byte. Cada normalización que active antes de calcularlo es una decisión sobre qué diferencias se ignoran, y cambia qué cuenta como el mismo texto.</p>
+
+  <div class="card">
+    <span class="k">Decisiones antes del hash</span>
+    <div class="decision row">
+      <label><input type="checkbox" id="n-esp" /> unificar espacios y saltos</label>
+      <label><input type="checkbox" id="n-may" /> pasar a minúsculas</label>
+      <label><input type="checkbox" id="n-til" /> quitar tildes</label>
+      <label><input type="checkbox" id="n-pun" /> quitar puntuación</label>
+      <label><input type="checkbox" id="n-enc" /> quitar encabezado de periódico</label>
+    </div>
+    <p class="cifra" id="resumen"></p>
+  </div>
+
+  <div class="card" style="overflow-x:auto">
+    <table id="tabla">
+      <thead><tr><th>id</th><th>texto</th><th>hash</th><th>grupo</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <span class="k">Casi duplicados por similitud de palabras</span>
+    <div class="row">
+      <label for="umbral" class="cifra">umbral de Jaccard</label>
+      <input type="range" id="umbral" min="50" max="100" value="80" />
+      <span class="cifra" id="umbral-v">0,80</span>
+    </div>
+    <ul class="pares" id="pares"></ul>
+    <p class="cifra">Jaccard: palabras compartidas sobre palabras distintas entre los dos textos, con las normalizaciones activas. Señala dónde mirar; no decide.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: "el mismo texto" no es un hecho sino una decisión sobre qué diferencias no importan, y esa decisión se escribe en el cuaderno antes de deduplicar. En Python, el hash es <code>hashlib.sha256</code>; aquí se usa una huella corta de demostración.</p>
+<script>
+  var BASE = 'El día de ayer se reunió la junta en el salón de sesiones del concejo, con asistencia de la mayoría de sus miembros, para tratar el asunto del acueducto.';
+  var TEXTOS = [
+    {id:'P-0011', x: BASE},
+    {id:'P-0012', x: BASE},
+    {id:'P-0013', x: 'El día  de ayer se reunió la junta\nen el salón de sesiones del concejo,  con asistencia de la mayoría de sus miembros, para tratar el asunto del acueducto.'},
+    {id:'P-0014', x: 'EL DÍA DE AYER SE REUNIÓ LA JUNTA EN EL SALÓN DE SESIONES DEL CONCEJO, CON ASISTENCIA DE LA MAYORÍA DE SUS MIEMBROS, PARA TRATAR EL ASUNTO DEL ACUEDUCTO.'},
+    {id:'P-0015', x: 'El dia de ayer se reunio la junta en el salon de sesiones del concejo, con asistencia de la mayoria de sus miembros, para tratar el asunto del acueducto.'},
+    {id:'P-0016', x: 'El día de ayer se reunió la jnnta en el salón de sesiones del concejo, con asistencia de la mayoría de sus miembros, para tratar el asunto del acueducto.'},
+    {id:'P-0017', x: 'EL TIEMPO pág. 3\nEl día de ayer se reunió la junta en el salón de sesiones del concejo, con asistencia de la mayoría de sus miembros, para tratar el asunto del acueducto.'},
+    {id:'P-0018', x: 'La junta del acueducto se reunirá el martes próximo en el salón del concejo para decidir sobre las tarifas del servicio.'}
+  ];
+
+  function normalizar(s){
+    if (document.getElementById('n-enc').checked) s = s.replace(/^\s*EL TIEMPO[^\n]*\n?/i, '');
+    if (document.getElementById('n-may').checked) s = s.toLowerCase();
+    if (document.getElementById('n-til').checked) s = s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    if (document.getElementById('n-pun').checked) s = s.replace(/[.,;:!?¿¡"'()\-]/g, '');
+    if (document.getElementById('n-esp').checked) s = s.replace(/\s+/g, ' ').trim();
+    return s;
+  }
+
+  // huella de demostración: FNV-1a de 32 bits sobre los puntos de código, en 8 hexadecimales
+  function huella(s){
+    var h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+    return ('00000000' + h.toString(16)).slice(-8);
+  }
+
+  function palabras(s){ return s.toLowerCase().match(/[a-záéíóúüñ]+/g) || []; }
+  function jaccard(a, b){
+    var A = {}, B = {}, inter = 0, uni = 0;
+    palabras(a).forEach(function(w){ A[w] = true; });
+    palabras(b).forEach(function(w){ B[w] = true; });
+    for (var w in A) { uni++; if (B[w]) inter++; }
+    for (var v in B) { if (!A[v]) uni++; }
+    return uni ? inter / uni : 0;
+  }
+
+  function actualizar(){
+    var tb = document.querySelector('#tabla tbody'); tb.innerHTML = '';
+    var hs = TEXTOS.map(function(t){ return huella(normalizar(t.x)); });
+    var grupos = {}, g = 0;
+    hs.forEach(function(h){ if (!(h in grupos)) grupos[h] = ++g; });
+    var cuenta = {};
+    hs.forEach(function(h){ cuenta[h] = (cuenta[h] || 0) + 1; });
+    TEXTOS.forEach(function(t, i){
+      var tr = document.createElement('tr');
+      var dup = cuenta[hs[i]] > 1;
+      tr.innerHTML = '<td class="id">' + t.id + '</td><td class="txt"></td><td class="hash">' + hs[i] + '</td><td><span class="grupo' + (dup ? ' dup' : '') + '">' + grupos[hs[i]] + '</span></td>';
+      tr.children[1].textContent = t.x;
+      tb.appendChild(tr);
+    });
+    var distintos = Object.keys(grupos).length;
+    document.getElementById('resumen').textContent = distintos + ' hash distintos en 8 textos · ' + (8 - distintos) + ' duplicados exactos con las decisiones activas';
+    var um = (+document.getElementById('umbral').value) / 100;
+    document.getElementById('umbral-v').textContent = um.toFixed(2).replace('.', ',');
+    var ul = document.getElementById('pares'); ul.innerHTML = '';
+    for (var i = 0; i < TEXTOS.length; i++) for (var j = i + 1; j < TEXTOS.length; j++) {
+      if (hs[i] === hs[j]) continue;
+      var s = jaccard(normalizar(TEXTOS[i].x), normalizar(TEXTOS[j].x));
+      if (s >= um) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span class="id" style="font-family:var(--mono);font-size:.78rem">' + TEXTOS[i].id + ' y ' + TEXTOS[j].id + '</span> · Jaccard ' + s.toFixed(2).replace('.', ',') + ' · <span class="no">casi duplicados: hash distinto, alguien tiene que leerlos</span>';
+        ul.appendChild(li);
+      }
+    }
+    if (!ul.children.length) { var li2 = document.createElement('li'); li2.className = 'cifra'; li2.textContent = 'Ningún par con hash distinto supera el umbral.'; ul.appendChild(li2); }
+  }
+
+  ['n-esp','n-may','n-til','n-pun','n-enc'].forEach(function(id){ document.getElementById(id).addEventListener('change', actualizar); });
+  document.getElementById('umbral').addEventListener('input', actualizar);
+  actualizar();
+</script>
+</body>
+</html>

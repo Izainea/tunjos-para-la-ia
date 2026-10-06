@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 2 · Prácticas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-2/practicas.html" />
+    <meta property="og:title" content="Curso 2 · Prácticas" />
+    <meta property="og:description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-2/practicas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 2</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html" class="is-active">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 2 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Prácticas</h1>
+          <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
+        </div>
+<article class="prose">
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo: Python para construir el corpus</h1>
+<p>Este cuaderno acompaña las ocho semanas. Está escrito para alguien que nunca ha programado: cada bloque lleva antes una explicación de qué hace y por qué, y se puede copiar tal cual en una celda del cuaderno propio. Los bloques usan el caso demostrativo del curso; para el corpus propio basta cambiar las rutas y los nombres. Todo el software es libre.</p>
+<p>Regla del curso: antes de cada bloque de código, una celda de texto con sus palabras que diga qué decisión encarna. Después de cada sesión, reiniciar el núcleo y ejecutar todo de arriba abajo.</p>
+<h2>Preparación</h2>
+<p>Instale Python 3.11 o superior desde <a href="https://www.python.org/">https://www.python.org/</a> y, en una terminal, las bibliotecas del curso:</p>
+<pre><code>pip install jupyterlab pandas requests beautifulsoup4
+</code></pre>
+<p>Abra el cuaderno con <code>jupyter lab</code>. Si la instalación no es posible, cualquier servicio gratuito de cuadernos en la nube sirve; suba la carpeta <code>crudo</code> y trabaje igual.</p>
+<p>Estructura de carpetas del proyecto, que el cuaderno espera:</p>
+<pre><code>mi-corpus/
+  crudo/          archivos tal como llegaron; no se editan
+  limpio/         archivos en UTF-8, limpios
+  cuadernos/      los cuadernos del curso
+  decisiones.csv  decisiones a mano, con fecha
+  catalogo.csv    generado por el cuaderno
+</code></pre>
+<h2>Semana 2. Leer archivos y escribir el primer registro</h2>
+<p>Una cadena es un texto en una variable. Se le pueden hacer preguntas que la máquina responde sin interpretar.</p>
+<pre><code class="language-python">texto = &quot;El día de ayer se reunió la junta en el salón de sesiones del concejo.&quot;
+print(len(texto))                 # cuántos caracteres
+print(texto[:20])                 # los primeros veinte
+print(&quot;junta&quot; in texto)           # ¿contiene la palabra?
+print(texto.lower())              # todo en minúsculas
+print(texto.split()[:5])          # las primeras cinco palabras
+</code></pre>
+<p>Abrir un archivo exige declarar su codificación. El curso usa UTF-8 siempre.</p>
+<pre><code class="language-python">from pathlib import Path
+
+ruta = Path(&quot;crudo&quot;) / &quot;P-0001.txt&quot;
+texto = ruta.read_text(encoding=&quot;utf-8&quot;)
+print(ruta.name, len(texto), &quot;caracteres&quot;)
+print(texto.splitlines()[0])      # la primera línea
+</code></pre>
+<p><code>pathlib</code> recorre una carpeta y devuelve sus archivos como una lista. Esa lista es la primera forma del corpus.</p>
+<pre><code class="language-python">rutas = sorted(Path(&quot;crudo&quot;).glob(&quot;*.txt&quot;))
+print(len(rutas), &quot;archivos&quot;)
+for r in rutas[:3]:
+    print(r.name)
+</code></pre>
+<p>Un diccionario es un registro con campos nombrados. Una lista de diccionarios es un catálogo rudimentario. El bucle hace con cada archivo lo que el investigador haría con uno.</p>
+<pre><code class="language-python">import datetime
+
+registro = []
+for r in rutas:
+    t = r.read_text(encoding=&quot;utf-8&quot;)
+    registro.append({
+        &quot;archivo&quot;: r.name,
+        &quot;bytes&quot;: r.stat().st_size,
+        &quot;caracteres&quot;: len(t),
+        &quot;primera_linea&quot;: t.splitlines()[0] if t.strip() else &quot;&quot;,
+        &quot;fecha_lectura&quot;: datetime.datetime.now().isoformat(timespec=&quot;minutes&quot;),
+    })
+registro[0]
+</code></pre>
+<p>Una función es un criterio escrito una vez. Esta encarna un criterio del protocolo preliminar: entra lo que tiene más de doscientos caracteres y contiene una fecha con cuatro dígitos. Cambie el criterio por el suyo y escriba arriba de dónde viene.</p>
+<pre><code class="language-python">import re
+
+def entra(texto):
+    &quot;&quot;&quot;Criterio 1 del protocolo: longitud mínima y fecha legible.&quot;&quot;&quot;
+    tiene_fecha = re.search(r&quot;\b1[89]\d\d\b|\b20\d\d\b&quot;, texto) is not None
+    return len(texto) &gt; 200 and tiene_fecha
+
+for fila, r in zip(registro, rutas):
+    fila[&quot;entra&quot;] = entra(r.read_text(encoding=&quot;utf-8&quot;))
+</code></pre>
+<p>El registro se escribe en un archivo CSV que cualquier hoja de cálculo abre. Es el primer producto del código.</p>
+<pre><code class="language-python">import csv
+
+campos = list(registro[0].keys())
+with open(&quot;registro.csv&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;, newline=&quot;&quot;) as f:
+    w = csv.DictWriter(f, fieldnames=campos)
+    w.writeheader()
+    w.writerows(registro)
+print(&quot;registro.csv escrito con&quot;, len(registro), &quot;filas&quot;)
+</code></pre>
+<h2>Semana 3. Recolección reproducible</h2>
+<p>Antes de pedir nada, se lee lo que el sitio declara. Python trae un lector de <code>robots.txt</code> en la biblioteca estándar.</p>
+<pre><code class="language-python">from urllib.robotparser import RobotFileParser
+
+rp = RobotFileParser()
+rp.set_url(&quot;<a href="https://www.datos.gov.co/robots.txt&quot;)">https://www.datos.gov.co/robots.txt&quot;)</a>
+rp.read()
+print(rp.can_fetch(&quot;corpus-curso2&quot;, &quot;<a href="https://www.datos.gov.co/resource/&quot;))">https://www.datos.gov.co/resource/&quot;))</a>
+</code></pre>
+<p>La función de descarga encarna la cortesía técnica: se identifica, espera, guarda lo que llegó sin tocarlo, calcula el hash y anota la bitácora. Cambie el correo por el suyo. Si el sitio responde con error, la función lo anota y no insiste.</p>
+<pre><code class="language-python">import requests, time, hashlib, json, datetime
+from pathlib import Path
+
+CABECERAS = {&quot;User-Agent&quot;: &quot;corpus-curso2 (investigacion; su-correo@ejemplo.org)&quot;}
+PAUSA = 1.0  # segundos entre peticiones
+
+def sha256_bytes(b):
+    return hashlib.sha256(b).hexdigest()
+
+def descargar(url, destino, bitacora=&quot;bitacora_descarga.jsonl&quot;):
+    &quot;&quot;&quot;Pide url, guarda la respuesta intacta en destino y anota la bitácora.&quot;&quot;&quot;
+    fila = {&quot;url&quot;: url, &quot;destino&quot;: str(destino),
+            &quot;fecha_descarga&quot;: datetime.datetime.now().isoformat(timespec=&quot;minutes&quot;)}
+    try:
+        r = requests.get(url, headers=CABECERAS, timeout=30)
+        fila[&quot;estado&quot;] = r.status_code
+        if r.ok:
+            Path(destino).write_bytes(r.content)
+            fila[&quot;hash_sha256&quot;] = sha256_bytes(r.content)
+            fila[&quot;bytes&quot;] = len(r.content)
+    except requests.RequestException as e:
+        fila[&quot;estado&quot;] = &quot;error&quot;
+        fila[&quot;detalle&quot;] = str(e)
+    with open(bitacora, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps(fila, ensure_ascii=False) + &quot;\n&quot;)
+    time.sleep(PAUSA)
+    return fila
+</code></pre>
+<p>La lista de lo que se pide se escribe antes y se revisa a mano. Aquí, una norma de la Secretaría del Senado y un conjunto de datos abiertos por su interfaz de programación. El protocolo dice qué va en esta lista; el programa solo la recorre.</p>
+<pre><code class="language-python">Path(&quot;crudo&quot;).mkdir(exist_ok=True)
+
+pedidos = [
+    (&quot;<a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html&quot;,">http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html&quot;,</a> &quot;crudo/N-0001.html&quot;),
+    (&quot;<a href="https://www.datos.gov.co/resource/XXXX-XXXX.csv?$limit=500&quot;,">https://www.datos.gov.co/resource/XXXX-XXXX.csv?$limit=500&quot;,</a> &quot;crudo/D-0001.csv&quot;),
+]
+for url, destino in pedidos:
+    print(descargar(url, destino))
+</code></pre>
+<p>Reemplace <code>XXXX-XXXX</code> por el identificador del conjunto de datos que eligió en datos.gov.co; aparece en la dirección de cada conjunto. Para extraer el texto de una página HTML se usa Beautiful Soup, pero eso ocurre en la semana 5, sobre una copia: <code>crudo</code> no se toca.</p>
+<p>Comparar dos ejecuciones es comparar hash. Este bloque lee la bitácora y señala las direcciones cuyo contenido cambió.</p>
+<pre><code class="language-python">import pandas as pd
+
+b = pd.read_json(&quot;bitacora_descarga.jsonl&quot;, lines=True)
+cambios = b.groupby(&quot;url&quot;)[&quot;hash_sha256&quot;].nunique()
+print(cambios[cambios &gt; 1])   # vacío si nada cambió entre ejecuciones
+</code></pre>
+<h2>Semana 4. El catálogo maestro con pandas</h2>
+<p>El hash de cada archivo en <code>crudo</code> es la base del catálogo. Se calcula sobre los bytes, no sobre el texto, para que no dependa de la codificación.</p>
+<pre><code class="language-python">import hashlib
+from pathlib import Path
+import pandas as pd
+
+def sha256_archivo(ruta):
+    return hashlib.sha256(Path(ruta).read_bytes()).hexdigest()
+
+filas = []
+for r in sorted(Path(&quot;crudo&quot;).iterdir()):
+    if r.is_file():
+        filas.append({&quot;ruta_crudo&quot;: str(r).replace(&quot;\\&quot;, &quot;/&quot;),
+                      &quot;hash_sha256&quot;: sha256_archivo(r)})
+hashes = pd.DataFrame(filas)
+hashes.head()
+</code></pre>
+<p>La bitácora de descarga aporta la dirección y la fecha de descarga; se une por la ruta. Los identificadores se asignan en orden de descarga y no se reutilizan.</p>
+<pre><code class="language-python">b = pd.read_json(&quot;bitacora_descarga.jsonl&quot;, lines=True)
+b = b[b[&quot;estado&quot;] == 200].rename(columns={&quot;destino&quot;: &quot;ruta_crudo&quot;})
+cat = hashes.merge(b[[&quot;ruta_crudo&quot;, &quot;url&quot;, &quot;fecha_descarga&quot;]], on=&quot;ruta_crudo&quot;, how=&quot;left&quot;)
+cat = cat.sort_values(&quot;fecha_descarga&quot;).reset_index(drop=True)
+cat[&quot;id&quot;] = [&quot;P-%04d&quot; % (i + 1) for i in range(len(cat))]
+</code></pre>
+<p>Los duplicados exactos comparten hash. El primero se conserva; los demás se anotan y se excluyen con el criterio <code>E1</code>, sin perder su identificador.</p>
+<pre><code class="language-python">dup = cat.duplicated(&quot;hash_sha256&quot;, keep=&quot;first&quot;)
+primero = cat.drop_duplicates(&quot;hash_sha256&quot;).set_index(&quot;hash_sha256&quot;)[&quot;id&quot;]
+cat[&quot;notas&quot;] = &quot;&quot;
+cat.loc[dup, &quot;notas&quot;] = &quot;Duplicado exacto de &quot; + cat.loc[dup, &quot;hash_sha256&quot;].map(primero) + &quot;; excluido&quot;
+cat[&quot;criterio_inclusion&quot;] = &quot;&quot;
+cat.loc[dup, &quot;criterio_inclusion&quot;] = &quot;E1&quot;
+print(dup.sum(), &quot;duplicados exactos&quot;)
+</code></pre>
+<p>Las decisiones a mano viven en <code>decisiones.csv</code>, con fecha. El cuaderno las lee y las une por <code>id</code>. Así el catálogo sigue siendo regenerable aunque contenga decisiones que ningún programa toma.</p>
+<pre><code class="language-python">dec = pd.read_csv(&quot;decisiones.csv&quot;, dtype=str).fillna(&quot;&quot;)
+cat = cat.merge(dec, on=&quot;id&quot;, how=&quot;left&quot;, suffixes=(&quot;&quot;, &quot;_dec&quot;))
+for col in [&quot;titulo&quot;, &quot;autor&quot;, &quot;fuente&quot;, &quot;fecha_documento&quot;, &quot;escena&quot;, &quot;derechos&quot;, &quot;ruta_limpio&quot;]:
+    if col not in cat.columns:
+        cat[col] = &quot;&quot;
+# una decisión a mano sobre criterio o notas tiene prioridad sobre lo automático
+for col in [&quot;criterio_inclusion&quot;, &quot;notas&quot;]:
+    if col + &quot;_dec&quot; in cat.columns:
+        cat[col] = cat[col + &quot;_dec&quot;].where(cat[col + &quot;_dec&quot;] != &quot;&quot;, cat[col])
+        cat = cat.drop(columns=[col + &quot;_dec&quot;])
+</code></pre>
+<p>Las cinco reglas de integridad en una función. Se ejecuta cada vez que el catálogo cambia; devuelve las filas que fallan y por qué.</p>
+<pre><code class="language-python">import re
+
+OBLIGATORIOS = [&quot;id&quot;, &quot;titulo&quot;, &quot;fuente&quot;, &quot;url&quot;, &quot;fecha_documento&quot;, &quot;fecha_descarga&quot;,
+                &quot;escena&quot;, &quot;derechos&quot;, &quot;criterio_inclusion&quot;, &quot;hash_sha256&quot;, &quot;ruta_crudo&quot;]
+CRITERIOS = {&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;E1&quot;, &quot;E2&quot;}   # los del protocolo
+
+def validar(cat):
+    fallas = []
+    for i, f in cat.iterrows():
+        vacios = [c for c in OBLIGATORIOS if str(f.get(c, &quot;&quot;)).strip() == &quot;&quot;]
+        if vacios:
+            fallas.append((f[&quot;id&quot;], &quot;regla 1: vacíos &quot; + &quot;, &quot;.join(vacios)))
+        fd, fc = str(f[&quot;fecha_documento&quot;]), str(f[&quot;fecha_descarga&quot;])
+        if not re.fullmatch(r&quot;\d{4}(-\d{2}(-\d{2})?)?&quot;, fd) or fc[:10] &lt; fd[:10]:
+            fallas.append((f[&quot;id&quot;], &quot;regla 2: fechas&quot;))
+        if Path(f[&quot;ruta_crudo&quot;]).exists() and sha256_archivo(f[&quot;ruta_crudo&quot;]) != f[&quot;hash_sha256&quot;]:
+            fallas.append((f[&quot;id&quot;], &quot;regla 3: hash no coincide&quot;))
+        if str(f[&quot;criterio_inclusion&quot;]) not in CRITERIOS:
+            fallas.append((f[&quot;id&quot;], &quot;regla 5: criterio no está en el protocolo&quot;))
+    repetidos = cat[&quot;id&quot;][cat[&quot;id&quot;].duplicated()].tolist()
+    for r in repetidos:
+        fallas.append((r, &quot;regla 4: id repetido&quot;))
+    return pd.DataFrame(fallas, columns=[&quot;id&quot;, &quot;falla&quot;])
+
+fallas = validar(cat)
+print(len(fallas), &quot;fallas&quot;)
+fallas
+</code></pre>
+<p>El catálogo se guarda con las columnas en el orden del esquema, y se producen los tres conteos que describen el corpus.</p>
+<pre><code class="language-python">ORDEN = [&quot;id&quot;, &quot;titulo&quot;, &quot;autor&quot;, &quot;fuente&quot;, &quot;url&quot;, &quot;fecha_documento&quot;, &quot;fecha_descarga&quot;, &quot;escena&quot;,
+         &quot;derechos&quot;, &quot;criterio_inclusion&quot;, &quot;hash_sha256&quot;, &quot;ruta_crudo&quot;, &quot;ruta_limpio&quot;, &quot;notas&quot;]
+cat = cat.reindex(columns=ORDEN).fillna(&quot;&quot;)
+cat.to_csv(&quot;catalogo.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+
+print(cat.groupby(&quot;fuente&quot;).size())
+print(cat.groupby(cat[&quot;fecha_documento&quot;].str[:4]).size())
+print(cat.groupby(&quot;criterio_inclusion&quot;).size())
+</code></pre>
+<h2>Semana 5. Limpieza y normalización</h2>
+<p>La codificación se detecta probando: si UTF-8 falla, se intenta CP1252. Lo que se escribe en <code>limpio</code> es UTF-8 siempre. Después se busca el rastro del error.</p>
+<pre><code class="language-python">from pathlib import Path
+import unicodedata, re
+
+def leer_con_deteccion(ruta):
+    b = Path(ruta).read_bytes()
+    for enc in (&quot;utf-8&quot;, &quot;cp1252&quot;, &quot;latin-1&quot;):
+        try:
+            return b.decode(enc), enc
+        except UnicodeDecodeError:
+            continue
+    raise ValueError(&quot;no se pudo decodificar &quot; + str(ruta))
+
+texto, enc = leer_con_deteccion(&quot;crudo/P-0001.txt&quot;)
+print(enc, &quot;|&quot;, texto.count(&quot;Ã&quot;), &quot;apariciones de Ã&quot;)
+</code></pre>
+<p>Si el archivo es HTML, el texto se extrae con Beautiful Soup sobre la copia leída, nunca sobre <code>crudo</code>.</p>
+<pre><code class="language-python">from bs4 import BeautifulSoup
+
+html, enc = leer_con_deteccion(&quot;crudo/N-0001.html&quot;)
+soup = BeautifulSoup(html, &quot;html.parser&quot;)
+for etiqueta in soup([&quot;script&quot;, &quot;style&quot;, &quot;nav&quot;, &quot;header&quot;, &quot;footer&quot;]):
+    etiqueta.decompose()
+texto = soup.get_text(&quot;\n&quot;)
+print(texto[:300])
+</code></pre>
+<p>Cada operación de limpieza es un patrón con su antes y después. Este quita un encabezado de periódico y números de página; cambie el patrón por el que su fuente necesite y muestre siempre lo que quitó.</p>
+<pre><code class="language-python">def quitar_encabezados(t):
+    antes = len(t)
+    t = re.sub(r&quot;^\s*EL TIEMPO.*$&quot;, &quot;&quot;, t, flags=re.MULTILINE)      # encabezado
+    t = re.sub(r&quot;^\s*p[áa]g\.?\s*\d+\s*$&quot;, &quot;&quot;, t, flags=re.MULTILINE) # paginación
+    return t, antes - len(t)
+
+limpio, quitados = quitar_encabezados(texto)
+print(quitados, &quot;caracteres quitados&quot;)
+</code></pre>
+<p>La normalización unifica la forma Unicode, los espacios, las comillas y los guiones. No toca mayúsculas ni tildes: esa es una decisión del curso, escrita aquí.</p>
+<pre><code class="language-python">def normalizar(t):
+    t = unicodedata.normalize(&quot;NFC&quot;, t)
+    t = t.replace(&quot;“&quot;, '&quot;').replace(&quot;”&quot;, '&quot;').replace(&quot;«&quot;, '&quot;').replace(&quot;»&quot;, '&quot;')
+    t = t.replace(&quot;‘&quot;, &quot;'&quot;).replace(&quot;’&quot;, &quot;'&quot;)
+    t = re.sub(r&quot;[‐-―]&quot;, &quot;-&quot;, t)        # guiones de distintas longitudes
+    t = re.sub(r&quot;(\w)-\n(\w)&quot;, r&quot;\1\2&quot;, t)         # palabra cortada al final de línea
+    t = re.sub(r&quot;[ \t]+&quot;, &quot; &quot;, t)
+    t = re.sub(r&quot;\n{3,}&quot;, &quot;\n\n&quot;, t)
+    return t.strip()
+
+limpio = normalizar(limpio)
+Path(&quot;limpio&quot;).mkdir(exist_ok=True)
+Path(&quot;limpio/P-0001.txt&quot;).write_text(limpio, encoding=&quot;utf-8&quot;)
+</code></pre>
+<p>La segmentación produce la tabla de unidades: una fila por unidad con el <code>id</code> de la pieza y la posición. Aquí por oración, con un patrón simple que el estudiante puede ajustar; por párrafo bastaría dividir por línea en blanco.</p>
+<pre><code class="language-python">import pandas as pd
+
+def segmentar_oraciones(t):
+    partes = re.split(r&quot;(?&lt;=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡\&quot;'])&quot;, t)
+    return [p.strip() for p in partes if p.strip()]
+
+unidades = []
+for ruta in sorted(Path(&quot;limpio&quot;).glob(&quot;*.txt&quot;)):
+    pid = ruta.stem
+    for i, s in enumerate(segmentar_oraciones(ruta.read_text(encoding=&quot;utf-8&quot;)), start=1):
+        unidades.append({&quot;id&quot;: pid, &quot;posicion&quot;: i, &quot;texto&quot;: s})
+U = pd.DataFrame(unidades)
+U.to_csv(&quot;unidades.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+print(len(U), &quot;unidades&quot;)
+</code></pre>
+<p>Estimar el error de OCR es leer cien palabras y contar. El programa solo ayuda a elegirlas al azar y a registrar el resultado en <code>decisiones.csv</code> o en <code>notas</code>.</p>
+<pre><code class="language-python">import random
+palabras = re.findall(r&quot;\w+&quot;, Path(&quot;limpio/P-0001.txt&quot;).read_text(encoding=&quot;utf-8&quot;))
+random.seed(7)
+inicio = random.randint(0, max(0, len(palabras) - 100))
+print(&quot; &quot;.join(palabras[inicio:inicio + 100]))
+# cuente a mano los errores y anote: error_ocr = errores / 100
+</code></pre>
+<h2>Semana 6. Primera lectura computacional</h2>
+<p>Contar palabras exige decidir qué es una palabra. Aquí: secuencias de letras, en minúsculas, con tildes conservadas. La lista de palabras funcionales que se quita está escrita y se puede cambiar.</p>
+<pre><code class="language-python">from collections import Counter
+import pandas as pd, re
+
+U = pd.read_csv(&quot;unidades.csv&quot;, dtype=str)
+FUNCIONALES = set(&quot;&quot;&quot;de la el y a en los las que del se por con su sus o al un una es no lo para
+como más ni ante sin sobre son le les ha han e u cual entre todo toda todos todas esta este esto
+estos estas ser será serán hay sea sean tiene tienen&quot;&quot;&quot;.split())
+
+def tokens(t):
+    return re.findall(r&quot;[a-záéíóúüñ]+&quot;, t.lower())
+
+todos = [w for t in U[&quot;texto&quot;] for w in tokens(t)]
+frec = Counter(todos)
+print(len(todos), &quot;palabras;&quot;, len(frec), &quot;distintas&quot;)
+print(frec.most_common(10))
+contenido = Counter({w: c for w, c in frec.items() if w not in FUNCIONALES})
+print(contenido.most_common(20))
+</code></pre>
+<p>La concordancia muestra la palabra nodo con su compañía, y devuelve el <code>id</code> y la posición para que la línea se pueda citar. La ventana se mide en palabras.</p>
+<pre><code class="language-python">def kwic(U, nodo, ventana=5):
+    filas = []
+    patron = re.compile(r&quot;\b&quot; + re.escape(nodo) + r&quot;\b&quot;, re.IGNORECASE)
+    for _, u in U.iterrows():
+        ws = u[&quot;texto&quot;].split()
+        for i, w in enumerate(ws):
+            if patron.fullmatch(re.sub(r&quot;^\W+|\W+$&quot;, &quot;&quot;, w)):
+                izq = &quot; &quot;.join(ws[max(0, i - ventana):i])
+                der = &quot; &quot;.join(ws[i + 1:i + 1 + ventana])
+                filas.append({&quot;id&quot;: u[&quot;id&quot;], &quot;posicion&quot;: u[&quot;posicion&quot;], &quot;izquierda&quot;: izq, &quot;nodo&quot;: w, &quot;derecha&quot;: der})
+    return pd.DataFrame(filas)
+
+K = kwic(U, &quot;orden&quot;, ventana=5)
+print(len(K), &quot;líneas&quot;)
+for _, k in K.head(20).iterrows():
+    print(&quot;%-40s  %-10s  %s   (%s, %s)&quot; % (k[&quot;izquierda&quot;][-40:], k[&quot;nodo&quot;], k[&quot;derecha&quot;][:40], k[&quot;id&quot;], k[&quot;posicion&quot;]))
+</code></pre>
+<p>Las colocaciones cuentan las palabras en la ventana y las comparan con su frecuencia total. Se descartan las que aparecen pocas veces en ventana, porque una razón alta con tres apariciones no vale nada.</p>
+<pre><code class="language-python">def colocaciones(U, nodo, ventana=4, minimo=5):
+    en_ventana = Counter()
+    for _, k in kwic(U, nodo, ventana).iterrows():
+        for w in tokens(k[&quot;izquierda&quot;]) + tokens(k[&quot;derecha&quot;]):
+            if w not in FUNCIONALES:
+                en_ventana[w] += 1
+    filas = [{&quot;palabra&quot;: w, &quot;en_ventana&quot;: c, &quot;total&quot;: frec[w], &quot;razon&quot;: round(c / frec[w], 3)}
+             for w, c in en_ventana.items() if c &gt;= minimo]
+    return pd.DataFrame(filas).sort_values([&quot;en_ventana&quot;, &quot;razon&quot;], ascending=False)
+
+colocaciones(U, &quot;orden&quot;)
+</code></pre>
+<p>Un dominio léxico es una lista escrita por el investigador. Se cuenta por pieza y se compara por las columnas del catálogo como proporción por mil palabras.</p>
+<pre><code class="language-python">DOMINIOS = {
+    &quot;orden&quot;:   [&quot;orden&quot;, &quot;policía&quot;, &quot;autoridad&quot;, &quot;ley&quot;, &quot;decreto&quot;, &quot;tribunal&quot;],
+    &quot;trabajo&quot;: [&quot;trabajo&quot;, &quot;obreros&quot;, &quot;jornal&quot;, &quot;salario&quot;, &quot;huelga&quot;, &quot;fábrica&quot;],
+}
+cat = pd.read_csv(&quot;catalogo.csv&quot;, dtype=str)
+
+def peso_dominios(texto):
+    ws = tokens(texto)
+    n = max(1, len(ws))
+    return {d: 1000 * sum(ws.count(p) for p in lista) / n for d, lista in DOMINIOS.items()}
+
+por_pieza = U.groupby(&quot;id&quot;)[&quot;texto&quot;].apply(&quot; &quot;.join).apply(peso_dominios).apply(pd.Series)
+por_pieza = por_pieza.merge(cat[[&quot;id&quot;, &quot;fuente&quot;, &quot;fecha_documento&quot;]], left_index=True, right_on=&quot;id&quot;)
+por_pieza[&quot;anio&quot;] = por_pieza[&quot;fecha_documento&quot;].str[:4]
+print(por_pieza.groupby(&quot;fuente&quot;)[list(DOMINIOS)].mean().round(2))
+print(por_pieza.groupby(&quot;anio&quot;)[list(DOMINIOS)].mean().round(2))
+</code></pre>
+<p>Exportar a CSV lo que va al informe, con el nombre de la celda que lo produjo en el nombre del archivo.</p>
+<pre><code class="language-python">Path(&quot;salidas&quot;).mkdir(exist_ok=True)
+K.to_csv(&quot;salidas/kwic_orden_v5.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+colocaciones(U, &quot;orden&quot;).to_csv(&quot;salidas/colocaciones_orden.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+</code></pre>
+<h2>Semana 7. Lectura asistida auditada</h2>
+<p>La instrucción se guarda como archivo con versión. El programa la lee, la envía con cada unidad y registra cada respuesta con fecha, modelo, versión e identificador. La biblioteca <code>openai</code> sirve para cualquier proveedor compatible con su interfaz; varios ofrecen cuota gratuita. Las credenciales van en un archivo <code>.env</code> que no se entrega.</p>
+<pre><code>pip install openai python-dotenv
+</code></pre>
+<pre><code class="language-python">import os, json, datetime, random
+from pathlib import Path
+from dotenv import load_dotenv
+from openai import OpenAI
+import pandas as pd
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv(&quot;API_KEY&quot;), base_url=os.getenv(&quot;BASE_URL&quot;))
+MODEL = os.getenv(&quot;MODEL&quot;)
+VERSION = &quot;instruccion_v1&quot;
+INSTRUCCION = Path(VERSION + &quot;.md&quot;).read_text(encoding=&quot;utf-8&quot;)
+
+def etiquetar(unidad_id, texto, registro=&quot;llamadas.jsonl&quot;):
+    r = client.chat.completions.create(
+        model=MODEL, temperature=0,
+        messages=[{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: INSTRUCCION},
+                  {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: texto}])
+    salida = r.choices[0].message.content.strip()
+    with open(registro, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({&quot;fecha&quot;: datetime.datetime.now().isoformat(timespec=&quot;minutes&quot;),
+                            &quot;modelo&quot;: MODEL, &quot;version&quot;: VERSION, &quot;id&quot;: unidad_id,
+                            &quot;respuesta&quot;: salida}, ensure_ascii=False) + &quot;\n&quot;)
+    return salida
+</code></pre>
+<p>La muestra se elige al azar con semilla fija, para que la selección sea reproducible. El modelo etiqueta la muestra; el estudiante la etiqueta a ciegas en otro archivo, sin abrir el primero.</p>
+<pre><code class="language-python">U = pd.read_csv(&quot;unidades.csv&quot;, dtype=str)
+random.seed(2027)
+muestra = U.sample(n=30, random_state=2027).copy()
+muestra[&quot;etiqueta_modelo&quot;] = [etiquetar(i, t) for i, t in zip(muestra[&quot;id&quot;] + &quot;-&quot; + muestra[&quot;posicion&quot;], muestra[&quot;texto&quot;])]
+muestra[[&quot;id&quot;, &quot;posicion&quot;, &quot;texto&quot;, &quot;etiqueta_modelo&quot;]].to_csv(&quot;muestra_modelo.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+muestra[[&quot;id&quot;, &quot;posicion&quot;, &quot;texto&quot;]].assign(mi_etiqueta=&quot;&quot;).to_csv(&quot;muestra_a_ciegas.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+</code></pre>
+<p>Cuando <code>muestra_a_ciegas.csv</code> esté llena, se comparan las dos tablas: proporción de acuerdo y kappa de Cohen, calculado en diez líneas sin bibliotecas.</p>
+<pre><code class="language-python">m = pd.read_csv(&quot;muestra_modelo.csv&quot;, dtype=str)
+h = pd.read_csv(&quot;muestra_a_ciegas.csv&quot;, dtype=str)
+c = m.merge(h, on=[&quot;id&quot;, &quot;posicion&quot;, &quot;texto&quot;])
+a, b = c[&quot;etiqueta_modelo&quot;].str.strip().str.lower(), c[&quot;mi_etiqueta&quot;].str.strip().str.lower()
+
+def kappa(a, b):
+    n = len(a)
+    po = sum(x == y for x, y in zip(a, b)) / n
+    cats = set(a) | set(b)
+    pe = sum((list(a).count(k) / n) * (list(b).count(k) / n) for k in cats)
+    return (po - pe) / (1 - pe) if pe &lt; 1 else 1.0
+
+print(&quot;acuerdo:&quot;, round((a == b).mean(), 3), &quot; kappa:&quot;, round(kappa(a, b), 3))
+desacuerdos = c[a != b][[&quot;id&quot;, &quot;posicion&quot;, &quot;texto&quot;, &quot;etiqueta_modelo&quot;, &quot;mi_etiqueta&quot;]]
+desacuerdos.assign(tipo=&quot;&quot;, quien_tenia_razon=&quot;&quot;).to_csv(&quot;desacuerdos.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+print(len(desacuerdos), &quot;desacuerdos para tipificar a mano&quot;)
+</code></pre>
+<p>El registro de frontera por programa: una fila por operación, que al final se convierte en la tabla de la plantilla.</p>
+<pre><code class="language-python">def decidir(semana, operacion, propuesta, inferencia, decision, criterio, responde, archivo=&quot;frontera.jsonl&quot;):
+    with open(archivo, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({&quot;semana&quot;: semana, &quot;operacion&quot;: operacion, &quot;propuso_el_modelo&quot;: propuesta,
+                            &quot;inferencia&quot;: inferencia, &quot;decidi&quot;: decision, &quot;criterio&quot;: criterio,
+                            &quot;responde&quot;: responde}, ensure_ascii=False) + &quot;\n&quot;)
+
+decidir(7, &quot;Etiquetas sobre la muestra&quot;, &quot;30 etiquetas con instruccion_v1&quot;, &quot;I&quot;,
+        &quot;corregir la instrucción y repetir&quot;, &quot;8 de 9 desacuerdos fuerzan la categoría 'conflicto' donde no aplica&quot;, &quot;yo&quot;)
+pd.read_json(&quot;frontera.jsonl&quot;, lines=True).to_csv(&quot;registro-de-frontera.csv&quot;, index=False)
+</code></pre>
+<h2>Semana 8. Documentar para reconstruir</h2>
+<p>El archivo de versiones se produce desde el cuaderno. Sin él, el cuaderno que hoy corre puede dejar de correr.</p>
+<pre><code class="language-python">import subprocess, sys
+req = subprocess.run([sys.executable, &quot;-m&quot;, &quot;pip&quot;, &quot;freeze&quot;], capture_output=True, text=True).stdout
+Path(&quot;requirements.txt&quot;).write_text(req, encoding=&quot;utf-8&quot;)
+print(req[:300])
+</code></pre>
+<p>La comprobación final: el hash del catálogo. Quien reconstruya el corpus debe obtener el mismo.</p>
+<pre><code class="language-python">print(&quot;catalogo.csv:&quot;, sha256_archivo(&quot;catalogo.csv&quot;))
+</code></pre>
+<h2>Nota sobre costos y privacidad</h2>
+<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga la práctica de la semana 7 con una muestra anonimizada o con material público. No entregue el archivo <code>.env</code>. El curso 7 del programa trata estos problemas en detalle.</p>
+<hr />
+<h1 id="practica-03-recoleccion-reproducible">Práctica 3. Recolección reproducible</h1>
+<p>Duración estimada: 3 horas, de las cuales 1 en la sesión sincrónica.
+Requisitos: el cuaderno de la semana 2 funcionando, las bibliotecas <code>requests</code> y <code>pandas</code> instaladas, la ficha de delimitación revisada y la plantilla <code>plantillas/protocolo-de-corpus.md</code>. Bloques de código en <code>practicas/cuaderno-apoyo.md</code>, sección "Semana 3".</p>
+<h2>Objetivo</h2>
+<p>Ejecutar una recolección pequeña sobre el caso demostrativo y sobre una fuente propia, de modo que otra persona pueda repetirla con el mismo cuaderno y obtener el mismo resultado, y producir con eso el anexo del protocolo de corpus.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Elija una fuente propia con no más de diez piezas para esta práctica. Puede ser la más fácil de sus fuentes; la práctica es sobre el método, no sobre el volumen.</li>
+<li>Abra en el navegador el <code>robots.txt</code> de esa fuente (la dirección del sitio seguida de <code>/robots.txt</code>) y sus términos de uso. Anote qué dicen sobre descarga y reproducción.</li>
+<li>Escriba a mano la lista de las piezas que va a pedir, con su dirección completa. Revísela. Esa lista es el insumo del programa, no su resultado.</li>
+<li>Cree la carpeta <code>crudo</code> vacía dentro de su proyecto.</li>
+</ol>
+<h2>Durante la sesión: tres rondas</h2>
+<h3>Ronda 1. Leer lo que el sitio declara</h3>
+<p>Con el bloque de <code>robots.txt</code> del cuaderno de apoyo, compruebe por programa lo que leyó a mano para datos.gov.co, para la Secretaría del Senado y para su fuente. Anote en el cuaderno, en una celda de texto, qué permite cada uno y qué ritmo de petición va a usar. Si su fuente no permite la descarga automática, la práctica continúa con recolección manual: descargue cada pieza con el navegador, guárdela en <code>crudo</code> y llene la bitácora a mano con los mismos campos.</p>
+<h3>Ronda 2. Descargar el caso demostrativo</h3>
+<p>Ejecute la función <code>descargar</code> sobre la norma de la Secretaría del Senado y sobre un conjunto de datos.gov.co. Abra la bitácora <code>bitacora_descarga.jsonl</code> y lea una fila: debe tener la dirección, el destino, la fecha, el estado, el hash y el tamaño. Abra el archivo de <code>crudo</code> sin editarlo y confirme que es lo que la fuente mostraba.</p>
+<p>Preguntas que debe poder responder antes de seguir:</p>
+<ul>
+<li>¿Cuánto esperó el programa entre las dos peticiones? ¿Dónde está escrito?</li>
+<li>¿Con qué nombre y correo se identificó? ¿Dónde está escrito?</li>
+<li>Si la fuente hubiera respondido con error, ¿qué habría hecho el programa?</li>
+</ul>
+<h3>Ronda 3. Descargar la fuente propia</h3>
+<p>Pase su lista revisada al bloque <code>pedidos</code> y ejecute. Al terminar, reinicie el núcleo, borre nada, y ejecute el cuaderno completo de nuevo. Compare los hash de las dos ejecuciones con el bloque de comparación. Si coinciden, su recolección es reproducible hoy. Si no coinciden, averigüe por qué: la fuente cambió, la página incluye la fecha de consulta, o algo en el programa no es determinista. Las tres cosas se anotan.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Llene en el protocolo la tabla de fuentes con lo aprendido: forma de entrega, robots.txt y términos, ritmo, método.</li>
+<li>Llene la tabla de lo que no se descarga. Debe tener al menos una fila; si no la tiene, no ha mirado con cuidado.</li>
+<li>Guarde el cuaderno de recolección como <code>cuadernos/01-recoleccion.ipynb</code> y adjúntelo al protocolo.</li>
+<li>Anote en el registro de frontera qué código propuso el modelo, qué corrigió usted antes de ejecutarlo y por qué.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>Que el cuaderno corra de arriba abajo sobre una fuente propia con bitácora, pausa e identificación, y que el protocolo diga lo que no se descarga con su razón. Una recolección de tres piezas bien registrada vale más que una de trescientas sin bitácora.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes intercambian cuadernos y listas, y cada uno ejecuta la recolección del otro. Las diferencias de hash entre lo que obtuvo el autor y lo que obtuvo el par son el mejor material de discusión de la sesión siguiente.</p>
+<hr />
+<h1 id="practica-06-primera-lectura">Práctica 6. Primera lectura computacional del corpus propio</h1>
+<p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica.
+Requisitos: el corpus propio en <code>limpio</code> con la tabla <code>unidades.csv</code> de la semana 5, el catálogo maestro validado, y la mini app <code>apps/concordancias.html</code> para ensayar antes de programar. Bloques de código en <code>practicas/cuaderno-apoyo.md</code>, sección "Semana 6".</p>
+<h2>Objetivo</h2>
+<p>Aplicar los cuatro instrumentos de la semana (frecuencias, concordancia, colocaciones, dominios léxicos) al corpus propio, y producir para cada uno la tabla que lo documenta: qué produce, qué sugiere y qué líneas se leyeron para decirlo.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Elija desde el protocolo tres palabras nodo: palabras que su pregunta de investigación necesita entender en este corpus. No elija las más frecuentes; elija las que importan.</li>
+<li>Abra la mini app de concordancias y ensaye con el corpus de demostración: cambie la ventana, mire cómo cambian las colocaciones, lea las líneas. Anote qué espera encontrar en su propio corpus para cada palabra nodo.</li>
+<li>Escriba a mano una primera lista de palabras para dos dominios léxicos de su proyecto.</li>
+</ol>
+<h2>Durante la sesión: cuatro instrumentos</h2>
+<h3>Frecuencias</h3>
+<p>Ejecute el bloque de frecuencias con y sin palabras funcionales. Anote en una celda de texto la lista de funcionales que quitó y por qué esas. Mire las veinte palabras de contenido más frecuentes y responda: ¿cuántas esperaba? ¿Cuáles no? Las que no esperaba son candidatas a palabra nodo para una segunda vuelta.</p>
+<h3>Concordancia</h3>
+<p>Para cada palabra nodo, produzca la concordancia con ventana de cinco y lea veinte líneas, con su identificador y posición. Mientras lee, clasifique los usos: si "orden" aparece como "orden público" y como "orden del día", son dos palabras que el conteo fundió. Anote cuántos usos distintos encontró y cuál predomina.</p>
+<h3>Colocaciones</h3>
+<p>Produzca las colocaciones de cada nodo con ventana de cuatro y mínimo de cinco apariciones. Si el mínimo deja la lista vacía, su corpus es pequeño para este instrumento y eso se anota; no baje el mínimo para que aparezca algo. Para la colocación más alta de cada nodo, vuelva a la concordancia y lea las líneas donde ocurre: ¿la asociación significa lo que parece?</p>
+<h3>Dominios léxicos</h3>
+<p>Pida al modelo palabras para cada dominio dándole el nombre del dominio y diez líneas de concordancia. Acepte o rechace una por una; anote las rechazadas con la razón. Calcule el peso de cada dominio por fuente y por año como proporción por mil palabras. Mire la tabla y escriba una frase sobre lo que sugiere, y debajo, las líneas que leyó para escribirla.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Llene la tabla de instrumentos:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Instrumento</th>
+<th>Qué produce</th>
+<th>Qué sugiere</th>
+<th>Qué líneas se leyeron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frecuencias</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Concordancia de …</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Colocaciones de …</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dominio … por fuente</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="2">
+<li>Exporte a <code>salidas/</code> cada tabla con el nombre de la celda que la produjo.</li>
+<li>Guarde el cuaderno como <code>cuadernos/04-lectura.ipynb</code>, reinicie y ejecute de arriba abajo.</li>
+<li>Anote en el registro de frontera las palabras que propuso el modelo y la interpretación que propuso de las colocaciones, con su decisión.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La relación entre lo que el instrumento sugiere y lo que usted afirma. Una tabla de colocaciones seguida de "el corpus asocia orden con policía" sin líneas leídas no está en nivel Logrado. La misma tabla seguida de "en 14 de las 19 líneas la asociación es con la policía municipal; en las otras 5 'orden' es orden del día; se lee como X por Y" sí.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes con corpus distintos eligen la misma palabra nodo y comparan concordancias. Lo que la palabra hace en un corpus y no en el otro es la mejor demostración de que la frecuencia no es el sentido.</p>
+<hr />
+<h1 id="practica-07-auditoria-lectura-asistida">Práctica 7. Auditoría de la lectura asistida</h1>
+<p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica.
+Requisitos: la tabla <code>unidades.csv</code> del corpus propio, acceso a un modelo de lenguaje (versión web gratuita o interfaz de programación con cuota gratuita), la plantilla <code>plantillas/registro-de-frontera-corpus.md</code>. Bloques de código en <code>practicas/cuaderno-apoyo.md</code>, sección "Semana 7". La práctica se puede hacer sin programar, con la versión web del modelo y dos hojas de cálculo; el cuaderno solo la hace repetible.</p>
+<h2>Objetivo</h2>
+<p>Hacer que un modelo etiquete una muestra del corpus con una instrucción escrita y versionada, etiquetar la misma muestra a ciegas, medir el desacuerdo, tipificarlo, decidir qué se hace con las etiquetas del resto del corpus, y dejar todo en el registro de frontera.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Escriba la lista de categorías con que quiere etiquetar las unidades de su corpus. Entre tres y siete. Para cada una, una definición de dos líneas y un ejemplo de su corpus.</li>
+<li>Escriba la regla para la duda: qué debe hacer el etiquetador cuando ninguna categoría aplica o cuando aplican dos.</li>
+<li>Reúna todo en <code>instruccion_v1.md</code>, con el formato de salida al final: una sola palabra, la categoría, sin explicación.</li>
+<li>Elija la muestra con el bloque del cuaderno (treinta unidades al azar con semilla fija) o, sin programar, numerando las unidades y tomando treinta números de una tabla de azar. Anote cómo la eligió.</li>
+</ol>
+<h2>Durante la sesión: tres rondas</h2>
+<h3>Ronda 1. La máquina etiqueta</h3>
+<p>Envíe cada unidad de la muestra al modelo con la instrucción, por programa o pegando en la versión web la instrucción seguida de la unidad. Guarde cada respuesta con la fecha, el modelo y la versión de la instrucción. Cierre el archivo y no lo vuelva a abrir hasta la ronda 3.</p>
+<h3>Ronda 2. Usted etiqueta a ciegas</h3>
+<p>En una tabla aparte, con la misma instrucción delante, etiquete las treinta unidades. No mire lo que dijo el modelo. Si una unidad le hace dudar, aplique la regla para la duda y anote que dudó: esas unidades van a ser las interesantes.</p>
+<h3>Ronda 3. Comparar y tipificar</h3>
+<p>Una las dos tablas. Calcule la proporción de acuerdo y kappa con el bloque del cuaderno o a mano. Para cada desacuerdo, vuelva a leer la unidad y clasifíquelo:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Qué pasó</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generalización ajena</td>
+<td>El modelo leyó algo como se lee en su entrenamiento, no como se lee en este corpus</td>
+</tr>
+<tr>
+<td>Categoría forzada</td>
+<td>Ninguna categoría aplicaba y el modelo eligió una en lugar de usar la regla para la duda</td>
+</tr>
+<tr>
+<td>Contexto local</td>
+<td>El modelo no sabía algo del periodo, del lugar o de la institución que usted sí sabe</td>
+</tr>
+<tr>
+<td>Lectura literal</td>
+<td>Ironía, fórmula de cortesía o cita que el modelo tomó al pie de la letra</td>
+</tr>
+<tr>
+<td>Error propio</td>
+<td>Usted se equivocó, y lo nota al releer</td>
+</tr>
+<tr>
+<td>Lista defectuosa</td>
+<td>Dos categorías se solapan y el desacuerdo mide la lista, no la lectura</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cuente cuántos de cada tipo. Si predomina "lista defectuosa" o "categoría forzada", el problema está en la instrucción. Si predomina "contexto local", el problema está en lo que el modelo no puede saber. Si predomina "error propio", hay que revisar la lectura propia antes de culpar a nadie.</p>
+<h2>La decisión</h2>
+<p>Elija una de las tres y escriba la razón:</p>
+<ol>
+<li>Aceptar las etiquetas del modelo para el resto del corpus, con la tasa de acuerdo declarada en el informe y las categorías problemáticas marcadas.</li>
+<li>Corregir la instrucción (<code>instruccion_v2.md</code>), etiquetar una muestra nueva y repetir la auditoría.</li>
+<li>Rechazar la lectura asistida para esta tarea, porque los desacuerdos tocan lo que la pregunta de investigación necesita.</li>
+</ol>
+<p>Ninguna es la respuesta correcta en general. La que elija tiene que seguirse de la tipología.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Llene la sección de auditoría del registro de frontera y actualice las filas de las semanas anteriores.</li>
+<li>Si eligió corregir, haga la segunda vuelta antes de la semana 8 y reporte las dos auditorías.</li>
+<li>Escriba la sección 13 del informe de corpus con la plantilla.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La precisión de la auditoría, no la tasa de acuerdo. Una auditoría con 60 % de acuerdo, desacuerdos bien tipificados y la decisión de corregir vale más que una con 95 % de acuerdo y la decisión de aceptar sin haber leído los desacuerdos.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes etiquetan la misma muestra de uno de los dos corpus, a ciegas, con la misma instrucción. Ahora hay tres etiquetadores: el modelo y dos personas. El acuerdo entre las dos personas es la cifra de referencia contra la que se lee el acuerdo con el modelo.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="plantillas.html">← Plantillas</a><a href="apps.html">Mini apps →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

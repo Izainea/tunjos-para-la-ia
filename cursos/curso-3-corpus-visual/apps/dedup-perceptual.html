@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deduplicación perceptual</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.img{display:flex;flex-direction:column;gap:.3rem;align-items:flex-start}
+.img canvas{width:100%;max-width:9rem;height:auto;border:1px solid var(--rule);border-radius:3px;image-rendering:auto;background:#fff}
+.hash{display:grid;grid-template-columns:repeat(8,1fr);gap:1px;width:4rem}
+.hash span{display:block;aspect-ratio:1;background:var(--rule)}
+.hash span.on{background:var(--ink)}
+.img .k{font-size:.66rem}
+input[type=range]{width:12rem;padding:0}
+tr.dup td{color:var(--c-inv)} tr.lim td{color:var(--accent)}
+.d{font-family:var(--mono);font-size:.85rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 3 · Semana 2</span>
+  <h1>Deduplicación perceptual</h1>
+  <p>Seis imágenes sintéticas. La app calcula para cada una un hash de diferencia (dHash: 9 × 8 píxeles en gris, un bit por cada "más claro que el vecino") y compara los pares por distancia de Hamming. Mueva el umbral y observe qué pares dejan de ser duplicados.</p>
+
+  <div class="card">
+    <div class="grid" id="imgs"></div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <span class="k">Umbral de distancia</span>
+      <input type="range" id="umbral" min="0" max="32" value="10" aria-label="Umbral de distancia de Hamming" />
+      <span class="d" id="umbral-v">10</span>
+      <button id="explicar" aria-pressed="false">ver por qué</button>
+    </div>
+    <table id="pares" aria-live="polite">
+      <thead><tr><th>Par</th><th>Distancia</th><th>¿Duplicado?</th><th>Por qué</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: el hash no sabe qué muestra la imagen; resume su estructura de claros y oscuros. Un recorte leve o un cambio de brillo mueven pocos bits; una imagen distinta mueve muchos. El umbral es una decisión suya, y va declarado en el catálogo.</p>
+<script>
+  // Seis escenas dibujadas en canvas. A, B y C son la misma escena (original, recorte, brillo);
+  // D y E son otra escena (original y versión con marca de agua); F no tiene relación.
+  var W = 180, H = 135;
+  function escenaPaisaje(ctx, w, h, brillo) {
+    var g = ctx.createLinearGradient(0, 0, 0, h);
+    g.addColorStop(0, brillo ? '#b9d4ee' : '#7fa6cf'); g.addColorStop(1, brillo ? '#e8eef5' : '#cfdbe8');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = brillo ? '#ffe9a0' : '#f2c94c'; ctx.beginPath(); ctx.arc(w * 0.78, h * 0.25, h * 0.11, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = brillo ? '#7c8f7a' : '#4f6b4e'; ctx.beginPath(); ctx.moveTo(0, h * 0.75); ctx.lineTo(w * 0.35, h * 0.35); ctx.lineTo(w * 0.6, h * 0.75); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = brillo ? '#5e7a5e' : '#3a5a3a'; ctx.beginPath(); ctx.moveTo(w * 0.4, h * 0.75); ctx.lineTo(w * 0.7, h * 0.45); ctx.lineTo(w, h * 0.75); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = brillo ? '#9fb98a' : '#6f8f5a'; ctx.fillRect(0, h * 0.75, w, h * 0.25);
+  }
+  function escenaFachada(ctx, w, h, marca) {
+    ctx.fillStyle = '#d9d2c5'; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#a0522d'; ctx.fillRect(w * 0.15, h * 0.3, w * 0.7, h * 0.6);
+    ctx.fillStyle = '#5a3a1e'; ctx.beginPath(); ctx.moveTo(w * 0.1, h * 0.3); ctx.lineTo(w * 0.5, h * 0.08); ctx.lineTo(w * 0.9, h * 0.3); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#f4e8c1';
+    ctx.fillRect(w * 0.25, h * 0.42, w * 0.14, h * 0.16); ctx.fillRect(w * 0.61, h * 0.42, w * 0.14, h * 0.16);
+    ctx.fillStyle = '#3b2a1a'; ctx.fillRect(w * 0.43, h * 0.6, w * 0.14, h * 0.3);
+    ctx.fillStyle = '#7a7a7a'; ctx.fillRect(0, h * 0.9, w, h * 0.1);
+    if (marca) {
+      ctx.save(); ctx.globalAlpha = 0.55; ctx.fillStyle = '#ffffff'; ctx.font = 'bold ' + Math.round(h * 0.11) + 'px sans-serif';
+      ctx.fillText('MUESTRA', w * 0.3, h * 0.8); ctx.restore();
+    }
+  }
+  function escenaRetrato(ctx, w, h) {
+    ctx.fillStyle = '#2b2b2b'; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#e8c9a8'; ctx.beginPath(); ctx.arc(w * 0.5, h * 0.42, h * 0.2, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#3a2a1a'; ctx.beginPath(); ctx.arc(w * 0.5, h * 0.33, h * 0.21, Math.PI, 0); ctx.fill();
+    ctx.fillStyle = '#5b4a8a'; ctx.beginPath(); ctx.moveTo(w * 0.25, h); ctx.quadraticCurveTo(w * 0.5, h * 0.55, w * 0.75, h); ctx.closePath(); ctx.fill();
+  }
+  var defs = [
+    { id: 'A', titulo: 'Paisaje, original', dibuja: function (c) { escenaPaisaje(c, W, H, false); } },
+    { id: 'B', titulo: 'Paisaje, recorte 8 %', dibuja: function (c) { c.save(); c.translate(-W * 0.04, -H * 0.04); c.scale(1.08, 1.08); escenaPaisaje(c, W, H, false); c.restore(); } },
+    { id: 'C', titulo: 'Paisaje, más brillo', dibuja: function (c) { escenaPaisaje(c, W, H, true); } },
+    { id: 'D', titulo: 'Fachada, original', dibuja: function (c) { escenaFachada(c, W, H, false); } },
+    { id: 'E', titulo: 'Fachada, marca de agua', dibuja: function (c) { escenaFachada(c, W, H, true); } },
+    { id: 'F', titulo: 'Retrato', dibuja: function (c) { escenaRetrato(c, W, H); } }
+  ];
+  function dhash(canvas) {
+    var s = document.createElement('canvas'); s.width = 9; s.height = 8;
+    var sc = s.getContext('2d'); sc.drawImage(canvas, 0, 0, 9, 8);
+    var d = sc.getImageData(0, 0, 9, 8).data, gris = [];
+    for (var i = 0; i < d.length; i += 4) gris.push(0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]);
+    var bits = [];
+    for (var y = 0; y < 8; y++) for (var x = 0; x < 8; x++) bits.push(gris[y * 9 + x] > gris[y * 9 + x + 1] ? 1 : 0);
+    return bits;
+  }
+  function hamming(a, b) { var n = 0; for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) n++; return n; }
+  var cont = document.getElementById('imgs'), imgs = [];
+  defs.forEach(function (def) {
+    var wrap = document.createElement('div'); wrap.className = 'img';
+    var c = document.createElement('canvas'); c.width = W; c.height = H; c.setAttribute('role', 'img'); c.setAttribute('aria-label', def.titulo);
+    def.dibuja(c.getContext('2d'));
+    var h = dhash(c);
+    var k = document.createElement('span'); k.className = 'k'; k.textContent = def.id + ' · ' + def.titulo;
+    var hv = document.createElement('div'); hv.className = 'hash'; hv.setAttribute('aria-label', 'hash de ' + def.id);
+    h.forEach(function (b) { var s = document.createElement('span'); if (b) s.className = 'on'; hv.appendChild(s); });
+    wrap.appendChild(k); wrap.appendChild(c); wrap.appendChild(hv); cont.appendChild(wrap);
+    imgs.push({ id: def.id, hash: h });
+  });
+  var razones = {
+    'AB': 'Misma escena con recorte leve: la estructura de claros y oscuros se desplaza poco.',
+    'AC': 'Misma escena con más brillo: el hash compara cada píxel con su vecino, no con un valor absoluto, y por eso el brillo global casi no lo cambia, o no lo cambia nada.',
+    'BC': 'Recorte y brillo a la vez: la distancia es la del recorte, porque el brillo no aporta bits.',
+    'DE': 'Misma fachada con una marca de agua: a 9 por 8 píxeles la marca puede desaparecer y dejar la distancia en 0, o cambiar unos pocos bits. Son la misma imagen; el catálogo conserva las dos porque tienen distinta narrativa externa.',
+    'AD': 'Escenas distintas: la mayoría de las comparaciones entre vecinos cambian.',
+    'AF': 'Escenas distintas.', 'BF': 'Escenas distintas.', 'CF': 'Escenas distintas.', 'DF': 'Escenas distintas.', 'EF': 'Escenas distintas.',
+    'AE': 'Escenas distintas.', 'BD': 'Escenas distintas.', 'BE': 'Escenas distintas.', 'CD': 'Escenas distintas.', 'CE': 'Escenas distintas.'
+  };
+  var tbody = document.querySelector('#pares tbody'), umbral = document.getElementById('umbral'), uv = document.getElementById('umbral-v');
+  var btn = document.getElementById('explicar'), explicar = false;
+  function pintar() {
+    var u = parseInt(umbral.value, 10); uv.textContent = u; tbody.innerHTML = '';
+    var filas = [];
+    for (var i = 0; i < imgs.length; i++) for (var j = i + 1; j < imgs.length; j++) {
+      filas.push({ a: imgs[i].id, b: imgs[j].id, d: hamming(imgs[i].hash, imgs[j].hash) });
+    }
+    filas.sort(function (p, q) { return p.d - q.d; });
+    filas.forEach(function (f) {
+      var tr = document.createElement('tr');
+      var dup = f.d <= u, lim = !dup && f.d <= u + 4;
+      tr.className = dup ? 'dup' : (lim ? 'lim' : '');
+      var veredicto = dup ? 'sí (≤ ' + u + ')' : (lim ? 'no, pero en el límite' : 'no');
+      var por = explicar ? (razones[f.a + f.b] || '') : '';
+      tr.innerHTML = '<td class="d">' + f.a + ' · ' + f.b + '</td><td class="d">' + f.d + ' / 64</td><td>' + veredicto + '</td><td>' + por + '</td>';
+      tbody.appendChild(tr);
+    });
+  }
+  umbral.addEventListener('input', pintar);
+  btn.addEventListener('click', function () { explicar = !explicar; btn.setAttribute('aria-pressed', String(explicar)); pintar(); });
+  pintar();
+</script>
+</body>
+</html>

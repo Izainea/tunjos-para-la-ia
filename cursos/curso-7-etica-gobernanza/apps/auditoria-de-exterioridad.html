@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Auditoría de exterioridad</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.item{color:var(--ink);font-size:.98rem;margin:.2rem 0 .5rem}
+.model{border-left:3px solid var(--rule);padding:.3rem .7rem;margin:.4rem 0;color:var(--ink);font-size:.95rem}
+.model .k{display:block;margin-bottom:.1rem}
+.situ{border-left:3px solid var(--c-inv);padding:.3rem .7rem;margin:.4rem 0;color:var(--ink);font-size:.95rem}
+.situ .k{display:block;margin-bottom:.1rem;color:var(--c-inv)}
+.cmp{font-size:.9rem;margin:.4rem 0}
+.cmp b{font-family:var(--display)}
+.bar{display:flex;height:14px;border-radius:3px;overflow:hidden;border:1px solid var(--rule);margin:.4rem 0}
+.bar span{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:.8rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted)}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.3rem;vertical-align:middle}
+.c-mal{background:var(--c-fil)} .c-apl{background:var(--c-doc)} .c-ign{background:var(--c-app)} .c-sin{background:var(--rule)}
+.prog{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 7 · Semana 5</span>
+  <h1>Auditoría de exterioridad</h1>
+  <p>Diez piezas descritas en texto, con carga de sentido local, y la lectura que un modelo hizo de cada una. Marque qué le pasó a esa lectura: entendió mal, aplanó, ignoró, o no hay diferencia relevante. Después compare con la lectura situada y vea el perfil.</p>
+
+  <div class="card">
+    <div class="prog" id="prog"></div>
+    <div id="stage"></div>
+    <div class="row" style="margin-top:.6rem">
+      <button type="button" id="prev">anterior</button>
+      <button type="button" id="next">siguiente</button>
+      <button type="button" id="summary">ver perfil</button>
+      <button type="button" id="reset">reiniciar</button>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: lo que el modelo excluye no aparece en su salida; solo se ve comparando con alguien que participa en la forma de vida del material. La clasificación de la app es del docente y se puede discutir.</p>
+<script>
+(function(){
+  var ITEMS=[
+    {pieza:'Un altar casero: una imagen del Divino Niño, veladoras encendidas, una botella de aguardiente sin abrir y la fotografía de un hombre joven.',
+     modelo:'Rincón de decoración doméstica de estilo rústico con elementos religiosos y una bebida alcohólica; probablemente un espacio de recuerdos familiares.',
+     situado:'Es un altar de promesa o de ánimas. El aguardiente sin abrir es una ofrenda, no una bebida. La fotografía de un joven junto a veladoras, en muchas regiones, es la de alguien que murió de forma violenta o que está desaparecido. Lo devocional popular organiza la escena.',
+     tipo:'apl',por:'El modelo describe bien cada objeto y sustituye lo que hacen juntos por una categoría general ("decoración", "recuerdos"). Aplanó.'},
+    {pieza:'Frase en una entrevista: "a él lo fueron a buscar un domingo y no volvió".',
+     modelo:'La persona salió de su casa un domingo y no regresó; puede tratarse de un abandono del hogar, un viaje o un accidente.',
+     situado:'En zonas del conflicto colombiano "lo fueron a buscar" es una fórmula: llegaron por él hombres armados. La frase describe una desaparición forzada sin nombrarla, y quien la dice lo sabe.',
+     tipo:'mal',por:'El modelo propone lecturas que la comunidad rechazaría (abandono, viaje). No es un error de dato sino una lectura desde otra precomprensión. Entendió mal.'},
+    {pieza:'Frase en un relato: "me tocó pagar la vacuna".',
+     modelo:'El hablante tuvo que pagar por una vacuna, posiblemente en el contexto de una campaña de salud con costo.',
+     situado:'"Vacuna" es el nombre corriente de la extorsión que cobran grupos armados a comerciantes, transportadores y campesinos. "Me tocó" dice que no hubo alternativa.',
+     tipo:'mal',por:'Lectura literal de una palabra con sentido local fijado hace décadas. Entendió mal.'},
+    {pieza:'Fotografía descrita: hombres en una finca con camisa de cuadros, botas de caucho, carriel y sombrero aguadeño; al fondo, una camioneta nueva. Años ochenta.',
+     modelo:'Trabajadores rurales en un ambiente campesino tradicional de América Latina.',
+     situado:'El carriel y el sombrero aguadeño sitúan la escena en la región paisa, no en "América Latina". La camioneta nueva en una finca en los ochenta es una marca de dinero reciente que un lector local lee de inmediato y que puede remitir a la bonanza del narcotráfico, aunque no lo pruebe.',
+     tipo:'ign',por:'El modelo no dijo nada de la camioneta ni de lo que la región y la época hacen con ella. Lo central para un lector situado no aparece. Ignoró.'},
+    {pieza:'Cartel pintado en una pared: "Se prohíbe botar basura en este sector. Atentamente, la comunidad".',
+     modelo:'Aviso cívico de los vecinos para mantener limpio el sector.',
+     situado:'En algunos barrios y veredas, "la comunidad" como firma de un aviso es la forma en que se presenta un actor armado que controla el sector, y "limpieza" tiene otro sentido. Un lector local no concluye nada sin más contexto, pero no descarta esa lectura.',
+     tipo:'ign',por:'El modelo no registró la ambigüedad de la firma ni de la palabra. No afirmó nada falso; dejó fuera lo que un lector situado consideraría central. Ignoró.'},
+    {pieza:'Un relato dice que la familia "hizo el novenario, pero sin cuerpo".',
+     modelo:'La familia realizó el novenario, un ritual católico de nueve días de oración por el difunto.',
+     situado:'El novenario sin cuerpo es el duelo de las familias de personas desaparecidas: el ritual se hace sin certeza de la muerte y es también una forma de reclamar al desaparecido. "Sin cuerpo" es lo que importa en la frase.',
+     tipo:'apl',por:'El modelo entendió el ritual y lo redujo a su definición general; la ausencia, que es el sentido de la frase, desapareció. Aplanó.'},
+    {pieza:'En una tienda suena una canción de despecho; la mujer entrevistada dice: "esa era la de él".',
+     modelo:'La canción le recuerda a una persona ausente, probablemente su pareja o un familiar; la música popular funciona aquí como objeto de memoria y de duelo.',
+     situado:'La canción como marca de un ausente y la tienda como lugar de memoria. "La de él" es la canción que él ponía o pedía. El modelo lo leyó como lo leería alguien del lugar.',
+     tipo:'sin',por:'No hay diferencia relevante entre la lectura del modelo y la situada. Conviene registrar también estos casos: el perfil dice dónde el modelo lee bien.'},
+    {pieza:'Imagen descrita: un camión de madera con la carrocería pintada de paisajes, frases y nombres de pueblos, con gente y bultos encima.',
+     modelo:'Camión decorado con arte popular, típico del transporte rural en América Latina.',
+     situado:'Es una chiva o bus escalera. Las frases y los nombres de pueblos son la ruta y la identidad del conductor y del dueño; el vehículo organiza el mercado, el transporte y la fiesta de las veredas. "Típico de América Latina" borra lo específico.',
+     tipo:'apl',por:'El modelo acertó la región amplia y perdió el nombre, la función y la especificidad. Es el patrón que la evidencia de la semana 4 describe. Aplanó.'},
+    {pieza:'Descripción de una vereda en un día de "paro armado": tiendas cerradas, nadie en la calle, un trapo blanco colgado en cada puerta.',
+     modelo:'Un día de huelga: los comercios cerraron en señal de protesta y los habitantes colgaron banderas blancas pidiendo paz.',
+     situado:'Un paro armado no es una huelga: es una orden de un grupo armado de no circular, bajo amenaza. El trapo blanco en la puerta no pide paz; declara que en esa casa no hay combatientes y pide que no entren.',
+     tipo:'mal',por:'El modelo convirtió una coerción en una protesta y una súplica en un gesto cívico. Entendió mal.'},
+    {pieza:'Una lápida con la inscripción "N.N." y flores frescas.',
+     modelo:'Tumba de una persona no identificada; las flores indican que alguien la visita, lo que sugiere que fue identificada después por su familia.',
+     situado:'En algunos municipios ribereños existe la práctica de adoptar a los N.N.: personas que cuidan la tumba de un desconocido, le ponen nombre y le piden favores. Las flores no implican identificación; implican adopción.',
+     tipo:'mal',por:'El modelo infirió una identificación a partir de las flores, que es lo que haría alguien sin conocer la práctica. Entendió mal.'}
+  ];
+  var TIPOS={mal:'Entendió mal',apl:'Aplanó',ign:'Ignoró',sin:'Sin diferencia relevante'};
+  var CLASES={mal:'c-mal',apl:'c-apl',ign:'c-ign',sin:'c-sin'};
+  var CORR={mal:'contexto en la instrucción',apl:'categorías locales en el andamiaje',ign:'límite que se declara: lector situado obligatorio',sin:'ninguna'};
+  var marks=[];
+  for(var z=0;z<ITEMS.length;z++) marks.push(null);
+  var i=0, showSummary=false;
+  var stage=document.getElementById('stage');
+  var prog=document.getElementById('prog');
+
+  function renderItem(){
+    var it=ITEMS[i];
+    var h='<div class="item"><span class="k">Pieza '+(i+1)+'</span><br>'+it.pieza+'</div>';
+    h+='<div class="model"><span class="k">Lectura del modelo</span>'+it.modelo+'</div>';
+    h+='<div class="row">';
+    for(var k in TIPOS){ if(TIPOS.hasOwnProperty(k)){ h+='<button type="button" data-t="'+k+'" aria-pressed="'+(marks[i]===k?'true':'false')+'">'+TIPOS[k]+'</button>'; } }
+    h+='</div>';
+    if(marks[i]){
+      h+='<div class="situ"><span class="k">Lectura situada</span>'+it.situado+'</div>';
+      var same=marks[i]===it.tipo;
+      h+='<div class="cmp"><b>Usted marcó:</b> '+TIPOS[marks[i]]+'. <b>El docente clasifica:</b> '+TIPOS[it.tipo]+'. '+(same?'<span class="ok">Coinciden.</span>':'<span class="no">No coinciden; vea la razón y decida si la acepta.</span>')+'</div>';
+      h+='<div class="cmp">'+it.por+' <span class="k">Corrección posible: '+CORR[it.tipo]+'</span></div>';
+    }
+    stage.innerHTML=h;
+    var done=0; for(var m=0;m<marks.length;m++) if(marks[m]) done++;
+    prog.textContent='pieza '+(i+1)+' de '+ITEMS.length+' · marcadas: '+done;
+  }
+
+  function renderSummary(){
+    var cnt={mal:0,apl:0,ign:0,sin:0}, cntD={mal:0,apl:0,ign:0,sin:0}, agree=0, done=0;
+    for(var m=0;m<ITEMS.length;m++){
+      cntD[ITEMS[m].tipo]++;
+      if(marks[m]){ done++; cnt[marks[m]]++; if(marks[m]===ITEMS[m].tipo) agree++; }
+    }
+    function bar(c,total){
+      var h='<div class="bar">';
+      for(var k in c){ if(c.hasOwnProperty(k)){ var w=total?Math.round(100*c[k]/total):0; h+='<span class="'+CLASES[k]+'" style="width:'+w+'%"></span>'; } }
+      return h+'</div>';
+    }
+    var h='<div class="item"><span class="k">Perfil de exclusiones</span></div>';
+    h+='<p>Su clasificación ('+done+' de '+ITEMS.length+' piezas):</p>'+bar(cnt,done);
+    h+='<p>Clasificación del docente:</p>'+bar(cntD,ITEMS.length);
+    h+='<div class="leg"><span><i class="c-mal"></i>entendió mal</span><span><i class="c-apl"></i>aplanó</span><span><i class="c-ign"></i>ignoró</span><span><i class="c-sin"></i>sin diferencia</span></div>';
+    h+='<table style="margin-top:.6rem"><tr><th>Tipo</th><th>Usted</th><th>Docente</th><th>Corrección posible</th></tr>';
+    for(var k in TIPOS){ if(TIPOS.hasOwnProperty(k)){ h+='<tr><td>'+TIPOS[k]+'</td><td>'+cnt[k]+'</td><td>'+cntD[k]+'</td><td>'+CORR[k]+'</td></tr>'; } }
+    h+='</table>';
+    h+='<p>Coincidencias con el docente: '+agree+' de '+done+'.</p>';
+    var dom=null, mx=-1;
+    for(var k2 in cntD){ if(cntD.hasOwnProperty(k2) && k2!=='sin' && cntD[k2]>mx){ mx=cntD[k2]; dom=k2; } }
+    h+='<p class="cmp">Lo que el perfil del docente sugiere sobre esta muestra: el modelo acierta la región amplia y falla en lo que una palabra o un objeto hacen en la vida local, sobre todo cuando el sentido depende del conflicto y de la devoción popular. El tipo dominante es "'+TIPOS[dom]+'", que se corrige con '+CORR[dom]+'. La regla que se derivaría para un protocolo: las piezas que nombran el conflicto o la devoción con fórmulas locales no se aceptan sin lector situado.</p>';
+    h+='<p class="note">La muestra se eligió por carga cultural y por eso exagera la tasa de exclusión. No es una medida del modelo en general; es un perfil de dónde falla.</p>';
+    stage.innerHTML=h;
+    prog.textContent='perfil';
+  }
+
+  function render(){ if(showSummary) renderSummary(); else renderItem(); }
+
+  stage.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-t]');
+    if(!b) return;
+    marks[i]=b.getAttribute('data-t');
+    render();
+  });
+  document.getElementById('prev').addEventListener('click',function(){ showSummary=false; i=(i+ITEMS.length-1)%ITEMS.length; render(); });
+  document.getElementById('next').addEventListener('click',function(){ showSummary=false; i=(i+1)%ITEMS.length; render(); });
+  document.getElementById('summary').addEventListener('click',function(){ showSummary=true; render(); });
+  document.getElementById('reset').addEventListener('click',function(){ for(var m=0;m<marks.length;m++) marks[m]=null; i=0; showSummary=false; render(); });
+  render();
+})();
+</script>
+</body>
+</html>

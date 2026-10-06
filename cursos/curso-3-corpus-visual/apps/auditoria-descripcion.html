@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Auditoría de una descripción</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.dos{display:grid;grid-template-columns:minmax(10rem,18rem) 1fr;gap:1rem;align-items:start}
+@media (max-width:560px){.dos{grid-template-columns:1fr}}
+figure{margin:0}
+figure svg{width:100%;height:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+figcaption{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:.3rem}
+.afirm{margin:.5rem 0;padding:.5rem 0;border-bottom:1px solid var(--rule)}
+.afirm .tx{color:var(--ink);margin-bottom:.3rem}
+.afirm button{font-size:.7rem;padding:.25rem .55rem}
+.afirm .r{font-size:.85rem;margin-top:.3rem;color:var(--muted)}
+.om label{display:block;color:var(--ink);font-size:.92rem;margin:.2rem 0}
+.om input{margin-right:.4rem}
+.res{color:var(--ink);font-size:.95rem}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 3 · Semana 5</span>
+  <h1>Auditoría de una descripción</h1>
+  <p>Cuatro imágenes sintéticas con su cartela. Para cada una, una "descripción de modelo" escrita para la ocasión. Mire la imagen primero. Luego marque cada afirmación: está, no está, o requiere contexto local. Abajo, marque lo que está en la imagen y el modelo no describió. Al final la app resume el sesgo.</p>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <span class="k" id="prog"></span>
+      <div class="row"><button id="prev">anterior</button><button id="next">siguiente</button></div>
+    </div>
+    <div class="dos">
+      <figure id="fig"></figure>
+      <div>
+        <span class="k">Descripción del modelo</span>
+        <div id="afirms"></div>
+        <span class="k">Está en la imagen y el modelo no lo describe</span>
+        <div class="om" id="om"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between"><span class="k">Resumen del sesgo</span><button id="resumir" class="primary">resumir</button></div>
+    <div class="res" id="res">Marque las afirmaciones de las cuatro imágenes y pulse resumir.</div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: las dos primeras columnas miden rendimiento; la tercera mide otra cosa, la precomprensión desde la que el modelo describe. En esa columna no hay respuesta correcta sin decir desde dónde se mira.</p>
+<script>
+  var S = 'fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round';
+  var imgs = [
+    {
+      cartela: 'Fotografía de prensa, 1987. Plaza de un municipio. Archivo de un diario regional.',
+      svg: '<svg viewBox="0 0 240 170" role="img" aria-label="Plaza con un quiosco, tres personas de pie, una bandera y un letrero que dice FERIA 1987"><rect width="240" height="170" fill="var(--bg)"/><rect x="0" y="120" width="240" height="50" fill="var(--rule)"/><g style="' + S + '"><path d="M150 120 L150 60 L210 60 L210 120"/><path d="M142 60 L180 36 L218 60"/></g><rect x="20" y="22" width="90" height="20" fill="var(--surface)" stroke="var(--ink)"/><text x="65" y="37" text-anchor="middle" style="fill:var(--ink);font-size:11px">FERIA 1987</text><g style="' + S + '"><path d="M30 118 L30 70"/></g><path d="M30 70 L58 70 L52 80 L58 90 L30 90 Z" fill="var(--c-doc)"/><g fill="var(--ink)"><circle cx="80" cy="86" r="7"/><path d="M70 120 Q80 96 90 120"/><circle cx="104" cy="88" r="7"/><path d="M94 120 Q104 98 114 120"/><circle cx="124" cy="90" r="6"/><path d="M116 120 Q124 102 132 120"/></g><path d="M60 118 Q75 100 90 118" fill="var(--muted)" opacity=".35"/></svg>',
+      afirms: [
+        { t: 'Cuatro personas de pie en primer plano.', ok: 'no', r: 'Hay tres figuras; la cuarta es una sombra o mancha a la izquierda. El modelo completó.' },
+        { t: 'Un quiosco con techo a dos aguas a la derecha.', ok: 'si', r: 'Está: la estructura de la derecha tiene techo en punta.' },
+        { t: 'Un letrero que dice "FERIA 1987".', ok: 'si', r: 'Está, transcrito literal. El modelo lee bien el texto visible.' },
+        { t: 'Una bandera nacional en un mástil.', ok: 'ctx', r: 'Hay una bandera; que sea "nacional" no se ve: es de un solo color. Decir de qué es exige saber qué banderas se izan en esa plaza en feria. Contexto local.' },
+        { t: 'Una celebración popular al aire libre.', ok: 'ctx', r: 'Es plausible por el letrero, pero "celebración" es una suposición sobre la escena; lo que se ve son tres personas de pie. Va en la capa de suposiciones, y juzgarla exige saber qué es una feria municipal en ese lugar.' }
+      ],
+      om: [
+        { t: 'Hay una sombra o mancha en el suelo a la izquierda de las figuras.', ok: true },
+        { t: 'La bandera es de un solo color y no tiene escudo visible.', ok: true },
+        { t: 'Hay un perro junto al quiosco.', ok: false }
+      ]
+    },
+    {
+      cartela: 'Captura de una plataforma de video, 2019. Interior doméstico. Publicada por un usuario.',
+      svg: '<svg viewBox="0 0 240 170" role="img" aria-label="Interior con una mesa, botellas, una imagen religiosa pequeña con velas en una repisa, y la interfaz de una plataforma con un botón de reproducción"><rect width="240" height="170" fill="var(--rule)"/><rect x="40" y="100" width="150" height="10" fill="var(--c-doc)"/><g style="' + S + '"><path d="M50 110 L50 150"/><path d="M180 110 L180 150"/></g><g fill="var(--surface)" stroke="var(--ink)"><rect x="80" y="78" width="8" height="22"/><rect x="100" y="80" width="8" height="20"/><rect x="118" y="76" width="8" height="24"/></g><rect x="160" y="30" width="60" height="8" fill="var(--muted)"/><rect x="180" y="12" width="20" height="18" fill="var(--surface)" stroke="var(--ink)"/><circle cx="190" cy="19" r="3" fill="var(--muted)"/><g fill="var(--accent)"><rect x="168" y="20" width="4" height="10"/><rect x="208" y="20" width="4" height="10"/></g><g fill="var(--c-doc)"><ellipse cx="170" cy="18" rx="2" ry="3"/><ellipse cx="210" cy="18" rx="2" ry="3"/></g><rect x="0" y="150" width="240" height="20" fill="var(--ink)"/><path d="M14 155 L14 165 L24 160 Z" fill="var(--bg)"/><rect x="34" y="159" width="150" height="2" fill="var(--bg)"/><rect x="34" y="159" width="50" height="2" fill="var(--c-fil)"/></svg>',
+      afirms: [
+        { t: 'Una mesa con tres botellas.', ok: 'si', r: 'Está.' },
+        { t: 'Una fiesta o celebración en curso.', ok: 'no', r: 'No hay personas ni acción: hay botellas sobre una mesa. "Fiesta" es la escena típica que el género de las leyendas asocia a botellas.' },
+        { t: 'Una repisa con un pequeño cuadro y dos velas.', ok: 'si', r: 'Está.' },
+        { t: 'Un altar doméstico dedicado a un santo popular.', ok: 'ctx', r: 'Que sea altar, y de qué santo, no se ve: se sabe si se conoce la práctica. El modelo acertó en "altar" por el género; "santo popular" exige contexto local y, si lo hay, es información valiosa.' },
+        { t: 'Una captura de pantalla de un video, con barra de reproducción.', ok: 'si', r: 'Está: la interfaz de abajo es un índice del dispositivo. El modelo lo registró, que es lo que la capa de índices materiales pide.' }
+      ],
+      om: [
+        { t: 'La barra de reproducción indica que el video va por el primer tercio.', ok: true },
+        { t: 'Las botellas no tienen etiqueta legible.', ok: true },
+        { t: 'Hay una ventana con cortinas.', ok: false }
+      ]
+    },
+    {
+      cartela: 'Grabado, siglo XIX. Reproducción en línea de un museo. Dominio público.',
+      svg: '<svg viewBox="0 0 240 170" role="img" aria-label="Grabado con una mujer de vestido largo rompiendo un barril con un hacha frente a una puerta con un letrero ilegible; sombreado a líneas"><rect width="240" height="170" fill="var(--surface)"/><g stroke="var(--muted)" stroke-width=".6"><path d="M0 10 L240 10 M0 20 L240 20 M0 30 L240 30 M0 40 L240 40"/></g><rect x="150" y="40" width="70" height="110" fill="none" stroke="var(--ink)"/><rect x="160" y="48" width="50" height="12" fill="var(--rule)"/><g fill="var(--ink)"><circle cx="80" cy="60" r="9"/><path d="M60 150 Q80 80 100 150 Z"/><path d="M84 70 L120 50 L124 56 L88 76 Z"/></g><g style="' + S + '"><ellipse cx="128" cy="128" rx="22" ry="16"/><path d="M110 120 L146 136 M110 136 L146 120"/></g></svg>',
+      afirms: [
+        { t: 'Una mujer con vestido largo levanta un hacha sobre un barril.', ok: 'si', r: 'Está. El modelo describe bien la acción.' },
+        { t: 'Un grabado con sombreado a líneas, probablemente del siglo XIX.', ok: 'si', r: 'Está: el tipo de imagen y el sombreado son índices materiales visibles. La datación es suposición declarada, y coincide con la cartela.' },
+        { t: 'La escena ocurre frente a una taberna.', ok: 'ctx', r: 'Hay una puerta con un letrero ilegible. Que sea taberna es plausible por el barril, pero exige conocer la iconografía del movimiento antialcohol, en la que esta escena es un tópico. Con ese contexto, el modelo acierta; sin él, supone.' },
+        { t: 'Una protesta violenta contra el consumo de alcohol.', ok: 'ctx', r: '"Protesta" y "violenta" son interpretaciones. Un lector que conoce las cruzadas de templanza las acepta; otro ve a una mujer rompiendo un barril. La connotación exige la convención.' },
+        { t: 'Un hombre observa desde la puerta.', ok: 'no', r: 'No hay nadie en la puerta. Completado.' }
+      ],
+      om: [
+        { t: 'El letrero sobre la puerta es ilegible.', ok: true },
+        { t: 'El barril tiene un aspa marcada.', ok: true },
+        { t: 'Hay una multitud al fondo.', ok: false }
+      ]
+    },
+    {
+      cartela: 'Fotografía, 2003. Fachada de una casa en un barrio. Blog personal; derechos sin claridad.',
+      svg: '<svg viewBox="0 0 240 170" role="img" aria-label="Fachada de casa de dos pisos con rejas ornamentadas, columnas, un balcón y un carro grande al frente; una marca de agua en la esquina"><rect width="240" height="170" fill="var(--bg)"/><rect x="40" y="30" width="160" height="110" fill="var(--c-doc)" opacity=".55"/><g style="' + S + '"><path d="M60 30 L60 140 M180 30 L180 140"/><rect x="70" y="80" width="100" height="20"/><path d="M70 80 L70 60 M170 80 L170 60"/><path d="M80 100 L80 140 L160 140 L160 100"/><path d="M90 110 Q100 100 110 110 Q120 120 130 110 Q140 100 150 110"/></g><rect x="20" y="140" width="110" height="20" rx="4" fill="var(--ink)"/><circle cx="40" cy="162" r="6" fill="var(--muted)"/><circle cx="110" cy="162" r="6" fill="var(--muted)"/><text x="236" y="166" text-anchor="end" style="font-size:8px;fill:var(--muted)">blog</text></svg>',
+      afirms: [
+        { t: 'Una casa de dos pisos con columnas y rejas ornamentadas.', ok: 'si', r: 'Está.' },
+        { t: 'Un vehículo grande y oscuro estacionado al frente.', ok: 'si', r: 'Está.' },
+        { t: 'Una vivienda de lujo en un barrio acomodado.', ok: 'ctx', r: '"Lujo" es lo que el género de las leyendas dice ante columnas y rejas. Que el barrio sea acomodado, o que esa combinación cite una estética específica que la literatura local ha nombrado, solo lo juzga quien conoce el lugar y la época. Es el caso en que Rincón (2009) da el vocabulario que el modelo no tiene.' },
+        { t: 'Una marca de agua de un sitio en la esquina inferior derecha.', ok: 'si', r: 'Está: índice del dispositivo. Conviene que el modelo lo registre.' },
+        { t: 'Arquitectura colonial restaurada.', ok: 'no', r: 'Nada en la imagen sostiene "colonial" ni "restaurada"; es el nombre que el modelo tiene para fachadas con columnas. Afirmado sin base.' }
+      ],
+      om: [
+        { t: 'Las rejas del balcón tienen un patrón ondulado.', ok: true },
+        { t: 'No hay personas visibles.', ok: true },
+        { t: 'Hay un letrero con el nombre de la casa.', ok: false }
+      ]
+    }
+  ];
+  var clave = { si: 'está', no: 'no está', ctx: 'contexto local' };
+  var i = 0, marcas = {}, omis = {};
+  var el = { fig: document.getElementById('fig'), af: document.getElementById('afirms'), om: document.getElementById('om'), prog: document.getElementById('prog'), res: document.getElementById('res') };
+  function pintar() {
+    var im = imgs[i];
+    el.fig.innerHTML = im.svg + '<figcaption>Cartela: ' + im.cartela + '</figcaption>';
+    el.prog.textContent = 'Imagen ' + (i + 1) + ' de ' + imgs.length;
+    el.af.innerHTML = '';
+    im.afirms.forEach(function (a, j) {
+      var d = document.createElement('div'); d.className = 'afirm';
+      var tx = document.createElement('div'); tx.className = 'tx'; tx.textContent = (j + 1) + '. ' + a.t; d.appendChild(tx);
+      var row = document.createElement('div'); row.className = 'row';
+      ['si', 'no', 'ctx'].forEach(function (c) {
+        var b = document.createElement('button'); b.textContent = clave[c];
+        var m = (marcas[i] || {})[j];
+        b.setAttribute('aria-pressed', String(m === c));
+        b.addEventListener('click', function () { marcas[i] = marcas[i] || {}; marcas[i][j] = c; pintar(); });
+        row.appendChild(b);
+      });
+      d.appendChild(row);
+      var m = (marcas[i] || {})[j];
+      if (m) {
+        var r = document.createElement('div'); r.className = 'r';
+        var bien = m === a.ok;
+        r.innerHTML = (bien ? '<span class="ok">Coincide con la clave del docente.</span> ' : '<span class="no">El docente la puso en "' + clave[a.ok] + '".</span> ') + a.r + (m !== a.ok && (m === 'ctx' || a.ok === 'ctx') ? ' Si discrepa en esta columna, diga desde dónde mira: es una discusión legítima.' : '');
+        d.appendChild(r);
+      }
+      el.af.appendChild(d);
+    });
+    el.om.innerHTML = '';
+    im.om.forEach(function (o, j) {
+      var lab = document.createElement('label');
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!((omis[i] || {})[j]);
+      cb.addEventListener('change', function () { omis[i] = omis[i] || {}; omis[i][j] = cb.checked; });
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(o.t));
+      el.om.appendChild(lab);
+    });
+  }
+  function resumir() {
+    var tot = 0, c = { si: 0, no: 0, ctx: 0 }, coinc = 0, omOk = 0, omMal = 0, omFalt = 0, pendientes = 0;
+    imgs.forEach(function (im, k) {
+      im.afirms.forEach(function (a, j) {
+        var m = (marcas[k] || {})[j];
+        if (!m) { pendientes++; return; }
+        tot++; c[m]++; if (m === a.ok) coinc++;
+      });
+      im.om.forEach(function (o, j) {
+        var v = !!((omis[k] || {})[j]);
+        if (o.ok && v) omOk++; else if (o.ok && !v) omFalt++; else if (!o.ok && v) omMal++;
+      });
+    });
+    if (!tot) { el.res.textContent = 'No hay afirmaciones marcadas todavía.'; return; }
+    var pct = function (n) { return (100 * n / tot).toFixed(1).replace('.', ',') + ' %'; };
+    var html = '<p class="res">Sobre ' + tot + ' afirmaciones marcadas' + (pendientes ? ' (' + pendientes + ' sin marcar)' : '') + ': ' + c.si + ' están (' + pct(c.si) + '), ' + c.no + ' no están (' + pct(c.no) + '), ' + c.ctx + ' requieren contexto local (' + pct(c.ctx) + '). Coincide con la clave del docente en ' + coinc + ' de ' + tot + '.</p>';
+    html += '<p class="res">Omisiones: marcó ' + omOk + ' de las que el docente considera omisiones reales; ' + (omFalt ? 'dejó ' + omFalt + ' sin marcar; ' : '') + (omMal ? 'marcó ' + omMal + ' que no están en la imagen.' : '') + '</p>';
+    html += '<p class="res"><b>Resumen del sesgo de este "modelo"</b>: afirma sin base cuando completa figuras y cuando pone nombre a lo que tiene forma conocida (una fachada con columnas pasa a ser "colonial", una mesa con botellas pasa a ser "fiesta"); calla los índices del dispositivo y los detalles sin nombre en su género (el letrero ilegible, la bandera sin escudo); y describe sin entender lo que exige una convención local: qué bandera se iza en esa plaza, a qué santo son las velas, qué cita esa fachada. Lo primero se mide; lo último lo pone un lector situado.</p>';
+    el.res.innerHTML = html;
+  }
+  document.getElementById('prev').addEventListener('click', function () { i = (i - 1 + imgs.length) % imgs.length; pintar(); });
+  document.getElementById('next').addEventListener('click', function () { i = (i + 1) % imgs.length; pintar(); });
+  document.getElementById('resumir').addEventListener('click', resumir);
+  pintar();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Validador de catálogo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* propios de esta app */
+.wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.cat{min-width:62rem}
+table.cat input{width:100%;min-width:7rem;font-family:var(--mono);font-size:.78rem;padding:.25rem .4rem}
+table.cat input.hash{min-width:11rem}
+table.cat input.mal{border-color:var(--c-fil)}
+table.cat td.estado{white-space:nowrap;font-family:var(--mono);font-size:.78rem}
+.resumen{font-family:var(--display);font-weight:700;font-size:1.05rem}
+.prob{margin:.4rem 0;padding-left:0;list-style:none;font-size:.9rem}
+.prob li{margin:.35rem 0;border-left:3px solid var(--c-fil);padding-left:.6rem}
+.prob li b{font-family:var(--mono);font-weight:500;font-size:.8rem}
+.prob li.ok{border-left-color:var(--c-inv)}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 2 · Semana 4</span>
+  <h1>Validador de catálogo</h1>
+  <p>Diez registros de un catálogo maestro, editables. La app aplica las reglas de integridad y dice, para cada registro que falla, qué pregunta de la cadena de procedencia quedaría sin respuesta. Corrija las celdas hasta que todos pasen.</p>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <div class="resumen" id="resumen"></div>
+      <div class="row"><button id="btn-reset">reiniciar registros</button><button id="btn-romper">romper uno al azar</button></div>
+    </div>
+  </div>
+
+  <div class="card wrap">
+    <table class="cat" id="tabla">
+      <thead><tr>
+        <th>estado</th><th>id</th><th>fuente</th><th>url</th><th>fecha_documento</th><th>fecha_descarga</th><th>derechos</th><th>criterio</th><th>hash_sha256</th>
+      </tr></thead>
+      <tbody id="cuerpo"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <span class="k">Por qué no se podría reconstruir</span>
+    <ul class="prob" id="problemas"></ul>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: un campo vacío no es un descuido administrativo, es una pregunta que el corpus ya no puede responder. Las reglas se escriben en el cuaderno y se ejecutan cada vez que el catálogo cambia.</p>
+<script>
+  var DERECHOS = ['dominio_publico','norma_oficial','licencia_abierta','uso_academico_con_cita','restringido'];
+  var CRITERIOS = ['1','2','3','4','E1','E2'];
+  var H = function(s){ // huella de demostración, 64 hex a partir de una semilla
+    var out = '', x = 0;
+    for (var i = 0; i < s.length; i++) x = (x * 31 + s.charCodeAt(i)) >>> 0;
+    for (var j = 0; j < 64; j++) { x = (x * 1103515245 + 12345) >>> 0; out += (x >>> 28).toString(16); }
+    return out;
+  };
+  var ORIGINAL = [
+    {id:'P-0001', fuente:'Hemeroteca digital BNC', url:'https://bibliotecanacional.gov.co/…/1910-03-02/p3', fecha_documento:'1910-03-02', fecha_descarga:'2027-03-14T18:22', derechos:'dominio_publico', criterio:'2', hash:H('P-0001')},
+    {id:'P-0002', fuente:'Hemeroteca digital BNC', url:'https://bibliotecanacional.gov.co/…/1910-03-05/p2', fecha_documento:'1910-03-05', fecha_descarga:'2027-03-14T18:23', derechos:'dominio_publico', criterio:'2', hash:H('P-0002')},
+    {id:'P-0003', fuente:'', url:'https://bibliotecanacional.gov.co/…/1910-03-09/p3', fecha_documento:'1910-03-09', fecha_descarga:'2027-03-14T18:24', derechos:'dominio_publico', criterio:'1', hash:H('P-0003')},
+    {id:'P-0004', fuente:'Hemeroteca digital BNC', url:'https://bibliotecanacional.gov.co/…/1910-04-01/p1', fecha_documento:'', fecha_descarga:'2027-03-14T18:25', derechos:'dominio_publico', criterio:'1', hash:H('P-0004')},
+    {id:'N-0001', fuente:'Secretaría del Senado', url:'http://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html', fecha_documento:'1982-01-28', fecha_descarga:'2027-03-14T18:40', derechos:'norma_oficial', criterio:'4', hash:H('N-0001')},
+    {id:'N-0002', fuente:'Secretaría del Senado', url:'http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html', fecha_documento:'2012-10-17', fecha_descarga:'2027-03-14T18:41', derechos:'', criterio:'4', hash:H('N-0002')},
+    {id:'N-0003', fuente:'Secretaría del Senado', url:'http://www.secretariasenado.gov.co/senado/basedoc/ley_1712_2014.html', fecha_documento:'2014-03-06', fecha_descarga:'2027-03-14T18:42', derechos:'norma_oficial', criterio:'4', hash:'pendiente'},
+    {id:'D-0001', fuente:'datos.gov.co', url:'https://www.datos.gov.co/resource/abcd-1234.csv', fecha_documento:'2026-11-30', fecha_descarga:'2026-02-01T09:10', derechos:'licencia_abierta', criterio:'3', hash:H('D-0001')},
+    {id:'P-0005', fuente:'Hemeroteca digital BNC', url:'https://bibliotecanacional.gov.co/…/1910-04-12/p3', fecha_documento:'1910-04-12', fecha_descarga:'2027-03-14T18:26', derechos:'dominio_publico', criterio:'1', hash:H('P-0005')},
+    {id:'P-0006', fuente:'Hemeroteca digital BNC', url:'https://bibliotecanacional.gov.co/…/1910-04-15/p2', fecha_documento:'1910-04-15', fecha_descarga:'2027-03-14T18:27', derechos:'dominio_publico', criterio:'2', hash:H('P-0006')}
+  ];
+  var CAMPOS = ['id','fuente','url','fecha_documento','fecha_descarga','derechos','criterio','hash'];
+  var datos = [];
+
+  function clonar(){ datos = ORIGINAL.map(function(r){ var o = {}; CAMPOS.forEach(function(c){ o[c] = r[c]; }); return o; }); }
+
+  function construir(){
+    var tb = document.getElementById('cuerpo');
+    tb.innerHTML = '';
+    datos.forEach(function(r, i){
+      var tr = document.createElement('tr');
+      var td0 = document.createElement('td'); td0.className = 'estado'; td0.id = 'estado-' + i; tr.appendChild(td0);
+      CAMPOS.forEach(function(c){
+        var td = document.createElement('td');
+        var inp = document.createElement('input');
+        inp.value = r[c]; inp.setAttribute('data-i', i); inp.setAttribute('data-c', c); inp.setAttribute('aria-label', c + ' del registro ' + (i+1));
+        if (c === 'hash') inp.className = 'hash';
+        inp.addEventListener('input', function(){ datos[+this.getAttribute('data-i')][this.getAttribute('data-c')] = this.value; validar(); });
+        td.appendChild(inp); tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  function fechaValida(f){ return /^\d{4}(-\d{2}(-\d{2})?)?$/.test(f); }
+  function fechaDescargaValida(f){ return /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$/.test(f); }
+
+  function problemas(r, i, ids){
+    var p = [];
+    if (!r.fuente.trim()) p.push({c:'fuente', m:'sin fuente: no se sabe de dónde salió, no se puede volver a tomar ni evaluar su autenticidad'});
+    if (!r.url.trim()) p.push({c:'url', m:'sin dirección: la fuente se nombra pero la pieza no se puede localizar en ella'});
+    if (!r.fecha_documento.trim()) p.push({c:'fecha_documento', m:'sin fecha del documento: la pieza no se puede situar y el periodo del protocolo no se puede verificar'});
+    else if (!fechaValida(r.fecha_documento)) p.push({c:'fecha_documento', m:'fecha del documento fuera del formato ISO (AAAA, AAAA-MM o AAAA-MM-DD): no se puede ordenar ni comparar'});
+    if (!r.fecha_descarga.trim()) p.push({c:'fecha_descarga', m:'sin fecha de descarga: si la fuente cambió, no se puede fechar la versión tomada'});
+    else if (!fechaDescargaValida(r.fecha_descarga)) p.push({c:'fecha_descarga', m:'fecha de descarga fuera del formato ISO'});
+    else if (fechaValida(r.fecha_documento) && r.fecha_descarga.slice(0,10) < r.fecha_documento.slice(0,10)) p.push({c:'fecha_descarga', m:'descargada antes de ser producida: una de las dos fechas está mal y la pieza no se puede situar'});
+    if (!r.derechos.trim()) p.push({c:'derechos', m:'sin régimen de derechos: no se sabe si se puede publicar ni cómo citar'});
+    else if (DERECHOS.indexOf(r.derechos.trim()) < 0) p.push({c:'derechos', m:'régimen de derechos fuera de la lista del esquema (' + DERECHOS.join(', ') + ')'});
+    if (!r.criterio.trim()) p.push({c:'criterio', m:'sin criterio de inclusión: la pieza entró sin razón escrita'});
+    else if (CRITERIOS.indexOf(r.criterio.trim()) < 0) p.push({c:'criterio', m:'criterio "' + r.criterio + '" no existe en el protocolo: la razón de inclusión apunta a nada'});
+    if (!/^[0-9a-f]{64}$/i.test(r.hash.trim())) p.push({c:'hash', m:'hash ausente o mal formado: no se puede probar que el archivo analizado es el que se tomó, ni detectar duplicados'});
+    if (ids[r.id.trim()] > 1) p.push({c:'id', m:'identificador repetido: dos piezas se citarían igual'});
+    if (!r.id.trim()) p.push({c:'id', m:'sin identificador: la pieza no se puede citar'});
+    return p;
+  }
+
+  function validar(){
+    var ids = {};
+    datos.forEach(function(r){ var k = r.id.trim(); ids[k] = (ids[k] || 0) + 1; });
+    var inputs = document.querySelectorAll('table.cat input');
+    for (var k = 0; k < inputs.length; k++) inputs[k].classList.remove('mal');
+    var ul = document.getElementById('problemas'); ul.innerHTML = '';
+    var buenos = 0;
+    datos.forEach(function(r, i){
+      var p = problemas(r, i, ids);
+      var est = document.getElementById('estado-' + i);
+      if (p.length === 0) { buenos++; est.innerHTML = '<span class="ok">reconstruible</span>'; }
+      else {
+        est.innerHTML = '<span class="no">no reconstruible</span>';
+        p.forEach(function(q){
+          var inp = document.querySelector('input[data-i="' + i + '"][data-c="' + q.c + '"]');
+          if (inp) inp.classList.add('mal');
+          var li = document.createElement('li');
+          li.innerHTML = '<b>' + (r.id || '(sin id)') + ' · ' + q.c + '</b> ' + q.m;
+          ul.appendChild(li);
+        });
+      }
+    });
+    if (ul.children.length === 0) { var li = document.createElement('li'); li.className = 'ok'; li.textContent = 'Los diez registros pasan las reglas. Cada pregunta de la cadena tiene respuesta.'; ul.appendChild(li); }
+    document.getElementById('resumen').innerHTML = buenos + ' de ' + datos.length + ' registros reconstruibles · <span class="' + (buenos === datos.length ? 'ok' : 'no') + '">' + (datos.length - buenos) + ' con fallas</span>';
+  }
+
+  document.getElementById('btn-reset').addEventListener('click', function(){ clonar(); construir(); validar(); });
+  document.getElementById('btn-romper').addEventListener('click', function(){
+    var i = Math.floor(Math.random() * datos.length);
+    var c = CAMPOS[1 + Math.floor(Math.random() * (CAMPOS.length - 1))];
+    datos[i][c] = '';
+    var inp = document.querySelector('input[data-i="' + i + '"][data-c="' + c + '"]');
+    if (inp) inp.value = '';
+    validar();
+  });
+
+  clonar(); construir(); validar();
+</script>
+</body>
+</html>

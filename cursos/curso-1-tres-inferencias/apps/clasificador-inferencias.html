@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clasificador de inferencias</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+h2{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:1rem 0 .3rem}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.paso{display:grid;grid-template-columns:2rem 1fr;gap:.6rem;align-items:start}
+.paso .n{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:.2rem}
+.paso .t{color:var(--ink);margin:0 0 .4rem}
+.fb{margin-top:.5rem;padding:.5rem .7rem;border-left:3px solid var(--rule);font-size:.9rem;color:var(--ink);display:none}
+.fb.show{display:block}
+.fb.bien{border-left-color:var(--c-inv)} .fb.mal{border-left-color:var(--c-fil)}
+.fb .k{display:block;margin-bottom:.2rem}
+.resumen{display:none}
+.resumen.show{display:block}
+.bar{height:8px;background:var(--rule);border-radius:999px;overflow:hidden;margin:.4rem 0}
+.bar span{display:block;height:100%;background:var(--accent)}
+.table-wrap{overflow-x:auto}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 1 · Semana 4</span>
+  <h1>Clasificador de inferencias</h1>
+  <p>Diez pasos de un flujo real de investigación cualitativa, en el orden en que suelen ocurrir. Marque para cada uno la inferencia que predomina: deducción (D), inducción (I) o abducción (A). La app explica cada paso y, al final, muestra la tabla de regímenes de validez con sus marcas.</p>
+
+  <div class="card">
+    <p class="k">El proyecto</p>
+    <p>Veinticuatro entrevistas sobre seguridad y vida cotidiana en un barrio de Bogotá, hechas entre 2021 y 2023. El investigador quiere saber cómo describen los habitantes su relación con la policía.</p>
+  </div>
+
+  <div id="pasos"></div>
+
+  <div class="row" style="margin:.8rem 0">
+    <button class="primary" id="revisar">Revisar mis marcas</button>
+    <button id="reiniciar">Empezar de nuevo</button>
+    <span id="progreso" class="note"></span>
+  </div>
+
+  <div class="card resumen" id="resumen">
+    <p class="k">Resultado</p>
+    <p id="puntaje" style="color:var(--ink)"></p>
+    <div class="bar"><span id="barra" style="width:0%"></span></div>
+    <p>La coincidencia con la clasificación del curso importa menos que la razón que usted tenga para cada marca. En el mapa inferencial se evalúa la justificación, no la etiqueta.</p>
+    <h2>Los tres regímenes de validez</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Inferencia</th><th>Qué hace</th><th>Qué la hace válida</th><th>Quién puede verificarla</th><th>Pasos que usted marcó así</th></tr></thead>
+      <tbody>
+        <tr><td>Deducción</td><td>Despliega lo contenido en las premisas</td><td>Su forma</td><td>Cualquiera, incluida una máquina, paso a paso</td><td id="mD"></td></tr>
+        <tr><td>Inducción</td><td>Generaliza de casos a regla</td><td>Sus tasas de acierto a largo plazo</td><td>Cualquiera con datos suficientes, incluida una máquina</td><td id="mI"></td></tr>
+        <tr><td>Abducción</td><td>Introduce una hipótesis nueva</td><td>Que alguien se comprometa a probarla bajo criterios de economía</td><td>Solo un agente que responda por ella ante una comunidad</td><td id="mA"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la frontera del mapa inferencial no está donde la máquina deja de poder ejecutar un paso, sino donde la validez del paso deja de recaer sobre la forma o las tasas y pasa a recaer sobre alguien que responde.</p>
+<script>
+  var PASOS = [
+    {t: "Transcribir las entrevistas y verificar que cada archivo de audio corresponde a una transcripción y a una sola.",
+     r: "D", por: "Es una comprobación de correspondencia uno a uno. Dada la regla (cada audio tiene una transcripción) y el caso (este audio), el resultado se sigue o no se sigue; no hace falta saber de qué hablan las entrevistas.",
+     valida: "su forma", ejecuta: "sí", verifica: "sí"},
+    {t: "Contar cuántas de las veinticuatro entrevistas mencionan la palabra miedo y calcular el porcentaje.",
+     r: "D", por: "Aplicar una regla de conteo a un corpus cerrado es deductivo: el resultado está contenido en los datos y la regla. Lo que no es deductivo es decidir que la palabra miedo mide algo; esa decisión es de otro paso.",
+     valida: "su forma", ejecuta: "sí", verifica: "sí"},
+    {t: "Leer las primeras ocho entrevistas y proponer códigos iniciales: desconfianza institucional, temor físico, protección entre vecinos.",
+     r: "A", por: "Los códigos no están en las entrevistas; se proponen porque algo en ellas sorprende a quien lee con un trasfondo teórico. Si los códigos fueran verdad, lo leído sería natural. Es la forma de la abducción en Peirce y lo que Timmermans y Tavory llaman análisis abductivo.",
+     valida: "el compromiso de alguien", ejecuta: "sí, puede proponer", verifica: "no"},
+    {t: "Aplicar los tres códigos ya definidos a las dieciséis entrevistas restantes.",
+     r: "D", por: "En su forma es deductivo: regla (el código se aplica cuando aparece tal cosa), caso (este fragmento), resultado (lleva o no lleva el código). Pero ninguna regla fija su propia aplicación (Wittgenstein, § 201): cada asignación esconde un juicio. Por eso es el paso donde más se discute en el mapa inferencial.",
+     valida: "su forma, si la regla está escrita; si no, el compromiso de quien codifica", ejecuta: "sí", verifica: "parcialmente"},
+    {t: "Observar que temor físico aparece en 19 de las 24 entrevistas y concluir que el temor físico es una experiencia común en el barrio.",
+     r: "I", por: "De muchos casos sale una regla general. Vale por su tasa: 19 de 24 es 79,2 % y la conclusión se sostiene mientras la muestra sea razonable. No introduce nada nuevo; pesa lo que ya estaba.",
+     valida: "sus tasas", ejecuta: "sí", verifica: "sí"},
+    {t: "Notar que las cinco entrevistas sin temor físico son todas de personas que llegaron al barrio después de 2019, y proponer que el temor está ligado a haber vivido un episodio concreto de 2018.",
+     r: "A", por: "Hay un hecho sorprendente (las cinco excepciones comparten la fecha de llegada) y una hipótesis que, si fuera verdad, lo haría natural. Nada en los datos obliga a esa hipótesis; otras explican lo mismo. Vale si alguien se compromete a probarla.",
+     valida: "el compromiso de alguien", ejecuta: "sí, puede proponer", verifica: "no"},
+    {t: "Pedirle a un modelo de lenguaje que resuma cada entrevista en cien palabras.",
+     r: "I", por: "El modelo generaliza: produce el resumen que, según lo aprendido de millones de textos, es el más probable para ese input. Su validez es una tasa de fidelidad que solo se conoce muestreando resúmenes contra transcripciones.",
+     valida: "sus tasas", ejecuta: "sí", verifica: "por muestreo"},
+    {t: "Comprobar que ningún resumen atribuye a una entrevista algo que no está en su transcripción.",
+     r: "D", por: "Es una verificación de inclusión: cada afirmación del resumen debe seguirse de la transcripción. Una máquina puede ayudar, pero cuando la afirmación es una paráfrasis la decisión de si se sigue vuelve a ser un juicio.",
+     valida: "su forma", ejecuta: "parcialmente", verifica: "parcialmente"},
+    {t: "Comparar los códigos con los de un estudio de 2015 en otro barrio y proponer que la diferencia se explica por el cambio en la presencia policial.",
+     r: "A", por: "Es una hipótesis explicativa sobre una diferencia observada. Hay otras que explican la misma diferencia (otro investigador, otra época, otro barrio). Elegir esta exige criterios de economía y a alguien que pague el costo de probarla.",
+     valida: "el compromiso de alguien", ejecuta: "sí, puede proponer", verifica: "no"},
+    {t: "Escribir el capítulo de hallazgos afirmando que el temor físico en el barrio está ligado al episodio de 2018.",
+     r: "A", por: "Aquí la hipótesis se afirma. Lo que la hace válida no es la forma ni la frecuencia sino que el investigador responde por ella ante sus pares. Es el paso donde la validación deja de recaer sobre el registro del proceso y pasa a recaer sobre quien firma.",
+     valida: "que alguien responda por ella", ejecuta: "sí, puede redactar", verifica: "no"}
+  ];
+  var NOMBRE = {D: "deducción", I: "inducción", A: "abducción"};
+  var marcas = {};
+
+  function render() {
+    var cont = document.getElementById("pasos");
+    var html = "";
+    for (var i = 0; i < PASOS.length; i++) {
+      var p = PASOS[i];
+      html += '<div class="card paso" data-i="' + i + '">' +
+        '<span class="n">' + (i + 1) + '</span>' +
+        '<div><p class="t">' + p.t + '</p>' +
+        '<div class="row">' +
+        '<button data-i="' + i + '" data-v="D" aria-pressed="false">D · deducción</button>' +
+        '<button data-i="' + i + '" data-v="I" aria-pressed="false">I · inducción</button>' +
+        '<button data-i="' + i + '" data-v="A" aria-pressed="false">A · abducción</button>' +
+        '</div>' +
+        '<div class="fb" id="fb' + i + '"></div>' +
+        '</div></div>';
+    }
+    cont.innerHTML = html;
+    var botones = cont.querySelectorAll("button");
+    for (var b = 0; b < botones.length; b++) {
+      botones[b].addEventListener("click", marcar);
+    }
+    progreso();
+  }
+
+  function marcar(e) {
+    var i = e.currentTarget.getAttribute("data-i");
+    var v = e.currentTarget.getAttribute("data-v");
+    marcas[i] = v;
+    var fila = e.currentTarget.parentNode.querySelectorAll("button");
+    for (var k = 0; k < fila.length; k++) {
+      fila[k].setAttribute("aria-pressed", fila[k].getAttribute("data-v") === v ? "true" : "false");
+    }
+    progreso();
+  }
+
+  function progreso() {
+    var n = Object.keys(marcas).length;
+    document.getElementById("progreso").textContent = n + " de " + PASOS.length + " pasos marcados";
+  }
+
+  function revisar() {
+    var aciertos = 0;
+    var porTipo = {D: [], I: [], A: []};
+    for (var i = 0; i < PASOS.length; i++) {
+      var p = PASOS[i];
+      var m = marcas[i];
+      var fb = document.getElementById("fb" + i);
+      var txt = "";
+      if (!m) {
+        txt = '<span class="k">Sin marcar</span>El curso lo clasifica como <b>' + NOMBRE[p.r] + '</b>. ' + p.por;
+        fb.className = "fb show";
+      } else {
+        porTipo[m].push(i + 1);
+        var bien = m === p.r;
+        if (bien) { aciertos++; }
+        txt = '<span class="k">' + (bien ? "Coincide con el curso" : "Usted marcó " + NOMBRE[m] + "; el curso lo clasifica como " + NOMBRE[p.r]) + '</span>' +
+          p.por +
+          '<br><span class="note">Qué lo hace válido: ' + p.valida + '. ¿Puede ejecutarlo una máquina? ' + p.ejecuta + '. ¿Puede verificarlo una máquina? ' + p.verifica + '.</span>';
+        fb.className = "fb show " + (bien ? "bien" : "mal");
+      }
+      fb.innerHTML = txt;
+    }
+    var n = Object.keys(marcas).length;
+    document.getElementById("puntaje").textContent = aciertos + " de " + n + " marcas coinciden con la clasificación del curso" + (n < PASOS.length ? " (quedaron " + (PASOS.length - n) + " sin marcar)" : "") + ".";
+    document.getElementById("barra").style.width = (n ? Math.round(100 * aciertos / PASOS.length) : 0) + "%";
+    document.getElementById("mD").textContent = porTipo.D.length ? porTipo.D.join(", ") : "ninguno";
+    document.getElementById("mI").textContent = porTipo.I.length ? porTipo.I.join(", ") : "ninguno";
+    document.getElementById("mA").textContent = porTipo.A.length ? porTipo.A.join(", ") : "ninguno";
+    document.getElementById("resumen").className = "card resumen show";
+    document.getElementById("resumen").scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  function reiniciar() {
+    marcas = {};
+    document.getElementById("resumen").className = "card resumen";
+    render();
+  }
+
+  document.getElementById("revisar").addEventListener("click", revisar);
+  document.getElementById("reiniciar").addEventListener("click", reiniciar);
+  render();
+</script>
+</body>
+</html>

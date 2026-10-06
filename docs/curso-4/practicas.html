@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 4 · Prácticas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-4/practicas.html" />
+    <meta property="og:title" content="Curso 4 · Prácticas" />
+    <meta property="og:description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-4/practicas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 4</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html" class="is-active">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 4 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Prácticas</h1>
+          <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
+        </div>
+<article class="prose">
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo: kappa, alfa, consultas y exportación del libro</h1>
+<p>Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y una hoja de cálculo. Este cuaderno es para quien quiera calcular el acuerdo con exactitud, ejecutar consultas al corpus como las de un programa de análisis cualitativo, exportar el libro de códigos y, si lo desea, llamar a un modelo por programa dejando registro. Está pensado para que lo use alguien sin experiencia previa en Python, copiando bloque a bloque. Cada bloque dice antes qué hace y por qué.</p>
+<h2>Preparación</h2>
+<p>Instale Python 3.11 o superior. En una terminal:</p>
+<pre><code>pip install pandas
+</code></pre>
+<p>Solo el último bloque, la llamada opcional a un modelo, necesita además:</p>
+<pre><code>pip install openai python-dotenv
+</code></pre>
+<h2>El formato de trabajo</h2>
+<p>Todo el cuaderno trabaja sobre dos archivos de texto separados por comas, que se pueden crear y editar en cualquier hoja de cálculo.</p>
+<p><code>fragmentos.csv</code>, un fragmento por fila:</p>
+<pre><code>id,fuente,texto
+1,entrevista-03,&quot;Yo le compro a la misma señora desde hace años.&quot;
+2,entrevista-03,&quot;Los sábados vengo más por ver gente que por comprar.&quot;
+</code></pre>
+<p><code>codificacion.csv</code>, una fila por asignación de código, con quién lo asignó:</p>
+<pre><code>id,codigo,codificador
+1,confianza en el vendedor,yo
+1,confianza en el vendedor,modelo
+2,encuentro vecinal,yo
+2,encuentro vecinal,modelo
+</code></pre>
+<p>Un fragmento puede tener varias filas por codificador si la codificación es múltiple. Para la matriz de acuerdo de la semana 6 se usa un código por fragmento y codificador.</p>
+<h2>Semana 6. Kappa de Cohen</h2>
+<p>Kappa compara el acuerdo observado entre dos codificadores con el que se esperaría por azar dadas las distribuciones de cada uno. El bloque lee las asignaciones de dos codificadores, alinea los fragmentos que ambos codificaron, y calcula po, pe y kappa. Un código fuera del libro cuenta como categoría aparte, como pide la práctica.</p>
+<pre><code class="language-python">import pandas as pd
+
+cod = pd.read_csv(&quot;codificacion.csv&quot;)
+
+def tabla_dos(cod, a=&quot;yo&quot;, b=&quot;modelo&quot;):
+    &quot;&quot;&quot;Devuelve un DataFrame con una fila por fragmento y una columna por codificador.&quot;&quot;&quot;
+    t = cod.pivot_table(index=&quot;id&quot;, columns=&quot;codificador&quot;, values=&quot;codigo&quot;, aggfunc=&quot;first&quot;)
+    t = t.dropna(subset=[a, b])
+    return t[[a, b]]
+
+def kappa_cohen(t):
+    a, b = t.columns
+    n = len(t)
+    po = (t[a] == t[b]).mean()
+    cats = sorted(set(t[a]) | set(t[b]))
+    pe = sum((t[a] == c).sum() * (t[b] == c).sum() for c in cats) / (n * n)
+    k = (po - pe) / (1 - pe) if pe != 1 else float(&quot;nan&quot;)
+    return {&quot;n&quot;: n, &quot;categorias&quot;: len(cats), &quot;po&quot;: round(po, 3), &quot;pe&quot;: round(pe, 3), &quot;kappa&quot;: round(k, 3)}
+
+t = tabla_dos(cod)
+print(kappa_cohen(t))
+</code></pre>
+<p>Para reportar con coma decimal, como pide el curso:</p>
+<pre><code class="language-python">r = kappa_cohen(t)
+print(f&quot;Acuerdo simple: {r['po']*100:.1f} %&quot;.replace(&quot;.&quot;, &quot;,&quot;))
+print(f&quot;kappa = ({r['po']} - {r['pe']}) / (1 - {r['pe']}) = {r['kappa']}&quot;.replace(&quot;.&quot;, &quot;,&quot;))
+</code></pre>
+<h2>Semana 6. Alfa de Krippendorff (nominal)</h2>
+<p>Alfa generaliza la idea a cualquier número de codificadores y admite fragmentos que no todos codificaron. Para datos nominales, el bloque calcula el desacuerdo observado y el esperado a partir de la matriz de coincidencias, siguiendo la definición de Krippendorff (2018, capítulo sobre fiabilidad). Con dos codificadores y datos completos, el valor suele quedar cerca de kappa.</p>
+<pre><code class="language-python">import pandas as pd
+from collections import Counter
+
+def alfa_krippendorff_nominal(cod):
+    &quot;&quot;&quot;cod: DataFrame con columnas id, codigo, codificador. Un código por fragmento y codificador.&quot;&quot;&quot;
+    t = cod.pivot_table(index=&quot;id&quot;, columns=&quot;codificador&quot;, values=&quot;codigo&quot;, aggfunc=&quot;first&quot;)
+    # matriz de coincidencias: pares ordenados de valores dentro de cada unidad
+    coinc = Counter()
+    n_total = 0
+    for _, fila in t.iterrows():
+        vals = [v for v in fila.tolist() if pd.notna(v)]
+        m = len(vals)
+        if m &lt; 2:
+            continue
+        n_total += m
+        for i in range(m):
+            for j in range(m):
+                if i != j:
+                    coinc[(vals[i], vals[j])] += 1 / (m - 1)
+    if n_total == 0:
+        return float(&quot;nan&quot;)
+    n_c = Counter()
+    for (c, k), v in coinc.items():
+        n_c[c] += v
+    do = sum(v for (c, k), v in coinc.items() if c != k) / n_total
+    de = sum(n_c[c] * n_c[k] for c in n_c for k in n_c if c != k) / (n_total * (n_total - 1))
+    return round(1 - do / de, 3) if de else float(&quot;nan&quot;)
+
+cod = pd.read_csv(&quot;codificacion.csv&quot;)
+print(&quot;alfa =&quot;, alfa_krippendorff_nominal(cod))
+</code></pre>
+<p>Prueba del bloque sobre el caso de doce fragmentos del simulador de la semana 3: con los códigos del modelo y una codificación de referencia (fragmentos 3, 4, 8, 9 y 12 en desacuerdo), kappa da 0,54 y alfa queda en el mismo orden. Si su resultado difiere mucho entre las dos medidas con datos completos, revise que no haya fragmentos duplicados en el archivo.</p>
+<p>Para un tercer codificador basta añadir sus filas a <code>codificacion.csv</code> con otro valor en la columna <code>codificador</code>; alfa lo incorpora sin cambios, y kappa se calcula por pares.</p>
+<h2>Semana 5. Consultas al corpus como las de un CAQDAS</h2>
+<p>Las consultas de recuperación, coocurrencia y matriz por fuente son operaciones sobre el registro: dado el libro y las asignaciones, el resultado es único. Estos bloques las ejecutan sobre los dos archivos. Lo que devuelven es lo que se le pasa al modelo, numerado, en el protocolo de la semana 5.</p>
+<pre><code class="language-python">import pandas as pd
+
+frag = pd.read_csv(&quot;fragmentos.csv&quot;)
+cod = pd.read_csv(&quot;codificacion.csv&quot;)
+mias = cod[cod[&quot;codificador&quot;] == &quot;yo&quot;]
+
+def recuperar(codigo):
+    &quot;&quot;&quot;Todos los fragmentos con un código, con su texto.&quot;&quot;&quot;
+    ids = mias.loc[mias[&quot;codigo&quot;] == codigo, &quot;id&quot;].unique()
+    return frag[frag[&quot;id&quot;].isin(ids)]
+
+def coocurrencia(c1, c2):
+    &quot;&quot;&quot;Fragmentos que tienen los dos códigos a la vez.&quot;&quot;&quot;
+    a = set(mias.loc[mias[&quot;codigo&quot;] == c1, &quot;id&quot;])
+    b = set(mias.loc[mias[&quot;codigo&quot;] == c2, &quot;id&quot;])
+    return frag[frag[&quot;id&quot;].isin(a &amp; b)]
+
+def matriz_por_fuente():
+    &quot;&quot;&quot;Cuántos fragmentos de cada fuente llevan cada código.&quot;&quot;&quot;
+    m = mias.merge(frag[[&quot;id&quot;, &quot;fuente&quot;]], on=&quot;id&quot;)
+    return pd.crosstab(m[&quot;codigo&quot;], m[&quot;fuente&quot;])
+
+print(recuperar(&quot;confianza en el vendedor&quot;))
+print(coocurrencia(&quot;confianza en el vendedor&quot;, &quot;encuentro vecinal&quot;))
+print(matriz_por_fuente())
+</code></pre>
+<p>Para pasarle al modelo solo los fragmentos recuperados, numerados:</p>
+<pre><code class="language-python">def para_el_modelo(df):
+    return &quot;\n&quot;.join(f&quot;[{r.id}] {r.texto}&quot; for r in df.itertuples())
+
+print(para_el_modelo(coocurrencia(&quot;confianza en el vendedor&quot;, &quot;encuentro vecinal&quot;)))
+</code></pre>
+<h2>Semana 7. Curva de códigos nuevos por lote</h2>
+<p>La curva cuenta, para lotes sucesivos de fragmentos, cuántos códigos aparecen por primera vez. Es un instrumento de registro: cuenta códigos, no mide la saturación de propiedades. El bloque la calcula con lotes de diez.</p>
+<pre><code class="language-python">import pandas as pd
+
+cod = pd.read_csv(&quot;codificacion.csv&quot;)
+mias = cod[cod[&quot;codificador&quot;] == &quot;yo&quot;].sort_values(&quot;id&quot;)
+vistos, curva = set(), []
+for inicio in range(mias[&quot;id&quot;].min(), mias[&quot;id&quot;].max() + 1, 10):
+    lote = mias[(mias[&quot;id&quot;] &gt;= inicio) &amp; (mias[&quot;id&quot;] &lt; inicio + 10)]
+    nuevos = sorted(set(lote[&quot;codigo&quot;]) - vistos)
+    vistos |= set(nuevos)
+    curva.append({&quot;lote&quot;: f&quot;{inicio}-{inicio+9}&quot;, &quot;nuevos&quot;: len(nuevos), &quot;acumulados&quot;: len(vistos), &quot;nombres&quot;: &quot;; &quot;.join(nuevos)})
+print(pd.DataFrame(curva).to_string(index=False))
+</code></pre>
+<h2>Semana 8. Exportar el libro de códigos</h2>
+<p>El libro se mantiene en <code>libro.csv</code> con las columnas de la plantilla, y el bloque lo convierte en la tabla markdown de <code>plantillas/libro-de-codigos.md</code>, con los fragmentos de anclaje tomados del archivo de codificación.</p>
+<pre><code>codigo,definicion,incluye,excluye,origen,decision,criterio,responde
+confianza en el vendedor,&quot;Relación sostenida ...&quot;,&quot;compras repetidas ...&quot;,&quot;confianza del vendedor al comprador ...&quot;,modelo,corregí,&quot;la definición era unidireccional&quot;,yo
+</code></pre>
+<pre><code class="language-python">import pandas as pd
+
+libro = pd.read_csv(&quot;libro.csv&quot;)
+cod = pd.read_csv(&quot;codificacion.csv&quot;)
+mias = cod[cod[&quot;codificador&quot;] == &quot;yo&quot;]
+anclaje = mias.groupby(&quot;codigo&quot;)[&quot;id&quot;].apply(lambda s: &quot;, &quot;.join(str(i) for i in sorted(s)))
+libro[&quot;fragmentos de anclaje&quot;] = libro[&quot;codigo&quot;].map(anclaje).fillna(&quot;&quot;)
+cols = [&quot;codigo&quot;, &quot;definicion&quot;, &quot;incluye&quot;, &quot;excluye&quot;, &quot;fragmentos de anclaje&quot;, &quot;origen&quot;, &quot;decision&quot;, &quot;criterio&quot;, &quot;responde&quot;]
+with open(&quot;libro-de-codigos.md&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;| &quot; + &quot; | &quot;.join(cols) + &quot; |\n|&quot; + &quot;---|&quot; * len(cols) + &quot;\n&quot;)
+    for r in libro[cols].itertuples(index=False):
+        f.write(&quot;| &quot; + &quot; | &quot;.join(str(x).replace(&quot;|&quot;, &quot;/&quot;) for x in r) + &quot; |\n&quot;)
+print(&quot;libro-de-codigos.md escrito&quot;)
+</code></pre>
+<p>Las cifras de la sección 4 de la plantilla salen de:</p>
+<pre><code class="language-python">print(libro.groupby([&quot;origen&quot;, &quot;decision&quot;]).size())
+</code></pre>
+<h2>Opcional. Llamar a un modelo por programa con registro</h2>
+<p>Para quien prefiera no usar la interfaz web. La biblioteca <code>openai</code> sirve para cualquier proveedor compatible con su interfaz; cambie <code>base_url</code> según el caso. El curso no exige un proveedor y varios ofrecen cuota gratuita. La clave se guarda en un archivo <code>.env</code> que no se comparte ni se entrega.</p>
+<pre><code>API_KEY=su_clave
+BASE_URL=<a href="https://api.openai.com/v1">https://api.openai.com/v1</a>
+MODEL=nombre_del_modelo
+</code></pre>
+<pre><code class="language-python">import os, json, datetime
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv(&quot;API_KEY&quot;), base_url=os.getenv(&quot;BASE_URL&quot;))
+MODEL = os.getenv(&quot;MODEL&quot;)
+
+def preguntar(prompt, registro=&quot;registro.jsonl&quot;):
+    &quot;&quot;&quot;Envía un prompt, devuelve la respuesta y guarda ambos con fecha.&quot;&quot;&quot;
+    r = client.chat.completions.create(
+        model=MODEL,
+        messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}],
+        temperature=0.2,
+    )
+    texto = r.choices[0].message.content
+    with open(registro, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({
+            &quot;fecha&quot;: datetime.datetime.now().isoformat(),
+            &quot;modelo&quot;: MODEL,
+            &quot;prompt&quot;: prompt,
+            &quot;respuesta&quot;: texto,
+        }, ensure_ascii=False) + &quot;\n&quot;)
+    return texto
+</code></pre>
+<p>Aplicar el libro fijo a treinta fragmentos (práctica 6) y guardar la salida en el formato de <code>codificacion.csv</code>:</p>
+<pre><code class="language-python">import pandas as pd
+
+frag = pd.read_csv(&quot;fragmentos.csv&quot;)
+libro_txt = open(&quot;libro.md&quot;, encoding=&quot;utf-8&quot;).read()
+lote = frag[frag[&quot;id&quot;].between(1, 30)]
+prompt = f&quot;&quot;&quot;Este es un libro de códigos:
+{libro_txt}
+
+Codifica los siguientes fragmentos aplicando exactamente este libro. Un solo
+código por fragmento. No propongas códigos nuevos: si ninguno cabe, escribe
+&quot;ninguno&quot;. Responde solo con líneas de la forma: id;codigo
+
+{chr(10).join(f'[{r.id}] {r.texto}' for r in lote.itertuples())}&quot;&quot;&quot;
+salida = preguntar(prompt)
+filas = [l.split(&quot;;&quot;) for l in salida.strip().splitlines() if &quot;;&quot; in l]
+pd.DataFrame([{&quot;id&quot;: int(i.strip(&quot;[] &quot;)), &quot;codigo&quot;: c.strip(), &quot;codificador&quot;: &quot;modelo&quot;} for i, c in filas]) \
+  .to_csv(&quot;codificacion-modelo.csv&quot;, index=False)
+</code></pre>
+<p>Luego se concatena con las filas propias y se corre el bloque de kappa. Cada llamada queda en <code>registro.jsonl</code>, que es el anexo literal que piden las plantillas.</p>
+<h2>Nota sobre costos y privacidad</h2>
+<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. El curso 7 del programa trata estos problemas en detalle.</p>
+<hr />
+<h1 id="practica-03-codificacion-abierta-asistida">Práctica 3. Codificación abierta asistida</h1>
+<p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica de la semana 3; se continúa en la semana 4.
+Requisitos: el corpus propio en un archivo de texto plano, un fragmento por párrafo, numerado, sin datos personales de terceros; acceso a un modelo de lenguaje de uso gratuito en su versión web (cualquiera sirve; el curso no exige uno en particular); la plantilla <code>plantillas/registro-de-frontera-codificacion.md</code> y la lista de verificación de la semana 2.
+No requiere programar. Para quien quiera, el cuaderno <code>cuaderno-apoyo.md</code> indica cómo hacer lo mismo por programa y cómo exportar el libro.</p>
+<h2>Objetivo</h2>
+<p>Producir el libro de códigos abierto del corpus propio con un modelo como codificador auxiliar, de modo que cada código tenga origen, anclaje, decisión y criterio, y que el estudiante pueda distinguir lo que habría visto solo de lo que el modelo le mostró.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Numere los fragmentos. Un fragmento es una unidad con sentido propio: una respuesta de entrevista, un párrafo de prensa, una descripción de imagen. Entre veinte y sesenta es el tamaño del curso.</li>
+<li>Revise que no haya nombres, direcciones ni datos que identifiquen a una persona. Si su material es sensible, trabaje con una muestra anonimizada o con material público; el curso 7 del programa trata estos problemas en detalle.</li>
+<li>Tenga a mano la lista de verificación de la semana 2, en especial la regla de generación de su tradición. Lo que le va a pedir al modelo es esa regla.</li>
+</ol>
+<h2>Ronda 0. Codificar a mano, antes</h2>
+<p>Codifique los fragmentos 1 a 5 sin el modelo. Para cada uno, haga microanálisis breve (qué sentidos abre cada término que le llame la atención) y proponga uno o dos códigos, con preferencia por códigos in vivo. Guarde esto en un archivo aparte y no lo mire durante la ronda 1. Este paso es el que permite, después, saber qué habría visto usted solo.</p>
+<h2>Ronda 1. El modelo propone</h2>
+<p>Instrucción base para teoría fundamentada; adáptela si su tradición es otra, conservando las tres exigencias: anclaje literal, sin vocabulario de la literatura, alternativas descartables.</p>
+<pre><code>Voy a darte fragmentos numerados de [tipo de material] sobre [tema, en una
+frase]. Para cada fragmento:
+1. Haz microanálisis: enumera dos o tres sentidos posibles de los términos
+   que más pesan en el fragmento, sin elegir todavía.
+2. Propón uno o dos códigos. Usa las palabras del hablante cuando sea posible
+   (código in vivo). No uses categorías de la literatura en ciencias sociales
+   ni términos abstractos que no estén en el fragmento.
+3. Para cada código, cita el fragmento literal que lo sostiene, entre
+   comillas, y di qué término del fragmento da origen al nombre.
+4. Si un código ya lo usaste en un fragmento anterior, dilo y explica en qué
+   se parece el caso nuevo.
+Trabaja fragmento por fragmento y numera cada decisión. No agrupes todavía.
+
+Fragmentos:
+[1] ...
+[2] ...
+</code></pre>
+<p>Empiece con los fragmentos 1 a 5. Copie la salida completa a un anexo con fecha.</p>
+<h2>Ronda 2. El investigador decide</h2>
+<p>Compare la salida del modelo con su codificación a mano, fragmento a fragmento, y llene el registro de frontera por código. Preguntas de apoyo:</p>
+<ul>
+<li>¿El fragmento que el modelo cita está literalmente en el corpus? Verifíquelo con el archivo abierto; el modelo compone citas a veces.</li>
+<li>¿El nombre sale de un término del fragmento o viene de fuera? Si viene de fuera, ¿la tradición declarada lo permite?</li>
+<li>Si acepto, ¿puedo decir por qué sin repetir lo que dijo el modelo?</li>
+<li>Si corrijo, ¿qué sé yo que el modelo no sabía: del tema, del contexto, de quien habla?</li>
+<li>Si rechazo, ¿es porque está mal o porque no puedo verificarlo? Anote cuál.</li>
+<li>¿Hay un código que yo puse y el modelo no? Entra al libro con origen "yo".</li>
+</ul>
+<p>Para cada código la decisión es una de cuatro: aceptar, corregir, rechazar, reformular como pregunta para un memo. "Dejar pasar" no existe en el registro.</p>
+<h2>Ronda 3. Continuar con el corpus</h2>
+<p>Envíe al modelo los fragmentos siguientes en lotes de diez, con la misma instrucción y, al principio de cada lote, la lista de códigos ya aceptados con sus definiciones, para que el modelo compare contra ella. Observe si el modelo reutiliza los códigos aceptados o vuelve a proponer los que usted rechazó con otro nombre. Registre cada lote igual que el primero.</p>
+<h2>Ronda 4. Primer memo</h2>
+<p>Al terminar, elija el código que más dudas le produjo y escriba un memo con <code>plantillas/memo-analitico.md</code>, con la sección de procedencia completa. Si el nombre vino del modelo, ejecute la prueba de anclaje: pídale el término del corpus del que sale y verifíquelo.</p>
+<pre><code>Para el código &quot;[nombre]&quot;, que propusiste en los fragmentos [números], indica
+qué término o expresión literal de esos fragmentos da origen al nombre. Si el
+nombre no sale de ningún término literal, dilo así, sin inventar una cita.
+</code></pre>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Complete el registro para todo el corpus.</li>
+<li>Llene "los casos difíciles", "aceptaciones sin criterio" e "instrucciones que el modelo ignoró". No omita ninguna aceptación sin criterio: anotarlas es parte de la nota.</li>
+<li>Llene el balance: qué vio el modelo que usted no, qué vio usted que el modelo no, qué forzó el modelo y con qué señal lo notó.</li>
+<li>Arme el libro de códigos abierto con <code>plantillas/libro-de-codigos.md</code>, sección 2, y entréguelo en la semana 4 con el registro y el memo.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La precisión del registro, no la elegancia del libro. Un libro con doce códigos in vivo bien anclados, tres rechazos razonados y una aceptación sin criterio anotada vale más que uno con treinta categorías que nadie puso a prueba.</p>
+<h2>Variante con material público</h2>
+<p>Quien no tenga corpus propio listo puede hacer la práctica con los doce fragmentos del simulador de la semana 3 (apps/simulador-codificacion.html), que son inventados y no tienen datos personales, y con textos de dominio público (cartas, crónicas, testimonios publicados antes de 1930). El registro se hace igual.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes codifican los mismos veinte fragmentos con el mismo modelo y la misma instrucción, y comparan registros. Las filas en que uno aceptó y el otro rechazó son el material de discusión de la sesión, y anticipan la matriz de acuerdo de la semana 6.</p>
+<hr />
+<h1 id="practica-06-matriz-de-acuerdo">Práctica 6. Matriz de acuerdo y análisis de desacuerdos</h1>
+<p>Duración estimada: 3 horas, de las cuales 1 en la sesión sincrónica de la semana 6.
+Requisitos: el libro de códigos abierto fijado en la semana 4 (no se modifica durante la práctica); treinta fragmentos del corpus, numerados; acceso a un modelo de lenguaje en su versión web; la plantilla <code>plantillas/matriz-de-acuerdo.md</code>.
+Para el cálculo: la mini app de la semana 3 calcula kappa para sus doce fragmentos fijos; para los treinta propios, el cuaderno <code>cuaderno-apoyo.md</code> calcula kappa y alfa con dos bloques copiables, o se calcula a mano con la tabla de la sección 3.</p>
+<h2>Objetivo</h2>
+<p>Medir el acuerdo entre el investigador y el modelo al aplicar un mismo libro de códigos a los mismos fragmentos, interpretarlo como consistencia y no como validez, y convertir cada desacuerdo en una decisión sobre el libro.</p>
+<h2>Antes de la sesión: codificar a ciegas</h2>
+<ol>
+<li>Elija treinta fragmentos que no haya codificado con el modelo en la práctica 3, o, si todo el corpus pasó ya por el modelo, treinta fragmentos elegidos al azar con un intervalo (cada segundo o tercer fragmento).</li>
+<li>Codifique los treinta a mano con el libro fijo, un código por fragmento (el que predomina). Si el fragmento no cabe en ningún código, anote "ninguno" y la razón. Guarde el resultado con fecha.</li>
+<li>No le pida nada al modelo antes de terminar este paso. La matriz mide acuerdo solo si usted codificó sin haber visto la salida del modelo.</li>
+</ol>
+<h2>En la sesión</h2>
+<h3>Paso 1. El modelo aplica el libro</h3>
+<pre><code>Este es un libro de códigos con [n] códigos. Para cada uno, nombre,
+definición, qué incluye y qué excluye:
+[pegue el libro completo]
+
+Codifica los siguientes fragmentos numerados aplicando exactamente este libro.
+Asigna a cada fragmento un solo código, el que predomina. No propongas
+códigos nuevos: si ningún código cabe, escribe &quot;ninguno&quot; y explica por qué.
+Responde con una tabla: número de fragmento, código, frase del fragmento que
+justifica la elección.
+
+Fragmentos:
+[1] ...
+</code></pre>
+<p>Copie la salida al anexo con fecha. Si el modelo propuso un código nuevo a pesar de la instrucción, anótelo: cuenta como categoría aparte en el cálculo y como señal de forzamiento en el análisis.</p>
+<h3>Paso 2. La matriz y el cálculo</h3>
+<p>Llene la sección 1 de la plantilla con los dos códigos por fragmento. Calcule:</p>
+<ul>
+<li>Acuerdo simple: fragmentos en acuerdo dividido por treinta.</li>
+<li>Kappa de Cohen: con el cuaderno, o a mano con la tabla de abajo.</li>
+<li>Alfa de Krippendorff nominal: con el cuaderno.</li>
+</ul>
+<p>Cálculo a mano de kappa para quien no use el cuaderno. Construya la tabla de marginales:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Veces que lo usé yo (a)</th>
+<th>Veces que lo usó el modelo (b)</th>
+<th>a × b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Suma</td>
+<td>30</td>
+<td>30</td>
+<td>S</td>
+</tr>
+</tbody>
+</table></div>
+<p>El acuerdo esperado por azar es pe = S / (30 × 30). El acuerdo observado po es el acuerdo simple. Kappa = (po - pe) / (1 - pe). Reporte po, pe y kappa con dos decimales y coma decimal.</p>
+<h3>Paso 3. La explicación del modelo</h3>
+<p>Para cada desacuerdo, pídale al modelo que explique su elección, sin decirle cuál fue la suya:</p>
+<pre><code>En el fragmento [n] asignaste el código &quot;[X]&quot;. Explica, citando el fragmento,
+por qué ese y no &quot;[Y]&quot; según las definiciones del libro.
+</code></pre>
+<p>Copie la explicación literal a la columna correspondiente. Léala con cuidado: a veces la explicación muestra que la definición de Y es estrecha; a veces muestra que el modelo aplicó la palabra y no el sentido.</p>
+<h3>Paso 4. Leer los desacuerdos uno a uno</h3>
+<p>Clasifique cada desacuerdo con los tipos de la plantilla (A a G), decida quién tiene razón y con qué criterio, y derive una decisión sobre el libro: nueva regla, definición ampliada, fusión, ejemplo negativo, anotación de forzamiento, corrección propia. La decisión no se aplica al libro durante la práctica; se aplica después, y queda en la sección 5.</p>
+<h3>Paso 5. Acuerdos sospechosos</h3>
+<p>Repase los fragmentos en acuerdo y busque al menos uno en que la coincidencia pueda deberse a que usted y el modelo comparten la literatura y no a lo que el fragmento dice. Si no encuentra ninguno, dígalo y diga por qué lo cree.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Complete las secciones 5, 6 y 7 de la plantilla.</li>
+<li>Escriba la frase final con los valores obtenidos: qué mide el acuerdo y qué no mide.</li>
+<li>Aplique al libro de códigos los cambios de la sección 5 y anótelos en el registro de frontera con origen "matriz de acuerdo".</li>
+<li>Entregue la matriz con el anexo de prompts y salidas literales.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>El orden del procedimiento (a ciegas, libro fijo, misma instrucción), el cálculo con su interpretación, y sobre todo el análisis de desacuerdos: que cada uno produzca una decisión. Un kappa de 0,45 bien leído vale más que uno de 0,85 reportado como prueba de validez.</p>
+<h2>Variante con un tercer codificador</h2>
+<p>Si dos estudiantes comparten corpus, o si un colega que conoce el campo acepta codificar los treinta fragmentos, la matriz se hace a tres: investigador, modelo y tercero. El cuaderno calcula alfa para cualquier número de codificadores. Los fragmentos en que el modelo coincide con uno de los dos humanos y no con el otro son el mejor material para discutir qué es triangulación y qué no.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="plantillas.html">← Plantillas</a><a href="apps.html">Mini apps →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clasificador de sentidos de validación</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Propios de esta app */
+.quien{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.afirm{font-family:var(--display);font-size:1.1rem;line-height:1.4;margin:.3rem 0 .6rem;color:var(--ink)}
+.opts button{margin:.15rem .3rem .15rem 0}
+.fb{border-left:3px solid var(--rule);padding:.4rem .8rem;margin-top:.6rem;font-size:.92rem;color:var(--ink)}
+.fb.ok{border-color:var(--c-inv)} .fb.no{border-color:var(--c-fil)}
+.fb p{color:var(--ink)}
+.marc{display:inline-block;padding:.05rem .45rem;border-radius:3px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;border:1px solid var(--rule);color:var(--muted);margin-right:.3rem}
+.resumen td:first-child{font-family:var(--mono);font-size:.8rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 6 · Semana 1</span>
+  <h1>Clasificador de sentidos de validación</h1>
+  <p>Lea cada afirmación y diga qué sentido de validación está en juego: corrección del resultado (1), justificación del proceso (2), imputación (3), o ninguno. La app explica la confusión típica. Lo que debería notar: la forma de la frase no decide el sentido; lo decide qué se podría comprobar y quién.</p>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <span class="k" id="contador">Afirmación 1 de 14</span>
+      <span class="k" id="puntaje">Aciertos: 0</span>
+    </div>
+    <div class="quien" id="quien"></div>
+    <div class="afirm" id="afirm"></div>
+    <div class="opts row" id="opts">
+      <button data-s="1">1 · Corrección del resultado</button>
+      <button data-s="2">2 · Justificación del proceso</button>
+      <button data-s="3">3 · Imputación</button>
+      <button data-s="0">Ninguno: rendimiento o forma</button>
+    </div>
+    <div id="fb" class="fb" hidden></div>
+    <div class="row" style="margin-top:.6rem">
+      <button id="sig" class="primary" hidden>Siguiente</button>
+      <button id="reiniciar" hidden>Volver a empezar</button>
+    </div>
+  </div>
+
+  <div class="card" id="resumenCard" hidden>
+    <span class="k">Resumen</span>
+    <p>Qué confundió con qué. Las filas en rojo son las confusiones que el curso llama el salto del informe típico.</p>
+    <table class="resumen"><thead><tr><th>Nº</th><th>Afirmación</th><th>Usted</th><th>Sentido</th></tr></thead><tbody id="resumenBody"></tbody></table>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: una cifra de acierto, un kappa o la coincidencia de dos modelos son datos del primer sentido o de la consistencia; "siguió el protocolo" solo vale si hay registro; y "respondo por esto" lo puede decir quien puede dar razones ante otro, que no es el modelo.</p>
+<script>
+  var ITEMS = [
+    {q:"informe", a:"El modelo acertó el 92 % de los fragmentos frente a la codificación humana.", s:1,
+     e:"Es una tasa de acierto: sentido 1, y solo si la codificación humana es la respuesta correcta contra la cual medir. La confusión típica es presentarla como validación del proceso (2) o como si cerrara la cuestión de quién responde (3). Un 92 % correcto se produce por el mismo mecanismo que el 8 % incorrecto."},
+    {q:"informe", a:"El proceso siguió el protocolo de codificación abierta, axial y selectiva.", s:2,
+     e:"Invoca el sentido 2: el proceso fue correcto. Lo satisface solo si existe el registro de cada paso y otra persona puede comprobarlo. Sin registro es una afirmación con la forma del sentido 2 y sin su contenido. La confusión típica es deducir de aquí que el resultado es correcto (1): un proceso bien seguido puede dar una categoría equivocada."},
+    {q:"investigador", a:"Yo respondo por esta categoría ante el comité.", s:3,
+     e:"Sentido 3: alguien se pone en posición de dar razones ante una comunidad. No dice que la categoría sea correcta ni que el proceso lo haya sido; dice quién la sostiene. Es la frase que un modelo no puede decir con contenido."},
+    {q:"informe", a:"La categoría fue validada por un kappa de 0,81 entre los dos codificadores.", s:1,
+     e:"El kappa mide acuerdo entre codificadores corregido por azar: consistencia. Es un dato del primer sentido sobre la aplicación de la categoría, no sobre si la categoría es la adecuada. La confusión típica, señalada por McDonald, Schoenebeck y Forte (2019), es llamarlo validez. Dos codificadores pueden coincidir en una categoría equivocada."},
+    {q:"registro", a:"Cada código tiene en el registro el fragmento literal que lo sustenta.", s:2,
+     e:"Sentido 2, región de registro: cualquiera puede abrir el registro y comprobar que el fragmento sustenta el código. Es lo que un sistema puede satisfacer mejor que un humano, porque no olvida. No dice nada sobre si el código era el que había que poner."},
+    {q:"modelo", a:"Estoy seguro de que esta es la categoría correcta para el fragmento.", s:0,
+     e:"Tiene la forma del sentido 3: alguien se compromete. Pero quien lo dice no puede dar razones ante nadie ni asumir consecuencias; la seguridad es morfología, no compromiso. El curso lo llama infortunio de autoridad epistémica. La respuesta correcta aquí es ninguno: la frase invoca un sentido que quien la produce no puede satisfacer."},
+    {q:"investigador", a:"Contrasté las cifras del informe con la fuente original y coinciden.", s:1,
+     e:"Sentido 1, hecho por quien puede hacerlo: una comprobación de corrección contra una fuente. Es el paso que el modelo no puede garantizar de sí mismo y que el investigador sí puede ejecutar. No es imputación todavía: es verificación."},
+    {q:"investigador", a:"Revisé 300 fragmentos en dos semanas.", s:0,
+     e:"Es rendimiento: cuánto trabajo se hizo en cuánto tiempo. No dice si el resultado es correcto, si el proceso tuvo criterio ni quién responde. Es la frase del investigador que más se parece a la tasa de acierto del modelo, y conviene reconocerla como tal."},
+    {q:"registro", a:"La saturación se alcanzó: los últimos veinte fragmentos no añadieron códigos nuevos.", s:2,
+     e:"Sentido 2, como condición de terminación formulada de manera separable: puede comprobarse con el registro. La versión no separable sería 'la saturación se alcanzó cuando sentí que ya no aprendía', que es de posición. La confusión típica es tomar la saturación como prueba de que las categorías son correctas."},
+    {q:"informe", a:"El hallazgo se sostiene en las entrevistas, en la prensa y en la lectura de un segundo investigador.", s:2,
+     e:"Sentido 2, región de relación: triangulación entre instancias. Vale si las instancias son independientes, cosa que la frase no dice. La confusión típica es contar como pata un segundo codificador que usó el mismo libro de códigos: eso mide consistencia."},
+    {q:"investigador", a:"Sostengo que la desconfianza institucional organiza el corpus, con el alcance de las doce entrevistas de 2024.", s:3,
+     e:"Sentido 3 con alcance declarado: hay sujeto, hay afirmación y hay límite. Es la forma que el curso pide para un hallazgo. Lo que la hace imputación no es la primera persona sino que quien la escribe pueda dar la base y el criterio si se le pide."},
+    {q:"modelo", a:"He justificado cada código con un párrafo que explica por qué se asignó.", s:0,
+     e:"Tiene la forma del sentido 2, pero una cadena de texto con la morfología de una justificación no es una justificación: no hay criterio comprobable ni alguien que la sostenga. Habermas distingue producir una justificación de tener su morfología. La respuesta es ninguno hasta que el investigador comprueba cada párrafo contra el fragmento."},
+    {q:"investigador", a:"La descripción que el modelo hizo de la imagen coincide con lo que se ve en ella.", s:1,
+     e:"Sentido 1 en el nivel preiconográfico: lo descrito está en la imagen. Es verificable mirando. No dice nada sobre el nivel iconográfico ni iconológico, donde la descripción puede ser correcta en lo que se ve y ajena en lo que significa."},
+    {q:"informe", a:"Dos modelos de la misma familia coincidieron en la categoría.", s:1,
+     e:"Consistencia entre dos corridas de una misma prefiguración: dato del primer sentido sobre la estabilidad del output. La confusión típica es presentarlo como triangulación (2, región de relación). Dos modelos de la misma familia no son dos ángulos; son el mismo ángulo dos veces."}
+  ];
+  var NOMBRES = {0:"ninguno", 1:"1 · corrección", 2:"2 · proceso", 3:"3 · imputación"};
+  var i = 0, aciertos = 0, respuestas = [];
+  var elAfirm = document.getElementById('afirm'), elQuien = document.getElementById('quien');
+  var elFb = document.getElementById('fb'), elSig = document.getElementById('sig');
+  var elCont = document.getElementById('contador'), elPunt = document.getElementById('puntaje');
+  var elRe = document.getElementById('reiniciar'), elOpts = document.getElementById('opts');
+  var botones = elOpts.querySelectorAll('button');
+
+  function mostrar(){
+    var it = ITEMS[i];
+    elCont.textContent = "Afirmación " + (i+1) + " de " + ITEMS.length;
+    elQuien.textContent = "Quien lo dice: " + it.q;
+    elAfirm.textContent = "“" + it.a + "”";
+    elFb.hidden = true; elFb.textContent = ""; elFb.className = "fb";
+    elSig.hidden = true;
+    for (var k=0;k<botones.length;k++){ botones[k].disabled=false; botones[k].setAttribute('aria-pressed','false'); }
+  }
+  function responder(s){
+    var it = ITEMS[i];
+    var bien = (s === it.s);
+    if (bien) aciertos++;
+    respuestas.push({a: it.a, u: s, s: it.s, bien: bien});
+    elPunt.textContent = "Aciertos: " + aciertos;
+    elFb.hidden = false;
+    elFb.className = "fb " + (bien ? "ok" : "no");
+    var p1 = document.createElement('p');
+    p1.innerHTML = (bien ? "<b>Sí.</b> " : "<b>No.</b> Usted marcó <span class='marc'>" + NOMBRES[s] + "</span> y el sentido en juego es <span class='marc'>" + NOMBRES[it.s] + "</span>. ") ;
+    var p2 = document.createElement('p'); p2.textContent = it.e;
+    elFb.appendChild(p1); elFb.appendChild(p2);
+    for (var k=0;k<botones.length;k++){ botones[k].disabled=true; if (Number(botones[k].dataset.s)===s) botones[k].setAttribute('aria-pressed','true'); }
+    elSig.hidden = false;
+    elSig.textContent = (i === ITEMS.length-1) ? "Ver resumen" : "Siguiente";
+  }
+  function resumen(){
+    var body = document.getElementById('resumenBody'); body.innerHTML = "";
+    for (var k=0;k<respuestas.length;k++){
+      var r = respuestas[k];
+      var tr = document.createElement('tr');
+      tr.innerHTML = "<td>" + (k+1) + "</td><td>" + r.a + "</td><td class='" + (r.bien?"ok":"no") + "'>" + NOMBRES[r.u] + "</td><td>" + NOMBRES[r.s] + "</td>";
+      body.appendChild(tr);
+    }
+    document.getElementById('resumenCard').hidden = false;
+    elRe.hidden = false;
+  }
+  elOpts.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b || b.disabled) return;
+    responder(Number(b.dataset.s));
+  });
+  elSig.addEventListener('click', function(){
+    if (i === ITEMS.length-1){ resumen(); elSig.hidden = true; return; }
+    i++; mostrar();
+  });
+  elRe.addEventListener('click', function(){
+    i = 0; aciertos = 0; respuestas = [];
+    elPunt.textContent = "Aciertos: 0";
+    document.getElementById('resumenCard').hidden = true; elRe.hidden = true;
+    mostrar();
+  });
+  mostrar();
+</script>
+</body>
+</html>

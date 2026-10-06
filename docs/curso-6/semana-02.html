@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 6 · Semana 2 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Si la tradición cualitativa ya tiene criterios de rigor, ¿cuáles de ellos puede satisfacer una máquina que configuró parte del trabajo, y cuáles exigen al investigador?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-6/semana-02.html" />
+    <meta property="og:title" content="Curso 6 · Semana 2" />
+    <meta property="og:description" content="Si la tradición cualitativa ya tiene criterios de rigor, ¿cuáles de ellos puede satisfacer una máquina que configuró parte del trabajo, y cuáles exigen al investigador?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-6/semana-02.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 6</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub is-active">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 6 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 2. Los criterios de rigor cualitativo, releídos</h1>
+          <p class="desc">Si la tradición cualitativa ya tiene criterios de rigor, ¿cuáles de ellos puede satisfacer una máquina que configuró parte del trabajo, y cuáles exigen al investigador?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Si la tradición cualitativa ya tiene criterios de rigor, ¿cuáles de ellos puede satisfacer una máquina que configuró parte del trabajo, y cuáles exigen al investigador?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">La semana 1 dejó una tesis y una deuda. La tesis: la validación del segundo sentido, la justificación del proceso, es la que la investigación cualitativa articuló durante un siglo y la vinculó con el tercero. La deuda: decir qué criterios son esos y qué pasa con ellos cuando parte del proceso lo ejecutó un modelo. Esta semana lee el capítulo en que Lincoln y Guba (1985) formulan los criterios de rigor de la investigación naturalista, credibilidad, transferibilidad, dependabilidad y confirmabilidad, y lo relee con una pregunta que sus autores no tenían: para cada criterio, ¿sobre qué recae la verificación? Si recae sobre el registro del proceso, un sistema puede satisfacerlo. Si recae sobre la posición de quien responde, no. La frontera entre máquina e investigador deja así de ser una línea que se postula y pasa a ser algo que se demuestra criterio por criterio. Esa es la hipótesis central del anteproyecto doctoral del docente, y aquí se vuelve instrumento de trabajo.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Lincoln y Guba escribieron <em>Naturalistic Inquiry</em> contra una idea precisa: que el rigor de la investigación cualitativa debía medirse con los criterios del paradigma positivista, validez interna, validez externa, fiabilidad y objetividad.<sup class="mark">a</sup> Propusieron cuatro criterios paralelos y distintos. La credibilidad pregunta si la reconstrucción del investigador es creíble para quienes vivieron lo reconstruido. La transferibilidad pregunta si el lector tiene información suficiente para juzgar si los hallazgos aplican a otro contexto. La dependabilidad pregunta si el proceso fue consistente y rastreable. La confirmabilidad pregunta si los hallazgos están anclados en los datos y no en las preferencias del investigador. A cada criterio corresponden técnicas: compromiso prolongado, observación persistente, triangulación, revisión por pares, análisis de casos negativos, verificación con los participantes, descripción densa, registro de auditoría, diario reflexivo.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Yvonna Lincoln y Egon Guba publicaron <i>Naturalistic Inquiry</i> en 1985 (Sage). El capítulo 11, "Establishing Trustworthiness", es el texto de referencia sobre criterios de rigor en investigación cualitativa, y la fuente de la que casi toda la literatura posterior toma los cuatro términos. Guba y Lincoln (1994) revisaron después su propia posición y añadieron criterios de autenticidad.</aside>
+
+<ol start="2">
+<li>
+<p>La relectura del curso no cambia los criterios; cambia la pregunta que se les hace. El anteproyecto (Zainea, 2026) distingue cuatro tipos de enunciado metodológico: la regla de generación, que prescribe qué hacer; el criterio de validez, que establece cuándo se hizo bien; la condición de terminación, que fija cuándo detenerse; y la condición de imputación, que determina quién responde por el resultado. Lincoln y Guba mezclan los cuatro, como toda metodología escrita para humanos. Separarlos es la primera operación: "triangular entre fuentes" es una regla de generación; "los hallazgos convergen entre fuentes independientes" es un criterio de validez; "hasta que ninguna fuente nueva altere la categoría" es una condición de terminación; "el investigador decide cuándo la convergencia basta" es una condición de imputación.</p>
+</li>
+<li>
+<p>Un criterio de validez es operacionalizable en la medida en que su verificación recae sobre el registro del proceso y no sobre la posición del agente. Esa es la prueba que el curso aplica a cada criterio: si alguien que no ejecutó el proceso puede determinar, solo con el registro, si el paso fue correcto, el criterio recae sobre el registro. De ahí tres regiones. Los criterios de registro, trazabilidad, suficiencia, adecuación de nivel, admisibilidad de la hipótesis y fuerza probatoria, pueden ser satisfechos por un sistema artificial, porque un sistema puede dejar rastro de cada paso y una persona puede auditarlo. Los criterios de relación, contraste externo y resistencia a la refutación, exigen instancias realmente independientes, y la semana 3 discute cuándo un modelo lo es. Los criterios de posición, reflexividad, recepción y exclusión, no pueden ser satisfechos por un sistema artificial en razón de su tipo: no hay sujeto que reflexione sobre su lugar, ni comunidad que reciba, ni mundo del que algo quede excluido.</p>
+</li>
+<li>
+<p>Leídos así, los cuatro criterios de Lincoln y Guba se reparten. La dependabilidad y la confirmabilidad recaen en buena parte sobre el registro: el registro de auditoría es una técnica que una máquina puede producir mejor que un humano, porque no olvida ni reescribe. La credibilidad se reparte: la triangulación y el análisis de casos negativos son de relación, la verificación con los participantes es de posición, porque exige que alguien lleve el hallazgo a quienes lo vivieron y responda por lo que les presenta.<sup class="mark">b</sup> La transferibilidad es de posición de principio a fin: la descripción densa la produce quien estuvo ahí, y el juicio de transferencia lo hace el lector. La reflexividad, que Lincoln y Guba tratan como técnica y la tradición posterior como criterio, es el caso límite: pregunta por el lugar desde el que se interpreta, y un modelo no tiene lugar.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> La verificación con los participantes (<i>member checking</i>) consiste en devolver reconstrucciones, categorías o interpretaciones a las personas de quienes provienen los datos y registrar su respuesta. Lincoln y Guba la consideran la técnica más importante para la credibilidad. Un modelo puede redactar lo que se devuelve; no puede sostener la conversación en que se recibe.</aside>
+
+<ol start="5">
+<li>
+<p>Combinar criterios de tradiciones distintas, Lincoln y Guba con Denzin, con la Teoría Fundamentada, con Peirce, abre a la objeción del eclecticismo. El anteproyecto la responde con un principio de separabilidad: un criterio puede importarse de su metodología de origen si su contenido normativo se especifica sin referencia a estados de un sujeto. "La categoría está saturada cuando ningún fragmento nuevo la modifica" es separable; "la categoría está saturada cuando el investigador siente que ya no aprende" no lo es, y esa segunda formulación no se descarta: constituye la región de posición y, con ello, la evidencia de dónde está la frontera. Lo que no supera la prueba de separabilidad es exactamente lo que el investigador no puede delegar.</p>
+</li>
+<li>
+<p>La relectura se resume en una tabla de contraste entre la pregunta que Lincoln y Guba hacían y la que este curso hace.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Criterio tal como lo formulan Lincoln y Guba</th>
+<th>Criterio releído para gobernar lo que un modelo produjo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Es creíble la reconstrucción para quienes la vivieron?</td>
+<td>¿Qué parte de la reconstrucción puede contrastarse con instancias independientes, y qué parte exige llevarla a alguien?</td>
+</tr>
+<tr>
+<td>¿Tiene el lector descripción suficiente para transferir?</td>
+<td>¿Quién produjo la descripción densa: alguien que estuvo ahí o un modelo que describe desde su corpus?</td>
+</tr>
+<tr>
+<td>¿Es el proceso consistente y rastreable?</td>
+<td>¿Existe el registro de cada paso del modelo, y puede otra persona auditarlo sin haber ejecutado el proceso?</td>
+</tr>
+<tr>
+<td>¿Están los hallazgos anclados en los datos y no en el investigador?</td>
+<td>¿Están anclados en los datos y no en la prefiguración del modelo, que no es la del investigador ni la de la comunidad?</td>
+</tr>
+<tr>
+<td><em>El rigor es una propiedad del estudio.</em></td>
+<td><em>El rigor se reparte: una parte recae sobre el registro y otra sobre quien responde, y la frontera entre ambas es lo que hay que demostrar.</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="7">
+<li>La figura de la semana pone los criterios sobre las fases de un proyecto típico y marca dónde la verificación deja de recaer sobre el registro. La frontera no está en una fase sino que atraviesa varias: en la codificación hay criterios de registro y de posición al mismo tiempo. Por eso el protocolo de validación que el estudiante empieza hoy no se organiza por fases sino por criterios dentro de cada fase.</li>
+</ol>
+<figure class="wide">
+<svg viewBox="0 0 700 300" style="width:100%;max-width:44rem;height:auto;display:block" role="img" aria-label="Cuatro fases, recolección, codificación, interpretación y escritura, en columnas. En cada columna, criterios de registro abajo, de relación en medio y de posición arriba. Una línea punteada atraviesa las columnas a alturas distintas: la frontera entre lo que la máquina puede satisfacer y lo que exige al investigador.">
+<style>.f-h{font-family:var(--display);font-weight:700;font-size:13px;fill:var(--ink)} .f-d{font-family:var(--text);font-size:11.5px;fill:var(--muted)} .f-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .f-kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .f-bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .f-reg{fill:var(--c-inv);opacity:.18} .f-rel{fill:var(--accent);opacity:.18} .f-pos{fill:var(--c-fil);opacity:.18} .f-fr{stroke:var(--c-fil);stroke-width:1.8;stroke-dasharray:6 5;fill:none}</style>
+<text x="12" y="20" class="f-k">POSICIÓN</text>
+<text x="12" y="120" class="f-k">RELACIÓN</text>
+<text x="12" y="220" class="f-k">REGISTRO</text>
+<g transform="translate(90 0)">
+<rect x="0" y="30" width="140" height="250" class="f-bx"/>
+<rect x="1" y="31" width="138" height="60" class="f-pos"/>
+<rect x="1" y="131" width="138" height="40" class="f-rel"/>
+<rect x="1" y="171" width="138" height="108" class="f-reg"/>
+<text x="10" y="52" class="f-h">Recolección</text>
+<text x="10" y="74" class="f-d">exclusión: qué no entró</text>
+<text x="10" y="152" class="f-d">contraste de fuentes</text>
+<text x="10" y="196" class="f-d">trazabilidad del corpus</text>
+<text x="10" y="214" class="f-d">suficiencia declarada</text>
+<text x="10" y="232" class="f-d">metadatos por pieza</text>
+</g>
+<g transform="translate(240 0)">
+<rect x="0" y="30" width="140" height="250" class="f-bx"/>
+<rect x="1" y="31" width="138" height="90" class="f-pos"/>
+<rect x="1" y="121" width="138" height="60" class="f-rel"/>
+<rect x="1" y="181" width="138" height="98" class="f-reg"/>
+<text x="10" y="52" class="f-h">Codificación</text>
+<text x="10" y="74" class="f-d">reflexividad: desde dónde</text>
+<text x="10" y="92" class="f-d">se nombra la categoría</text>
+<text x="10" y="142" class="f-d">segundo codificador</text>
+<text x="10" y="160" class="f-d">casos negativos</text>
+<text x="10" y="204" class="f-d">registro de cada código</text>
+<text x="10" y="222" class="f-d">fragmento que lo sustenta</text>
+<text x="10" y="240" class="f-d">saturación operativa</text>
+</g>
+<g transform="translate(390 0)">
+<rect x="0" y="30" width="140" height="250" class="f-bx"/>
+<rect x="1" y="31" width="138" height="130" class="f-pos"/>
+<rect x="1" y="161" width="138" height="50" class="f-rel"/>
+<rect x="1" y="211" width="138" height="68" class="f-reg"/>
+<text x="10" y="52" class="f-h">Interpretación</text>
+<text x="10" y="74" class="f-d">verificación con quienes</text>
+<text x="10" y="92" class="f-d">lo vivieron</text>
+<text x="10" y="110" class="f-d">compromiso con la hipótesis</text>
+<text x="10" y="128" class="f-d">juicio de transferencia</text>
+<text x="10" y="182" class="f-d">triangulación teórica</text>
+<text x="10" y="232" class="f-d">admisibilidad abductiva</text>
+<text x="10" y="250" class="f-d">fuerza probatoria</text>
+</g>
+<g transform="translate(540 0)">
+<rect x="0" y="30" width="140" height="250" class="f-bx"/>
+<rect x="1" y="31" width="138" height="160" class="f-pos"/>
+<rect x="1" y="191" width="138" height="30" class="f-rel"/>
+<rect x="1" y="221" width="138" height="58" class="f-reg"/>
+<text x="10" y="52" class="f-h">Escritura</text>
+<text x="10" y="74" class="f-d">aserción con aserente</text>
+<text x="10" y="92" class="f-d">declaración de uso</text>
+<text x="10" y="110" class="f-d">recepción por pares</text>
+<text x="10" y="128" class="f-d">responder por el hallazgo</text>
+<text x="10" y="210" class="f-d">revisión por pares</text>
+<text x="10" y="242" class="f-d">procedencia de cada</text>
+<text x="10" y="260" class="f-d">afirmación</text>
+</g>
+<path class="f-fr" d="M90 91 L230 91 L240 121 L380 121 L390 161 L530 161 L540 191 L680 191"/>
+<text x="686" y="195" class="f-kf" transform="rotate(-90 686 195)">FRONTERA</text>
+</svg>
+<figcaption><b>Figura 2.</b> Criterios por fase y la frontera que los atraviesa. Lo que hay que ver es que la frontera sube hacia la derecha: cuanto más cerca de la escritura, más criterios recaen sobre la posición de quien responde y menos sobre el registro.</figcaption>
+</figure>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que produzca el registro de auditoría de una fase del proyecto en la que intervino: qué recibió, qué hizo en cada paso, qué criterio aplicó, qué dejó fuera. El estudiante debe poder decir, para cada criterio de Lincoln y Guba, si ese registro basta para verificarlo o si hace falta que alguien esté en una posición que el registro no da. Debe poder defender la clasificación de al menos un criterio en cada región sin consultar la figura.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Lincoln, Y. S. y Guba, E. G. (1985). <em>Naturalistic Inquiry</em>. Beverly Hills: Sage. Capítulo 11, "Establishing Trustworthiness".</li>
+<li>Zainea, C. I. (2026). "La prótesis hermenéutica". <a href="https://izainea.github.io/blog/protesis-hermeneutica/">https://izainea.github.io/blog/protesis-hermeneutica/</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Guba, E. G. y Lincoln, Y. S. (1994). "Competing Paradigms in Qualitative Research". En N. K. Denzin e Y. S. Lincoln (eds.), <em>Handbook of Qualitative Research</em>, 105-117. Thousand Oaks: Sage.</li>
+<li>Shenton, A. K. (2004). "Strategies for Ensuring Trustworthiness in Qualitative Research Projects". <em>Education for Information</em> 22(2), 63-75. <a href="https://doi.org/10.3233/EFI-2004-22201">https://doi.org/10.3233/EFI-2004-22201</a></li>
+<li>Finlay, L. (2002). "Negotiating the Swamp: The Opportunity and Challenge of Reflexivity in Research Practice". <em>Qualitative Research</em> 2(2), 209-230. <a href="https://doi.org/10.1177/146879410200200205">https://doi.org/10.1177/146879410200200205</a></li>
+<li>Vallor, S. (2024). <em>The AI Mirror: How to Reclaim Our Humanity in an Age of Machine Thinking</em>. Oxford University Press. Capítulo 4.</li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Lincoln y Guba presentan cada criterio con sus técnicas, y las técnicas son de naturaleza muy distinta: el registro de auditoría es un artefacto, la verificación con los participantes es una conversación. <em>Para cada técnica del capítulo 11, ¿sobre qué recae la verificación: sobre algo que queda escrito o sobre alguien que tiene que estar ahí?</em></li>
+<li>Los autores sostienen que la transferibilidad no la establece el investigador sino el lector, a quien el investigador debe darle descripción suficiente. <em>Si un modelo escribió la descripción densa a partir de los datos, ¿qué le falta a esa descripción para que un lector pueda transferir, y puede el investigador reponerlo después?</em></li>
+<li>Shenton ofrece una lista operativa de estrategias por criterio, pensada para un investigador solo. <em>¿Cuáles de sus estrategias cambian de naturaleza cuando una parte del trabajo la hizo un modelo, y cuáles quedan igual?</em></li>
+<li>Finlay describe la reflexividad como un pantano: necesaria y sin fondo. <em>¿Qué de ese pantano puede pedirse a un modelo que no tiene lugar desde el cual mirar, y qué pasa con la reflexividad del investigador cuando el modelo le evita el esfuerzo de nombrar?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Primer borrador del protocolo de validación. Cada estudiante toma la lista de fases de su proyecto que trajo y, para cada fase, llena al menos dos filas, una con un criterio que recae sobre el registro y otra con uno que recae sobre la posición. Plantilla completa en <code>plantillas/protocolo-de-validacion.md</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Intervino un modelo (sí, no, en qué)</th>
+<th>Criterio de rigor</th>
+<th>Tipo de enunciado (regla, criterio, terminación, imputación)</th>
+<th>Región (registro, relación, posición)</th>
+<th>Cómo se verifica y quién</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>La columna difícil es la región. Para decidirla, aplique la prueba: ¿puede alguien que no ejecutó el proceso determinar, solo con el registro, si el paso fue correcto? Si duda, escriba por qué duda; esas dudas son el contenido de la semana 3.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10 min</td>
+<td>Recoge las preguntas abiertas de la bitácora anterior</td>
+<td>Lee en voz alta la suya si quiere</td>
+<td>Bitácoras</td>
+</tr>
+<tr>
+<td>10 a 35 min</td>
+<td>Expone los cuatro criterios y sus técnicas con ejemplos del caso de apertura de la semana 1</td>
+<td>Anota qué técnica aplicó su proyecto, aunque no la llamara así</td>
+<td>Lincoln y Guba, cap. 11</td>
+</tr>
+<tr>
+<td>35 a 60 min</td>
+<td>Introduce la tipología de enunciados y las tres regiones; recorre la figura 2</td>
+<td>Clasifica en voz alta dos criterios propuestos por el docente</td>
+<td>Figura 2</td>
+</tr>
+<tr>
+<td>60 a 70 min</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>70 a 105 min</td>
+<td>Acompaña el borrador del protocolo, fase por fase</td>
+<td>Llena las filas sobre su propio proyecto</td>
+<td>Plantilla del protocolo</td>
+</tr>
+<tr>
+<td>105 a 120 min</td>
+<td>Recoge los criterios cuya región fue difícil de decidir y anuncia la triangulación</td>
+<td>Anota el criterio que más dudas le dejó</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: el estudiante pone todos los criterios de las fases con modelo en la región de registro, como si el hecho de que la máquina haya intervenido decidiera la región; conviene mostrar que la reflexividad sobre una codificación hecha por un modelo es de posición aunque la codificación sea auditable. Segundo fallo: confundir la condición de terminación con el criterio de validez (saturación con confirmabilidad). Tercero: la tabla de contraste se lee como si la segunda columna reemplazara la primera; no la reemplaza, la especifica para un caso que Lincoln y Guba no previeron.</p>
+<h2>Bitácora</h2>
+<p>Registre el borrador del protocolo, el criterio que no supo ubicar y por qué. Si pidió al modelo un registro de auditoría, adjúntelo literal y anote qué le faltaba para verificar cada criterio.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer el capítulo de Denzin sobre triangulación y el capítulo de Flick. Traer un hallazgo propio, aunque sea provisional, y la lista de fuentes, métodos, investigadores y teorías que lo sostienen o podrían sostenerlo. Si parte de la codificación la hizo un modelo, traer también una muestra de diez fragmentos con su codificación, porque la práctica de la semana 3 la usa.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-01.html">← Semana 1. Tres sentidos de validación</a><a href="semana-03.html">Semana 3. Triangulación con y sin modelo →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

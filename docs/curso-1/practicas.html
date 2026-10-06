@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 1 · Prácticas · Carlos Isaac Zainea</title>
+    <meta name="description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-1/practicas.html" />
+    <meta property="og:title" content="Curso 1 · Prácticas" />
+    <meta property="og:description" content="Guías de las prácticas y cuaderno de apoyo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-1/practicas.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 1</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html" class="is-active">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 1 · Fundamentos · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Prácticas</h1>
+          <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
+        </div>
+<article class="prose">
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo: hacer las prácticas por programa</h1>
+<p>Opcional. Todo el curso se puede hacer con la interfaz web de un modelo. Este cuaderno es para quien quiera dejar los prompts, outputs y decisiones en archivos y repetir el ejercicio con varios modelos. Está pensado para que lo use alguien sin experiencia previa en Python, copiando bloque a bloque.</p>
+<h2>Preparación</h2>
+<p>Instale Python 3.11 o superior y, en una terminal:</p>
+<pre><code>pip install openai python-dotenv
+</code></pre>
+<p>Cree un archivo <code>.env</code> en la carpeta de trabajo con la clave del proveedor que use. La biblioteca <code>openai</code> sirve para cualquier proveedor compatible con su interfaz; cambie <code>base_url</code> según el caso. El curso no exige un proveedor y varios ofrecen cuota gratuita.</p>
+<pre><code>API_KEY=su_clave
+BASE_URL=<a href="https://api.openai.com/v1">https://api.openai.com/v1</a>
+MODEL=nombre_del_modelo
+</code></pre>
+<h2>Función base</h2>
+<pre><code class="language-python">import os, json, datetime
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv(&quot;API_KEY&quot;), base_url=os.getenv(&quot;BASE_URL&quot;))
+MODEL = os.getenv(&quot;MODEL&quot;)
+
+def preguntar(prompt, registro=&quot;registro.jsonl&quot;):
+    &quot;&quot;&quot;Envía un prompt, devuelve la respuesta y guarda ambos con fecha.&quot;&quot;&quot;
+    r = client.chat.completions.create(
+        model=MODEL,
+        messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}],
+        temperature=0.2,
+    )
+    texto = r.choices[0].message.content
+    with open(registro, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({
+            &quot;fecha&quot;: datetime.datetime.now().isoformat(),
+            &quot;modelo&quot;: MODEL,
+            &quot;prompt&quot;: prompt,
+            &quot;respuesta&quot;: texto,
+        }, ensure_ascii=False) + &quot;\n&quot;)
+    return texto
+</code></pre>
+<p>Cada llamada queda en <code>registro.jsonl</code>. Ese archivo es el anexo literal que piden las plantillas.</p>
+<h2>Semana 2. Verificar una cadena de pasos</h2>
+<pre><code class="language-python">problema = &quot;&quot;&quot;Un investigador entrevistó a 12 personas. 8 mencionaron la palabra
+'miedo'. De esas 8, 5 también mencionaron 'policía'. 2 personas mencionaron
+'policía' sin mencionar 'miedo'. ¿Cuántas personas no mencionaron ninguna de las dos?
+Resuelve paso a paso y numera cada paso.&quot;&quot;&quot;
+
+print(preguntar(problema))
+</code></pre>
+<p>Numere los pasos en su bitácora, marque cuáles son deductivos y verifíquelos sin mirar la conclusión.</p>
+<h2>Semana 3. Hipótesis rivales sobre los mismos datos</h2>
+<pre><code class="language-python">datos = open(&quot;datos.txt&quot;, encoding=&quot;utf-8&quot;).read()
+
+p1 = f&quot;Estos son los datos:\n{datos}\n\nFormula la hipótesis que mejor los explica, en una frase, y di qué la sustenta.&quot;
+h1 = preguntar(p1)
+
+p2 = f&quot;Estos son los datos:\n{datos}\n\nYa se propuso esta hipótesis: {h1}\n\nFormula una hipótesis distinta, incompatible con la anterior, que también sea compatible con todos los datos. Di qué dato nuevo permitiría decidir entre las dos.&quot;
+h2 = preguntar(p2)
+print(h1, &quot;\n---\n&quot;, h2)
+</code></pre>
+<h2>Semana 6. Filtro peirceano asistido</h2>
+<p>El modelo puede ayudar a aplicar los criterios, pero la decisión es suya. Pídale que argumente los cuatro criterios a favor y en contra de cada hipótesis, y luego decida usted.</p>
+<pre><code class="language-python">hipotesis = [h1, h2, &quot;mi hipótesis propia&quot;]
+for h in hipotesis:
+    p = f&quot;&quot;&quot;Evalúa esta hipótesis con cuatro criterios, dando un argumento a favor
+y uno en contra para cada uno: (1) explica el hecho sorprendente, (2) es
+verificable y cómo, (3) es económica de probar y qué rinde, (4) es plausible
+dado lo que se sabe del tema. Hipótesis: {h}&quot;&quot;&quot;
+    print(preguntar(p), &quot;\n=====\n&quot;)
+</code></pre>
+<h2>Semana 7. Registro de frontera por programa</h2>
+<p>Mantenga un segundo archivo con sus decisiones, una por paso del modelo:</p>
+<pre><code class="language-python">def decidir(paso, propuesta, inferencia, decision, criterio, responde, archivo=&quot;frontera.jsonl&quot;):
+    with open(archivo, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(json.dumps({
+            &quot;paso&quot;: paso, &quot;propuso_el_modelo&quot;: propuesta,
+            &quot;inferencia&quot;: inferencia, &quot;decidi&quot;: decision,
+            &quot;criterio&quot;: criterio, &quot;responde&quot;: responde,
+        }, ensure_ascii=False) + &quot;\n&quot;)
+
+decidir(1, &quot;Código 'desconfianza institucional' para fragmentos 2, 5, 7&quot;,
+        &quot;A&quot;, &quot;corregir: separar 'desconfianza' de 'miedo', que el modelo fundió&quot;,
+        &quot;los fragmentos 5 y 7 hablan de temor físico, no de desconfianza&quot;,
+        &quot;yo&quot;)
+</code></pre>
+<p>Al final, <code>frontera.jsonl</code> se convierte en la tabla de la plantilla con cualquier hoja de cálculo o con:</p>
+<pre><code class="language-python">import pandas as pd
+pd.read_json(&quot;frontera.jsonl&quot;, lines=True).to_csv(&quot;registro-de-frontera.csv&quot;, index=False)
+</code></pre>
+<h2>Nota sobre costos y privacidad</h2>
+<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga la práctica con una muestra anonimizada o con material público. El curso 7 del programa trata estos problemas en detalle.</p>
+<hr />
+<h1 id="practica-07-registro-de-frontera">Práctica 7. Registro de frontera sobre una tarea real</h1>
+<p>Duración estimada: 3 horas, de las cuales 1 en la sesión sincrónica.
+Requisitos: acceso a un modelo de lenguaje de uso gratuito en su versión web (cualquiera sirve; el curso no exige uno en particular) y la plantilla <code>plantillas/registro-de-frontera.md</code>.
+No requiere programar. Para quien quiera, el cuaderno <code>cuaderno-apoyo.md</code> indica cómo hacer lo mismo por programa.</p>
+<h2>Objetivo</h2>
+<p>Ejecutar con un modelo una tarea pequeña y real del propio proyecto, y producir el registro de frontera que distingue, paso a paso, lo que propuso la máquina de lo que decidió el investigador.</p>
+<h2>Antes de la sesión</h2>
+<ol>
+<li>Elija una tarea real y acotada. Tres opciones probadas:
+   - <strong>Codificar.</strong> Diez fragmentos de texto (entrevistas, prensa, documentos) o diez imágenes descritas, con el objetivo de proponer códigos iniciales.
+   - <strong>Sintetizar.</strong> Tres fuentes de su bibliografía, con el objetivo de obtener un estado de la cuestión en una página.
+   - <strong>Categorizar.</strong> Un listado de veinte a cuarenta elementos (títulos, hashtags, cartelas, titulares) con el objetivo de proponer categorías.</li>
+<li>Prepare el material en un archivo de texto. No incluya datos personales de terceros.</li>
+<li>Abra la plantilla del registro y llene el encabezado.</li>
+</ol>
+<h2>Durante la sesión: tres rondas</h2>
+<h3>Ronda 1. La máquina propone</h3>
+<p>Pídale al modelo que ejecute la tarea. Use un prompt que exija pasos explícitos. Ejemplo para codificar:</p>
+<pre><code>Tengo diez fragmentos de entrevistas sobre [tema]. Propón códigos iniciales
+para cada fragmento. Para cada código, indica: el fragmento literal que lo
+sustenta, por qué ese código y no otro más general, y qué otros fragmentos
+del conjunto lo comparten. Trabaja paso a paso y numera cada decisión.
+</code></pre>
+<p>Copie el output completo a un anexo. Luego, en el registro, una fila por paso numerado del modelo. En la columna "qué propuso" sea fiel: no resuma de forma que mejore o empeore lo que dijo.</p>
+<h3>Ronda 2. El investigador decide</h3>
+<p>Para cada fila, antes de seguir con el modelo, llene las columnas "tipo de inferencia", "qué decidí" y "criterio". Preguntas de apoyo:</p>
+<ul>
+<li>¿Este paso se sigue por forma de los anteriores (deducción), generaliza sobre los fragmentos (inducción) o introduce una idea que no estaba en ellos (abducción)?</li>
+<li>Si acepto, ¿puedo decir por qué sin repetir lo que dijo el modelo?</li>
+<li>Si corrijo, ¿qué sé yo que el modelo no sabía? ¿Es conocimiento del tema, del contexto, de la comunidad?</li>
+<li>Si rechazo, ¿es porque está mal o porque no puedo verificarlo? Son cosas distintas; anote cuál.</li>
+</ul>
+<h3>Ronda 3. Segunda vuelta con lo decidido</h3>
+<p>Devuélvale al modelo sus decisiones y pídale que continúe (por ejemplo, agrupar los códigos aceptados en categorías). Registre la nueva ronda igual. Observe si el modelo incorpora sus correcciones o vuelve a su propuesta inicial de otra forma.</p>
+<h2>Después de la sesión</h2>
+<ol>
+<li>Llene "los casos difíciles" y "aceptaciones acríticas". No omita ninguna aceptación sin criterio: anotarlas es parte de la nota.</li>
+<li>Llene el balance. Responda en especial si la frontera de esta tarea coincide con la de su mapa inferencial preliminar. Si no coincide, cuál de los dos documentos corrige al otro.</li>
+<li>Entregue el registro con el anexo de prompts y outputs literales.</li>
+</ol>
+<h2>Qué se evalúa</h2>
+<p>La precisión de la distinción, no el éxito de la tarea. Un registro en que el modelo hizo un trabajo mediocre y el estudiante lo detectó paso a paso vale más que uno en que el modelo hizo un trabajo brillante y el estudiante lo aceptó sin criterio.</p>
+<h2>Variante para grupos</h2>
+<p>Dos estudiantes ejecutan la misma tarea con el mismo material y comparan registros. Las filas en que uno aceptó y el otro rechazó son el mejor material de discusión de la sesión.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="plantillas.html">← Plantillas</a><a href="apps.html">Mini apps →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

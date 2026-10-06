@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 4 · Semana 7 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Cuándo se termina de codificar, quién lo decide, y qué pasa con esa decisión cuando el modelo puede seguir codificando indefinidamente sin cansarse?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-4/semana-07.html" />
+    <meta property="og:title" content="Curso 4 · Semana 7" />
+    <meta property="og:description" content="¿Cuándo se termina de codificar, quién lo decide, y qué pasa con esa decisión cuando el modelo puede seguir codificando indefinidamente sin cansarse?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-4/semana-07.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 4</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub is-active">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 4 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 7. Saturación y terminación</h1>
+          <p class="desc">¿Cuándo se termina de codificar, quién lo decide, y qué pasa con esa decisión cuando el modelo puede seguir codificando indefinidamente sin cansarse?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>¿Cuándo se termina de codificar, quién lo decide, y qué pasa con esa decisión cuando el modelo puede seguir codificando indefinidamente sin cansarse?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Toda metodología cualitativa tiene una condición de terminación, y ninguna la formula como un número. La teoría fundamentada termina por saturación teórica; el análisis temático, cuando los temas cuentan una historia coherente; el análisis de contenido, cuando la muestra está codificada con fiabilidad suficiente. En los tres casos alguien decide que basta, y esa decisión es de las que la semana 2 clasificó como apoyadas en el registro pero no reducibles a él. Los modelos de lenguaje alteran la economía de esa decisión: codificar cien fragmentos más cuesta minutos, no semanas, y la tentación es no parar nunca o parar cuando el modelo deja de producir códigos nuevos, que es la única condición de terminación que el modelo tiene por sí solo. Esta semana enseña a escribir la condición antes, a ponerla a prueba con una curva, y a usar el modelo para el muestreo teórico sin cederle la decisión.</p>
+
+<p>La herramienta de la semana es la curva de saturación, que cuenta cuántos códigos nuevos aparecen en cada lote de material. Es un instrumento de registro, útil y limitado: cuenta códigos, no mide la saturación de propiedades, y por eso la mini app muestra el costo de confiar en ella sola.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Glaser y Strauss (1967) definen la saturación teórica como el momento en que no se encuentran datos adicionales con los que el investigador pueda desarrollar propiedades de la categoría: los casos nuevos repiten lo ya visto. La saturación es de cada categoría, no del corpus, y está ligada al muestreo teórico: se buscan nuevos datos donde las categorías lo exigen, no donde queden datos. La condición de terminación, en esta tradición, es un juicio sobre las categorías, apoyado en comparaciones que el registro muestra y que ninguna cifra resume.<sup class="mark">a</sup></li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Charmaz (2014) distingue la saturación de categorías de la simple repetición de códigos: ver el mismo código veinte veces no satura nada si la categoría no tiene todavía propiedades definidas. Esa distinción es la que falla cuando la terminación se delega a una curva.</aside>
+
+<ol start="2">
+<li>
+<p>La curva de saturación es la operacionalización más común y la más discutida. Guest, Bunce y Johnson (2006) codificaron sesenta entrevistas en lotes y encontraron que el 92 % de los códigos había aparecido a la decimosegunda y que las definiciones ya no cambiaban a las doce. El dato se ha citado desde entonces como si fuera una regla; los autores lo presentan como una descripción de su corpus, homogéneo y con una pregunta acotada. Hennink y Kaiser (2022) revisaron los estudios empíricos y encontraron que la saturación de códigos suele alcanzarse entre nueve y diecisiete entrevistas, y que la saturación de sentido, la de las propiedades, exige más. Dos cosas distintas, dos curvas distintas, y solo la primera es contable.</p>
+</li>
+<li>
+<p>Saunders et al. (2018) ordenan el campo en cuatro modelos de saturación: la teórica de Glaser y Strauss, ligada al muestreo; la inductiva temática, en que no aparecen códigos nuevos; la a priori temática, en que las categorías previstas se llenan; y la de datos, en que los datos nuevos repiten los anteriores. Lo que el curso toma de ese trabajo es que la saturación no es un hecho que se observa sino un juicio que depende del modelo adoptado, y que el modelo adoptado debe declararse. En los términos de la semana 2: la condición de terminación es un enunciado metodológico que se escribe antes, y lo que se verifica después es si se cumplió lo escrito, no si "se saturó".</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Modelo de saturación (Saunders et al., 2018)</th>
+<th>Qué se satura</th>
+<th>Qué se registra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teórica</td>
+<td>Las propiedades de cada categoría, por muestreo teórico</td>
+<td>Memos por categoría con propiedades y dimensiones</td>
+</tr>
+<tr>
+<td>Inductiva temática</td>
+<td>La aparición de códigos nuevos en material nuevo</td>
+<td>Curva de códigos nuevos por lote</td>
+</tr>
+<tr>
+<td>A priori temática</td>
+<td>Las categorías previstas, que se llenan con casos</td>
+<td>Tabla de categorías previstas con conteo de fragmentos</td>
+</tr>
+<tr>
+<td>De datos</td>
+<td>La repetición de lo ya dicho en datos nuevos</td>
+<td>Comparación de cada lote con los anteriores</td>
+</tr>
+<tr>
+<td><em>Ninguno se cumple solo: en los cuatro, alguien declara que basta.</em></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li>
+<p>El modelo de lenguaje cambia la economía de la terminación en dos direcciones. La primera es que codificar más ya no cuesta: el argumento de que no se puede seguir porque no hay tiempo desaparece, y con él una razón, mala pero real, para parar. La segunda es que el modelo tiene su propia condición de terminación implícita, que es dejar de producir códigos nuevos, y esa condición es la peor de las posibles: un modelo que ha forzado cinco categorías de su entrenamiento las aplica a todos los fragmentos restantes sin producir nada nuevo, y la curva se aplana por forzamiento, no por saturación. Una curva plana con un modelo es compatible con un corpus saturado y con un libro de códigos que ya no deja ver nada.</p>
+</li>
+<li>
+<p>De ahí el protocolo de la semana. Primero, la condición de terminación se escribe antes de codificar el siguiente lote, con la plantilla de la semana 2, en una frase que otro pueda verificar: "ningún código nuevo en dos lotes consecutivos de diez fragmentos y propiedades definidas para las tres categorías principales", por ejemplo. Segundo, la curva se lleva lote a lote con el registro. Tercero, cuando la condición se cumple, se ejecuta una búsqueda deliberada de casos negativos antes de parar. Cuarto, la decisión se escribe con fecha, con los lotes codificados, con lo que la búsqueda de casos negativos encontró, y con la firma de quien decide. El modelo participa en el segundo y el tercer paso; el primero y el cuarto son del investigador.</p>
+</li>
+<li>
+<p>El muestreo teórico asistido es el uso más productivo del modelo en esta fase. Glaser y Strauss lo definen como la recolección guiada por las categorías en formación: se busca donde la categoría tiene propiedades sin definir. Un modelo puede, sobre el registro, señalar qué categorías tienen pocas propiedades, qué dimensiones no tienen fragmentos en un extremo, y qué fragmentos del material no codificado se parecen menos a los ya vistos. Puede también ejecutar la búsqueda de casos negativos de Lincoln y Guba (1985): dado el enunciado de una categoría, buscar fragmentos que lo contradigan. Lo que no puede es decidir si el caso encontrado refuta la categoría, la matiza o es ruido, y esa decisión es la que se escribe en el memo.<sup class="mark">b</sup></p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> El análisis de casos negativos es, en Lincoln y Guba, una técnica de credibilidad: la hipótesis se revisa hasta que dé cuenta de todos los casos conocidos. Un modelo es un buscador de contraejemplos incansable, y esa es su mejor aportación a la validez de relación. Que un contraejemplo cuente como refutación depende del trasfondo desde el que se lee, y eso es validez de posición.</aside>
+
+<ol start="7">
+<li>La terminación tiene, por último, una dimensión que ninguna curva muestra: parar es asumir. Quien decide que el libro de códigos está completo se compromete a responder por lo que el libro no incluye. En un corpus sobre un mercado de barrio, parar antes del único fragmento en que los vendedores actúan juntos ante la alcaldía produce un libro coherente, consistente y falso en un punto que importa. La mini app de la semana reproduce esa situación con datos inventados. En el corpus propio, la única protección es la búsqueda de casos negativos y la honestidad del registro: decir qué lotes no se codificaron y por qué, para que otro pueda juzgar la decisión.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 300" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Curva de códigos nuevos por lote, diez lotes. Barras: 9, 6, 4, 3, 1, 2, 0, 1, 0, 0. Tres marcas verticales. La primera, tras el lote 5, rotulada 'parar aquí: se pierden el caso negativo del lote 6 y la acción colectiva del lote 8'. La segunda, tras el lote 7, rotulada 'un lote sin nuevos: se pierde el lote 8'. La tercera, tras el lote 10, rotulada 'dos lotes sin nuevos: nada perdido, quince fragmentos sin aporte'. Debajo, la frase: la curva cuenta códigos; la saturación de propiedades no está en la curva.">
+    <style>.t{font-family:var(--text);font-size:11.5px;fill:var(--ink)} .s{font-family:var(--text);font-size:10.5px;fill:var(--muted)} .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;fill:var(--muted)} .bar{fill:var(--c-app)} .barg{fill:var(--rule)} .ax{stroke:var(--muted);stroke-width:1;fill:none} .m1{stroke:var(--c-fil);stroke-width:1.4;stroke-dasharray:5 4} .m2{stroke:var(--accent);stroke-width:1.4;stroke-dasharray:5 4} .m3{stroke:var(--c-inv);stroke-width:1.4;stroke-dasharray:5 4} .kf{font-family:var(--mono);font-size:9.5px;fill:var(--c-fil)} .ka{font-family:var(--mono);font-size:9.5px;fill:var(--accent)} .ko{font-family:var(--mono);font-size:9.5px;fill:var(--c-inv)}</style>
+    <path class="ax" d="M50 200 L650 200"/><path class="ax" d="M50 40 L50 200"/>
+    <text x="20" y="44" class="k">9</text><text x="20" y="204" class="k">0</text>
+    <text x="8" y="130" class="k" transform="rotate(-90 8 130)">códigos nuevos</text>
+    <rect x="62" y="40" width="40" height="160" class="bar"/>
+    <rect x="122" y="93" width="40" height="107" class="bar"/>
+    <rect x="182" y="129" width="40" height="71" class="bar"/>
+    <rect x="242" y="147" width="40" height="53" class="bar"/>
+    <rect x="302" y="182" width="40" height="18" class="bar"/>
+    <rect x="362" y="164" width="40" height="36" class="bar"/>
+    <rect x="422" y="199" width="40" height="1" class="bar"/>
+    <rect x="482" y="182" width="40" height="18" class="bar"/>
+    <rect x="542" y="199" width="40" height="1" class="bar"/>
+    <rect x="602" y="199" width="40" height="1" class="bar"/>
+    <text x="82" y="216" text-anchor="middle" class="k">1</text><text x="142" y="216" text-anchor="middle" class="k">2</text><text x="202" y="216" text-anchor="middle" class="k">3</text><text x="262" y="216" text-anchor="middle" class="k">4</text><text x="322" y="216" text-anchor="middle" class="k">5</text><text x="382" y="216" text-anchor="middle" class="k">6</text><text x="442" y="216" text-anchor="middle" class="k">7</text><text x="502" y="216" text-anchor="middle" class="k">8</text><text x="562" y="216" text-anchor="middle" class="k">9</text><text x="622" y="216" text-anchor="middle" class="k">10</text>
+    <text x="350" y="232" text-anchor="middle" class="k">lote de cinco fragmentos</text>
+    <path class="m1" d="M352 36 L352 200"/><text x="356" y="48" class="kf">parar tras 5: se pierden lote 6 (caso negativo) y 8</text>
+    <path class="m2" d="M472 60 L472 200"/><text x="476" y="72" class="ka">tras 7: se pierde el lote 8</text>
+    <path class="m3" d="M652 84 L652 200"/><text x="648" y="96" text-anchor="end" class="ko">tras 10: nada perdido, 15 sin aporte</text>
+    <text x="382" y="158" text-anchor="middle" class="s">caso negativo</text>
+    <text x="502" y="176" text-anchor="middle" class="s">acción colectiva</text>
+    <text x="50" y="258" class="t">La curva cuenta códigos nuevos. La saturación de propiedades, que es la condición de Glaser y Strauss, no está en la curva:</text>
+    <text x="50" y="276" class="t">está en los memos. Y la curva de un modelo que fuerza categorías se aplana igual que la de un corpus saturado.</text>
+    <text x="50" y="294" class="s">Datos inventados, los mismos de la mini app de la semana.</text>
+  </svg>
+  <figcaption><b>Figura 7.</b> Tres condiciones de terminación sobre la misma curva. Lo que hay que ver: cada punto de parada tiene un costo en una dirección u otra, y la curva no dice cuál asumir.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/curva-saturacion.html" title="Curva de saturación: cuándo parar" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo tres cosas sobre el registro: señalar qué categorías tienen propiedades sin definir o dimensiones sin fragmentos en un extremo; proponer, del material no codificado, los fragmentos que menos se parecen a los ya codificados; y buscar casos negativos para el enunciado de cada categoría principal. El estudiante debe poder, sin el modelo, escribir su condición de terminación en una frase verificable, llevar la curva de su propio corpus, decidir si el caso negativo encontrado refuta o matiza la categoría, y explicar por qué una curva plana no basta.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Glaser, B. G. y Strauss, A. L. (1967). <em>The Discovery of Grounded Theory: Strategies for Qualitative Research</em>. Chicago: Aldine. Cap. 3, sobre el muestreo teórico y la saturación, y cap. 5, sobre el método comparativo constante.</li>
+<li>Saunders, B., Sim, J., Kingstone, T., Baker, S., Waterfield, J., Bartlam, B., Burroughs, H. y Jinks, C. (2018). "Saturation in qualitative research: exploring its conceptualization and operationalization". <em>Quality &amp; Quantity</em> 52(4), 1893-1907. <a href="https://doi.org/10.1007/s11135-017-0574-8">https://doi.org/10.1007/s11135-017-0574-8</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Guest, G., Bunce, A. y Johnson, L. (2006). "How Many Interviews Are Enough? An Experiment with Data Saturation and Variability". <em>Field Methods</em> 18(1), 59-82. <a href="https://doi.org/10.1177/1525822X05279903">https://doi.org/10.1177/1525822X05279903</a></li>
+<li>Hennink, M. y Kaiser, B. N. (2022). "Sample sizes for saturation in qualitative research: A systematic review of empirical tests". <em>Social Science &amp; Medicine</em> 292, 114523. <a href="https://doi.org/10.1016/j.socscimed.2021.114523">https://doi.org/10.1016/j.socscimed.2021.114523</a></li>
+<li>Charmaz, K. (2014). <em>Constructing Grounded Theory</em>. 2.ª ed. Londres: Sage. Cap. 8, sobre muestreo teórico, saturación y ordenación.</li>
+<li>Lincoln, Y. S. y Guba, E. G. (1985). <em>Naturalistic Inquiry</em>. Beverly Hills: Sage. Cap. 11, sección sobre análisis de casos negativos.</li>
+<li>Strauss, A. y Corbin, J. (2002). <em>Bases de la investigación cualitativa</em>. Medellín: Universidad de Antioquia. Cap. 13, sobre el muestreo teórico.</li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Glaser y Strauss presentan la saturación como un juicio del investigador sobre cada categoría, y el muestreo teórico como su motor. <em>¿Qué categoría de su libro está más lejos de saturar, y dónde buscaría material para ella si pudiera recolectar más?</em></li>
+<li>Saunders et al. distinguen cuatro modelos de saturación. <em>¿Cuál corresponde a su tradición declarada, y cómo se escribiría su condición de terminación en ese modelo, en una frase que otro pueda verificar?</em></li>
+<li>Guest, Bunce y Johnson reportan que el 92 % de los códigos había aparecido a las doce entrevistas. <em>¿Qué características de su corpus harían que la cifra fuera mayor o menor, y por qué el dato de ellos no es una regla?</em></li>
+<li>Hennink y Kaiser separan la saturación de códigos de la de sentido. <em>En su curva, ¿cuál de las dos está midiendo? ¿Qué tendría que registrar para medir la otra?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<ol>
+<li>Cada estudiante compara la condición de terminación que escribió antes de leer con la que escribiría ahora, y redacta la definitiva en la fila correspondiente de su lista de verificación.</li>
+<li>Con el registro, lleva la curva de su corpus: códigos nuevos por lote de diez fragmentos, con los nombres.</li>
+<li>Le pide al modelo las tres cosas de la sección "IA y exigencia" y verifica cada propuesta contra el corpus.</li>
+<li>Ejecuta la búsqueda de casos negativos para su categoría principal y decide, por escrito, qué hace con cada caso encontrado.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Lote</th>
+<th>Fragmentos</th>
+<th>Códigos nuevos (nombres)</th>
+<th>¿Se cumple mi condición?</th>
+<th>Caso negativo buscado</th>
+<th>Encontrado (fragmento)</th>
+<th>Decisión: refuta / matiza / ruido</th>
+<th>Criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué hace el docente</th>
+<th>Qué hace el estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10 min</td>
+<td>Lee en voz alta tres condiciones de terminación escritas antes de la lectura y pregunta cuál podría verificar un tercero</td>
+<td>Revisa la suya</td>
+<td>Bitácora semana 6</td>
+</tr>
+<tr>
+<td>10 a 35 min</td>
+<td>Expone saturación, curva, los cuatro modelos de Saunders et al. y el cambio de economía con el modelo (figura 7)</td>
+<td>Ubica su tradición en los cuatro modelos</td>
+<td>Figura 7</td>
+</tr>
+<tr>
+<td>35 a 55 min</td>
+<td>Mini app de la curva: cada estudiante elige una condición, codifica lotes y para; discusión de los costos</td>
+<td>Prueba las cuatro condiciones y compara</td>
+<td>Mini app</td>
+</tr>
+<tr>
+<td>55 a 110 min</td>
+<td>Taller sobre el corpus propio: curva, muestreo teórico asistido, casos negativos</td>
+<td>Lleva la curva, pide, verifica, decide</td>
+<td>Tabla del taller, cuaderno</td>
+</tr>
+<tr>
+<td>110 a 120 min</td>
+<td>Cierra con una decisión de terminación leída en voz alta y explica la entrega final</td>
+<td>Escribe su decisión con fecha</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que el estudiante formula la condición como "hasta que sature", que no es verificable; exigir lotes, números y categorías nombradas. Suele fallar que el modelo, al buscar casos negativos, devuelve fragmentos que confirman la categoría presentándolos como contrarios; verificar cada uno leyendo. Y suele ocurrir que la curva del estudiante sea plana desde el lote 2 porque el modelo forzó categorías amplias en la semana 3: es el caso que el punto 4 describe, y conviene mostrarlo como diagnóstico, no como fracaso.</p>
+<h2>Bitácora</h2>
+<p>La condición de terminación definitiva con su justificación, la curva del corpus con los nombres de los códigos por lote, la tabla de casos negativos con decisiones, y la decisión de terminación escrita con fecha y firma. Prompts literales en anexo.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer MacQueen et al. (1998), Lincoln y Guba (1985), capítulo 13, y la sección sobre imputación en Zainea (2026). Terminar el libro de códigos final con la plantilla, los memos y la declaración de responsabilidad. Preparar una presentación de ocho minutos. La semana 8 es de presentación y defensa.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-06.html">← Semana 6. Acuerdo no es validez</a><a href="semana-08.html">Semana 8. El libro de códigos como aserción →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

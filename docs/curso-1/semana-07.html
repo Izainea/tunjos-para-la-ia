@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 1 · Semana 7 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Con la teoría de la inferencia en la mano, ¿qué hace exactamente un modelo cuando razona, y qué criterio de validación tiene?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-1/semana-07.html" />
+    <meta property="og:title" content="Curso 1 · Semana 7" />
+    <meta property="og:description" content="Con la teoría de la inferencia en la mano, ¿qué hace exactamente un modelo cuando razona, y qué criterio de validación tiene?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-1/semana-07.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 1</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub is-active">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 1 · Fundamentos · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 7. Qué hace un modelo de lenguaje</h1>
+          <p class="desc">Con la teoría de la inferencia en la mano, ¿qué hace exactamente un modelo cuando razona, y qué criterio de validación tiene?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Con la teoría de la inferencia en la mano, ¿qué hace exactamente un modelo cuando razona, y qué criterio de validación tiene?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Hasta aquí el curso ha hablado de la máquina de manera general. Esta semana la mira de cerca: cómo predice, qué es la cadena de pensamiento, qué son los modelos de recompensa por proceso que evalúan el razonamiento paso a paso. La conclusión es precisa y se puede refutar: los modelos actuales sí tienen un criterio de evaluación de pasos, pero es extrínseco, se ancla en una respuesta final conocida de antemano; local, funciona en dominios cerrados como matemáticas y código; y estadístico, mide la probabilidad de llegar a la respuesta, no la validez del paso.</p>
+
+<p>Un paso inválido puede recibir etiqueta positiva. Eso ya lo vio el estudiante en la semana 2 con sus propias manos, y la mini app vuelve esta semana con una lectura nueva. Lo que falta es un criterio intrínseco al paso, invariante entre dominios y normativo; por la semana 5 se sabe que ese criterio no puede ser interno al sistema<sup class="mark">a</sup>. La semana termina con el diagnóstico en los términos del curso, agencia sin imputación, y con la tercera entrega: el registro de frontera sobre una tarea real.</p>
+<aside class="glosa"><span class="mark">a</span> Semanas 5 y 6 en una frase: un sistema no certifica su propia consistencia desde adentro, y la abducción vale porque alguien se compromete a probarla ante una comunidad. Juntas dicen que el criterio que falta se construye afuera del modelo, no adentro.</aside>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>
+<p>Un modelo de lenguaje es, en una frase honesta, un sistema que calcula la distribución de probabilidad del siguiente token dado el texto anterior y elige uno<sup class="mark">b</sup>. Todo lo demás, el diálogo, la síntesis, el razonamiento, es ese cálculo repetido. Por eso el output tiene la forma del género en que fue entrenado: como el corpus está hecho de texto humano donde afirmar con autoridad es constitutivo del género, el modelo afirma con autoridad. La forma de la aserción fundamentada no es un rasgo añadido; es el rasgo del material.</p>
+</li>
+<li>
+<p>Wei et al. (2022) muestran que pedirle al modelo pasos intermedios antes de la respuesta mejora el desempeño en tareas de aritmética, sentido común y manipulación simbólica, y que la mejora aparece con la escala. La sesión precisa qué significa eso y qué no. Los pasos son texto generado con el mismo mecanismo que la respuesta, no un registro del proceso interno; mejoran el resultado porque dan al modelo más contexto sobre el que predecir, no porque lo obliguen a razonar.</p>
+</li>
+<li>
+<p>Lightman et al. (2023) comparan dos maneras de entrenar un verificador: por resultado, premiar la cadena entera si la respuesta final es correcta, y por proceso, premiar cada paso. Los modelos de recompensa por proceso funcionan mejor. La pregunta del curso es cómo se obtienen las etiquetas de los pasos, y la respuesta es que las puso un anotador humano según si el paso lleva hacia la respuesta correcta conocida<sup class="mark">c</sup>. La etiqueta es la probabilidad de alcanzar la respuesta, no la validez formal del paso; un paso inválido que no estorba recibe etiqueta positiva.</p>
+</li>
+<li>
+<p>Valmeekam, Stechly y Kambhampati (2024) miden los límites. Un modelo de razonamiento resuelve casi todos los problemas de planificación con solución de un conjunto de prueba y reconoce como irresolubles solo una fracción pequeña de los que no la tienen. Reconocer que un problema no tiene solución es un problema de decidibilidad, el de Turing en la semana 5, y la cifra muestra que el modelo no lo resuelve por mirar su propio proceso.</p>
+</li>
+<li>
+<p>El diagnóstico en los términos del curso cabe en una frase larga. La máquina ejecuta pasos con forma deductiva que no verifica como tales, generaliza inductivamente con una potencia sin precedentes, y produce candidatos de hipótesis sin que nada en ella se sorprenda, se comprometa o pague el costo de probar. Hay agencia operativa, en el sentido de Floridi de la semana 1, y no hay agente al que imputar lo producido. Agencia sin imputación.</p>
+</li>
+<li>
+<p>Lo que sigue de ahí es una decisión de diseño, no una tesis ontológica. Si el criterio no puede ser interno, hay que construirlo afuera: un andamiaje en que cada paso del modelo lleve su procedencia y sus límites, y en que alguien identificable responda por la frontera. Es la prótesis hermenéutica de la semana 8, y el registro de frontera de la segunda hora es su versión mínima: una tabla en que el estudiante escribe, paso a paso, qué propuso la máquina y qué decidió él.</p>
+</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 230" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Dos columnas enfrentadas. Izquierda: el criterio que los modelos tienen, extrínseco, local, estadístico. Derecha: el criterio que haría falta, intrínseco, invariante, normativo. Una flecha de la izquierda a la derecha dice: no se obtiene con más escala; se construye afuera.">
+    <style>.w7-col{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .w7-h{font-family:var(--display);font-weight:700;font-size:14px;fill:var(--ink)} .w7-t{font-family:var(--text);font-size:12.5px;fill:var(--ink)} .w7-s{font-family:var(--text);font-size:11px;fill:var(--muted)} .w7-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .w7-kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .w7-ki{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-inv)} .w7-ar{fill:none;stroke:var(--muted);stroke-width:1.4}</style>
+    <defs><marker id="w7-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" fill="var(--muted)"/></marker></defs>
+    <rect x="20" y="20" width="280" height="170" rx="3" class="w7-col"/>
+    <text x="32" y="40" class="w7-kf">EL CRITERIO QUE HAY</text>
+    <text x="32" y="68" class="w7-h">extrínseco</text><text x="32" y="84" class="w7-s">se ancla en una respuesta final conocida</text>
+    <text x="32" y="112" class="w7-h">local</text><text x="32" y="128" class="w7-s">vale donde hay respuesta única: matemáticas, código</text>
+    <text x="32" y="156" class="w7-h">estadístico</text><text x="32" y="172" class="w7-s">probabilidad de llegar, no validez del paso</text>
+    <rect x="380" y="20" width="280" height="170" rx="3" class="w7-col"/>
+    <text x="392" y="40" class="w7-ki">EL CRITERIO QUE HARÍA FALTA</text>
+    <text x="392" y="68" class="w7-h">intrínseco</text><text x="392" y="84" class="w7-s">evalúa el paso por lo que el paso hace</text>
+    <text x="392" y="112" class="w7-h">invariante</text><text x="392" y="128" class="w7-s">vale igual en un dominio abierto</text>
+    <text x="392" y="156" class="w7-h">normativo</text><text x="392" y="172" class="w7-s">dice si el paso es válido, no si suele funcionar</text>
+    <path class="w7-ar" d="M300 105 L372 105" marker-end="url(#w7-ah)"/>
+    <text x="340" y="214" text-anchor="middle" class="w7-k">NO SE OBTIENE CON MÁS ESCALA · SE CONSTRUYE AFUERA DEL SISTEMA</text>
+  </svg>
+  <figcaption><b>Figura 1.</b> El criterio de validación que los modelos tienen y el que haría falta. La flecha no es una promesa de progreso: por la semana 5, el segundo no puede ser interno.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/verificador-pasos.html" title="Verificador de pasos: la misma cadena de la semana 2, ahora leída como etiqueta por resultado frente a validez del paso" loading="lazy"></iframe>
+
+<aside class="glosa"><span class="mark">b</span> Un token es la unidad en que el modelo parte el texto: una palabra corta, un trozo de palabra, un signo. El modelo no elige siempre el más probable; un parámetro de temperatura regula cuánto azar admite. Nada de eso cambia el mecanismo.</aside>
+
+<aside class="glosa"><span class="mark">c</span> El conjunto PRM800K de Lightman et al. contiene cerca de 800.000 etiquetas humanas sobre pasos de soluciones a problemas de matemáticas de competencia. Las instrucciones a los anotadores pedían marcar cada paso como positivo, negativo o neutro según su corrección y utilidad para llegar a la solución.</aside>
+
+<p>La diferencia entre las dos columnas de la mini app es la diferencia entre dos cosas que suelen llamarse igual.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Etiqueta por resultado</th>
+<th>Validez del paso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positiva si el paso lleva hacia la respuesta correcta conocida</td>
+<td>Positiva si el paso se sigue de los anteriores por su forma</td>
+</tr>
+<tr>
+<td>Exige conocer la respuesta de antemano</td>
+<td>No exige conocer la respuesta</td>
+</tr>
+<tr>
+<td>Funciona donde hay respuesta única: matemáticas, código</td>
+<td>Funciona en cualquier dominio donde haya reglas de inferencia</td>
+</tr>
+<tr>
+<td>Es una probabilidad aprendida de anotaciones humanas</td>
+<td>Es una norma que alguien puede exhibir y defender</td>
+</tr>
+<tr>
+<td><em>Mide rendimiento</em></td>
+<td><em>Mide validez, y es lo que el estudiante hizo en la semana 2</em></td>
+</tr>
+</tbody>
+</table></div>
+<h2>IA y exigencia</h2>
+<p>Esta semana el modelo ejecuta una tarea real del proyecto del estudiante, codificar diez fragmentos, sintetizar tres fuentes o categorizar un listado, y lo hace en tres rondas: propone, recibe las decisiones del estudiante, continúa. La exigencia es el registro de frontera: para cada paso del modelo, qué propuso, qué inferencia es, qué decidió el estudiante, con qué criterio, quién responde si está mal. Sin el modelo, el estudiante debe poder explicar qué es la cadena de pensamiento y por qué no es un registro del proceso, cómo se etiquetan los pasos en un modelo de recompensa por proceso y por qué esa etiqueta no es validez, y en qué consiste el diagnóstico de agencia sin imputación. Lo que no debe hacer es concluir que el modelo no comprende: el curso no lo afirma y no lo necesita.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q. y Zhou, D. (2022). "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models". <em>Advances in Neural Information Processing Systems</em>, 35. <a href="https://arxiv.org/abs/2201.11903">https://arxiv.org/abs/2201.11903</a></li>
+<li>Lightman, H., Kosaraju, V., Burda, Y., Edwards, H., Baker, B., Lee, T., Leike, J., Schulman, J., Sutskever, I. y Cobbe, K. (2023). "Let's Verify Step by Step". <a href="https://arxiv.org/abs/2305.20050">https://arxiv.org/abs/2305.20050</a></li>
+<li>Valmeekam, K., Stechly, K. y Kambhampati, S. (2024). "LLMs Still Can't Plan; Can LRMs? A Preliminary Evaluation of OpenAI's o1 on PlanBench". <a href="https://arxiv.org/abs/2409.13373">https://arxiv.org/abs/2409.13373</a></li>
+<li>Zainea, C. I. (2026). <em>Agencia sin imputación. Hermenéutica, pragmática y la validación epistémica del discurso artificial</em>. Secciones 1 a 3. <a href="https://izainea.github.io/escritos/agencia-sin-imputacion.pdf">https://izainea.github.io/escritos/agencia-sin-imputacion.pdf</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Kambhampati, S. (2024). "Can Large Language Models Reason and Plan?". <em>Annals of the New York Academy of Sciences</em>, 1534(1), 15-18. <a href="https://doi.org/10.1111/nyas.15125">https://doi.org/10.1111/nyas.15125</a></li>
+<li>Bender, E. M. y Koller, A. (2020). "Climbing towards NLU: On Meaning, Form, and Understanding in the Age of Data". <em>Proceedings of ACL 2020</em>. <a href="https://aclanthology.org/2020.acl-main.463/">https://aclanthology.org/2020.acl-main.463/</a></li>
+<li>Floridi, L. y Sanders, J. W. (2004). "On the Morality of Artificial Agents". <em>Minds and Machines</em>, 14, 349-379. <a href="https://doi.org/10.1023/B:MIND.0000035461.63578.9d">https://doi.org/10.1023/B:MIND.0000035461.63578.9d</a></li>
+<li>Zainea, C. I. (2026). "Agencia sin imputación: por qué «la máquina no comprende» no cierra la discusión". <a href="https://izainea.github.io/blog/agencia-sin-imputacion/">https://izainea.github.io/blog/agencia-sin-imputacion/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>
+<p>Wei et al. informan mejoras grandes en aritmética y manipulación simbólica y mejoras menores o nulas en otras tareas. Las que mejoran tienen respuesta única y pasos verificables. <em>¿Qué tienen en común las tareas que mejoran, y qué dice eso sobre dónde funciona la cadena de pensamiento y dónde no?</em></p>
+</li>
+<li>
+<p>Lightman et al. describen cómo se construyó el conjunto de etiquetas de pasos. Alguien decidió que un paso era bueno, y ese alguien tenía la respuesta. <em>¿Quién decide que un paso es bueno, con qué criterio, y qué pasaría con el verificador en una tarea sin respuesta conocida?</em></p>
+</li>
+<li>
+<p>Valmeekam et al. dan una cifra de problemas irresolubles reconocidos. La cifra es pequeña y cambiará con cada modelo nuevo. <em>¿Qué relación tiene esa cifra con el problema de la parada, y por qué la relación no desaparece si la cifra sube?</em></p>
+</li>
+<li>
+<p>Zainea distingue tres sentidos de validación y tres adjetivos del criterio actual, extrínseco, local y estadístico. Pueden leerse como tres defectos independientes o como uno solo visto de tres lados. <em>¿Está de acuerdo con que sean tres y no uno, y cuál de los tres le parece más difícil de corregir desde afuera?</em></p>
+</li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Práctica guiada. Guía completa en <a href="practicas.html#practica-07-registro-de-frontera">practicas/practica-07-registro-de-frontera.md</a>. En resumen: el estudiante usa un modelo para una tarea real de su proyecto, codificar diez fragmentos, resumir tres fuentes o proponer categorías para un listado, en tres rondas: la máquina propone, el investigador decide, segunda vuelta con lo decidido. Durante la tarea mantiene el registro de frontera:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Qué propuso el modelo</th>
+<th>Tipo de inferencia</th>
+<th>Qué decidí yo</th>
+<th>Criterio de mi decisión</th>
+<th>¿Quién responde si está mal?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>El registro no es un informe de uso: es la evidencia de que el estudiante sabe dónde termina la máquina y dónde empieza él. Las filas más valiosas son las difíciles, donde la distinción entre lo propuesto y lo decidido no es clara, y las aceptaciones acríticas, donde el estudiante aceptó sin un criterio que pueda nombrar. No se borran: se anotan. Plantilla en <a href="plantillas.html#registro-de-frontera">plantillas/registro-de-frontera.md</a>.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 15 min</td>
+<td>Predicción del siguiente token y la forma de la aserción</td>
+<td>Relee un output de la semana 1 con esa clave</td>
+<td>Bitácora de la semana 1</td>
+</tr>
+<tr>
+<td>15 a 30 min</td>
+<td>Cadena de pensamiento y modelos de recompensa por proceso</td>
+<td>Vuelve a la mini app y lee la columna de etiquetas</td>
+<td>Mini app verificador; Lightman et al.</td>
+</tr>
+<tr>
+<td>30 a 45 min</td>
+<td>Valmeekam et al. y la decidibilidad; Figura 1</td>
+<td>Discute si la flecha de la figura es una promesa</td>
+<td>Figura 1</td>
+</tr>
+<tr>
+<td>45 a 55 min</td>
+<td>El diagnóstico: agencia sin imputación</td>
+<td>Formula el diagnóstico con sus palabras</td>
+<td>Zainea, secciones 1 a 3</td>
+</tr>
+<tr>
+<td>55 a 60 min</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>60 a 75 min</td>
+<td>Ronda 1: la máquina propone</td>
+<td>Ejecuta la tarea y copia el output literal</td>
+<td>Guía de la práctica 7</td>
+</tr>
+<tr>
+<td>75 a 95 min</td>
+<td>Ronda 2: el investigador decide</td>
+<td>Llena las columnas de inferencia, decisión y criterio</td>
+<td>Plantilla del registro</td>
+</tr>
+<tr>
+<td>95 a 110 min</td>
+<td>Ronda 3: segunda vuelta</td>
+<td>Devuelve sus decisiones al modelo y registra</td>
+<td>Modelo en versión web</td>
+</tr>
+<tr>
+<td>110 a 120 min</td>
+<td>Recoge un caso difícil y una aceptación acrítica</td>
+<td>Expone el suyo; anota la bitácora</td>
+<td>Registros</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Notas para el docente.</strong> La sesión tiene demasiado contenido para una hora si se intenta explicar la arquitectura de los modelos; la frase honesta del punto 1 basta, y el detalle técnico va al cuaderno de apoyo. En la práctica, la ronda 2 debe hacerse antes de volver al modelo; si el estudiante pide la segunda vuelta sin haber decidido, el registro queda vacío de criterio. La columna "quién responde" se llena casi siempre con "yo" sin pensar; pedir, al menos en dos filas, ante quién y con qué base. Un registro en que el modelo lo hizo mal y el estudiante lo detectó vale más que uno en que el modelo lo hizo bien y el estudiante lo aceptó.</p>
+<h2>Entrega</h2>
+<p>Registro de frontera completo sobre una tarea real, con el anexo de prompts y outputs literales. Se evalúa la precisión de la distinción, no el éxito de la tarea. La rúbrica está en <a href="evaluacion.html">evaluacion.md</a>.</p>
+<h2>Para la próxima semana</h2>
+<p>Zainea (2026), sección sobre la prótesis hermenéutica, y la entrada del blog correspondiente. Vallor (2024), capítulo 4. Terminar el mapa inferencial final con las correcciones a la versión preliminar y preparar una presentación de ocho minutos. La semana 8 convierte el diagnóstico en un diseño y pone el mapa a prueba ante pares.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-06.html">← Semana 6. El giro pragmático: validez, práctica e imputación</a><a href="semana-08.html">Semana 8. La prótesis hermenéutica →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

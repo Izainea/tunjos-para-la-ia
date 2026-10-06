@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Curva de saturación: cuándo parar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Estilos propios de esta app */
+.cond label{display:block;padding:.3rem 0;color:var(--ink);font-size:.95rem;cursor:pointer}
+.cond input{margin-right:.5rem}
+button:disabled{opacity:.45;cursor:default}
+#grafico svg{width:100%;max-width:640px;height:auto;display:block;margin:.6rem 0}
+.lote{border-top:1px solid var(--rule);padding:.5rem 0}
+.lote:first-child{border-top:0}
+.lote h3{font-family:var(--display);font-size:1rem;margin:0 0 .2rem}
+.lote ul{margin:.2rem 0 .2rem 1.1rem;padding:0;font-size:.95rem}
+.lote .vacio{color:var(--muted);font-size:.95rem;margin:.2rem 0}
+#resultado h3{font-family:var(--display);font-size:1rem;margin:.7rem 0 .2rem}
+#resultado p,#resultado li{color:var(--ink)}
+#resultado ul{margin:.2rem 0 .2rem 1.1rem;padding:0;font-size:.95rem}
+#resultado .aviso{color:var(--c-fil)}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 4 · Semana 7</span>
+  <h1>Curva de saturación: cuándo parar</h1>
+  <p>Codifique lotes sucesivos de fragmentos y observe cuántos códigos nuevos aparecen en cada uno. Decida cuándo parar y vea el costo de parar antes o después.</p>
+
+  <div class="card">
+    <div class="k">Condición de terminación</div>
+    <p>Elíjala antes de codificar el primer lote. Puede cambiarla después, pero cada cambio es una decisión que debería quedar anotada.</p>
+    <div class="cond" id="cond">
+      <label><input type="radio" name="cond" value="a" checked />Parar cuando un lote no aporte códigos nuevos</label>
+      <label><input type="radio" name="cond" value="b" />Parar cuando dos lotes seguidos no aporten códigos nuevos</label>
+      <label><input type="radio" name="cond" value="c" />Parar cuando las categorías principales tengan propiedades y dimensiones definidas (saturación teórica, Glaser y Strauss, 1967)</label>
+      <label><input type="radio" name="cond" value="d" />Parar cuando se agote el material</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <button id="btn-sig" class="primary">Codificar el siguiente lote</button>
+      <button id="btn-parar" disabled>Parar aquí</button>
+      <button id="btn-reset">Reiniciar</button>
+    </div>
+    <p class="k" id="indicador" style="margin-top:.7rem">Lotes codificados: 0 · Fragmentos: 0 · Códigos: 0</p>
+    <div id="grafico"></div>
+    <div id="registro"><p>Corpus: 50 fragmentos de entrevistas sobre un mercado campesino de barrio, en diez lotes de cinco. Todavía no ha codificado ninguno.</p></div>
+  </div>
+
+  <div class="card" id="resultado" hidden></div>
+
+  <div class="card">
+    <div class="k">Quién decide</div>
+    <p>La curva muestra cuántos códigos nuevos aparecen; no dice cuándo parar. La condición de terminación es un enunciado metodológico que usted escribe antes de codificar y defiende después. Guest, Bunce y Johnson (2006) encontraron que en su corpus el 92 % de los códigos había aparecido a las doce entrevistas; ese dato describe su corpus, no el suyo.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: parar es una decisión con costo en ambas direcciones, y la decisión queda escrita antes, con su criterio, para que otro pueda juzgarla.</p>
+<script>
+  // Datos: diez lotes de cinco fragmentos. Corpus inventado sobre un mercado campesino de barrio.
+  var LOTES = [
+    { nuevos: ['confianza en el vendedor', 'precio frente al supermercado', 'frescura y origen', 'encuentro vecinal', 'horario y acceso', 'desconfianza institucional', 'trabajo familiar', 'incertidumbre sobre la continuidad', 'ayuda mutua entre puestos'], nota: '' },
+    { nuevos: ['fiar al conocido', 'madrugar para descargar', 'comprar por costumbre', 'el puesto como herencia', 'reclamo sin respuesta', 'comparar con la plaza central'], nota: '' },
+    { nuevos: ['aprender el oficio de niño', 'vender lo propio y lo ajeno', 'la lluvia como pérdida', 'dejar de venir por salud'], nota: '' },
+    { nuevos: ['cobro informal por el espacio', 'regalar lo que sobra', 'cambiar producto por producto'], nota: '' },
+    { nuevos: ['la carpa como inversión'], nota: '' },
+    { nuevos: ['preferir el supermercado por el horario', 'vergüenza de fiar'], nota: '‘preferir el supermercado por el horario’ es un caso negativo: contradice la categoría ‘el mercado como lugar propio’ que se venía formando.' },
+    { nuevos: [], nota: '' },
+    { nuevos: ['organizarse para el permiso'], nota: 'Único fragmento del corpus en que los vendedores actúan juntos ante la alcaldía. Cambia la lectura de ‘desconfianza institucional’: no es solo queja, también acción.' },
+    { nuevos: [], nota: '' },
+    { nuevos: [], nota: '' }
+  ];
+  var POR_LOTE = 5;
+  var TOTAL_CODIGOS = 0;
+  for (var q = 0; q < LOTES.length; q++) { TOTAL_CODIGOS += LOTES[q].nuevos.length; }
+
+  var n = 0;          // lotes codificados
+  var parado = false; // se pulsó "Parar aquí"
+
+  var btnSig = document.getElementById('btn-sig');
+  var btnParar = document.getElementById('btn-parar');
+  var btnReset = document.getElementById('btn-reset');
+  var indicador = document.getElementById('indicador');
+  var grafico = document.getElementById('grafico');
+  var registro = document.getElementById('registro');
+  var resultado = document.getElementById('resultado');
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function comillas(s) { return '‘' + esc(s) + '’'; }
+  function acumulado(k) {
+    var c = 0;
+    for (var i = 0; i < k; i++) { c += LOTES[i].nuevos.length; }
+    return c;
+  }
+  function rango(i) { return 'fragmentos ' + (i * POR_LOTE + 1) + ' a ' + ((i + 1) * POR_LOTE); }
+  function listaLotes(arr) {
+    if (arr.length === 1) { return 'lote ' + arr[0]; }
+    return 'lotes ' + arr.slice(0, -1).join(', ') + ' y ' + arr[arr.length - 1];
+  }
+  function condicionElegida() {
+    var radios = document.getElementsByName('cond');
+    for (var i = 0; i < radios.length; i++) { if (radios[i].checked) { return radios[i].value; } }
+    return 'a';
+  }
+
+  function dibujar() {
+    var W = 480, H = 260, ml = 44, mr = 50, mt = 26, mb = 34;
+    var pw = W - ml - mr, ph = H - mt - mb;
+    var maxL = 10, maxR = 30;
+    var slot = pw / LOTES.length, bw = slot * 0.56;
+    function yL(v) { return mt + ph - (v / maxL) * ph; }
+    function yR(v) { return mt + ph - (v / maxR) * ph; }
+    function xc(i) { return ml + slot * (i + 0.5); }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Códigos nuevos por lote y acumulados">';
+    // rejilla y ejes
+    for (var g = 0; g <= maxL; g += 2) {
+      s += '<line x1="' + ml + '" x2="' + (W - mr) + '" y1="' + yL(g) + '" y2="' + yL(g) + '" stroke="var(--rule)" stroke-width="1"/>';
+      s += '<text x="' + (ml - 6) + '" y="' + (yL(g) + 4) + '" text-anchor="end">' + g + '</text>';
+    }
+    for (var r = 0; r <= maxR; r += 10) {
+      s += '<text x="' + (W - mr + 6) + '" y="' + (yR(r) + 4) + '" text-anchor="start">' + r + '</text>';
+    }
+    s += '<line x1="' + ml + '" x2="' + ml + '" y1="' + mt + '" y2="' + (mt + ph) + '" stroke="var(--muted)" stroke-width="1"/>';
+    s += '<line x1="' + (W - mr) + '" x2="' + (W - mr) + '" y1="' + mt + '" y2="' + (mt + ph) + '" stroke="var(--muted)" stroke-width="1"/>';
+    s += '<line x1="' + ml + '" x2="' + (W - mr) + '" y1="' + (mt + ph) + '" y2="' + (mt + ph) + '" stroke="var(--muted)" stroke-width="1"/>';
+    s += '<text x="' + ml + '" y="14" text-anchor="start" fill="var(--c-app)">nuevos por lote</text>';
+    s += '<text x="' + (W - mr) + '" y="14" text-anchor="end" fill="var(--accent)">acumulados</text>';
+    // barras
+    for (var i = 0; i < LOTES.length; i++) {
+      var v = LOTES[i].nuevos.length;
+      var visto = i < n;
+      if (!visto && !parado) { continue; }
+      var fill = visto ? 'var(--c-app)' : 'var(--rule)';
+      var op = visto ? '1' : '0.8';
+      var y = yL(v), h = mt + ph - y;
+      if (v > 0) {
+        s += '<rect x="' + (xc(i) - bw / 2) + '" y="' + y + '" width="' + bw + '" height="' + h + '" fill="' + fill + '" opacity="' + op + '"/>';
+      }
+      s += '<text x="' + xc(i) + '" y="' + (y - 4) + '" text-anchor="middle"' + (visto ? ' fill="var(--ink)"' : '') + '>' + v + '</text>';
+    }
+    // etiquetas de lote
+    for (var j = 0; j < LOTES.length; j++) {
+      s += '<text x="' + xc(j) + '" y="' + (mt + ph + 14) + '" text-anchor="middle"' + (j < n ? ' fill="var(--ink)"' : '') + '>' + (j + 1) + '</text>';
+    }
+    s += '<text x="' + (ml + pw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">lote (cinco fragmentos cada uno)</text>';
+    // línea de acumulados
+    var pts = [], ptsGris = [];
+    for (var k = 0; k < LOTES.length; k++) {
+      var p = xc(k) + ',' + yR(acumulado(k + 1));
+      if (k < n) { pts.push(p); }
+      else if (parado) { if (ptsGris.length === 0 && k > 0) { ptsGris.push(pts[pts.length - 1]); } ptsGris.push(p); }
+    }
+    if (ptsGris.length > 1) {
+      s += '<polyline points="' + ptsGris.join(' ') + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>';
+      for (var m = (n > 0 ? 1 : 0); m < ptsGris.length; m++) {
+        var pg = ptsGris[m].split(',');
+        s += '<circle cx="' + pg[0] + '" cy="' + pg[1] + '" r="3" fill="var(--rule)" stroke="var(--muted)" stroke-width="1"/>';
+      }
+    }
+    if (pts.length > 1) {
+      s += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="var(--accent)" stroke-width="2"/>';
+    }
+    for (var c = 0; c < pts.length; c++) {
+      var pc = pts[c].split(',');
+      s += '<circle cx="' + pc[0] + '" cy="' + pc[1] + '" r="3.5" fill="var(--accent)"/>';
+    }
+    if (pts.length > 0) {
+      var ult = pts[pts.length - 1].split(',');
+      s += '<text x="' + (parseFloat(ult[0]) + 6) + '" y="' + (parseFloat(ult[1]) - 7) + '" text-anchor="start" fill="var(--accent)">' + acumulado(n) + '</text>';
+    }
+    s += '</svg>';
+    grafico.innerHTML = s;
+  }
+
+  function actualizarIndicador() {
+    indicador.textContent = 'Lotes codificados: ' + n + ' · Fragmentos: ' + (n * POR_LOTE) + ' · Códigos: ' + acumulado(n);
+  }
+
+  function htmlLote(i) {
+    var L = LOTES[i];
+    var h = '<div class="lote"><h3>Lote ' + (i + 1) + ' (' + rango(i) + ')</h3>';
+    if (L.nuevos.length === 0) {
+      h += '<p class="vacio">Ningún código nuevo.</p>';
+    } else {
+      h += '<ul>';
+      for (var k = 0; k < L.nuevos.length; k++) { h += '<li>' + esc(L.nuevos[k]) + '</li>'; }
+      h += '</ul>';
+    }
+    if (L.nota) { h += '<p class="note">' + esc(L.nota) + '</p>'; }
+    h += '</div>';
+    return h;
+  }
+
+  function codificarSiguiente() {
+    if (parado || n >= LOTES.length) { return; }
+    if (n === 0) { registro.innerHTML = ''; }
+    n += 1;
+    registro.innerHTML = htmlLote(n - 1) + registro.innerHTML;
+    actualizarIndicador();
+    dibujar();
+    btnParar.disabled = false;
+    if (n >= LOTES.length) { btnSig.disabled = true; }
+  }
+
+  function evaluarCondicion(cond) {
+    var h = '';
+    if (cond === 'a') {
+      h += '<p>Con la condición «parar cuando un lote no aporte códigos nuevos» habría parado tras el lote 7, con 35 fragmentos y 25 códigos. Habría perdido ' + comillas('organizarse para el permiso') + ' (lote 8), el único fragmento de acción colectiva del corpus: un solo código que cambia la lectura de ' + comillas('desconfianza institucional') + '.</p>';
+      if (n !== 7) { h += '<p>Usted paró tras el lote ' + n + ', no tras el 7. Si su condición era esta, no la aplicó; si la cambió por el camino, anote cuándo y por qué.</p>'; }
+    } else if (cond === 'b') {
+      h += '<p>Con la condición «parar cuando dos lotes seguidos no aporten códigos nuevos» habría parado tras el lote 10, cuando los lotes 9 y 10 quedaron vacíos: 50 fragmentos y 26 códigos. No habría perdido ningún código, y habría codificado 15 fragmentos (lotes 7, 9 y 10) sin un código nuevo a cambio. El lote 7 vacío seguido del lote 8 con un código es justo la situación que esta condición está pensada para resistir.</p>';
+      if (n !== 10) { h += '<p>Usted paró tras el lote ' + n + ', no tras el 10. Si su condición era esta, no la aplicó; si la cambió por el camino, anote cuándo y por qué.</p>'; }
+    } else if (cond === 'c') {
+      h += '<p>La curva cuenta códigos nuevos; no mide la saturación de propiedades y dimensiones. Una categoría puede tener códigos de sobra y propiedades sin definir: ' + comillas('desconfianza institucional') + ' tenía varios códigos desde el lote 2 y solo en el lote 8 ganó la dimensión que va de la queja a la acción. Decidir si las categorías principales están saturadas exige memos sobre cada una, con sus propiedades enunciadas y los fragmentos que las sostienen. Esta app no tiene memos, así que no puede evaluar su condición; esa limitación es el punto.</p>';
+    } else {
+      h += '<p>Agotar el material no es una condición de terminación: es la ausencia de una. Dice cuándo se detuvo la lectura, no por qué fue suficiente. Si el corpus hubiera tenido 80 fragmentos, habría codificado 80 sin más razón que tenerlos. Aquí habría codificado 50 fragmentos, 15 de ellos sin aporte, y al terminar seguiría sin un criterio que otro pueda discutir.</p>';
+    }
+    return h;
+  }
+
+  function parar() {
+    if (n === 0 || parado) { return; }
+    parado = true;
+    btnSig.disabled = true;
+    btnParar.disabled = true;
+    dibujar();
+    var h = '<div class="k">Resultado de la decisión</div>';
+    h += '<p>Paró tras el lote ' + n + ', con ' + (n * POR_LOTE) + ' fragmentos codificados y ' + acumulado(n) + ' de los ' + TOTAL_CODIGOS + ' códigos del corpus.</p>';
+
+    h += '<h3>Lo que habría aparecido después</h3>';
+    if (n >= LOTES.length) {
+      h += '<p>Nada: codificó todo el material. La pregunta pasa a ser cuánto costó llegar hasta aquí.</p>';
+    } else {
+      var perdidos = 0;
+      h += '<ul>';
+      for (var i = n; i < LOTES.length; i++) {
+        var L = LOTES[i];
+        perdidos += L.nuevos.length;
+        h += '<li><strong>Lote ' + (i + 1) + '</strong> (' + rango(i) + '): ';
+        if (L.nuevos.length === 0) { h += 'ningún código nuevo.'; }
+        else {
+          var cs = [];
+          for (var k = 0; k < L.nuevos.length; k++) { cs.push(comillas(L.nuevos[k])); }
+          h += cs.join(', ') + '.';
+        }
+        if (L.nota) { h += ' <span class="note">' + esc(L.nota) + '</span>'; }
+        h += '</li>';
+      }
+      h += '</ul>';
+      if (perdidos === 0) {
+        h += '<p>Los lotes que dejó sin codificar no contenían códigos nuevos. En este corpus, paró sin pérdida; eso no lo sabía al pulsar el botón.</p>';
+      } else {
+        h += '<p>Dejó sin ver ' + perdidos + (perdidos === 1 ? ' código.' : ' códigos.') + '</p>';
+      }
+      if (n < 6) {
+        h += '<p class="aviso">Entre lo que no vio hay un caso negativo: ' + comillas('preferir el supermercado por el horario') + ' (lote 6) contradice la categoría ' + comillas('el mercado como lugar propio') + '. Un caso negativo pesa más que lo que cuenta la curva: obliga a revisar la categoría, no solo a sumar un código.</p>';
+      }
+      if (n < 8) {
+        h += '<p class="aviso">Tampoco vio ' + comillas('organizarse para el permiso') + ' (lote 8), el único fragmento del corpus en que los vendedores actúan juntos ante la alcaldía. Es un solo código, y cambia la lectura de toda una categoría.</p>';
+      }
+    }
+
+    h += '<h3>Lo que costó seguir</h3>';
+    var vacios = [];
+    for (var j = 0; j < n; j++) { if (LOTES[j].nuevos.length === 0) { vacios.push(j + 1); } }
+    if (vacios.length === 0) {
+      h += '<p>Ningún lote codificado quedó sin aporte: cada lote que leyó dio al menos un código nuevo.</p>';
+    } else {
+      h += '<p>De los ' + (n * POR_LOTE) + ' fragmentos codificados, ' + (vacios.length * POR_LOTE) + ' (' + listaLotes(vacios) + ') no aportaron ningún código nuevo. Ese es el costo de seguir: tiempo de codificación sin códigos a cambio.' + (n >= 8 ? ' Observe que el lote 7 quedó vacío y el lote 8 trajo un código: un lote vacío no garantiza que el siguiente también lo sea.' : '') + '</p>';
+    }
+
+    h += '<h3>Su condición de terminación</h3>';
+    h += evaluarCondicion(condicionElegida());
+    resultado.innerHTML = h;
+    resultado.hidden = false;
+  }
+
+  function reiniciar() {
+    n = 0;
+    parado = false;
+    btnSig.disabled = false;
+    btnParar.disabled = true;
+    resultado.hidden = true;
+    resultado.innerHTML = '';
+    registro.innerHTML = '<p>Corpus: 50 fragmentos de entrevistas sobre un mercado campesino de barrio, en diez lotes de cinco. Todavía no ha codificado ninguno.</p>';
+    actualizarIndicador();
+    dibujar();
+  }
+
+  btnSig.addEventListener('click', codificarSiguiente);
+  btnParar.addEventListener('click', parar);
+  btnReset.addEventListener('click', reiniciar);
+
+  reiniciar();
+
+  // Solo para verificación: con ?demo=1 en la URL se codifican seis lotes al cargar,
+  // de modo que una captura automática muestre el gráfico con datos; si además lleva
+  // &parar=1, se pulsa "Parar aquí" tras esos seis lotes. No afecta el uso normal.
+  if (/[?&]demo=1(&|$)/.test(window.location.search)) {
+    for (var d = 0; d < 6; d++) { codificarSiguiente(); }
+    if (/[?&]parar=1(&|$)/.test(window.location.search)) { parar(); }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Constructor de matriz de triangulación</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Propios de esta app */
+.wrap{overflow-x:auto}
+.m th,.m td{padding:.35rem .4rem;white-space:nowrap}
+.m td.inst{white-space:normal;min-width:11rem;font-size:.85rem}
+.m .tipo{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--muted);display:block}
+.cel{width:2.6rem;height:2rem;border-radius:4px;padding:0;font-family:var(--mono);font-size:.8rem;text-align:center}
+.cel[data-v="C"]{color:var(--bg);background:var(--c-inv);border-color:var(--c-inv)}
+.cel[data-v="D"]{color:var(--bg);background:var(--c-fil);border-color:var(--c-fil)}
+.cel[data-v="S"]{color:var(--muted);background:var(--bg);border-style:dashed}
+.pata{font-family:var(--mono);font-size:.7rem}
+.aviso{border-left:3px solid var(--c-fil);padding:.3rem .8rem;margin:.4rem 0;font-size:.9rem;color:var(--ink)}
+.aviso.ok{border-color:var(--c-inv)}
+.aviso.q{border-color:var(--accent)}
+input.nom{width:100%;font-size:.85rem;padding:.2rem .4rem}
+.colh{min-width:7rem;font-size:.85rem}
+.quitar{padding:.1rem .45rem;font-size:.7rem;border-radius:999px;margin-left:.3rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 6 · Semana 3</span>
+  <h1>Constructor de matriz de triangulación</h1>
+  <p>Filas: instancias por tipo de Denzin, con la casilla "cuenta como pata" según su condición de independencia. Columnas: hallazgos. Haga clic en cada celda para alternar convergencia (C), divergencia (D) o silencio (S). Lo que debería notar: qué hallazgos se sostienen sobre una sola pata, y qué filas nunca divergen.</p>
+
+  <div class="card">
+    <div class="row">
+      <button id="ejemplo" aria-pressed="true">Ejemplo del curso</button>
+      <button id="vacio">Empezar con mi material</button>
+      <button id="addFila">Añadir instancia</button>
+      <button id="addCol">Añadir hallazgo</button>
+    </div>
+    <div class="wrap">
+      <table class="m" id="matriz"></table>
+    </div>
+    <p class="note">Las filas con la casilla sin marcar miden consistencia (mismo libro de códigos, misma familia de modelos) y no cuentan como pata aunque converjan.</p>
+  </div>
+
+  <div class="card">
+    <span class="k">Lectura por columnas y por filas</span>
+    <div id="avisos"></div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: un hallazgo con una sola pata entra en el informe como conjetura, no como hallazgo; una instancia que nunca diverge probablemente no es independiente de otra; y el silencio se escribe, no se deja en blanco.</p>
+<script>
+  var CICLO = {"": "C", "C": "D", "D": "S", "S": ""};
+  var estado = null;
+
+  function ejemplo(){
+    return {
+      cols: ["H1 Desconfianza institucional", "H2 Miedo como silencio", "H3 Liderazgo femenino"],
+      filas: [
+        {n:"Entrevistas (12, 2024)", t:"datos", pata:true,  v:["C","C","C"]},
+        {n:"Prensa local (40 notas)", t:"datos", pata:true,  v:["C","S","D"]},
+        {n:"Segundo codificador humano, sin mi libro de códigos", t:"investigadores", pata:true, v:["C","D","S"]},
+        {n:"Modelo A, con mi libro de códigos", t:"investigadores · consistencia", pata:false, v:["C","C","C"]},
+        {n:"Modelo B, otra familia, sin libro de códigos, expectativa: divergencia en H2", t:"investigadores", pata:true, v:["C","D","S"]},
+        {n:"Análisis de co-ocurrencia de términos", t:"métodos", pata:true, v:["C","S","S"]},
+        {n:"Marco de confianza institucional (Luhmann)", t:"teorías", pata:true, v:["C","S","S"]}
+      ]
+    };
+  }
+  function vacio(){
+    return { cols:["H1", "H2", "H3"], filas:[
+      {n:"Fuente 1", t:"datos", pata:true, v:["","",""]},
+      {n:"Segundo investigador", t:"investigadores", pata:true, v:["","",""]},
+      {n:"Modelo con libro de códigos", t:"investigadores · consistencia", pata:false, v:["","",""]},
+      {n:"Modelo de otra familia sin libro", t:"investigadores", pata:true, v:["","",""]},
+      {n:"Otro método", t:"métodos", pata:true, v:["","",""]},
+      {n:"Otra teoría", t:"teorías", pata:true, v:["","",""]}
+    ]};
+  }
+
+  function render(){
+    var tb = document.getElementById('matriz'); tb.innerHTML = "";
+    var thead = document.createElement('thead'); var trh = document.createElement('tr');
+    trh.innerHTML = "<th>Instancia</th><th class='pata'>Pata</th>";
+    estado.cols.forEach(function(c, j){
+      var th = document.createElement('th');
+      var inp = document.createElement('input'); inp.className = "nom colh"; inp.value = c; inp.setAttribute('aria-label', 'Nombre del hallazgo ' + (j+1));
+      inp.addEventListener('input', function(){ estado.cols[j] = inp.value; avisos(); });
+      th.appendChild(inp);
+      if (estado.cols.length > 1){
+        var q = document.createElement('button'); q.className = "quitar"; q.textContent = "×"; q.title = "Quitar hallazgo";
+        q.addEventListener('click', function(){ estado.cols.splice(j,1); estado.filas.forEach(function(f){ f.v.splice(j,1); }); render(); });
+        th.appendChild(q);
+      }
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh); tb.appendChild(thead);
+    var tbody = document.createElement('tbody');
+    estado.filas.forEach(function(f, i){
+      var tr = document.createElement('tr');
+      var td1 = document.createElement('td'); td1.className = "inst";
+      var inp = document.createElement('input'); inp.className = "nom"; inp.value = f.n; inp.setAttribute('aria-label', 'Nombre de la instancia ' + (i+1));
+      inp.addEventListener('input', function(){ f.n = inp.value; avisos(); });
+      var sel = document.createElement('select'); sel.setAttribute('aria-label','Tipo de Denzin');
+      ["datos","investigadores","investigadores · consistencia","teorías","métodos"].forEach(function(o){ var op = document.createElement('option'); op.value = o; op.textContent = o; if (o===f.t) op.selected = true; sel.appendChild(op); });
+      sel.style.fontSize = ".72rem"; sel.style.marginTop = ".2rem"; sel.style.padding = ".1rem .3rem";
+      sel.addEventListener('change', function(){ f.t = sel.value; if (f.t.indexOf('consistencia')>=0){ f.pata = false; render(); } else avisos(); });
+      td1.appendChild(inp); td1.appendChild(sel);
+      if (estado.filas.length > 1){
+        var q = document.createElement('button'); q.className = "quitar"; q.textContent = "×"; q.title = "Quitar instancia";
+        q.addEventListener('click', function(){ estado.filas.splice(i,1); render(); });
+        td1.appendChild(q);
+      }
+      tr.appendChild(td1);
+      var td2 = document.createElement('td');
+      var ck = document.createElement('input'); ck.type = "checkbox"; ck.checked = f.pata; ck.setAttribute('aria-label','Cuenta como pata independiente');
+      ck.addEventListener('change', function(){ f.pata = ck.checked; avisos(); });
+      td2.appendChild(ck); tr.appendChild(td2);
+      f.v.forEach(function(v, j){
+        var td = document.createElement('td');
+        var b = document.createElement('button'); b.className = "cel"; b.dataset.v = v; b.textContent = v || "·";
+        b.setAttribute('aria-label', f.n + ' sobre ' + estado.cols[j] + ': ' + (v || 'sin marcar'));
+        b.addEventListener('click', function(){ f.v[j] = CICLO[f.v[j]]; b.dataset.v = f.v[j]; b.textContent = f.v[j] || "·"; avisos(); });
+        td.appendChild(b); tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    tb.appendChild(tbody);
+    avisos();
+  }
+
+  function avisos(){
+    var out = document.getElementById('avisos'); out.innerHTML = "";
+    function add(cls, html){ var d = document.createElement('div'); d.className = "aviso " + cls; d.innerHTML = html; out.appendChild(d); }
+    estado.cols.forEach(function(c, j){
+      var patas = 0, divs = 0, sil = 0, cons = 0;
+      estado.filas.forEach(function(f){
+        var v = f.v[j];
+        if (v === "C"){ if (f.pata) patas++; else cons++; }
+        if (v === "D") divs++;
+        if (v === "S") sil++;
+      });
+      var txt = "<b>" + c + "</b>: " + patas + (patas===1?" pata":" patas") + " independiente" + (patas===1?"":"s");
+      if (cons) txt += ", " + cons + " fila" + (cons>1?"s":"") + " de consistencia que no cuenta" + (cons>1?"n":"");
+      if (divs) txt += ", " + divs + " divergencia" + (divs>1?"s":"") + " por explicar";
+      if (sil) txt += ", " + sil + " silencio" + (sil>1?"s":"");
+      if (patas <= 1){ add("", txt + ". <b>Una sola pata o ninguna: entra como conjetura.</b>"); }
+      else if (divs){ add("q", txt + ". Varias patas, pero la divergencia obliga a decidir si el hallazgo se restringe o se reformula."); }
+      else { add("ok", txt + ". Sostenido."); }
+    });
+    estado.filas.forEach(function(f){
+      var marcadas = f.v.filter(function(v){ return v !== ""; }).length;
+      var todasC = marcadas > 0 && f.v.every(function(v){ return v === "C" || v === ""; }) && f.v.indexOf("C") >= 0;
+      if (todasC && f.pata){ add("q", "<b>" + f.n + "</b> nunca diverge. ¿Es independiente de otra instancia, o mira desde el mismo punto?"); }
+      if (!f.pata && f.v.indexOf("C") >= 0){ add("q", "<b>" + f.n + "</b> converge, pero está marcada como consistencia: mide cuán bien aplica una regla compartida, no es un ángulo distinto."); }
+    });
+    var vacias = 0; estado.filas.forEach(function(f){ f.v.forEach(function(v){ if (v==="") vacias++; }); });
+    if (vacias) add("q", vacias + " celda" + (vacias>1?"s":"") + " sin marcar. Una celda vacía no es silencio; el silencio se escribe (S).");
+  }
+
+  document.getElementById('ejemplo').addEventListener('click', function(){ estado = ejemplo(); this.setAttribute('aria-pressed','true'); document.getElementById('vacio').setAttribute('aria-pressed','false'); render(); });
+  document.getElementById('vacio').addEventListener('click', function(){ estado = vacio(); this.setAttribute('aria-pressed','true'); document.getElementById('ejemplo').setAttribute('aria-pressed','false'); render(); });
+  document.getElementById('addFila').addEventListener('click', function(){ estado.filas.push({n:"Nueva instancia", t:"datos", pata:true, v: estado.cols.map(function(){ return ""; })}); render(); });
+  document.getElementById('addCol').addEventListener('click', function(){ estado.cols.push("H" + (estado.cols.length+1)); estado.filas.forEach(function(f){ f.v.push(""); }); render(); });
+  estado = ejemplo(); render();
+</script>
+</body>
+</html>

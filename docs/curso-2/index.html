@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 2 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Cómo convierte un investigador de humanidades un conjunto disperso de documentos en un corpus con procedencia, reproducible y listo para ser analizado, sin que la máquina decida por él qué entra y qué no?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-2/index.html" />
+    <meta property="og:title" content="Curso 2" />
+    <meta property="og:description" content="¿Cómo convierte un investigador de humanidades un conjunto disperso de documentos en un corpus con procedencia, reproducible y listo para ser analizado, sin que la máquina decida por él qué entra y qué no?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-2/index.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html" class="is-active">Curso 2</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 2 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Corpus textual: del documento al dato trazable</h1>
+          <p class="desc">¿Cómo convierte un investigador de humanidades un conjunto disperso de documentos en un corpus con procedencia, reproducible y listo para ser analizado, sin que la máquina decida por él qué entra y qué no?</p>
+        </div>
+<article class="prose">
+<h1 id="README">Curso 2. Corpus textual: del documento al dato trazable</h1>
+<p>Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Segundo curso del programa <a href="../index.html">Tunjos para la IA</a>, capa de Oficio.</p>
+<p><strong>Pregunta del curso.</strong> ¿Cómo convierte un investigador de humanidades un conjunto disperso de documentos en un corpus con procedencia, reproducible y listo para ser analizado, sin que la máquina decida por él qué entra y qué no?</p>
+<p><strong>Respuesta que el curso construye.</strong> Un corpus es una decisión documentada, no una carpeta de archivos. Cada pieza lleva su procedencia, sus derechos y el criterio por el que entró. La recolección se automatiza para que sea repetible, no para que sea ciega: el programa que descarga es la forma escrita de un criterio, y por eso otro puede ejecutarlo y obtener lo mismo. Y la primera lectura computacional, con frecuencias, concordancias y dominios léxicos, es un instrumento inductivo que sugiere dónde mirar; no es un hallazgo hasta que alguien vuelve al texto y responde por lo que dice. El curso enseña Python desde cero, sin prerrequisitos, con el cuaderno como forma de registro de todas esas decisiones.</p>
+<h2>Contenido</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carpeta</th>
+<th>Qué hay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="index.html">programa/</a></td>
+<td>Syllabus, guía de cada una de las ocho semanas, evaluación y bibliografía con enlaces</td>
+</tr>
+<tr>
+<td><a href="plantillas.html">plantillas/</a></td>
+<td>Plantillas de los tres productos: protocolo de corpus, catálogo maestro, registro de frontera del corpus</td>
+</tr>
+<tr>
+<td><a href="practicas.html">practicas/</a></td>
+<td>Guías paso a paso de las prácticas y el cuaderno de apoyo en Python</td>
+</tr>
+<tr>
+<td><a href="apps.html">apps/</a></td>
+<td>Mini apps que acompañan las semanas: validador de catálogo, explorador de concordancias, cadena de procedencia, deduplicación por hash</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Productos del estudiante</h2>
+<ol>
+<li><strong>Protocolo de corpus</strong> (semana 3): la delimitación del corpus propio con criterios explícitos de inclusión y exclusión, fuentes, derechos y plan de recolección.</li>
+<li><strong>Catálogo maestro con procedencia y cuaderno reproducible</strong> (semana 6): la tabla de metadatos de cada pieza, con hash e integridad verificada, y el cuaderno de Python que la produce desde las fuentes.</li>
+<li><strong>Informe de corpus</strong> (semana 8): la descripción del corpus como aserción que otro puede reconstruir, con la primera lectura computacional, la auditoría de la lectura asistida por un modelo y el registro de frontera.</li>
+</ol>
+<h2>Caso demostrativo</h2>
+<p>Las sesiones trabajan sobre un corpus de documentos públicos colombianos de acceso abierto y sin datos personales: prensa histórica de dominio público digitalizada por la Biblioteca Nacional de Colombia y textos normativos publicados por la Secretaría del Senado. El estudiante aplica cada semana lo mismo a su propio corpus.</p>
+<h2>Página del curso</h2>
+<p><a href="https://izainea.github.io/tunjos-para-la-ia/curso-2/">izainea.github.io/tunjos-para-la-ia/curso-2/</a></p>
+<hr />
+<h1 id="syllabus">Syllabus</h1>
+<h2>Datos generales</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td>Corpus textual: del documento al dato trazable</td>
+</tr>
+<tr>
+<td>Programa</td>
+<td>Tunjos para la IA, curso 2 de 7. Capa de Oficio</td>
+</tr>
+<tr>
+<td>Créditos</td>
+<td>2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas, 80 autónomas)</td>
+</tr>
+<tr>
+<td>Modalidad</td>
+<td>Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa</td>
+</tr>
+<tr>
+<td>Docente</td>
+<td>Carlos Isaac Zainea Maya</td>
+</tr>
+<tr>
+<td>Prerrequisitos</td>
+<td>Ninguno. No requiere programación previa: el curso enseña Python desde cero. Se recomienda haber cursado el curso 1 del programa, pero no es obligatorio</td>
+</tr>
+<tr>
+<td>Público</td>
+<td>Egresados y estudiantes de posgrado en ciencias sociales y humanidades, profesionales que investigan o producen informes a partir de documentos, prensa, archivos o textos en línea</td>
+</tr>
+<tr>
+<td>Equipo</td>
+<td>Un computador con Python 3.11 o superior y un cuaderno (JupyterLab o un servicio gratuito de cuadernos en la nube). Todo el software del curso es libre</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Problema que atiende</h2>
+<p>Buena parte de la investigación en humanidades y ciencias sociales empieza con una carpeta de archivos: notas de prensa descargadas, documentos escaneados, entrevistas transcritas, publicaciones copiadas de un sitio. La carpeta crece, se mezcla con versiones, pierde el rastro de dónde salió cada cosa, y cuando llega el momento de analizarla nadie puede decir con certeza qué hay dentro, por qué está, ni si se podría volver a reunir. Los modelos de lenguaje agravan el problema: ofrecen resumir, etiquetar y filtrar miles de documentos en minutos, y es tentador dejarles también la decisión de qué entra. El resultado es un corpus que nadie delimitó y del que nadie puede responder. Este curso enseña a hacer lo contrario: a tomar la decisión de qué es el corpus, a escribirla en forma de programa para que sea repetible, a documentar cada pieza con su procedencia y sus derechos, y a usar la primera lectura computacional y la lectura asistida por modelos como instrumentos que sugieren, bajo auditoría del investigador.</p>
+<h2>Competencias</h2>
+<p>Al terminar el curso el estudiante puede:</p>
+<ol>
+<li><strong>Delimitar y justificar</strong> un corpus textual con criterios explícitos de inclusión y exclusión, evaluando cada fuente por autenticidad, credibilidad, representatividad e interpretabilidad, y con atención a derechos de autor, datos personales y acceso a la información.</li>
+<li><strong>Recolectar de forma legal y reproducible</strong> documentos de fuentes abiertas, hemerotecas digitales, portales de datos y sitios web, con un cuaderno de Python que otro puede ejecutar y que registra fecha, origen y huella de cada descarga.</li>
+<li><strong>Construir y validar</strong> un catálogo maestro de metadatos con procedencia, deduplicación por hash y verificación de integridad, y limpiar y normalizar los textos documentando lo que la limpieza pierde.</li>
+<li><strong>Leer computacionalmente</strong> el corpus con frecuencias, concordancias, colocaciones y dominios léxicos, usar un modelo de lenguaje para una lectura asistida auditada sobre una muestra, y documentar el corpus como una aserción por la que responde.</li>
+</ol>
+<h2>Resultados de aprendizaje y evidencias</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Competencia</th>
+<th>Evidencia verificable</th>
+<th>Semana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Protocolo de corpus del proyecto propio</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2 y 3</td>
+<td>Catálogo maestro con procedencia y cuaderno reproducible que lo genera</td>
+<td>6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Informe de corpus con primera lectura computacional, auditoría de la lectura asistida y registro de frontera</td>
+<td>8</td>
+</tr>
+<tr>
+<td>1 a 4</td>
+<td>Bitácora semanal del cuaderno y de las decisiones</td>
+<td>1 a 8</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Programa por semanas</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Tema</th>
+<th>Lectura central</th>
+<th>Actividad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="semana-01.html">1</a></td>
+<td>Qué es un corpus y qué lo hace válido. Delimitación, muestreo teórico, los cuatro criterios de Valles, derechos y ética</td>
+<td>Valles (1997), cap. 4. Nguyen et al. (2020)</td>
+<td>Primera delimitación del corpus propio y cadena de procedencia de un documento</td>
+</tr>
+<tr>
+<td><a href="semana-02.html">2</a></td>
+<td>Python mínimo para humanidades. El cuaderno, el texto, las listas, los archivos, el registro de procedencia</td>
+<td>Tutorial oficial de Python, caps. 3 y 7. Rockwell y Sinclair (2016), cap. 1</td>
+<td>Primer cuaderno: leer diez archivos y escribir su registro</td>
+</tr>
+<tr>
+<td><a href="semana-03.html">3</a></td>
+<td>Recolección legal y reproducible. Fuentes abiertas, hemerotecas, portales de datos, interfaces de programación, descarga responsable</td>
+<td>Ley 1712 de 2014 y Ley 1581 de 2012. RFC 9309</td>
+<td>Entrega: protocolo de corpus</td>
+</tr>
+<tr>
+<td><a href="semana-04.html">4</a></td>
+<td>El catálogo maestro. Esquema de metadatos, deduplicación por hash, validación de integridad</td>
+<td>Gibbs (2012), cap. 3. Wilkinson et al. (2016)</td>
+<td>Catálogo preliminar validado con la mini app</td>
+</tr>
+<tr>
+<td><a href="semana-05.html">5</a></td>
+<td>Limpieza y normalización. Codificación, OCR y su error, segmentación, lo que se pierde al limpiar</td>
+<td>Rawson y Muñoz (2019). Cordell (2017)</td>
+<td>Bitácora de limpieza: antes, después y lo perdido</td>
+</tr>
+<tr>
+<td><a href="semana-06.html">6</a></td>
+<td>Primera lectura computacional. Frecuencias, concordancias, colocaciones, dominios léxicos</td>
+<td>Sinclair (1991), caps. 1 y 8. Moretti (2015), cap. 1</td>
+<td>Entrega: catálogo maestro y cuaderno reproducible</td>
+</tr>
+<tr>
+<td><a href="semana-07.html">7</a></td>
+<td>Lectura asistida. El modelo resume y etiqueta, el investigador audita sobre una muestra. Registro de frontera aplicado al corpus</td>
+<td>Grimmer y Stewart (2013). Ziems et al. (2024)</td>
+<td>Práctica guiada: auditoría de etiquetas sobre una muestra</td>
+</tr>
+<tr>
+<td><a href="semana-08.html">8</a></td>
+<td>El corpus como aserción. Documentar el corpus para que otro lo reconstruya. Presentación</td>
+<td>Bender y Friedman (2018). Zainea (2026)</td>
+<td>Entrega final del informe de corpus y presentación ante pares</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Metodología</h2>
+<p>El curso se enseña con el método que enseña. Cada semana tiene tres momentos.</p>
+<ul>
+<li><strong>Lectura y ejercicio guiado</strong> (asincrónico, 4 a 5 horas). Un texto central con guía de lectura, y un bloque de Python del cuaderno de apoyo que el estudiante ejecuta y adapta a su material.</li>
+<li><strong>Sesión sincrónica</strong> (2 horas). La primera hora discute la lectura sobre el caso demostrativo, un corpus de documentos públicos colombianos de acceso abierto. La segunda es taller: el estudiante aplica lo visto a su propio corpus, con el docente y los pares al lado.</li>
+<li><strong>Bitácora</strong> (asincrónica, 3 a 4 horas). El estudiante registra en su cuaderno el ejercicio de la semana, las decisiones que tomó sobre su corpus, lo que propuso el modelo cuando lo hubo, y con qué criterio decidió. El cuaderno es la bitácora: no hay dos documentos.</li>
+</ul>
+<p>Python se enseña a medida que hace falta, con explicación antes del código. Todo el software es libre. Las prácticas con modelos de lenguaje usan modelos de acceso gratuito.</p>
+<h2>Evaluación</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>Peso</th>
+<th>Criterio principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Informe de corpus</td>
+<td>40 %</td>
+<td>Otro investigador podría reconstruir el corpus y repetir la lectura con lo que el informe dice; la auditoría de la lectura asistida distingue lo que propuso el modelo de lo que responde el estudiante</td>
+</tr>
+<tr>
+<td>Catálogo maestro y cuaderno reproducible</td>
+<td>25 %</td>
+<td>Cada pieza tiene procedencia, derechos y criterio; el cuaderno corre de principio a fin y produce el catálogo</td>
+</tr>
+<tr>
+<td>Protocolo de corpus</td>
+<td>20 %</td>
+<td>La delimitación está argumentada con los cuatro criterios y las exclusiones están escritas</td>
+</tr>
+<tr>
+<td>Bitácora semanal</td>
+<td>15 %</td>
+<td>Continuidad y honestidad del registro, incluidas las decisiones que se revirtieron</td>
+</tr>
+</tbody>
+</table></div>
+<p>La rúbrica detallada está en <a href="evaluacion.html">evaluacion.md</a>.</p>
+<h2>Articulación</h2>
+<p>Este curso abre la capa de Oficio del programa y pertenece a las rutas Texto, Computacional y Programa completo. Su producto, el catálogo maestro con el cuaderno que lo genera, es el documento de entrada del curso 4 (codificación asistida) y del curso 5 (métodos computacionales para el sentido). Se articula con cursos de metodología cualitativa, análisis de contenido, archivística y humanidades digitales de posgrados en ciencias sociales y humanidades, a los que aporta lo que ellos no suelen cubrir: la construcción programada y documentada del corpus antes del análisis.</p>
+<h2>Política de uso de modelos de lenguaje</h2>
+<p>Se usan de forma declarada: para explicar errores de Python, para proponer esquemas de metadatos, y en la semana 7 para resumir y etiquetar documentos bajo auditoría. Cada entrega incluye qué modelo se usó, para qué, y qué parte del resultado es decisión del estudiante. Lo que no se admite es que el modelo decida qué entra al corpus ni que su etiqueta se presente como lectura del investigador sin auditoría. Un uso no declarado se trata como infortunio de autoridad: el estudiante presenta como propio algo por lo que no puede responder, y la entrega se devuelve para escribir el registro que faltaba.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><span></span><a href="semana-01.html">Semana 1. Qué es un corpus y qué lo hace válido →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

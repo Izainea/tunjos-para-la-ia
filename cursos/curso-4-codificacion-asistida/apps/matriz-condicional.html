@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Constructor de matriz condicional y consecuencial</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Estilos propios de esta app */
+.campo{display:flex;flex-direction:column;gap:.25rem}
+.campo label{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.campo input,.campo textarea{width:100%;font-size:.92rem}
+.campo textarea{min-height:5.2rem;resize:vertical;line-height:1.35}
+.ayuda{font-size:.8rem;color:var(--muted);margin:0}
+#dibujo svg{width:100%;max-width:660px;height:auto;display:block;margin:.4rem auto}
+#salida{width:100%;min-height:16rem;font-family:var(--mono);font-size:.8rem;line-height:1.4;resize:vertical}
+#export{margin-top:.4rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 4 · Semana 5</span>
+  <h1>Constructor de matriz condicional y consecuencial</h1>
+  <p>Ponga un fenómeno en el centro, escriba sus condiciones, las acciones e interacciones y las consecuencias, y vea la matriz dibujada. Exporte el resultado en markdown para su memo.</p>
+
+  <div class="card">
+    <div class="campo" style="margin-bottom:.6rem">
+      <label for="fenomeno">Fenómeno (centro)</label>
+      <input id="fenomeno" type="text" placeholder="Lo que ocurre y usted quiere explicar" />
+    </div>
+    <p class="ayuda" style="margin-bottom:.5rem">En cada bloque, una entrada por línea.</p>
+    <div class="grid">
+      <div class="campo"><label for="causales">Condiciones causales</label><textarea id="causales" placeholder="Lo que da origen al fenómeno"></textarea></div>
+      <div class="campo"><label for="contexto">Contexto</label><textarea id="contexto" placeholder="Lugar, tiempo y propiedades en que ocurre"></textarea></div>
+      <div class="campo"><label for="intervinientes">Condiciones intervinientes</label><textarea id="intervinientes" placeholder="Lo que facilita o restringe las acciones"></textarea></div>
+      <div class="campo"><label for="acciones">Acciones e interacciones</label><textarea id="acciones" placeholder="Lo que la gente hace frente al fenómeno"></textarea></div>
+      <div class="campo"><label for="consecuencias">Consecuencias</label><textarea id="consecuencias" placeholder="Lo que resulta de esas acciones"></textarea></div>
+    </div>
+    <div class="row" style="margin-top:.7rem">
+      <button id="btn-dibujar" class="primary">Dibujar</button>
+      <button id="btn-ejemplo">Cargar ejemplo</button>
+      <button id="btn-limpiar">Limpiar</button>
+      <button id="btn-exportar">Exportar en markdown</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="k">Matriz</div>
+    <div id="dibujo"></div>
+    <p class="ayuda">Las entradas largas se recortan en el dibujo; el texto completo aparece al pasar el cursor por encima.</p>
+  </div>
+
+  <div class="card" id="export" hidden>
+    <div class="k">Markdown para el memo</div>
+    <p class="ayuda">Copie el contenido y péguelo en su memo.</p>
+    <textarea id="salida" readonly></textarea>
+  </div>
+
+  <div class="card">
+    <div class="k">Para qué sirve</div>
+    <p>La matriz de Strauss y Corbin ordena las condiciones en que ocurre un fenómeno, lo que la gente hace frente a él y lo que resulta. Es un instrumento de codificación axial: relaciona categorías que la codificación abierta dejó sueltas. Un modelo de lenguaje puede proponer una matriz completa en segundos; cada celda debe poder rastrearse hasta fragmentos del corpus, y la que no se rastrea se borra.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: una matriz es una hipótesis sobre relaciones; vale si cada relación tiene fragmentos que la sostienen, y eso lo verifica usted con el corpus a la vista.</p>
+<script>
+  // Ejemplo: corpus inventado sobre un mercado campesino de barrio.
+  var EJEMPLO = {
+    fenomeno: 'Seguir viniendo al mercado pese a la incertidumbre',
+    causales: ['Permiso de la alcaldía por vencer', 'Rumor de centro comercial en el lote'],
+    contexto: ['Mercado de sábado en un barrio residencial', 'Vendedores con puestos heredados', 'Compradores de edificios vecinos'],
+    intervinientes: ['Confianza sostenida con los compradores', 'Ayuda mutua entre puestos', 'Experiencias previas de censos sin respuesta'],
+    acciones: ['Fiar al conocido', 'Aplazar la inversión en carpa', 'Organizarse para pedir el permiso'],
+    consecuencias: ['El mercado continúa sin certeza', 'Desgaste de los vendedores', 'Primer contacto colectivo con la alcaldía']
+  };
+
+  // Anillos de adentro hacia afuera. Cada uno con su campo, rótulo y color de la base.
+  var ANILLOS = [
+    { id: 'acciones', rotulo: 'acciones e interacciones', color: 'var(--c-app)' },
+    { id: 'intervinientes', rotulo: 'condiciones intervinientes', color: 'var(--c-inv)' },
+    { id: 'contexto', rotulo: 'contexto', color: 'var(--muted)' },
+    { id: 'causales', rotulo: 'condiciones causales', color: 'var(--c-fil)' }
+  ];
+  var CAMPOS = ['fenomeno', 'causales', 'contexto', 'intervinientes', 'acciones', 'consecuencias'];
+  var MAX = 28;          // caracteres visibles por entrada
+  var ANCHO_CAR = 6.6;   // ancho aproximado de un carácter en mono a 11 px
+
+  var dibujo = document.getElementById('dibujo');
+  var salida = document.getElementById('salida');
+  var exportCard = document.getElementById('export');
+
+  function el(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function lineas(id) {
+    var raw = el(id).value.split(/\r?\n/);
+    var out = [];
+    for (var i = 0; i < raw.length; i++) {
+      var s = raw[i].replace(/^\s+|\s+$/g, '');
+      if (s) { out.push(s); }
+    }
+    return out;
+  }
+  function recorta(s, max) {
+    if (s.length <= max) { return s; }
+    return s.slice(0, max - 1).replace(/\s+$/, '') + '…';
+  }
+  function anchoTexto(s) { return s.length * ANCHO_CAR; }
+  function leer() {
+    return {
+      fenomeno: el('fenomeno').value.replace(/^\s+|\s+$/g, ''),
+      causales: lineas('causales'),
+      contexto: lineas('contexto'),
+      intervinientes: lineas('intervinientes'),
+      acciones: lineas('acciones'),
+      consecuencias: lineas('consecuencias')
+    };
+  }
+
+  // Parte el fenómeno en líneas cortas para el círculo central.
+  function partir(s, maxCar, maxLineas) {
+    var palabras = s.split(/\s+/), out = [], act = '';
+    for (var i = 0; i < palabras.length; i++) {
+      var p = palabras[i];
+      if (!act) { act = p; }
+      else if ((act + ' ' + p).length <= maxCar) { act += ' ' + p; }
+      else { out.push(act); act = p; }
+    }
+    if (act) { out.push(act); }
+    if (out.length > maxLineas) {
+      out = out.slice(0, maxLineas);
+      out[maxLineas - 1] = recorta(out[maxLineas - 1] + '…', maxCar);
+    }
+    for (var j = 0; j < out.length; j++) { out[j] = recorta(out[j], maxCar); }
+    return out;
+  }
+
+  function solapan(a, b) {
+    return !(a.x2 < b.x1 || b.x2 < a.x1 || a.y2 < b.y1 || b.y2 < a.y1);
+  }
+
+  function dibujar() {
+    var d = leer();
+    var W = 660, cx = 330, cy = 300;
+    var rCentro = 58, grosor = 50;
+    var rExt = rCentro + grosor * ANILLOS.length; // 258
+    // Cajas ocupadas, para que las entradas no se solapen entre sí ni con el centro.
+    var cajas = [{ x1: cx - rCentro - 4, x2: cx + rCentro + 4, y1: cy - rCentro - 4, y2: cy + rCentro + 4 }];
+    var s = '';
+
+    // Círculos de los anillos, del exterior al interior.
+    for (var i = ANILLOS.length - 1; i >= 0; i--) {
+      var ro = rCentro + grosor * (i + 1);
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + ro + '" fill="none" stroke="var(--rule)" stroke-width="1"/>';
+    }
+    // Centro.
+    s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + rCentro + '" fill="var(--surface)" stroke="var(--accent)" stroke-width="2">';
+    s += '<title>' + esc(d.fenomeno || 'Fenómeno sin escribir') + '</title></circle>';
+    var fen = d.fenomeno ? partir(d.fenomeno, 16, 4) : ['(fenómeno)'];
+    var y0 = cy - ((fen.length - 1) * 13) / 2 + 4;
+    for (var f = 0; f < fen.length; f++) {
+      s += '<text x="' + cx + '" y="' + (y0 + f * 13) + '" text-anchor="middle" fill="var(--ink)">' + esc(fen[f]) + '</text>';
+    }
+
+    // Rótulos y entradas de cada anillo.
+    for (var a = 0; a < ANILLOS.length; a++) {
+      var an = ANILLOS[a];
+      var rMid = rCentro + grosor * a + grosor / 2;
+      var rot = an.rotulo.toUpperCase();
+      var wr = anchoTexto(rot) + 10;
+      s += '<rect x="' + (cx - wr / 2) + '" y="' + (cy - rMid - 9) + '" width="' + wr + '" height="16" rx="3" fill="var(--surface)"/>';
+      s += '<text x="' + cx + '" y="' + (cy - rMid + 3) + '" text-anchor="middle" fill="' + an.color + '" letter-spacing="1">' + esc(rot) + '</text>';
+      cajas.push({ x1: cx - wr / 2, x2: cx + wr / 2, y1: cy - rMid - 9, y2: cy - rMid + 7 });
+
+      var items = d[an.id];
+      var N = items.length;
+      if (N === 0) { continue; }
+      var paso = 300 / N;
+      var desfase = (a % 2 === 1) ? paso * 0.35 : 0;
+      for (var k = 0; k < N; k++) {
+        var ang = (-60 + (k + 0.5) * paso + desfase) * Math.PI / 180;
+        var txt = recorta(items[k], MAX);
+        var w = anchoTexto(txt) + 10;
+        var x = cx + rMid * Math.cos(ang);
+        var y = cy + rMid * Math.sin(ang);
+        if (x - w / 2 < 4) { x = 4 + w / 2; }
+        if (x + w / 2 > W - 4) { x = W - 4 - w / 2; }
+        var caja = { x1: x - w / 2, x2: x + w / 2, y1: y - 8, y2: y + 8 };
+        var paso_y = Math.sin(ang) >= 0 ? 15 : -15;
+        var intentos = 0, choca = true;
+        while (choca && intentos < 10) {
+          choca = false;
+          for (var c = 0; c < cajas.length; c++) { if (solapan(caja, cajas[c])) { choca = true; break; } }
+          if (choca) { caja.y1 += paso_y; caja.y2 += paso_y; y += paso_y; intentos++; }
+        }
+        cajas.push(caja);
+        s += '<g><title>' + esc(items[k]) + '</title>';
+        s += '<rect x="' + caja.x1 + '" y="' + caja.y1 + '" width="' + w + '" height="16" rx="3" fill="var(--surface)" stroke="' + an.color + '" stroke-width="0.8"/>';
+        s += '<text x="' + x + '" y="' + (y + 4) + '" text-anchor="middle" fill="var(--ink)">' + esc(txt) + '</text></g>';
+      }
+    }
+
+    // Consecuencias: banda inferior con flecha desde el centro.
+    var topBanda = cy + rExt + 36;
+    var cols = 3, anchoCaja = 200, sep = 15, alto = 26, filaAlto = 34;
+    var cons = d.consecuencias;
+    var filas = Math.max(1, Math.ceil(cons.length / cols));
+    var H = topBanda + 22 + filas * filaAlto + 6;
+    s += '<line x1="' + cx + '" y1="' + (cy + rExt) + '" x2="' + cx + '" y2="' + (topBanda - 12) + '" stroke="var(--accent)" stroke-width="2"/>';
+    s += '<polygon points="' + (cx - 6) + ',' + (topBanda - 12) + ' ' + (cx + 6) + ',' + (topBanda - 12) + ' ' + cx + ',' + (topBanda - 2) + '" fill="var(--accent)"/>';
+    s += '<text x="' + cx + '" y="' + (topBanda + 12) + '" text-anchor="middle" fill="var(--accent)" letter-spacing="1">CONSECUENCIAS</text>';
+    if (cons.length === 0) {
+      s += '<text x="' + cx + '" y="' + (topBanda + 22 + 17) + '" text-anchor="middle">(sin entradas)</text>';
+    }
+    for (var q = 0; q < cons.length; q++) {
+      var fila = Math.floor(q / cols), col = q % cols;
+      var enFila = Math.min(cols, cons.length - fila * cols);
+      var anchoFila = enFila * anchoCaja + (enFila - 1) * sep;
+      var x1 = (W - anchoFila) / 2 + col * (anchoCaja + sep);
+      var y1 = topBanda + 22 + fila * filaAlto;
+      var tc = recorta(cons[q], MAX);
+      s += '<g><title>' + esc(cons[q]) + '</title>';
+      s += '<rect x="' + x1 + '" y="' + y1 + '" width="' + anchoCaja + '" height="' + alto + '" rx="4" fill="var(--surface)" stroke="var(--c-inv)" stroke-width="1"/>';
+      s += '<text x="' + (x1 + anchoCaja / 2) + '" y="' + (y1 + alto / 2 + 4) + '" text-anchor="middle" fill="var(--ink)">' + esc(tc) + '</text></g>';
+    }
+
+    dibujo.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Matriz condicional y consecuencial">' + s + '</svg>';
+  }
+
+  function cargarEjemplo() {
+    el('fenomeno').value = EJEMPLO.fenomeno;
+    for (var i = 1; i < CAMPOS.length; i++) { el(CAMPOS[i]).value = EJEMPLO[CAMPOS[i]].join('\n'); }
+    exportCard.hidden = true;
+    dibujar();
+  }
+
+  function limpiar() {
+    for (var i = 0; i < CAMPOS.length; i++) { el(CAMPOS[i]).value = ''; }
+    exportCard.hidden = true;
+    salida.value = '';
+    dibujar();
+  }
+
+  function bloqueMd(titulo, items) {
+    var md = '**' + titulo + '**\n';
+    if (items.length === 0) { md += '- (sin entradas)\n'; }
+    for (var i = 0; i < items.length; i++) { md += '- ' + items[i] + '\n'; }
+    return md + '\n';
+  }
+
+  function exportar() {
+    var d = leer();
+    var md = '## Matriz condicional y consecuencial\n\n';
+    md += '**Fenómeno.** ' + (d.fenomeno || '(sin escribir)') + '\n\n';
+    md += bloqueMd('Condiciones causales', d.causales);
+    md += bloqueMd('Contexto', d.contexto);
+    md += bloqueMd('Condiciones intervinientes', d.intervinientes);
+    md += bloqueMd('Acciones e interacciones', d.acciones);
+    md += bloqueMd('Consecuencias', d.consecuencias);
+    md += 'Fuente del esquema: Strauss y Corbin (1990, cap. 10); revisión en Corbin y Strauss (2008).\n';
+    salida.value = md;
+    exportCard.hidden = false;
+    dibujar();
+    salida.focus();
+    salida.select();
+  }
+
+  el('btn-dibujar').addEventListener('click', dibujar);
+  el('btn-ejemplo').addEventListener('click', cargarEjemplo);
+  el('btn-limpiar').addEventListener('click', limpiar);
+  el('btn-exportar').addEventListener('click', exportar);
+
+  dibujar();
+
+  // Solo para verificación: con ?demo=1 en la URL se carga el ejemplo al abrir,
+  // de modo que una captura automática muestre la matriz con datos. No afecta el uso normal.
+  if (/[?&]demo=1(&|$)/.test(window.location.search)) { cargarEjemplo(); }
+</script>
+</body>
+</html>

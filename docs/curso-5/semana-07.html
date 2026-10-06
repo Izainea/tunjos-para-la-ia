@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 5 · Semana 7 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Una gráfica muestra el mismo dato de dos maneras y una de ellas convence más. ¿Qué afirmó la gráfica que el dato no afirma, y cómo se construye una vista que declare lo que afirma?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-07.html" />
+    <meta property="og:title" content="Curso 5 · Semana 7" />
+    <meta property="og:description" content="Una gráfica muestra el mismo dato de dos maneras y una de ellas convence más. ¿Qué afirmó la gráfica que el dato no afirma, y cómo se construye una vista que declare lo que afirma?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-5/semana-07.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 5</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub is-active">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 5 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 7. Visualización que no engaña</h1>
+          <p class="desc">Una gráfica muestra el mismo dato de dos maneras y una de ellas convence más. ¿Qué afirmó la gráfica que el dato no afirma, y cómo se construye una vista que declare lo que afirma?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Una gráfica muestra el mismo dato de dos maneras y una de ellas convence más. ¿Qué afirmó la gráfica que el dato no afirma, y cómo se construye una vista que declare lo que afirma?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Hasta aquí el curso ha producido patrones y los ha sometido a prueba. Falta el momento en que los patrones se muestran a otros, y ese momento tiene sus propios instrumentos y sus propios artefactos. Una escala recortada convierte un crecimiento modesto en un salto; una suma acumulada borra los años que bajaron; un color rojo señala una alerta que nadie midió; dos ejes ajustados hacen coincidir lo que no coincide. Nada de eso es mentir con los datos: es afirmar con la vista algo que el dato no sostiene, y en el vocabulario del curso 1 es un infortunio, un acto con la forma de un hallazgo sin sus condiciones. Esta semana enseña a construir vistas que declaren lo que afirman y a reunirlas en un tablero para investigar, que es lo contrario de un tablero para vender.</p>
+
+<p>La semana supone las vistas producidas en las semanas 2 a 6, reunidas en una carpeta, y las plantillas de ficha de patrón y de lectura de grafo ya usadas.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>Toda vista afirma algo, y la integridad gráfica consiste en que afirme lo que el dato sostiene. Tufte (2001, cap. 2) propone medir la distorsión con un factor de mentira<sup class="mark">a</sup>, la razón entre el efecto que la gráfica muestra y el efecto que hay en el dato, y da ejemplos de prensa donde ese factor pasa de diez. La regla que el curso adopta es más simple que cualquier factor: debajo de cada vista va una frase que dice qué afirma, y la frase debe poder sostenerse con el dato y con los parámetros declarados.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Factor de mentira: tamaño del efecto en la gráfica dividido por tamaño del efecto en los datos. Una barra que crece un 300 % para representar un dato que creció un 35 % tiene un factor cercano a 9. Tufte propone que una gráfica honesta se mantenga entre 0,95 y 1,05.</aside>
+
+<ol start="2">
+<li>
+<p>La escala es la primera decisión y la que más se esconde. Un eje de barras que no empieza en cero exagera las diferencias; un eje logarítmico comprime los grandes y expande los pequeños, útil para órdenes de magnitud y engañoso si no se declara; dos ejes verticales en la misma gráfica permiten hacer coincidir cualquier par de series. La mini app muestra las cuatro trampas con la misma cifra y, al lado, la misma cifra con la decisión declarada. El punto no es que la vista honesta sea aburrida: es que afirma lo que puede.</p>
+</li>
+<li>
+<p>El color afirma orden, agrupación o alerta, y cada una de esas afirmaciones debe venir del dato. Una escala secuencial, de claro a oscuro, dice "esto va de menos a más"; una divergente dice "hay un centro y dos extremos"; una categórica dice "estas cosas son de distinta clase". Pintar de rojo los tres últimos años de una serie dice "aquí hay una alerta", y si nadie midió la alerta, la vista la inventó. Healy (2018) y Munzner (2014) dan reglas para elegir la escala según el tipo de variable<sup class="mark">b</sup>; el curso añade que la elección se declara al pie.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Regla mínima: variable ordenada, escala secuencial; variable con un centro significativo, escala divergente; variable nominal, colores categóricos y no más de siete. Y en todos los casos, que la diferencia se vea también sin color, porque una parte de los lectores no distingue el rojo del verde.</aside>
+
+<ol start="4">
+<li>
+<p>Las proyecciones y los dibujos de grafos afirman más de lo que parece, y eso ya lo sabe el estudiante. La nube de puntos de la semana 2 afirma vecindades locales y no distancias; el dibujo por fuerzas de la semana 4 afirma conexión y no posición; la serie suavizada de la semana 5 afirma lo que la ventana deja ver. En el tablero, cada una de esas vistas lleva su proyección, su semilla, su umbral o su ventana escritos en el pie, y lleva, cuando lo hay, el resultado de la prueba de estabilidad: "los grupos marcados sobreviven a cinco semillas y a k más y menos uno".</p>
+</li>
+<li>
+<p>Un tablero para investigar es distinto de un tablero para vender, y Drucker (2011) dice por qué. Las convenciones gráficas de las ciencias naturales presentan el dato como algo dado, <em>data</em>, cuando en humanidades el dato es algo tomado, <em>capta</em>, construido por una interpretación que la gráfica debería mostrar y no borrar. Un tablero para vender muestra cifras limpias y tendencias claras y esconde los parámetros; uno para investigar muestra la cifra con su incertidumbre, la tendencia con su ventana, el grupo con su estabilidad, y deja al lector la posibilidad de no estar de acuerdo. El producto final del curso es un tablero del segundo tipo.</p>
+</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tablero para vender</th>
+<th>Tablero para investigar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cifras limpias, tendencias claras</td>
+<td>Cifras con su incertidumbre, tendencias con su ventana</td>
+</tr>
+<tr>
+<td>Los parámetros no se ven</td>
+<td>Los parámetros están al pie de cada panel</td>
+</tr>
+<tr>
+<td>El título es la conclusión</td>
+<td>El título es la pregunta; la conclusión va aparte y firmada</td>
+</tr>
+<tr>
+<td>El lector debe convencerse</td>
+<td>El lector puede no estar de acuerdo, y sabe con qué</td>
+</tr>
+<tr>
+<td><em>Afirma lo que conviene</em></td>
+<td><em>Afirma lo que puede</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="6">
+<li>La anatomía de una vista honesta es la misma para todas las vistas del curso. Arriba, la pregunta a la que la vista responde. En el centro, el dato con la escala declarada. Al pie, los parámetros, el resultado de la prueba de estabilidad, la frase de lo que afirma y, separada con claridad, la lectura del investigador. Esa separación entre lo que afirma la vista y lo que propone quien la lee es la frontera del curso 1, dibujada en cada panel del tablero. Una vista que mezcla las dos cosas, por ejemplo un título que ya es una conclusión, ha cruzado la frontera sin decirlo.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 280" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Anatomía de un panel honesto: un rectángulo con cinco zonas rotuladas. Arriba, la pregunta. En el centro, la vista con su escala. Debajo, tres franjas: parámetros y prueba de estabilidad, lo que la vista afirma, y, separada por una línea punteada roja, la lectura del investigador.">
+    <style>.t7{font-family:var(--text);font-size:12.5px;fill:var(--ink)} .s7{font-family:var(--text);font-size:11px;fill:var(--muted)} .m7{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--muted)} .mf7{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--c-fil)} .bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .bar{fill:var(--c-app)} .fr{stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:6 5;fill:none} .ax{stroke:var(--muted);stroke-width:1}</style>
+    <rect x="10" y="10" width="660" height="260" rx="3" class="bx"/>
+    <text x="22" y="30" class="m7">PREGUNTA</text>
+    <text x="110" y="30" class="t7">¿Crece la proporción de documentos que hablan de desalojo entre 2019 y 2024?</text>
+    <g transform="translate(22 44)">
+      <line x1="30" y1="90" x2="300" y2="90" class="ax"/><line x1="30" y1="10" x2="30" y2="90" class="ax"/>
+      <text x="6" y="94" class="s7">0</text><text x="0" y="16" class="s7">20 %</text>
+      <rect x="45" y="62" width="30" height="28" class="bar"/><rect x="85" y="58" width="30" height="32" class="bar"/><rect x="125" y="60" width="30" height="30" class="bar"/><rect x="165" y="50" width="30" height="40" class="bar"/><rect x="205" y="46" width="30" height="44" class="bar"/><rect x="245" y="42" width="30" height="48" class="bar"/>
+      <text x="48" y="106" class="s7">2019</text><text x="248" y="106" class="s7">2024</text>
+      <text x="330" y="30" class="s7">eje desde cero · proporción, no conteo</text>
+      <text x="330" y="48" class="s7">n por año debajo: 212, 240, 251, 298, 310, 322</text>
+      <text x="330" y="66" class="s7">un color porque es una variable</text>
+    </g>
+    <text x="22" y="178" class="m7">PARÁMETROS Y ESTABILIDAD</text>
+    <text x="230" y="178" class="s7">código "desalojo" del libro de códigos v3 · agregación anual · sin suavizado · la tendencia se mantiene con agregación trimestral</text>
+    <text x="22" y="204" class="m7">LO QUE LA VISTA AFIRMA</text>
+    <text x="230" y="204" class="t7">La proporción pasa de 7 % a 14 % en seis años, con un retroceso en 2021.</text>
+    <path class="fr" d="M22 220 L658 220"/>
+    <text x="22" y="246" class="mf7">LECTURA DEL INVESTIGADOR</text>
+    <text x="230" y="246" class="t7">Propongo que el aumento sigue a la llegada de las torres nuevas; la prueba</text>
+    <text x="230" y="262" class="t7">sería cruzar con fechas de licencias. Quien responde por esta frase soy yo.</text>
+  </svg>
+  <figcaption><b>Figura 7.</b> Anatomía de un panel honesto. Pregunta, vista con escala declarada, parámetros y estabilidad, lo que la vista afirma y, del otro lado de la línea, lo que el investigador propone. La línea es la frontera.</figcaption>
+</figure>
+
+<iframe class="app" src="apps/vista-que-engana.html" title="La misma cifra en una vista que exagera y en una que declara lo que afirma" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Se le pide a un modelo de lenguaje el código del tablero, en Plotly o en la biblioteca que el estudiante prefiera, a partir de los bloques del cuaderno, y después se le pide que escriba el pie de cada panel. El estudiante debe poder defender sin el modelo cada decisión de escala y color de cada panel, la frase de lo que afirma cada vista, y la separación entre esa frase y su lectura. Los pies que escriba el modelo se revisan uno por uno: cualquier frase del pie que afirme más de lo que el panel sostiene se corrige y se anota en el registro de frontera como propuesta del modelo rechazada.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Tufte, E. R. (2001). <em>The Visual Display of Quantitative Information</em>. 2.ª ed. Graphics Press. Cap. 2, "Graphical Integrity", y cap. 4, "Data-Ink and Graphical Redesign". Edición original de 1983.</li>
+<li>Drucker, J. (2011). "Humanities Approaches to Graphical Display". <em>Digital Humanities Quarterly</em> 5(1). <a href="http://www.digitalhumanities.org/dhq/vol/5/1/000091/000091.html">http://www.digitalhumanities.org/dhq/vol/5/1/000091/000091.html</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Healy, K. (2018). <em>Data Visualization: A Practical Introduction</em>. Princeton University Press. Versión abierta: <a href="https://socviz.co/">https://socviz.co/</a></li>
+<li>Munzner, T. (2014). <em>Visualization Analysis and Design</em>. CRC Press. Caps. 5 y 10, sobre marcas, canales y color.</li>
+<li>Cairo, A. (2019). <em>How Charts Lie: Getting Smarter about Visual Information</em>. W. W. Norton.</li>
+<li>Wattenberg, M., Viégas, F. y Johnson, I. (2016). "How to Use t-SNE Effectively". <em>Distill</em>. <a href="https://distill.pub/2016/misread-tsne/">https://distill.pub/2016/misread-tsne/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Tufte propone que la representación de los números sea directamente proporcional a los números. <em>Tome una gráfica de su carpeta y calcule su factor de mentira. Si es mayor que 1,05, ¿qué decisión lo produjo?</em></li>
+<li>Tufte también propone quitar toda tinta que no sea dato. <em>¿Qué hay en sus gráficas que no es dato? ¿Y hay algo que no es dato pero debería estar, como los parámetros?</em></li>
+<li>Drucker distingue <em>data</em> de <em>capta</em>. <em>Elija una vista de su tablero y escriba en una frase cómo fue tomado el dato que muestra. ¿Cabría esa frase en el pie?</em></li>
+<li>Healy insiste en que la gráfica que se ve bien no es la que mejor muestra el dato. <em>¿Cuál de sus vistas le gusta más? ¿Es la que mejor afirma lo que puede?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Sobre las vistas del corpus propio, con el bloque de la semana 7 del cuaderno de apoyo:</p>
+<ol>
+<li>Elija cinco vistas de la carpeta: una nube de puntos con grupos, el grafo, la serie, los temas y una libre.</li>
+<li>Para cada una, llene el panel de la figura 7:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Vista</th>
+<th>Pregunta</th>
+<th>Escala y color declarados</th>
+<th>Parámetros y estabilidad</th>
+<th>Lo que la vista afirma</th>
+<th>Mi lectura (separada)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="3">
+<li>Construya una versión que empuja de una de ellas, con una de las cuatro trampas de la mini app, y póngala al lado de la honesta. Esa pareja va al tablero como advertencia al lector.</li>
+<li>Monte el tablero con los cinco paneles. Puede ser un archivo HTML con Plotly, un cuaderno exportado o un documento con las cinco figuras y sus pies. Lo que importa es que cada panel tenga las seis casillas.</li>
+</ol>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 10</td>
+<td>Apertura</td>
+<td>Proyecta una gráfica de prensa con eje recortado y pregunta qué afirma</td>
+<td>Escribe en una línea lo que la gráfica le hizo creer</td>
+<td>Tablero</td>
+</tr>
+<tr>
+<td>10 a 30</td>
+<td>Lectura</td>
+<td>Discute integridad gráfica y <em>capta</em>; calcula un factor de mentira en vivo</td>
+<td>Responde la guía con una vista propia</td>
+<td>Lecturas centrales</td>
+</tr>
+<tr>
+<td>30 a 50</td>
+<td>Mecanismo</td>
+<td>Recorre las cuatro trampas de la mini app y lee en voz alta lo que cada vista afirma</td>
+<td>Identifica cuál de las trampas ha usado alguna vez</td>
+<td>App de vistas</td>
+</tr>
+<tr>
+<td>50 a 60</td>
+<td>Pausa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>60 a 100</td>
+<td>Taller</td>
+<td>Acompaña el llenado de los paneles y el montaje del tablero</td>
+<td>Llena la tabla de cinco vistas</td>
+<td>Cuaderno, semana 7</td>
+</tr>
+<tr>
+<td>100 a 115</td>
+<td>Revisión cruzada</td>
+<td>Organiza parejas: cada uno busca en el tablero del otro una frase que cruza la frontera</td>
+<td>Corrige un pie</td>
+<td>Tableros</td>
+</tr>
+<tr>
+<td>115 a 120</td>
+<td>Cierre</td>
+<td>Recuerda qué se entrega la semana 8</td>
+<td>Anota qué le falta</td>
+<td>Bitácora</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Lo que suele fallar: el estudiante quiere que el tablero "se vea bien" y la discusión se va a colores y tipografías; devolverla a las seis casillas. Segundo fallo: la frase de lo que afirma la vista y la lectura se funden en una sola, en general con un título que ya es conclusión; exigir la línea punteada entre las dos. Tercero: la versión que empuja sale demasiado convincente y alguien propone usarla; esa propuesta es el mejor momento de la sesión para hablar de a quién le sirve el tablero.</p>
+<h2>Bitácora</h2>
+<p>Registre la tabla de cinco vistas, el tablero montado y la pareja que empuja y declara. Añada una línea sobre qué decisión de escala o color le costó más declarar y por qué. Esta bitácora es la base del producto final.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Peirce (1903) y releer Timmermans y Tavory (2012). Elegir un patrón del tablero que lo haya sorprendido, y leer las plantillas <code>plantillas/ficha-de-patron.md</code> y <code>plantillas/registro-de-frontera-computacional.md</code>. Preparar una presentación de ocho minutos: el tablero, el patrón, la hipótesis y la frontera.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-06.html">← Semana 6. Modelado de temas y lectura distante</a><a href="semana-08.html">Semana 8. Del patrón a la hipótesis →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

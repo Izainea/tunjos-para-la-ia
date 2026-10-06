@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emergencia o forzamiento</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Estilos propios de esta app */
+h2{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:1.2rem 0 .3rem}
+.oculto{display:none}
+.frag{font-style:italic;font-size:1.05rem;margin:.3rem 0 0;color:var(--ink)}
+.cod{font-family:var(--mono);font-size:.95rem;margin:.3rem 0 0;color:var(--ink)}
+.card.codigo{border-left:3px solid var(--c-app)}
+.resultado{margin:.6rem 0 .2rem;font-weight:700}
+.explicacion{font-size:.95rem;color:var(--ink);margin:.3rem 0 .6rem}
+.tabla{overflow-x:auto}
+.cierre{border-left:3px solid var(--accent);padding:.4rem .8rem;margin:.8rem 0;color:var(--ink);font-size:.95rem}
+.contador{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.05em}
+button:disabled{opacity:.45;cursor:default}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 4 · Semana 4</span>
+  <h1>Emergencia o forzamiento</h1>
+  <p>Para cada par de fragmento y código decida si el código emerge del fragmento o viene de fuera. La app explica el criterio en cada caso.</p>
+
+  <div id="juego">
+    <div class="row" style="justify-content:space-between">
+      <span class="contador" id="contador"></span>
+      <span class="contador" id="marcador"></span>
+    </div>
+    <div class="card">
+      <span class="k">Fragmento</span>
+      <div class="frag" id="fragmento"></div>
+    </div>
+    <div class="card codigo">
+      <span class="k">Código propuesto</span>
+      <div class="cod" id="codigo"></div>
+    </div>
+    <div class="row">
+      <button id="btn-emerge">Emerge del fragmento</button>
+      <button id="btn-fuerza">Viene de fuera</button>
+    </div>
+    <div id="respuesta" class="card oculto">
+      <div class="resultado" id="resultado"></div>
+      <div class="explicacion" id="explicacion"></div>
+      <button id="btn-siguiente" class="primary">Siguiente</button>
+    </div>
+  </div>
+
+  <div id="final" class="oculto">
+    <h2>Resumen</h2>
+    <div class="card">
+      <div class="tabla">
+        <table>
+          <thead><tr><th>Par</th><th>Código propuesto</th><th>Su respuesta</th><th>Criterio</th><th>Acierto</th></tr></thead>
+          <tbody id="tabla-resumen"></tbody>
+        </table>
+      </div>
+      <p id="total"></p>
+    </div>
+    <div class="cierre">El criterio es de Glaser (1992): una categoría se gana su lugar por aparecer en los datos, no por venir de un marco previo. Tres señales de forzamiento en un código propuesto por un modelo: usa vocabulario de la literatura que no está en el fragmento; cabría en casi cualquier fragmento; responde a la pregunta de investigación en lugar de al fragmento.</div>
+    <div class="row">
+      <button id="btn-reiniciar" class="primary">Volver a empezar</button>
+    </div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la prueba del anclaje. Para cada código pregunte qué palabras del fragmento lo sostienen; si la respuesta es ninguna, el código vino de fuera.</p>
+<script>
+(function(){
+  'use strict';
+
+  // ---------- Datos ----------
+  var F1 = 'Me toca madrugar a las tres para alcanzar el bus, y llego muerta.';
+  var F3 = 'Mi abuela me enseñó a sembrar en luna menguante.';
+  var F5 = 'Cuando llegó la empresa nos pagaron por la tierra y mi papá firmó sin leer.';
+  var F7 = 'En el grupo de WhatsApp del barrio avisan cuando viene el camión del gas.';
+  var F9 = 'Ya no voy al centro de salud porque la última vez esperé cinco horas y no me atendieron.';
+  var F11 = 'Dejé de ir a las reuniones de la junta porque siempre deciden los mismos.';
+
+  var PARES = [
+    {n:1, frag:F1, codigo:'madrugar para alcanzar el bus', resp:'emerge',
+     exp:'Código in vivo: toma las palabras del hablante. Nombra lo que el fragmento dice y nada más.'},
+    {n:2, frag:F1, codigo:'precariedad laboral', resp:'fuerza',
+     exp:'El fragmento no habla de contrato, salario ni estabilidad. “Precariedad laboral” es una categoría de la literatura que el corpus completo podría ganarse después, pero este fragmento solo no la sostiene.'},
+    {n:3, frag:F3, codigo:'saber transmitido en la familia', resp:'emerge',
+     exp:'Abstrae un poco (“saber”, “familia”) pero cada palabra del código tiene anclaje en el fragmento: la abuela enseña, lo enseñado es un saber.'},
+    {n:4, frag:F3, codigo:'resiliencia campesina', resp:'fuerza',
+     exp:'Nada en el fragmento habla de resistir una adversidad. El código repite un término frecuente en la literatura y en los corpus de entrenamiento de los modelos.'},
+    {n:5, frag:F5, codigo:'firmar sin leer', resp:'emerge',
+     exp:'In vivo. Deja abierta la interpretación, que es lo que debe hacer un código abierto.'},
+    {n:6, frag:F5, codigo:'despojo', resp:'fuerza',
+     exp:'El fragmento dice que pagaron. “Despojo” añade una calificación jurídica y política que este fragmento no sostiene por sí solo. Puede que el corpus entero la sostenga; entonces será una categoría construida con memos, no un código abierto.'},
+    {n:7, frag:F7, codigo:'aviso por el grupo del barrio', resp:'emerge',
+     exp:'Describe la práctica con las palabras del fragmento.'},
+    {n:8, frag:F7, codigo:'comunidad digital', resp:'fuerza',
+     exp:'Generaliza más allá de lo dicho y usa un término que cabría en miles de fragmentos distintos. Un código que cabe en cualquier parte no discrimina.'},
+    {n:9, frag:F9, codigo:'esperar sin ser atendido', resp:'emerge',
+     exp:'Nombra la experiencia tal como se cuenta. La decisión de dejar de ir queda disponible para otro código.'},
+    {n:10, frag:F9, codigo:'barreras de acceso a la salud', resp:'fuerza', matiz:true,
+     exp:'En codificación abierta es forzamiento: el término viene de la literatura en salud pública. En un análisis de contenido con libro de códigos previo sería la regla de generación correcta. El forzamiento es relativo a la fase y a la tradición, no al término.'},
+    {n:11, frag:F11, codigo:'siempre deciden los mismos', resp:'emerge',
+     exp:'In vivo. Conserva la queja sin traducirla todavía a una categoría.'},
+    {n:12, frag:F11, codigo:'exclusión política', resp:'fuerza',
+     exp:'El hablante no dice que lo excluyan; dice que se retiró. “Exclusión” decide por él lo que ocurrió. Señal típica: el código responde a la pregunta de investigación en lugar de al fragmento.'}
+  ];
+
+  // ---------- Estado ----------
+  var orden = [];       // índices de PARES en el orden de presentación
+  var pos = 0;          // posición actual dentro de orden
+  var respuestas = [];  // {par, usuario, acierto}
+  var aciertos = 0;
+
+  // ---------- Utilidades ----------
+  function $(id){ return document.getElementById(id); }
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function etiqueta(resp, matiz){
+    var t = resp === 'emerge' ? 'Emerge del fragmento' : 'Viene de fuera';
+    return matiz ? t + ' (con matiz)' : t;
+  }
+  function barajar(arr){
+    for (var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+
+  // ---------- Flujo ----------
+  function iniciar(mezclar){
+    orden = [];
+    for (var i = 0; i < PARES.length; i++) orden.push(i);
+    if (mezclar) barajar(orden);
+    pos = 0; respuestas = []; aciertos = 0;
+    $('final').className = 'oculto';
+    $('juego').className = '';
+    mostrarPar();
+    window.scrollTo(0, 0);
+  }
+
+  function mostrarPar(){
+    var p = PARES[orden[pos]];
+    $('contador').textContent = 'Par ' + (pos + 1) + ' de ' + PARES.length;
+    $('marcador').textContent = respuestas.length ? aciertos + ' de ' + respuestas.length + ' coinciden' : '';
+    $('fragmento').textContent = '“' + p.frag + '”';
+    $('codigo').textContent = p.codigo;
+    $('respuesta').className = 'card oculto';
+    $('btn-emerge').disabled = false;
+    $('btn-fuerza').disabled = false;
+    $('btn-emerge').setAttribute('aria-pressed', 'false');
+    $('btn-fuerza').setAttribute('aria-pressed', 'false');
+  }
+
+  function responder(eleccion){
+    var p = PARES[orden[pos]];
+    var acierto = (eleccion === p.resp);
+    if (acierto) aciertos++;
+    respuestas.push({par:p, usuario:eleccion, acierto:acierto});
+    $('btn-emerge').disabled = true;
+    $('btn-fuerza').disabled = true;
+    $(eleccion === 'emerge' ? 'btn-emerge' : 'btn-fuerza').setAttribute('aria-pressed', 'true');
+    var r = $('resultado');
+    r.textContent = acierto ? 'Coincide con el criterio' : 'No coincide con el criterio';
+    r.className = 'resultado ' + (acierto ? 'ok' : 'no');
+    $('explicacion').innerHTML = '<span class="k">Criterio: ' + esc(etiqueta(p.resp, p.matiz)) + '</span><br>' + esc(p.exp);
+    $('respuesta').className = 'card';
+    $('marcador').textContent = aciertos + ' de ' + respuestas.length + ' coinciden';
+    $('btn-siguiente').textContent = (pos === PARES.length - 1) ? 'Ver resumen' : 'Siguiente';
+  }
+
+  function siguiente(){
+    if (pos < PARES.length - 1){
+      pos++;
+      mostrarPar();
+    } else {
+      mostrarFinal();
+    }
+  }
+
+  function mostrarFinal(){
+    var tb = $('tabla-resumen');
+    tb.innerHTML = '';
+    for (var i = 0; i < respuestas.length; i++){
+      var r = respuestas[i];
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + r.par.n + '</td><td>' + esc(r.par.codigo) + '</td><td>' + esc(etiqueta(r.usuario)) + '</td><td>' + esc(etiqueta(r.par.resp, r.par.matiz)) + '</td>' +
+        '<td class="' + (r.acierto ? 'ok' : 'no') + '">' + (r.acierto ? 'coincide' : 'no coincide') + '</td>';
+      tb.appendChild(tr);
+    }
+    $('total').textContent = aciertos + ' de ' + respuestas.length + ' respuestas coinciden con el criterio.';
+    $('juego').className = 'oculto';
+    $('final').className = '';
+    window.scrollTo(0, 0);
+  }
+
+  $('btn-emerge').addEventListener('click', function(){ responder('emerge'); });
+  $('btn-fuerza').addEventListener('click', function(){ responder('fuerza'); });
+  $('btn-siguiente').addEventListener('click', siguiente);
+  $('btn-reiniciar').addEventListener('click', function(){ iniciar(true); });
+
+  iniciar(false);
+})();
+</script>
+</body>
+</html>

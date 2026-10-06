@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 3 · Semana 5 · Carlos Isaac Zainea</title>
+    <meta name="description" content="¿Cómo se sabe qué parte de una descripción producida por un modelo está en la imagen, qué parte no está y qué parte solo puede juzgar alguien que conoce el lugar de donde viene la imagen?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-3/semana-05.html" />
+    <meta property="og:title" content="Curso 3 · Semana 5" />
+    <meta property="og:description" content="¿Cómo se sabe qué parte de una descripción producida por un modelo está en la imagen, qué parte no está y qué parte solo puede juzgar alguien que conoce el lugar de donde viene la imagen?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-3/semana-05.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 3</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub is-active">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 3 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 5. Auditoría de la descripción</h1>
+          <p class="desc">¿Cómo se sabe qué parte de una descripción producida por un modelo está en la imagen, qué parte no está y qué parte solo puede juzgar alguien que conoce el lugar de donde viene la imagen?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>¿Cómo se sabe qué parte de una descripción producida por un modelo está en la imagen, qué parte no está y qué parte solo puede juzgar alguien que conoce el lugar de donde viene la imagen?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Es la semana central del curso. Las descripciones de la semana 4 llegaron con la forma de una observación experta y el estudiante ya sabe que esa forma no garantiza nada. Lo que falta es un procedimiento para decidir, afirmación por afirmación, qué se acepta. El procedimiento es una auditoría por muestra con tres columnas: lo que el modelo afirma y no está en la imagen, lo que está en la imagen y el modelo no describe, y lo que está pero solo se lee con contexto local. Las dos primeras columnas miden el rendimiento; la tercera mide otra cosa: la precomprensión ajena. Pouget et al. (2024) y Schneider et al. (2025) muestran con cifras que los modelos de visión y lenguaje conocen mejor las culturas occidentales y mejor lo tangible que lo intangible. La semana convierte esos resultados en una práctica sobre el corpus propio.</p>
+
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>
+<p>Auditar es comparar la descripción con la imagen bajo una gramática fija. Sin gramática, la auditoría se reduce a "me parece bien". Con la gramática de la semana 3, cada frase de la descripción es una afirmación de tipo conocido y se puede confrontar: una denotación se confronta mirando; un índice, conociendo el proceso; un símbolo, participando de la convención. La tabla de tres columnas del curso ordena el resultado de esa confrontación.</p>
+</li>
+<li>
+<p>La primera columna recoge lo que el modelo afirma y no está. Es el infortunio más visible: la cuarta figura que no existe, el uniforme que se atribuye a una institución, el "celebración" sobre una mesa con botellas. La hipótesis de trabajo del curso es que este tipo de error se concentra en la capa de suposiciones y se cuela en la de denotación cuando el prompt no las separa bien; el prompt por capas reduce el daño sin eliminarlo. El curso no dispone de una cifra validada para el corpus del caso y no la inventa: en la sesión el docente audita en vivo descripciones reales del caso, y la cifra que se obtiene es la de esa muestra y así se declara.</p>
+</li>
+<li>
+<p>La segunda columna recoge lo que está y el modelo no describe. Es más difícil de ver, porque exige que el auditor haya mirado la imagen antes de leer la descripción, y por eso el taller de la semana 1 y el esquema ciego existen. Lo que el modelo omite con regularidad en el caso: texto visible en español con ortografía no estándar, objetos de uso local sin nombre en inglés, gestos y disposiciones corporales que un lector local lee como señal de clase o de región, y marcas del dispositivo (logotipo del medio, marca de agua, recorte de miniatura).</p>
+</li>
+<li>
+<p>La tercera columna es la que da sentido al curso dentro del programa. Recoge lo que está en la imagen, el modelo describe en parte, y solo se juzga con contexto local: que la fachada es de un barrio concreto, que el vestuario cita una estética que una telenovela hizo reconocible, que el altar de la foto es de un santo popular con un uso específico. Aquí no hay error del modelo en sentido estricto: hay una descripción hecha desde una forma de vida en que esos signos no significan. Schneider et al. (2025) encuentran con un banco de pruebas sobre 144 países que los modelos conocen mejor lo tangible (comida, vestuario) que lo intangible (rituales, prácticas), y que el sesgo hacia lo occidental atraviesa modelos y tareas.<sup class="mark">a</sup></p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> GIMMICK (Schneider, Holtermann, Biemann y Lauscher, 2025) evalúa 20 modelos de visión y lenguaje y 11 de solo texto sobre 728 eventos o facetas culturales. Pouget et al. (2024) muestran, para modelos contrastivos, que filtrar los datos de entrenamiento a pares imagen-texto en inglés degrada la comprensión de otras culturas sin que lo capturen las métricas habituales.</aside>
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rendimiento</th>
+<th>Precomprensión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Se mide: afirmaciones correctas sobre afirmaciones totales.</td>
+<td>No se mide con una tasa: se localiza y se nombra.</td>
+</tr>
+<tr>
+<td>Mejora con mejores modelos y mejores prompts.</td>
+<td>Cambia con los datos de entrenamiento y con la lengua, no con el tamaño.</td>
+</tr>
+<tr>
+<td>Lo juzga cualquiera que mire la imagen.</td>
+<td>Lo juzga quien participa de la forma de vida que produjo la imagen.</td>
+</tr>
+<tr>
+<td>Columnas uno y dos de la auditoría.</td>
+<td>Columna tres.</td>
+</tr>
+<tr>
+<td><em>Un modelo con 95 % de aciertos puede seguir sin ver lo que importa.</em></td>
+<td><em>Lo que no ve no es un error: es una ausencia de mundo.</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="5">
+<li>La muestra se diseña, no se improvisa. Quince descripciones no bastan para estimar una tasa del corpus, pero bastan para encontrar los tipos de error y para calibrar al auditor. El curso recomienda una muestra estratificada: cinco imágenes por escena o por periodo, incluyendo a propósito las que el estudiante considera más locales.<sup class="mark">b</sup> En el curso 6 del programa la muestra se amplía y la auditoría se convierte en estimación; aquí es diagnóstico. Lo que sí se exige desde ya es que el tamaño y el criterio de la muestra queden escritos.</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Estratificar es dividir el corpus en grupos conocidos (por escena, por periodo) y tomar de cada uno una parte, para que la muestra no quede dominada por el grupo más grande. En el caso demostrativo, el periodo 2000 a 2025 tiene 699 de 1.830 imágenes; una muestra al azar sería en un 38 % de ese periodo y casi nunca tocaría el siglo XIX.</aside>
+
+<ol start="6">
+<li>El resumen del sesgo es un párrafo, no una tabla. Después de auditar, el estudiante escribe qué tipo de cosas afirma el modelo sin base, qué tipo de cosas calla y qué tipo de cosas describe sin entender, con un ejemplo de cada una. Ese párrafo es la declaración de límites que acompaña a todas las descripciones del corpus cuando se usan en la semana 6 para preclasificar. Una descripción sin declaración de límites es una descripción que alguien va a tomar por observación.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 290" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Frontera entre lo que el modelo describe y lo que el investigador decide. Arriba, la zona del modelo: denotación, índices visibles, suposiciones declaradas. Una línea roja punteada marca la frontera. Abajo, la zona del investigador: las tres columnas de la auditoría (no está, no describe, requiere contexto local), el resumen del sesgo y la decisión de qué se acepta. Una flecha de retroalimentación vuelve al prompt.">
+    <style>.bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .t{font-family:var(--text);font-size:12.5px;fill:var(--ink)} .s{font-family:var(--text);font-size:11px;fill:var(--muted)} .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--muted)} .kf{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--c-fil)} .ar{stroke:var(--muted);stroke-width:1.3;fill:none} .fr{stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:6 5;fill:none} .ah{fill:var(--muted)} .c1{fill:var(--c-fil)} .c2{fill:var(--c-app)} .c3{fill:var(--accent)}</style>
+    <defs><marker id="s5-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="ah"/></marker></defs>
+    <rect x="40" y="20" width="600" height="86" rx="3" class="bx"/>
+    <text x="52" y="38" class="k">MODELO · configura la descripción</text>
+    <text x="52" y="62" class="t">Denotación</text><text x="52" y="78" class="s">qué hay, dónde, texto</text>
+    <text x="250" y="62" class="t">Índices visibles</text><text x="250" y="78" class="s">tipo, grano, marcas</text>
+    <text x="450" y="62" class="t">Suposiciones declaradas</text><text x="450" y="78" class="s">época, lugar, género</text>
+    <text x="52" y="98" class="s">Rápido, a escala, en el género de las leyendas con que fue entrenado.</text>
+    <path class="fr" d="M20 130 L660 130"/>
+    <text x="660" y="124" text-anchor="end" class="kf">FRONTERA</text>
+    <path class="ar" d="M340 106 L340 150" marker-end="url(#s5-ah)"/>
+    <rect x="40" y="152" width="600" height="118" rx="3" class="bx"/>
+    <text x="52" y="170" class="k">INVESTIGADOR · audita y decide</text>
+    <circle cx="60" cy="194" r="5" class="c1"/><text x="72" y="198" class="t">Afirma y no está</text><text x="72" y="212" class="s">se rechaza; se cuenta</text>
+    <circle cx="260" cy="194" r="5" class="c2"/><text x="272" y="198" class="t">Está y no describe</text><text x="272" y="212" class="s">se añade; se cuenta</text>
+    <circle cx="460" cy="194" r="5" class="c3"/><text x="472" y="198" class="t">Requiere contexto local</text><text x="472" y="212" class="s">lo pone quien conoce el lugar</text>
+    <text x="52" y="242" class="t">Resumen del sesgo</text><text x="190" y="242" class="s">qué afirma sin base, qué calla, qué describe sin entender; va con cada descripción del corpus.</text>
+    <text x="52" y="262" class="s">Lo que cruza la frontera hacia arriba es un prompt corregido; lo que cruza hacia abajo es una propuesta, nunca una observación.</text>
+    <path class="ar" d="M640 230 C 672 230 672 60 642 60" marker-end="url(#s5-ah)"/>
+  </svg>
+  <figcaption><b>Figura 5.</b> La frontera entre lo que el modelo describe y lo que el investigador decide. Hay que ver que la tercera columna no es un error del modelo sino el lugar donde la precomprensión ajena se hace visible, y que solo un lector situado puede llenarla.</figcaption>
+</figure>
+
+<ol start="7">
+<li>La mini app de la semana reproduce la auditoría sobre cuatro imágenes sintéticas con cartela. Para cada una, la app muestra una "descripción de modelo" escrita para la ocasión, con errores de los tres tipos, y pide marcar cada frase en una de las tres columnas. Al final resume el sesgo con las marcas del estudiante y las compara con las del docente. Las discrepancias en la tercera columna son las más instructivas: ahí no hay respuesta correcta sin decir desde dónde se mira.</li>
+</ol>
+<iframe class="app" src="apps/auditoria-descripcion.html" title="Auditoría de una descripción de modelo sobre cuatro imágenes sintéticas con cartela" loading="lazy"></iframe>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana al modelo no se le pide nada nuevo: se auditan sus descripciones de la semana anterior. Se le exige al estudiante que audite 15 descripciones con la tabla de tres columnas, que escriba el resumen del sesgo con un ejemplo por columna, y que pueda explicar sin la tabla por qué la tercera columna no es un error de rendimiento y qué haría falta para que el modelo la llenara. Si usa un segundo modelo para auditar al primero, declara que eso desplaza la frontera, no la elimina.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Pouget, A., Beyer, L., Bugliarello, E., Wang, X., Steiner, A. P., Zhai, X. y Alabdulmohsin, I. (2024). "No Filter: Cultural and Socioeconomic Diversity in Contrastive Vision-Language Models". <em>Advances in Neural Information Processing Systems</em>, 37. <a href="https://arxiv.org/abs/2405.13777">https://arxiv.org/abs/2405.13777</a></li>
+<li>Schneider, F., Holtermann, C., Biemann, C. y Lauscher, A. (2025). "GIMMICK: Globally Inclusive Multimodal Multitask Cultural Knowledge Benchmarking". <em>Findings of the Association for Computational Linguistics: ACL 2025</em>. <a href="https://aclanthology.org/2025.findings-acl.500/">https://aclanthology.org/2025.findings-acl.500/</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Nayak, S. et al. (2024). "Benchmarking Vision Language Models for Cultural Understanding". <em>Proceedings of EMNLP 2024</em>. <a href="https://aclanthology.org/2024.emnlp-main.329/">https://aclanthology.org/2024.emnlp-main.329/</a></li>
+<li>Ananthram, A. et al. (2025). "See It from My Perspective: How Language Affects Cultural Bias in Image Understanding". <em>ICLR 2025</em>. <a href="https://arxiv.org/abs/2406.11665">https://arxiv.org/abs/2406.11665</a></li>
+<li>Zainea, C. I. (2026). "Agencia sin imputación: por qué «la máquina no comprende» no cierra la discusión". <a href="https://izainea.github.io/blog/agencia-sin-imputacion/">https://izainea.github.io/blog/agencia-sin-imputacion/</a></li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Pouget et al. muestran que el filtro a inglés mejora las métricas habituales y empeora la comprensión cultural, y que las dos cosas no se ven en la misma prueba. <em>¿Qué prueba habría que diseñar para que el sesgo sobre su corpus fuera visible, y qué imágenes entrarían en ella?</em></li>
+<li>Schneider et al. distinguen lo tangible de lo intangible y encuentran que los modelos saben menos de lo segundo. <em>Haga la lista de lo intangible en su corpus: prácticas, rituales, usos. ¿Cuánto de eso aparece en las descripciones que obtuvo?</em></li>
+<li>Ananthram et al. encuentran que el idioma del prompt reduce el sesgo sin eliminarlo. <em>Repita una descripción con el prompt en español y en inglés. ¿Qué cambia en la tercera columna?</em></li>
+<li>Nayak et al. encuentran que los modelos aciertan más en vestuario y rituales que en comida y bebida, y mucho menos en África que en Norteamérica. <em>¿Qué facetas de su corpus se parecen a las que los modelos conocen, y cuáles no están en ningún banco de pruebas?</em></li>
+<li>En la entrada sobre agencia sin imputación, la prefiguración del modelo se llama ajena. <em>¿Qué significa, para su corpus, que el modelo describa desde una precomprensión que no es la de la comunidad que produjo las imágenes?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Auditoría de 15 descripciones por capas de la práctica 2, con la muestra estratificada que el estudiante diseñó. Una fila por afirmación auditada; las que se aceptan sin más también se cuentan.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Imagen</th>
+<th>Afirmación del modelo</th>
+<th>Capa en que la puso</th>
+<th>Columna (no está / no describe / contexto local / aceptada)</th>
+<th>Qué sé yo que el modelo no</th>
+<th>Cómo lo sé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Al final, el resumen del sesgo en un párrafo, con un ejemplo por columna, y la cifra de afirmaciones por columna sobre el total auditado, declarando que es sobre la muestra.</p>
+<p>Variante para grupos. Dos estudiantes auditan las mismas cinco descripciones por separado y comparan columna por columna. Las discrepancias en la primera columna se resuelven mirando; las de la tercera no siempre se resuelven, y esas se anotan con la posición de cada uno.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Minuto</th>
+<th>Momento</th>
+<th>Qué hace el docente</th>
+<th>Qué hace el estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 15</td>
+<td>Apertura</td>
+<td>Audita en vivo una descripción del caso, frase por frase, con la figura 5</td>
+<td>Propone la columna de cada frase antes de que el docente la diga</td>
+<td>Figura 5, una descripción del caso</td>
+</tr>
+<tr>
+<td>15 a 35</td>
+<td>Las tres columnas</td>
+<td>Expone con ejemplos del caso; distingue rendimiento de precomprensión</td>
+<td>Nombra un caso propio por columna</td>
+<td>Pizarra</td>
+</tr>
+<tr>
+<td>35 a 50</td>
+<td>La evidencia</td>
+<td>Resume Pouget et al. y Schneider et al. con sus cifras</td>
+<td>Ubica su corpus respecto de lo tangible e intangible</td>
+<td>Lecturas</td>
+</tr>
+<tr>
+<td>50 a 60</td>
+<td>Mini app</td>
+<td>Muestra una de las cuatro imágenes y su descripción</td>
+<td>Marca las frases; discute la tercera columna</td>
+<td>Mini app</td>
+</tr>
+<tr>
+<td>60 a 105</td>
+<td>Auditoría</td>
+<td>Acompaña; cuestiona las aceptaciones</td>
+<td>Audita 15 descripciones con la tabla</td>
+<td>Tabla del taller</td>
+</tr>
+<tr>
+<td>105 a 115</td>
+<td>Resumen</td>
+<td>Lee dos resúmenes de sesgo en voz alta</td>
+<td>Compara con el suyo</td>
+<td>Bitácoras</td>
+</tr>
+<tr>
+<td>115 a 120</td>
+<td>Cierre</td>
+<td>Fija la entrega de la semana 6</td>
+<td>Anota qué le falta</td>
+<td>Syllabus</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que la auditoría se haga leyendo la descripción antes de mirar la imagen; obligar al orden inverso. Suele fallar que todo lo dudoso vaya a la tercera columna; la tercera columna exige nombrar qué contexto haría falta, no solo "no sé". Y suele fallar que la cifra de la muestra se presente como tasa del corpus; corregirlo en la sesión y en la rúbrica.</p>
+<h2>Bitácora</h2>
+<p>Registre la tabla de auditoría completa, el diseño de la muestra, el resumen del sesgo y las cifras por columna. Marque las afirmaciones que aceptó sin poder decir cómo lo sabía. Esas filas son el material del registro de frontera visual de la semana 7.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Rincón (2009) y el capítulo 4 de Banks (2010). Tener las descripciones por capas de todo el corpus propio, o de la parte que el presupuesto permitió, en una tabla con una fila por imagen y una columna por capa, para preclasificarlas en la semana 6. Es la segunda entrega.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-04.html">← Semana 4. Descripción densa con modelos multimodales</a><a href="semana-06.html">Semana 6. De la descripción al código →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

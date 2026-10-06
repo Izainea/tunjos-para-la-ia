@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 1 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Cuando un investigador trabaja con un modelo de lenguaje, ¿qué tipo de razonamiento está haciendo la máquina, cuál está haciendo él, y cuál de los dos puede validarse sin un sujeto que responda?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-1/index.html" />
+    <meta property="og:title" content="Curso 1" />
+    <meta property="og:description" content="Cuando un investigador trabaja con un modelo de lenguaje, ¿qué tipo de razonamiento está haciendo la máquina, cuál está haciendo él, y cuál de los dos puede validarse sin un sujeto que responda?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-1/index.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html" class="is-active">Curso 1</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 1 · Fundamentos · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Las tres inferencias: razonamiento humano y razonamiento artificial</h1>
+          <p class="desc">Cuando un investigador trabaja con un modelo de lenguaje, ¿qué tipo de razonamiento está haciendo la máquina, cuál está haciendo él, y cuál de los dos puede validarse sin un sujeto que responda?</p>
+        </div>
+<article class="prose">
+<h1 id="README">Curso 1. Las tres inferencias: razonamiento humano y razonamiento artificial</h1>
+<p>Microcredencial de 2 créditos, 8 semanas, modalidad híbrida: sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado; la modalidad virtual es alternativa. Primer curso del programa <a href="../index.html">Tunjos para la IA</a>.</p>
+<p><strong>Pregunta del curso.</strong> Cuando un investigador trabaja con un modelo de lenguaje, ¿qué tipo de razonamiento está haciendo la máquina, cuál está haciendo él, y cuál de los dos puede validarse sin un sujeto que responda?</p>
+<p><strong>Respuesta que el curso construye.</strong> Hay tres formas de inferencia con regímenes de validez distintos. La deducción vale por su forma y una máquina puede verificarla. La inducción vale a largo plazo por sus tasas de acierto, y los modelos actuales son inductores extraordinarios. La abducción, la inferencia que introduce hipótesis nuevas, no vale ni por forma ni por frecuencia: vale porque alguien se compromete a perseguirla y a responder por ella. Por eso la validación del trabajo con modelos no puede delegarse del todo, y por eso el error característico del modelo no es una alucinación sino un infortunio de autoridad epistémica.</p>
+<h2>Contenido</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carpeta</th>
+<th>Qué hay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="index.html">programa/</a></td>
+<td>Syllabus, guía de cada una de las ocho semanas, evaluación y bibliografía con enlaces</td>
+</tr>
+<tr>
+<td><a href="plantillas.html">plantillas/</a></td>
+<td>Plantillas de los tres productos: mapa inferencial, ficha de hipótesis, registro de frontera</td>
+</tr>
+<tr>
+<td><a href="practicas.html">practicas/</a></td>
+<td>Guías de las prácticas con modelos de lenguaje y el cuaderno de apoyo</td>
+</tr>
+<tr>
+<td><a href="apps.html">apps/</a></td>
+<td>Cinco mini apps autocontenidas: verificador de pasos, silogismos de Peirce, clasificador de inferencias, genealogía de la validación y filtro peirceano</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Productos del estudiante</h2>
+<ol>
+<li><strong>Mapa inferencial</strong> de un proyecto propio: cada paso del flujo de investigación clasificado como deductivo, inductivo o abductivo, con la frontera entre lo que verifica la máquina y lo que responde el investigador.</li>
+<li><strong>Ficha de hipótesis</strong> con filtro peirceano: hipótesis pedidas a un modelo y evaluadas por sorpresa, plausibilidad, verificabilidad y economía.</li>
+<li><strong>Registro de frontera</strong> de un ejercicio real con un modelo: qué propuso la máquina, qué decidió el investigador, con qué criterio.</li>
+</ol>
+<h2>Página del curso</h2>
+<p><a href="https://izainea.github.io/tunjos-para-la-ia/curso-1/">izainea.github.io/tunjos-para-la-ia/curso-1/</a></p>
+<hr />
+<h1 id="syllabus">Syllabus</h1>
+<h2>Datos generales</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td>Las tres inferencias: razonamiento humano y razonamiento artificial</td>
+</tr>
+<tr>
+<td>Programa</td>
+<td>Tunjos para la IA, curso 1 de 7</td>
+</tr>
+<tr>
+<td>Créditos</td>
+<td>2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas, 80 autónomas)</td>
+</tr>
+<tr>
+<td>Modalidad</td>
+<td>Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa</td>
+</tr>
+<tr>
+<td>Docente</td>
+<td>Carlos Isaac Zainea Maya</td>
+</tr>
+<tr>
+<td>Prerrequisitos</td>
+<td>Ninguno. No requiere programación ni formación filosófica previa</td>
+</tr>
+<tr>
+<td>Público</td>
+<td>Egresados y estudiantes de posgrado en ciencias sociales y humanidades, profesionales que investigan o producen informes con apoyo de modelos de lenguaje</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Problema que atiende</h2>
+<p>Los modelos de lenguaje ya participan en la producción de conocimiento: sintetizan literatura, proponen categorías, codifican corpus y redactan informes. Quien los usa recibe outputs con la forma de una aserción fundamentada, y rara vez tiene criterio para decidir qué parte de ese output puede aceptar, qué parte debe verificar y qué parte le corresponde decidir a él. Los cursos de herramientas enseñan a pedirle cosas a la máquina. Los cursos de método ignoran la máquina. Este curso enseña lo que falta en medio: una teoría de la inferencia suficiente para saber qué razonamiento hace cada quien, y una práctica para marcar esa frontera en el propio trabajo.</p>
+<h2>Competencias</h2>
+<p>Al terminar el curso el estudiante puede:</p>
+<ol>
+<li><strong>Distinguir y nombrar</strong> las tres formas de inferencia (deducción, inducción, abducción) y sus regímenes de validez, y reconocerlas en un flujo de investigación real.</li>
+<li><strong>Caracterizar</strong> lo que hace un modelo de lenguaje en términos inferenciales, y explicar por qué su output tiene forma de aserción fundamentada sin satisfacer sus condiciones.</li>
+<li><strong>Evaluar hipótesis</strong> generadas por un modelo con criterios explícitos de abducción (sorpresa, plausibilidad, verificabilidad, economía de la investigación), en lugar de aceptarlas o rechazarlas por intuición.</li>
+<li><strong>Trazar la frontera</strong> entre lo que una máquina puede validar y lo que exige un investigador que responda, y documentarla en un registro auditable sobre el propio proyecto.</li>
+</ol>
+<h2>Resultados de aprendizaje y evidencias</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Competencia</th>
+<th>Evidencia verificable</th>
+<th>Semana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mapa inferencial, versión preliminar</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2 y 3</td>
+<td>Ficha de hipótesis con filtro peirceano sobre tres hipótesis producidas por un modelo</td>
+<td>6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Registro de frontera de un ejercicio real con un modelo</td>
+<td>7</td>
+</tr>
+<tr>
+<td>1 a 4</td>
+<td>Mapa inferencial final y presentación ante pares</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Programa por semanas</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Tema</th>
+<th>Lectura central</th>
+<th>Actividad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="semana-01.html">1</a></td>
+<td>La máquina que afirma. Alucinación o infortunio. Tres sentidos de validación</td>
+<td>Austin, conferencias I y II. Floridi (2023)</td>
+<td>Bitácora inicial: tres outputs de un modelo clasificados por lo que afirman</td>
+</tr>
+<tr>
+<td><a href="semana-02.html">2</a></td>
+<td>Deducción. La historia de la validación formal: Aristóteles, Frege, Russell, el Tractatus, el Círculo de Viena</td>
+<td>Russell, <em>Los problemas de la filosofía</em>, cap. VII. Wittgenstein, <em>Tractatus</em> 4 a 4.5</td>
+<td>Reconstruir una cadena de razonamiento de un modelo y verificar cada paso</td>
+</tr>
+<tr>
+<td><a href="semana-03.html">3</a></td>
+<td>Inducción. Hume, el pavo de Russell, Goodman, Popper. La IA como máquina inductiva</td>
+<td>Hume, <em>Investigación</em>, sección IV. Goodman, cap. III. Chollet (2019)</td>
+<td>Encontrar dos hipótesis compatibles con los mismos datos</td>
+</tr>
+<tr>
+<td><a href="semana-04.html">4</a></td>
+<td>Abducción. Peirce y la lógica del descubrimiento. Inferencia a la mejor explicación. Análisis abductivo en investigación cualitativa</td>
+<td>Peirce (1878, 1903). Harman (1965). Timmermans y Tavory (2012)</td>
+<td>Entrega: mapa inferencial preliminar</td>
+</tr>
+<tr>
+<td><a href="semana-05.html">5</a></td>
+<td>Los límites formales. Hilbert, Gödel, Turing. Qué dicen y qué no dicen sobre la inteligencia artificial</td>
+<td>Nagel y Newman. Turing (1950). Lucas (1961) y Feferman (2009)</td>
+<td>Debate estructurado: el argumento gödeliano a favor y en contra</td>
+</tr>
+<tr>
+<td><a href="semana-06.html">6</a></td>
+<td>El giro pragmático. Segundo Wittgenstein, Austin, Habermas, la comunidad de investigación de Peirce. Validez abductiva e imputación</td>
+<td>Wittgenstein, <em>Investigaciones</em> §§ 1 a 43 y 201 a 243. Habermas, <em>Conocimiento e interés</em>, caps. 5 y 6</td>
+<td>Entrega: ficha de hipótesis con filtro peirceano</td>
+</tr>
+<tr>
+<td><a href="semana-07.html">7</a></td>
+<td>Qué hace un modelo de lenguaje. Predicción, cadena de pensamiento, modelos de recompensa por proceso. Un criterio extrínseco, local y estadístico</td>
+<td>Wei et al. (2022). Lightman et al. (2023). Valmeekam et al. (2024). Zainea (2026)</td>
+<td>Práctica guiada con modelo y entrega del registro de frontera</td>
+</tr>
+<tr>
+<td><a href="semana-08.html">8</a></td>
+<td>La prótesis hermenéutica. Mapa inferencial del propio proyecto y presentación</td>
+<td>Zainea (2026), prótesis hermenéutica. Vallor (2024)</td>
+<td>Entrega final y presentación ante pares</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Metodología</h2>
+<p>El curso se enseña con el método que enseña. Cada semana tiene tres momentos.</p>
+<ul>
+<li><strong>Lectura guiada</strong> (asincrónica, 4 a 5 horas). Un texto central con guía de lectura y preguntas, y una lectura complementaria opcional.</li>
+<li><strong>Sesión presencial con participación remota sincrónica</strong> (2 horas). La primera hora discute la lectura a partir de un caso. La segunda es taller: el estudiante aplica la distinción de la semana a un output real de un modelo o a su propio proyecto. Cada semana tiene un guion minuto a minuto, al menos una figura y, cuando ayuda a ver el mecanismo, una mini app interactiva.</li>
+<li><strong>Bitácora</strong> (asincrónica, 3 a 4 horas). El estudiante registra en una bitácora semanal el ejercicio, lo que propuso la máquina cuando la hubo, lo que decidió él y con qué criterio. Las bitácoras alimentan los tres productos.</li>
+</ul>
+<p>Las prácticas con modelos de lenguaje usan modelos de acceso gratuito. El curso provee las guías de prompts, un cuaderno de apoyo que no requiere programar y cinco mini apps en <a href="apps.html">apps/</a>: verificador de pasos (semanas 2 y 7), silogismos de Peirce y clasificador de inferencias (semana 4), genealogía de la validación y filtro peirceano (semana 6).</p>
+<h2>Evaluación</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>Peso</th>
+<th>Criterio principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mapa inferencial final</td>
+<td>40 %</td>
+<td>Cada paso del flujo está clasificado con justificación, y la frontera está argumentada, no postulada</td>
+</tr>
+<tr>
+<td>Ficha de hipótesis con filtro peirceano</td>
+<td>25 %</td>
+<td>Cada hipótesis se evalúa con los cuatro criterios y la decisión queda explicada</td>
+</tr>
+<tr>
+<td>Registro de frontera</td>
+<td>20 %</td>
+<td>Distingue con precisión lo que propuso la máquina de lo que decidió el investigador</td>
+</tr>
+<tr>
+<td>Bitácora semanal</td>
+<td>15 %</td>
+<td>Continuidad y honestidad en el registro, incluidas las dudas</td>
+</tr>
+</tbody>
+</table></div>
+<p>La rúbrica detallada está en <a href="evaluacion.html">evaluacion.md</a>.</p>
+<h2>Articulación</h2>
+<p>Este curso es el fundamento de las rutas Texto, Imagen y Programa completo del programa Tunjos para la IA. Se articula con cursos de metodología cualitativa, epistemología, lógica informal y ética de la inteligencia artificial de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que ellos no suelen cubrir: la clasificación inferencial del trabajo asistido por modelos.</p>
+<h2>Política de uso de modelos de lenguaje</h2>
+<p>Se usan en todas las semanas, de forma declarada. Cada entrega incluye qué modelo se usó, para qué, y qué parte del resultado es decisión del estudiante. Un uso no declarado se trata como infortunio de autoridad: el estudiante presenta como propio algo por lo que no puede responder. Esa es, de hecho, la lección del curso.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><span></span><a href="semana-01.html">Semana 1. La máquina que afirma →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

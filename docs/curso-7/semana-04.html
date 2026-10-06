@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 7 · Semana 4 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Cuando un modelo entrenado en otra parte lee un archivo producido aquí, ¿con qué precomprensión lo lee, y qué le pasa a lo que esa precomprensión no contiene?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-7/semana-04.html" />
+    <meta property="og:title" content="Curso 7 · Semana 4" />
+    <meta property="og:description" content="Cuando un modelo entrenado en otra parte lee un archivo producido aquí, ¿con qué precomprensión lo lee, y qué le pasa a lo que esa precomprensión no contiene?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-7/semana-04.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 7</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub is-active">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-4/index.html">Curso 4</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 7 · Juicio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 4. Exterioridad</h1>
+          <p class="desc">Cuando un modelo entrenado en otra parte lee un archivo producido aquí, ¿con qué precomprensión lo lee, y qué le pasa a lo que esa precomprensión no contiene?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Cuando un modelo entrenado en otra parte lee un archivo producido aquí, ¿con qué precomprensión lo lee, y qué le pasa a lo que esa precomprensión no contiene?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">Es la semana central del curso y abre el segundo frente. Hasta aquí los daños eran daños a personas con derechos. Ahora el daño es a un sentido. Un modelo de lenguaje predice desde un corpus que sobrerrepresenta unas lenguas, unas regiones y unas formas de vida, y cuando lee material producido en otra parte lo hace con esa precomprensión. No se equivoca en los datos: aplana. Donde había una práctica local pone una categoría general; donde había una expresión con historia pone una paráfrasis neutra; donde había algo que no sabe nombrar, no pone nada y no avisa. Esta semana da nombre a ese fenómeno con tres fuentes: la injusticia hermenéutica de Fricker, la injusticia epistémica algorítmica de Kay, Kasirzadeh y Mohamed, y la matriz colonial de Muldoon y Wu. Y lo sitúa en el marco del programa: la prefiguración ajena como segunda especie de infortunio.</p>
+
+<p>El curso 1 presentó la triple mímesis de Ricœur y sostuvo que el modelo habita la configuración sin refigurar. Esta semana mira el otro extremo del arco, la prefiguración, y muestra que también ahí el arco se trunca.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>En <em>Tiempo y narración</em> (Ricœur, 1995) la prefiguración, Mímesis I, es la precomprensión del mundo práctico que toda configuración supone: la red de conceptos, símbolos y temporalidades con que una comunidad ya entiende su acción antes de narrarla. La tesis del docente es que la prefiguración de un modelo es su corpus de entrenamiento, y que ese corpus no coincide con el acervo de la comunidad cuyo material interpreta (Zainea, 2026). De ahí una segunda especie de infortunio, distinta del de autoridad: el acto se ejecuta sobre condiciones de fondo ajenas, y su resultado no es un error factual sino una imposición hermenéutica que ninguna validación por corrección detecta<sup class="mark">a</sup>. Conviene distinguir aquí lo que es exposición de Ricœur y lo que es tesis del programa: Ricœur no escribió sobre modelos; la lectura de la prefiguración como corpus es del docente, y el curso la propone como hipótesis de trabajo.</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> El anteproyecto doctoral del docente (Zainea, 2026) lo llama infortunio de prefiguración y lo enlaza con la injusticia hermenéutica: los recursos interpretativos colectivos de Fricker se leen como Mímesis I. Hasta donde el rastreo alcanza, nadie había articulado ambas nociones.</aside>
+
+<ol start="2">
+<li>Fricker (2007) llama injusticia hermenéutica a la situación en que los recursos interpretativos colectivos carecen de los conceptos necesarios para que alguien dé sentido a una experiencia propia, y esa carencia no es casual: resulta de que el grupo afectado ha tenido menos parte en la producción de esos recursos<sup class="mark">b</sup>. Su ejemplo es el acoso sexual antes de que existiera la expresión: quien lo sufría no tenía con qué nombrarlo, y quien lo ejercía tampoco tenía con qué reconocerlo. Fricker expone una injusticia entre personas y grupos; el curso la extiende a un instrumento. La extensión es esta: cuando el archivo situado se lee con los recursos de otro acervo, los conceptos que faltan no faltan en la comunidad, que los tiene, sino en el lector, y la lectura resultante los borra.</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> Fricker, M. (2007). *Epistemic Injustice: Power and the Ethics of Knowing*. Oxford University Press. El capítulo 7, "Hermeneutical Injustice", desarrolla el concepto; los anteriores tratan la injusticia testimonial, que ocurre cuando se descuenta la credibilidad de alguien por prejuicio.</aside>
+
+<ol start="3">
+<li>
+<p>Kay, Kasirzadeh y Mohamed (2024) llevan la noción a la IA generativa y la llaman injusticia epistémica algorítmica generativa. Distinguen cuatro dimensiones: injusticia testimonial amplificada, cuando el sistema reproduce a escala el descuento de credibilidad; injusticia testimonial manipulativa, cuando produce contenido que degrada la confianza en fuentes legítimas; ignorancia hermenéutica, cuando sus recursos interpretativos no cubren la experiencia de ciertos grupos; e injusticia de acceso, cuando el beneficio del sistema se distribuye de forma desigual. Para un investigador la tercera es la que opera en su flujo: el modelo no tiene con qué entender una parte del material y produce de todos modos una lectura con forma de lectura completa.</p>
+</li>
+<li>
+<p>Muldoon y Wu (2023) sitúan el fenómeno en una escala mayor con la matriz colonial del poder de Quijano: la IA como ensamblaje sociotécnico que extrae datos y trabajo del sur global, concentra el diseño en el norte y devuelve categorías que presentan como universales las de quien diseñó<sup class="mark">c</sup>. El curso toma de ahí una pregunta y no una conclusión. La pregunta es qué excluye un andamiaje diseñado desde una tradición y operado por modelos entrenados sobre otra. Dussel (1974) le da un nombre a esa pregunta: pensar desde la exterioridad, desde lo que queda fuera de una totalidad, y por eso el curso llama exterioridad a este frente.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">c</span> Muldoon, J. y Wu, B. A. (2023). "Artificial Intelligence in the Colonial Matrix of Power". *Philosophy & Technology* 36(4), artículo 80. El artículo discute además la decolonialidad como programa para la IA y sus límites; el curso no lo sigue hasta ahí.</aside>
+
+<ol start="5">
+<li>La evidencia empírica muestra dónde falla la lectura. Schneider, Holtermann, Biemann y Lauscher (2025) evaluaron modelos multimodales sobre conocimiento cultural de 144 países y encontraron que aciertan el origen regional amplio de una imagen o un texto y fallan en la comprensión matizada, sobre todo de la cultura intangible: rituales, prácticas, significados locales. Pouget et al. (2024) mostraron que la brecha es invisible para las métricas habituales porque esas métricas se construyen sobre datos del mismo origen que los modelos. Lo que la semana 1 ilustró con el altar y la botella de aguardiente tiene detrás una medida: el modelo describe bien el objeto y mal lo que el objeto hace en la vida de quien lo puso ahí.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 270" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Arco de la triple mímesis aplicado a un modelo. Mímesis I, prefiguración: en el modelo es su corpus de entrenamiento, ajeno al archivo; marcado como ajena. Mímesis II, configuración: el modelo la ejecuta con competencia. Mímesis III, refiguración: no hay mundo al cual retornar; marcada como ausente. Debajo, el archivo situado con su propia prefiguración, que el modelo no comparte.">
+    <style>.f4-h{font-family:var(--display);font-weight:700;font-size:14px;fill:var(--ink)} .f4-d{font-family:var(--text);font-size:11.5px;fill:var(--muted)} .f4-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .f4-kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .f4-ki{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-inv)} .f4-bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .f4-bf{fill:var(--surface);stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:6 4} .f4-arc{stroke:var(--muted);stroke-width:1.3;fill:none} .f4-x{stroke:var(--c-fil);stroke-width:2}</style>
+    <path class="f4-arc" d="M110 70 C 250 10 430 10 570 70"/>
+    <rect x="20" y="70" width="190" height="80" rx="3" class="f4-bf"/>
+    <text x="32" y="90" class="f4-kf">MÍMESIS I · AJENA</text>
+    <text x="32" y="112" class="f4-h">Prefiguración</text>
+    <text x="32" y="130" class="f4-d">el corpus de entrenamiento</text>
+    <text x="32" y="144" class="f4-d">no es el acervo del archivo</text>
+    <rect x="245" y="70" width="190" height="80" rx="3" class="f4-bx"/>
+    <text x="257" y="90" class="f4-ki">MÍMESIS II · COMPETENTE</text>
+    <text x="257" y="112" class="f4-h">Configuración</text>
+    <text x="257" y="130" class="f4-d">describe, categoriza, resume</text>
+    <text x="257" y="144" class="f4-d">con forma de lectura completa</text>
+    <rect x="470" y="70" width="190" height="80" rx="3" class="f4-bf"/>
+    <text x="482" y="90" class="f4-kf">MÍMESIS III · AUSENTE</text>
+    <text x="482" y="112" class="f4-h">Refiguración</text>
+    <text x="482" y="130" class="f4-d">no hay mundo al cual volver</text>
+    <text x="482" y="144" class="f4-d">ni sujeto que responda</text>
+    <path class="f4-x" d="M95 160 L125 190"/>
+    <path class="f4-x" d="M125 160 L95 190"/>
+    <rect x="20" y="200" width="640" height="55" rx="3" class="f4-bx"/>
+    <text x="32" y="220" class="f4-k">EL ARCHIVO SITUADO Y SU PROPIA PREFIGURACIÓN</text>
+    <text x="32" y="242" class="f4-d">expresiones, objetos, escenas con historia local · lo que el modelo lee con otra precomprensión y aplana sin avisar</text>
+  </svg>
+  <figcaption><b>Figura 4.</b> La prefiguración ajena en el arco de la mímesis. El modelo configura con competencia entre dos extremos truncados; el de la izquierda es el que esta semana examina.</figcaption>
+</figure>
+
+<ol start="6">
+<li>Lo culturalmente codificado es el caso límite y por eso es el caso de prueba. Una expresión regional, un objeto de devoción popular, un gesto en una fotografía, una escena cuya violencia se lee por lo que falta y no por lo que se ve, son piezas en las que el sentido depende de participar en la forma de vida que las produjo. El curso 1 formuló la pregunta de fondo con Wittgenstein: qué significa usar un lenguaje sin participar en la forma de vida que lo sostiene. Esta semana la vuelve operativa. Si el modelo aplana justo ahí, entonces ahí es donde hay que medir, y la semana 5 enseña cómo.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Error factual</th>
+<th>Imposición hermenéutica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El modelo afirma algo falso sobre la pieza</td>
+<td>El modelo afirma algo verdadero en sus términos y falso en los de la comunidad</td>
+</tr>
+<tr>
+<td>Se detecta comparando con la pieza</td>
+<td>Se detecta comparando con un lector que conoce el contexto</td>
+</tr>
+<tr>
+<td>Lo mide una tasa de acierto</td>
+<td>Ninguna tasa de acierto lo ve, porque la referencia se construyó con el mismo acervo</td>
+</tr>
+<tr>
+<td>Se corrige con más datos del mismo tipo</td>
+<td>Se corrige cambiando quién lee y con qué categorías</td>
+</tr>
+<tr>
+<td><em>Validación en el primer sentido</em></td>
+<td><em>Validación en el segundo y el tercer sentido: proceso e imputación</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="7">
+<li>La distinción entre exposición y tesis importa aquí más que en ninguna otra semana. Fricker, Kay y sus coautores, Muldoon y Wu describen injusticias; ninguno de ellos propone el instrumento de la semana 5. La articulación entre injusticia hermenéutica y mímesis es del docente, y la auditoría de exterioridad es una propuesta del curso que el estudiante debe poder criticar, no solo aplicar.</li>
+</ol>
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que lea las tres piezas cargadas de sentido local que el estudiante trajo y que diga qué significan. El estudiante debe poder, sin el modelo, decir para cada pieza qué entendió mal, qué aplanó y qué ignoró, y explicar por qué esa diferencia no es un error factual sino una lectura desde otra precomprensión. Esa triple pregunta es el núcleo de la auditoría de la próxima semana.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>Fricker, M. (2007). <em>Epistemic Injustice: Power and the Ethics of Knowing</em>. Oxford University Press. Capítulo 7.</li>
+<li>Kay, J., Kasirzadeh, A. y Mohamed, S. (2024). "Epistemic Injustice in Generative AI". <em>Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society</em> 7(1), 684-697. <a href="https://doi.org/10.1609/aies.v7i1.31671">https://doi.org/10.1609/aies.v7i1.31671</a> (versión abierta: <a href="https://arxiv.org/abs/2408.11441)">https://arxiv.org/abs/2408.11441)</a></li>
+<li>Muldoon, J. y Wu, B. A. (2023). "Artificial Intelligence in the Colonial Matrix of Power". <em>Philosophy &amp; Technology</em> 36(4), 80. <a href="https://doi.org/10.1007/s13347-023-00687-8">https://doi.org/10.1007/s13347-023-00687-8</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Zainea, C. I. (2026). <em>Agencia sin imputación</em>. Sección sobre la triple mímesis. <a href="https://izainea.github.io/escritos/agencia-sin-imputacion.pdf">https://izainea.github.io/escritos/agencia-sin-imputacion.pdf</a></li>
+<li>Milano, S. y Prunkl, C. (2024). "Algorithmic profiling as a source of hermeneutical injustice". <em>Philosophical Studies</em> 182(1), 185-203. <a href="https://doi.org/10.1007/s11098-023-02095-2">https://doi.org/10.1007/s11098-023-02095-2</a></li>
+<li>Schneider, F., Holtermann, C., Biemann, C. y Lauscher, A. (2025). "GIMMICK: Globally Inclusive Multimodal Multitask Cultural Knowledge Benchmarking". <a href="https://arxiv.org/abs/2502.13766">https://arxiv.org/abs/2502.13766</a></li>
+<li>Dussel, E. (1974). <em>Método para una filosofía de la liberación</em>. Salamanca: Sígueme.</li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>Fricker exige que la carencia de conceptos sea estructural, no accidental: resulta de una desigualdad en la participación en los recursos interpretativos. <em>¿Es estructural la carencia de un modelo respecto de su archivo? ¿Quién participó en el corpus de entrenamiento y quién no?</em></li>
+<li>Kay, Kasirzadeh y Mohamed llaman ignorancia hermenéutica a la tercera dimensión y le dan ejemplos. <em>¿Cuál de sus cuatro dimensiones opera en su flujo de investigación y cuál no? Argumente con una pieza propia.</em></li>
+<li>Muldoon y Wu usan una categoría, la matriz colonial, que viene de la sociología latinoamericana. <em>¿Qué gana y qué pierde el curso al tomar de ahí una pregunta y no una conclusión? ¿Qué conclusión de ellos no aceptaría usted para su proyecto?</em></li>
+<li>Milano y Prunkl muestran que un sistema de recomendación puede fragmentar los recursos interpretativos de sus usuarios. <em>¿Hay algo parecido en un flujo donde cada investigador consulta al modelo por separado y nadie compara las lecturas?</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Cada estudiante trae tres piezas cargadas de sentido local. Para cada una escribe primero, sin el modelo, qué sabe de ella alguien de la comunidad que la produjo. Luego pide al modelo una lectura y compara.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Lo que sabe un lector situado</th>
+<th>Lectura del modelo</th>
+<th>Qué entendió mal</th>
+<th>Qué aplanó</th>
+<th>Qué ignoró</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Al final de la tabla, una frase: cuál de las tres columnas de exclusión se repite más en su material, y qué dice eso de la precomprensión del modelo.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Docente</th>
+<th>Estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 20 min</td>
+<td>Expone la prefiguración ajena con la Figura 4 y distingue exposición de tesis</td>
+<td>Ubica una pieza propia en la figura</td>
+<td>Figura 4</td>
+</tr>
+<tr>
+<td>20 a 40 min</td>
+<td>Presenta a Fricker con el ejemplo del acoso y la extensión al instrumento</td>
+<td>Discute si la extensión es legítima</td>
+<td>Lectura central</td>
+</tr>
+<tr>
+<td>40 a 55 min</td>
+<td>Recorre las cuatro dimensiones de Kay et al. y la pregunta de Muldoon y Wu</td>
+<td>Elige la dimensión que opera en su flujo</td>
+<td>Lecturas</td>
+</tr>
+<tr>
+<td>55 a 60 min</td>
+<td>Presenta la tabla de contraste</td>
+<td>Anota un caso de imposición</td>
+<td>Tabla</td>
+</tr>
+<tr>
+<td>60 a 100 min</td>
+<td>Acompaña el taller</td>
+<td>Escribe la lectura situada, consulta al modelo, compara</td>
+<td>Tabla del taller</td>
+</tr>
+<tr>
+<td>100 a 115 min</td>
+<td>Recoge una pieza por estudiante</td>
+<td>Expone la exclusión más repetida</td>
+<td>Bitácora</td>
+</tr>
+<tr>
+<td>115 a 120 min</td>
+<td>Anuncia la práctica de la semana 5</td>
+<td>Anota qué muestra va a usar</td>
+<td>Guía de la práctica</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que el estudiante escriba la lectura situada después de ver la del modelo, y entonces la copia o la contradice por reacción; exigir el orden. Suele fallar que la columna "qué ignoró" quede vacía porque lo ignorado es por definición lo que no aparece; la pregunta de apoyo es qué diría un lector situado que el modelo no dijo. Y hay que cuidar que la discusión sobre colonialidad no sustituya al ejercicio: la pregunta se mide en la semana 5, no se zanja hoy.</p>
+<h2>Bitácora</h2>
+<p>Registre la tabla de tres piezas, la frase final y el modelo usado con sus instrucciones. Anote una pieza en la que no esté seguro de si la diferencia es error factual o imposición: esos casos son los que la auditoría debe resolver.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer la guía <code>practicas/practica-05-auditoria-de-exterioridad.md</code> y la plantilla <code>plantillas/auditoria-de-exterioridad.md</code>. Seleccionar una muestra de entre diez y veinte piezas del propio corpus con el criterio de la guía, y conseguir al menos un lector situado que acepte leerla. Sin lector situado no hay auditoría.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-03.html">← Semana 3. Consentimiento y plataformas</a><a href="semana-05.html">Semana 5. Auditar la exterioridad →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>

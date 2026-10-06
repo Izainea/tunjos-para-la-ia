@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Serie del corpus, ventana y ruptura</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+input[type=range]{width:12rem;padding:0}
+.lbl{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.big{font-family:var(--mono);font-size:1.1rem;color:var(--ink)}
+#s{width:100%;max-width:44rem;height:auto;display:block;background:var(--surface);border:1px solid var(--rule);border-radius:4px}
+#lectura{color:var(--ink)}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 5 · Semana 5</span>
+  <h1>Serie del corpus, ventana y ruptura</h1>
+  <p>Documentos por mes en que aparece un código, de enero de 2019 a diciembre de 2024. La línea gruesa es el promedio móvil; el marcador señala el mes en que el método detecta la ruptura mayor. Mueva la ventana y observe cuándo "emerge" el fenómeno.</p>
+
+  <div class="card">
+    <div class="row">
+      <span class="lbl">ventana =</span><span class="big" id="wval">3</span><span class="lbl">meses</span>
+      <input type="range" id="w" min="1" max="12" value="3" aria-label="Tamaño de la ventana móvil en meses" />
+      <label class="lbl"><input type="checkbox" id="crudo" checked /> mostrar serie cruda</label>
+    </div>
+    <svg id="s" viewBox="0 0 700 300" role="img" aria-label="Serie mensual con promedio móvil y marcador de ruptura"></svg>
+    <p id="lectura"></p>
+  </div>
+
+  <div class="card">
+    <span class="k">La ruptura según la ventana</span>
+    <div style="overflow-x:auto"><table id="tabla"></table></div>
+    <p class="note">La ruptura se calcula como el mes en que más cambia el promedio: la mayor diferencia entre la media de los <em>w</em> meses siguientes y la media de los <em>w</em> meses anteriores. Otros métodos darían otras fechas; ninguno da "la" fecha.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la emergencia de un fenómeno en un corpus no es un dato de la serie sino una lectura de la serie bajo una ventana. Antes de escribir "a partir de tal mes", pruebe tres ventanas y registre si la fecha se mueve. Los valores de esta serie se prepararon para el ejercicio.</p>
+<script>
+  const D = {"meses": ["2019-01", "2019-02", "2019-03", "2019-04", "2019-05", "2019-06", "2019-07", "2019-08", "2019-09", "2019-10", "2019-11", "2019-12", "2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06", "2020-07", "2020-08", "2020-09", "2020-10", "2020-11", "2020-12", "2021-01", "2021-02", "2021-03", "2021-04", "2021-05", "2021-06", "2021-07", "2021-08", "2021-09", "2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12"], "valores": [12, 16, 11, 16, 13, 12, 17, 11, 10, 12, 13, 11, 13, 11, 13, 13, 11, 9, 8, 10, 10, 9, 10, 22, 26, 28, 16, 12, 13, 8, 11, 6, 7, 13, 5, 13, 13, 12, 15, 15, 23, 19, 18, 17, 15, 17, 15, 21, 15, 17, 18, 16, 25, 14, 18, 17, 21, 12, 20, 16, 19, 19, 23, 19, 22, 23, 26, 15, 24, 22, 20, 23]};
+  const M = D.meses, V = D.valores, n = V.length;
+  const svg = document.getElementById('s');
+  const L = 44, R = 12, T = 16, B = 34, W = 700, H = 300;
+  const maxv = Math.max.apply(null, V) + 2;
+  const X = i => L + (W - L - R) * i / (n - 1), Y = v => T + (H - T - B) * (1 - v / maxv);
+
+  function media(a, i, j){ let s = 0, c = 0; for (let k = Math.max(0, i); k < Math.min(a.length, j); k++){ s += a[k]; c++; } return c ? s / c : NaN; }
+  function suavizada(w){ const h = Math.floor(w / 2); return V.map((_, i) => media(V, i - h, i - h + w)); }
+  function ruptura(w){
+    let best = -1, bd = -1, signo = 1;
+    for (let t = w; t <= n - w; t++){ const d = media(V, t, t + w) - media(V, t - w, t); if (Math.abs(d) > bd){ bd = Math.abs(d); best = t; signo = d > 0 ? 1 : -1; } }
+    return {t: best, salto: bd, signo};
+  }
+  function mes(i){ const [a, m] = M[i].split('-'); return ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][+m - 1] + ' ' + a; }
+  const f1 = v => v.toFixed(1).replace('.', ',');
+
+  function dibujar(){
+    const w = +document.getElementById('w').value;
+    document.getElementById('wval').textContent = w;
+    const S = suavizada(w), rp = ruptura(w);
+    let s = '';
+    for (let v = 0; v <= maxv; v += 10){ s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)" stroke-width="1"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`; }
+    for (let i = 0; i < n; i += 12){ s += `<text x="${X(i)}" y="${H - 12}" text-anchor="middle">${M[i].slice(0, 4)}</text><line x1="${X(i)}" x2="${X(i)}" y1="${Y(0)}" y2="${Y(0) + 5}" stroke="var(--muted)"/>`; }
+    if (document.getElementById('crudo').checked){
+      s += `<path d="${V.map((v, i) => (i ? 'L' : 'M') + X(i) + ' ' + Y(v)).join(' ')}" fill="none" stroke="var(--muted)" stroke-width="1" stroke-opacity=".6"/>`;
+      V.forEach((v, i) => { s += `<circle cx="${X(i)}" cy="${Y(v)}" r="2" fill="var(--muted)" opacity=".7"/>`; });
+    }
+    s += `<path d="${S.map((v, i) => (i ? 'L' : 'M') + X(i) + ' ' + Y(v)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.6"/>`;
+    // ventana de comparación alrededor de la ruptura
+    s += `<rect x="${X(rp.t - w)}" y="${T}" width="${X(rp.t) - X(rp.t - w)}" height="${H - T - B}" fill="var(--c-fil)" opacity=".08"/>`;
+    s += `<rect x="${X(rp.t)}" y="${T}" width="${X(Math.min(n - 1, rp.t + w - 1)) - X(rp.t)}" height="${H - T - B}" fill="var(--c-inv)" opacity=".10"/>`;
+    s += `<line x1="${X(rp.t)}" x2="${X(rp.t)}" y1="${T}" y2="${Y(0)}" stroke="var(--c-fil)" stroke-width="2" stroke-dasharray="6 4"/>`;
+    s += `<text x="${X(rp.t) + 6}" y="${T + 12}" style="fill:var(--c-fil)">ruptura: ${mes(rp.t)}</text>`;
+    s += `<text x="${L + 4}" y="${T + 12}">docs/mes</text>`;
+    svg.innerHTML = s;
+    const antes = media(V, rp.t - w, rp.t), despues = media(V, rp.t, rp.t + w);
+    document.getElementById('lectura').innerHTML = `Con ventana de ${w} ${w === 1 ? 'mes' : 'meses'}, el método sitúa la ruptura en <b>${mes(rp.t)}</b>: pasa de ${f1(antes)} a ${f1(despues)} documentos por mes (salto de ${f1(rp.salto)}). ` +
+      (w <= 2 ? `Con ventanas cortas el método persigue el pico breve del cambio de año 2020 a 2021, que dura tres meses.` : w <= 8 ? `Con ventanas medias el pico se diluye y aparece el cambio de nivel de 2022.` : `Con ventanas largas todo se vuelve tendencia; la ruptura se corre hacia donde el promedio acumulado cambia, no hacia donde cambió el corpus.`);
+    let h = '<tr><th>Ventana</th><th>Ruptura detectada</th><th>Salto</th></tr>';
+    for (let k = 1; k <= 12; k++){ const r = ruptura(k); h += `<tr${k === w ? ' style="color:var(--accent)"' : ''}><td>${k}</td><td>${mes(r.t)}</td><td>${f1(r.salto)}</td></tr>`; }
+    document.getElementById('tabla').innerHTML = h;
+  }
+  document.getElementById('w').addEventListener('input', dibujar);
+  document.getElementById('crudo').addEventListener('change', dibujar);
+  dibujar();
+</script>
+</body>
+</html>

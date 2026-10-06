@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Explorador de concordancias</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* propios de esta app */
+.kwic{font-family:var(--mono);font-size:.78rem;line-height:1.7;overflow-x:auto;white-space:nowrap}
+.kwic .l{display:inline-block;width:46%;text-align:right;color:var(--muted);overflow:hidden;text-overflow:ellipsis;direction:rtl}
+.kwic .n{display:inline-block;padding:0 .45rem;color:var(--accent);font-weight:500}
+.kwic .r{display:inline-block;width:40%;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+.kwic .id{color:var(--c-app);font-size:.7rem;margin-left:.4rem}
+@media (max-width:520px){.kwic .l{width:38%}.kwic .r{width:34%}}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.chips button{padding:.2rem .55rem;font-size:.72rem}
+.chips button small{color:var(--muted);margin-left:.3rem}
+input[type=range]{width:9rem;padding:0}
+input#nodo{font-family:var(--mono);width:11rem}
+.bar{height:6px;background:var(--c-app);display:inline-block;vertical-align:middle;border-radius:2px}
+.cifra{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 2 · Semana 6</span>
+  <h1>Explorador de concordancias</h1>
+  <p>Un corpus pequeño de documentos públicos: veinticinco fragmentos de la Constitución Política de Colombia de 1991, cada uno con identificador. Elija una palabra nodo, ajuste la ventana y lea sus líneas, sus frecuencias y sus colocaciones. Luego pregúntese qué sugiere y qué haría falta leer para afirmarlo.</p>
+
+  <div class="card">
+    <div class="row">
+      <label for="nodo" class="k">palabra nodo</label>
+      <input id="nodo" value="derecho" />
+      <label for="ventana" class="k">ventana</label>
+      <input type="range" id="ventana" min="2" max="8" value="4" />
+      <span class="cifra" id="ventana-v">4 palabras</span>
+      <label class="cifra"><input type="checkbox" id="sinfunc" checked /> quitar palabras funcionales en frecuencias y colocaciones</label>
+    </div>
+    <p class="cifra" id="estado"></p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <span class="k">Frecuencias (toque una palabra para usarla como nodo)</span>
+      <div class="chips" id="frec"></div>
+    </div>
+    <div class="card">
+      <span class="k">Colocaciones del nodo en la ventana</span>
+      <table id="coloc"><thead><tr><th>palabra</th><th>en ventana</th><th>total</th><th>razón</th></tr></thead><tbody></tbody></table>
+      <p class="cifra">Se muestran las que aparecen al menos dos veces en la ventana. Una razón alta con pocas apariciones no es un patrón.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="k">Concordancia</span>
+    <div class="kwic" id="kwic"></div>
+  </div>
+
+  <div class="card">
+    <span class="k">Procedencia del corpus de demostración</span>
+    <p>Fragmentos transcritos del texto de la Constitución Política de Colombia de 1991 publicado por la Secretaría del Senado (secretariasenado.gov.co). Las normas son de libre reproducción según la Ley 23 de 1982. Las transcripciones no se cotejaron carácter a carácter con la edición oficial: antes de citar, verifique contra la fuente. Esa es, de hecho, la regla que la app quiere enseñar.</p>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: la frecuencia dice cuánto, la concordancia muestra dónde y con qué, y ninguna de las dos dice qué significa. Eso lo dice quien lee las líneas y responde por la lectura.</p>
+<script>
+  var CORPUS = [
+    {id:'CP-pre', t:'Preámbulo', x:'El pueblo de Colombia, en ejercicio de su poder soberano, representado por sus delegatarios a la Asamblea Nacional Constituyente, invocando la protección de Dios, y con el fin de fortalecer la unidad de la Nación y asegurar a sus integrantes la vida, la convivencia, el trabajo, la justicia, la igualdad, el conocimiento, la libertad y la paz, dentro de un marco jurídico, democrático y participativo que garantice un orden político, económico y social justo, y comprometido a impulsar la integración de la comunidad latinoamericana, decreta, sanciona y promulga la siguiente Constitución Política de Colombia.'},
+    {id:'CP-01', t:'Artículo 1', x:'Colombia es un Estado social de derecho, organizado en forma de República unitaria, descentralizada, con autonomía de sus entidades territoriales, democrática, participativa y pluralista, fundada en el respeto de la dignidad humana, en el trabajo y la solidaridad de las personas que la integran y en la prevalencia del interés general.'},
+    {id:'CP-03', t:'Artículo 3', x:'La soberanía reside exclusivamente en el pueblo, del cual emana el poder público. El pueblo la ejerce en forma directa o por medio de sus representantes, en los términos que la Constitución establece.'},
+    {id:'CP-04', t:'Artículo 4', x:'La Constitución es norma de normas. En todo caso de incompatibilidad entre la Constitución y la ley u otra norma jurídica, se aplicarán las disposiciones constitucionales. Es deber de los nacionales y de los extranjeros en Colombia acatar la Constitución y las leyes, y respetar y obedecer a las autoridades.'},
+    {id:'CP-05', t:'Artículo 5', x:'El Estado reconoce, sin discriminación alguna, la primacía de los derechos inalienables de la persona y ampara a la familia como institución básica de la sociedad.'},
+    {id:'CP-07', t:'Artículo 7', x:'El Estado reconoce y protege la diversidad étnica y cultural de la Nación colombiana.'},
+    {id:'CP-08', t:'Artículo 8', x:'Es obligación del Estado y de las personas proteger las riquezas culturales y naturales de la Nación.'},
+    {id:'CP-10', t:'Artículo 10', x:'El castellano es el idioma oficial de Colombia. Las lenguas y dialectos de los grupos étnicos son también oficiales en sus territorios. La enseñanza que se imparta en las comunidades con tradiciones lingüísticas propias será bilingüe.'},
+    {id:'CP-11', t:'Artículo 11', x:'El derecho a la vida es inviolable. No habrá pena de muerte.'},
+    {id:'CP-12', t:'Artículo 12', x:'Nadie será sometido a desaparición forzada, a torturas ni a tratos o penas crueles, inhumanos o degradantes.'},
+    {id:'CP-13', t:'Artículo 13', x:'Todas las personas nacen libres e iguales ante la ley, recibirán la misma protección y trato de las autoridades y gozarán de los mismos derechos, libertades y oportunidades sin ninguna discriminación por razones de sexo, raza, origen nacional o familiar, lengua, religión, opinión política o filosófica.'},
+    {id:'CP-15', t:'Artículo 15', x:'Todas las personas tienen derecho a su intimidad personal y familiar y a su buen nombre, y el Estado debe respetarlos y hacerlos respetar. De igual modo, tienen derecho a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ellas en bancos de datos y en archivos de entidades públicas y privadas. En la recolección, tratamiento y circulación de datos se respetarán la libertad y demás garantías consagradas en la Constitución.'},
+    {id:'CP-16', t:'Artículo 16', x:'Todas las personas tienen derecho al libre desarrollo de su personalidad sin más limitaciones que las que imponen los derechos de los demás y el orden jurídico.'},
+    {id:'CP-18', t:'Artículo 18', x:'Se garantiza la libertad de conciencia. Nadie será molestado por razón de sus convicciones o creencias ni compelido a revelarlas ni obligado a actuar contra su conciencia.'},
+    {id:'CP-19', t:'Artículo 19', x:'Se garantiza la libertad de cultos. Toda persona tiene derecho a profesar libremente su religión y a difundirla en forma individual o colectiva. Todas las confesiones religiosas e iglesias son igualmente libres ante la ley.'},
+    {id:'CP-20', t:'Artículo 20', x:'Se garantiza a toda persona la libertad de expresar y difundir su pensamiento y opiniones, la de informar y recibir información veraz e imparcial, y la de fundar medios masivos de comunicación. Estos son libres y tienen responsabilidad social. Se garantiza el derecho a la rectificación en condiciones de equidad. No habrá censura.'},
+    {id:'CP-22', t:'Artículo 22', x:'La paz es un derecho y un deber de obligatorio cumplimiento.'},
+    {id:'CP-23', t:'Artículo 23', x:'Toda persona tiene derecho a presentar peticiones respetuosas a las autoridades por motivos de interés general o particular y a obtener pronta resolución.'},
+    {id:'CP-25', t:'Artículo 25', x:'El trabajo es un derecho y una obligación social y goza, en todas sus modalidades, de la especial protección del Estado. Toda persona tiene derecho a un trabajo en condiciones dignas y justas.'},
+    {id:'CP-27', t:'Artículo 27', x:'El Estado garantiza las libertades de enseñanza, aprendizaje, investigación y cátedra.'},
+    {id:'CP-67', t:'Artículo 67', x:'La educación es un derecho de la persona y un servicio público que tiene una función social; con ella se busca el acceso al conocimiento, a la ciencia, a la técnica, y a los demás bienes y valores de la cultura.'},
+    {id:'CP-70', t:'Artículo 70', x:'El Estado tiene el deber de promover y fomentar el acceso a la cultura de todos los colombianos en igualdad de oportunidades, por medio de la educación permanente y la enseñanza científica, técnica, artística y profesional en todas las etapas del proceso de creación de la identidad nacional.'},
+    {id:'CP-71', t:'Artículo 71', x:'La búsqueda del conocimiento y la expresión artística son libres. Los planes de desarrollo económico y social incluirán el fomento a las ciencias y, en general, a la cultura.'},
+    {id:'CP-74', t:'Artículo 74', x:'Todas las personas tienen derecho a acceder a los documentos públicos salvo los casos que establezca la ley. El secreto profesional es inviolable.'},
+    {id:'CP-79', t:'Artículo 79', x:'Todas las personas tienen derecho a gozar de un ambiente sano. La ley garantizará la participación de la comunidad en las decisiones que puedan afectarlo. Es deber del Estado proteger la diversidad e integridad del ambiente, conservar las áreas de especial importancia ecológica y fomentar la educación para el logro de estos fines.'}
+  ];
+  var FUNC = {};
+  'de la el y a en los las que del se por con su sus o al un una es no lo para como más ni ante sin sobre son le les ha han e u cual entre todo toda todos todas esta este esto estos estas ser será serán hay sea sean tiene tienen tienen las sus cuales cuyo cuya'.split(' ').forEach(function(w){ FUNC[w] = true; });
+
+  function tok(s){ return (s.toLowerCase().match(/[a-záéíóúüñ]+/g) || []); }
+  function limpia(w){ return w.toLowerCase().replace(/^[^a-záéíóúüñ]+|[^a-záéíóúüñ]+$/g, ''); }
+
+  // tokens por documento, conservando la forma original para el KWIC
+  var DOCS = CORPUS.map(function(d){ return {id:d.id, t:d.t, ws: d.x.split(/\s+/)}; });
+  var TOTAL = {};
+  var NDOC = 0;
+  DOCS.forEach(function(d){ d.ws.forEach(function(w){ var k = limpia(w); if (k) { TOTAL[k] = (TOTAL[k] || 0) + 1; NDOC++; } }); });
+
+  var elNodo = document.getElementById('nodo'), elVen = document.getElementById('ventana'), elSin = document.getElementById('sinfunc');
+
+  function frecuencias(){
+    var sin = elSin.checked;
+    var lista = Object.keys(TOTAL).filter(function(w){ return !(sin && FUNC[w]); })
+      .sort(function(a, b){ return TOTAL[b] - TOTAL[a] || a.localeCompare(b); }).slice(0, 30);
+    var c = document.getElementById('frec'); c.innerHTML = '';
+    var nodo = limpia(elNodo.value);
+    lista.forEach(function(w){
+      var b = document.createElement('button');
+      b.innerHTML = w + '<small>' + TOTAL[w] + '</small>';
+      b.setAttribute('aria-pressed', w === nodo ? 'true' : 'false');
+      b.addEventListener('click', function(){ elNodo.value = w; actualizar(); });
+      c.appendChild(b);
+    });
+  }
+
+  function actualizar(){
+    var nodo = limpia(elNodo.value);
+    var ven = +elVen.value;
+    document.getElementById('ventana-v').textContent = ven + ' palabras';
+    var kw = document.getElementById('kwic'); kw.innerHTML = '';
+    var enVen = {}, nLineas = 0, docsCon = {};
+    DOCS.forEach(function(d){
+      d.ws.forEach(function(w, i){
+        if (limpia(w) !== nodo || !nodo) return;
+        nLineas++; docsCon[d.id] = true;
+        var izq = d.ws.slice(Math.max(0, i - ven), i), der = d.ws.slice(i + 1, i + 1 + ven);
+        izq.concat(der).forEach(function(v){ var k = limpia(v); if (k && !(elSin.checked && FUNC[k])) enVen[k] = (enVen[k] || 0) + 1; });
+        var div = document.createElement('div');
+        var l = document.createElement('span'); l.className = 'l'; l.textContent = '‪' + izq.join(' ') + '‬';
+        var n = document.createElement('span'); n.className = 'n'; n.textContent = w;
+        var r = document.createElement('span'); r.className = 'r'; r.textContent = der.join(' ');
+        var id = document.createElement('span'); id.className = 'id'; id.textContent = '(' + d.id + ', pos. ' + (i + 1) + ')';
+        div.appendChild(l); div.appendChild(n); div.appendChild(r); div.appendChild(id);
+        kw.appendChild(div);
+      });
+    });
+    if (nLineas === 0) { kw.innerHTML = '<span class="cifra">La palabra "' + (elNodo.value || '') + '" no aparece en el corpus. Pruebe con una de la lista de frecuencias.</span>'; }
+    var nd = Object.keys(docsCon).length;
+    document.getElementById('estado').textContent = nodo ? ('"' + nodo + '": ' + nLineas + ' apariciones en ' + nd + ' de ' + DOCS.length + ' documentos · corpus de ' + NDOC + ' palabras y ' + Object.keys(TOTAL).length + ' distintas') : '';
+    var tb = document.querySelector('#coloc tbody'); tb.innerHTML = '';
+    var filas = Object.keys(enVen).filter(function(w){ return enVen[w] >= 2; })
+      .map(function(w){ return {w:w, v:enVen[w], t:TOTAL[w], r: enVen[w] / TOTAL[w]}; })
+      .sort(function(a, b){ return b.v - a.v || b.r - a.r; }).slice(0, 12);
+    var max = filas.length ? filas[0].v : 1;
+    filas.forEach(function(f){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + f.w + '</td><td><span class="bar" style="width:' + Math.round(60 * f.v / max) + 'px"></span> ' + f.v + '</td><td>' + f.t + '</td><td>' + f.r.toFixed(2).replace('.', ',') + '</td>';
+      tb.appendChild(tr);
+    });
+    if (filas.length === 0) { var tr = document.createElement('tr'); tr.innerHTML = '<td colspan="4" class="cifra">Ninguna palabra aparece dos veces en la ventana: el corpus es pequeño para este instrumento, y eso se anota.</td>'; tb.appendChild(tr); }
+    frecuencias();
+  }
+
+  elNodo.addEventListener('input', actualizar);
+  elVen.addEventListener('input', actualizar);
+  elSin.addEventListener('change', actualizar);
+  actualizar();
+</script>
+</body>
+</html>

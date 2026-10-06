@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Línea de tiempo del corpus</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+.lt svg{width:100%;height:auto;display:block}
+.lt rect.bar{fill:var(--c-app);cursor:pointer}
+.lt rect.bar.sel{fill:var(--accent)}
+.lt rect.desc{fill:var(--c-inv);pointer-events:none}
+.panel{color:var(--ink);font-size:.95rem;min-height:5rem}
+.panel .k{display:block;margin-bottom:.2rem}
+</style>
+<script>
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 3 · Semana 8</span>
+  <h1>Línea de tiempo del corpus</h1>
+  <p>Conteos del catálogo maestro del caso demostrativo por periodo macro (1.830 filas validadas contra el disco). Pulse una barra. La franja interior muestra cuántas filas traían una descripción heredada; lo demás llegó sin ninguna.</p>
+
+  <div class="card lt">
+    <div class="row">
+      <button id="m-conteo" aria-pressed="true">conteo</button>
+      <button id="m-fuentes" aria-pressed="false">fuentes distintas</button>
+      <button id="m-pct" aria-pressed="false">% del corpus</button>
+    </div>
+    <svg id="g" viewBox="0 0 680 300" role="img" aria-label="Barras por periodo del corpus del caso: siglo XIX 10 imágenes, 1900 a 1930 129, 1940 a 1970 391, 1970 a 1990 401, 1990 a 2000 200, 2000 a 2025 699."></svg>
+    <div class="panel" id="panel"><span class="k">Periodo</span>Pulse una barra para ver sus subperiodos y lo que el catálogo sabe de él.</div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: una cifra por periodo solo vale después de validar el catálogo, y comparar periodos exige saber de cuántas fuentes viene cada uno. Un periodo con 699 imágenes de 7 sitios y otro con 129 de 13 sitios no se comparan como si fueran muestras iguales.</p>
+<script>
+  // Datos del catálogo maestro del caso (conteo por periodo_macro, subperiodos, dominios distintos de página fuente, filas con descripción heredada).
+  var periodos = [
+    { id: 'siglo_XIX', rot: 'Siglo XIX', n: 10, fuentes: 1, desc: 0, sub: [['1873', 3], ['1874', 4], ['1890s', 3]], nota: 'Antecedente: movimiento antialcohol y templanza. Diez imágenes de una sola fuente; sirve para ver que un periodo con una fuente no es una muestra de nada.' },
+    { id: '1900_1930', rot: '1900 a 1930', n: 129, fuentes: 13, desc: 68, sub: [['1919', 45], ['años 1920', 51], ['1931 a 1946', 33]], nota: 'Prohibición estadounidense y posguerra. Es el periodo con más fuentes distintas y uno de los dos con descripciones heredadas (texto alternativo de museos en inglés).' },
+    { id: '1940_1970', rot: '1940 a 1970', n: 391, fuentes: 14, desc: 73, sub: [['años 1940', 68], ['años 1950', 9], ['1950s, traqueteo', 158], ['1960s, marimba', 71], ['1960s, bonanza marimbera', 77], ['1970s, traqueteo Medellín', 8]], nota: 'Subperiodos nombrados por tema, no solo por fecha: el catálogo ya codifica una lectura. Dos subcarpetas sobre la marimba vienen de dos recolecciones distintas que la consolidación no fundió.' },
+    { id: '1970_1990', rot: '1970 a 1990', n: 401, fuentes: 6, desc: 0, sub: [['1970 a 1990', 2], ['1970 a 1990, nuevas', 399]], nota: 'Casi todo viene de una segunda recolección ("nuevas") y de seis sitios. Sin descripción heredada: todo lo que se dice de estas imágenes lo dijo el modelo o el investigador.' },
+    { id: '1990_2000', rot: '1990 a 2000', n: 200, fuentes: 6, desc: 0, sub: [['estética yupi', 141], ['decreto 1108, contexto', 59]], nota: 'Dos subperiodos, uno estético y uno normativo. La mezcla de criterios de subdivisión es una decisión que el catálogo debe declarar.' },
+    { id: '2000_2025', rot: '2000 a 2025', n: 699, fuentes: 7, desc: 0, sub: [['narcoterrorismo, 2001', 319], ['fentanilo y nuevas amenazas, 2010s', 380]], nota: 'El periodo más grande, de siete sitios, casi todos plataformas y prensa digital. Los rótulos de los subperiodos vienen del inglés de las fuentes; conviene preguntarse de quién es la periodización.' }
+  ];
+  var modo = 'conteo', sel = null, total = periodos.reduce(function (s, p) { return s + p.n; }, 0);
+  var svg = document.getElementById('g'), panel = document.getElementById('panel');
+  var NS = 'http://www.w3.org/2000/svg';
+  function mk(tag, attrs, txt) { var e = document.createElementNS(NS, tag); Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); }); if (txt != null) e.textContent = txt; return e; }
+  function valor(p) { return modo === 'conteo' ? p.n : modo === 'fuentes' ? p.fuentes : 100 * p.n / total; }
+  function fmt(v) { return modo === 'pct' ? v.toFixed(1).replace('.', ',') + ' %' : String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function pintar() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var W = 680, H = 300, L = 40, R = 20, T = 30, B = 60, w = W - L - R, h = H - T - B;
+    var max = Math.max.apply(null, periodos.map(valor)) * 1.1, bw = w / periodos.length;
+    svg.appendChild(mk('line', { x1: L, y1: T + h, x2: W - R, y2: T + h, stroke: 'var(--rule)' }));
+    periodos.forEach(function (p, i) {
+      var v = valor(p), bh = h * v / max, x = L + i * bw + bw * 0.15, y = T + h - bh;
+      var r = mk('rect', { x: x, y: y, width: bw * 0.7, height: bh, rx: 2, 'class': 'bar' + (sel === i ? ' sel' : ''), tabindex: 0, role: 'button', 'aria-label': p.rot + ': ' + fmt(v) });
+      r.addEventListener('click', function () { sel = i; pintar(); });
+      r.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sel = i; pintar(); } });
+      svg.appendChild(r);
+      if (modo === 'conteo' && p.desc) {
+        var dh = h * p.desc / max;
+        svg.appendChild(mk('rect', { x: x + bw * 0.7 - 10, y: T + h - dh, width: 10, height: dh, 'class': 'desc' }));
+      }
+      svg.appendChild(mk('text', { x: x + bw * 0.35, y: y - 6, 'text-anchor': 'middle', style: 'fill:var(--ink)' }, fmt(v)));
+      svg.appendChild(mk('text', { x: x + bw * 0.35, y: T + h + 18, 'text-anchor': 'middle' }, p.rot));
+    });
+    svg.appendChild(mk('text', { x: L, y: 16 }, modo === 'conteo' ? 'IMÁGENES POR PERIODO · franja verde: con descripción heredada' : modo === 'fuentes' ? 'SITIOS DISTINTOS DE PÁGINA FUENTE POR PERIODO' : 'PORCENTAJE DEL CORPUS'));
+    svg.appendChild(mk('text', { x: L, y: H - 16 }, 'Catálogo maestro del caso, ' + fmt2(total) + ' filas. Los rótulos de subperiodo son del catálogo original.'));
+    if (sel != null) {
+      var p = periodos[sel];
+      var subs = p.sub.map(function (s) { return s[0] + ' (' + fmt2(s[1]) + ')'; }).join(' · ');
+      panel.innerHTML = '<span class="k">' + p.rot + ' · ' + fmt2(p.n) + ' imágenes · ' + p.fuentes + (p.fuentes === 1 ? ' sitio' : ' sitios') + ' · ' + fmt2(p.desc) + ' con descripción heredada (' + (100 * p.desc / p.n).toFixed(1).replace('.', ',') + ' %)</span>' + '<div>Subperiodos: ' + subs + '.</div><div>' + p.nota + '</div>';
+    }
+  }
+  function fmt2(v) { return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  ['conteo', 'fuentes', 'pct'].forEach(function (m) {
+    document.getElementById('m-' + m).addEventListener('click', function () {
+      modo = m; ['conteo', 'fuentes', 'pct'].forEach(function (k) { document.getElementById('m-' + k).setAttribute('aria-pressed', String(k === m)); }); pintar();
+    });
+  });
+  pintar();
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arco de la triple mímesis</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" />
+<style>
+/* Tokens idénticos al sitio. No cambiar nombres. */
+:root{--bg:#F2F5F3;--surface:#FFFFFF;--ink:#14211D;--muted:#56675F;--rule:#D3DCD7;--accent:#0B6B58;--c-inv:#0B6B58;--c-app:#2B55B8;--c-blog:#9C2C83;--c-doc:#A8650F;--c-fil:#8A1C2B;--display:"PT Sans","Segoe UI",Arial,sans-serif;--text:"PT Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1A17;--surface:#16241F;--ink:#E7EEE9;--muted:#9BAFA7;--rule:#273A32;--accent:#EBCB6B;--c-inv:#7FD6B8;--c-app:#93B5FF;--c-blog:#F09AD6;--c-doc:#F2A66B;--c-fil:#F08A9B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+body{padding:1rem}
+h1{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0 0 .25rem;letter-spacing:-.005em}
+.k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+button,select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem}
+button{cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;border-radius:999px}
+button:hover{border-color:var(--muted)}
+button[aria-pressed="true"],button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1rem;margin:.6rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.6rem}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.ok{color:var(--c-inv)} .no{color:var(--c-fil)} .ac{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
+.note{font-size:.85rem;font-style:italic;color:var(--muted)}
+/* Propios de esta app */
+.zonas{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.6rem}
+.zona{border:1px dashed var(--rule);border-radius:4px;padding:.5rem .6rem;min-height:9rem;background:var(--bg)}
+.zona.over{border-color:var(--accent);border-style:solid}
+.zona h2{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;font-weight:500}
+.zona .d{font-size:.8rem;color:var(--muted);margin:0 0 .5rem}
+.ficha{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.4rem .5rem;margin:.3rem 0;cursor:grab;font-size:.9rem;color:var(--ink)}
+.ficha:active{cursor:grabbing}
+.ficha .ej{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--muted);margin-top:.15rem}
+.ficha .ej button{padding:.05rem .45rem;font-size:.66rem;margin-right:.2rem}
+.ficha .mover{margin-top:.25rem}
+.ficha .mover button{padding:.05rem .45rem;font-size:.66rem;margin-right:.2rem}
+.ficha[data-ej="maquina"]{border-left:3px solid var(--c-app)}
+.ficha[data-ej="investigador"]{border-left:3px solid var(--c-inv)}
+.ficha[data-ej="ambos"]{border-left:3px solid var(--accent)}
+.aviso{border-left:3px solid var(--c-fil);padding:.3rem .8rem;margin:.4rem 0;font-size:.9rem;color:var(--ink)}
+.aviso.ok{border-color:var(--c-inv)} .aviso.q{border-color:var(--accent)}
+input#nueva{flex:1;min-width:10rem}
+</style>
+<script>
+  // Mismo tema que la página que embebe la app (misma clave en localStorage).
+  var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+  document.documentElement.dataset.theme=t||'dark';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+</script>
+</head>
+<body>
+  <span class="k">Mini app · Curso 6 · Semana 6</span>
+  <h1>Arco de la triple mímesis</h1>
+  <p>Arrastre las fases de su proyecto a prefiguración, configuración o refiguración, o use los botones de cada ficha. Marque en cada fase quién la ejecutó. Lo que debería notar: dónde se trunca el arco de su proyecto y qué fases nadie ha refigurado.</p>
+
+  <div class="card">
+    <div class="row">
+      <input id="nueva" type="text" placeholder="Nueva fase de mi proyecto" aria-label="Nombre de una fase nueva" />
+      <button id="agregar">Añadir fase</button>
+      <button id="reiniciar">Fases de ejemplo</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <svg id="arco" viewBox="0 0 640 110" style="width:100%;max-width:40rem;height:auto;display:block" role="img" aria-label="Arco de tres momentos con el número de fases en cada uno; se dibuja cortado donde no hay fases.">
+      <style>.z{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .zm{fill:var(--c-app);opacity:.25} .zi{fill:var(--c-inv);opacity:.25} .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .num{font-family:var(--display);font-weight:700;font-size:16px;fill:var(--ink)} .ln{stroke:var(--muted);stroke-width:1.6;fill:none} .cut{stroke:var(--c-fil);stroke-width:2.2;fill:none} .ret{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:4 4}</style>
+      <rect x="20" y="30" width="170" height="50" rx="3" class="z"/>
+      <rect x="235" y="30" width="170" height="50" rx="3" class="z"/>
+      <rect x="450" y="30" width="170" height="50" rx="3" class="z"/>
+      <text x="105" y="20" text-anchor="middle" class="lab">PREFIGURACIÓN</text>
+      <text x="320" y="20" text-anchor="middle" class="lab">CONFIGURACIÓN</text>
+      <text x="535" y="20" text-anchor="middle" class="lab">REFIGURACIÓN</text>
+      <text id="n1" x="105" y="61" text-anchor="middle" class="num">0</text>
+      <text id="n2" x="320" y="61" text-anchor="middle" class="num">0</text>
+      <text id="n3" x="535" y="61" text-anchor="middle" class="num">0</text>
+      <path id="l12" class="ln" d="M190 55 L235 55"/>
+      <path id="l23" class="ln" d="M405 55 L450 55"/>
+      <g id="c12" style="display:none"><path class="cut" d="M205 45 L220 65"/><path class="cut" d="M220 45 L205 65"/></g>
+      <g id="c23" style="display:none"><path class="cut" d="M420 45 L435 65"/><path class="cut" d="M435 45 L420 65"/></g>
+      <path id="ret" class="ret" d="M535 80 C 535 105 105 105 105 80"/>
+      <text id="retl" x="320" y="104" text-anchor="middle" class="lab">EL ARCO SE CIERRA</text>
+    </svg>
+  </div>
+
+  <div class="zonas" id="zonas">
+    <div class="zona" data-z="pool"><h2>Fases sin ubicar</h2><p class="d">Arrastre cada una a su momento.</p></div>
+    <div class="zona" data-z="pre"><h2>Prefiguración</h2><p class="d">Precomprensión desde la que se mira: qué se sabía, qué se esperaba, desde qué pertenencia.</p></div>
+    <div class="zona" data-z="con"><h2>Configuración</h2><p class="d">Organizar lo disperso en trama: recolectar, describir, codificar, agrupar, resumir.</p></div>
+    <div class="zona" data-z="ref"><h2>Refiguración</h2><p class="d">Devolver lo configurado a un mundo y a alguien que responde: validar, interpretar, escribir, defender.</p></div>
+  </div>
+
+  <div class="card">
+    <span class="k">Lectura del arco</span>
+    <div id="avisos"></div>
+  </div>
+
+  <p class="note">Qué se lleva de aquí: que una fase sea configuración con máquina no la hace inválida, la hace auditable; que la refiguración sea del investigador no la hace correcta, la hace imputable; y que la prefiguración del modelo sea ajena obliga a declarar el contraste con que se controló.</p>
+<script>
+  var EJEMPLO = [
+    {n:"Formular la pregunta y lo que espero encontrar", z:"pool", ej:"investigador"},
+    {n:"Delimitar el corpus y declarar qué quedó fuera", z:"pool", ej:"investigador"},
+    {n:"Describir cada imagen o fragmento", z:"pool", ej:"maquina"},
+    {n:"Codificación abierta", z:"pool", ej:"maquina"},
+    {n:"Agrupar códigos en categorías", z:"pool", ej:"ambos"},
+    {n:"Triangular entre fuentes y modelos", z:"pool", ej:"investigador"},
+    {n:"Elegir la hipótesis que persigo", z:"pool", ej:"investigador"},
+    {n:"Redactar el párrafo de hallazgos", z:"pool", ej:"maquina"},
+    {n:"Reescribir como aserciones propias", z:"pool", ej:"investigador"},
+    {n:"Devolver las categorías a los participantes", z:"pool", ej:"investigador"},
+    {n:"Defender ante pares", z:"pool", ej:"investigador"}
+  ];
+  var EJ = {maquina:"máquina", investigador:"investigador", ambos:"ambos"};
+  var fases = [];
+  var arrastrada = null;
+
+  function clonar(){ fases = EJEMPLO.map(function(f){ return {n:f.n, z:f.z, ej:f.ej}; }); }
+
+  function render(){
+    var zonas = document.querySelectorAll('.zona');
+    zonas.forEach(function(z){ z.querySelectorAll('.ficha').forEach(function(f){ f.remove(); }); });
+    fases.forEach(function(f, i){
+      var d = document.createElement('div'); d.className = "ficha"; d.draggable = true; d.dataset.i = i; d.dataset.ej = f.ej;
+      d.innerHTML = "<span>" + f.n + "</span>";
+      var ej = document.createElement('span'); ej.className = "ej"; ej.textContent = "ejecutó: ";
+      ["maquina","investigador","ambos"].forEach(function(o){
+        var b = document.createElement('button'); b.textContent = EJ[o]; b.setAttribute('aria-pressed', f.ej===o ? 'true' : 'false');
+        b.addEventListener('click', function(){ f.ej = o; render(); });
+        ej.appendChild(b);
+      });
+      d.appendChild(ej);
+      var mv = document.createElement('span'); mv.className = "mover";
+      [["pre","→ pre"],["con","→ con"],["ref","→ ref"],["pool","quitar"]].forEach(function(p){
+        if (p[0] === f.z) return;
+        var b = document.createElement('button'); b.textContent = p[1]; b.title = "Mover a " + p[0];
+        b.addEventListener('click', function(){ f.z = p[0]; render(); });
+        mv.appendChild(b);
+      });
+      d.appendChild(mv);
+      d.addEventListener('dragstart', function(e){ arrastrada = i; try { e.dataTransfer.setData('text/plain', String(i)); } catch(err) {} });
+      var zona = document.querySelector('.zona[data-z="' + f.z + '"]'); zona.appendChild(d);
+    });
+    leer();
+  }
+
+  document.querySelectorAll('.zona').forEach(function(z){
+    z.addEventListener('dragover', function(e){ e.preventDefault(); z.classList.add('over'); });
+    z.addEventListener('dragleave', function(){ z.classList.remove('over'); });
+    z.addEventListener('drop', function(e){
+      e.preventDefault(); z.classList.remove('over');
+      var i = arrastrada; if (i === null) { try { i = Number(e.dataTransfer.getData('text/plain')); } catch(err) { return; } }
+      if (fases[i]) { fases[i].z = z.dataset.z; arrastrada = null; render(); }
+    });
+  });
+
+  function leer(){
+    var out = document.getElementById('avisos'); out.innerHTML = "";
+    function add(cls, html){ var d = document.createElement('div'); d.className = "aviso " + cls; d.innerHTML = html; out.appendChild(d); }
+    var pre = fases.filter(function(f){ return f.z === "pre"; });
+    var con = fases.filter(function(f){ return f.z === "con"; });
+    var ref = fases.filter(function(f){ return f.z === "ref"; });
+    var pool = fases.filter(function(f){ return f.z === "pool"; });
+    document.getElementById('n1').textContent = pre.length;
+    document.getElementById('n2').textContent = con.length;
+    document.getElementById('n3').textContent = ref.length;
+    var corte12 = pre.length === 0 && con.length > 0;
+    var corte23 = ref.length === 0 && con.length > 0;
+    document.getElementById('c12').style.display = corte12 ? "" : "none"; document.getElementById('l12').style.opacity = corte12 ? .25 : 1;
+    document.getElementById('c23').style.display = corte23 ? "" : "none"; document.getElementById('l23').style.opacity = corte23 ? .25 : 1;
+    var cierra = pre.length > 0 && con.length > 0 && ref.length > 0;
+    document.getElementById('ret').style.opacity = cierra ? 1 : .15;
+    document.getElementById('retl').textContent = cierra ? "EL ARCO SE CIERRA" : "EL ARCO NO SE CIERRA";
+
+    if (pool.length) add("q", pool.length + " fase" + (pool.length>1?"s":"") + " sin ubicar.");
+    if (pre.length === 0) add("", "<b>Prefiguración vacía.</b> Nadie declaró desde dónde se mira: qué se sabía, qué se esperaba, desde qué pertenencia. Sin eso, lo que el modelo trajo de su corpus no se puede distinguir de lo que usted trajo.");
+    pre.forEach(function(f){ if (f.ej === "maquina") add("", "<b>" + f.n + "</b> está en prefiguración y la ejecutó la máquina. La prefiguración es precomprensión vivida, no material de entrada: el corpus de entrenamiento no es la Mímesis I de nadie. Reubique la fase o cambie el ejecutor."); });
+    var conMaq = con.filter(function(f){ return f.ej !== "investigador"; });
+    if (con.length && ref.length === 0) add("", "<b>Configuración sin refiguración.</b> Hay " + con.length + " fase" + (con.length>1?"s":"") + " de configuración y ninguna que devuelva lo configurado a un mundo y a alguien que responda. El arco se trunca donde se trunca el del modelo.");
+    if (conMaq.length) add("ok", conMaq.length + " fase" + (conMaq.length>1?"s":"") + " de configuración con máquina. No las invalida: las vuelve auditables. Cada una necesita registro, y su prefiguración ajena necesita un contraste declarado.");
+    ref.forEach(function(f){ if (f.ej === "maquina") add("", "<b>" + f.n + "</b> está en refiguración y la ejecutó la máquina. Refigurar es apropiarse y responder; un output que parece una interpretación no es refiguración. Cambie el ejecutor o reubique la fase en configuración."); });
+    ref.forEach(function(f){ if (f.ej === "ambos") add("q", "<b>" + f.n + "</b> en refiguración con ejecutor 'ambos'. Diga qué parte configuró la máquina y qué parte refiguró usted; en la refiguración no hay 'ambos'."); });
+    if (cierra && !ref.some(function(f){ return f.ej === "maquina"; }) && !pre.some(function(f){ return f.ej === "maquina"; })) add("ok", "El arco se cierra: hay prefiguración declarada, configuración auditable y refiguración con alguien que responde. Lo que falta decidir es el contraste que controla la prefiguración ajena en las fases con máquina.");
+  }
+
+  document.getElementById('agregar').addEventListener('click', function(){
+    var v = document.getElementById('nueva').value.trim(); if (!v) return;
+    fases.push({n:v, z:"pool", ej:"investigador"}); document.getElementById('nueva').value = ""; render();
+  });
+  document.getElementById('nueva').addEventListener('keydown', function(e){ if (e.key === "Enter") document.getElementById('agregar').click(); });
+  document.getElementById('reiniciar').addEventListener('click', function(){ clonar(); render(); });
+  clonar(); render();
+</script>
+</body>
+</html>

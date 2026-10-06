@@ -1,0 +1,126 @@
+# Semana 6. Primera lectura computacional
+
+## Pregunta de la semana
+
+Cuando un programa cuenta palabras y muestra dónde aparecen, ¿qué ha leído, y qué le queda por leer al investigador?
+
+## Por qué esta semana
+
+<p class="lede">El corpus está catalogado, limpio y segmentado. Por primera vez se le pregunta algo. Las preguntas de esta semana son las más antiguas de la lingüística de corpus y las más fáciles de programar: qué palabras aparecen y cuántas veces, en qué compañía aparece una palabra, qué palabras tienden a ir juntas, y cuánto pesa cada campo léxico en cada parte del corpus. Son instrumentos inductivos: generalizan sobre lo que hay y valen por sus tasas, como la inducción del curso 1. Lo que producen es una sugerencia sobre dónde mirar, no un hallazgo. El hallazgo aparece cuando el investigador vuelve al texto, lee las líneas que la máquina señaló y responde por lo que dice. Esta semana enseña los cuatro instrumentos y, en la misma sesión, el gesto de volver al texto. También se entrega el catálogo maestro con el cuaderno que lo regenera.</p>
+
+## Contenido de la sesión
+
+1. La lista de frecuencias es la primera vista del corpus y engaña con facilidad. Contar palabras exige antes decidir qué es una palabra (una secuencia de letras, con o sin tildes, con o sin mayúsculas) y qué se hace con las más frecuentes, que en cualquier lengua son artículos, preposiciones y conjunciones. La distribución sigue la regularidad que Zipf describió en 1949: pocas palabras muy frecuentes y una cola larguísima de palabras que aparecen una vez.<sup class="mark">a</sup> Quitar las palabras funcionales para ver las de contenido es una decisión útil y arbitraria, y la lista que se quita se escribe en el cuaderno, porque en algunos corpus una preposición es el dato.
+
+<aside class="glosa"><span class="mark">a</span> En un corpus de prensa colombiana de principios del siglo XX, las diez palabras más frecuentes son casi las mismas que en cualquier texto en español: de, la, el, que, y, en, a, los, se, del. Las que importan empiezan a aparecer hacia la posición cincuenta, y la mitad del vocabulario aparece una sola vez.</aside>
+
+2. La concordancia muestra una palabra en su compañía. Se elige una palabra nodo, se buscan todas sus apariciones y se muestra cada una con las palabras que la rodean a izquierda y derecha, alineadas en columna. Sinclair (1991) la convirtió en el instrumento central de la lingüística de corpus porque obliga a leer: una lista de frecuencias dice que "orden" aparece 84 veces; la concordancia muestra que en 60 de ellas va precedida de "público" y en 20 de "del día", y que son dos palabras distintas que el conteo fundió. La concordancia es el primer regreso al texto, y el curso lo programa con expresiones regulares para que devuelva, con cada línea, el identificador de la pieza y la posición.
+
+<iframe class="app" src="apps/concordancias.html" title="Explorador de concordancias: palabra nodo, ventana, frecuencias y colocaciones sobre un corpus de documentos públicos" loading="lazy"></iframe>
+
+3. Las colocaciones son las palabras que acompañan al nodo más de lo que el azar explicaría. Firth (1957) lo resumió en una frase que la disciplina repite: una palabra se conoce por la compañía que mantiene. El procedimiento es contar, para cada aparición del nodo, las palabras en una ventana de unas pocas posiciones, y comparar cuántas veces aparece cada una en la ventana con cuántas aparece en el corpus entero.<sup class="mark">b</sup> La lista resultante sugiere con qué se asocia el nodo en este corpus. Es una sugerencia inductiva: vale por las tasas, y una tasa alta con tres apariciones no vale nada.
+
+<aside class="glosa"><span class="mark">b</span> Hay medidas estadísticas para esa comparación, como la información mutua de Church y Hanks (1990) o la razón de verosimilitud. El curso usa el conteo simple y la razón entre frecuencia en ventana y frecuencia total, que se entienden sin fórmula, y remite a Manning y Schütze (1999) para las demás.</aside>
+
+4. Un dominio léxico es una lista de palabras que el investigador agrupa bajo un nombre porque pertenecen a un mismo campo: trabajo, orden, familia, violencia, propiedad. Contar cuánto pesa cada dominio en cada pieza, y comparar por fuente, por año o por escena, es la operación que más se acerca a una lectura temática sin serlo. La lista la escribe el investigador, a partir de la concordancia y de su conocimiento del campo; el modelo puede proponer palabras y el estudiante las acepta o rechaza una a una. Lo que se compara son proporciones, nunca conteos absolutos, porque las piezas tienen tamaños distintos.
+
+5. Todo esto es inductivo, y conviene decirlo con el vocabulario del curso 1. Una frecuencia es una generalización sobre el corpus: dice cómo se distribuye algo en lo que hay. Vale a largo plazo por sus tasas, se corrige con más datos, y no dice nada sobre un documento en particular. Lo que una colocación sugiere, "en este corpus orden va con público", es una hipótesis sobre el sentido que alguien tiene que perseguir leyendo. Moretti (2015) llamó lectura distante a la decisión de sustituir la lectura de los textos por el análisis de sus patrones; el curso toma de él la ambición y rechaza la sustitución: la distancia sirve para saber adónde acercarse.<sup class="mark">c</sup>
+
+<aside class="glosa"><span class="mark">c</span> Rockwell y Sinclair (2016) proponen la imagen contraria a la de Moretti: las herramientas como juguetes hermenéuticos, que uno manipula para provocar lecturas, no para reemplazarlas. La concordancia es el ejemplo perfecto; su programa Voyant Tools la pone en la web sin instalar nada.</aside>
+
+<figure class="wide">
+<svg viewBox="0 0 680 270" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Un flujo de izquierda a derecha: el corpus pasa por el instrumento (frecuencias, concordancia, colocaciones, dominios) y produce un patrón; el patrón cruza una frontera marcada hacia el investigador, que vuelve al texto, lee las líneas señaladas y formula una aserción por la que responde. Bajo el patrón dice 'sugiere'; bajo la aserción dice 'afirma'.">
+<style>.w6k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;fill:var(--muted)} .w6t{font-family:var(--text);font-size:12px;fill:var(--ink)} .w6s{font-family:var(--text);font-size:11px;fill:var(--muted)} .w6f{fill:var(--surface);stroke:var(--rule);stroke-width:1} .w6a{fill:none;stroke:var(--muted);stroke-width:1.3} .w6fr{fill:none;stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:6 5} .w6r{font-family:var(--mono);font-size:10px;letter-spacing:.06em;fill:var(--c-fil)} .w6i{font-family:var(--text);font-style:italic;font-size:12px;fill:var(--c-inv)} .w6b{fill:var(--c-app)}</style>
+<rect x="16" y="60" width="110" height="60" rx="3" class="w6f"/><text x="24" y="78" class="w6k">CORPUS</text><text x="24" y="98" class="w6t">tabla de unidades</text><text x="24" y="112" class="w6s">limpio, segmentado</text>
+<path class="w6a" d="M126 90 L160 90"/><path class="w6a" d="M154 85 L161 90 L154 95"/>
+<rect x="162" y="40" width="150" height="100" rx="3" class="w6f"/><text x="170" y="58" class="w6k">INSTRUMENTO</text>
+<text x="170" y="78" class="w6t">frecuencias</text><text x="170" y="94" class="w6t">concordancia</text><text x="170" y="110" class="w6t">colocaciones</text><text x="170" y="126" class="w6t">dominios léxicos</text>
+<path class="w6a" d="M312 90 L346 90"/><path class="w6a" d="M340 85 L347 90 L340 95"/>
+<rect x="348" y="60" width="120" height="60" rx="3" class="w6f"/><text x="356" y="78" class="w6k">PATRÓN</text>
+<rect x="356" y="86" width="60" height="6" class="w6b"/><rect x="356" y="96" width="40" height="6" class="w6b"/><rect x="356" y="106" width="22" height="6" class="w6b"/>
+<text x="424" y="100" class="w6s">tasas</text>
+<text x="408" y="140" text-anchor="middle" class="w6i">sugiere</text>
+<path class="w6fr" d="M490 20 L490 250"/><text x="498" y="32" class="w6r">FRONTERA</text>
+<path class="w6a" d="M468 90 L540 90"/><path class="w6a" d="M534 85 L541 90 L534 95"/>
+<rect x="542" y="40" width="124" height="100" rx="3" class="w6f"/><text x="550" y="58" class="w6k">INVESTIGADOR</text>
+<text x="550" y="78" class="w6t">vuelve al texto</text><text x="550" y="94" class="w6t">lee las líneas</text><text x="550" y="110" class="w6t">señaladas</text><text x="550" y="126" class="w6s">responde</text>
+<text x="604" y="162" text-anchor="middle" class="w6i">afirma</text>
+<path class="w6a" d="M604 142 L604 184"/><path class="w6a" d="M599 178 L604 185 L609 178"/>
+<rect x="542" y="188" width="124" height="44" rx="3" class="w6f"/><text x="550" y="206" class="w6k">ASERCIÓN</text><text x="550" y="222" class="w6s">con cita e identificador</text>
+<text x="16" y="190" class="w6s">A la izquierda de la frontera todo vale por sus tasas: generaliza sobre lo que hay.</text>
+<text x="16" y="208" class="w6s">A la derecha alguien lee y se compromete con lo que dice.</text>
+<text x="16" y="240" class="w6s">La flecha de vuelta existe: la aserción manda a construir otro instrumento.</text>
+<path class="w6a" d="M542 220 C 300 260 240 200 237 142"/><path class="w6a" d="M232 149 L237 141 L243 148"/>
+</svg>
+<figcaption><b>Figura 6.</b> La primera lectura computacional como instrumento inductivo. Lo que hay que ver es que el patrón sugiere y la aserción afirma, y que entre los dos hay una frontera que cruza el investigador leyendo.</figcaption>
+</figure>
+
+6. Comparar es la operación que da sentido a los conteos. Una frecuencia aislada no dice nada; una frecuencia relativa por mil palabras, comparada entre dos periódicos, entre dos décadas o entre dos tipos de norma, empieza a decir algo. El cuaderno de la semana agrupa la tabla de unidades por las columnas del catálogo (fuente, año, escena) y calcula las proporciones de cada dominio en cada grupo. El resultado es una tabla pequeña que cabe en el informe, con la celda que la produjo, y que un lector puede regenerar.
+
+7. La entrega de la semana es el catálogo maestro con el cuaderno reproducible. Reproducible quiere decir, en esta entrega, algo verificable: el docente borra `catalogo.csv`, ejecuta el cuaderno de arriba abajo sobre la carpeta `crudo` del estudiante, y obtiene el mismo archivo con los mismos hash. Si el cuaderno necesita que alguien haga algo a mano en el medio, ese algo tiene que estar en una tabla con fecha que el cuaderno lee. La rúbrica está en `evaluacion.md`.
+
+## IA y exigencia
+
+El modelo se usa para dos cosas esta semana. Proponer palabras para cada dominio léxico, a partir del nombre del dominio y de diez líneas de concordancia; el estudiante decide palabra por palabra y anota las que rechazó. Y proponer una interpretación de una lista de colocaciones; el estudiante la lee como una hipótesis, va a las líneas, y escribe si el texto la sostiene. Lo que debe poder defender sin la máquina es la diferencia entre lo que el instrumento sugirió y lo que él afirma en el informe, con las líneas de concordancia que lo respaldan.
+
+## Lecturas
+
+**Central**
+
+- Sinclair, J. (1991). *Corpus, Concordance, Collocation*. Oxford: Oxford University Press. Caps. 1 y 8.
+- Moretti, F. (2015). *Lectura distante*. Buenos Aires: Fondo de Cultura Económica. Cap. 1, "Conjeturas sobre la literatura mundial".
+
+**Complementaria**
+
+- Rockwell, G. y Sinclair, S. (2016). *Hermeneutica: Computer-Assisted Interpretation in the Humanities*. Cambridge, MA: MIT Press. Caps. 2 y 3. Voyant Tools: https://voyant-tools.org/
+- Firth, J. R. (1957). "A Synopsis of Linguistic Theory, 1930-1955". En *Studies in Linguistic Analysis*. Oxford: Blackwell, 1-32.
+- Church, K. W. y Hanks, P. (1990). "Word Association Norms, Mutual Information, and Lexicography". *Computational Linguistics* 16(1), 22-29. https://aclanthology.org/J90-1003/
+- Manning, C. D. y Schütze, H. (1999). *Foundations of Statistical Natural Language Processing*. Cambridge, MA: MIT Press. Cap. 5, "Collocations".
+- Jockers, M. L. (2013). *Macroanalysis: Digital Methods and Literary History*. Urbana: University of Illinois Press. Caps. 1 a 3.
+- Underwood, T. (2019). *Distant Horizons: Digital Evidence and Literary Change*. Chicago: University of Chicago Press. Introducción.
+
+## Guía de lectura
+
+- Sinclair muestra que el significado de una palabra en un corpus está en sus patrones de compañía, y que esos patrones solo se ven en la concordancia, no en la frecuencia. *Elija una palabra de su corpus que crea conocer bien. ¿Qué espera encontrar en su concordancia, y qué haría si no lo encuentra?*
+- Moretti propone, con provocación deliberada, dejar de leer para poder ver patrones en cientos de obras. Su argumento es sobre escala. *¿A qué escala de su corpus la lectura directa deja de ser posible, y qué pierde exactamente en ese punto?*
+- Rockwell y Sinclair responden a Moretti sin nombrarlo: la herramienta no reemplaza la lectura, la provoca. *¿La concordancia que hizo hoy le provocó una lectura que no habría hecho, o confirmó la que ya tenía?*
+- Church y Hanks introducen una medida estadística de asociación para ayudar a lexicógrafos. Note el papel que le dan al lexicógrafo después de la medida. *¿Quién decide en su proyecto si una colocación es un dato o una coincidencia?*
+
+## Taller de la segunda hora
+
+Primera lectura del corpus propio, con el cuaderno. Guía completa en `practicas/practica-06-primera-lectura.md`; bloques en `practicas/cuaderno-apoyo.md`, sección "Semana 6".
+
+1. Lista de frecuencias de la tabla de unidades, con y sin palabras funcionales; la lista de palabras funcionales que se quitó, escrita.
+2. Concordancia de tres palabras nodo elegidas desde el protocolo, con identificador y posición en cada línea; lectura de veinte líneas de cada una.
+3. Colocaciones de las tres palabras en ventana de cuatro posiciones; descartar las que aparecen menos de cinco veces.
+4. Dos dominios léxicos escritos a mano con ayuda del modelo; proporción por fuente y por año.
+5. Una tabla comparativa y, debajo, un párrafo que diga qué sugiere y qué líneas se leyeron para decirlo.
+
+| Instrumento | Qué produce | Qué sugiere | Qué líneas se leyeron |
+|---|---|---|---|
+| Frecuencias | | | |
+| Concordancia de … | | | |
+| Colocaciones de … | | | |
+| Dominio … por fuente | | | |
+
+## Guion de la sesión
+
+| Momento | Docente | Estudiante | Material |
+|---|---|---|---|
+| 0 a 10 min | Muestra la lista de frecuencias del caso demostrativo y pregunta qué dice | Anota qué cree que dice y qué no | Lista de frecuencias del caso |
+| 10 a 30 min | Concordancia en vivo con la mini app: una palabra, tres ventanas; lee líneas en voz alta | Prueba dos palabras y lee diez líneas | apps/concordancias.html |
+| 30 a 45 min | Colocaciones y su carácter inductivo; la figura 6 | Escribe una hipótesis a partir de una lista de colocaciones | Figura 6 |
+| 45 a 60 min | Dominios léxicos: construye uno con el grupo | Propone palabras y vota cuáles entran | Pizarra |
+| 60 a 70 min | Pausa | | |
+| 70 a 110 min | Acompaña la primera lectura propia | Ejecuta los cinco pasos del taller | practica-06 |
+| 110 a 120 min | Recibe el catálogo y el cuaderno; ejecuta uno en vivo | Verifica que el suyo regenera el catálogo | |
+
+Notas para el docente. Lo que suele fallar: el estudiante toma la lista de frecuencias como resultado y la pega en el informe sin leer una línea; la pregunta "¿en cuántas de esas 84 apariciones la palabra significa lo que usted cree?" suele corregirlo. El segundo fallo son colocaciones con dos o tres apariciones presentadas como patrón. El tercero es el cuaderno del catálogo que no corre de arriba abajo porque depende de una celda ejecutada en otro orden; hay que reservar diez minutos para ejecutar uno en vivo.
+
+## Entrega
+
+Catálogo maestro y cuaderno reproducible. Se evalúa que cada pieza tenga procedencia, derechos y criterio; que las cinco reglas de integridad pasen; que el cuaderno regenere el catálogo desde `crudo` sin intervención; y que las decisiones a mano estén en una tabla con fecha que el cuaderno lee. Rúbrica en `evaluacion.md`.
+
+## Para la próxima semana
+
+Leer Grimmer y Stewart (2013) y Ziems y coautores (2024), al menos las secciones sobre validación. Elegir del corpus propio una muestra de treinta unidades que el estudiante pueda leer con calma: la semana 7 las lee un modelo y el estudiante lo audita.

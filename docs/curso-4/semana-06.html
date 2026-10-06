@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Curso 4 · Semana 6 · Carlos Isaac Zainea</title>
+    <meta name="description" content="Si el investigador y el modelo ponen el mismo código en el 85 % de los fragmentos, ¿qué se ha demostrado, y qué se aprende del 15 % restante?" />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <link rel="canonical" href="https://izainea.github.io/tunjos-para-la-ia/curso-4/semana-06.html" />
+    <meta property="og:title" content="Curso 4 · Semana 6" />
+    <meta property="og:description" content="Si el investigador y el modelo ponen el mismo código en el 85 % de los fragmentos, ¿qué se ha demostrado, y qué se aprende del 15 % restante?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://izainea.github.io/tunjos-para-la-ia/curso-4/semana-06.html" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/svg+xml" href="https://izainea.github.io/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      document.documentElement.dataset.theme = t || 'dark';
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="https://izainea.github.io/" aria-label="Inicio">
+            <span class="id-row">
+              <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+              <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+                <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+                <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+                <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+              </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
+        </div>
+        <nav aria-label="Secciones">
+          <a href="../index.html">Programa</a>
+          <a href="../docente.html">Docente</a>
+          <a href="index.html">Curso 4</a>
+          <a href="semana-01.html" class="sub">Semana 1</a>
+          <a href="semana-02.html" class="sub">Semana 2</a>
+          <a href="semana-03.html" class="sub">Semana 3</a>
+          <a href="semana-04.html" class="sub">Semana 4</a>
+          <a href="semana-05.html" class="sub">Semana 5</a>
+          <a href="semana-06.html" class="sub is-active">Semana 6</a>
+          <a href="semana-07.html" class="sub">Semana 7</a>
+          <a href="semana-08.html" class="sub">Semana 8</a>
+          <a href="evaluacion.html">Evaluación</a>
+          <a href="bibliografia.html">Bibliografía</a>
+          <a href="plantillas.html">Plantillas</a>
+          <a href="practicas.html">Prácticas</a>
+          <a href="apps.html">Mini apps</a>
+          <span class="nav-sep">Otros cursos</span>
+          <a class="sub" href="../curso-1/index.html">Curso 1</a>
+          <a class="sub" href="../curso-2/index.html">Curso 2</a>
+          <a class="sub" href="../curso-3/index.html">Curso 3</a>
+          <a class="sub" href="../curso-5/index.html">Curso 5</a>
+          <a class="sub" href="../curso-6/index.html">Curso 6</a>
+          <a class="sub" href="../curso-7/index.html">Curso 7</a>
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://izainea.github.io/" target="_blank" rel="noopener">Sitio</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+      <main>
+        <div class="post-head">
+          <div class="meta"><span>Curso 4 · Oficio · 2 créditos · 8 semanas · híbrido</span></div>
+          <h1>Semana 6. Acuerdo no es validez</h1>
+          <p class="desc">Si el investigador y el modelo ponen el mismo código en el 85 % de los fragmentos, ¿qué se ha demostrado, y qué se aprende del 15 % restante?</p>
+        </div>
+<article class="prose">
+<h2>Pregunta de la semana</h2>
+<p>Si el investigador y el modelo ponen el mismo código en el 85 % de los fragmentos, ¿qué se ha demostrado, y qué se aprende del 15 % restante?</p>
+<h2>Por qué esta semana</h2>
+<p class="lede">La forma dominante de evaluar la codificación con modelos es medir cuánto coinciden con codificadores humanos. Un acuerdo alto se presenta como prueba de que el modelo "codifica bien", y a veces como licencia para delegarle el resto del corpus. Esta semana desmonta esa inferencia sin desechar la medida. El acuerdo entre codificadores mide consistencia: que dos aplicaciones del mismo libro de códigos dan lo mismo. No mide validez: que el código esté bien puesto. Dos codificadores pueden coincidir en un error, y pueden discrepar porque uno vio algo que el libro de códigos aún no sabe nombrar. McDonald, Schoenebeck y Forte (2019) lo argumentan para la investigación cualitativa en general; el curso lo lleva al caso en que uno de los dos codificadores es un modelo.</p>
+
+<p>La semana enseña a calcular las dos medidas de uso común, kappa de Cohen y alfa de Krippendorff, a interpretarlas como lo que son, y sobre todo a leer los desacuerdos uno a uno como datos sobre el libro de códigos. El segundo producto, la matriz de acuerdo con análisis de desacuerdos, se entrega hoy.</p>
+<h2>Contenido de la sesión</h2>
+<ol>
+<li>
+<p>La fiabilidad entre codificadores nació en el análisis de contenido para responder a una pregunta precisa: si las instrucciones de codificación son lo bastante claras para que personas distintas las apliquen igual. Krippendorff (2004) distingue estabilidad, reproducibilidad y exactitud, y sostiene que la reproducibilidad es la que importa: codificadores que trabajan por separado, con las mismas instrucciones, sobre las mismas unidades. Si no coinciden, las instrucciones son ambiguas o las categorías se solapan. El remedio es corregir el libro de códigos, no a los codificadores. Esa lectura, en la que el desacuerdo es información sobre el instrumento, es la que el curso adopta.</p>
+</li>
+<li>
+<p>Las medidas corrigen el acuerdo observado por el acuerdo esperado por azar. El porcentaje de acuerdo simple engaña cuando una categoría domina: dos codificadores que pusieran "otro" en todo coincidirían siempre. Kappa de Cohen (1960) calcula el acuerdo esperado a partir de las distribuciones marginales de cada codificador y lo descuenta: kappa igual a cero significa acuerdo al nivel del azar, uno significa acuerdo perfecto.<sup class="mark">a</sup> Alfa de Krippendorff generaliza la idea a cualquier número de codificadores, a datos faltantes y a escalas no nominales, y por eso Hayes y Krippendorff (2007) lo proponen como medida estándar. Para dos codificadores y datos nominales completos, los dos valores suelen ser cercanos. El cuaderno de apoyo calcula ambos.</p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">a</span> Los umbrales que circulan (0,80 como fiable, 0,67 como provisional) vienen de Krippendorff, que los propone para alfa y advierte que dependen del uso que se dará a los datos. No hay un umbral que convierta un acuerdo en validez: el umbral dice cuándo la consistencia es suficiente para seguir, no cuándo los códigos están bien puestos.</aside>
+
+<ol start="3">
+<li>
+<p>McDonald, Schoenebeck y Forte (2019) revisaron cómo la comunidad de interacción humano-computador usa estas medidas y encontraron que a menudo se reportan como si fueran una prueba de calidad del análisis. Su argumento es que la fiabilidad entre codificadores es apropiada cuando el libro de códigos está fijo y los codificadores lo aplican, e inapropiada o irrelevante cuando los códigos se construyen durante el análisis, como en la teoría fundamentada o en el análisis temático reflexivo. En el segundo caso, el desacuerdo no es un defecto que haya que reducir sino el lugar donde el análisis avanza. Braun y Clarke (2019) dicen lo mismo desde su tradición: la fiabilidad presupone que hay una codificación correcta esperando en los datos, y el análisis reflexivo no lo presupone.</p>
+</li>
+<li>
+<p>Cuando uno de los codificadores es un modelo, el argumento cambia de dos maneras. La primera es que el acuerdo con el modelo tiene un valor instrumental real: si el investigador y el modelo coinciden en el 90 % de los fragmentos con un libro de códigos fijo, el modelo puede aplicar ese libro al resto del corpus bajo verificación por muestreo, y eso es lo que hace posible codificar corpus grandes. Es un uso legítimo del acuerdo como consistencia. La segunda es que el acuerdo con el modelo puede ser alto por una razón que no tiene nada que ver con el corpus: el investigador y el modelo comparten la literatura, y coinciden en poner "barreras de acceso" donde el fragmento habla de esperar cinco horas. Gilardi, Alizadeh y Kubli (2023) encontraron que un modelo superaba a anotadores humanos en varias tareas de clasificación; ese resultado mide consistencia con un estándar, y lo que el estándar valía es otra pregunta.<sup class="mark">b</sup></p>
+</li>
+</ol>
+<aside class="glosa"><span class="mark">b</span> La justificación metodológica de la tesis doctoral del docente (Zainea, 2026) dice que cuando las categorías emergen del propio modelo no hay contra qué medir el acuerdo, porque el modelo es a la vez instrumento y estándar. Por eso la matriz de esta semana se hace con el libro de códigos del estudiante, fijado en la semana 4, y no con códigos que el modelo proponga sobre la marcha.</aside>
+
+<ol start="5">
+<li>
+<p>Los desacuerdos, leídos uno a uno, se reparten en unos pocos tipos que la matriz de la semana obliga a clasificar. El fragmento es ambiguo y el libro no dice qué hacer: hace falta una regla de decisión. La definición de un código es estrecha y el fragmento muestra un caso que debería incluir: hace falta ampliarla. Dos códigos se solapan: hace falta fusionarlos o distinguirlos con un criterio. El modelo aplicó la palabra y no el sentido: hace falta un ejemplo negativo en la definición. El modelo forzó una categoría de fuera: hace falta anotarlo como señal de la semana 4. El investigador se equivocó: ocurre, y el registro lo muestra. Cada tipo produce una decisión sobre el libro de códigos, y esa es la razón por la que el análisis de desacuerdos vale más que la cifra.</p>
+</li>
+<li>
+<p>El acuerdo entre el investigador y el modelo no es triangulación en el sentido de Denzin (1970), y conviene decirlo en la sesión. La triangulación entre investigadores exige observadores independientes con trasfondos propios. El modelo tiene un trasfondo, su entrenamiento, que se solapa de manera desconocida con el del investigador. Lo que sí es triangulación es contrastar la codificación del investigador y del modelo con la de un tercero que conozca el campo, o contrastar dos familias de modelos entre sí y con el investigador. El curso no exige esa triangulación completa, pero exige que la matriz diga qué es y qué no es.</p>
+</li>
+</ol>
+<p>La distinción puede resumirse en una tabla de contraste que conviene tener a la vista durante la práctica.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Acuerdo entre codificadores</th>
+<th>Validez del código</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mide si dos aplicaciones del libro dan lo mismo</td>
+<td>Mide si el código recoge lo que el fragmento sostiene</td>
+</tr>
+<tr>
+<td>Se calcula sobre el registro: kappa, alfa</td>
+<td>Se juzga con el criterio de la tradición declarada</td>
+</tr>
+<tr>
+<td>Alto cuando el libro es claro o cuando ambos comparten el mismo sesgo</td>
+<td>No depende de cuántos coincidan</td>
+</tr>
+<tr>
+<td>Un desacuerdo lo baja</td>
+<td>Un desacuerdo puede ser el dato que la mejora</td>
+</tr>
+<tr>
+<td><em>Una máquina lo verifica.</em></td>
+<td><em>Alguien responde por ella.</em></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="7">
+<li>Queda la frase que la semana quiere dejar fija. Un acuerdo alto dice que el libro de códigos se puede aplicar con consistencia, incluida la consistencia de una máquina; no dice que los códigos estén bien puestos, y menos aún que el libro diga algo verdadero sobre el corpus. Un acuerdo bajo dice que el libro tiene problemas o que el material resiste al libro, y las dos cosas se averiguan leyendo los desacuerdos. En los términos del programa: el acuerdo es un criterio de registro, verificable con el rastro; la validez de cada código recae, en última instancia, sobre quien lo sostiene.</li>
+</ol>
+<figure class="wide">
+  <svg viewBox="0 0 680 300" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Cuadrícula de dos por dos. Eje horizontal: los codificadores coinciden o discrepan. Eje vertical: el código está bien puesto o mal puesto. Cuadrante coinciden y bien: consistencia y validez, lo que se quiere. Cuadrante coinciden y mal: consistencia sin validez, el caso invisible para kappa, por ejemplo ambos ponen 'barreras de acceso' por compartir la literatura. Cuadrante discrepan y bien: uno de los dos vio algo que el libro no nombra; el desacuerdo es un dato. Cuadrante discrepan y mal: el libro es ambiguo; hay que corregirlo. Kappa solo distingue las columnas, no las filas.">
+    <style>.t{font-family:var(--text);font-size:12px;fill:var(--ink)} .s{font-family:var(--text);font-size:10.5px;fill:var(--muted)} .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--muted)} .q{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .qa{fill:var(--surface);stroke:var(--c-inv);stroke-width:1.4} .qn{fill:var(--surface);stroke:var(--c-fil);stroke-width:1.4} .kf{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--c-fil)} .ax{stroke:var(--muted);stroke-width:1.2;fill:none}</style>
+    <text x="250" y="16" text-anchor="middle" class="k">COINCIDEN</text>
+    <text x="520" y="16" text-anchor="middle" class="k">DISCREPAN</text>
+    <text x="14" y="90" class="k" transform="rotate(-90 14 90)">BIEN PUESTO</text>
+    <text x="14" y="230" class="k" transform="rotate(-90 14 230)">MAL PUESTO</text>
+    <rect x="120" y="26" width="260" height="110" rx="3" class="qa"/>
+    <text x="132" y="48" class="t">consistencia y validez</text>
+    <text x="132" y="66" class="s">lo que se quiere, y lo que kappa</text>
+    <text x="132" y="80" class="s">no puede distinguir del cuadrante de abajo</text>
+    <rect x="390" y="26" width="260" height="110" rx="3" class="q"/>
+    <text x="402" y="48" class="t">uno de los dos vio algo</text>
+    <text x="402" y="66" class="s">que el libro aún no nombra:</text>
+    <text x="402" y="80" class="s">el desacuerdo es un dato sobre el libro</text>
+    <text x="402" y="100" class="s">ampliar definición · añadir código · nueva regla</text>
+    <rect x="120" y="146" width="260" height="110" rx="3" class="qn"/>
+    <text x="132" y="168" class="t">consistencia sin validez</text>
+    <text x="132" y="186" class="s">ambos ponen "barreras de acceso"</text>
+    <text x="132" y="200" class="s">porque comparten la literatura, no el corpus</text>
+    <text x="132" y="220" class="kf">INVISIBLE PARA KAPPA</text>
+    <rect x="390" y="146" width="260" height="110" rx="3" class="q"/>
+    <text x="402" y="168" class="t">el libro es ambiguo</text>
+    <text x="402" y="186" class="s">o el material resiste al libro:</text>
+    <text x="402" y="200" class="s">corregir el instrumento, no al codificador</text>
+    <path class="ax" d="M120 142 L650 142" stroke-dasharray="4 4"/>
+    <text x="120" y="282" class="s">Kappa y alfa distinguen las columnas. Las filas solo se distinguen leyendo cada fragmento con el criterio de la tradición declarada.</text>
+  </svg>
+  <figcaption><b>Figura 6.</b> Acuerdo frente a validez. Lo que hay que ver: las medidas de acuerdo separan las columnas; la validez está en las filas, y el cuadrante inferior izquierdo es el que un acuerdo alto con el modelo oculta.</figcaption>
+</figure>
+
+<h2>IA y exigencia</h2>
+<p>Esta semana se le pide al modelo que aplique el libro de códigos del estudiante, fijado en la semana 4, a treinta fragmentos, con una sola instrucción y sin proponer códigos nuevos; el estudiante codifica los mismos treinta por separado y antes de ver la salida del modelo. Luego se le pide al modelo que explique, para cada desacuerdo, por qué eligió su código. El estudiante debe poder, sin el modelo, calcular o leer kappa y alfa, decir qué miden y qué no, clasificar cada desacuerdo en un tipo y derivar de él una decisión sobre el libro, y explicar por qué un acuerdo del 90 % no autoriza a decir que el libro es válido.</p>
+<h2>Lecturas</h2>
+<p><strong>Central</strong></p>
+<ul>
+<li>McDonald, N., Schoenebeck, S. y Forte, A. (2019). "Reliability and Inter-rater Reliability in Qualitative Research: Norms and Guidelines for CSCW and HCI Practice". <em>Proceedings of the ACM on Human-Computer Interaction</em> 3(CSCW), art. 72. <a href="https://doi.org/10.1145/3359174">https://doi.org/10.1145/3359174</a></li>
+<li>Krippendorff, K. (2004). "Reliability in Content Analysis: Some Common Misconceptions and Recommendations". <em>Human Communication Research</em> 30(3), 411-433. <a href="https://doi.org/10.1111/j.1468-2958.2004.tb00738.x">https://doi.org/10.1111/j.1468-2958.2004.tb00738.x</a></li>
+</ul>
+<p><strong>Complementaria</strong></p>
+<ul>
+<li>Cohen, J. (1960). "A Coefficient of Agreement for Nominal Scales". <em>Educational and Psychological Measurement</em> 20(1), 37-46. <a href="https://doi.org/10.1177/001316446002000104">https://doi.org/10.1177/001316446002000104</a></li>
+<li>Hayes, A. F. y Krippendorff, K. (2007). "Answering the Call for a Standard Reliability Measure for Coding Data". <em>Communication Methods and Measures</em> 1(1), 77-89. <a href="https://doi.org/10.1080/19312450709336664">https://doi.org/10.1080/19312450709336664</a></li>
+<li>Artstein, R. y Poesio, M. (2008). "Inter-Coder Agreement for Computational Linguistics". <em>Computational Linguistics</em> 34(4), 555-596. <a href="https://aclanthology.org/J08-4004/">https://aclanthology.org/J08-4004/</a></li>
+<li>Gilardi, F., Alizadeh, M. y Kubli, M. (2023). "ChatGPT outperforms crowd workers for text-annotation tasks". <em>Proceedings of the National Academy of Sciences</em> 120(30), e2305016120. <a href="https://doi.org/10.1073/pnas.2305016120">https://doi.org/10.1073/pnas.2305016120</a></li>
+<li>Braun, V. y Clarke, V. (2019). "Reflecting on reflexive thematic analysis". <em>Qualitative Research in Sport, Exercise and Health</em> 11(4), 589-597. <a href="https://doi.org/10.1080/2159676X.2019.1628806">https://doi.org/10.1080/2159676X.2019.1628806</a></li>
+<li>Krippendorff, K. (2018). <em>Content Analysis</em>. 4.ª ed. Thousand Oaks: Sage. Capítulo sobre fiabilidad.</li>
+</ul>
+<h2>Guía de lectura</h2>
+<ul>
+<li>McDonald, Schoenebeck y Forte distinguen situaciones en que la fiabilidad entre codificadores es apropiada de situaciones en que no lo es, y proponen que los autores declaren cuál es la suya. <em>¿En cuál está su proyecto, según la tradición que declaró en la semana 1? ¿Cambia la respuesta por el hecho de que uno de los codificadores sea un modelo?</em></li>
+<li>Krippendorff enumera errores comunes: usar el porcentaje de acuerdo, usar medidas que no corrigen por azar, calcular sobre unidades no independientes. <em>¿Cuál de esos errores es más probable al medir acuerdo con un modelo, dado que el modelo ha visto en su entrenamiento textos parecidos a los que codifica?</em></li>
+<li>Gilardi y colaboradores comparan al modelo con trabajadores de plataformas de anotación y con anotadores entrenados. <em>¿Contra qué estándar se mide "superar"? ¿Qué sentido de validación, de los tres del curso, está en juego?</em></li>
+<li>Braun y Clarke sostienen que el consenso entre codificadores no es un criterio de calidad del análisis reflexivo. <em>Si es así, ¿para qué sirve la matriz de esta semana en un proyecto de análisis temático reflexivo? Hay una respuesta, y no es "para nada".</em></li>
+</ul>
+<h2>Taller de la segunda hora</h2>
+<p>Guía completa en <code>practicas/practica-06-matriz-de-acuerdo.md</code>. En resumen: el estudiante trae sus treinta fragmentos codificados a mano con el libro fijo; en la sesión obtiene la codificación del modelo con la misma instrucción, calcula el acuerdo con el cuaderno de apoyo o con la mini app de la semana 3 adaptada, y clasifica cada desacuerdo.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fragmento</th>
+<th>Mi código</th>
+<th>Código del modelo</th>
+<th>Tipo de desacuerdo</th>
+<th>Explicación del modelo (literal)</th>
+<th>Decisión sobre el libro</th>
+<th>Criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Al final, en una frase, el estudiante escribe qué mide el acuerdo obtenido y qué no mide, con el valor de kappa y de alfa.</p>
+<h2>Guion de la sesión</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué hace el docente</th>
+<th>Qué hace el estudiante</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 a 15 min</td>
+<td>Calcula en el tablero el acuerdo simple y kappa de un caso de seis fragmentos, con una categoría dominante, para mostrar el descuento por azar</td>
+<td>Sigue el cálculo y repite con sus marginales</td>
+<td>Tablero, cuaderno</td>
+</tr>
+<tr>
+<td>15 a 40 min</td>
+<td>Expone McDonald et al., Krippendorff y la figura 6; presenta los tipos de desacuerdo</td>
+<td>Ubica su proyecto en la clasificación de McDonald</td>
+<td>Figura 6</td>
+</tr>
+<tr>
+<td>40 a 100 min</td>
+<td>Práctica 6: obtención de la codificación del modelo, cálculo, lectura de desacuerdos mesa por mesa</td>
+<td>Calcula, clasifica, decide sobre el libro</td>
+<td>Práctica 6, cuaderno, plantilla de matriz</td>
+</tr>
+<tr>
+<td>100 a 115 min</td>
+<td>Pone en común dos desacuerdos del tipo "consistencia sin validez" encontrados en el grupo</td>
+<td>Revisa si tiene alguno</td>
+<td>Matrices</td>
+</tr>
+<tr>
+<td>115 a 120 min</td>
+<td>Recibe el producto 2 y anuncia la saturación de la semana 7</td>
+<td>Entrega</td>
+<td>Plantilla de matriz</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas para el docente. Suele fallar que el estudiante ve la salida del modelo antes de codificar a mano y luego la matriz mide memoria, no acuerdo; verificar el orden al inicio. Suele fallar que el modelo, aunque se le prohíba, propone un código nuevo para algún fragmento; se registra como categoría aparte en el cálculo y como señal de forzamiento en el análisis. Y suele ocurrir que un estudiante con kappa alto concluye que puede delegar el resto del corpus: la respuesta del curso es que puede, bajo verificación por muestreo y con el registro, y que lo que no puede delegar es la decisión sobre cada desacuerdo que el muestreo encuentre.</p>
+<h2>Entrega</h2>
+<p>Matriz de acuerdo y análisis de desacuerdos, con la plantilla <code>plantillas/matriz-de-acuerdo.md</code>: los treinta fragmentos con los dos códigos, kappa y alfa con su cálculo, cada desacuerdo clasificado con su decisión sobre el libro, y la frase final sobre qué mide y qué no mide el acuerdo obtenido. Prompts literales en anexo. Rúbrica en <code>evaluacion.md</code>.</p>
+<h2>Para la próxima semana</h2>
+<p>Leer Glaser y Strauss (1967), capítulos 3 y 5, y Saunders et al. (2018). Escribir, antes de leer, en una frase, la condición de terminación que el estudiante cree que usará, y guardarla para compararla después. La semana 7 decide cuándo parar.</p>
+</article>
+<nav class="pager" aria-label="Páginas"><a href="semana-05.html">← Semana 5. Codificación axial y consultas al corpus</a><a href="semana-07.html">Semana 7. Saturación y terminación →</a></nav>
+        <footer>© 2026 Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="https://github.com/Izainea/tunjos-para-la-ia">Fuente en GitHub</a></footer>
+      </main>
+    </div>
+    <script>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+        document.querySelectorAll('iframe.app').forEach(function (f) { try { f.contentDocument.documentElement.dataset.theme = root.dataset.theme; } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>
