@@ -1,6 +1,6 @@
 # Tunjos para la IA
 
-Programa de microcredenciales sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades. El nombre viene del *tunjo*, la pequeña figura de oro o tumbaga que los muiscas ofrecían en lagunas y santuarios para pedir algo y hablar con sus deidades: un acto hecho con oficio, un mensaje que queda como registro y alguien que lo entrega y responde ante su comunidad. Hoy muchos le ofrecen el tunjo a la inteligencia artificial; este programa propone lo contrario: el tunjo es lo que el investigador hace, registra y defiende. Lo diseña y dicta Carlos Isaac Zainea Maya a partir de su investigación doctoral *Agencia sin imputación* y de su trabajo con corpus textuales y visuales asistido por modelos de lenguaje. Sitio: [izainea.github.io/tunjos-para-la-ia](https://izainea.github.io/tunjos-para-la-ia/).
+Programa de cursos cortos sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades. El nombre viene del *tunjo*, la pequeña figura de oro o tumbaga que los muiscas ofrecían en lagunas y santuarios para pedir algo y hablar con sus deidades: un acto hecho con oficio, un mensaje que queda como registro y alguien que lo entrega y responde ante su comunidad. Hoy muchos le ofrecen el tunjo a la inteligencia artificial; este programa propone lo contrario: el tunjo es lo que el investigador hace, registra y defiende. Lo diseña y dicta Carlos Isaac Zainea Maya a partir de su investigación doctoral *Agencia sin imputación* y de su trabajo con corpus textuales y visuales asistido por modelos de lenguaje. Sitio: [izainea.github.io/tunjos-para-la-ia](https://izainea.github.io/tunjos-para-la-ia/).
 
 Tesis pedagógica: quien investiga con modelos de lenguaje necesita tres cosas que se enseñan por separado o no se enseñan. Saber qué tipo de inferencia hace la máquina y cuál hace el investigador. Saber construir un flujo técnico que deje rastro auditable. Saber validar y responder por el resultado ante una comunidad. El programa integra las tres sobre corpus reales del estudiante.
 
@@ -8,7 +8,7 @@ Principio de diseño: cada curso se enseña con el método que enseña. El estud
 
 ## Cursos
 
-Todos de dos créditos, ocho semanas y modalidad híbrida.
+Todos de ocho sesiones y modalidad híbrida, adaptables a formatos de microcredencial o de educación continua.
 
 | Nº | Curso | Capa |
 |---|---|---|

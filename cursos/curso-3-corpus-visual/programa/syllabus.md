@@ -6,7 +6,7 @@
 |---|---|
 | Nombre | Corpus visual: del archivo a la imagen descrita |
 | Programa | Tunjos para la IA, curso 3 de 7. Capa Oficio |
-| Créditos | 2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas, 80 autónomas) |
+| Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
 | Prerrequisitos | Ninguno. Se recomienda el curso 1 del programa. No requiere programación: las prácticas se pueden hacer con hojas de cálculo y con la interfaz web de un modelo; el cuaderno de apoyo en Python es opcional |

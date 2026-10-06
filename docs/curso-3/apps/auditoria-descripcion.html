@@ -43,8 +43,8 @@ figcaption{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-to
 </style>
 <script>
   var t=null;try{t=localStorage.getItem('tema')}catch(e){}
-  document.documentElement.dataset.theme=t||'dark';
-  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+  document.documentElement.dataset.theme=t||'light';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'light'}});
 </script>
 </head>
 <body>

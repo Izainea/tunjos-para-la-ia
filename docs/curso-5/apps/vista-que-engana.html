@@ -36,8 +36,8 @@ th{font-family:var(--display);font-weight:700;border-bottom-color:var(--ink)}
 <script>
   // Mismo tema que la página que embebe la app (misma clave en localStorage).
   var t=null;try{t=localStorage.getItem('tema')}catch(e){}
-  document.documentElement.dataset.theme=t||'dark';
-  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+  document.documentElement.dataset.theme=t||'light';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'light'}});
 </script>
 </head>
 <body>

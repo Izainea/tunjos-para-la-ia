@@ -145,7 +145,7 @@ def panel(active: str, depth: int, curso: Curso | None, cursos: list[Curso]) -> 
             </span>
             <p class="name">Carlos Isaac<br />Zainea Maya</p>
           </a>
-          <p class="role">Tunjos para la IA<br />Microcredenciales</p>
+          <p class="role">Tunjos para la IA<br />Programa de cursos</p>
           <p class="tagline">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
         </div>
         <nav aria-label="Secciones">
@@ -185,7 +185,7 @@ def shell(title: str, description: str, body: str, active: str, depth: int, url:
     <link rel="stylesheet" href="{css}" />
     <script>
       var t = null; try {{ t = localStorage.getItem('tema'); }} catch (e) {{}}
-      document.documentElement.dataset.theme = t || 'dark';
+      document.documentElement.dataset.theme = t || 'light';
     </script>
   </head>
   <body>
@@ -281,7 +281,7 @@ def build_curso(c: Curso, cursos: list[Curso]) -> None:
             # el encabezado de primer nivel ya está en la cabecera de la página
             content = re.sub(r'<h1 id="[^"]*">.*?</h1>\s*', "", content, count=1)
         head = f"""<div class="post-head">
-          <div class="meta"><span>Curso {c.n} · {CAPAS.get(c.n, '')} · 2 créditos · 8 semanas · híbrido</span></div>
+          <div class="meta"><span>Curso {c.n} · {CAPAS.get(c.n, '')} · ocho sesiones · híbrido</span></div>
           <h1>{h1}</h1>
           <p class="desc">{desc}</p>
         </div>"""
@@ -307,14 +307,14 @@ def build_index(cursos: list[Curso]) -> None:
             rows.append(f'<li><div class="row">{inner}</div></li>')
     rutas = "".join(f"<tr><td>{r}</td><td>{cs}</td><td>{q}</td></tr>" for r, cs, q in RUTAS)
     body = f"""<div class="post-head">
-          <div class="meta"><span>Programa de microcredenciales</span><span>Siete cursos · tres capas · rutas apilables</span></div>
+          <div class="meta"><span>Programa de cursos</span><span>Siete cursos · tres capas · rutas apilables</span></div>
           <h1>Tunjos para la IA</h1>
           <p class="desc">Razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.</p>
         </div>
         <section class="prose">
           <p class="lede">Quien investiga con modelos de lenguaje necesita tres cosas que se enseñan por separado o no se enseñan. Saber qué tipo de inferencia hace la máquina y cuál hace el investigador. Saber construir un flujo técnico que deje rastro auditable. Saber validar y responder por el resultado ante una comunidad. El programa integra las tres sobre corpus reales del estudiante.</p>
           <p>El principio de diseño es que cada curso se enseña con el método que enseña. El estudiante configura con la máquina, valida, registra la frontera entre ambos y entrega el registro. La evidencia de aprendizaje no es el producto sino el registro de validación. El programa nace de la investigación doctoral <a href="https://izainea.github.io/escritos/agencia-sin-imputacion.pdf"><i>Agencia sin imputación</i></a> y del concepto de <a href="https://izainea.github.io/blog/protesis-hermeneutica/">prótesis hermenéutica</a>: un sistema en el que la máquina configura, el investigador valida, y la frontera entre ambos es el principio de diseño.</p>
-          <p>Todos los cursos son de dos créditos y ocho semanas, en modalidad híbrida: una sesión presencial semanal con participación remota sincrónica y trabajo asincrónico guiado. Quien dicta el programa se presenta en la página del <a href="docente.html">docente</a>.</p>
+          <p>Todos los cursos tienen ocho sesiones en modalidad híbrida, y se adaptan al formato de microcredencial o de educación continua de cada institución: una sesión presencial semanal con participación remota sincrónica y trabajo asincrónico guiado. Quien dicta el programa se presenta en la página del <a href="docente.html">docente</a>.</p>
         </section>
         <section class="prose" id="nombre">
           <div class="sec-head wide"><span class="no">§0</span><h2>Por qué el nombre</h2></div>
@@ -340,7 +340,7 @@ def build_index(cursos: list[Curso]) -> None:
           <p class="note">Todo el material es de acceso abierto bajo CC BY-SA 4.0 y está en <a href="{REPO}">GitHub</a>.</p>
         </section>"""
     (DOCS / "index.html").write_text(shell("Tunjos para la IA",
-        "Programa de microcredenciales sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.",
+        "Programa de cursos sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.",
         body, "programa", 0, f"{SITE}/", None, cursos), encoding="utf-8")
 
 

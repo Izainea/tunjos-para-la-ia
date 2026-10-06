@@ -1,6 +1,6 @@
 # Curso 2. Corpus textual: del documento al dato trazable
 
-Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Segundo curso del programa [Tunjos para la IA](../), capa de Oficio.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Segundo curso del programa [Tunjos para la IA](../), capa de Oficio.
 
 **Pregunta del curso.** ¿Cómo convierte un investigador de humanidades un conjunto disperso de documentos en un corpus con procedencia, reproducible y listo para ser analizado, sin que la máquina decida por él qué entra y qué no?
 

@@ -6,7 +6,7 @@
 |---|---|
 | Nombre | Validación e interpretación: el investigador refigura |
 | Programa | Tunjos para la IA, curso 6 de 7. Capa de Juicio |
-| Créditos | 2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas en 8 sesiones de 2 horas, 80 autónomas) |
+| Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado. La modalidad virtual es solo alternativa |
 | Docente | Carlos Isaac Zainea Maya |
 | Prerrequisitos | Curso 1 del programa o familiaridad con la distinción entre deducción, inducción y abducción. Material propio ya configurado (códigos, categorías, patrones, descripciones). No requiere programación |

@@ -1,6 +1,6 @@
 # Curso 3. Corpus visual: del archivo a la imagen descrita
 
-Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Tercer curso del programa [Tunjos para la IA](../), capa Oficio. Pertenece a las rutas Imagen (1, 3, 4, 6) y Computacional (2, 3, 5).
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Tercer curso del programa [Tunjos para la IA](../), capa Oficio. Pertenece a las rutas Imagen (1, 3, 4, 6) y Computacional (2, 3, 5).
 
 **Pregunta del curso.** ¿Cómo convierte un investigador cientos de imágenes dispersas en archivos, museos, prensa y plataformas en un corpus descrito, trazable y éticamente manejable, y qué parte de la descripción puede delegar a un modelo multimodal sin perder el juicio?
 

@@ -1,6 +1,6 @@
 # Curso 4. Codificación asistida: la máquina configura
 
-Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Cuarto curso del programa [Tunjos para la IA](../), capa de Oficio.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Cuarto curso del programa [Tunjos para la IA](../), capa de Oficio.
 
 **Pregunta del curso.** Cuando un modelo de lenguaje propone códigos, categorías o temas sobre un material cualitativo, ¿qué está haciendo, con qué criterio se juzga cada propuesta, cuándo se termina, y quién responde por el libro de códigos resultante?
 

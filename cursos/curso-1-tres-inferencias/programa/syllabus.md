@@ -6,7 +6,7 @@
 |---|---|
 | Nombre | Las tres inferencias: razonamiento humano y razonamiento artificial |
 | Programa | Tunjos para la IA, curso 1 de 7 |
-| Créditos | 2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas, 80 autónomas) |
+| Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
 | Prerrequisitos | Ninguno. No requiere programación ni formación filosófica previa |

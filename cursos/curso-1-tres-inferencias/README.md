@@ -1,6 +1,6 @@
 # Curso 1. Las tres inferencias: razonamiento humano y razonamiento artificial
 
-Microcredencial de 2 créditos, 8 semanas, modalidad híbrida: sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado; la modalidad virtual es alternativa. Primer curso del programa [Tunjos para la IA](../).
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado; la modalidad virtual es alternativa. Primer curso del programa [Tunjos para la IA](../).
 
 **Pregunta del curso.** Cuando un investigador trabaja con un modelo de lenguaje, ¿qué tipo de razonamiento está haciendo la máquina, cuál está haciendo él, y cuál de los dos puede validarse sin un sujeto que responda?
 

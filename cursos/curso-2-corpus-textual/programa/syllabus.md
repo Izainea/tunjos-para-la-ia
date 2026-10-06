@@ -6,7 +6,7 @@
 |---|---|
 | Nombre | Corpus textual: del documento al dato trazable |
 | Programa | Tunjos para la IA, curso 2 de 7. Capa de Oficio |
-| Créditos | 2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas, 80 autónomas) |
+| Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
 | Prerrequisitos | Ninguno. No requiere programación previa: el curso enseña Python desde cero. Se recomienda haber cursado el curso 1 del programa, pero no es obligatorio |

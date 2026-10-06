@@ -1,6 +1,6 @@
 # Curso 6. Validación e interpretación: el investigador refigura
 
-Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa el curso 1: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa el curso 1: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
 
 **Pregunta del curso.** Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?
 

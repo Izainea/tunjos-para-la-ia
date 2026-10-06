@@ -1,6 +1,6 @@
 # Curso 5. Métodos computacionales para el sentido
 
-Microcredencial de 2 créditos, 8 semanas, modalidad híbrida. Quinto curso del programa [Tunjos para la IA](../), capa de Juicio.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Quinto curso del programa [Tunjos para la IA](../), capa de Juicio.
 
 **Pregunta del curso.** Cuando un método computacional encuentra un patrón en textos o imágenes, un grupo, una red, una tendencia, ¿cuándo ese patrón es una hipótesis que vale la pena perseguir y cuándo es un artefacto del método?
 

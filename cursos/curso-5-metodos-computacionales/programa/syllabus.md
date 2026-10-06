@@ -6,7 +6,7 @@
 |---|---|
 | Nombre | Métodos computacionales para el sentido |
 | Programa | Tunjos para la IA, curso 5 de 7. Capa de Juicio |
-| Créditos | 2 (8 semanas, 96 horas de trabajo del estudiante: 16 sincrónicas, 80 autónomas) |
+| Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
 | Prerrequisitos | Recomendado: curso 2 o curso 3 del programa, o nociones básicas de Python. El curso provee un cuaderno de apoyo que se copia bloque a bloque y mini apps que no requieren programar |

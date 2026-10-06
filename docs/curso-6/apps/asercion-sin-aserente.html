@@ -43,8 +43,8 @@ textarea{width:100%;min-height:9rem;line-height:1.5;font-family:var(--display)}
 <script>
   // Mismo tema que la página que embebe la app (misma clave en localStorage).
   var t=null;try{t=localStorage.getItem('tema')}catch(e){}
-  document.documentElement.dataset.theme=t||'dark';
-  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'dark'}});
+  document.documentElement.dataset.theme=t||'light';
+  window.addEventListener('storage',function(e){if(e.key==='tema'){document.documentElement.dataset.theme=e.newValue||'light'}});
 </script>
 </head>
 <body>
