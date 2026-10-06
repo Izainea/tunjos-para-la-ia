@@ -54,4 +54,4 @@ El uso de modelos de lenguaje es obligatorio y declarado. Un código, una catego
 
 ## Certificación
 
-Microcredencial de 2 créditos del programa Tunjos para la IA, capa de Oficio. El certificado enumera las cuatro competencias y el nivel alcanzado en cada producto. Es apilable con los cursos 1, 2, 3 y 6 en las rutas Texto e Imagen.
+Curso del programa Tunjos para la IA, capa de Oficio, en el formato de microcredencial o de educación continua que adopte la institución. El certificado enumera las cuatro competencias y el nivel alcanzado en cada producto. Es apilable con los cursos 1, 2, 3 y 6 en las rutas Texto e Imagen.
