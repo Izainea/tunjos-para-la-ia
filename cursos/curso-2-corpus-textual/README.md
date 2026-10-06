@@ -28,3 +28,7 @@ Las sesiones trabajan sobre un corpus de documentos públicos colombianos de acc
 ## Página del curso
 
 [izainea.github.io/tunjos-para-la-ia/curso-2/](https://izainea.github.io/tunjos-para-la-ia/curso-2/)
+
+## Cómo se hizo este material
+
+El material de este curso se elaboró con ayuda de modelos de lenguaje bajo la guía de autoría, la revisión y la responsabilidad del docente. Qué hizo la máquina, qué decidió el autor y qué queda por verificar está en la [declaración de uso de IA](../../USO-DE-IA.md) del programa.

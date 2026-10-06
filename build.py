@@ -26,6 +26,8 @@ YEAR = 2026
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "sane_lists", "attr_list", "md_in_html"])
 
+CORTOS = {1: "Las tres inferencias", 2: "Corpus textual", 3: "Corpus visual", 4: "Codificación asistida",
+          5: "Métodos computacionales", 6: "Validación e interpretación", 7: "Ética y gobernanza"}
 CAPAS = {1: "Fundamentos", 2: "Oficio", 3: "Oficio", 4: "Oficio", 5: "Juicio", 6: "Juicio", 7: "Juicio"}
 RUTAS = [
     ("Fundamentos", "1, 6", "Quien ya investiga y quiere criterio, no herramientas"),
@@ -54,6 +56,7 @@ def rewrite_links(html: str, slug_map: dict[str, str]) -> str:
             return m.group(0)
         h = href
         h = re.sub(r"^\.\./?$", "../index.html", h)
+        h = h.replace("../../USO-DE-IA.md", "../uso-de-ia.html").replace("../USO-DE-IA.md", "uso-de-ia.html")
         h = re.sub(r"^\.\./(plantillas|practicas|apps|programa)(/|$)", r"\1\2", h)  # desde programa/ hacia carpetas hermanas
         h = re.sub(r"^programa/?$", "index.html", h)
         h = re.sub(r"^(plantillas|practicas|apps)/?$", r"\1.html", h)
@@ -110,9 +113,10 @@ def cursos_existentes() -> list[Curso]:
 def panel(active: str, depth: int, curso: Curso | None, cursos: list[Curso]) -> str:
     base = "../" if depth else ""
     items = [f'<a href="{base}index.html"{" class=\"is-active\"" if active == "programa" else ""}>Programa</a>',
-             f'<a href="{base}docente.html"{" class=\"is-active\"" if active == "docente" else ""}>Docente</a>']
+             f'<a href="{base}docente.html"{" class=\"is-active\"" if active == "docente" else ""}>Docente</a>',
+             f'<a href="{base}uso-de-ia.html"{" class=\"is-active\"" if active == "uso-de-ia" else ""}>Uso de IA</a>']
     if curso:
-        nav = [("index.html", f"Curso {curso.n}", False)]
+        nav = [("index.html", f"{curso.n} · {CORTOS.get(curso.n, 'Curso')}", False)]
         nav += [(f"semana-0{i}.html", f"Semana {i}", True) for i in range(1, 9)]
         nav += [("evaluacion.html", "Evaluación", False), ("bibliografia.html", "Bibliografía", False),
                 ("plantillas.html", "Plantillas", False), ("practicas.html", "Prácticas", False),
@@ -124,11 +128,11 @@ def panel(active: str, depth: int, curso: Curso | None, cursos: list[Curso]) -> 
         otros = [c for c in cursos if c.n != curso.n and c.completo]
         if otros:
             items.append('<span class="nav-sep">Otros cursos</span>')
-            items += [f'<a class="sub" href="../{c.slug}/index.html">Curso {c.n}</a>' for c in otros]
+            items += [f'<a class="sub" href="../{c.slug}/index.html">{c.n} · {CORTOS.get(c.n, "Curso")}</a>' for c in otros]
     else:
         for c in cursos:
             if c.completo:
-                items.append(f'<a class="sub" href="{base}{c.slug}/index.html">Curso {c.n}</a>')
+                items.append(f'<a class="sub" href="{base}{c.slug}/index.html">{c.n} · {CORTOS.get(c.n, "Curso")}</a>')
     nav_html = "\n          ".join(items)
     return f"""<header class="panel">
         <div>
@@ -193,7 +197,7 @@ def shell(title: str, description: str, body: str, active: str, depth: int, url:
       {panel(active, depth, curso, cursos)}
       <main>
         {body}
-        <footer>© {YEAR} Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="{REPO}">Fuente en GitHub</a></footer>
+        <footer>© {YEAR} Carlos Isaac Zainea Maya · Material bajo CC BY-SA 4.0 · <a href="{REPO}">Fuente en GitHub</a> · <a href="{'../' if depth else ''}uso-de-ia.html">Declaración de uso de IA</a></footer>
       </main>
     </div>
     <script>
@@ -337,11 +341,24 @@ def build_index(cursos: list[Curso]) -> None:
         <section class="prose">
           <div class="sec-head wide"><span class="no">§3</span><h2>Por qué es distinto</h2></div>
           <p>Los cursos de IA para investigación enseñan a pedirle cosas a la máquina. Los cursos de método cualitativo ignoran la máquina. Los cursos de programación para humanidades enseñan a programar sin preguntar qué se valida. Este programa parte de una tesis filosófica sobre qué puede y qué no puede validar un sistema artificial, y convierte esa tesis en un oficio.</p>
-          <p class="note">Todo el material es de acceso abierto bajo CC BY-SA 4.0 y está en <a href="{REPO}">GitHub</a>.</p>
+          <p class="note">Todo el material es de acceso abierto bajo CC BY-SA 4.0 y está en <a href="{REPO}">GitHub</a>. Se elaboró con ayuda de modelos de lenguaje bajo la guía y la responsabilidad del autor: <a href="uso-de-ia.html">declaración de uso de IA</a>.</p>
         </section>"""
     (DOCS / "index.html").write_text(shell("Tunjos para la IA",
         "Programa de cursos sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades.",
         body, "programa", 0, f"{SITE}/", None, cursos), encoding="utf-8")
+
+
+def build_uso_ia(cursos: list[Curso]) -> None:
+    content = render_md([ROOT / "USO-DE-IA.md"])
+    content = re.sub(r'<h1 id="[^"]*">.*?</h1>\s*', "", content, count=1)
+    body = f"""<div class="post-head">
+          <div class="meta"><span>Transparencia</span></div>
+          <h1>Declaración de uso de inteligencia artificial</h1>
+          <p class="desc">Qué hizo la máquina, qué decidió el autor y quién responde por este material.</p>
+        </div>
+        <article class="prose">{content}</article>"""
+    (DOCS / "uso-de-ia.html").write_text(shell("Uso de IA", "Declaración de uso de inteligencia artificial en la elaboración del programa.", body, "uso-de-ia", 0,
+                                                f"{SITE}/uso-de-ia.html", None, cursos), encoding="utf-8")
 
 
 def build_docente(cursos: list[Curso]) -> None:
@@ -361,6 +378,7 @@ if __name__ == "__main__":
     cursos = cursos_existentes()
     build_index(cursos)
     build_docente(cursos)
+    build_uso_ia(cursos)
     for c in cursos:
         if c.completo:
             build_curso(c, cursos)

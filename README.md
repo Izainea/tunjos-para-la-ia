@@ -52,6 +52,10 @@ python herramientas/nuevo_curso.py 8 "Título" slug              andamio de un c
 
 La norma de escritura está en [herramientas/GUIA-AUTORIA.md](herramientas/GUIA-AUTORIA.md). Las mini apps parten de [herramientas/app-base.html](herramientas/app-base.html).
 
+## Uso de inteligencia artificial
+
+El material se elaboró con ayuda de modelos de lenguaje bajo la guía de autoría, la revisión y la responsabilidad del autor. La declaración completa, con lo que hizo la máquina, lo que decidió el autor y lo que queda por verificar, está en [USO-DE-IA.md](USO-DE-IA.md).
+
 ## Licencia
 
 Material docente bajo [CC BY-SA 4.0](LICENSE). Código de las prácticas y de las herramientas bajo MIT.
