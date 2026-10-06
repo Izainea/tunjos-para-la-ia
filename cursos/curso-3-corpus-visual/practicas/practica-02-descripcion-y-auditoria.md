@@ -14,7 +14,7 @@ Obtener descripciones de 20 imágenes con dos prompts, uno plano y uno por capas
 2. Para tres de las 20, escriba su lectura propia: diez afirmaciones etiquetadas como en el taller de la semana 3. Guárdela sin mostrarla al modelo.
 3. Abra una cuenta en un servicio con modelo multimodal gratuito, o configure el `.env` del cuaderno. Pruebe con una imagen.
 
-## Primera parte (semana 4): describir
+## Primera parte, describir (semana 4)
 
 ### Prompt plano
 
@@ -52,7 +52,7 @@ Para las tres imágenes con lectura propia, llene la tabla de la semana 4: afirm
 
 Con el costo de las 40 salidas, extrapole al corpus completo: dinero, tiempo de ejecución, tiempo de lectura. Decida y escriba qué parte del corpus describirá con el presupuesto que tiene.
 
-## Segunda parte (semana 5): auditar
+## Segunda parte, auditar (semana 5)
 
 ### Diseñar la muestra
 
@@ -78,7 +78,7 @@ Una fila por afirmación del modelo. Las cuatro columnas de destino:
 
 Cuente las afirmaciones por columna sobre el total auditado. Declare que son cifras sobre la muestra, no tasas del corpus. Escriba el resumen del sesgo en un párrafo: qué tipo de cosas afirma el modelo sin base, qué tipo de cosas calla, qué tipo de cosas describe sin entender, con un ejemplo de cada una tomado de su corpus. Ese párrafo acompaña a todas las descripciones del corpus desde ahora.
 
-### Variante: dos modelos o dos lenguas
+### Variante con dos modelos o dos lenguas
 
 Si tiene acceso a dos modelos, o repite con el prompt en inglés, audite cinco imágenes con ambos y compare la tercera columna. Ananthram et al. (2025) encuentran que la lengua del prompt cambia el sesgo sin eliminarlo; compruebe si pasa en su corpus.
 

@@ -14,7 +14,7 @@ Hacer que un modelo etiquete una muestra del corpus con una instrucción escrita
 3. Reúna todo en `instruccion_v1.md`, con el formato de salida al final: una sola palabra, la categoría, sin explicación.
 4. Elija la muestra con el bloque del cuaderno (treinta unidades al azar con semilla fija) o, sin programar, numerando las unidades y tomando treinta números de una tabla de azar. Anote cómo la eligió.
 
-## Durante la sesión: tres rondas
+## Durante la sesión (tres rondas)
 
 ### Ronda 1. La máquina etiqueta
 

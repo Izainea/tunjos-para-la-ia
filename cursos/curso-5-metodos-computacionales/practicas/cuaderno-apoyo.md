@@ -1,4 +1,4 @@
-# Cuaderno de apoyo: los métodos del curso en Python
+# Cuaderno de apoyo con los métodos del curso en Python
 
 Este cuaderno acompaña las ocho semanas. Está escrito para que lo use alguien con nociones básicas de Python, copiando bloque a bloque; cada bloque viene precedido de lo que hace y de la decisión que exige. Los parámetros aparecen como variables con nombre al comienzo de cada bloque para que moverlos sea una línea y no una búsqueda. Todo lo que se calcula aquí se registra con su entorno y su semilla, porque la reproducibilidad es la mitad de la frontera.
 

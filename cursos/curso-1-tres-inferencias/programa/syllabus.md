@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Nombre | Las tres inferencias: razonamiento humano y razonamiento artificial |
+| Nombre | Las tres inferencias en el razonamiento humano y el artificial |
 | Programa | Tunjos para la IA, primer curso de los siete que componen el programa |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |

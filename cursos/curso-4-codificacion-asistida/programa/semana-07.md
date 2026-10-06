@@ -68,7 +68,7 @@ La herramienta de la semana es la curva de saturación, que cuenta cuántos cód
   <figcaption><b>Figura 7.</b> Tres condiciones de terminación sobre la misma curva. Lo que hay que ver: cada punto de parada tiene un costo en una dirección u otra, y la curva no dice cuál asumir.</figcaption>
 </figure>
 
-<iframe class="app" src="apps/curva-saturacion.html" title="Curva de saturación: cuándo parar" loading="lazy"></iframe>
+<iframe class="app" src="apps/curva-saturacion.html" title="Cuándo parar según la curva de saturación" loading="lazy"></iframe>
 
 ## IA y exigencia
 

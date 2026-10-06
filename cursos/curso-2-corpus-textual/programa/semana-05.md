@@ -1,4 +1,4 @@
-# Semana 5. Limpieza y normalización: lo que se pierde
+# Semana 5. Lo que se pierde en la limpieza y la normalización
 
 ## Pregunta de la semana
 

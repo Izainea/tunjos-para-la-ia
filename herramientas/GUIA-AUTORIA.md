@@ -14,12 +14,12 @@ Los siete cursos:
 
 | Nº | Curso | Capa |
 |---|---|---|
-| 1 | Las tres inferencias: razonamiento humano y razonamiento artificial | Fundamentos |
-| 2 | Corpus textual: del documento al dato trazable | Oficio |
-| 3 | Corpus visual: del archivo a la imagen descrita | Oficio |
-| 4 | Codificación asistida: la máquina configura | Oficio |
+| 1 | Las tres inferencias en el razonamiento humano y el artificial | Fundamentos |
+| 2 | Del documento al corpus textual trazable | Oficio |
+| 3 | Del archivo al corpus visual descrito | Oficio |
+| 4 | Codificación asistida por una máquina que configura | Oficio |
 | 5 | Métodos computacionales para el sentido | Juicio |
-| 6 | Validación e interpretación: el investigador refigura | Juicio |
+| 6 | Validación e interpretación como refiguración del investigador | Juicio |
 | 7 | Ética, exterioridad y gobernanza | Juicio |
 
 Rutas: Fundamentos (1, 6); Texto (1, 2, 4, 6); Imagen (1, 3, 4, 6); Computacional (2, 3, 5); Programa completo (1 a 7 más proyecto integrador).
@@ -110,7 +110,7 @@ Rasgos que deben reproducirse:
 - Figuras que muestran el mecanismo: un silogismo que falla, una frontera marcada, un arco que se trunca. Pie con `<b>Figura N.</b>` y una frase que diga qué hay que ver.
 - Ejemplos concretos y físicos para ideas abstractas: el telescopio que no comprende las estrellas, el bastón del ciego en Merleau-Ponty, el pavo de Russell, la escena del crimen.
 - Registro reflexivo de artículo de humanidades. Nunca tono de vendedor, nunca exclamaciones, nunca elogios al lector.
-- Títulos sobrios y planos. Prohibidos los títulos con dos puntos de gancho ("Título: subtítulo llamativo"), las preguntas y las metáforas como gancho. Un título puede llevar dos puntos solo si la segunda parte precisa el alcance ("Deducción: la historia de la validación formal").
+- Títulos sobrios y planos. Prohibidos los títulos con dos puntos de gancho ("Título: subtítulo llamativo"), las preguntas y las metáforas como gancho. Un título puede llevar dos puntos solo si la segunda parte precisa el alcance ("La deducción y la historia de la validación formal").
 - Prosa corrida. No abrir ítems con un rótulo en negrita seguido de explicación. Las listas, cuando hagan falta, de siete elementos como máximo.
 - Palabras prohibidas: fundamental, crucial, esencial, clave como adjetivo, robusto como relleno, poderoso, fascinante.
 - Sin rayas ni guiones largos en la prosa. Sin paréntesis explicativos largos. Frases cortas; cada frase aporta algo distinto, y si se puede quitar sin perder información, se quita.

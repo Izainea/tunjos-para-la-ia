@@ -1,4 +1,4 @@
-# Cuaderno de apoyo: kappa, alfa, consultas y exportación del libro
+# Cuaderno de apoyo con kappa, alfa, consultas y exportación del libro
 
 Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y una hoja de cálculo. Este cuaderno es para quien quiera calcular el acuerdo con exactitud, ejecutar consultas al corpus como las de un programa de análisis cualitativo, exportar el libro de códigos y, si lo desea, llamar a un modelo por programa dejando registro. Está pensado para que lo use alguien sin experiencia previa en Python, copiando bloque a bloque. Cada bloque dice antes qué hace y por qué.
 

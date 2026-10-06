@@ -82,6 +82,15 @@ def check_semanas(curso: Path, err: list, av: list) -> None:
                 pos = j
         if 'class="glosa"' not in s:
             av.append(f"{p.name}: sin glosas al margen")
+    # Títulos con dos puntos de gancho ("Tema: subtítulo"), prohibidos en todo el material
+    for p in md_files(curso):
+        en_codigo = False
+        for k, l in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+            if l.startswith("```"):
+                en_codigo = not en_codigo
+                continue
+            if not en_codigo and re.match(r"^#{1,4} .*\S:\s", l + " "):
+                err.append(f"{p.relative_to(curso)}:{k}: título con dos puntos de gancho; reformular como frase nominal")
         for k, l in enumerate(s.splitlines(), 1):
             if l.lstrip().startswith("<aside") and "</aside>" not in l:
                 err.append(f"{p.name}:{k}: glosa sin cerrar en la misma línea (el renderizador absorbe el párrafo siguiente)")

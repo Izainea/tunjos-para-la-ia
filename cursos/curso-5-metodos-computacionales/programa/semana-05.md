@@ -1,4 +1,4 @@
-# Semana 5. Tiempo: ventanas, tendencias, rupturas
+# Semana 5. Ventanas, tendencias y rupturas en el tiempo
 
 ## Pregunta de la semana
 

@@ -1,4 +1,4 @@
-# Semana 2. Deducción: la historia de la validación formal
+# Semana 2. La deducción y la historia de la validación formal
 
 ## Pregunta de la semana
 

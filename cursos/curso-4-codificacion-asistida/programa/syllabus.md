@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Nombre | Codificación asistida: la máquina configura |
+| Nombre | Codificación asistida por una máquina que configura |
 | Programa | Tunjos para la IA, cuarto de siete cursos. Capa de Oficio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
@@ -42,7 +42,7 @@ Al terminar el curso el estudiante puede:
 | [1](semana-01.md) | Tres tradiciones de codificación y lo que exigen: análisis temático, teoría fundamentada, análisis de contenido | Braun y Clarke (2006). Charmaz (2014), cap. 1. Krippendorff (2018), caps. 1 y 2 | Bitácora inicial: un fragmento propio codificado en las tres tradiciones |
 | [2](semana-02.md) | Cuatro tipos de enunciado metodológico. Qué puede verificar una máquina y qué no | Zainea (2026). Lincoln y Guba (1985), cap. 11. Denzin (1970), sobre triangulación | Lista de verificación de una fase del propio análisis |
 | [3](semana-03.md) | Codificación abierta asistida: el modelo propone, el investigador decide. Microanálisis, códigos in vivo, registro de frontera | Strauss y Corbin (2002), caps. 5 y 8. Saldaña (2021), cap. 1 | Práctica 3: primera ronda de codificación con modelo |
-| [4](semana-04.md) | Memos y categorías: propiedades y dimensiones. Emergencia frente a forzamiento | Glaser (1992), caps. 1 a 3. Kelle (2005). Strauss y Corbin (2002), cap. 14 | Entrega: libro de códigos abierto con registro de frontera |
+| [4](semana-04.md) | Propiedades y dimensiones de memos y categorías. Emergencia frente a forzamiento | Glaser (1992), caps. 1 a 3. Kelle (2005). Strauss y Corbin (2002), cap. 14 | Entrega: libro de códigos abierto con registro de frontera |
 | [5](semana-05.md) | Codificación axial y matriz condicional-consecuencial. Consultas al corpus con y sin modelo | Strauss y Corbin (2002), caps. 9 y 12. Gibbs (2012), caps. 4, 8 y 9 | Matriz axial de una categoría propia; consultas comparadas |
 | [6](semana-06.md) | Acuerdo no es validez. Kappa, alfa, y los desacuerdos como datos | McDonald, Schoenebeck y Forte (2019). Krippendorff (2004) | Entrega: matriz de acuerdo y análisis de desacuerdos |
 | [7](semana-07.md) | Saturación y terminación: cuándo parar, quién lo decide. Muestreo teórico asistido | Glaser y Strauss (1967), caps. 3 y 5. Saunders et al. (2018) | Condición de terminación escrita y puesta a prueba |

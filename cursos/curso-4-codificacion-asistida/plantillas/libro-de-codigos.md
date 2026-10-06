@@ -39,7 +39,7 @@ Una entrada por código. La definición dice qué incluye; los criterios de excl
 
 Una entrada por categoría. Las propiedades son los atributos que la caracterizan; las dimensiones, el rango en que varía cada propiedad. Cada extremo de cada dimensión debe tener al menos un fragmento.
 
-### Categoría: [nombre]
+### Categoría [nombre]
 
 **Definición:**
 

@@ -83,7 +83,7 @@ Al modelo se le puede pedir que ayude a redactar la presentación o a producir l
 - Vallor teme que la delegación atrofie el juicio. *Compare su lectura propia de la semana 3 con la ficha semiótica de hoy: ¿describe mejor, igual o peor, y a qué lo atribuye?*
 - Drucker distingue datos de capta: lo tomado, no lo dado. *¿Qué de su línea de tiempo es capta, y qué de ella presentaría alguien como dato sin pensarlo?*
 
-## Taller: presentaciones y cierre
+## Taller sobre presentaciones y cierre
 
 Formato de presentación, ocho minutos:
 

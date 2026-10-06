@@ -90,7 +90,7 @@ El modelo puede redactar el borrador de la declaración de datos a partir del pr
 - La sección sobre la prótesis hermenéutica dice que con andamiaje cada salida incluye su procedencia, sus límites declarados y las condiciones bajo las cuales debería rechazarse. Léala como una descripción de su carpeta. *¿Dónde están, en su entrega, las condiciones bajo las cuales su corpus debería rechazarse?*
 - Nguyen y sus coautores cierran con recomendaciones para reportar análisis de texto. Compárelas con la plantilla del informe. *¿Qué recomendación de ellos no está en su informe, y por qué?*
 
-## Taller: presentaciones y cierre
+## Taller sobre presentaciones y cierre
 
 Formato de presentación, ocho minutos y dos preguntas de pares:
 

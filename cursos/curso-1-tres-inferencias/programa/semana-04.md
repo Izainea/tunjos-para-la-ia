@@ -1,4 +1,4 @@
-# Semana 4. Abducción: la lógica del descubrimiento
+# Semana 4. La abducción como lógica del descubrimiento
 
 ## Pregunta de la semana
 

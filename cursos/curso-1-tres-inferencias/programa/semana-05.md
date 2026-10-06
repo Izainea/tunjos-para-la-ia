@@ -1,4 +1,4 @@
-# Semana 5. Los límites formales: Hilbert, Gödel, Turing
+# Semana 5. Los límites formales de Hilbert, Gödel y Turing
 
 ## Pregunta de la semana
 

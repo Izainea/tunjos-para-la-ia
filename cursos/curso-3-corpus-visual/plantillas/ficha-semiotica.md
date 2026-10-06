@@ -10,7 +10,7 @@
 
 Reúne en una página, para una imagen, lo que el curso produjo sobre ella: las capas de Banks cruzadas con los modos de Peirce, con el autor de cada afirmación. Una celda sin autor no vale. Los autores posibles son tres: la fuente (cartela, pie, texto alternativo), el modelo, el investigador.
 
-## Capa 1. Narrativa interna: lo que la imagen muestra
+## Capa 1. Narrativa interna (lo que la imagen muestra)
 
 | | Afirmación | Modo (ícono / índice / símbolo) | Denotación o connotación | Autor (fuente / modelo / yo) | Cómo se verifica |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Reúne en una página, para una imagen, lo que el curso produjo sobre ella: las 
 | Texto visible | | | | | |
 | Acción o gesto | | | | | |
 
-## Capa 2. Narrativa externa: producción, circulación, consumo
+## Capa 2. Narrativa externa (producción, circulación, consumo)
 
 | | Afirmación | Modo (ícono / índice / símbolo) | Autor (fuente / modelo / yo) | Cómo se verifica |
 |---|---|---|---|---|
@@ -31,7 +31,7 @@ Reúne en una página, para una imagen, lo que el curso produjo sobre ella: las 
 | Anclaje: qué texto la acompaña y qué sentido fija (Barthes) | | | | |
 | Qué convención local hace falta para leerla (símbolos) | | | | |
 
-## Capa 3. Materialidad: el objeto
+## Capa 3. Materialidad (el objeto)
 
 | | Valor | Autor (catálogo / modelo / yo) |
 |---|---|---|

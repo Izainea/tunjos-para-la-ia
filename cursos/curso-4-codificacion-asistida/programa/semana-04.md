@@ -1,4 +1,4 @@
-# Semana 4. Memos y categorías: emergencia frente a forzamiento
+# Semana 4. Memos y categorías entre emergencia y forzamiento
 
 ## Pregunta de la semana
 

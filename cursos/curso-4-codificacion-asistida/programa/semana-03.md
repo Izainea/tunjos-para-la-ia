@@ -67,7 +67,7 @@ La semana se apoya en dos operaciones de la teoría fundamentada que son, al mis
   <figcaption><b>Figura 3.</b> La frontera en la codificación asistida. Lo que hay que ver: el registro tiene dos partes separadas por la frontera, y la decisión con su criterio es lo único que convierte una propuesta en código.</figcaption>
 </figure>
 
-<iframe class="app" src="apps/simulador-codificacion.html" title="Simulador de codificación: el modelo propone, usted decide" loading="lazy"></iframe>
+<iframe class="app" src="apps/simulador-codificacion.html" title="Simulador de codificación en que el modelo propone y usted decide" loading="lazy"></iframe>
 
 ## IA y exigencia
 

@@ -1,4 +1,4 @@
-# Curso 6. Validación e interpretación: el investigador refigura
+# Curso 6. Validación e interpretación como refiguración del investigador
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa [*Las tres inferencias*](../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguieron deducción, inducción y abducción por su régimen de validez y se concluyó que la máquina configura sin poder validar ni responder por lo configurado: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
 

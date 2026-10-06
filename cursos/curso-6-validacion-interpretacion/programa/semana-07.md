@@ -1,4 +1,4 @@
-# Semana 7. Escribir hallazgos: de output a aserción
+# Semana 7. Escribir hallazgos, de output a aserción
 
 ## Pregunta de la semana
 
@@ -101,7 +101,7 @@ Esta semana se le pide al modelo que redacte un párrafo de hallazgos a partir d
 - Massaguer Gómez sostiene que el análisis de la aserción no distingue outputs fiables de no fiables. *¿Es esa una limitación de su análisis o la razón por la que la fiabilidad no resuelve el problema del aserente?*
 - Floridi propone sustituir la detección de IA por la exigencia de responder. *¿Qué tendría que contener una declaración de uso para que un lector pudiera interpelar al autor, y qué le falta a las declaraciones que usted ha visto?*
 
-## Taller de la segunda hora: práctica guiada
+## Taller de la segunda hora, práctica guiada
 
 Guía completa en `practicas/practica-07-reescritura-de-informe.md`. En resumen: el estudiante toma el informe que trajo, resalta los marcadores de autoridad, reescribe cada frase con los cuatro pasos, separa lo que no puede firmar, y redacta la declaración de uso de IA con la plantilla `plantillas/declaracion-de-uso-de-ia.md`.
 

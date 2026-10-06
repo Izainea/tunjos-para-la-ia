@@ -12,12 +12,12 @@ Todos de ocho sesiones y modalidad híbrida, adaptables a formatos de microcrede
 
 | Nº | Curso | Capa |
 |---|---|---|
-| 1 | [Las tres inferencias: razonamiento humano y razonamiento artificial](cursos/curso-1-tres-inferencias/) | Fundamentos |
-| 2 | [Corpus textual: del documento al dato trazable](cursos/curso-2-corpus-textual/) | Oficio |
-| 3 | [Corpus visual: del archivo a la imagen descrita](cursos/curso-3-corpus-visual/) | Oficio |
-| 4 | [Codificación asistida: la máquina configura](cursos/curso-4-codificacion-asistida/) | Oficio |
+| 1 | [Las tres inferencias en el razonamiento humano y el artificial](cursos/curso-1-tres-inferencias/) | Fundamentos |
+| 2 | [Del documento al corpus textual trazable](cursos/curso-2-corpus-textual/) | Oficio |
+| 3 | [Del archivo al corpus visual descrito](cursos/curso-3-corpus-visual/) | Oficio |
+| 4 | [Codificación asistida por una máquina que configura](cursos/curso-4-codificacion-asistida/) | Oficio |
 | 5 | [Métodos computacionales para el sentido](cursos/curso-5-metodos-computacionales/) | Juicio |
-| 6 | [Validación e interpretación: el investigador refigura](cursos/curso-6-validacion-interpretacion/) | Juicio |
+| 6 | [Validación e interpretación como refiguración del investigador](cursos/curso-6-validacion-interpretacion/) | Juicio |
 | 7 | [Ética, exterioridad y gobernanza](cursos/curso-7-etica-gobernanza/) | Juicio |
 
 ## Rutas apilables

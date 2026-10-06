@@ -1,4 +1,4 @@
-# Semana 1. Qué es un patrón: de la frecuencia al vector
+# Semana 1. Qué es un patrón, de la frecuencia al vector
 
 ## Pregunta de la semana
 

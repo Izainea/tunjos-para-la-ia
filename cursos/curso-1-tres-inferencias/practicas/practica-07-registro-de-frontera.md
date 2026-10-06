@@ -17,7 +17,7 @@ Ejecutar con un modelo una tarea pequeña y real del propio proyecto, y producir
 2. Prepare el material en un archivo de texto. No incluya datos personales de terceros.
 3. Abra la plantilla del registro y llene el encabezado.
 
-## Durante la sesión: tres rondas
+## Durante la sesión (tres rondas)
 
 ### Ronda 1. La máquina propone
 

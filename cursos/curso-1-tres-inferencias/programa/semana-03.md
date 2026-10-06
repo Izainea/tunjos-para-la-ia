@@ -1,4 +1,4 @@
-# Semana 3. Inducción: la máquina que generaliza
+# Semana 3. La inducción y la máquina que generaliza
 
 ## Pregunta de la semana
 

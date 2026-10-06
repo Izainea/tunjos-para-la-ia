@@ -1,4 +1,4 @@
-# Semana 6. El giro pragmático: validez, práctica e imputación
+# Semana 6. El giro pragmático hacia la validez, la práctica y la imputación
 
 ## Pregunta de la semana
 

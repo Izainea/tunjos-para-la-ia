@@ -1,4 +1,4 @@
-# Cuaderno de apoyo: Python para construir el corpus
+# Cuaderno de apoyo en Python para construir el corpus
 
 Este cuaderno acompaña las ocho semanas. Está escrito para alguien que nunca ha programado: cada bloque lleva antes una explicación de qué hace y por qué, y se puede copiar tal cual en una celda del cuaderno propio. Los bloques usan el caso demostrativo del curso; para el corpus propio basta cambiar las rutas y los nombres. Todo el software es libre.
 

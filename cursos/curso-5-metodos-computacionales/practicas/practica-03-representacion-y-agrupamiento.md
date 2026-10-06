@@ -15,7 +15,7 @@ Representar el corpus propio como vectores con una representación declarada, ag
 3. Lea los vecinos de diez documentos que conozca bien y llene la tabla de vecinos. Busque al menos un choque entre lo que el modelo acerca y lo que su corpus junta.
 4. Calcule una segunda representación (TF-IDF si la primera fue embeddings, o un segundo modelo de embeddings). Guárdela: es la tercera prueba de estabilidad.
 
-## Durante la sesión: tres rondas
+## Durante la sesión (tres rondas)
 
 ### Ronda 1. Agrupar varias veces
 

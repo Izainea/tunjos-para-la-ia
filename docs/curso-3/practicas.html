@@ -82,7 +82,7 @@
           <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
         </div>
 <article class="prose">
-<h1 id="cuaderno-apoyo">Cuaderno de apoyo: hacer las prácticas por programa</h1>
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo para hacer las prácticas por programa</h1>
 <p>Opcional. Todo el curso se puede hacer con una hoja de cálculo, el navegador y la interfaz web de un modelo. Este cuaderno es para quien quiera que la recolección, el hash, el catálogo y las descripciones queden en archivos y se puedan repetir. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. Cada bloque se explica antes de mostrarse.</p>
 <h2>Preparación</h2>
 <p>Instale Python 3.11 o superior y, en una terminal:</p>
@@ -336,7 +336,7 @@ No requiere programar: cada paso tiene una vía manual.</p>
 <li>Para cada sitio, abra <code><a href="https://&lt;sitio&gt;/robots.txt">https://&lt;sitio&gt;/robots.txt</a></code> en el navegador y anote si la ruta que va a visitar está permitida. Si el archivo no existe, anótelo. Si está prohibida, no la use y anote por qué.</li>
 <li>Si va por programa, instale las bibliotecas y pruebe que el bloque "comprobar robots" del cuaderno corre.</li>
 </ol>
-<h2>Durante la sesión: cuatro pasos</h2>
+<h2>Durante la sesión (cuatro pasos)</h2>
 <h3>Paso 1. Descargar con registro</h3>
 <p>Vía manual. Para cada imagen que quiera incorporar, guarde el archivo con un nombre numerado (<code>0001.jpg</code>, <code>0002.jpg</code>) y anote en la hoja de cálculo la URL de la imagen (clic derecho, copiar dirección de la imagen), la URL de la página, la fecha y el texto alternativo o pie si lo hay. Las dimensiones se obtienen de las propiedades del archivo.</p>
 <p>Vía por programa. Use el bloque "descargar una página" del cuaderno. Descarga las imágenes de una página respetando <code>robots.txt</code>, con pausa entre peticiones y un agente identificado, y escribe una fila por imagen con URL, página, dimensiones y texto alternativo.</p>
@@ -373,7 +373,7 @@ No requiere programar.</p>
 <li>Para tres de las 20, escriba su lectura propia: diez afirmaciones etiquetadas como en el taller de la semana 3. Guárdela sin mostrarla al modelo.</li>
 <li>Abra una cuenta en un servicio con modelo multimodal gratuito, o configure el <code>.env</code> del cuaderno. Pruebe con una imagen.</li>
 </ol>
-<h2>Primera parte (semana 4): describir</h2>
+<h2>Primera parte, describir (semana 4)</h2>
 <h3>Prompt plano</h3>
 <pre><code>Describe esta imagen en detalle.
 </code></pre>
@@ -397,7 +397,7 @@ Responde en español.
 <p>Para las tres imágenes con lectura propia, llene la tabla de la semana 4: afirmaciones en la capa de denotación, cuántas habría escrito usted igual, suposiciones declaradas, cuántas rechazaría, qué declaró el modelo no saber. Anote en la bitácora qué cambió entre prompts: no la cantidad de detalle sino su clasificación.</p>
 <h3>Presupuesto</h3>
 <p>Con el costo de las 40 salidas, extrapole al corpus completo: dinero, tiempo de ejecución, tiempo de lectura. Decida y escriba qué parte del corpus describirá con el presupuesto que tiene.</p>
-<h2>Segunda parte (semana 5): auditar</h2>
+<h2>Segunda parte, auditar (semana 5)</h2>
 <h3>Diseñar la muestra</h3>
 <p>Quince descripciones por capas, estratificadas por escena o periodo (cinco por estrato si hay tres estratos), incluyendo a propósito las imágenes que usted considera más locales. Escriba el criterio antes de auditar.</p>
 <h3>El orden obligatorio</h3>
@@ -434,7 +434,7 @@ Responde en español.
 </table></div>
 <h3>Cifras y resumen</h3>
 <p>Cuente las afirmaciones por columna sobre el total auditado. Declare que son cifras sobre la muestra, no tasas del corpus. Escriba el resumen del sesgo en un párrafo: qué tipo de cosas afirma el modelo sin base, qué tipo de cosas calla, qué tipo de cosas describe sin entender, con un ejemplo de cada una tomado de su corpus. Ese párrafo acompaña a todas las descripciones del corpus desde ahora.</p>
-<h3>Variante: dos modelos o dos lenguas</h3>
+<h3>Variante con dos modelos o dos lenguas</h3>
 <p>Si tiene acceso a dos modelos, o repite con el prompt en inglés, audite cinco imágenes con ambos y compare la tercera columna. Ananthram et al. (2025) encuentran que la lengua del prompt cambia el sesgo sin eliminarlo; compruebe si pasa en su corpus.</p>
 <h2>Después de la sesión de la semana 5</h2>
 <ol>

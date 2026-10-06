@@ -1,4 +1,4 @@
-# Cuaderno de apoyo: hacer las prácticas por programa
+# Cuaderno de apoyo para hacer las prácticas por programa
 
 Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y con hojas de cálculo. Este cuaderno es para quien quiera dejar instrucciones, outputs, expectativas y decisiones en archivos, repetir la codificación con varios modelos, y calcular el acuerdo cuando quiera reportarlo. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. El [cuaderno de apoyo de *Las tres inferencias*](../../curso-1-tres-inferencias/practicas/cuaderno-apoyo.md), el curso de fundamentos del programa, explica con más detalle la preparación del entorno y la función base que envía una instrucción a un modelo y guarda el registro; aquí se repite lo mínimo.
 

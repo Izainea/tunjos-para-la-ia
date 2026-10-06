@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Nombre | Corpus visual: del archivo a la imagen descrita |
+| Nombre | Del archivo al corpus visual descrito |
 | Programa | Tunjos para la IA, tercero de los siete cursos del programa. Capa Oficio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |

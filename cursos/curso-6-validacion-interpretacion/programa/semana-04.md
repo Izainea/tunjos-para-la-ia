@@ -1,4 +1,4 @@
-# Semana 4. Abducción aplicada: elegir qué hipótesis perseguir
+# Semana 4. Abducción aplicada para elegir qué hipótesis perseguir
 
 ## Pregunta de la semana
 

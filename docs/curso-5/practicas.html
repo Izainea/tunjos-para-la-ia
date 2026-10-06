@@ -82,7 +82,7 @@
           <p class="desc">Guías de las prácticas y cuaderno de apoyo.</p>
         </div>
 <article class="prose">
-<h1 id="cuaderno-apoyo">Cuaderno de apoyo: los métodos del curso en Python</h1>
+<h1 id="cuaderno-apoyo">Cuaderno de apoyo con los métodos del curso en Python</h1>
 <p>Este cuaderno acompaña las ocho semanas. Está escrito para que lo use alguien con nociones básicas de Python, copiando bloque a bloque; cada bloque viene precedido de lo que hace y de la decisión que exige. Los parámetros aparecen como variables con nombre al comienzo de cada bloque para que moverlos sea una línea y no una búsqueda. Todo lo que se calcula aquí se registra con su entorno y su semilla, porque la reproducibilidad es la mitad de la frontera.</p>
 <h2>Preparación</h2>
 <p>Instale Python 3.10 o superior y, en una terminal, las bibliotecas del curso. La primera vez que se cargue un modelo de embeddings se descargará de internet; después queda en el computador.</p>
@@ -475,7 +475,7 @@ Quien no programe puede hacer la práctica con la mini app de embeddings sobre e
 <li>Lea los vecinos de diez documentos que conozca bien y llene la tabla de vecinos. Busque al menos un choque entre lo que el modelo acerca y lo que su corpus junta.</li>
 <li>Calcule una segunda representación (TF-IDF si la primera fue embeddings, o un segundo modelo de embeddings). Guárdela: es la tercera prueba de estabilidad.</li>
 </ol>
-<h2>Durante la sesión: tres rondas</h2>
+<h2>Durante la sesión (tres rondas)</h2>
 <h3>Ronda 1. Agrupar varias veces</h3>
 <p>Corra k-means para k de 2 a 10 con cinco semillas cada uno, con el bloque de la semana 3 del cuaderno. Grafique la silueta y la inercia por k, y dibuje el dendrograma del agrupamiento jerárquico. Mire las tres cosas y elija dos valores de k razonables. Anote por qué los eligió; "porque la silueta es máxima" es una razón del método, y "porque mi pregunta distingue entre cuatro tipos de discurso" es una razón de la pregunta. Las dos valen, y la ficha pide cuál fue.</p>
 <h3>Ronda 2. Probar la estabilidad</h3>
@@ -510,7 +510,7 @@ Quien no programe puede hacer la práctica con la mini app de grafo sobre el con
 <li>Decida la unidad de coocurrencia. Si tiene el libro de códigos de <a href="../curso-4/index.html"><em>Codificación asistida</em></a>, los códigos del propio corpus con su definición y sus fragmentos de anclaje, construidos allí con ayuda de un modelo y bajo la responsabilidad del investigador, la unidad es el documento o el segmento codificado. Si tiene actores en noticias, la unidad es la noticia. Si tiene etiquetas de imágenes, la unidad es la imagen. Si no tiene nada de esto, use los grupos de la semana 3 como códigos y los documentos como unidades. Escriba la decisión y su razón en la sección 1 de la plantilla.</li>
 <li>Construya la tabla de unidades. Cada fila, una unidad; en la columna <code>codigos</code>, los códigos presentes separados por punto y coma. Sin datos personales de terceros.</li>
 </ol>
-<h2>Durante la sesión de la semana 4: tres rondas</h2>
+<h2>Durante la sesión de la semana 4 (tres rondas)</h2>
 <h3>Ronda 1. Construir y medir</h3>
 <p>Con el bloque de la semana 4 del cuaderno, construya el grafo ponderado con umbral uno: una arista entre dos códigos por cada unidad que comparten, con peso igual al número de unidades. Calcule grado, fuerza e intermediación. Antes de mirar los números, escriba en la sección 2 qué mide cada una en una frase suya. Luego anote los cinco nodos más altos en cada medida y encuentre dos medidas que ordenen los nodos de forma distinta.</p>
 <h3>Ronda 2. Mover el umbral</h3>
@@ -524,7 +524,7 @@ Quien no programe puede hacer la práctica con la mini app de grafo sobre el con
 <li>Pídale a un modelo de lenguaje una lectura alternativa de un puente, con el prompt registrado, y escríbala en la columna correspondiente con lo que decidiría entre las dos.</li>
 <li>Quite un nodo del grafo, el que más sospeche que sostiene la estructura, y vuelva a calcular comunidades. Anote qué pasó.</li>
 </ol>
-<h2>Durante la sesión de la semana 5: revisión en parejas</h2>
+<h2>Durante la sesión de la semana 5, revisión en parejas</h2>
 <p>Cada estudiante lee la lectura de grafo de otro durante quince minutos con una sola instrucción: encontrar al menos una afirmación de la sección 4 que la red no sostiene, o un apoyo que no es tal. El autor corrige o defiende por escrito. No encontrar nada es la excepción, no la cortesía.</p>
 <h2>Después de la sesión</h2>
 <p>Llene la sección 6, la frontera: qué calculó la máquina y cualquiera puede reproducir, qué leyó usted, qué propuso el modelo de lenguaje y qué hizo con ello. Adjunte el archivo de entorno y el código o los pasos. Entregue.</p>

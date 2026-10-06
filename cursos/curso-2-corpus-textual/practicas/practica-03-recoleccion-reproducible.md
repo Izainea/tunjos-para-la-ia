@@ -14,7 +14,7 @@ Ejecutar una recolección pequeña sobre el caso demostrativo y sobre una fuente
 3. Escriba a mano la lista de las piezas que va a pedir, con su dirección completa. Revísela. Esa lista es el insumo del programa, no su resultado.
 4. Cree la carpeta `crudo` vacía dentro de su proyecto.
 
-## Durante la sesión: tres rondas
+## Durante la sesión (tres rondas)
 
 ### Ronda 1. Leer lo que el sitio declara
 

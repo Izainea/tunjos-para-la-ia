@@ -207,6 +207,15 @@ def verificar(C) -> list[str]:
             avisos.append(f"{k} no menciona la modalidad híbrida")
     if "híbrid" not in C.UNAL["modalidad"].lower() and "semipresencial" not in C.UNAL["modalidad"].lower():
         avisos.append("UNAL['modalidad'] no es híbrida ni semipresencial")
+    # Títulos con dos puntos de gancho: prohibidos en nombres y temas de sesión
+    if ": " in C.NOMBRE:
+        avisos.append(f"NOMBRE lleva dos puntos de gancho: {C.NOMBRE!r}")
+    for linea in C.UNAL["nombre"].split("\n"):
+        if ": " in linea:
+            avisos.append(f"UNAL['nombre'] lleva dos puntos de gancho: {linea!r}")
+    for tema, _, _ in C.UNAL["sesiones"]:
+        if ": " in tema:
+            avisos.append(f"tema de sesión con dos puntos de gancho: {tema!r}")
     return avisos
 
 

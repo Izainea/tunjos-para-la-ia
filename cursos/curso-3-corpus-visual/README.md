@@ -1,4 +1,4 @@
-# Curso 3. Corpus visual: del archivo a la imagen descrita
+# Curso 3. Del archivo al corpus visual descrito
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Tercer curso del programa [Tunjos para la IA](../), capa Oficio. Pertenece a la ruta Imagen, junto con [*Las tres inferencias*](../curso-1-tres-inferencias/README.md), [*Codificación asistida*](../curso-4-codificacion-asistida/README.md) y [*Validación e interpretación*](../curso-6-validacion-interpretacion/README.md), y a la ruta Computacional, junto con [*Corpus textual*](../curso-2-corpus-textual/README.md) y [*Métodos computacionales para el sentido*](../curso-5-metodos-computacionales/README.md). Se puede tomar solo: no supone ninguno de ellos.
 

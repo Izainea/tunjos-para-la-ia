@@ -1,4 +1,4 @@
-# Cuaderno de apoyo: hacer las prácticas por programa
+# Cuaderno de apoyo para hacer las prácticas por programa
 
 Opcional. Todo el curso se puede hacer con la interfaz web de un modelo. Este cuaderno es para quien quiera dejar los prompts, outputs y decisiones en archivos y repetir el ejercicio con varios modelos. Está pensado para que lo use alguien sin experiencia previa en Python, copiando bloque a bloque.
 

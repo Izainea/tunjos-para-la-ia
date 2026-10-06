@@ -41,7 +41,7 @@ Organizada por semana. Las lecturas centrales están marcadas con ●. Los enlac
 - Strauss, A. L. (1987). *Qualitative Analysis for Social Scientists*. Cambridge: Cambridge University Press.
 - Zainea, C. I. (2026). "Los modelos de lenguaje no alucinan: cometen infortunios". https://izainea.github.io/blog/alucinacion-o-infortunio/
 
-## Semana 4. Memos y categorías: emergencia frente a forzamiento
+## Semana 4. Memos y categorías entre emergencia y forzamiento
 
 - ● Glaser, B. G. (1992). *Basics of Grounded Theory Analysis: Emergence vs Forcing*. Mill Valley: Sociology Press. Caps. 1 a 3.
 - ● Kelle, U. (2005). "'Emergence' vs. 'Forcing' of Empirical Data? A Crucial Problem of 'Grounded Theory' Reconsidered". *Forum Qualitative Sozialforschung* 6(2), art. 27. https://www.qualitative-research.net/index.php/fqs/article/view/467

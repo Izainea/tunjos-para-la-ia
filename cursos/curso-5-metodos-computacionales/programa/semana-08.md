@@ -88,7 +88,7 @@ Se le pide a un modelo de lenguaje que proponga tres hipótesis para el patrón 
 - Timmermans y Tavory piden familiaridad con muchas teorías para poder sorprenderse. *Nombre dos teorías de su campo que su patrón elegido confirma o contradice. Si no puede nombrar ninguna, ¿de qué se sorprende?*
 - En "La prótesis hermenéutica" la máquina configura y el investigador valida, con la frontera marcada. *Dibuje el flujo de su propio proyecto después de este curso. ¿Dónde está la frontera y por qué ahí?*
 
-## Taller: presentaciones y cierre
+## Taller sobre presentaciones y cierre
 
 Formato de presentación, ocho minutos y dos preguntas de pares:
 

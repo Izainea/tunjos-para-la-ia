@@ -1,4 +1,4 @@
-# Semana 3. Agrupamiento: el número de grupos como decisión
+# Semana 3. El número de grupos como decisión del agrupamiento
 
 ## Pregunta de la semana
 

@@ -8,11 +8,11 @@ Para equipos de dos a seis personas. Quien trabaja solo sigue la guía ocupando 
 
 Escribir un protocolo que una persona distinta de sus autores pueda ejecutar, ponerlo a prueba ante pares sobre un caso real, e incorporar lo que la prueba muestre.
 
-## Antes de la primera sesión: lo que cada miembro trae
+## Antes de la primera sesión, lo que cada miembro trae
 
 Cada miembro del equipo trae sus tres insumos. Si el equipo trabaja sobre un mismo proyecto, las matrices y auditorías se consolidan en una antes de la sesión: una matriz con todos los tipos de pieza, un perfil de exclusiones que reúne las muestras. Si cada miembro tiene su proyecto y el protocolo es para un equipo o una institución que los cubre a todos, los insumos se conservan separados y el protocolo tiene un alcance que los nombra.
 
-## Primera sesión (semana 7): las reglas
+## Primera sesión, las reglas (semana 7)
 
 ### Paso 1. Alcance y qué gobierna (20 minutos)
 
@@ -48,7 +48,7 @@ Cada miembro marca la regla que más le costaría cumplir y dice por qué. El eq
 4. Redactar la declaración de uso de IA del propio proyecto con la plantilla, como si acompañara un producto real.
 5. Preparar la presentación de ocho minutos con el formato de la semana 8.
 
-## Segunda sesión (semana 8): la prueba
+## Segunda sesión, la prueba (semana 8)
 
 ### Paso 6. Presentación (8 minutos)
 

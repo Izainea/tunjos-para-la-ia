@@ -98,7 +98,7 @@ Esta semana se le pide al modelo que ejecute el protocolo del estudiante sobre e
 - Fricker propone una virtud, la justicia hermenéutica, que consiste en estar alerta a que el interlocutor puede carecer de los conceptos para expresarse. *¿Puede un protocolo exigir una virtud? ¿Qué regla suya se acerca más a eso, y qué le falta?*
 - Vallor cierra con lo que llama mirar a través del espejo. *Después de ocho semanas, ¿qué de su propio juicio decidió no delegar, y es una decisión que mantendría sin el curso?*
 
-## Taller: presentaciones y revisión entre pares
+## Taller sobre presentaciones y revisión entre pares
 
 Formato de la presentación, ocho minutos:
 

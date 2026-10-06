@@ -97,7 +97,7 @@ Esta semana se le pide al modelo que revise el libro de códigos final contra la
 - Lincoln y Guba describen la auditoría como un examen del proceso y del producto por un tercero. *Si un par auditara su libro mañana con el registro, ¿qué decisión suya sería la más difícil de justificar? Esa es la que hay que preparar para la presentación.*
 - Vallor teme que la delegación atrofie el juicio. *Después de ocho semanas, ¿hay algún código que usted no habría visto sin el modelo? ¿Y alguno que el modelo le impidió ver?*
 
-## Taller: presentaciones y cierre
+## Taller sobre presentaciones y cierre
 
 Formato de presentación, ocho minutos:
 

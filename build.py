@@ -38,12 +38,12 @@ RUTAS = [
 ]
 # Cursos previstos aunque su carpeta aún no exista
 PREVISTOS = {
-    1: ("Las tres inferencias: razonamiento humano y razonamiento artificial", "Qué tipo de inferencia hace la máquina, cuál hace el investigador y cuál puede validarse sin un sujeto que responda."),
-    2: ("Corpus textual: del documento al dato trazable", "Cómo convertir documentos dispersos en un corpus con procedencia, reproducible y listo para analizar."),
-    3: ("Corpus visual: del archivo a la imagen descrita", "Cómo catalogar, describir y cuidar un corpus de imágenes con ayuda de modelos multimodales sin perder el juicio."),
-    4: ("Codificación asistida: la máquina configura", "Qué hace un modelo cuando propone códigos y categorías, con qué criterio se juzga y quién responde por el libro de códigos."),
+    1: ("Las tres inferencias en el razonamiento humano y el artificial", "Qué tipo de inferencia hace la máquina, cuál hace el investigador y cuál puede validarse sin un sujeto que responda."),
+    2: ("Del documento al corpus textual trazable", "Cómo convertir documentos dispersos en un corpus con procedencia, reproducible y listo para analizar."),
+    3: ("Del archivo al corpus visual descrito", "Cómo catalogar, describir y cuidar un corpus de imágenes con ayuda de modelos multimodales sin perder el juicio."),
+    4: ("Codificación asistida por una máquina que configura", "Qué hace un modelo cuando propone códigos y categorías, con qué criterio se juzga y quién responde por el libro de códigos."),
     5: ("Métodos computacionales para el sentido", "Cuándo un patrón computacional es una hipótesis que vale la pena perseguir y cuándo es un artefacto del método."),
-    6: ("Validación e interpretación: el investigador refigura", "Qué significa validar lo configurado, con qué criterios, y cómo escribir hallazgos por los que se pueda responder."),
+    6: ("Validación e interpretación como refiguración del investigador", "Qué significa validar lo configurado, con qué criterios, y cómo escribir hallazgos por los que se pueda responder."),
     7: ("Ética, exterioridad y gobernanza", "Qué excluye, a quién expone y a quién exime un flujo asistido por modelos, y qué reglas lo hacen defendible."),
 }
 

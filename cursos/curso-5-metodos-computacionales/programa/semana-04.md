@@ -1,4 +1,4 @@
-# Semana 4. Redes: el grafo como hipótesis relacional
+# Semana 4. El grafo de coocurrencias como hipótesis relacional
 
 ## Pregunta de la semana
 

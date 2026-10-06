@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Nombre | Validación e interpretación: el investigador refigura |
+| Nombre | Validación e interpretación como refiguración del investigador |
 | Programa | Tunjos para la IA, sexto de siete cursos. Capa de Juicio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado. La modalidad virtual es solo alternativa |
@@ -41,10 +41,10 @@ Al terminar el curso el estudiante puede:
 | [1](semana-01.md) | Tres sentidos de validación. Por qué rendimiento no es validez. El acuerdo entre codificadores como ejemplo de confusión | Zainea (2026), tres sentidos. McDonald, Schoenebeck y Forte (2019) | Clasificar afirmaciones de validación del propio proyecto |
 | [2](semana-02.md) | Los criterios de rigor cualitativo, releídos: Lincoln y Guba, Denzin, reflexividad. Qué puede satisfacer una máquina y qué exige al investigador | Lincoln y Guba (1985), cap. 11 | Borrador del protocolo de validación |
 | [3](semana-03.md) | Triangulación con y sin modelo. El modelo como segundo codificador y sus límites. El supuesto de independencia | Denzin (1970), triangulación. Flick (2004), cap. sobre triangulación | Práctica guiada y entrega del protocolo de validación |
-| [4](semana-04.md) | Abducción aplicada: elegir qué hipótesis perseguir con los criterios de Peirce sobre patrones y códigos propios | Peirce (1903). Timmermans y Tavory (2012) | Ficha de hipótesis sobre material propio |
+| [4](semana-04.md) | Abducción aplicada para elegir qué hipótesis perseguir con los criterios de Peirce sobre patrones y códigos propios | Peirce (1903). Timmermans y Tavory (2012) | Ficha de hipótesis sobre material propio |
 | [5](semana-05.md) | Interpretar lo visual y lo discursivo: Peirce, Barthes, Kress y van Leeuwen, Entman | Entman (1993). Kress y van Leeuwen (2006), cap. 1 | Entrega de la matriz de triangulación y la ficha de hipótesis |
 | [6](semana-06.md) | La triple mímesis como mapa del trabajo. Dónde estuvo la máquina y dónde el investigador. Prefiguración ajena | Ricœur (1995), cap. 3. Zainea (2026), agencia sin imputación | Mapa mimético del propio proyecto |
-| [7](semana-07.md) | Escribir hallazgos: de output a aserción. El infortunio de autoridad epistémica en la propia escritura. Declaración de uso de IA | Austin (1982), conf. I y II. Habermas (1987), cap. III | Práctica guiada de reescritura y borrador del informe |
+| [7](semana-07.md) | Escribir hallazgos, de output a aserción. El infortunio de autoridad epistémica en la propia escritura. Declaración de uso de IA | Austin (1982), conf. I y II. Habermas (1987), cap. III | Práctica guiada de reescritura y borrador del informe |
 | [8](semana-08.md) | Defensa ante pares: presentación con sección de validación explícita | Ricœur (1996). Vallor (2024), cap. 4 | Entrega final y defensa |
 
 ## Metodología

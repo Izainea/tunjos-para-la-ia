@@ -1,4 +1,4 @@
-# Cuaderno de apoyo: hacer las prácticas por programa
+# Cuaderno de apoyo para hacer las prácticas por programa
 
 Opcional. Todo el curso se puede hacer con una hoja de cálculo, el navegador y la interfaz web de un modelo. Este cuaderno es para quien quiera que la recolección, el hash, el catálogo y las descripciones queden en archivos y se puedan repetir. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. Cada bloque se explica antes de mostrarse.
 

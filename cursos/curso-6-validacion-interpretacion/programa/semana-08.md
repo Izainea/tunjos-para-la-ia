@@ -88,7 +88,7 @@ Esta semana se le pide al modelo que haga de par: que lea el informe final y for
 
 Sobre el orden de las presentaciones. Conviene que presenten primero quienes tienen más hallazgos de una sola pata, porque sus respuestas fijan para el grupo lo que significa presentar una conjetura como conjetura. El docente lo decide con las matrices entregadas en la semana 5.
 
-## Taller: presentaciones y cierre
+## Taller sobre presentaciones y cierre
 
 Formato de presentación, diez minutos y cinco de preguntas:
 
