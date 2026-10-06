@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | Nombre | Corpus textual: del documento al dato trazable |
-| Programa | Tunjos para la IA, curso 2 de 7. Capa de Oficio |
+| Programa | Tunjos para la IA, segundo de los siete cursos del programa. Capa de Oficio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
-| Prerrequisitos | Ninguno. No requiere programación previa: el curso enseña Python desde cero. Se recomienda haber cursado el curso 1 del programa, pero no es obligatorio |
+| Prerrequisitos | Ninguno. No requiere programación previa: el curso enseña Python desde cero. Se recomienda haber cursado [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguen deducción, inducción y abducción por su régimen de validez y se concluye que la máquina configura sin poder validar ni responder por lo configurado; no es obligatorio, porque lo que este curso toma de allí se explica donde se usa |
 | Público | Egresados y estudiantes de posgrado en ciencias sociales y humanidades, profesionales que investigan o producen informes a partir de documentos, prensa, archivos o textos en línea |
 | Equipo | Un computador con Python 3.11 o superior y un cuaderno (JupyterLab o un servicio gratuito de cuadernos en la nube). Todo el software del curso es libre |
 
@@ -71,7 +71,7 @@ La rúbrica detallada está en [evaluacion.md](evaluacion.md).
 
 ## Articulación
 
-Este curso abre la capa de Oficio del programa y pertenece a las rutas Texto, Computacional y Programa completo. Su producto, el catálogo maestro con el cuaderno que lo genera, es el documento de entrada del curso 4 (codificación asistida) y del curso 5 (métodos computacionales para el sentido). Se articula con cursos de metodología cualitativa, análisis de contenido, archivística y humanidades digitales de posgrados en ciencias sociales y humanidades, a los que aporta lo que ellos no suelen cubrir: la construcción programada y documentada del corpus antes del análisis.
+Este curso abre la capa de Oficio del programa y pertenece a las rutas Texto, Computacional y Programa completo. Su producto, el catálogo maestro con el cuaderno que lo genera, es el documento de entrada de [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), donde el corpus se codifica con el modelo como codificador auxiliar y el libro de códigos resultante se trata como aserción del investigador y no como output, y de [*Métodos computacionales para el sentido*](../../curso-5-metodos-computacionales/README.md), donde se le aplican embeddings, agrupamientos y redes de coocurrencia, instrumentos cuyos patrones solo pueden interpretarse si el corpus tiene procedencia. Se articula con cursos de metodología cualitativa, análisis de contenido, archivística y humanidades digitales de posgrados en ciencias sociales y humanidades, a los que aporta lo que ellos no suelen cubrir: la construcción programada y documentada del corpus antes del análisis.
 
 ## Política de uso de modelos de lenguaje
 

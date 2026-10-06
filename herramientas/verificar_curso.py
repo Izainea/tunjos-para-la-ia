@@ -125,6 +125,21 @@ def check_enlaces(curso: Path, err: list, av: list) -> None:
                 err.append(f"{p.relative_to(curso)}: iframe a app inexistente '{m.group(1)}'")
 
 
+def check_autocontenido(curso: Path, err: list, av: list) -> None:
+    """Prohíbe referencias a otros cursos por número o posición; deben ir con nombre, enlace y resumen."""
+    pats = [r"\bcursos? [1-7]\b", r"\bcursos? (anterior|anteriores|siguiente|siguientes|previo|previos)\b",
+            r"\bsemana \d+ del curso\b", r"\ben los cursos [1-7]"]
+    for p in md_files(curso):
+        s = p.read_text(encoding="utf-8")
+        for pat in pats:
+            for m in re.finditer(pat, s, re.I):
+                linea = s.count("\n", 0, m.start()) + 1
+                texto_linea = s.splitlines()[linea - 1]
+                if re.match(r"^#\s*Curso\s*\d+\.", texto_linea):
+                    continue  # el título del propio curso
+                err.append(f"{p.relative_to(curso)}:{linea}: referencia a otro curso por número o posición ('{m.group(0)}'); use nombre, enlace y resumen")
+
+
 def check_didactica(curso: Path, err: list, av: list) -> None:
     apps = list((curso / "apps").glob("*.html"))
     if len(apps) < 3:
@@ -185,6 +200,7 @@ def verificar(curso: Path, con_capturas: bool) -> int:
     check_prohibidos(curso, err, av)
     check_enlaces(curso, err, av)
     check_didactica(curso, err, av)
+    check_autocontenido(curso, err, av)
     check_js(curso, err, av)
     if con_capturas:
         capturas(curso, err, av)

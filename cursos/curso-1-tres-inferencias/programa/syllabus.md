@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Nombre | Las tres inferencias: razonamiento humano y razonamiento artificial |
-| Programa | Tunjos para la IA, curso 1 de 7 |
+| Programa | Tunjos para la IA, primer curso de los siete que componen el programa |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
@@ -70,7 +70,7 @@ La rúbrica detallada está en [evaluacion.md](evaluacion.md).
 
 ## Articulación
 
-Este curso es el fundamento de las rutas Texto, Imagen y Programa completo del programa Tunjos para la IA. Se articula con cursos de metodología cualitativa, epistemología, lógica informal y ética de la inteligencia artificial de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que ellos no suelen cubrir: la clasificación inferencial del trabajo asistido por modelos.
+Este curso es el fundamento del programa Tunjos para la IA y abre sus tres rutas principales. La ruta Texto sigue con [*Corpus textual*](../../curso-2-corpus-textual/README.md), donde un conjunto disperso de documentos se convierte en un corpus con procedencia y reproducible; la ruta Imagen sigue con [*Corpus visual*](../../curso-3-corpus-visual/README.md), donde imágenes dispersas se catalogan y describen con ayuda de modelos multimodales sin perder el juicio. Ambas continúan con [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), donde el modelo propone códigos y categorías y el investigador decide cada uno con un criterio nombrado, y terminan con [*Validación e interpretación*](../../curso-6-validacion-interpretacion/README.md), donde lo configurado se valida en los tres sentidos que este curso distingue y se escribe como hallazgo por el que alguien responde. La ruta Programa completo recorre los siete cursos, añade [*Métodos computacionales para el sentido*](../../curso-5-metodos-computacionales/README.md), que pregunta cuándo un patrón computacional es una hipótesis que vale la pena perseguir y cuándo un artefacto del método, y [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md), que trata los derechos sobre el material, la exterioridad del modelo frente a un archivo situado y las reglas que hacen defendible el uso de IA, y cierra con un proyecto integrador. En todos ellos el mapa inferencial que aquí se construye es el documento de entrada. El curso se articula además con cursos de metodología cualitativa, epistemología, lógica informal y ética de la inteligencia artificial de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que ellos no suelen cubrir: la clasificación inferencial del trabajo asistido por modelos.
 
 ## Política de uso de modelos de lenguaje
 

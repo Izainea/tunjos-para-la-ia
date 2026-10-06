@@ -270,4 +270,4 @@ Luego se concatena con las filas propias y se corre el bloque de kappa. Cada lla
 
 ## Nota sobre costos y privacidad
 
-Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. El curso 7 del programa trata estos problemas en detalle.
+Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.

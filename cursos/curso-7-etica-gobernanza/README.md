@@ -1,6 +1,6 @@
 # Curso 7. Ética, exterioridad y gobernanza
 
-Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Séptimo curso del programa [Tunjos para la IA](../). Capa: Juicio.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Es el curso que cierra el programa [Tunjos para la IA](../). Capa: Juicio.
 
 **Pregunta del curso.** ¿Qué excluye, a quién expone y a quién exime un flujo de investigación asistido por modelos, y qué reglas debe darse un investigador, un equipo o una institución para que el uso de IA sea defendible ante quienes estudia y ante quienes lo leen?
 

@@ -11,7 +11,7 @@ Producir el libro de códigos abierto del corpus propio con un modelo como codif
 ## Antes de la sesión
 
 1. Numere los fragmentos. Un fragmento es una unidad con sentido propio: una respuesta de entrevista, un párrafo de prensa, una descripción de imagen. Entre veinte y sesenta es el tamaño del curso.
-2. Revise que no haya nombres, direcciones ni datos que identifiquen a una persona. Si su material es sensible, trabaje con una muestra anonimizada o con material público; el curso 7 del programa trata estos problemas en detalle.
+2. Revise que no haya nombres, direcciones ni datos que identifiquen a una persona. Si su material es sensible, trabaje con una muestra anonimizada o con material público; [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.
 3. Tenga a mano la lista de verificación de la semana 2, en especial la regla de generación de su tradición. Lo que le va a pedir al modelo es esa regla.
 
 ## Ronda 0. Codificar a mano, antes

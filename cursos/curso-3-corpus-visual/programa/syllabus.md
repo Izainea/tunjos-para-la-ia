@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | Nombre | Corpus visual: del archivo a la imagen descrita |
-| Programa | Tunjos para la IA, curso 3 de 7. Capa Oficio |
+| Programa | Tunjos para la IA, tercero de los siete cursos del programa. Capa Oficio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
-| Prerrequisitos | Ninguno. Se recomienda el curso 1 del programa. No requiere programación: las prácticas se pueden hacer con hojas de cálculo y con la interfaz web de un modelo; el cuaderno de apoyo en Python es opcional |
+| Prerrequisitos | Ninguno. Se recomienda haber tomado [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguen deducción, inducción y abducción por su régimen de validez y se concluye que un modelo configura sin poder validar ni responder por lo configurado; este curso usa esa distinción, pero la explica cuando la necesita. No requiere programación: las prácticas se pueden hacer con hojas de cálculo y con la interfaz web de un modelo; el cuaderno de apoyo en Python es opcional |
 | Público | Egresados y estudiantes de posgrado en historia, estudios visuales, comunicación, antropología, sociología y artes; personal de museos, archivos y medios que trabaja con colecciones de imágenes |
 
 ## Problema que atiende
@@ -70,7 +70,7 @@ La rúbrica detallada está en [evaluacion.md](evaluacion.md).
 
 ## Articulación
 
-Este curso es el segundo de la ruta Imagen (1, 3, 4, 6) y el segundo de la ruta Computacional (2, 3, 5) del programa Tunjos para la IA. Entrega al curso 4 un corpus descrito y auditado sobre el que la codificación asistida puede empezar, y al curso 5 un catálogo tabular con descripciones listas para métodos computacionales. Se articula con cursos de metodologías visuales, historia del arte, estudios de medios, archivística y museología de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que no suelen cubrir: la construcción técnica del corpus y la auditoría de descripciones producidas por modelos.
+Este curso pertenece a dos rutas del programa Tunjos para la IA. En la ruta Imagen lo precede [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), que distingue deducción, inducción y abducción por su régimen de validez y concluye que la máquina configura sin poder validar, y lo siguen [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), donde un modelo propone códigos y categorías sobre material cualitativo y el investigador responde por el libro de códigos, y [*Validación e interpretación*](../../curso-6-validacion-interpretacion/README.md), donde lo ya configurado se valida en tres sentidos y se escribe como hallazgo propio. En la ruta Computacional lo precede [*Corpus textual*](../../curso-2-corpus-textual/README.md), que construye con Python un corpus de documentos con procedencia, y lo sigue [*Métodos computacionales para el sentido*](../../curso-5-metodos-computacionales/README.md), donde embeddings, agrupamiento y redes se tratan como instrumentos inductivos que no eligen entre hipótesis. A *Codificación asistida* este curso entrega un corpus descrito y auditado sobre el que la codificación puede empezar; a *Métodos computacionales para el sentido*, un catálogo tabular con descripciones listas para representar y agrupar. Ninguno de esos cursos es prerrequisito de este. Se articula con cursos de metodologías visuales, historia del arte, estudios de medios, archivística y museología de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que no suelen cubrir: la construcción técnica del corpus y la auditoría de descripciones producidas por modelos.
 
 ## Política de uso de modelos multimodales
 

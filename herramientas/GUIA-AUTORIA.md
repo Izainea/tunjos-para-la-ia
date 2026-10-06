@@ -120,3 +120,7 @@ Rasgos que deben reproducirse:
 - Referencias verificables: autor, año, título, revista o editorial, y enlace de acceso abierto si existe (arXiv, Gutenberg, Universidad de Navarra para Peirce, ACL Anthology, DOI). No inventar referencias: si no se está seguro de una, no incluirla. Formato APA 7.
 - Español de Colombia. Segunda persona formal ("usted") en instrucciones al estudiante, tercera persona en descripciones.
 - Lo que el curso enseña se aplica al proyecto propio del estudiante; nunca a casos ficticios cuando puede ser real. No mencionar herramientas de pago como requisito.
+
+## 8. Cada curso es autocontenido
+
+Un lector puede tomar un solo curso. Por eso está prohibido referirse a otro curso por su número o por su posición ("el curso 1", "el curso anterior", "los cursos siguientes", "la semana 7 del curso 1"). Toda referencia a otro curso lleva tres cosas: el nombre del curso en cursiva, un enlace a su README o a la semana concreta (`[*Corpus textual*](../../curso-2-corpus-textual/README.md)` desde `programa/`; `../curso-2-corpus-textual/README.md` desde el README del curso), y una o dos frases que digan de qué se habló allí y qué se concluyó, de modo que quien no lo tomó entienda igual. Si un párrafo da por supuesto algo que solo se explicó en otro curso, se añade aquí la explicación mínima. El verificador señala como error cualquier "curso N" suelto fuera de un enlace con nombre.

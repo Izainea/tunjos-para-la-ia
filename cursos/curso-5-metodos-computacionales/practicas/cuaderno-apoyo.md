@@ -463,4 +463,4 @@ with open("tablero.html", "w", encoding="utf-8") as f:
 
 ## Nota sobre costos y privacidad
 
-Todas las bibliotecas del cuaderno son abiertas y corren en el computador propio; los modelos de embeddings se descargan una vez. No suba a ningún servicio material con datos personales de terceros. Si su corpus es sensible, haga la práctica con una muestra anonimizada. El curso 7 del programa trata estos problemas en detalle.
+Todas las bibliotecas del cuaderno son abiertas y corren en el computador propio; los modelos de embeddings se descargan una vez. No suba a ningún servicio material con datos personales de terceros. Si su corpus es sensible, haga la práctica con una muestra anonimizada. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: los derechos y el cuidado del material, datos personales e imágenes sensibles incluidos, la precomprensión ajena con que un modelo lee un archivo situado, y el protocolo de gobernanza que fija quién responde por cada uso.

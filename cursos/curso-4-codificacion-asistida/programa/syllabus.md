@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | Nombre | Codificación asistida: la máquina configura |
-| Programa | Tunjos para la IA, curso 4 de 7. Capa de Oficio |
+| Programa | Tunjos para la IA, cuarto de siete cursos. Capa de Oficio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
-| Prerrequisitos | Ninguno obligatorio. Se recomienda el curso 1 del programa. No requiere programación: el cuaderno de apoyo en Python es opcional |
+| Prerrequisitos | Ninguno obligatorio. Se recomienda haber tomado [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguen deducción, inducción y abducción por su régimen de validez y se concluye que la máquina configura sin poder validar ni responder por lo configurado; lo que de allí se usa se explica aquí donde hace falta. No requiere programación: el cuaderno de apoyo en Python es opcional |
 | Público | Egresados y estudiantes de posgrado en ciencias sociales y humanidades, profesionales que analizan entrevistas, testimonios, documentos o imágenes descritas con apoyo de modelos de lenguaje |
 | Requisito de material | Un corpus propio pequeño (entre 20 y 60 fragmentos: entrevistas, testimonios, prensa, documentos, descripciones de imágenes) sin datos personales de terceros o anonimizado |
 
@@ -71,7 +71,7 @@ Se aprueba con nivel Logrado en el libro de códigos final y en el libro de cód
 
 ## Articulación
 
-Pertenece a las rutas Texto e Imagen del programa Tunjos para la IA, después de los cursos de corpus (2 o 3) y antes del curso de validación e interpretación (6). Se articula con seminarios de metodología cualitativa, análisis de datos cualitativos asistido por computador y seminarios de tesis de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que no suelen cubrir: un protocolo para codificar con modelos de lenguaje que conserva las condiciones de validez de la tradición de origen.
+Pertenece a las rutas Texto e Imagen del programa Tunjos para la IA. Lo precede, en la ruta Texto, [*Corpus textual*](../../curso-2-corpus-textual/README.md), que enseña a convertir documentos dispersos en un corpus con procedencia, catalogado y reproducible, y, en la ruta Imagen, [*Corpus visual*](../../curso-3-corpus-visual/README.md), que hace lo mismo con imágenes descritas por capas y auditadas frente a un modelo multimodal; de cualquiera de los dos sale el material que aquí se codifica. Lo sigue [*Validación e interpretación*](../../curso-6-validacion-interpretacion/README.md), que distingue tres sentidos de validar, comprobar la corrección del resultado, justificar el proceso y responder por lo afirmado, y enseña a escribir hallazgos como aserciones propias; el libro de códigos de este curso es su material de entrada. Se articula con seminarios de metodología cualitativa, análisis de datos cualitativos asistido por computador y seminarios de tesis de programas de posgrado en ciencias sociales y humanidades, a los que aporta lo que no suelen cubrir: un protocolo para codificar con modelos de lenguaje que conserva las condiciones de validez de la tradición de origen.
 
 ## Política de uso de modelos de lenguaje
 

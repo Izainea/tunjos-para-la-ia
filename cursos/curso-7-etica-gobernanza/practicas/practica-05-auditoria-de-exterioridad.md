@@ -60,4 +60,4 @@ Dos lectores escriben las categorías locales por separado y sin verse. La audit
 
 ## Variante por programa
 
-Quien quiera repetir la auditoría con varios modelos o con varias rondas puede usar el cuaderno de apoyo del curso 1 del programa, que registra cada consulta con fecha en un archivo. La clasificación sigue siendo manual y con el lector situado.
+Quien quiera repetir la auditoría con varios modelos o con varias rondas puede usar el [cuaderno de apoyo](../../curso-1-tres-inferencias/practicas/cuaderno-apoyo.md) de [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), un conjunto de bloques de Python pensado para quien no programa, que envía cada consulta a un modelo y guarda en un archivo la fecha, el modelo, la instrucción y la respuesta, de modo que el archivo sirve de anexo literal. La clasificación sigue siendo manual y con el lector situado.

@@ -10,7 +10,7 @@ Construir el grafo de coocurrencia del corpus propio con una unidad declarada, c
 
 ## Antes de la sesión de la semana 4
 
-1. Decida la unidad de coocurrencia. Si tiene el libro de códigos del curso 4, la unidad es el documento o el segmento codificado. Si tiene actores en noticias, la unidad es la noticia. Si tiene etiquetas de imágenes, la unidad es la imagen. Si no tiene nada de esto, use los grupos de la semana 3 como códigos y los documentos como unidades. Escriba la decisión y su razón en la sección 1 de la plantilla.
+1. Decida la unidad de coocurrencia. Si tiene el libro de códigos de [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), los códigos del propio corpus con su definición y sus fragmentos de anclaje, construidos allí con ayuda de un modelo y bajo la responsabilidad del investigador, la unidad es el documento o el segmento codificado. Si tiene actores en noticias, la unidad es la noticia. Si tiene etiquetas de imágenes, la unidad es la imagen. Si no tiene nada de esto, use los grupos de la semana 3 como códigos y los documentos como unidades. Escriba la decisión y su razón en la sección 1 de la plantilla.
 2. Construya la tabla de unidades. Cada fila, una unidad; en la columna `codigos`, los códigos presentes separados por punto y coma. Sin datos personales de terceros.
 
 ## Durante la sesión de la semana 4: tres rondas

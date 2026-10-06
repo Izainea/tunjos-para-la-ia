@@ -81,7 +81,7 @@ Una entrada por categoría. Las propiedades son los atributos que la caracteriza
 
 ## 6. Lo que queda abierto
 
-Categorías en observación, relaciones sin fragmentos suficientes, preguntas para el curso 6.
+Categorías en observación, relaciones sin fragmentos suficientes, y preguntas que quedan para la validación y la interpretación del libro, que en el programa corresponden a [*Validación e interpretación*](../../curso-6-validacion-interpretacion/README.md): allí el libro de códigos se valida en tres sentidos, corrección del resultado, justificación del proceso y responsabilidad por lo afirmado, y se escribe como hallazgo propio.
 
 ## 7. Declaración de responsabilidad (versión final)
 

@@ -57,6 +57,17 @@ def rewrite_links(html: str, slug_map: dict[str, str]) -> str:
         h = href
         h = re.sub(r"^\.\./?$", "../index.html", h)
         h = h.replace("../../USO-DE-IA.md", "../uso-de-ia.html").replace("../USO-DE-IA.md", "uso-de-ia.html")
+        # enlaces entre cursos: ../../curso-N-slug/README.md o .../programa/semana-0M.md → ../curso-N/<página>.html
+        m2 = re.match(r"^(?:\.\./)+curso-(\d)-[a-z0-9-]+/?(README\.md|programa/(semana-0\d|syllabus|evaluacion|bibliografia)\.md|(plantillas|practicas|apps)/?.*)?$", h)
+        if m2:
+            n, resto = m2.group(1), m2.group(2) or ""
+            if resto.startswith("programa/"):
+                pagina = "index.html" if "syllabus" in resto else resto.split("/")[1].replace(".md", ".html")
+            elif resto.startswith(("plantillas", "practicas", "apps")):
+                pagina = resto.split("/")[0] + ".html"
+            else:
+                pagina = "index.html"
+            return f'href="../curso-{n}/{pagina}"'
         h = re.sub(r"^\.\./(plantillas|practicas|apps|programa)(/|$)", r"\1\2", h)  # desde programa/ hacia carpetas hermanas
         h = re.sub(r"^programa/?$", "index.html", h)
         h = re.sub(r"^(plantillas|practicas|apps)/?$", r"\1.html", h)

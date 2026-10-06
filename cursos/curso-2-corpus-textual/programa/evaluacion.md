@@ -52,7 +52,7 @@ El curso se evalúa por productos, no por exámenes. Los tres productos y la bit
 
 ## Política de integridad
 
-El uso de modelos de lenguaje es obligatorio y declarado. Lo que se sanciona no es usarlos sino presentar como propio lo que no se puede sostener: una etiqueta sin auditoría presentada como lectura, una inclusión decidida por el modelo presentada como criterio del protocolo, un resumen citado como fuente. Eso es, en términos del programa, un infortunio de autoridad epistémica. Una entrega con uso no declarado se devuelve para que el estudiante escriba el registro de frontera que faltaba.
+El uso de modelos de lenguaje es obligatorio y declarado. Lo que se sanciona no es usarlos sino presentar como propio lo que no se puede sostener: una etiqueta sin auditoría presentada como lectura, una inclusión decidida por el modelo presentada como criterio del protocolo, un resumen citado como fuente. Eso es lo que [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, llama un infortunio de autoridad epistémica: un acto con forma de aserción fundamentada por el que nadie puede responder. Una entrega con uso no declarado se devuelve para que el estudiante escriba el registro de frontera que faltaba.
 
 ## Certificación
 

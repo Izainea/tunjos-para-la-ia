@@ -1,6 +1,6 @@
 # Curso 6. Validación e interpretación: el investigador refigura
 
-Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa el curso 1: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa [*Las tres inferencias*](../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguieron deducción, inducción y abducción por su régimen de validez y se concluyó que la máquina configura sin poder validar ni responder por lo configurado: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
 
 **Pregunta del curso.** Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?
 
@@ -23,7 +23,7 @@ Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de micr
 
 ## Requisitos
 
-Haber cursado el curso 1 o conocer la distinción entre deducción, inducción y abducción. Tener material propio ya configurado: códigos, categorías, patrones o descripciones producidos en los cursos 2 a 5 o en el propio proyecto, con o sin máquina. No requiere programación.
+Haber cursado [*Las tres inferencias*](../curso-1-tres-inferencias/README.md), donde se distinguen deducción, inducción y abducción por su régimen de validez, o conocer esa distinción. Tener material propio ya configurado, con o sin máquina: un corpus con procedencia como el de [*Corpus textual*](../curso-2-corpus-textual/README.md), imágenes catalogadas y descritas como las de [*Corpus visual*](../curso-3-corpus-visual/README.md), un libro de códigos como el de [*Codificación asistida*](../curso-4-codificacion-asistida/README.md), patrones con prueba de estabilidad como los de [*Métodos computacionales para el sentido*](../curso-5-metodos-computacionales/README.md), o lo que el propio proyecto haya producido. No requiere programación.
 
 ## Página del curso
 

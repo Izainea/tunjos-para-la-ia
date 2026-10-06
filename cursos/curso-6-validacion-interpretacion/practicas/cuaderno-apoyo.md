@@ -1,6 +1,6 @@
 # Cuaderno de apoyo: hacer las prácticas por programa
 
-Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y con hojas de cálculo. Este cuaderno es para quien quiera dejar instrucciones, outputs, expectativas y decisiones en archivos, repetir la codificación con varios modelos, y calcular el acuerdo cuando quiera reportarlo. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. El cuaderno del curso 1 explica la preparación del entorno y la función base; aquí se repite lo mínimo.
+Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y con hojas de cálculo. Este cuaderno es para quien quiera dejar instrucciones, outputs, expectativas y decisiones en archivos, repetir la codificación con varios modelos, y calcular el acuerdo cuando quiera reportarlo. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. El [cuaderno de apoyo de *Las tres inferencias*](../../curso-1-tres-inferencias/practicas/cuaderno-apoyo.md), el curso de fundamentos del programa, explica con más detalle la preparación del entorno y la función base que envía una instrucción a un modelo y guarda el registro; aquí se repite lo mínimo.
 
 ## Preparación
 
@@ -147,4 +147,4 @@ El programa no reescribe nada. Marca dónde hay que ponerse a escribir.
 
 ## Nota sobre costos y privacidad
 
-Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y revise las condiciones de uso de datos del proveedor antes de enviar nada: la plantilla de declaración pregunta si las revisó. El curso 7 del programa trata estos problemas en detalle.
+Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y revise las condiciones de uso de datos del proveedor antes de enviar nada: la plantilla de declaración pregunta si las revisó. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md), el curso del programa sobre derechos, exterioridad y gobernanza del uso de modelos, trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material, qué daño puede causar su uso y a quién, y qué protocolo se da un equipo para responder por ello.

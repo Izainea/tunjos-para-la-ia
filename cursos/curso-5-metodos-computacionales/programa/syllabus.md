@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | Nombre | Métodos computacionales para el sentido |
-| Programa | Tunjos para la IA, curso 5 de 7. Capa de Juicio |
+| Programa | Tunjos para la IA, quinto de siete cursos. Capa de Juicio |
 | Duración | Ocho sesiones semanales de dos horas y trabajo autónomo guiado, unas 96 horas en total. Se adapta al formato de microcredencial o de curso de educación continua de cada institución |
 | Modalidad | Híbrida: una sesión presencial de dos horas por semana, con participación remota sincrónica, y trabajo asincrónico guiado. La modalidad virtual es alternativa |
 | Docente | Carlos Isaac Zainea Maya |
-| Prerrequisitos | Recomendado: curso 2 o curso 3 del programa, o nociones básicas de Python. El curso provee un cuaderno de apoyo que se copia bloque a bloque y mini apps que no requieren programar |
+| Prerrequisitos | Recomendado: [*Corpus textual*](../../curso-2-corpus-textual/README.md) o [*Corpus visual*](../../curso-3-corpus-visual/README.md), donde se construye el corpus catalogado con procedencia que aquí se analiza y se enseña Python desde cero, o nociones básicas de Python. El curso provee un cuaderno de apoyo que se copia bloque a bloque y mini apps que no requieren programar |
 | Público | Egresados y estudiantes de posgrado en ciencias sociales y humanidades que ya tienen un corpus, textual o visual, y quieren aplicarle métodos computacionales sin perder el criterio para leer lo que sale |
 
 ## Problema que atiende
@@ -70,7 +70,7 @@ La rúbrica detallada está en [evaluacion.md](evaluacion.md).
 
 ## Articulación
 
-El curso cierra la ruta Computacional del programa (cursos 2, 3 y 5) y pertenece a la capa de Juicio junto con los cursos 6 y 7. Recibe el corpus catalogado del curso 2 o 3 y, cuando lo hay, el libro de códigos del curso 4. Entrega al curso 6 un conjunto de patrones con su lectura y su prueba de estabilidad, que es el material sobre el que allí se valida y se escribe. Se articula con cursos de métodos cuantitativos, análisis de redes sociales y humanidades digitales de programas de posgrado, a los que aporta lo que no suelen cubrir: la prueba de estabilidad como condición de la lectura.
+El curso cierra la ruta Computacional del programa, que forman [*Corpus textual*](../../curso-2-corpus-textual/README.md), [*Corpus visual*](../../curso-3-corpus-visual/README.md) y este curso, y pertenece a la capa de Juicio junto con [*Validación e interpretación*](../../curso-6-validacion-interpretacion/README.md) y [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md). Recibe el corpus catalogado que se construye en *Corpus textual* o en *Corpus visual*: una tabla con una fila por documento o por imagen, con la procedencia, los derechos y el criterio de inclusión de cada pieza, producida por un cuaderno que otro puede volver a ejecutar. Cuando lo hay, recibe también el libro de códigos de [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), donde se codifica material cualitativo con ayuda de un modelo de lenguaje y se concluye que el modelo configura, ordena fragmentos bajo nombres, pero no valida, y que el libro de códigos es una aserción del investigador. Entrega a *Validación e interpretación* un conjunto de patrones con su lectura y su prueba de estabilidad, que es el material sobre el que allí se valida y se escribe: en ese curso se distinguen tres sentidos de validar, comprobar la corrección del resultado, justificar el proceso y responder por lo afirmado, y los hallazgos se escriben como aserciones propias con una declaración de uso de IA. Se articula con cursos de métodos cuantitativos, análisis de redes sociales y humanidades digitales de programas de posgrado, a los que aporta lo que no suelen cubrir: la prueba de estabilidad como condición de la lectura.
 
 ## Política de uso de modelos de lenguaje
 

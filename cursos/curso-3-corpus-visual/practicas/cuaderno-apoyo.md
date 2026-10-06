@@ -297,4 +297,4 @@ pd.read_json("frontera.jsonl", lines=True).to_csv("registro-de-frontera-visual.c
 
 ## Nota sobre costos y privacidad
 
-Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. El curso 7 del programa trata estos problemas en detalle.
+Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: derechos sobre el material, datos personales e imágenes sensibles, consentimiento en plataformas y la opción de describir en lugar de exhibir; concluye que esas decisiones se escriben en un protocolo de gobernanza que dice quién responde por cada una.

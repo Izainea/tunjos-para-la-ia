@@ -12,7 +12,7 @@ No es un informe de uso de IA. Es la evidencia de que usted sabe, operación por
 
 ## Operaciones del curso con la máquina
 
-Una fila por operación. Si una operación tuvo varias iteraciones, una fila por iteración. La columna "tipo de inferencia" usa las categorías del curso 1 del programa: D (deductiva: se sigue por forma), I (inductiva: generaliza sobre lo que hay), A (abductiva: introduce una hipótesis o categoría nueva).
+Una fila por operación. Si una operación tuvo varias iteraciones, una fila por iteración. La columna "tipo de inferencia" usa las tres categorías que [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, distingue por su régimen de validez, con la conclusión de que una máquina puede verificar las dos primeras y solo un investigador puede responder por la tercera: D (deductiva: se sigue por forma), I (inductiva: generaliza sobre lo que hay), A (abductiva: introduce una hipótesis o categoría nueva).
 
 | Semana | Operación | Qué propuso el modelo (literal o resumen fiel) | Tipo de inferencia | Qué decidí (aceptar, corregir, rechazar, reformular) | Criterio de mi decisión | ¿Quién responde si está mal? |
 |---|---|---|---|---|---|---|
