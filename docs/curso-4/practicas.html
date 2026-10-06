@@ -46,7 +46,7 @@
           <a href="../index.html">Programa</a>
           <a href="../docente.html">Docente</a>
           <a href="../uso-de-ia.html">Uso de IA</a>
-          <a href="index.html">4 · Codificación asistida</a>
+          <a href="index.html">4 · Codificación cualitativa</a>
           <a href="semana-01.html" class="sub">Semana 1</a>
           <a href="semana-02.html" class="sub">Semana 2</a>
           <a href="semana-03.html" class="sub">Semana 3</a>
@@ -61,12 +61,12 @@
           <a href="practicas.html" class="is-active">Prácticas</a>
           <a href="apps.html">Mini apps</a>
           <span class="nav-sep">Otros cursos</span>
-          <a class="sub" href="../curso-1/index.html">1 · Las tres inferencias</a>
-          <a class="sub" href="../curso-2/index.html">2 · Corpus textual</a>
-          <a class="sub" href="../curso-3/index.html">3 · Corpus visual</a>
-          <a class="sub" href="../curso-5/index.html">5 · Métodos computacionales</a>
-          <a class="sub" href="../curso-6/index.html">6 · Validación e interpretación</a>
-          <a class="sub" href="../curso-7/index.html">7 · Ética y gobernanza</a>
+          <a class="sub" href="../curso-1/index.html">1 · Validación del razonamiento</a>
+          <a class="sub" href="../curso-2/index.html">2 · Corpus de textos</a>
+          <a class="sub" href="../curso-3/index.html">3 · Imágenes auditadas</a>
+          <a class="sub" href="../curso-5/index.html">5 · Patrones estables</a>
+          <a class="sub" href="../curso-6/index.html">6 · Validar y defender</a>
+          <a class="sub" href="../curso-7/index.html">7 · Exterioridad y gobernanza</a>
         </nav>
         <div class="links">
           <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
@@ -135,7 +135,7 @@ print(kappa_cohen(t))
 print(f&quot;Acuerdo simple: {r['po']*100:.1f} %&quot;.replace(&quot;.&quot;, &quot;,&quot;))
 print(f&quot;kappa = ({r['po']} - {r['pe']}) / (1 - {r['pe']}) = {r['kappa']}&quot;.replace(&quot;.&quot;, &quot;,&quot;))
 </code></pre>
-<h2>Semana 6. Alfa de Krippendorff (nominal)</h2>
+<h2>Semana 6. Alfa nominal de Krippendorff</h2>
 <p>Alfa generaliza la idea a cualquier número de codificadores y admite fragmentos que no todos codificaron. Para datos nominales, el bloque calcula el desacuerdo observado y el esperado a partir de la matriz de coincidencias, siguiendo la definición de Krippendorff (2018, capítulo sobre fiabilidad). Con dos codificadores y datos completos, el valor suele quedar cerca de kappa.</p>
 <pre><code class="language-python">import pandas as pd
 from collections import Counter
@@ -292,7 +292,7 @@ pd.DataFrame([{&quot;id&quot;: int(i.strip(&quot;[] &quot;)), &quot;codigo&quot;
 </code></pre>
 <p>Luego se concatena con las filas propias y se corre el bloque de kappa. Cada llamada queda en <code>registro.jsonl</code>, que es el anexo literal que piden las plantillas.</p>
 <h2>Nota sobre costos y privacidad</h2>
-<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. <a href="../curso-7/index.html"><em>Ética, exterioridad y gobernanza</em></a> trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.</p>
+<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. <a href="../curso-7/index.html"><em>Exterioridad y gobernanza de la IA en ciencias sociales</em></a> trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.</p>
 <hr />
 <h1 id="practica-03-codificacion-abierta-asistida">Práctica 3. Codificación abierta asistida</h1>
 <p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica de la semana 3; se continúa en la semana 4.
@@ -303,10 +303,10 @@ No requiere programar. Para quien quiera, el cuaderno <code>cuaderno-apoyo.md</c
 <h2>Antes de la sesión</h2>
 <ol>
 <li>Numere los fragmentos. Un fragmento es una unidad con sentido propio: una respuesta de entrevista, un párrafo de prensa, una descripción de imagen. Entre veinte y sesenta es el tamaño del curso.</li>
-<li>Revise que no haya nombres, direcciones ni datos que identifiquen a una persona. Si su material es sensible, trabaje con una muestra anonimizada o con material público; <a href="../curso-7/index.html"><em>Ética, exterioridad y gobernanza</em></a> trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.</li>
+<li>Revise que no haya nombres, direcciones ni datos que identifiquen a una persona. Si su material es sensible, trabaje con una muestra anonimizada o con material público; <a href="../curso-7/index.html"><em>Exterioridad y gobernanza de la IA en ciencias sociales</em></a> trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.</li>
 <li>Tenga a mano la lista de verificación de la semana 2, en especial la regla de generación de su tradición. Lo que le va a pedir al modelo es esa regla.</li>
 </ol>
-<h2>Ronda 0. Codificar a mano, antes</h2>
+<h2>Ronda 0. Codificar a mano antes de la sesión</h2>
 <p>Codifique los fragmentos 1 a 5 sin el modelo. Para cada uno, haga microanálisis breve (qué sentidos abre cada término que le llame la atención) y proponga uno o dos códigos, con preferencia por códigos in vivo. Guarde esto en un archivo aparte y no lo mire durante la ronda 1. Este paso es el que permite, después, saber qué habría visto usted solo.</p>
 <h2>Ronda 1. El modelo propone</h2>
 <p>Instrucción base para teoría fundamentada; adáptela si su tradición es otra, conservando las tres exigencias: anclaje literal, sin vocabulario de la literatura, alternativas descartables.</p>
@@ -367,7 +367,7 @@ Requisitos: el libro de códigos abierto fijado en la semana 4 (no se modifica d
 Para el cálculo: la mini app de la semana 3 calcula kappa para sus doce fragmentos fijos; para los treinta propios, el cuaderno <code>cuaderno-apoyo.md</code> calcula kappa y alfa con dos bloques copiables, o se calcula a mano con la tabla de la sección 3.</p>
 <h2>Objetivo</h2>
 <p>Medir el acuerdo entre el investigador y el modelo al aplicar un mismo libro de códigos a los mismos fragmentos, interpretarlo como consistencia y no como validez, y convertir cada desacuerdo en una decisión sobre el libro.</p>
-<h2>Antes de la sesión, codificar a ciegas</h2>
+<h2>Codificación a ciegas antes de la sesión</h2>
 <ol>
 <li>Elija treinta fragmentos que no haya codificado con el modelo en la práctica 3, o, si todo el corpus pasó ya por el modelo, treinta fragmentos elegidos al azar con un intervalo (cada segundo o tercer fragmento).</li>
 <li>Codifique los treinta a mano con el libro fijo, un código por fragmento (el que predomina). Si el fragmento no cabe en ningún código, anote "ninguno" y la razón. Guarde el resultado con fecha.</li>

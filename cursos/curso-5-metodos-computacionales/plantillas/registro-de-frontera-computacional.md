@@ -48,7 +48,7 @@ Patrones que aparecieron y no sobrevivieron a las pruebas, con el tipo de artefa
 
 **Pasos por los que respondo yo y nadie más:**
 
-**Dónde está la frontera en este proyecto, y si coincide con la que tracé en el mapa inferencial de [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), si lo hice. En ese mapa cada paso del flujo de investigación queda clasificado como deductivo, inductivo o abductivo, con la frontera entre lo que verifica la máquina y lo que responde el investigador:**
+**Dónde está la frontera en este proyecto, y si coincide con la que tracé en el mapa inferencial de [*Validación del razonamiento con IA en ciencias sociales*](../../curso-1-tres-inferencias/README.md), si lo hice. En ese mapa cada paso del flujo de investigación queda clasificado como deductivo, inductivo o abductivo, con la frontera entre lo que verifica la máquina y lo que responde el investigador:**
 
 **Qué cambia de mi flujo de trabajo después del curso:**
 

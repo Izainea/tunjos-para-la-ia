@@ -26,8 +26,8 @@ YEAR = 2026
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "sane_lists", "attr_list", "md_in_html"])
 
-CORTOS = {1: "Las tres inferencias", 2: "Corpus textual", 3: "Corpus visual", 4: "Codificación asistida",
-          5: "Métodos computacionales", 6: "Validación e interpretación", 7: "Ética y gobernanza"}
+CORTOS = {1: "Validación del razonamiento", 2: "Corpus de textos", 3: "Imágenes auditadas", 4: "Codificación cualitativa",
+          5: "Patrones estables", 6: "Validar y defender", 7: "Exterioridad y gobernanza"}
 CAPAS = {1: "Fundamentos", 2: "Oficio", 3: "Oficio", 4: "Oficio", 5: "Juicio", 6: "Juicio", 7: "Juicio"}
 RUTAS = [
     ("Fundamentos", "1, 6", "Quien ya investiga y quiere criterio, no herramientas"),
@@ -38,13 +38,13 @@ RUTAS = [
 ]
 # Cursos previstos aunque su carpeta aún no exista
 PREVISTOS = {
-    1: ("Las tres inferencias en el razonamiento humano y el artificial", "Qué tipo de inferencia hace la máquina, cuál hace el investigador y cuál puede validarse sin un sujeto que responda."),
-    2: ("Del documento al corpus textual trazable", "Cómo convertir documentos dispersos en un corpus con procedencia, reproducible y listo para analizar."),
-    3: ("Del archivo al corpus visual descrito", "Cómo catalogar, describir y cuidar un corpus de imágenes con ayuda de modelos multimodales sin perder el juicio."),
-    4: ("Codificación asistida por una máquina que configura", "Qué hace un modelo cuando propone códigos y categorías, con qué criterio se juzga y quién responde por el libro de códigos."),
-    5: ("Métodos computacionales para el sentido", "Cuándo un patrón computacional es una hipótesis que vale la pena perseguir y cuándo es un artefacto del método."),
-    6: ("Validación e interpretación como refiguración del investigador", "Qué significa validar lo configurado, con qué criterios, y cómo escribir hallazgos por los que se pueda responder."),
-    7: ("Ética, exterioridad y gobernanza", "Qué excluye, a quién expone y a quién exime un flujo asistido por modelos, y qué reglas lo hacen defendible."),
+    1: ("Validación del razonamiento con IA en ciencias sociales", "Qué tipo de inferencia hace la máquina, cuál hace el investigador y cuál puede validarse sin un sujeto que responda."),
+    2: ("Corpus de textos con procedencia en ciencias sociales", "Cómo convertir documentos dispersos en un corpus con procedencia, reproducible y listo para analizar."),
+    3: ("Descripción auditada de imágenes en investigación social", "Cómo catalogar, describir y cuidar un corpus de imágenes con ayuda de modelos multimodales sin perder el juicio."),
+    4: ("Codificación cualitativa con IA en ciencias sociales", "Qué hace un modelo cuando propone códigos y categorías, con qué criterio se juzga y quién responde por el libro de códigos."),
+    5: ("Patrones estables en datos de las ciencias sociales", "Cuándo un patrón computacional es una hipótesis que vale la pena perseguir y cuándo es un artefacto del método."),
+    6: ("Validar y defender investigación social asistida por IA", "Qué significa validar lo configurado, con qué criterios, y cómo escribir hallazgos por los que se pueda responder."),
+    7: ("Exterioridad y gobernanza de la IA en ciencias sociales", "Qué excluye, a quién expone y a quién exime un flujo asistido por modelos, y qué reglas lo hacen defendible."),
 }
 
 

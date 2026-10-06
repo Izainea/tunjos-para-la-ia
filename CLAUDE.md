@@ -38,7 +38,7 @@ build.py, docente.md, README.md, LICENSE
 python build.py                                              genera docs/ para todos los cursos completos
 python herramientas/verificar_curso.py cursos/curso-N-slug   verifica estructura, estilo, enlaces, apps (añadir --capturas para Edge)
 python herramientas/verificar_curso.py --todos --capturas
-python herramientas/generar_propuestas.py cursos/curso-N-slug   genera propuestas/propuesta-uniandes.docx y propuesta-unal.xlsx
+python herramientas/generar_propuestas.py cursos/curso-N-slug   genera propuestas/<Nombre del curso>.docx y .xlsx
 python herramientas/nuevo_curso.py 8 "Título" slug           andamio de un curso nuevo
 ```
 

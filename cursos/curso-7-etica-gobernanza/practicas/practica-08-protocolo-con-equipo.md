@@ -8,11 +8,11 @@ Para equipos de dos a seis personas. Quien trabaja solo sigue la guía ocupando 
 
 Escribir un protocolo que una persona distinta de sus autores pueda ejecutar, ponerlo a prueba ante pares sobre un caso real, e incorporar lo que la prueba muestre.
 
-## Antes de la primera sesión, lo que cada miembro trae
+## Lo que cada miembro trae a la primera sesión
 
 Cada miembro del equipo trae sus tres insumos. Si el equipo trabaja sobre un mismo proyecto, las matrices y auditorías se consolidan en una antes de la sesión: una matriz con todos los tipos de pieza, un perfil de exclusiones que reúne las muestras. Si cada miembro tiene su proyecto y el protocolo es para un equipo o una institución que los cubre a todos, los insumos se conservan separados y el protocolo tiene un alcance que los nombra.
 
-## Primera sesión, las reglas (semana 7)
+## Las reglas en la primera sesión de la semana 7
 
 ### Paso 1. Alcance y qué gobierna (20 minutos)
 
@@ -48,7 +48,7 @@ Cada miembro marca la regla que más le costaría cumplir y dice por qué. El eq
 4. Redactar la declaración de uso de IA del propio proyecto con la plantilla, como si acompañara un producto real.
 5. Preparar la presentación de ocho minutos con el formato de la semana 8.
 
-## Segunda sesión, la prueba (semana 8)
+## La prueba en la segunda sesión de la semana 8
 
 ### Paso 6. Presentación (8 minutos)
 
@@ -58,7 +58,7 @@ El equipo presenta con el formato de la semana 8: alcance, tres riesgos mayores 
 
 Dos revisores que no conocen el proyecto reciben el caso y el protocolo, y lo ejecutan sin preguntar al equipo: deciden si la pieza podía salir hacia el modelo, qué rol revisa, contra qué registro, si se acepta o se rechaza. Llenan la tabla de revisión de la semana 8. Donde el protocolo no dice qué hacer, falta una regla. Donde dice algo que no pueden hacer, hay un rol sin persona o un registro que nadie lleva. Responden las dos preguntas obligatorias: ante quién no sería defendible, y qué regla sobra.
 
-### Paso 8. Incorporación (después de la sesión)
+### Paso 8. Incorporación después de la sesión
 
 El equipo recibe la tabla de revisión y, por cada objeción, cambia una regla o explica por qué no la cambia. La sección 10 de la plantilla registra ambas cosas. Un protocolo que incorpora todo sin discutir nada es tan sospechoso como uno que no incorpora nada.
 

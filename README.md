@@ -12,13 +12,13 @@ Todos de ocho sesiones y modalidad híbrida, adaptables a formatos de microcrede
 
 | Nº | Curso | Capa |
 |---|---|---|
-| 1 | [Las tres inferencias en el razonamiento humano y el artificial](cursos/curso-1-tres-inferencias/) | Fundamentos |
-| 2 | [Del documento al corpus textual trazable](cursos/curso-2-corpus-textual/) | Oficio |
-| 3 | [Del archivo al corpus visual descrito](cursos/curso-3-corpus-visual/) | Oficio |
-| 4 | [Codificación asistida por una máquina que configura](cursos/curso-4-codificacion-asistida/) | Oficio |
-| 5 | [Métodos computacionales para el sentido](cursos/curso-5-metodos-computacionales/) | Juicio |
-| 6 | [Validación e interpretación como refiguración del investigador](cursos/curso-6-validacion-interpretacion/) | Juicio |
-| 7 | [Ética, exterioridad y gobernanza](cursos/curso-7-etica-gobernanza/) | Juicio |
+| 1 | [Validación del razonamiento con IA en ciencias sociales](cursos/curso-1-tres-inferencias/) | Fundamentos |
+| 2 | [Corpus de textos con procedencia en ciencias sociales](cursos/curso-2-corpus-textual/) | Oficio |
+| 3 | [Descripción auditada de imágenes en investigación social](cursos/curso-3-corpus-visual/) | Oficio |
+| 4 | [Codificación cualitativa con IA en ciencias sociales](cursos/curso-4-codificacion-asistida/) | Oficio |
+| 5 | [Patrones estables en datos de las ciencias sociales](cursos/curso-5-metodos-computacionales/) | Juicio |
+| 6 | [Validar y defender investigación social asistida por IA](cursos/curso-6-validacion-interpretacion/) | Juicio |
+| 7 | [Exterioridad y gobernanza de la IA en ciencias sociales](cursos/curso-7-etica-gobernanza/) | Juicio |
 
 ## Rutas apilables
 

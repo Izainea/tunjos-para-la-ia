@@ -15,7 +15,7 @@ Hacer codificar diez fragmentos propios por un modelo en dos condiciones, con y 
 3. Escriba, con fecha y hora, su expectativa para cada condición: en la condición con libro de códigos espero coincidencia alta porque aplica mi regla; en la condición sin libro de códigos espero divergencia en los fragmentos difíciles porque mis categorías vienen de un trasfondo que el modelo no tiene; o lo que usted espere. Esta expectativa se entrega con la matriz y no puede cambiarse después.
 4. Llene el encabezado de la plantilla y las instancias que ya tiene, aparte del modelo.
 
-## Durante la sesión (tres rondas)
+## Tres rondas durante la sesión
 
 ### Ronda 1. Con libro de códigos
 

@@ -15,7 +15,7 @@ Medir qué excluye un modelo al leer material situado del propio corpus, clasifi
 3. Consiga el lector situado. Explíquele qué va a leer, cuánto tiempo toma, que puede retirarse de cualquier pieza y que decide cómo se le reconoce en el informe. Registre su consentimiento con fecha en la sección 2. Si el lector situado es usted mismo porque pertenece a la comunidad, declárelo; se admite, pero la auditoría pierde la mirada externa y la sección 8 debe decirlo.
 4. Pídale al lector situado que escriba, para cada pieza, una o dos frases: qué es, qué hace en la vida de quien la produjo o la usa, qué palabra local la nombra. Esto se hace antes de cualquier consulta al modelo y la fecha queda en la sección 3. El orden no se puede invertir: si el lector ve primero la lectura del modelo, su propia lectura se contamina por adhesión o por reacción.
 
-## Durante la sesión (pasos 3 a 5)
+## Pasos 3 a 5 durante la sesión
 
 ### Paso 3. La lectura del modelo
 
@@ -60,4 +60,4 @@ Dos lectores escriben las categorías locales por separado y sin verse. La audit
 
 ## Variante por programa
 
-Quien quiera repetir la auditoría con varios modelos o con varias rondas puede usar el [cuaderno de apoyo](../../curso-1-tres-inferencias/practicas/cuaderno-apoyo.md) de [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), un conjunto de bloques de Python pensado para quien no programa, que envía cada consulta a un modelo y guarda en un archivo la fecha, el modelo, la instrucción y la respuesta, de modo que el archivo sirve de anexo literal. La clasificación sigue siendo manual y con el lector situado.
+Quien quiera repetir la auditoría con varios modelos o con varias rondas puede usar el [cuaderno de apoyo](../../curso-1-tres-inferencias/practicas/cuaderno-apoyo.md) de [*Validación del razonamiento con IA en ciencias sociales*](../../curso-1-tres-inferencias/README.md), un conjunto de bloques de Python pensado para quien no programa, que envía cada consulta a un modelo y guarda en un archivo la fecha, el modelo, la instrucción y la respuesta, de modo que el archivo sirve de anexo literal. La clasificación sigue siendo manual y con el lector situado.

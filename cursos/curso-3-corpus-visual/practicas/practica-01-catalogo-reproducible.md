@@ -15,7 +15,7 @@ Construir el primer catálogo de 20 imágenes del corpus propio con las diez col
 3. Para cada sitio, abra `https://<sitio>/robots.txt` en el navegador y anote si la ruta que va a visitar está permitida. Si el archivo no existe, anótelo. Si está prohibida, no la use y anote por qué.
 4. Si va por programa, instale las bibliotecas y pruebe que el bloque "comprobar robots" del cuaderno corre.
 
-## Durante la sesión (cuatro pasos)
+## Cuatro pasos durante la sesión
 
 ### Paso 1. Descargar con registro
 

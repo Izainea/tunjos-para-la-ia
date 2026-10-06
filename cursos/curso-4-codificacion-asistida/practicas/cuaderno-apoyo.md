@@ -76,7 +76,7 @@ print(f"Acuerdo simple: {r['po']*100:.1f} %".replace(".", ","))
 print(f"kappa = ({r['po']} - {r['pe']}) / (1 - {r['pe']}) = {r['kappa']}".replace(".", ","))
 ```
 
-## Semana 6. Alfa de Krippendorff (nominal)
+## Semana 6. Alfa nominal de Krippendorff
 
 Alfa generaliza la idea a cualquier número de codificadores y admite fragmentos que no todos codificaron. Para datos nominales, el bloque calcula el desacuerdo observado y el esperado a partir de la matriz de coincidencias, siguiendo la definición de Krippendorff (2018, capítulo sobre fiabilidad). Con dos codificadores y datos completos, el valor suele quedar cerca de kappa.
 
@@ -270,4 +270,4 @@ Luego se concatena con las filas propias y se corre el bloque de kappa. Cada lla
 
 ## Nota sobre costos y privacidad
 
-Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.
+Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y procese el material solo con servicios cuyas condiciones excluyan el uso de los datos para entrenamiento. [*Exterioridad y gobernanza de la IA en ciencias sociales*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material (autoría, datos personales, material sensible, condiciones de las plataformas), qué uso es defendible y hasta dónde llega la anonimización; su primer producto es una matriz de riesgos y derechos del propio material.

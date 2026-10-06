@@ -68,7 +68,7 @@ Una entrada por candidato. El nombre es una hipótesis; los contraejemplos son s
 
 **Comparación con lo que esperaba (sección 0): qué coincidió, qué no, qué me sorprendió.**
 
-## 5. Ficha de hipótesis sobre un patrón propio (semana 8)
+## 5. Ficha de hipótesis sobre un patrón propio en la semana 8
 
 **Patrón elegido (de la sección 2 o de otra entrega):**
 

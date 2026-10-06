@@ -11,7 +11,7 @@ El catálogo es la tabla que sabe, de cada pieza del corpus, lo que hace falta p
 
 ## Esquema
 
-Los campos obligatorios no pueden estar vacíos en ninguna fila. Un proyecto puede añadir columnas; no puede quitar las obligatorias ni cambiar sus nombres, para que los catálogos de distintos proyectos se puedan comparar y para que los cursos que reciben el catálogo como documento de entrada, [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), donde el corpus se codifica con el modelo como codificador auxiliar, y [*Métodos computacionales para el sentido*](../../curso-5-metodos-computacionales/README.md), donde se le aplican agrupamientos y redes de coocurrencia, lo lean sin traducción.
+Los campos obligatorios no pueden estar vacíos en ninguna fila. Un proyecto puede añadir columnas; no puede quitar las obligatorias ni cambiar sus nombres, para que los catálogos de distintos proyectos se puedan comparar y para que los cursos que reciben el catálogo como documento de entrada, [*Codificación cualitativa con IA en ciencias sociales*](../../curso-4-codificacion-asistida/README.md), donde el corpus se codifica con el modelo como codificador auxiliar, y [*Patrones estables en datos de las ciencias sociales*](../../curso-5-metodos-computacionales/README.md), donde se le aplican agrupamientos y redes de coocurrencia, lo lean sin traducción.
 
 | Campo | Obligatorio | Formato | Qué responde | Ejemplo |
 |---|---|---|---|---|

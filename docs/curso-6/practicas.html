@@ -46,7 +46,7 @@
           <a href="../index.html">Programa</a>
           <a href="../docente.html">Docente</a>
           <a href="../uso-de-ia.html">Uso de IA</a>
-          <a href="index.html">6 · Validación e interpretación</a>
+          <a href="index.html">6 · Validar y defender</a>
           <a href="semana-01.html" class="sub">Semana 1</a>
           <a href="semana-02.html" class="sub">Semana 2</a>
           <a href="semana-03.html" class="sub">Semana 3</a>
@@ -61,12 +61,12 @@
           <a href="practicas.html" class="is-active">Prácticas</a>
           <a href="apps.html">Mini apps</a>
           <span class="nav-sep">Otros cursos</span>
-          <a class="sub" href="../curso-1/index.html">1 · Las tres inferencias</a>
-          <a class="sub" href="../curso-2/index.html">2 · Corpus textual</a>
-          <a class="sub" href="../curso-3/index.html">3 · Corpus visual</a>
-          <a class="sub" href="../curso-4/index.html">4 · Codificación asistida</a>
-          <a class="sub" href="../curso-5/index.html">5 · Métodos computacionales</a>
-          <a class="sub" href="../curso-7/index.html">7 · Ética y gobernanza</a>
+          <a class="sub" href="../curso-1/index.html">1 · Validación del razonamiento</a>
+          <a class="sub" href="../curso-2/index.html">2 · Corpus de textos</a>
+          <a class="sub" href="../curso-3/index.html">3 · Imágenes auditadas</a>
+          <a class="sub" href="../curso-4/index.html">4 · Codificación cualitativa</a>
+          <a class="sub" href="../curso-5/index.html">5 · Patrones estables</a>
+          <a class="sub" href="../curso-7/index.html">7 · Exterioridad y gobernanza</a>
         </nav>
         <div class="links">
           <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
@@ -83,7 +83,7 @@
         </div>
 <article class="prose">
 <h1 id="cuaderno-apoyo">Cuaderno de apoyo para hacer las prácticas por programa</h1>
-<p>Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y con hojas de cálculo. Este cuaderno es para quien quiera dejar instrucciones, outputs, expectativas y decisiones en archivos, repetir la codificación con varios modelos, y calcular el acuerdo cuando quiera reportarlo. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. El <a href="../curso-1/practicas.html">cuaderno de apoyo de <em>Las tres inferencias</em></a>, el curso de fundamentos del programa, explica con más detalle la preparación del entorno y la función base que envía una instrucción a un modelo y guarda el registro; aquí se repite lo mínimo.</p>
+<p>Opcional. Todo el curso se puede hacer con la interfaz web de un modelo y con hojas de cálculo. Este cuaderno es para quien quiera dejar instrucciones, outputs, expectativas y decisiones en archivos, repetir la codificación con varios modelos, y calcular el acuerdo cuando quiera reportarlo. Está pensado para alguien sin experiencia previa en Python, copiando bloque a bloque. El <a href="../curso-1/practicas.html">cuaderno de apoyo de <em>Validación del razonamiento con IA en ciencias sociales</em></a>, el curso de fundamentos del programa, explica con más detalle la preparación del entorno y la función base que envía una instrucción a un modelo y guarda el registro; aquí se repite lo mínimo.</p>
 <h2>Preparación</h2>
 <p>Instale Python 3.11 o superior y, en una terminal:</p>
 <pre><code>pip install openai python-dotenv pandas
@@ -152,7 +152,7 @@ en una frase, la frase exacta que lo sustenta, y qué supuesto das por sentado.&
 sin_libro = preguntar(p_sin, &quot;semana3-sin-libro&quot;)
 </code></pre>
 <p>Para la segunda condición con otra familia, cambie <code>MODEL</code> y <code>BASE_URL</code> en <code>.env</code> o cree un segundo cliente.</p>
-<h2>Semana 3. Calcular el acuerdo, y qué hacer con él</h2>
+<h2>Semana 3. Cálculo del acuerdo y su uso</h2>
 <p>Si quiere reportar el acuerdo de la condición con libro de códigos, el curso pide que lo reporte como consistencia y no como validez. Con una tabla <code>codificacion.csv</code> de columnas <code>fragmento</code>, <code>codigo_mio</code>, <code>codigo_modelo</code>:</p>
 <pre><code class="language-python">import pandas as pd
 
@@ -192,7 +192,7 @@ for m in MARCADORES:
 </code></pre>
 <p>El programa no reescribe nada. Marca dónde hay que ponerse a escribir.</p>
 <h2>Nota sobre costos y privacidad</h2>
-<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y revise las condiciones de uso de datos del proveedor antes de enviar nada: la plantilla de declaración pregunta si las revisó. <a href="../curso-7/index.html"><em>Ética, exterioridad y gobernanza</em></a>, el curso del programa sobre derechos, exterioridad y gobernanza del uso de modelos, trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material, qué daño puede causar su uso y a quién, y qué protocolo se da un equipo para responder por ello.</p>
+<p>Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga las prácticas con una muestra anonimizada o con material público, y revise las condiciones de uso de datos del proveedor antes de enviar nada: la plantilla de declaración pregunta si las revisó. <a href="../curso-7/index.html"><em>Exterioridad y gobernanza de la IA en ciencias sociales</em></a>, el curso del programa sobre derechos, exterioridad y gobernanza del uso de modelos, trata estos problemas en detalle: qué derechos pesan sobre cada pieza del material, qué daño puede causar su uso y a quién, y qué protocolo se da un equipo para responder por ello.</p>
 <hr />
 <h1 id="practica-03-triangulacion-con-modelo">Práctica 3. Triangulación con un modelo como segundo codificador</h1>
 <p>Duración estimada: 3 horas, de las cuales 1 en la sesión sincrónica.
@@ -207,7 +207,7 @@ No requiere programar. El cuaderno <code>cuaderno-apoyo.md</code> indica cómo h
 <li>Escriba, con fecha y hora, su expectativa para cada condición: en la condición con libro de códigos espero coincidencia alta porque aplica mi regla; en la condición sin libro de códigos espero divergencia en los fragmentos difíciles porque mis categorías vienen de un trasfondo que el modelo no tiene; o lo que usted espere. Esta expectativa se entrega con la matriz y no puede cambiarse después.</li>
 <li>Llene el encabezado de la plantilla y las instancias que ya tiene, aparte del modelo.</li>
 </ol>
-<h2>Durante la sesión (tres rondas)</h2>
+<h2>Tres rondas durante la sesión</h2>
 <h3>Ronda 1. Con libro de códigos</h3>
 <p>Dele al modelo el libro de códigos y los diez fragmentos. Use una instrucción que le exija citar y justificar. Ejemplo:</p>
 <pre><code>Aquí hay un libro de códigos con definiciones y ejemplos, y diez fragmentos
@@ -263,7 +263,7 @@ de ciencias sociales, que presente los tres hallazgos principales.
 <li>Guarde el párrafo literal en el anexo. No lo corrija todavía.</li>
 <li>Pídale al modelo, en la misma conversación, que justifique cada afirmación del párrafo. Guarde esa justificación también. La va a necesitar para ver qué forma tiene una justificación sin aserente.</li>
 </ol>
-<h2>Durante la sesión (cuatro pasos)</h2>
+<h2>Cuatro pasos durante la sesión</h2>
 <h3>Paso 1. Marcar</h3>
 <p>Resalte en el párrafo todos los marcadores de autoridad que atribuyen la afirmación a algo que no puede afirmar: "los datos muestran", "el análisis revela", "es evidente que", "se observa que", "los resultados indican", "resulta claro", "como puede apreciarse", "la evidencia sugiere", "se concluye que". Cuente cuántos hay. La mini app lo hace sobre un párrafo de ejemplo y sirve para calibrar el ojo.</p>
 <h3>Paso 2. Desarmar</h3>

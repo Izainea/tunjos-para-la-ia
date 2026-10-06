@@ -13,7 +13,7 @@ Aplicar los cuatro instrumentos de la semana (frecuencias, concordancia, colocac
 2. Abra la mini app de concordancias y ensaye con el corpus de demostración: cambie la ventana, mire cómo cambian las colocaciones, lea las líneas. Anote qué espera encontrar en su propio corpus para cada palabra nodo.
 3. Escriba a mano una primera lista de palabras para dos dominios léxicos de su proyecto.
 
-## Durante la sesión (cuatro instrumentos)
+## Cuatro instrumentos durante la sesión
 
 ### Frecuencias
 

@@ -1,4 +1,4 @@
-# Curso 7. Ética, exterioridad y gobernanza
+# Curso 7. Exterioridad y gobernanza de la IA en ciencias sociales
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Es el curso que cierra el programa [Tunjos para la IA](../). Capa: Juicio.
 

@@ -46,7 +46,7 @@
           <a href="../index.html">Programa</a>
           <a href="../docente.html">Docente</a>
           <a href="../uso-de-ia.html">Uso de IA</a>
-          <a href="index.html">3 · Corpus visual</a>
+          <a href="index.html">3 · Imágenes auditadas</a>
           <a href="semana-01.html" class="sub">Semana 1</a>
           <a href="semana-02.html" class="sub">Semana 2</a>
           <a href="semana-03.html" class="sub">Semana 3</a>
@@ -61,12 +61,12 @@
           <a href="practicas.html" class="is-active">Prácticas</a>
           <a href="apps.html">Mini apps</a>
           <span class="nav-sep">Otros cursos</span>
-          <a class="sub" href="../curso-1/index.html">1 · Las tres inferencias</a>
-          <a class="sub" href="../curso-2/index.html">2 · Corpus textual</a>
-          <a class="sub" href="../curso-4/index.html">4 · Codificación asistida</a>
-          <a class="sub" href="../curso-5/index.html">5 · Métodos computacionales</a>
-          <a class="sub" href="../curso-6/index.html">6 · Validación e interpretación</a>
-          <a class="sub" href="../curso-7/index.html">7 · Ética y gobernanza</a>
+          <a class="sub" href="../curso-1/index.html">1 · Validación del razonamiento</a>
+          <a class="sub" href="../curso-2/index.html">2 · Corpus de textos</a>
+          <a class="sub" href="../curso-4/index.html">4 · Codificación cualitativa</a>
+          <a class="sub" href="../curso-5/index.html">5 · Patrones estables</a>
+          <a class="sub" href="../curso-6/index.html">6 · Validar y defender</a>
+          <a class="sub" href="../curso-7/index.html">7 · Exterioridad y gobernanza</a>
         </nav>
         <div class="links">
           <a href="https://github.com/Izainea/tunjos-para-la-ia" target="_blank" rel="noopener">GitHub</a>
@@ -232,7 +232,7 @@ print(&quot;filas sin archivo:&quot;, sorted(en_catalogo - en_disco))
 print(&quot;archivos sin fila:&quot;, sorted(en_disco - en_catalogo))
 print(&quot;filas:&quot;, len(cat), &quot;archivos:&quot;, len(en_disco))
 </code></pre>
-<h2>Describir con un modelo multimodal (bloque opcional)</h2>
+<h2>Bloque opcional para describir con un modelo multimodal</h2>
 <p>Explicación. El bloque envía una imagen y el prompt por capas a un modelo compatible con la interfaz de <code>openai</code>, y guarda prompt, salida y metadatos en <code>descripciones.jsonl</code>. La clave está en <code>.env</code> y se lee con <code>python-dotenv</code>; nunca se escribe en el código ni se sube a un repositorio. Antes de correrlo sobre una imagen, compruebe en el catálogo que no está marcada como sensible. Varios proveedores ofrecen cuota gratuita; cambie <code>BASE_URL</code> y <code>MODEL</code> según el suyo.</p>
 <p>Contenido de <code>.env</code>:</p>
 <pre><code>API_KEY=su_clave
@@ -321,7 +321,7 @@ decidir(&quot;descripcion&quot;, 17, &quot;cuatro personas de pie frente a un mu
 <pre><code class="language-python">pd.read_json(&quot;frontera.jsonl&quot;, lines=True).to_csv(&quot;registro-de-frontera-visual.csv&quot;, index=False)
 </code></pre>
 <h2>Nota sobre costos y privacidad</h2>
-<p>Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. <a href="../curso-7/index.html"><em>Ética, exterioridad y gobernanza</em></a> trata estos problemas en detalle: derechos sobre el material, datos personales e imágenes sensibles, consentimiento en plataformas y la opción de describir en lugar de exhibir; concluye que esas decisiones se escriben en un protocolo de gobernanza que dice quién responde por cada una.</p>
+<p>Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. <a href="../curso-7/index.html"><em>Exterioridad y gobernanza de la IA en ciencias sociales</em></a> trata estos problemas en detalle: derechos sobre el material, datos personales e imágenes sensibles, consentimiento en plataformas y la opción de describir en lugar de exhibir; concluye que esas decisiones se escriben en un protocolo de gobernanza que dice quién responde por cada una.</p>
 <hr />
 <h1 id="practica-01-catalogo-reproducible">Práctica 1. Catálogo reproducible con deduplicación perceptual</h1>
 <p>Duración estimada: 4 horas, de las cuales 1 en la sesión sincrónica de la semana 2.
@@ -336,7 +336,7 @@ No requiere programar: cada paso tiene una vía manual.</p>
 <li>Para cada sitio, abra <code><a href="https://&lt;sitio&gt;/robots.txt">https://&lt;sitio&gt;/robots.txt</a></code> en el navegador y anote si la ruta que va a visitar está permitida. Si el archivo no existe, anótelo. Si está prohibida, no la use y anote por qué.</li>
 <li>Si va por programa, instale las bibliotecas y pruebe que el bloque "comprobar robots" del cuaderno corre.</li>
 </ol>
-<h2>Durante la sesión (cuatro pasos)</h2>
+<h2>Cuatro pasos durante la sesión</h2>
 <h3>Paso 1. Descargar con registro</h3>
 <p>Vía manual. Para cada imagen que quiera incorporar, guarde el archivo con un nombre numerado (<code>0001.jpg</code>, <code>0002.jpg</code>) y anote en la hoja de cálculo la URL de la imagen (clic derecho, copiar dirección de la imagen), la URL de la página, la fecha y el texto alternativo o pie si lo hay. Las dimensiones se obtienen de las propiedades del archivo.</p>
 <p>Vía por programa. Use el bloque "descargar una página" del cuaderno. Descarga las imágenes de una página respetando <code>robots.txt</code>, con pausa entre peticiones y un agente identificado, y escribe una fila por imagen con URL, página, dimensiones y texto alternativo.</p>
@@ -373,7 +373,7 @@ No requiere programar.</p>
 <li>Para tres de las 20, escriba su lectura propia: diez afirmaciones etiquetadas como en el taller de la semana 3. Guárdela sin mostrarla al modelo.</li>
 <li>Abra una cuenta en un servicio con modelo multimodal gratuito, o configure el <code>.env</code> del cuaderno. Pruebe con una imagen.</li>
 </ol>
-<h2>Primera parte, describir (semana 4)</h2>
+<h2>Describir en la semana 4</h2>
 <h3>Prompt plano</h3>
 <pre><code>Describe esta imagen en detalle.
 </code></pre>
@@ -397,7 +397,7 @@ Responde en español.
 <p>Para las tres imágenes con lectura propia, llene la tabla de la semana 4: afirmaciones en la capa de denotación, cuántas habría escrito usted igual, suposiciones declaradas, cuántas rechazaría, qué declaró el modelo no saber. Anote en la bitácora qué cambió entre prompts: no la cantidad de detalle sino su clasificación.</p>
 <h3>Presupuesto</h3>
 <p>Con el costo de las 40 salidas, extrapole al corpus completo: dinero, tiempo de ejecución, tiempo de lectura. Decida y escriba qué parte del corpus describirá con el presupuesto que tiene.</p>
-<h2>Segunda parte, auditar (semana 5)</h2>
+<h2>Auditar en la semana 5</h2>
 <h3>Diseñar la muestra</h3>
 <p>Quince descripciones por capas, estratificadas por escena o periodo (cinco por estrato si hay tres estratos), incluyendo a propósito las imágenes que usted considera más locales. Escriba el criterio antes de auditar.</p>
 <h3>El orden obligatorio</h3>

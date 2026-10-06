@@ -14,7 +14,7 @@ Obtener descripciones de 20 imágenes con dos prompts, uno plano y uno por capas
 2. Para tres de las 20, escriba su lectura propia: diez afirmaciones etiquetadas como en el taller de la semana 3. Guárdela sin mostrarla al modelo.
 3. Abra una cuenta en un servicio con modelo multimodal gratuito, o configure el `.env` del cuaderno. Pruebe con una imagen.
 
-## Primera parte, describir (semana 4)
+## Describir en la semana 4
 
 ### Prompt plano
 
@@ -52,7 +52,7 @@ Para las tres imágenes con lectura propia, llene la tabla de la semana 4: afirm
 
 Con el costo de las 40 salidas, extrapole al corpus completo: dinero, tiempo de ejecución, tiempo de lectura. Decida y escriba qué parte del corpus describirá con el presupuesto que tiene.
 
-## Segunda parte, auditar (semana 5)
+## Auditar en la semana 5
 
 ### Diseñar la muestra
 

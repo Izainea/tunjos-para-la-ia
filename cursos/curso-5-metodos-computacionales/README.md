@@ -1,4 +1,4 @@
-# Curso 5. Métodos computacionales para el sentido
+# Curso 5. Patrones estables en datos de las ciencias sociales
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Quinto curso del programa [Tunjos para la IA](../), capa de Juicio.
 
@@ -23,7 +23,7 @@ Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de micr
 
 ## Prerrequisito
 
-Se recomienda haber cursado [*Corpus textual*](../curso-2-corpus-textual/README.md) o [*Corpus visual*](../curso-3-corpus-visual/README.md), o tener nociones básicas de Python. En *Corpus textual* un conjunto disperso de documentos se convierte en un corpus con procedencia, derechos y criterio de inclusión documentados para cada pieza, con un catálogo maestro y un cuaderno de Python que lo reproduce desde las fuentes, y se enseña Python desde cero. En *Corpus visual* se hace lo mismo con imágenes, catalogadas, descritas por capas con un modelo multimodal y auditadas, de modo que cada afirmación sobre una imagen tiene origen conocido. Este curso recibe ese corpus, o uno equivalente, como una tabla con una fila por documento o por imagen. Quien no programe puede seguir el curso con las mini apps y con el cuaderno de apoyo, que se copia bloque a bloque.
+Se recomienda haber cursado [*Corpus de textos con procedencia en ciencias sociales*](../curso-2-corpus-textual/README.md) o [*Descripción auditada de imágenes en investigación social*](../curso-3-corpus-visual/README.md), o tener nociones básicas de Python. En *Corpus de textos con procedencia en ciencias sociales* un conjunto disperso de documentos se convierte en un corpus con procedencia, derechos y criterio de inclusión documentados para cada pieza, con un catálogo maestro y un cuaderno de Python que lo reproduce desde las fuentes, y se enseña Python desde cero. En *Descripción auditada de imágenes en investigación social* se hace lo mismo con imágenes, catalogadas, descritas por capas con un modelo multimodal y auditadas, de modo que cada afirmación sobre una imagen tiene origen conocido. Este curso recibe ese corpus, o uno equivalente, como una tabla con una fila por documento o por imagen. Quien no programe puede seguir el curso con las mini apps y con el cuaderno de apoyo, que se copia bloque a bloque.
 
 ## Página del curso
 

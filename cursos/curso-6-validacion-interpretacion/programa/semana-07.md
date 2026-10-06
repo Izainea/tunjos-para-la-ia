@@ -1,4 +1,4 @@
-# Semana 7. Escribir hallazgos, de output a aserción
+# Semana 7. La escritura de hallazgos como aserciones
 
 ## Pregunta de la semana
 
@@ -6,7 +6,7 @@ Cuando un párrafo dice que "los datos muestran" o que "el análisis revela", ¿
 
 ## Por qué esta semana
 
-<p class="lede">El curso ha validado, triangulado, elegido hipótesis, interpretado y trazado el mapa. Queda escribir, y escribir es donde todo lo anterior se pierde o se conserva. El output de un modelo llega con la forma de la aserción fundamentada: oraciones declarativas, conectores de inferencia, un registro impersonal que suena a ciencia. [*Las tres inferencias*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, llamó a eso infortunio de autoridad epistémica, con la teoría de los actos de habla de Austin: la forma de la aserción sin ningún agente que pueda redimir sus pretensiones, un error distinto de la alucinación porque no está en el contenido sino en quién responde. Esta semana muestra que el infortunio se hereda. Quien transcribe el output a su informe, con sus "los datos muestran" y sus "es evidente que", hereda una aserción sin aserente y la firma sin ocupar el lugar del que afirma. Escribir hallazgos es la operación inversa: convertir cada output en una aserción con sujeto, base, criterio y responsable, y declarar, en un documento que un jurado pueda leer, qué fue de quién.</p>
+<p class="lede">El curso ha validado, triangulado, elegido hipótesis, interpretado y trazado el mapa. Queda escribir, y escribir es donde todo lo anterior se pierde o se conserva. El output de un modelo llega con la forma de la aserción fundamentada: oraciones declarativas, conectores de inferencia, un registro impersonal que suena a ciencia. [*Validación del razonamiento con IA en ciencias sociales*](../../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, llamó a eso infortunio de autoridad epistémica, con la teoría de los actos de habla de Austin: la forma de la aserción sin ningún agente que pueda redimir sus pretensiones, un error distinto de la alucinación porque no está en el contenido sino en quién responde. Esta semana muestra que el infortunio se hereda. Quien transcribe el output a su informe, con sus "los datos muestran" y sus "es evidente que", hereda una aserción sin aserente y la firma sin ocupar el lugar del que afirma. Escribir hallazgos es la operación inversa: convertir cada output en una aserción con sujeto, base, criterio y responsable, y declarar, en un documento que un jurado pueda leer, qué fue de quién.</p>
 
 ## Contenido de la sesión
 
@@ -101,7 +101,7 @@ Esta semana se le pide al modelo que redacte un párrafo de hallazgos a partir d
 - Massaguer Gómez sostiene que el análisis de la aserción no distingue outputs fiables de no fiables. *¿Es esa una limitación de su análisis o la razón por la que la fiabilidad no resuelve el problema del aserente?*
 - Floridi propone sustituir la detección de IA por la exigencia de responder. *¿Qué tendría que contener una declaración de uso para que un lector pudiera interpelar al autor, y qué le falta a las declaraciones que usted ha visto?*
 
-## Taller de la segunda hora, práctica guiada
+## Taller de la segunda hora
 
 Guía completa en `practicas/practica-07-reescritura-de-informe.md`. En resumen: el estudiante toma el informe que trajo, resalta los marcadores de autoridad, reescribe cada frase con los cuatro pasos, separa lo que no puede firmar, y redacta la declaración de uso de IA con la plantilla `plantillas/declaracion-de-uso-de-ia.md`.
 

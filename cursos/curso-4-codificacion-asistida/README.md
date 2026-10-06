@@ -1,4 +1,4 @@
-# Curso 4. Codificación asistida por una máquina que configura
+# Curso 4. Codificación cualitativa con IA en ciencias sociales
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Cuarto curso del programa [Tunjos para la IA](../), capa de Oficio.
 

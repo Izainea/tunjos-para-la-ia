@@ -1,4 +1,4 @@
-# Curso 2. Del documento al corpus textual trazable
+# Curso 2. Corpus de textos con procedencia en ciencias sociales
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Segundo curso del programa [Tunjos para la IA](../), capa de Oficio.
 

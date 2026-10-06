@@ -50,7 +50,7 @@ Al menos seis. Cada regla tiene verbo, rol, registro y condición de rechazo. Un
 | 5 | | | | | | |
 | 6 | | | | | | |
 
-## 6. Andamiaje que preserva el juicio (semana 6)
+## 6. Andamiaje que preserva el juicio en la semana 6
 
 | Condición | Cómo se cumple en este protocolo | Qué cuesta (tiempo, personas) | Quién lo paga |
 |---|---|---|---|
@@ -68,7 +68,7 @@ Cada producto del proyecto lleva una declaración de uso con la plantilla `decla
 
 Qué riesgos de la matriz quedan sin regla, y por qué (fuera del alcance, costo desproporcionado, cubiertos por otra política):
 
-## 9. Dónde exige más que la norma, y dónde menos
+## 9. Dónde exige más que la norma y dónde menos
 
 Qué obligaciones de las normas leídas (CONPES 4144, Sentencia T-067, Directiva Conjunta 007, Ley 1581) adopta aunque no obliguen al proyecto, y en qué punto el protocolo exige menos que ellas y por qué:
 

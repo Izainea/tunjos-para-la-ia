@@ -80,7 +80,7 @@ Para cada criterio, escriba qué sabe, qué no sabe y qué haría para saberlo. 
 
 **¿El corpus es exhaustivo dentro de la delimitación o es una muestra?** Si es muestra, con qué regla se eligen las piezas y cuándo se deja de recolectar.
 
-## Solo en el informe de corpus (semana 8)
+## Solo en el informe de corpus de la semana 8
 
 ### 9. Declaración de datos
 

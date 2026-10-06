@@ -7,7 +7,7 @@
 
 ## Para qué sirve este registro
 
-No es un informe de uso de inteligencia artificial. Es la evidencia de que usted sabe, código por código, dónde terminó la máquina y dónde empezó usted. Un registro bien hecho permite que otra persona reconstruya qué parte del libro de códigos es output del sistema y qué parte es su aserción, por la que usted responde. Es la versión para codificación del registro de frontera que propone [*Las tres inferencias*, semana 7](../../curso-1-tres-inferencias/programa/semana-07.md), el curso de fundamentos del programa: allí, en un ejercicio real con un modelo, se anota para cada paso qué propuso la máquina, qué inferencia es, qué decidió el investigador y con qué criterio, y se concluye que esa frontera visible es lo que permite responder por el resultado. Aquí, en lugar de pasos, códigos.
+No es un informe de uso de inteligencia artificial. Es la evidencia de que usted sabe, código por código, dónde terminó la máquina y dónde empezó usted. Un registro bien hecho permite que otra persona reconstruya qué parte del libro de códigos es output del sistema y qué parte es su aserción, por la que usted responde. Es la versión para codificación del registro de frontera que propone [*Validación del razonamiento con IA en ciencias sociales*, semana 7](../../curso-1-tres-inferencias/programa/semana-07.md), el curso de fundamentos del programa: allí, en un ejercicio real con un modelo, se anota para cada paso qué propuso la máquina, qué inferencia es, qué decidió el investigador y con qué criterio, y se concluye que esa frontera visible es lo que permite responder por el resultado. Aquí, en lugar de pasos, códigos.
 
 ## El registro
 

@@ -10,10 +10,10 @@ Construir el grafo de coocurrencia del corpus propio con una unidad declarada, c
 
 ## Antes de la sesión de la semana 4
 
-1. Decida la unidad de coocurrencia. Si tiene el libro de códigos de [*Codificación asistida*](../../curso-4-codificacion-asistida/README.md), los códigos del propio corpus con su definición y sus fragmentos de anclaje, construidos allí con ayuda de un modelo y bajo la responsabilidad del investigador, la unidad es el documento o el segmento codificado. Si tiene actores en noticias, la unidad es la noticia. Si tiene etiquetas de imágenes, la unidad es la imagen. Si no tiene nada de esto, use los grupos de la semana 3 como códigos y los documentos como unidades. Escriba la decisión y su razón en la sección 1 de la plantilla.
+1. Decida la unidad de coocurrencia. Si tiene el libro de códigos de [*Codificación cualitativa con IA en ciencias sociales*](../../curso-4-codificacion-asistida/README.md), los códigos del propio corpus con su definición y sus fragmentos de anclaje, construidos allí con ayuda de un modelo y bajo la responsabilidad del investigador, la unidad es el documento o el segmento codificado. Si tiene actores en noticias, la unidad es la noticia. Si tiene etiquetas de imágenes, la unidad es la imagen. Si no tiene nada de esto, use los grupos de la semana 3 como códigos y los documentos como unidades. Escriba la decisión y su razón en la sección 1 de la plantilla.
 2. Construya la tabla de unidades. Cada fila, una unidad; en la columna `codigos`, los códigos presentes separados por punto y coma. Sin datos personales de terceros.
 
-## Durante la sesión de la semana 4 (tres rondas)
+## Tres rondas en la sesión de la semana 4
 
 ### Ronda 1. Construir y medir
 
@@ -34,7 +34,7 @@ Dibuje el grafo del umbral medio con dos semillas distintas del algoritmo de dis
 3. Pídale a un modelo de lenguaje una lectura alternativa de un puente, con el prompt registrado, y escríbala en la columna correspondiente con lo que decidiría entre las dos.
 4. Quite un nodo del grafo, el que más sospeche que sostiene la estructura, y vuelva a calcular comunidades. Anote qué pasó.
 
-## Durante la sesión de la semana 5, revisión en parejas
+## Revisión en parejas en la sesión de la semana 5
 
 Cada estudiante lee la lectura de grafo de otro durante quince minutos con una sola instrucción: encontrar al menos una afirmación de la sección 4 que la red no sostiene, o un apoyo que no es tal. El autor corrige o defiende por escrito. No encontrar nada es la excepción, no la cortesía.
 

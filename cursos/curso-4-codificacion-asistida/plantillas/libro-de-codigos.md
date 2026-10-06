@@ -21,7 +21,7 @@ Copie aquí la lista de la semana 2 para la fase que este libro cierra.
 | Condición de terminación | | | |
 | Condición de imputación | | | |
 
-## 2. Códigos (versión abierta y final)
+## 2. Códigos en versión abierta y final
 
 Una entrada por código. La definición dice qué incluye; los criterios de exclusión dicen qué parece entrar y no entra. Los fragmentos de anclaje se citan por número y se verifican contra el corpus.
 
@@ -35,7 +35,7 @@ Una entrada por código. La definición dice qué incluye; los criterios de excl
 
 **Códigos rechazados:** liste los que el modelo propuso y usted rechazó, con el criterio. No se borran: son evidencia de la frontera.
 
-## 3. Categorías (versión final)
+## 3. Categorías en versión final
 
 Una entrada por categoría. Las propiedades son los atributos que la caracterizan; las dimensiones, el rango en que varía cada propiedad. Cada extremo de cada dimensión debe tener al menos un fragmento.
 
@@ -58,14 +58,14 @@ Una entrada por categoría. Las propiedades son los atributos que la caracteriza
 
 **Relaciones con otras categorías (de la matriz axial, con fragmentos):**
 
-## 4. Cifras del registro (versión final)
+## 4. Cifras del registro en versión final
 
 | | Propuestos por el modelo | Propuestos por mí | Propuestos por el modelo y corregidos | Rechazados | Total en el libro |
 |---|---|---|---|---|---|
 | Códigos | | | | | |
 | Categorías | | | | | |
 
-## 5. Condición de terminación (versión final)
+## 5. Condición de terminación en versión final
 
 **Condición escrita antes de codificar el último lote (fecha):**
 
@@ -81,9 +81,9 @@ Una entrada por categoría. Las propiedades son los atributos que la caracteriza
 
 ## 6. Lo que queda abierto
 
-Categorías en observación, relaciones sin fragmentos suficientes, y preguntas que quedan para la validación y la interpretación del libro, que en el programa corresponden a [*Validación e interpretación*](../../curso-6-validacion-interpretacion/README.md): allí el libro de códigos se valida en tres sentidos, corrección del resultado, justificación del proceso y responsabilidad por lo afirmado, y se escribe como hallazgo propio.
+Categorías en observación, relaciones sin fragmentos suficientes, y preguntas que quedan para la validación y la interpretación del libro, que en el programa corresponden a [*Validar y defender investigación social asistida por IA*](../../curso-6-validacion-interpretacion/README.md): allí el libro de códigos se valida en tres sentidos, corrección del resultado, justificación del proceso y responsabilidad por lo afirmado, y se escribe como hallazgo propio.
 
-## 7. Declaración de responsabilidad (versión final)
+## 7. Declaración de responsabilidad en versión final
 
 Tradición seguida y cuatro enunciados por fase: ver sección 1.
 Modelo, instrucciones y fases: ver encabezado y anexo.

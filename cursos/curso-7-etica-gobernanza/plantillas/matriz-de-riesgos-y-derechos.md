@@ -19,7 +19,7 @@ Entre tres y seis tipos. Un tipo agrupa piezas con el mismo origen y el mismo r�
 | 2 | | | | |
 | 3 | | | | |
 
-## 2. Derechos por tipo (semana 2)
+## 2. Derechos por tipo en la semana 2
 
 | Nº | Autor o titular de derechos | ¿Datos personales? ¿Sensibles? (Ley 1581, arts. 3 y 5) | Norma o cláusula que aplica (Ley 23 art. 31 o 32; Ley 1581; términos de la plataforma) | Uso que decido (citar, describir, exhibir con reserva, no usar) | Por qué |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Entre tres y seis tipos. Un tipo agrupa piezas con el mismo origen y el mismo r�
 | 2 | | | | | |
 | 3 | | | | | |
 
-## 3. Riesgos por tipo (semana 3)
+## 3. Riesgos por tipo en la semana 3
 
 Ninguna celda de daño puede decir "ninguno". Cada daño lleva un verbo y un afectado. Al menos un daño de la matriz debe tener probabilidad alta, o explicar por qué ninguno la tiene.
 
@@ -51,7 +51,7 @@ Ninguna celda de daño puede decir "ninguno". Cada daño lleva un verbo y un afe
 
 **Qué hacer cuando la cláusula cambie:**
 
-## 5. Anonimización, cuando aplica
+## 5. Anonimización cuando aplica
 
 | Tipo de pieza | Técnica (suprimir, seudonimizar, generalizar) | Qué se quitó | Qué se perdió para el análisis | Quién guarda la tabla de correspondencia |
 |---|---|---|---|---|

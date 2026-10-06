@@ -1,6 +1,6 @@
-# Curso 6. Validación e interpretación como refiguración del investigador
+# Curso 6. Validar y defender investigación social asistida por IA
 
-Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa [*Las tres inferencias*](../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguieron deducción, inducción y abducción por su régimen de validez y se concluyó que la máquina configura sin poder validar ni responder por lo configurado: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
+Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sexto curso del programa [Tunjos para la IA](../), capa de Juicio. Continúa [*Validación del razonamiento con IA en ciencias sociales*](../curso-1-tres-inferencias/README.md), el curso de fundamentos del programa, donde se distinguieron deducción, inducción y abducción por su régimen de validez y se concluyó que la máquina configura sin poder validar ni responder por lo configurado: lo que allí se planteó como teoría de la inferencia aquí se vuelve oficio de validación.
 
 **Pregunta del curso.** Cuando el trabajo de configuración ya está hecho, con o sin máquina, ¿qué significa validarlo, con qué criterios, y cómo se escribe un hallazgo de modo que quien lo firma pueda responder por él?
 
@@ -23,7 +23,7 @@ Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de micr
 
 ## Requisitos
 
-Haber cursado [*Las tres inferencias*](../curso-1-tres-inferencias/README.md), donde se distinguen deducción, inducción y abducción por su régimen de validez, o conocer esa distinción. Tener material propio ya configurado, con o sin máquina: un corpus con procedencia como el de [*Corpus textual*](../curso-2-corpus-textual/README.md), imágenes catalogadas y descritas como las de [*Corpus visual*](../curso-3-corpus-visual/README.md), un libro de códigos como el de [*Codificación asistida*](../curso-4-codificacion-asistida/README.md), patrones con prueba de estabilidad como los de [*Métodos computacionales para el sentido*](../curso-5-metodos-computacionales/README.md), o lo que el propio proyecto haya producido. No requiere programación.
+Haber cursado [*Validación del razonamiento con IA en ciencias sociales*](../curso-1-tres-inferencias/README.md), donde se distinguen deducción, inducción y abducción por su régimen de validez, o conocer esa distinción. Tener material propio ya configurado, con o sin máquina: un corpus con procedencia como el de [*Corpus de textos con procedencia en ciencias sociales*](../curso-2-corpus-textual/README.md), imágenes catalogadas y descritas como las de [*Descripción auditada de imágenes en investigación social*](../curso-3-corpus-visual/README.md), un libro de códigos como el de [*Codificación cualitativa con IA en ciencias sociales*](../curso-4-codificacion-asistida/README.md), patrones con prueba de estabilidad como los de [*Patrones estables en datos de las ciencias sociales*](../curso-5-metodos-computacionales/README.md), o lo que el propio proyecto haya producido. No requiere programación.
 
 ## Página del curso
 

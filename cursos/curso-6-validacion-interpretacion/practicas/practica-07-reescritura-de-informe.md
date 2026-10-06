@@ -21,7 +21,7 @@ de ciencias sociales, que presente los tres hallazgos principales.
 2. Guarde el párrafo literal en el anexo. No lo corrija todavía.
 3. Pídale al modelo, en la misma conversación, que justifique cada afirmación del párrafo. Guarde esa justificación también. La va a necesitar para ver qué forma tiene una justificación sin aserente.
 
-## Durante la sesión (cuatro pasos)
+## Cuatro pasos durante la sesión
 
 ### Paso 1. Marcar
 

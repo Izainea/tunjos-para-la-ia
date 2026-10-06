@@ -34,7 +34,7 @@ El acuerdo entre codificadores mide consistencia: que dos aplicaciones del mismo
 
 **Interpretación en una frase:** el valor obtenido dice que …, y no dice que …
 
-## 3. Desacuerdos, uno a uno
+## 3. Desacuerdos uno a uno
 
 Tipos: (A) fragmento ambiguo, falta regla de decisión; (B) definición estrecha, hay que ampliar; (C) dos códigos se solapan, fusionar o distinguir; (D) el modelo aplicó la palabra y no el sentido, añadir ejemplo negativo; (E) el modelo forzó una categoría de fuera; (F) me equivoqué yo; (G) otro, explicar.
 

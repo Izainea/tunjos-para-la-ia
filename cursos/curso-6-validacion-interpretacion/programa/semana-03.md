@@ -86,7 +86,7 @@ Esta semana el modelo codifica diez fragmentos del material del estudiante como 
 
 Sobre las dos condiciones de la práctica. Con libro de códigos, el modelo recibe las definiciones del estudiante y se le pide aplicarlas; la fila resultante mide consistencia y se anota así. Sin libro de códigos, el modelo recibe solo los fragmentos y la pregunta de investigación; la fila resultante puede ser una pata si el modelo es de otra familia que cualquier otro usado en el proyecto y la expectativa se declaró antes.
 
-## Taller de la segunda hora, práctica guiada
+## Taller de la segunda hora
 
 Guía completa en `practicas/practica-03-triangulacion-con-modelo.md`. En resumen: el estudiante hace codificar diez fragmentos propios por un modelo en dos condiciones, con y sin libro de códigos, declara antes qué espera, compara con su propia codificación y llena una fila de la matriz por condición. Luego añade las demás patas que tenga, fuentes, métodos, teorías, y marca convergencia, divergencia o silencio por hallazgo.
 

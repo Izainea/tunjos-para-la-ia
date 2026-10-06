@@ -26,7 +26,7 @@ Mide lo que un modelo excluye al leer una muestra de material situado, comparand
 | 1 | | | | |
 | 2 | | | | |
 
-## 3. Categorías locales (escritas antes de consultar al modelo)
+## 3. Categorías locales escritas antes de consultar al modelo
 
 Una o dos frases por pieza, escritas por el lector situado: qué es, qué hace en la vida de quien la produjo o la usa, qué palabra local la nombra. La fecha de escritura debe ser anterior a la de las consultas.
 
@@ -36,7 +36,7 @@ Una o dos frases por pieza, escritas por el lector situado: qué es, qué hace e
 | 2 | | | |
 | 3 | | | |
 
-## 4. Instrucción al modelo (literal)
+## 4. Instrucción literal al modelo
 
 Una instrucción fija para todas las piezas, que pide descripción y significado sin sugerir categorías. Si hubo variantes (lengua, con o sin contexto), cada una es una ronda y se registra aparte.
 

@@ -8,7 +8,7 @@ Para el cálculo: la mini app de la semana 3 calcula kappa para sus doce fragmen
 
 Medir el acuerdo entre el investigador y el modelo al aplicar un mismo libro de códigos a los mismos fragmentos, interpretarlo como consistencia y no como validez, y convertir cada desacuerdo en una decisión sobre el libro.
 
-## Antes de la sesión, codificar a ciegas
+## Codificación a ciegas antes de la sesión
 
 1. Elija treinta fragmentos que no haya codificado con el modelo en la práctica 3, o, si todo el corpus pasó ya por el modelo, treinta fragmentos elegidos al azar con un intervalo (cada segundo o tercer fragmento).
 2. Codifique los treinta a mano con el libro fijo, un código por fragmento (el que predomina). Si el fragmento no cabe en ningún código, anote "ninguno" y la razón. Guarde el resultado con fecha.

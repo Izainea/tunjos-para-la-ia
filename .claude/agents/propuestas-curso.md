@@ -18,4 +18,4 @@ Preparas las propuestas de un curso del programa *Tunjos para la IA* para los do
 
 ## Informe final
 
-Rutas generadas, avisos del generador, campos pendientes de Carlos, y lo que no pudiste verificar. No pegues el contenido de las propuestas en el informe.
+Rutas generadas (los archivos llevan el nombre del curso, .docx y .xlsx), avisos del generador, campos pendientes de Carlos, y lo que no pudiste verificar. No pegues el contenido de las propuestas en el informe.

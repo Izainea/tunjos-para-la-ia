@@ -82,15 +82,6 @@ def check_semanas(curso: Path, err: list, av: list) -> None:
                 pos = j
         if 'class="glosa"' not in s:
             av.append(f"{p.name}: sin glosas al margen")
-    # Títulos con dos puntos de gancho ("Tema: subtítulo"), prohibidos en todo el material
-    for p in md_files(curso):
-        en_codigo = False
-        for k, l in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
-            if l.startswith("```"):
-                en_codigo = not en_codigo
-                continue
-            if not en_codigo and re.match(r"^#{1,4} .*\S:\s", l + " "):
-                err.append(f"{p.relative_to(curso)}:{k}: título con dos puntos de gancho; reformular como frase nominal")
         for k, l in enumerate(s.splitlines(), 1):
             if l.lstrip().startswith("<aside") and "</aside>" not in l:
                 err.append(f"{p.name}:{k}: glosa sin cerrar en la misma línea (el renderizador absorbe el párrafo siguiente)")
@@ -101,6 +92,28 @@ def check_semanas(curso: Path, err: list, av: list) -> None:
         n = len(s.splitlines())
         if n < 110:
             av.append(f"{p.name}: {n} líneas; la guía pide entre 120 y 180")
+    check_titulos(curso, err, av)
+
+
+def check_titulos(curso: Path, err: list, av: list) -> None:
+    """Títulos con subtítulo de gancho: con dos puntos (error) o disfrazado con coma o paréntesis (error)."""
+    for p in md_files(curso):
+        en_codigo = False
+        for k, l in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+            if l.startswith("```"):
+                en_codigo = not en_codigo
+                continue
+            if en_codigo or not re.match(r"^#{1,4} ", l):
+                continue
+            titulo = re.sub(r"^#{1,4} ", "", l).strip()
+            if re.search(r"\S:\s", titulo + " "):
+                err.append(f"{p.relative_to(curso)}:{k}: título con dos puntos de gancho; reformular como frase nominal")
+                continue
+            paren = re.search(r"\(([^)]*)\)\s*$", titulo)
+            if paren and not re.match(r"^\s*\d+\s*(%|min|minutos|h|horas)\s*$", paren.group(1)):
+                err.append(f"{p.relative_to(curso)}:{k}: título con paréntesis a modo de subtítulo; reformular como frase nominal")
+            elif titulo.count(",") == 1 and " y " not in titulo and " e " not in titulo and " o " not in titulo:
+                err.append(f"{p.relative_to(curso)}:{k}: título con coma a modo de subtítulo; reformular como frase nominal")
 
 
 def check_prohibidos(curso: Path, err: list, av: list) -> None:

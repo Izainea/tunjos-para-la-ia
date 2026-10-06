@@ -1,4 +1,4 @@
-# Semana 2. Los criterios de rigor cualitativo, releídos
+# Semana 2. Relectura de los criterios de rigor cualitativo
 
 ## Pregunta de la semana
 

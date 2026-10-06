@@ -1,4 +1,4 @@
-# Curso 1. Las tres inferencias en el razonamiento humano y el artificial
+# Curso 1. Validación del razonamiento con IA en ciencias sociales
 
 Curso corto de ocho sesiones en modalidad híbrida, adaptable a formatos de microcredencial o de educación continua. Sesiones presenciales con participación remota sincrónica y trabajo asincrónico guiado; la modalidad virtual es alternativa. Primer curso del programa [Tunjos para la IA](../).
 

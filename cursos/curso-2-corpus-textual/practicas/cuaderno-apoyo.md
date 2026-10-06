@@ -560,4 +560,4 @@ print("catalogo.csv:", sha256_archivo("catalogo.csv"))
 
 ## Nota sobre costos y privacidad
 
-Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga la práctica de la semana 7 con una muestra anonimizada o con material público. No entregue el archivo `.env`. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: derechos sobre el material, datos personales y consentimiento, con una matriz de riesgos y derechos por tipo de pieza del corpus.
+Use cuotas gratuitas y material sin datos personales de terceros. Si su proyecto incluye material sensible, haga la práctica de la semana 7 con una muestra anonimizada o con material público. No entregue el archivo `.env`. [*Exterioridad y gobernanza de la IA en ciencias sociales*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: derechos sobre el material, datos personales y consentimiento, con una matriz de riesgos y derechos por tipo de pieza del corpus.

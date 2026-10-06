@@ -11,8 +11,8 @@ Entradas:
     <curso>/propuestas/contenido.py                     variables con el texto (ver curso 1)
 
 Salidas (en <curso>/propuestas/, carpeta ignorada por git):
-    propuesta-uniandes.docx
-    propuesta-unal.xlsx
+    <Nombre del curso>.docx     (formato de credenciales)
+    <Nombre del curso>.xlsx     (formato B-FT-06.003.008)
 
 Edita el XML directamente para conservar logos, estilos y celdas combinadas. Si un archivo de salida
 está abierto en Office, escribe junto a él con sufijo -nuevo.
@@ -107,7 +107,7 @@ def generar_docx(C, curso: Path) -> Path:
             salida.append(x[ultimo:m.start()]); salida.append(fila); ultimo = m.end()
         salida.append(x[ultimo:])
         p.write_text("".join(salida), encoding="utf-8")
-        dest = escribible(curso / "propuestas" / "propuesta-uniandes.docx")
+        dest = escribible(curso / "propuestas" / f"{C.NOMBRE}.docx")
         rezipear(tmp, dest)
     return dest
 
@@ -187,7 +187,7 @@ def generar_xlsx(C, curso: Path) -> Path:
             x = re.sub(r'<mergeCells count="(\d+)">', lambda m: f'<mergeCells count="{int(m.group(1)) + 1}">', x)
             x = x.replace("</mergeCells>", '<mergeCell ref="B34:F34"/></mergeCells>')
         p.write_text(x, encoding="utf-8")
-        dest = escribible(curso / "propuestas" / "propuesta-unal.xlsx")
+        dest = escribible(curso / "propuestas" / f"{C.NOMBRE}.xlsx")
         rezipear(tmp, dest)
     return dest
 
@@ -197,6 +197,10 @@ def verificar(C) -> list[str]:
     avisos = []
     if len(C.NOMBRE) > 58:
         avisos.append(f"NOMBRE tiene {len(C.NOMBRE)} caracteres; el máximo es 58")
+    if len(C.NOMBRE) < 50:
+        avisos.append(f"NOMBRE tiene {len(C.NOMBRE)} caracteres; el autor fijó un mínimo de 50")
+    if "social" not in C.NOMBRE.lower():
+        avisos.append("NOMBRE no alude a las ciencias sociales")
     if len(C.UNAL["sintesis"]) > 600:
         avisos.append(f"UNAL['sintesis'] tiene {len(C.UNAL['sintesis'])} caracteres; el máximo es 600")
     horas = int(C.UNAL["num_sesiones"]) * int(C.UNAL["horas_sesion"])

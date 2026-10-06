@@ -185,7 +185,7 @@ print("archivos sin fila:", sorted(en_disco - en_catalogo))
 print("filas:", len(cat), "archivos:", len(en_disco))
 ```
 
-## Describir con un modelo multimodal (bloque opcional)
+## Bloque opcional para describir con un modelo multimodal
 
 Explicación. El bloque envía una imagen y el prompt por capas a un modelo compatible con la interfaz de `openai`, y guarda prompt, salida y metadatos en `descripciones.jsonl`. La clave está en `.env` y se lee con `python-dotenv`; nunca se escribe en el código ni se sube a un repositorio. Antes de correrlo sobre una imagen, compruebe en el catálogo que no está marcada como sensible. Varios proveedores ofrecen cuota gratuita; cambie `BASE_URL` y `MODEL` según el suyo.
 
@@ -297,4 +297,4 @@ pd.read_json("frontera.jsonl", lines=True).to_csv("registro-de-frontera-visual.c
 
 ## Nota sobre costos y privacidad
 
-Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. [*Ética, exterioridad y gobernanza*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: derechos sobre el material, datos personales e imágenes sensibles, consentimiento en plataformas y la opción de describir en lugar de exhibir; concluye que esas decisiones se escriben en un protocolo de gobernanza que dice quién responde por cada una.
+Use cuotas gratuitas y, hasta la semana 7, solo imágenes sin personas identificables. Si su corpus es sensible, considere un modelo local de visión: menor calidad, control total, y la decisión queda en el registro. [*Exterioridad y gobernanza de la IA en ciencias sociales*](../../curso-7-etica-gobernanza/README.md) trata estos problemas en detalle: derechos sobre el material, datos personales e imágenes sensibles, consentimiento en plataformas y la opción de describir en lugar de exhibir; concluye que esas decisiones se escriben en un protocolo de gobernanza que dice quién responde por cada una.
